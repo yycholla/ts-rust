@@ -589,7 +589,7 @@
     "authorization": "User requests full parity without milestone check-ins, benchmarks, trials or independent audits until parity is achieved; prototype judgement delegated to root.",
     "scope": "Native Svelte/Kit compiler, checker, lint and editor/build functionality; JS/WASM interfaces; registered version window",
     "next": [
-      "Native MoncuraHR build follow-ups: explain 86 MB native vs 69 MB official output; Sentry release/debug-ID injection; broaden browser comparison beyond 4 logged-out routes (authenticated flows need a backend); compare server/client chunk graphs and CSS with official; clippy cleanup in bundle/css (pre-existing)",
+      "Native MoncuraHR build follow-ups: source-map size (server maps reach original sources); Sentry release/debug-ID injection; broaden browser comparison beyond 4 logged-out routes (authenticated flows need a backend); compare chunk graphs (Rolldown strictExecutionOrder wrappers in the adapter rebundle) and CSS file count (per-module CSS: 111 vs 43 files); clippy cleanup in bundle/css/build (pre-existing)",
       "Connect native bundler, Markdown preprocessing and Kit build generators",
       "Finish lint fixes, native formatting and project reload in persistent editor",
       "Native CSS/assets/Tailwind and remaining Kit runtime build stages",
@@ -1551,6 +1551,48 @@
       "Server CSS is not minified (Vite minifies server CSS; only inlined above inlineStyleThreshold, default 0).",
       "esbuild/Rolldown minifier output differs textually from esbuild's.",
       "Deep external ids rewrite only for packages without exports (Vite processResult); import.meta.glob supports literal /, ./, ../ patterns with eager/import/query only."
-    ]
+    ],
+    "nativeProjectBuildMeasurement": {
+      "date": "2026-10-12",
+      "source": "c8e06bbad (native binary sha256 aa31646a…)",
+      "evidence": "target/svelte-bench-2 (summary.json, runs.jsonl, size.json); scripts/svelte/bench-build.py, scripts/svelte/compare-build-size.py",
+      "method": "Same machine (i9-11900T 8C/16T, 62 GB, powersave governor, Node 24.21.0); identical fresh copies of target/svelte-project-app-2/app; official = package.json build (vite build) from no .svelte-kit/build; native = svelte-build project op to a new directory; 1 discarded warmup each, then 5 alternating runs; GNU time -v.",
+      "wallSeconds": {
+        "official": {
+          "median": 96.5,
+          "min": 92.1,
+          "max": 101.2
+        },
+        "native": {
+          "median": 19.1,
+          "min": 17.2,
+          "max": 19.7
+        }
+      },
+      "cpuSecondsMedian": {
+        "official": 198.5,
+        "native": 80.6
+      },
+      "largestProcessPeakRssMiB": {
+        "official": 4979,
+        "native": 2452
+      },
+      "outputBytes": {
+        "official": 59439320,
+        "native": 69105750,
+        "clientShippedGzip": {
+          "official": 2708740,
+          "native": 2818603
+        },
+        "note": "native +16.3% total; most is source maps (server +35.9%: native maps reach original sources, official stop at .svelte-kit intermediates; client +13.7%). Client JS +4.6%, server JS +4.2%, shipped gzip +4.1%."
+      },
+      "caveats": [
+        "Another session ran svelte-check and a vite dev server on the host during the runs; runs alternate so both sides shared it",
+        "Native skips Sentry release/debug-ID injection and source-map flattening (accepted requirement vite/sentry); official performs them with upload disabled",
+        "Official executes Kit build analysis by running server code; native analyses statically",
+        "Peak RSS is the largest single process, not the process tree",
+        "One machine and one project; not a general speed claim"
+      ]
+    }
   }
 }
