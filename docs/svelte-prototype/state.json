@@ -1593,6 +1593,37 @@
         "Peak RSS is the largest single process, not the process tree",
         "One machine and one project; not a general speed claim"
       ]
+    },
+    "nativePublicProjects": {
+      "date": "2026-10-12",
+      "tool": "scripts/svelte/native-public.py, scripts/svelte/compare-browser.mjs",
+      "evidence": "target/svelte-native-public/<name>/evidence",
+      "loaderInventory": {
+        "sv-demo (sv@1.1.1 create --template demo)": "Kit 3.0.1: loader reads Kit 2 configs only",
+        "svelte-dev 73e32225d": "Kit 3.0.0-next.31: loader reads Kit 2 configs only (also prerenders)",
+        "realworld df7967080": "adapter-vercel unsupported (upstream pnpm-lock.yaml has a duplicated key; installed without it)",
+        "bits-ui-docs fd10616a8": "kit.typescript.config callback (also mdsx, velite)",
+        "shadcn-svelte-docs 8cbccdc82": "executable config statements: custom JS markup preprocessor, mdsx, prerender callbacks, typescript.config callback"
+      },
+      "realworld-node": {
+        "variant": "same commit, adapter-vercel replaced by adapter-node 5.5.4 on both sides",
+        "loader": "no requirements",
+        "native": "all phases complete",
+        "browser": "25/25 crawled pages match (status, URL, title, text, errors, failed requests, client-side navigation)",
+        "outputBytes": {
+          "official": 3297598,
+          "native": 2921553,
+          "clientShippedGzip": {
+            "official": 61797,
+            "native": 56717
+          }
+        },
+        "wallSecondsMedian5": {
+          "official": 7.67,
+          "native": 0.61,
+          "note": "host load 17-20 from other work during runs; rough"
+        }
+      }
     }
   }
 }
