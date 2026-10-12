@@ -1,0 +1,271 @@
+{
+  "source": "<script>/** @type {number} */ const value = 'wrong';</script>\n<p>{value.toFixed()}</p>\n",
+  "native": {
+    "request": {
+      "workspace": "/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/matrix/kit-2.67.0-javascript-invalid.svelte-workspace",
+      "dependencies": "/home/yycholla/Projects/ts-rust/target/svelte-versions/kit-2.67.0/node_modules",
+      "allowPrerelease": false,
+      "components": [
+        {
+          "path": "Case.svelte",
+          "document": {
+            "uri": "Case.svelte",
+            "version": 1,
+            "text": "<script>/** @type {number} */ const value = 'wrong';</script>\n<p>{value.toFixed()}</p>\n"
+          },
+          "typescript": false
+        }
+      ]
+    },
+    "exit": 1,
+    "signal": null,
+    "stdout": "{\"checker\":{\"diagnostics\":[{\"category\":1,\"code\":2322,\"end\":88,\"endPosition\":{\"character\":33,\"line\":2},\"fileName\":\"/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/matrix/kit-2.67.0-javascript-invalid.svelte-workspace/Case.svelte.jsx\",\"original\":{\"bytes\":{\"end\":41,\"start\":36},\"range\":{\"end\":{\"character\":41,\"line\":0},\"start\":{\"character\":36,\"line\":0}},\"status\":\"mapped\",\"uri\":\"Case.svelte\",\"version\":1},\"pos\":83,\"sourceLines\":[{\"line\":2,\"text\":\"/** @type {number} */ const value = 'wrong';;\\n\"}],\"startPosition\":{\"character\":28,\"line\":2},\"text\":\"Type 'string' is not assignable to type 'number'.\"}],\"error\":null,\"ok\":true,\"output\":\"\",\"projectionsVerified\":true,\"serializationFailures\":[],\"status\":2,\"unported\":[]},\"compatibility\":{\"capabilities\":{\"checkingProjection\":\"prototype\",\"componentCompiler\":\"prototype\",\"kitBuild\":false,\"kitGraph\":false,\"lsp\":false,\"projectCheck\":\"explicit-input-prototype\"},\"channel\":\"stable\",\"id\":\"v1:svelte=5.53.11;kit=2.67.0;ts=5.9.3\",\"kitConfig\":\"svelte-config-or-vite-plugin\",\"kitEnvironmentModule\":\"$app/environment\",\"kitLibraryAlias\":\"$lib\",\"kitVersion\":\"2.67.0\",\"svelteVersion\":\"5.53.11\",\"typescriptVersion\":\"5.9.3\"},\"compilerDiagnostics\":[],\"ok\":true,\"stage\":\"check\",\"workspace\":\"/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/matrix/kit-2.67.0-javascript-invalid.svelte-workspace\"}\n",
+    "stderr": "",
+    "response": {
+      "checker": {
+        "diagnostics": [
+          {
+            "category": 1,
+            "code": 2322,
+            "end": 88,
+            "endPosition": {
+              "character": 33,
+              "line": 2
+            },
+            "fileName": "/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/matrix/kit-2.67.0-javascript-invalid.svelte-workspace/Case.svelte.jsx",
+            "original": {
+              "bytes": {
+                "end": 41,
+                "start": 36
+              },
+              "range": {
+                "end": {
+                  "character": 41,
+                  "line": 0
+                },
+                "start": {
+                  "character": 36,
+                  "line": 0
+                }
+              },
+              "status": "mapped",
+              "uri": "Case.svelte",
+              "version": 1
+            },
+            "pos": 83,
+            "sourceLines": [
+              {
+                "line": 2,
+                "text": "/** @type {number} */ const value = 'wrong';;\n"
+              }
+            ],
+            "startPosition": {
+              "character": 28,
+              "line": 2
+            },
+            "text": "Type 'string' is not assignable to type 'number'."
+          }
+        ],
+        "error": null,
+        "ok": true,
+        "output": "",
+        "projectionsVerified": true,
+        "serializationFailures": [],
+        "status": 2,
+        "unported": []
+      },
+      "compatibility": {
+        "capabilities": {
+          "checkingProjection": "prototype",
+          "componentCompiler": "prototype",
+          "kitBuild": false,
+          "kitGraph": false,
+          "lsp": false,
+          "projectCheck": "explicit-input-prototype"
+        },
+        "channel": "stable",
+        "id": "v1:svelte=5.53.11;kit=2.67.0;ts=5.9.3",
+        "kitConfig": "svelte-config-or-vite-plugin",
+        "kitEnvironmentModule": "$app/environment",
+        "kitLibraryAlias": "$lib",
+        "kitVersion": "2.67.0",
+        "svelteVersion": "5.53.11",
+        "typescriptVersion": "5.9.3"
+      },
+      "compilerDiagnostics": [],
+      "ok": true,
+      "stage": "check",
+      "workspace": "/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/matrix/kit-2.67.0-javascript-invalid.svelte-workspace"
+    }
+  },
+  "oracle": {
+    "version": "5.9.3",
+    "entrySha256": "3ae902c92cc44dace175c0e69e13a4b0899f6983c6121d76b9ab8dd5795e7675",
+    "config": {
+      "compilerOptions": {
+        "allowArbitraryExtensions": true,
+        "allowImportingTsExtensions": true,
+        "allowJs": true,
+        "checkJs": true,
+        "jsx": "preserve",
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "noEmit": true,
+        "paths": {
+          "svelte": [
+            "./__svelte/types.d.ts"
+          ],
+          "svelte/action": [
+            "./__svelte/types.d.ts"
+          ],
+          "svelte/animate": [
+            "./__svelte/types.d.ts"
+          ],
+          "svelte/attachments": [
+            "./__svelte/types.d.ts"
+          ],
+          "svelte/compiler": [
+            "./__svelte/types.d.ts"
+          ],
+          "svelte/easing": [
+            "./__svelte/types.d.ts"
+          ],
+          "svelte/events": [
+            "./__svelte/types.d.ts"
+          ],
+          "svelte/legacy": [
+            "./__svelte/types.d.ts"
+          ],
+          "svelte/motion": [
+            "./__svelte/types.d.ts"
+          ],
+          "svelte/reactivity": [
+            "./__svelte/types.d.ts"
+          ],
+          "svelte/reactivity/window": [
+            "./__svelte/types.d.ts"
+          ],
+          "svelte/server": [
+            "./__svelte/types.d.ts"
+          ],
+          "svelte/store": [
+            "./__svelte/types.d.ts"
+          ],
+          "svelte/transition": [
+            "./__svelte/types.d.ts"
+          ],
+          "svelte/types/compiler/interfaces": [
+            "./__svelte/types.d.ts"
+          ],
+          "svelte/types/compiler/preprocess": [
+            "./__svelte/types.d.ts"
+          ]
+        },
+        "strict": true,
+        "target": "ESNext",
+        "typeRoots": [
+          "/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/matrix/kit-2.67.0-javascript-invalid.svelte-workspace/__svelte/type-roots",
+          "/home/yycholla/Projects/ts-rust/target/svelte-versions/kit-2.67.0/node_modules/@types"
+        ],
+        "types": []
+      },
+      "files": [
+        "__svelte/types.d.ts",
+        "__svelte/shims.d.ts",
+        "/home/yycholla/Projects/ts-rust/target/svelte-versions/kit-2.67.0/node_modules/svelte/svelte-html.d.ts",
+        "Case.svelte.jsx"
+      ],
+      "compileOnSave": false
+    },
+    "parsedOptions": {
+      "allowArbitraryExtensions": true,
+      "allowImportingTsExtensions": true,
+      "allowJs": true,
+      "checkJs": true,
+      "jsx": 1,
+      "module": 99,
+      "moduleResolution": 100,
+      "noEmit": true,
+      "paths": {
+        "svelte": [
+          "./__svelte/types.d.ts"
+        ],
+        "svelte/action": [
+          "./__svelte/types.d.ts"
+        ],
+        "svelte/animate": [
+          "./__svelte/types.d.ts"
+        ],
+        "svelte/attachments": [
+          "./__svelte/types.d.ts"
+        ],
+        "svelte/compiler": [
+          "./__svelte/types.d.ts"
+        ],
+        "svelte/easing": [
+          "./__svelte/types.d.ts"
+        ],
+        "svelte/events": [
+          "./__svelte/types.d.ts"
+        ],
+        "svelte/legacy": [
+          "./__svelte/types.d.ts"
+        ],
+        "svelte/motion": [
+          "./__svelte/types.d.ts"
+        ],
+        "svelte/reactivity": [
+          "./__svelte/types.d.ts"
+        ],
+        "svelte/reactivity/window": [
+          "./__svelte/types.d.ts"
+        ],
+        "svelte/server": [
+          "./__svelte/types.d.ts"
+        ],
+        "svelte/store": [
+          "./__svelte/types.d.ts"
+        ],
+        "svelte/transition": [
+          "./__svelte/types.d.ts"
+        ],
+        "svelte/types/compiler/interfaces": [
+          "./__svelte/types.d.ts"
+        ],
+        "svelte/types/compiler/preprocess": [
+          "./__svelte/types.d.ts"
+        ]
+      },
+      "strict": true,
+      "target": 99,
+      "typeRoots": [
+        "/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/matrix/kit-2.67.0-javascript-invalid.svelte-workspace/__svelte/type-roots",
+        "/home/yycholla/Projects/ts-rust/target/svelte-versions/kit-2.67.0/node_modules/@types"
+      ],
+      "types": [],
+      "pathsBasePath": "/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/matrix/kit-2.67.0-javascript-invalid.svelte-workspace",
+      "noCheck": false
+    },
+    "fileNames": [
+      "/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/matrix/kit-2.67.0-javascript-invalid.svelte-workspace/__svelte/types.d.ts",
+      "/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/matrix/kit-2.67.0-javascript-invalid.svelte-workspace/__svelte/shims.d.ts",
+      "/home/yycholla/Projects/ts-rust/target/svelte-versions/kit-2.67.0/node_modules/svelte/svelte-html.d.ts",
+      "/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/matrix/kit-2.67.0-javascript-invalid.svelte-workspace/Case.svelte.jsx"
+    ],
+    "diagnostics": [
+      {
+        "file": "/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/matrix/kit-2.67.0-javascript-invalid.svelte-workspace/Case.svelte.jsx",
+        "start": 83,
+        "end": 88,
+        "code": 2322,
+        "category": 1,
+        "source": "",
+        "text": "Type 'string' is not assignable to type 'number'.",
+        "unnecessary": false,
+        "deprecated": false,
+        "chain": [],
+        "related": []
+      }
+    ]
+  }
+}

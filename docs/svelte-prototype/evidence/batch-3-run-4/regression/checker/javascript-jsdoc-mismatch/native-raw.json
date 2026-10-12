@@ -1,0 +1,58 @@
+{
+  "status": 1,
+  "signal": null,
+  "stderr": "",
+  "stdout": "{\"diagnostics\":[{\"category\":1,\"code\":2322,\"end\":91,\"endPosition\":{\"character\":11,\"line\":4},\"fileName\":\"/home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/batch-3-run-4/regression/checker/javascript-jsdoc-mismatch/Case.svelte.jsx\",\"original\":{\"bytes\":{\"end\":44,\"start\":39},\"range\":{\"end\":{\"character\":11,\"line\":2},\"start\":{\"character\":6,\"line\":2}},\"status\":\"mapped\",\"uri\":\"Case.svelte\",\"version\":1},\"pos\":86,\"sourceLines\":[{\"line\":4,\"text\":\"  let value = 'wrong';\\n\"}],\"startPosition\":{\"character\":6,\"line\":4},\"text\":\"Type 'string' is not assignable to type 'number'.\"}],\"error\":null,\"ok\":true,\"output\":\"\",\"projectionsVerified\":true,\"serializationFailures\":[],\"status\":2,\"unported\":[]}\n",
+  "response": {
+    "diagnostics": [
+      {
+        "category": 1,
+        "code": 2322,
+        "end": 91,
+        "endPosition": {
+          "character": 11,
+          "line": 4
+        },
+        "fileName": "/home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/batch-3-run-4/regression/checker/javascript-jsdoc-mismatch/Case.svelte.jsx",
+        "original": {
+          "bytes": {
+            "end": 44,
+            "start": 39
+          },
+          "range": {
+            "end": {
+              "character": 11,
+              "line": 2
+            },
+            "start": {
+              "character": 6,
+              "line": 2
+            }
+          },
+          "status": "mapped",
+          "uri": "Case.svelte",
+          "version": 1
+        },
+        "pos": 86,
+        "sourceLines": [
+          {
+            "line": 4,
+            "text": "  let value = 'wrong';\n"
+          }
+        ],
+        "startPosition": {
+          "character": 6,
+          "line": 4
+        },
+        "text": "Type 'string' is not assignable to type 'number'."
+      }
+    ],
+    "error": null,
+    "ok": true,
+    "output": "",
+    "projectionsVerified": true,
+    "serializationFailures": [],
+    "status": 2,
+    "unported": []
+  }
+}

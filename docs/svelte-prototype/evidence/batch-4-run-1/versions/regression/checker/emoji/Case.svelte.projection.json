@@ -1,0 +1,90 @@
+{
+  "status": 0,
+  "signal": null,
+  "stderr": "",
+  "stdout": "{\"ok\":true,\"result\":{\"uri\":\"Case.svelte\",\"version\":1,\"code\":\"///<reference types=\\\"svelte\\\" />\\n;function $$render() {\\n\\n  let greeting: string = '😀 café';\\n;\\nasync () => {\\n { svelteHTML.createElement(\\\"p\\\", {});greeting; missingAfterEmoji; }\\n};\\nreturn { props: {} as Record<string, never>, exports: {}, bindings: __sveltets_$$bindings(''), slots: {}, events: {} }}\\nconst Case__SvelteComponent_ = __sveltets_2_fn_component($$render());\\n/*Ωignore_startΩ*/type Case__SvelteComponent_ = ReturnType<typeof Case__SvelteComponent_>;\\n/*Ωignore_endΩ*/export default Case__SvelteComponent_;\",\"map\":\"{\\\"version\\\":3,\\\"file\\\":null,\\\"sources\\\":[\\\"Case.svelte\\\"],\\\"sourcesContent\\\":[],\\\"names\\\":[],\\\"mappings\\\":\\\";AAAA,CAAC;AAAiB;AAClB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACnC;AAAA,aAAS;AACT,qCAAI,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAI;\\\"}\",\"mappings\":[{\"source\":{\"start\":18,\"end\":58},\"generated\":{\"start\":55,\"end\":95}},{\"source\":{\"start\":72,\"end\":80},\"generated\":{\"start\":148,\"end\":156}},{\"source\":{\"start\":83,\"end\":100},\"generated\":{\"start\":158,\"end\":175}},{\"source\":{\"start\":105,\"end\":106},\"generated\":{\"start\":178,\"end\":179}}],\"runes\":true,\"props\":[],\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.53.11\",\"patches\":[\"child-reset-5.53.11\",\"declaration-tags-5.56\",\"select-default-5.57\"],\"clientDevelopment\":false},\"compatibility\":{\"id\":\"v1:svelte=5.53.11;kit=none;ts=unspecified\",\"svelteVersion\":\"5.53.11\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}}\n",
+  "response": {
+    "ok": true,
+    "result": {
+      "uri": "Case.svelte",
+      "version": 1,
+      "code": "///<reference types=\"svelte\" />\n;function $$render() {\n\n  let greeting: string = '😀 café';\n;\nasync () => {\n { svelteHTML.createElement(\"p\", {});greeting; missingAfterEmoji; }\n};\nreturn { props: {} as Record<string, never>, exports: {}, bindings: __sveltets_$$bindings(''), slots: {}, events: {} }}\nconst Case__SvelteComponent_ = __sveltets_2_fn_component($$render());\n/*Ωignore_startΩ*/type Case__SvelteComponent_ = ReturnType<typeof Case__SvelteComponent_>;\n/*Ωignore_endΩ*/export default Case__SvelteComponent_;",
+      "map": "{\"version\":3,\"file\":null,\"sources\":[\"Case.svelte\"],\"sourcesContent\":[],\"names\":[],\"mappings\":\";AAAA,CAAC;AAAiB;AAClB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACnC;AAAA,aAAS;AACT,qCAAI,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAI;\"}",
+      "mappings": [
+        {
+          "source": {
+            "start": 18,
+            "end": 58
+          },
+          "generated": {
+            "start": 55,
+            "end": 95
+          }
+        },
+        {
+          "source": {
+            "start": 72,
+            "end": 80
+          },
+          "generated": {
+            "start": 148,
+            "end": 156
+          }
+        },
+        {
+          "source": {
+            "start": 83,
+            "end": 100
+          },
+          "generated": {
+            "start": 158,
+            "end": 175
+          }
+        },
+        {
+          "source": {
+            "start": 105,
+            "end": 106
+          },
+          "generated": {
+            "start": 178,
+            "end": 179
+          }
+        }
+      ],
+      "runes": true,
+      "props": [],
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.53.11",
+        "patches": [
+          "child-reset-5.53.11",
+          "declaration-tags-5.56",
+          "select-default-5.57"
+        ],
+        "clientDevelopment": false
+      },
+      "compatibility": {
+        "id": "v1:svelte=5.53.11;kit=none;ts=unspecified",
+        "svelteVersion": "5.53.11",
+        "kitVersion": null,
+        "typescriptVersion": null,
+        "channel": "stable",
+        "kitConfig": null,
+        "kitLibraryAlias": null,
+        "kitEnvironmentModule": null,
+        "capabilities": {
+          "componentCompiler": "prototype",
+          "checkingProjection": "prototype",
+          "projectCheck": "explicit-input-prototype",
+          "kitGraph": false,
+          "kitBuild": false,
+          "lsp": false
+        }
+      }
+    }
+  }
+}

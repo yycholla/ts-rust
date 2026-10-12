@@ -1,0 +1,513 @@
+{
+  "source": "<script>\n  let count = $state(1);\n  let doubled = $derived(count * 2);\n</script>\n<button onclick={() => count++}>{count} / {doubled}</button>\n",
+  "settings": {
+    "filename": "javascript-runes.svelte",
+    "generate": "server",
+    "css": "external",
+    "dev": false,
+    "runes": true
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "javascript-runes.svelte",
+        "version": 1,
+        "text": "<script>\n  let count = $state(1);\n  let doubled = $derived(count * 2);\n</script>\n<button onclick={() => count++}>{count} / {doubled}</button>\n"
+      },
+      "target": "server",
+      "dev": false,
+      "runes": true,
+      "compatibility": {
+        "svelteVersion": "5.54.1"
+      }
+    },
+    "exit": 0,
+    "signal": null,
+    "stdout": "{\"ok\":true,\"result\":{\"uri\":\"javascript-runes.svelte\",\"version\":1,\"javascript\":{\"code\":\"import * as $ from 'svelte/internal/server';\\n\\nexport default function Javascript_runes($$renderer) {\\n\\tlet count = 1;\\n\\tlet doubled = $.derived(() => count * 2);\\n\\n\\t$$renderer.push(`<button>${$.escape(count)} / ${$.escape(doubled())}</button>`);\\n}\",\"map\":\"{\\\"version\\\":3,\\\"sources\\\":[\\\"javascript-runes.svelte\\\"],\\\"sourcesContent\\\":[\\\"<script>\\\\n  let count = $state(1);\\\\n  let doubled = $derived(count * 2);\\\\n</script>\\\\n<button onclick={() => count++}>{count} / {doubled}</button>\\\\n\\\"],\\\"names\\\":[],\\\"mappings\\\":\\\";;qDAAA,CAAC;CACC,IAAI,AAAA,KAAK,GAAU,CAAC;CACpB,IAAI,AAAA,OAAO,mBAAY,KAAK,GAAG,CAAC;;qCAEX,KAAK,gBAAe,OAAO;AAD1C,CAAC\\\"}\"},\"css\":null,\"diagnostics\":[],\"runes\":true,\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.54.1\",\"patches\":[\"child-reset-5.53.11\",\"declaration-tags-5.56\",\"select-default-5.57\"],\"clientDevelopment\":false},\"compatibility\":{\"id\":\"v1:svelte=5.54.1;kit=none;ts=unspecified\",\"svelteVersion\":\"5.54.1\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": true,
+      "result": {
+        "uri": "javascript-runes.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import * as $ from 'svelte/internal/server';\n\nexport default function Javascript_runes($$renderer) {\n\tlet count = 1;\n\tlet doubled = $.derived(() => count * 2);\n\n\t$$renderer.push(`<button>${$.escape(count)} / ${$.escape(doubled())}</button>`);\n}",
+          "map": "{\"version\":3,\"sources\":[\"javascript-runes.svelte\"],\"sourcesContent\":[\"<script>\\n  let count = $state(1);\\n  let doubled = $derived(count * 2);\\n</script>\\n<button onclick={() => count++}>{count} / {doubled}</button>\\n\"],\"names\":[],\"mappings\":\";;qDAAA,CAAC;CACC,IAAI,AAAA,KAAK,GAAU,CAAC;CACpB,IAAI,AAAA,OAAO,mBAAY,KAAK,GAAG,CAAC;;qCAEX,KAAK,gBAAe,OAAO;AAD1C,CAAC\"}"
+        },
+        "css": null,
+        "diagnostics": [],
+        "runes": true,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.54.1",
+          "patches": [
+            "child-reset-5.53.11",
+            "declaration-tags-5.56",
+            "select-default-5.57"
+          ],
+          "clientDevelopment": false
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.54.1;kit=none;ts=unspecified",
+          "svelteVersion": "5.54.1",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": true,
+    "artifact": {
+      "js": {
+        "code": "import * as $ from 'svelte/internal/server';\n\nexport default function Javascript_runes($$renderer) {\n\tlet count = 1;\n\tlet doubled = $.derived(() => count * 2);\n\n\t$$renderer.push(`<button>${$.escape(count)} / ${$.escape(doubled())}</button>`);\n}",
+        "map": {
+          "version": 3,
+          "names": [],
+          "sources": [
+            "javascript-runes.svelte"
+          ],
+          "sourcesContent": [
+            "<script>\n  let count = $state(1);\n  let doubled = $derived(count * 2);\n</script>\n<button onclick={() => count++}>{count} / {doubled}</button>\n"
+          ],
+          "mappings": ";;qDAAA,CAAC;CACC,GAAG,CAAC,KAAK,GAAU,CAAC,CAAE;CACtB,GAAG,CAAC,OAAO,mBAAY,KAAK,GAAG,CAAC,EAAE;;qCAEH,KAAK,gBAFhC,OAAO;AACL,CAAC"
+        }
+      },
+      "css": null,
+      "warnings": [],
+      "metadata": {
+        "runes": true
+      },
+      "ast": {
+        "html": {
+          "type": "Fragment",
+          "start": 81,
+          "end": 141,
+          "children": [
+            {
+              "type": "Text",
+              "start": 80,
+              "end": 81,
+              "raw": "\n",
+              "data": "\n"
+            },
+            {
+              "type": "Element",
+              "start": 81,
+              "end": 141,
+              "name": "button",
+              "attributes": [
+                {
+                  "type": "Attribute",
+                  "start": 89,
+                  "end": 112,
+                  "name": "onclick",
+                  "name_loc": {
+                    "start": {
+                      "line": 5,
+                      "column": 8,
+                      "character": 89
+                    },
+                    "end": {
+                      "line": 5,
+                      "column": 15,
+                      "character": 96
+                    }
+                  },
+                  "value": [
+                    {
+                      "type": "MustacheTag",
+                      "start": 97,
+                      "end": 112,
+                      "expression": {
+                        "type": "ArrowFunctionExpression",
+                        "start": 98,
+                        "end": 111,
+                        "loc": {
+                          "start": {
+                            "line": 5,
+                            "column": 17
+                          },
+                          "end": {
+                            "line": 5,
+                            "column": 30
+                          }
+                        },
+                        "id": null,
+                        "expression": true,
+                        "generator": false,
+                        "async": false,
+                        "params": [],
+                        "body": {
+                          "type": "UpdateExpression",
+                          "start": 104,
+                          "end": 111,
+                          "loc": {
+                            "start": {
+                              "line": 5,
+                              "column": 23
+                            },
+                            "end": {
+                              "line": 5,
+                              "column": 30
+                            }
+                          },
+                          "operator": "++",
+                          "prefix": false,
+                          "argument": {
+                            "type": "Identifier",
+                            "start": 104,
+                            "end": 109,
+                            "loc": {
+                              "start": {
+                                "line": 5,
+                                "column": 23
+                              },
+                              "end": {
+                                "line": 5,
+                                "column": 28
+                              }
+                            },
+                            "name": "count"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "MustacheTag",
+                  "start": 113,
+                  "end": 120,
+                  "expression": {
+                    "type": "Identifier",
+                    "start": 114,
+                    "end": 119,
+                    "loc": {
+                      "start": {
+                        "line": 5,
+                        "column": 33
+                      },
+                      "end": {
+                        "line": 5,
+                        "column": 38
+                      }
+                    },
+                    "name": "count"
+                  }
+                },
+                {
+                  "type": "Text",
+                  "start": 120,
+                  "end": 123,
+                  "raw": " / ",
+                  "data": " / "
+                },
+                {
+                  "type": "MustacheTag",
+                  "start": 123,
+                  "end": 132,
+                  "expression": {
+                    "type": "Identifier",
+                    "start": 124,
+                    "end": 131,
+                    "loc": {
+                      "start": {
+                        "line": 5,
+                        "column": 43
+                      },
+                      "end": {
+                        "line": 5,
+                        "column": 50
+                      }
+                    },
+                    "name": "doubled"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "instance": {
+          "type": "Script",
+          "start": 0,
+          "end": 80,
+          "context": "default",
+          "content": {
+            "type": "Program",
+            "start": 8,
+            "end": 71,
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 0
+              },
+              "end": {
+                "line": 4,
+                "column": 9
+              }
+            },
+            "body": [
+              {
+                "type": "VariableDeclaration",
+                "start": 11,
+                "end": 33,
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 24
+                  }
+                },
+                "declarations": [
+                  {
+                    "type": "VariableDeclarator",
+                    "start": 15,
+                    "end": 32,
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 6
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 23
+                      }
+                    },
+                    "id": {
+                      "type": "Identifier",
+                      "start": 15,
+                      "end": 20,
+                      "loc": {
+                        "start": {
+                          "line": 2,
+                          "column": 6
+                        },
+                        "end": {
+                          "line": 2,
+                          "column": 11
+                        }
+                      },
+                      "name": "count"
+                    },
+                    "init": {
+                      "type": "CallExpression",
+                      "start": 23,
+                      "end": 32,
+                      "loc": {
+                        "start": {
+                          "line": 2,
+                          "column": 14
+                        },
+                        "end": {
+                          "line": 2,
+                          "column": 23
+                        }
+                      },
+                      "callee": {
+                        "type": "Identifier",
+                        "start": 23,
+                        "end": 29,
+                        "loc": {
+                          "start": {
+                            "line": 2,
+                            "column": 14
+                          },
+                          "end": {
+                            "line": 2,
+                            "column": 20
+                          }
+                        },
+                        "name": "$state"
+                      },
+                      "arguments": [
+                        {
+                          "type": "Literal",
+                          "start": 30,
+                          "end": 31,
+                          "loc": {
+                            "start": {
+                              "line": 2,
+                              "column": 21
+                            },
+                            "end": {
+                              "line": 2,
+                              "column": 22
+                            }
+                          },
+                          "value": 1,
+                          "raw": "1"
+                        }
+                      ],
+                      "optional": false
+                    }
+                  }
+                ],
+                "kind": "let"
+              },
+              {
+                "type": "VariableDeclaration",
+                "start": 36,
+                "end": 70,
+                "loc": {
+                  "start": {
+                    "line": 3,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 36
+                  }
+                },
+                "declarations": [
+                  {
+                    "type": "VariableDeclarator",
+                    "start": 40,
+                    "end": 69,
+                    "loc": {
+                      "start": {
+                        "line": 3,
+                        "column": 6
+                      },
+                      "end": {
+                        "line": 3,
+                        "column": 35
+                      }
+                    },
+                    "id": {
+                      "type": "Identifier",
+                      "start": 40,
+                      "end": 47,
+                      "loc": {
+                        "start": {
+                          "line": 3,
+                          "column": 6
+                        },
+                        "end": {
+                          "line": 3,
+                          "column": 13
+                        }
+                      },
+                      "name": "doubled"
+                    },
+                    "init": {
+                      "type": "CallExpression",
+                      "start": 50,
+                      "end": 69,
+                      "loc": {
+                        "start": {
+                          "line": 3,
+                          "column": 16
+                        },
+                        "end": {
+                          "line": 3,
+                          "column": 35
+                        }
+                      },
+                      "callee": {
+                        "type": "Identifier",
+                        "start": 50,
+                        "end": 58,
+                        "loc": {
+                          "start": {
+                            "line": 3,
+                            "column": 16
+                          },
+                          "end": {
+                            "line": 3,
+                            "column": 24
+                          }
+                        },
+                        "name": "$derived"
+                      },
+                      "arguments": [
+                        {
+                          "type": "BinaryExpression",
+                          "start": 59,
+                          "end": 68,
+                          "loc": {
+                            "start": {
+                              "line": 3,
+                              "column": 25
+                            },
+                            "end": {
+                              "line": 3,
+                              "column": 34
+                            }
+                          },
+                          "left": {
+                            "type": "Identifier",
+                            "start": 59,
+                            "end": 64,
+                            "loc": {
+                              "start": {
+                                "line": 3,
+                                "column": 25
+                              },
+                              "end": {
+                                "line": 3,
+                                "column": 30
+                              }
+                            },
+                            "name": "count"
+                          },
+                          "operator": "*",
+                          "right": {
+                            "type": "Literal",
+                            "start": 67,
+                            "end": 68,
+                            "loc": {
+                              "start": {
+                                "line": 3,
+                                "column": 33
+                              },
+                              "end": {
+                                "line": 3,
+                                "column": 34
+                              }
+                            },
+                            "value": 2,
+                            "raw": "2"
+                          }
+                        }
+                      ],
+                      "optional": false
+                    }
+                  }
+                ],
+                "kind": "let"
+              }
+            ],
+            "sourceType": "module"
+          }
+        }
+      }
+    },
+    "comparable": {
+      "ok": true,
+      "runes": true,
+      "diagnostics": []
+    }
+  }
+}

@@ -1,0 +1,1442 @@
+{
+  "scope": "Bounded JSDOM runtime behavior, not browser/full application conformance",
+  "binarySha256": "b2d0122e7b82b2ba6c34a500511ed44964c6d2a4ff7e08e8159e5525c487034c",
+  "cases": [
+    {
+      "version": "5.51.5",
+      "name": "counter",
+      "file": "Counter.svelte",
+      "dev": false,
+      "kind": "counter",
+      "sourceSha256": "c1dc099a8efd8a36febc2a11154024758a763dc5b8f045875e683fe35f4e2ad1",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "53f88672b7bcb615da6085e7ee101349d698d18778b8c0117d65465dc99efd2c"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true
+    },
+    {
+      "version": "5.52.0",
+      "name": "counter",
+      "file": "Counter.svelte",
+      "dev": false,
+      "kind": "counter",
+      "sourceSha256": "c1dc099a8efd8a36febc2a11154024758a763dc5b8f045875e683fe35f4e2ad1",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true
+    },
+    {
+      "version": "5.53.5",
+      "name": "counter",
+      "file": "Counter.svelte",
+      "dev": false,
+      "kind": "counter",
+      "sourceSha256": "c1dc099a8efd8a36febc2a11154024758a763dc5b8f045875e683fe35f4e2ad1",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true
+    },
+    {
+      "version": "5.53.11",
+      "name": "counter",
+      "file": "Counter.svelte",
+      "dev": false,
+      "kind": "counter",
+      "sourceSha256": "c1dc099a8efd8a36febc2a11154024758a763dc5b8f045875e683fe35f4e2ad1",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true
+    },
+    {
+      "version": "5.53.13",
+      "name": "counter",
+      "file": "Counter.svelte",
+      "dev": false,
+      "kind": "counter",
+      "sourceSha256": "c1dc099a8efd8a36febc2a11154024758a763dc5b8f045875e683fe35f4e2ad1",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true
+    },
+    {
+      "version": "5.54.1",
+      "name": "counter",
+      "file": "Counter.svelte",
+      "dev": false,
+      "kind": "counter",
+      "sourceSha256": "c1dc099a8efd8a36febc2a11154024758a763dc5b8f045875e683fe35f4e2ad1",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true
+    },
+    {
+      "version": "5.55.10",
+      "name": "counter",
+      "file": "Counter.svelte",
+      "dev": false,
+      "kind": "counter",
+      "sourceSha256": "c1dc099a8efd8a36febc2a11154024758a763dc5b8f045875e683fe35f4e2ad1",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true
+    },
+    {
+      "version": "5.56.10",
+      "name": "counter",
+      "file": "Counter.svelte",
+      "dev": false,
+      "kind": "counter",
+      "sourceSha256": "c1dc099a8efd8a36febc2a11154024758a763dc5b8f045875e683fe35f4e2ad1",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true
+    },
+    {
+      "version": "5.57.2",
+      "name": "counter",
+      "file": "Counter.svelte",
+      "dev": false,
+      "kind": "counter",
+      "sourceSha256": "c1dc099a8efd8a36febc2a11154024758a763dc5b8f045875e683fe35f4e2ad1",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "294a41ba37374492f226019af2838c24745927a5b399c27963715fc8e3f998f3"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true
+    },
+    {
+      "version": "5.57.2",
+      "name": "counter-dev",
+      "file": "Counter.svelte",
+      "dev": true,
+      "kind": "counter",
+      "sourceSha256": "c1dc099a8efd8a36febc2a11154024758a763dc5b8f045875e683fe35f4e2ad1",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "42cba7bdce3836335b92879145cb3a3cd3c4f44453c702b121e4f29bbc887acb"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "50fba787886bf6ebaf669109b2abfe4d35fdf6b832881e106610973c90b572c6"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "2feaa287914de7da9c586d8406617c8b4e22380fe712cc16180232c57eb95c05"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "50fba787886bf6ebaf669109b2abfe4d35fdf6b832881e106610973c90b572c6"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true
+    },
+    {
+      "version": "5.57.2",
+      "name": "select",
+      "file": "DefaultSelect.svelte",
+      "dev": false,
+      "kind": "select",
+      "sourceSha256": "a844a835129590bf7095a3dd058656e99319648390302ec388c4fd17c0e3bc0e",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "a6682c100966df676ba4ce04593b19aca12d7e77715ace35319bb27c8192d924"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "01bc6f963a7fc188e96835ed362be7fc286732d159edcb2ed34d3327a1a1a263"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "a6682c100966df676ba4ce04593b19aca12d7e77715ace35319bb27c8192d924"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "01bc6f963a7fc188e96835ed362be7fc286732d159edcb2ed34d3327a1a1a263"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><select aria-label=\"Choice\"><option value=\"first\">First</option><option value=\"second\" selected=\"\">Second</option></select><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><select aria-label=\"Choice\"><option value=\"first\">First</option><option value=\"second\" selected=\"\">Second</option></select><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "second",
+              "after": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "second",
+              "after": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "second",
+              "after": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "second",
+              "after": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true
+    }
+  ],
+  "summary": {
+    "cases": 11,
+    "passed": 11,
+    "hydrationCases": 44,
+    "hydrationPassed": 44
+  }
+}

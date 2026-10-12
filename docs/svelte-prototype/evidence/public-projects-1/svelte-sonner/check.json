@@ -1,0 +1,22 @@
+{
+  "command": [
+    "npm",
+    "exec",
+    "--yes",
+    "--package=pnpm@10.20.0",
+    "--",
+    "pnpm",
+    "run",
+    "check"
+  ],
+  "cwd": "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/svelte-sonner",
+  "exitCode": 0,
+  "timeout": false,
+  "timeoutSeconds": 300,
+  "wallSeconds": 7.634,
+  "log": "check.log",
+  "timeSeconds": 7.6,
+  "maxRssKiB": 559640,
+  "userSeconds": 11.35,
+  "systemSeconds": 0.8
+}

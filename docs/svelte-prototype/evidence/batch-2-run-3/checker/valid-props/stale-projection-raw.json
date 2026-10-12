@@ -1,0 +1,21 @@
+{
+  "status": 1,
+  "signal": null,
+  "stderr": "",
+  "stdout": "{\"diagnostics\":[],\"error\":{\"code\":\"incomplete_check\",\"message\":\"Checker did not complete normally; diagnostics may be partial\"},\"ok\":false,\"output\":\"\",\"projectionsVerified\":false,\"serializationFailures\":[\"Projection does not match loaded checker source: /home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/batch-2-run-3/checker/valid-props/Child.svelte.tsx\"],\"status\":3,\"unported\":[]}\n",
+  "response": {
+    "diagnostics": [],
+    "error": {
+      "code": "incomplete_check",
+      "message": "Checker did not complete normally; diagnostics may be partial"
+    },
+    "ok": false,
+    "output": "",
+    "projectionsVerified": false,
+    "serializationFailures": [
+      "Projection does not match loaded checker source: /home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/batch-2-run-3/checker/valid-props/Child.svelte.tsx"
+    ],
+    "status": 3,
+    "unported": []
+  }
+}

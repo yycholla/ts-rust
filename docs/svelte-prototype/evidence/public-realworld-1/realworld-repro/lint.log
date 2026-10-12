@@ -1,0 +1,8 @@
+
+> realworld.svelte.dev@1.0.1-next.0 lint /home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld-repro
+> prettier --check .
+
+Checking formatting...
+[warn] static/conduit-theme.css
+[warn] Code style issues found in the above file. Run Prettier with --write to fix.
+ ELIFECYCLE  Command failed with exit code 1.

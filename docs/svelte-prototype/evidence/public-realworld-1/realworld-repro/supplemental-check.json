@@ -1,0 +1,20 @@
+{
+  "command": [
+    "node",
+    "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld-check-tools/node_modules/svelte-check/bin/svelte-check",
+    "--workspace",
+    "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld-repro",
+    "--tsconfig",
+    "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld-repro/jsconfig.json"
+  ],
+  "cwd": "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld-repro",
+  "exitCode": 0,
+  "timeout": false,
+  "timeoutSeconds": 300,
+  "wallSeconds": 2.018,
+  "log": "supplemental-check.log",
+  "timeSeconds": 1.97,
+  "maxRssKiB": 397356,
+  "userSeconds": 3.43,
+  "systemSeconds": 0.23
+}

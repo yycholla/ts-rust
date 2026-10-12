@@ -1,0 +1,48 @@
+{
+  "status": 0,
+  "signal": null,
+  "stderr": "",
+  "response": {
+    "ok": true,
+    "result": {
+      "uri": "Counter.svelte",
+      "version": 1,
+      "javascript": {
+        "code": "import 'svelte/internal/disclose-version';\n\nCounter[$.FILENAME] = 'Counter.svelte';\n\nimport * as $ from 'svelte/internal/client';\n\nvar root = $.add_locations($.from_html(`<button type=\"button\"> </button>`), Counter[$.FILENAME], [[6, 0]]);\n\nexport default function Counter($$anchor, $$props) {\n\t$.check_target(new.target);\n\t$.push($$props, true, Counter);\n\n\tlet step = $.prop($$props, 'step', 3, 1),\n\t\tlabel = $.prop($$props, 'label', 3, 'Count');\n\n\tlet count = $.tag($.state(0), 'count');\n\tlet doubled = $.tag($.derived(() => $.get(count) * 2), 'doubled');\n\tvar $$exports = { ...$.legacy_api() };\n\tvar button = root();\n\tvar text = $.child(button);\n\n\t$.reset(button);\n\t$.template_effect(() => $.set_text(text, `${label() ?? ''}: ${$.get(count) ?? ''} / ${$.get(doubled) ?? ''}`));\n\n\t$.delegated('click', button, function click() {\n\t\treturn $.set(count, $.get(count) + step());\n\t});\n\n\t$.append($$anchor, button);\n\n\treturn $.pop($$exports);\n}\n\n$.delegate(['click']);",
+        "map": "{\"version\":3,\"sources\":[\"Counter.svelte\"],\"sourcesContent\":[\"<script lang=\\\"ts\\\">\\n  let { step = 1, label = 'Count' }: { step?: number; label?: string } = $props();\\n  let count = $state(0);\\n  let doubled = $derived(count * 2);\\n</script>\\n<button type=\\\"button\\\" onclick={() => count += step}>{label}: {count} / {doubled}</button>\\n\"],\"names\":[],\"mappings\":\";;;;;;;;mDAAA,CAAC;;;;CACC,IAAI,AAAA,IAAM,GAA6D,AAAA,CAAC,CAAA,IAAI,CAChE,OAAC,EADP,MAAM,EAAE,CAAC,EAAE,CAAC,CACL;EADS,KAAK,GAAG,AAAA,CAAC,CAAC,IAAI,CAAC,OAAO,EAAE,OAAO,EAAE,CAAC,EAAE,OAAO,CAAC;;CAAI,IAAI,AAAA,KAAK,GAChF,AAAA,CAAC,CAAC,GAAG,CAAC,AAAA,CAAC,CAAO,KAAK,CAAC,CAAC,CAAL,EAAE,OAClB,CAAC;CAAD,IAAI,AAAC,OAAO,GAAG,AAAA,CAAC,CAAK,GAAG,CAAC,AAAA,CAAC,CAAV,OAAO,OACnB,AAAA,CAAC,CAAC,GACP,CAFyB,KAAK,CAEvB,GAF0B,CAAC,CAEtB,EAAE,SAAS,CAFY;;KAElC,MAAM;oBAAN,MAAM;;SAAN,MAAM;6CAA8C,KAAK,mBAAI,KAAK,mBAAK,OAAO;;sBAA9E,MAAM,EALP,QAAQ;qCAKsC,IAAI;;;CAAlD,mBAAC,MAAM,CAAkF;;;AADjF,CAAC;;\"}"
+      },
+      "css": null,
+      "diagnostics": [],
+      "runes": true,
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.57.2",
+        "patches": [
+          "child-reset-5.53.11"
+        ],
+        "clientDevelopment": true
+      },
+      "compatibility": {
+        "id": "v1:svelte=5.57.2;kit=none;ts=unspecified",
+        "svelteVersion": "5.57.2",
+        "kitVersion": null,
+        "typescriptVersion": null,
+        "channel": "stable",
+        "kitConfig": null,
+        "kitLibraryAlias": null,
+        "kitEnvironmentModule": null,
+        "capabilities": {
+          "componentCompiler": "prototype",
+          "checkingProjection": "prototype",
+          "projectCheck": "explicit-input-prototype",
+          "kitGraph": false,
+          "kitBuild": false,
+          "lsp": false
+        }
+      }
+    }
+  }
+}

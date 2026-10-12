@@ -1,0 +1,128 @@
+{
+  "source": "😀\r\n{let value = 1}\r\n<p>{value}</p>\r\n",
+  "settings": {
+    "filename": "declaration-unicode.svelte",
+    "generate": "server",
+    "css": "external",
+    "dev": false
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "declaration-unicode.svelte",
+        "version": 1,
+        "text": "😀\r\n{let value = 1}\r\n<p>{value}</p>\r\n"
+      },
+      "target": "server",
+      "dev": false,
+      "compatibility": {
+        "svelteVersion": "5.55.10"
+      }
+    },
+    "exit": 1,
+    "signal": null,
+    "stdout": "{\"ok\":false,\"error\":{\"code\":\"svelte_compile\",\"message\":\"Expected `,` or `)` but found `Identifier`\\nhttps://svelte.dev/e/js_parse_error\"},\"diagnostics\":[{\"code\":\"js_parse_error\",\"message\":\"Expected `,` or `)` but found `Identifier`\\nhttps://svelte.dev/e/js_parse_error\",\"severity\":\"error\",\"uri\":\"declaration-unicode.svelte\",\"bytes\":{\"start\":11,\"end\":11},\"range\":{\"start\":{\"line\":1,\"character\":5},\"end\":{\"line\":1,\"character\":5}}}],\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.55.10\",\"patches\":[\"child-reset-5.53.11\",\"declaration-tags-5.56\",\"select-default-5.57\"],\"clientDevelopment\":false},\"compatibility\":{\"id\":\"v1:svelte=5.55.10;kit=none;ts=unspecified\",\"svelteVersion\":\"5.55.10\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": false,
+      "error": {
+        "code": "svelte_compile",
+        "message": "Expected `,` or `)` but found `Identifier`\nhttps://svelte.dev/e/js_parse_error"
+      },
+      "diagnostics": [
+        {
+          "code": "js_parse_error",
+          "message": "Expected `,` or `)` but found `Identifier`\nhttps://svelte.dev/e/js_parse_error",
+          "severity": "error",
+          "uri": "declaration-unicode.svelte",
+          "bytes": {
+            "start": 11,
+            "end": 11
+          },
+          "range": {
+            "start": {
+              "line": 1,
+              "character": 5
+            },
+            "end": {
+              "line": 1,
+              "character": 5
+            }
+          }
+        }
+      ],
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.55.10",
+        "patches": [
+          "child-reset-5.53.11",
+          "declaration-tags-5.56",
+          "select-default-5.57"
+        ],
+        "clientDevelopment": false
+      },
+      "compatibility": {
+        "id": "v1:svelte=5.55.10;kit=none;ts=unspecified",
+        "svelteVersion": "5.55.10",
+        "kitVersion": null,
+        "typescriptVersion": null,
+        "channel": "stable",
+        "kitConfig": null,
+        "kitLibraryAlias": null,
+        "kitEnvironmentModule": null,
+        "capabilities": {
+          "componentCompiler": "prototype",
+          "checkingProjection": "prototype",
+          "projectCheck": "explicit-input-prototype",
+          "kitGraph": false,
+          "kitBuild": false,
+          "lsp": false
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": false,
+    "error": {
+      "message": "The keyword 'let' is reserved\nhttps://svelte.dev/e/js_parse_error",
+      "name": "CompileError",
+      "code": "js_parse_error",
+      "filename": "declaration-unicode.svelte",
+      "position": [
+        5,
+        5
+      ],
+      "start": {
+        "line": 2,
+        "column": 1,
+        "character": 5
+      },
+      "end": {
+        "line": 2,
+        "column": 1,
+        "character": 5
+      },
+      "frame": "1: 😀\r\n2: {let value = 1}\r\n    ^\n3: <p>{value}</p>\r\n4: ",
+      "stack": ""
+    },
+    "comparable": {
+      "ok": false,
+      "runes": null,
+      "diagnostics": [
+        {
+          "code": "js_parse_error",
+          "severity": "error",
+          "message": "The keyword 'let' is reserved\nhttps://svelte.dev/e/js_parse_error",
+          "bytes": {
+            "start": 7,
+            "end": 7
+          }
+        }
+      ]
+    }
+  }
+}

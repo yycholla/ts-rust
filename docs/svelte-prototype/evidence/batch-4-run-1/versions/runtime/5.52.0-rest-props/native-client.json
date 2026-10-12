@@ -1,0 +1,50 @@
+{
+  "status": 0,
+  "signal": null,
+  "stderr": "",
+  "response": {
+    "ok": true,
+    "result": {
+      "uri": "RestProps.svelte",
+      "version": 1,
+      "javascript": {
+        "code": "import 'svelte/internal/disclose-version';\nimport * as $ from 'svelte/internal/client';\n\nvar root = $.from_html(`<button> </button>`);\n\nexport default function RestProps($$anchor, $$props) {\n\t$.push($$props, true);\n\n\tlet rest = $.rest_props($$props, ['$$slots', '$$events', '$$legacy', 'named']);\n\tlet count = $.state(0);\n\tvar button = root();\n\tvar event_handler = () => $.update(count);\n\n\t$.attribute_effect(button, () => ({ ...rest, type: 'button', onclick: event_handler }));\n\n\tvar text = $.child(button);\n\n\t$.reset(button);\n\t$.template_effect(($0) => $.set_text(text, `${$$props.named ?? ''}:${$$props.title ?? ''}:${'named' in rest}:${$0 ?? ''}:${$.get(count) ?? ''}`), [() => Object.keys(rest).sort().join(',')]);\n\t$.append($$anchor, button);\n\t$.pop();\n}",
+        "map": "{\"version\":3,\"sources\":[\"RestProps.svelte\"],\"sourcesContent\":[\"<script>\\n  let { named, ...rest } = $props();\\n  let count = $state(0);\\n</script>\\n<button {...rest} type=\\\"button\\\" onclick={() => count++}>{named}:{rest.title}:{'named' in rest}:{Object.keys(rest).sort().join(',')}:{count}</button>\\n\"],\"names\":[],\"mappings\":\";;;;;qDAAA,CAAC;;;CACC,IAAI,AAAA,IAAgB,GAAK,AAAA,CAAC,CAAC,UAAI,CACnB,OAAC,GADU,SAAS,EAAE,UAC3B,EAAE,UAAU,EAAE,OAClB,EADU;CAEf,IAAI,AAAA,KAAK,GAAG,AAAA,CAAC,CAFE,KAAK,CAAC,CAAC,CAEA;KAArB,MAAM;oCAAwC,KAAK;;oBAAnD,MAAM,cAAK,IAAI;;oBAAf,MAAM;;SAAN,MAAM;8EAA+D,KAAK,UAAG,OAAO,IAAI,IAAI,sBAAwC,KAAK,0BAAnC,IAAI,CAAC,IAAI,EAAE,IAAI,GAAG,IAAI,CAAC,GAAG;CAAjI,mBAAC,MAAM,CAA6I;;AAD5I,CAAC\"}"
+      },
+      "css": null,
+      "diagnostics": [],
+      "runes": true,
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.52.0",
+        "patches": [
+          "child-reset-5.53.11",
+          "declaration-tags-5.56",
+          "select-default-5.57"
+        ],
+        "clientDevelopment": false
+      },
+      "compatibility": {
+        "id": "v1:svelte=5.52.0;kit=none;ts=unspecified",
+        "svelteVersion": "5.52.0",
+        "kitVersion": null,
+        "typescriptVersion": null,
+        "channel": "stable",
+        "kitConfig": null,
+        "kitLibraryAlias": null,
+        "kitEnvironmentModule": null,
+        "capabilities": {
+          "componentCompiler": "prototype",
+          "checkingProjection": "prototype",
+          "projectCheck": "explicit-input-prototype",
+          "kitGraph": false,
+          "kitBuild": false,
+          "lsp": false
+        }
+      }
+    }
+  }
+}

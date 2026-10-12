@@ -1,0 +1,32 @@
+{
+  "tests": [
+    {
+      "name": "exec preserves editor PID and normal shutdown cleans configuration",
+      "status": "pass"
+    },
+    {
+      "name": "EOF exits the real server",
+      "status": "pass"
+    },
+    {
+      "name": "PID-targeted SIGTERM exits idle server",
+      "status": "pass"
+    },
+    {
+      "name": "PID-targeted SIGTERM kills active checker group and removes overlay",
+      "status": "pass"
+    },
+    {
+      "name": "termination during preparation cleans workspace before a checker is spawned",
+      "status": "pass"
+    },
+    {
+      "name": "failed exec cleans owned temporary configuration",
+      "status": "pass"
+    },
+    {
+      "name": "malformed owned config is removed before parse failure",
+      "status": "pass"
+    }
+  ]
+}

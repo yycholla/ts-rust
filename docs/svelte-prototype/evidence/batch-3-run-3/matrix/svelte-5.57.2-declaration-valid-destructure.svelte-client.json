@@ -1,0 +1,440 @@
+{
+  "source": "{const {a,b} = {a:1,b:2}}<p>{a}{b}</p>\n",
+  "settings": {
+    "filename": "declaration-valid-destructure.svelte",
+    "generate": "client",
+    "css": "external",
+    "dev": false
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "declaration-valid-destructure.svelte",
+        "version": 1,
+        "text": "{const {a,b} = {a:1,b:2}}<p>{a}{b}</p>\n"
+      },
+      "target": "client",
+      "dev": false,
+      "compatibility": {
+        "svelteVersion": "5.57.2"
+      }
+    },
+    "exit": 0,
+    "signal": null,
+    "stdout": "{\"ok\":true,\"result\":{\"uri\":\"declaration-valid-destructure.svelte\",\"version\":1,\"javascript\":{\"code\":\"import 'svelte/internal/disclose-version';\\nimport 'svelte/internal/flags/legacy';\\nimport * as $ from 'svelte/internal/client';\\n\\nvar root = $.from_html(`<p> </p>`);\\n\\nexport default function Declaration_valid_destructure($$anchor) {\\n\\tconst {a,b} = {a:1,b:2};\\n\\tvar p = root();\\n\\tvar text = $.child(p);\\n\\n\\t$.reset(p);\\n\\t$.template_effect(() => $.set_text(text, `${a ?? ''}${b ?? ''}`));\\n\\t$.append($$anchor, p);\\n}\",\"map\":\"{\\\"version\\\":3,\\\"sources\\\":[\\\"declaration-valid-destructure.svelte\\\"],\\\"sourcesContent\\\":[\\\"{const {a,b} = {a:1,b:2}}<p>{a}{b}</p>\\\\n\\\"],\\\"names\\\":[],\\\"mappings\\\":\\\";;;;;;;;KAA0B,CAAC;oBAAD,CAAC;;SAAD,CAAC;6CAAE,CAAC,SAAE,CAAC;CAAR,mBAAC,CAAC,CAAW;\\\"}\"},\"css\":null,\"diagnostics\":[],\"runes\":false,\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.57.2\",\"patches\":[\"child-reset-5.53.11\",\"declaration-tags-5.56\",\"select-default-5.57\"],\"clientDevelopment\":true},\"compatibility\":{\"id\":\"v1:svelte=5.57.2;kit=none;ts=unspecified\",\"svelteVersion\":\"5.57.2\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": true,
+      "result": {
+        "uri": "declaration-valid-destructure.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import 'svelte/internal/disclose-version';\nimport 'svelte/internal/flags/legacy';\nimport * as $ from 'svelte/internal/client';\n\nvar root = $.from_html(`<p> </p>`);\n\nexport default function Declaration_valid_destructure($$anchor) {\n\tconst {a,b} = {a:1,b:2};\n\tvar p = root();\n\tvar text = $.child(p);\n\n\t$.reset(p);\n\t$.template_effect(() => $.set_text(text, `${a ?? ''}${b ?? ''}`));\n\t$.append($$anchor, p);\n}",
+          "map": "{\"version\":3,\"sources\":[\"declaration-valid-destructure.svelte\"],\"sourcesContent\":[\"{const {a,b} = {a:1,b:2}}<p>{a}{b}</p>\\n\"],\"names\":[],\"mappings\":\";;;;;;;;KAA0B,CAAC;oBAAD,CAAC;;SAAD,CAAC;6CAAE,CAAC,SAAE,CAAC;CAAR,mBAAC,CAAC,CAAW;\"}"
+        },
+        "css": null,
+        "diagnostics": [],
+        "runes": false,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.57.2",
+          "patches": [
+            "child-reset-5.53.11",
+            "declaration-tags-5.56",
+            "select-default-5.57"
+          ],
+          "clientDevelopment": true
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.57.2;kit=none;ts=unspecified",
+          "svelteVersion": "5.57.2",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": true,
+    "artifact": {
+      "js": {
+        "code": "import 'svelte/internal/disclose-version';\nimport 'svelte/internal/flags/legacy';\nimport * as $ from 'svelte/internal/client';\n\nvar root = $.from_html(`<p> </p>`);\n\nexport default function Declaration_valid_destructure($$anchor) {\n\tconst { a, b } = { a: 1, b: 2 };\n\tvar p = root();\n\tvar text = $.only_child(p);\n\n\t$.template_effect(() => $.set_text(text, `${a ?? ''}${b ?? ''}`));\n\t$.append($$anchor, p);\n}",
+        "map": {
+          "version": 3,
+          "names": [],
+          "sources": [
+            "declaration-valid-destructure.svelte"
+          ],
+          "sourcesContent": [
+            "{const {a,b} = {a:1,b:2}}<p>{a}{b}</p>\n"
+          ],
+          "mappings": ";;;;;;;CAAC,KAAK,CAAC,EAAC,CAAC,EAAC,CAAC,EAAC,GAAG,EAAC,CAAC,EAAC,CAAC,EAAC,CAAC,EAAC,CAAC,EAAC,CAAA;KAAE,CAAC;yBAAD,CAAC;;6CAAE,CAAC,SAAE,CAAC;oBAAP,CAAC;"
+        }
+      },
+      "css": null,
+      "warnings": [],
+      "metadata": {
+        "runes": false
+      },
+      "ast": {
+        "html": {
+          "type": "Fragment",
+          "start": 0,
+          "end": 38,
+          "children": [
+            {
+              "type": "DeclarationTag",
+              "start": 0,
+              "end": 25,
+              "declaration": {
+                "type": "VariableDeclaration",
+                "start": 1,
+                "end": 24,
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 24
+                  }
+                },
+                "declarations": [
+                  {
+                    "type": "VariableDeclarator",
+                    "start": 7,
+                    "end": 24,
+                    "loc": {
+                      "start": {
+                        "line": 1,
+                        "column": 7
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 24
+                      }
+                    },
+                    "id": {
+                      "type": "ObjectPattern",
+                      "start": 7,
+                      "end": 12,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 7
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 12
+                        }
+                      },
+                      "properties": [
+                        {
+                          "type": "Property",
+                          "start": 8,
+                          "end": 9,
+                          "loc": {
+                            "start": {
+                              "line": 1,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 1,
+                              "column": 9
+                            }
+                          },
+                          "method": false,
+                          "shorthand": true,
+                          "computed": false,
+                          "key": {
+                            "type": "Identifier",
+                            "start": 8,
+                            "end": 9,
+                            "loc": {
+                              "start": {
+                                "line": 1,
+                                "column": 8
+                              },
+                              "end": {
+                                "line": 1,
+                                "column": 9
+                              }
+                            },
+                            "name": "a"
+                          },
+                          "value": {
+                            "type": "Identifier",
+                            "start": 8,
+                            "end": 9,
+                            "loc": {
+                              "start": {
+                                "line": 1,
+                                "column": 8
+                              },
+                              "end": {
+                                "line": 1,
+                                "column": 9
+                              }
+                            },
+                            "name": "a"
+                          },
+                          "kind": "init"
+                        },
+                        {
+                          "type": "Property",
+                          "start": 10,
+                          "end": 11,
+                          "loc": {
+                            "start": {
+                              "line": 1,
+                              "column": 10
+                            },
+                            "end": {
+                              "line": 1,
+                              "column": 11
+                            }
+                          },
+                          "method": false,
+                          "shorthand": true,
+                          "computed": false,
+                          "key": {
+                            "type": "Identifier",
+                            "start": 10,
+                            "end": 11,
+                            "loc": {
+                              "start": {
+                                "line": 1,
+                                "column": 10
+                              },
+                              "end": {
+                                "line": 1,
+                                "column": 11
+                              }
+                            },
+                            "name": "b"
+                          },
+                          "value": {
+                            "type": "Identifier",
+                            "start": 10,
+                            "end": 11,
+                            "loc": {
+                              "start": {
+                                "line": 1,
+                                "column": 10
+                              },
+                              "end": {
+                                "line": 1,
+                                "column": 11
+                              }
+                            },
+                            "name": "b"
+                          },
+                          "kind": "init"
+                        }
+                      ]
+                    },
+                    "init": {
+                      "type": "ObjectExpression",
+                      "start": 15,
+                      "end": 24,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 15
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 24
+                        }
+                      },
+                      "properties": [
+                        {
+                          "type": "Property",
+                          "start": 16,
+                          "end": 19,
+                          "loc": {
+                            "start": {
+                              "line": 1,
+                              "column": 16
+                            },
+                            "end": {
+                              "line": 1,
+                              "column": 19
+                            }
+                          },
+                          "method": false,
+                          "shorthand": false,
+                          "computed": false,
+                          "key": {
+                            "type": "Identifier",
+                            "start": 16,
+                            "end": 17,
+                            "loc": {
+                              "start": {
+                                "line": 1,
+                                "column": 16
+                              },
+                              "end": {
+                                "line": 1,
+                                "column": 17
+                              }
+                            },
+                            "name": "a"
+                          },
+                          "value": {
+                            "type": "Literal",
+                            "start": 18,
+                            "end": 19,
+                            "loc": {
+                              "start": {
+                                "line": 1,
+                                "column": 18
+                              },
+                              "end": {
+                                "line": 1,
+                                "column": 19
+                              }
+                            },
+                            "value": 1,
+                            "raw": "1"
+                          },
+                          "kind": "init"
+                        },
+                        {
+                          "type": "Property",
+                          "start": 20,
+                          "end": 23,
+                          "loc": {
+                            "start": {
+                              "line": 1,
+                              "column": 20
+                            },
+                            "end": {
+                              "line": 1,
+                              "column": 23
+                            }
+                          },
+                          "method": false,
+                          "shorthand": false,
+                          "computed": false,
+                          "key": {
+                            "type": "Identifier",
+                            "start": 20,
+                            "end": 21,
+                            "loc": {
+                              "start": {
+                                "line": 1,
+                                "column": 20
+                              },
+                              "end": {
+                                "line": 1,
+                                "column": 21
+                              }
+                            },
+                            "name": "b"
+                          },
+                          "value": {
+                            "type": "Literal",
+                            "start": 22,
+                            "end": 23,
+                            "loc": {
+                              "start": {
+                                "line": 1,
+                                "column": 22
+                              },
+                              "end": {
+                                "line": 1,
+                                "column": 23
+                              }
+                            },
+                            "value": 2,
+                            "raw": "2"
+                          },
+                          "kind": "init"
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "kind": "const"
+              }
+            },
+            {
+              "type": "Element",
+              "start": 25,
+              "end": 38,
+              "name": "p",
+              "attributes": [],
+              "children": [
+                {
+                  "type": "MustacheTag",
+                  "start": 28,
+                  "end": 31,
+                  "expression": {
+                    "type": "Identifier",
+                    "start": 29,
+                    "end": 30,
+                    "loc": {
+                      "start": {
+                        "line": 1,
+                        "column": 29
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 30
+                      }
+                    },
+                    "name": "a"
+                  }
+                },
+                {
+                  "type": "MustacheTag",
+                  "start": 31,
+                  "end": 34,
+                  "expression": {
+                    "type": "Identifier",
+                    "start": 32,
+                    "end": 33,
+                    "loc": {
+                      "start": {
+                        "line": 1,
+                        "column": 32
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 33
+                      }
+                    },
+                    "name": "b"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "comparable": {
+      "ok": true,
+      "runes": false,
+      "diagnostics": []
+    }
+  }
+}

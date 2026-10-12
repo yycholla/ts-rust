@@ -1,0 +1,18 @@
+[
+  {
+    "role": "independentReviewer",
+    "agent": "/root/versions_reviewer",
+    "batch": "svelte-versions-3",
+    "sourceFingerprint": "47a5db1946e372c5755cfaba98fdd00cc7460048121c263d0bec7835619a754d",
+    "verdict": "PASS",
+    "findings": "Verified matching source and binary hashes, completed run-4 and quality-7, 40 Rust and 59 JavaScript/WASM tests, 1340 retained compiler comparisons, 10 checker and 10 project cases, 792 version compiler comparisons, 64 checking comparisons, 50 controls, 19 runtime scenarios, 76 cross-hydrations and 38 fresh mounts. Accepts explicit select-rejection replacement mapping against unchanged 5.53.11 fixture with SSR, hydration, mounts, selection/reset and cleanup. Development rejection retained. Declaration validation and replay-state repairs match inspected upstream parsing model. Failed runs preserved. Bounded component profiles and explicit-input checking only; full Kit graph/build, rune modules, LSP, arbitrary TS emulation, svelte-check parity, browser conformance and performance gains not established."
+  },
+  {
+    "role": "regressionAuditor",
+    "agent": "/root/versions_auditor",
+    "batch": "svelte-versions-3",
+    "sourceFingerprint": "47a5db1946e372c5755cfaba98fdd00cc7460048121c263d0bec7835619a754d",
+    "verdict": "PASS",
+    "findings": "Verified all 467 frozen source entries and source archive, all 9 artifact hashes, run-4 and quality-7. Rust 34 retained and 6 new; JavaScript 57 retained and 2 new; zero lost, absent or unrun. All 1340 baseline compiler input identities and passes, 10 checker and 10 project cases retained. Four original hydrations and development rejection retained. Select rejection explicitly mapped to stronger successful behavior with same fixture and exact 5.53.11 oracle. Expanded 792 compiler, 64 checking, 50 controls and 19 runtime scenarios (76 hydrations,38 mounts) pass. All 17986 oracle file identities stable. Failed runs and quality attempts preserved, accepted-baseline hashes unchanged, TS core and dependency entries unchanged, historical current state unchanged and history append-only. Full Kit builds/generated types, rune modules, lint, persistent LSP, browser compatibility, full svelte-check parity and performance not established. Upstream gates, Query and Hono unrun locally."
+  }
+]

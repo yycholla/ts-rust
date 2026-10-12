@@ -1,0 +1,20 @@
+   Compiling ts_svelte_kit v0.1.0 (/home/yycholla/Projects/ts-rust/crates/ts_svelte_kit)
+    Finished `release` profile [optimized] target(s) in 0.34s
+     Running unittests src/lib.rs (target/release/deps/ts_svelte_kit-8b4fc0fa90c218b4)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (target/release/deps/ts_svelte_kit-56f8655c7d504dbc)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests ts_svelte_kit
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

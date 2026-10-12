@@ -1,0 +1,1617 @@
+{
+  "scope": "TypeScript checks of full Rust Svelte projections; no app config, SvelteKit, editor, or general parity claim",
+  "cases": [
+    {
+      "name": "valid-props",
+      "language": "typescript",
+      "expectedCodes": [],
+      "complete": true,
+      "match": true,
+      "declarations": {
+        "originalSvelteTypes": "973934bf1acccbd6ad0bc17c06f6dd788ad976664e4857c5004d9af9f2b3a920",
+        "maskedSvelteTypes": "d1b9212fcb6594459241315e0e016b21713d68cb6dcc90b29530058d06f5ad3a",
+        "shim": "f2dfa79c9e867a25d3887446b730f8fbdeaa9b74db3eeab196a2d251227a96a5",
+        "html": "2b3d6cdfd182cbd863e5023db6eb5eb530e8ad6b4f78df8f61fb744a70cd0080"
+      },
+      "sources": {
+        "Child.svelte": {
+          "language": "typescript",
+          "generated": "Child.svelte.tsx",
+          "sha256": "b0f2455a83ab255dabf89c3a7456f62124620ba190ea7e4d40091d1c9accbd08",
+          "generatedSha256": "be14a8ac65bba2f61703ed267aff72939ef3fbb046ba9f3c0d9797bafe944904",
+          "backend": {
+            "name": "rsvelte",
+            "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+            "version": "0.12.6",
+            "svelteTarget": "5.57.1",
+            "appTarget": "5.53.11",
+            "patches": [
+              "child-reset-5.53.11"
+            ],
+            "clientDevelopment": false
+          }
+        },
+        "Case.svelte": {
+          "language": "typescript",
+          "generated": "Case.svelte.tsx",
+          "sha256": "cdc4a6633f147f1e945509c63953292d14edd427e3b4563b99af9d01e7188a2e",
+          "generatedSha256": "060b2a37d460346e00b8bed6fb249d07b93d3fcef04970b2815b3ea117212be9",
+          "backend": {
+            "name": "rsvelte",
+            "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+            "version": "0.12.6",
+            "svelteTarget": "5.57.1",
+            "appTarget": "5.53.11",
+            "patches": [
+              "child-reset-5.53.11"
+            ],
+            "clientDevelopment": false
+          }
+        }
+      },
+      "oracle": [],
+      "native": [],
+      "nativeExecution": {
+        "processStatus": 0,
+        "compilerStatus": 0,
+        "complete": true,
+        "output": "",
+        "serializationFailures": [],
+        "unported": []
+      },
+      "assertions": {
+        "oracle": true,
+        "native": true
+      },
+      "mappedOracle": [],
+      "mappedNative": [],
+      "mappingSummary": {
+        "oracle": {},
+        "native": {}
+      },
+      "staleProjectionRejected": true
+    },
+    {
+      "name": "wrong-props",
+      "language": "typescript",
+      "expectedCodes": [
+        2322
+      ],
+      "complete": true,
+      "match": true,
+      "declarations": {
+        "originalSvelteTypes": "973934bf1acccbd6ad0bc17c06f6dd788ad976664e4857c5004d9af9f2b3a920",
+        "maskedSvelteTypes": "d1b9212fcb6594459241315e0e016b21713d68cb6dcc90b29530058d06f5ad3a",
+        "shim": "f2dfa79c9e867a25d3887446b730f8fbdeaa9b74db3eeab196a2d251227a96a5",
+        "html": "2b3d6cdfd182cbd863e5023db6eb5eb530e8ad6b4f78df8f61fb744a70cd0080"
+      },
+      "sources": {
+        "Child.svelte": {
+          "language": "typescript",
+          "generated": "Child.svelte.tsx",
+          "sha256": "b0f2455a83ab255dabf89c3a7456f62124620ba190ea7e4d40091d1c9accbd08",
+          "generatedSha256": "be14a8ac65bba2f61703ed267aff72939ef3fbb046ba9f3c0d9797bafe944904",
+          "backend": {
+            "name": "rsvelte",
+            "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+            "version": "0.12.6",
+            "svelteTarget": "5.57.1",
+            "appTarget": "5.53.11",
+            "patches": [
+              "child-reset-5.53.11"
+            ],
+            "clientDevelopment": false
+          }
+        },
+        "Case.svelte": {
+          "language": "typescript",
+          "generated": "Case.svelte.tsx",
+          "sha256": "c994a80b5cb55717493589450169a912e2a8b3afc45be1a4dba3d5fde567e0c0",
+          "generatedSha256": "8558df88ae643a51d2c5669e45b42d06236b8d3177e8251037fdff9e1824cd75",
+          "backend": {
+            "name": "rsvelte",
+            "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+            "version": "0.12.6",
+            "svelteTarget": "5.57.1",
+            "appTarget": "5.53.11",
+            "patches": [
+              "child-reset-5.53.11"
+            ],
+            "clientDevelopment": false
+          }
+        }
+      },
+      "oracle": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 226,
+          "end": 233,
+          "code": 2322,
+          "category": 1,
+          "source": "",
+          "text": "Type 'string' is not assignable to type 'number'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": []
+        }
+      ],
+      "native": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 226,
+          "end": 233,
+          "code": 2322,
+          "category": 1,
+          "source": "",
+          "text": "Type 'string' is not assignable to type 'number'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": []
+        }
+      ],
+      "nativeExecution": {
+        "processStatus": 1,
+        "compilerStatus": 2,
+        "complete": true,
+        "output": "",
+        "serializationFailures": [],
+        "unported": []
+      },
+      "assertions": {
+        "oracle": true,
+        "native": true
+      },
+      "mappedOracle": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 226,
+          "end": 233,
+          "code": 2322,
+          "category": 1,
+          "source": "",
+          "text": "Type 'string' is not assignable to type 'number'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": [],
+          "original": {
+            "status": "unmapped",
+            "generatedBytes": {
+              "start": 226,
+              "end": 233
+            }
+          }
+        }
+      ],
+      "mappedNative": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 226,
+          "end": 233,
+          "code": 2322,
+          "category": 1,
+          "source": "",
+          "text": "Type 'string' is not assignable to type 'number'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": [],
+          "original": {
+            "status": "unmapped",
+            "generatedBytes": {
+              "start": 226,
+              "end": 233
+            }
+          }
+        }
+      ],
+      "mappingSummary": {
+        "oracle": {
+          "unmapped": 1
+        },
+        "native": {
+          "unmapped": 1
+        }
+      }
+    },
+    {
+      "name": "missing-props",
+      "language": "typescript",
+      "expectedCodes": [
+        2741,
+        2345
+      ],
+      "complete": true,
+      "match": true,
+      "declarations": {
+        "originalSvelteTypes": "973934bf1acccbd6ad0bc17c06f6dd788ad976664e4857c5004d9af9f2b3a920",
+        "maskedSvelteTypes": "d1b9212fcb6594459241315e0e016b21713d68cb6dcc90b29530058d06f5ad3a",
+        "shim": "f2dfa79c9e867a25d3887446b730f8fbdeaa9b74db3eeab196a2d251227a96a5",
+        "html": "2b3d6cdfd182cbd863e5023db6eb5eb530e8ad6b4f78df8f61fb744a70cd0080"
+      },
+      "sources": {
+        "Child.svelte": {
+          "language": "typescript",
+          "generated": "Child.svelte.tsx",
+          "sha256": "b0f2455a83ab255dabf89c3a7456f62124620ba190ea7e4d40091d1c9accbd08",
+          "generatedSha256": "be14a8ac65bba2f61703ed267aff72939ef3fbb046ba9f3c0d9797bafe944904",
+          "backend": {
+            "name": "rsvelte",
+            "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+            "version": "0.12.6",
+            "svelteTarget": "5.57.1",
+            "appTarget": "5.53.11",
+            "patches": [
+              "child-reset-5.53.11"
+            ],
+            "clientDevelopment": false
+          }
+        },
+        "Case.svelte": {
+          "language": "typescript",
+          "generated": "Case.svelte.tsx",
+          "sha256": "cca449af4f15d3ff219b7b57937ed2c123923902c6b314e534afb53cdd6d2844",
+          "generatedSha256": "ca69061122dd78e6b25bc6830817c3c5f08e398efa7109821900bb66fb9c48d5",
+          "backend": {
+            "name": "rsvelte",
+            "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+            "version": "0.12.6",
+            "svelteTarget": "5.57.1",
+            "appTarget": "5.53.11",
+            "patches": [
+              "child-reset-5.53.11"
+            ],
+            "clientDevelopment": false
+          }
+        }
+      },
+      "oracle": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 216,
+          "end": 221,
+          "code": 2741,
+          "category": 1,
+          "source": "",
+          "text": "Property 'count' is missing in type '{}' but required in type '$$ComponentProps'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": [
+            {
+              "file": "Child.svelte.tsx",
+              "start": 62,
+              "end": 67,
+              "code": 2728,
+              "category": 3,
+              "source": "",
+              "text": "'count' is declared here.",
+              "unnecessary": false,
+              "deprecated": false,
+              "chain": [],
+              "related": []
+            },
+            {
+              "file": "svelte-types.d.ts",
+              "start": 510,
+              "end": 515,
+              "code": 6500,
+              "category": 3,
+              "source": "",
+              "text": "The expected type comes from property 'props' which is declared here on type 'ComponentConstructorOptions<$$ComponentProps>'",
+              "unnecessary": false,
+              "deprecated": false,
+              "chain": [],
+              "related": []
+            }
+          ]
+        }
+      ],
+      "native": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 216,
+          "end": 221,
+          "code": 2741,
+          "category": 1,
+          "source": "",
+          "text": "Property 'count' is missing in type '{}' but required in type '$$ComponentProps'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": [
+            {
+              "file": "Child.svelte.tsx",
+              "start": 62,
+              "end": 67,
+              "code": 2728,
+              "category": 3,
+              "source": "",
+              "text": "'count' is declared here.",
+              "unnecessary": false,
+              "deprecated": false,
+              "chain": [],
+              "related": []
+            },
+            {
+              "file": "svelte-types.d.ts",
+              "start": 510,
+              "end": 515,
+              "code": 6500,
+              "category": 3,
+              "source": "",
+              "text": "The expected type comes from property 'props' which is declared here on type 'ComponentConstructorOptions<$$ComponentProps>'",
+              "unnecessary": false,
+              "deprecated": false,
+              "chain": [],
+              "related": []
+            }
+          ]
+        }
+      ],
+      "nativeExecution": {
+        "processStatus": 1,
+        "compilerStatus": 2,
+        "complete": true,
+        "output": "",
+        "serializationFailures": [],
+        "unported": []
+      },
+      "assertions": {
+        "oracle": true,
+        "native": true
+      },
+      "mappedOracle": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 216,
+          "end": 221,
+          "code": 2741,
+          "category": 1,
+          "source": "",
+          "text": "Property 'count' is missing in type '{}' but required in type '$$ComponentProps'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": [
+            {
+              "file": "Child.svelte.tsx",
+              "start": 62,
+              "end": 67,
+              "code": 2728,
+              "category": 3,
+              "source": "",
+              "text": "'count' is declared here.",
+              "unnecessary": false,
+              "deprecated": false,
+              "chain": [],
+              "related": [],
+              "original": {
+                "status": "unmapped",
+                "generatedBytes": {
+                  "start": 62,
+                  "end": 67
+                }
+              }
+            },
+            {
+              "file": "svelte-types.d.ts",
+              "start": 510,
+              "end": 515,
+              "code": 6500,
+              "category": 3,
+              "source": "",
+              "text": "The expected type comes from property 'props' which is declared here on type 'ComponentConstructorOptions<$$ComponentProps>'",
+              "unnecessary": false,
+              "deprecated": false,
+              "chain": [],
+              "related": [],
+              "original": {
+                "status": "not-component"
+              }
+            }
+          ],
+          "original": {
+            "status": "unmapped",
+            "generatedBytes": {
+              "start": 216,
+              "end": 221
+            }
+          }
+        }
+      ],
+      "mappedNative": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 216,
+          "end": 221,
+          "code": 2741,
+          "category": 1,
+          "source": "",
+          "text": "Property 'count' is missing in type '{}' but required in type '$$ComponentProps'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": [
+            {
+              "file": "Child.svelte.tsx",
+              "start": 62,
+              "end": 67,
+              "code": 2728,
+              "category": 3,
+              "source": "",
+              "text": "'count' is declared here.",
+              "unnecessary": false,
+              "deprecated": false,
+              "chain": [],
+              "related": [],
+              "original": {
+                "status": "unmapped",
+                "generatedBytes": {
+                  "start": 62,
+                  "end": 67
+                }
+              }
+            },
+            {
+              "file": "svelte-types.d.ts",
+              "start": 510,
+              "end": 515,
+              "code": 6500,
+              "category": 3,
+              "source": "",
+              "text": "The expected type comes from property 'props' which is declared here on type 'ComponentConstructorOptions<$$ComponentProps>'",
+              "unnecessary": false,
+              "deprecated": false,
+              "chain": [],
+              "related": [],
+              "original": {
+                "status": "not-component"
+              }
+            }
+          ],
+          "original": {
+            "status": "unmapped",
+            "generatedBytes": {
+              "start": 216,
+              "end": 221
+            }
+          }
+        }
+      ],
+      "mappingSummary": {
+        "oracle": {
+          "unmapped": 1
+        },
+        "native": {
+          "unmapped": 1
+        }
+      }
+    },
+    {
+      "name": "template-member",
+      "language": "typescript",
+      "expectedCodes": [
+        2339
+      ],
+      "complete": true,
+      "match": true,
+      "declarations": {
+        "originalSvelteTypes": "973934bf1acccbd6ad0bc17c06f6dd788ad976664e4857c5004d9af9f2b3a920",
+        "maskedSvelteTypes": "d1b9212fcb6594459241315e0e016b21713d68cb6dcc90b29530058d06f5ad3a",
+        "shim": "f2dfa79c9e867a25d3887446b730f8fbdeaa9b74db3eeab196a2d251227a96a5",
+        "html": "2b3d6cdfd182cbd863e5023db6eb5eb530e8ad6b4f78df8f61fb744a70cd0080"
+      },
+      "sources": {
+        "Child.svelte": {
+          "language": "typescript",
+          "generated": "Child.svelte.tsx",
+          "sha256": "b0f2455a83ab255dabf89c3a7456f62124620ba190ea7e4d40091d1c9accbd08",
+          "generatedSha256": "be14a8ac65bba2f61703ed267aff72939ef3fbb046ba9f3c0d9797bafe944904",
+          "backend": {
+            "name": "rsvelte",
+            "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+            "version": "0.12.6",
+            "svelteTarget": "5.57.1",
+            "appTarget": "5.53.11",
+            "patches": [
+              "child-reset-5.53.11"
+            ],
+            "clientDevelopment": false
+          }
+        },
+        "Case.svelte": {
+          "language": "typescript",
+          "generated": "Case.svelte.tsx",
+          "sha256": "79c2b342a44339a2e9cbf0767c721431b0c31badcf3f46a3e481f3ff07c7c87a",
+          "generatedSha256": "e972e9ece0f0d4b3a706c22127bbe3a95c728222000743b3e7678696dee8427a",
+          "backend": {
+            "name": "rsvelte",
+            "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+            "version": "0.12.6",
+            "svelteTarget": "5.57.1",
+            "appTarget": "5.53.11",
+            "patches": [
+              "child-reset-5.53.11"
+            ],
+            "clientDevelopment": false
+          }
+        }
+      },
+      "oracle": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 239,
+          "end": 253,
+          "code": 2339,
+          "category": 1,
+          "source": "",
+          "text": "Property 'notARealMember' does not exist on type 'number'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": []
+        }
+      ],
+      "native": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 239,
+          "end": 253,
+          "code": 2339,
+          "category": 1,
+          "source": "",
+          "text": "Property 'notARealMember' does not exist on type 'number'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": []
+        }
+      ],
+      "nativeExecution": {
+        "processStatus": 1,
+        "compilerStatus": 2,
+        "complete": true,
+        "output": "",
+        "serializationFailures": [],
+        "unported": []
+      },
+      "assertions": {
+        "oracle": true,
+        "native": true
+      },
+      "mappedOracle": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 239,
+          "end": 253,
+          "code": 2339,
+          "category": 1,
+          "source": "",
+          "text": "Property 'notARealMember' does not exist on type 'number'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": [],
+          "original": {
+            "status": "exact",
+            "file": "Case.svelte",
+            "bytes": {
+              "start": 86,
+              "end": 100
+            },
+            "start": {
+              "offset": 86,
+              "line": 3,
+              "character": 10
+            },
+            "end": {
+              "offset": 100,
+              "line": 3,
+              "character": 24
+            }
+          }
+        }
+      ],
+      "mappedNative": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 239,
+          "end": 253,
+          "code": 2339,
+          "category": 1,
+          "source": "",
+          "text": "Property 'notARealMember' does not exist on type 'number'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": [],
+          "original": {
+            "status": "exact",
+            "file": "Case.svelte",
+            "bytes": {
+              "start": 86,
+              "end": 100
+            },
+            "start": {
+              "offset": 86,
+              "line": 3,
+              "character": 10
+            },
+            "end": {
+              "offset": 100,
+              "line": 3,
+              "character": 24
+            }
+          }
+        }
+      ],
+      "mappingAssertions": {
+        "expectedText": "notARealMember",
+        "oracle": true,
+        "native": true,
+        "rust": true
+      },
+      "mappingSummary": {
+        "oracle": {
+          "exact": 1
+        },
+        "native": {
+          "exact": 1
+        }
+      }
+    },
+    {
+      "name": "undefined-name",
+      "language": "typescript",
+      "expectedCodes": [
+        2304
+      ],
+      "complete": true,
+      "match": true,
+      "declarations": {
+        "originalSvelteTypes": "973934bf1acccbd6ad0bc17c06f6dd788ad976664e4857c5004d9af9f2b3a920",
+        "maskedSvelteTypes": "d1b9212fcb6594459241315e0e016b21713d68cb6dcc90b29530058d06f5ad3a",
+        "shim": "f2dfa79c9e867a25d3887446b730f8fbdeaa9b74db3eeab196a2d251227a96a5",
+        "html": "2b3d6cdfd182cbd863e5023db6eb5eb530e8ad6b4f78df8f61fb744a70cd0080"
+      },
+      "sources": {
+        "Child.svelte": {
+          "language": "typescript",
+          "generated": "Child.svelte.tsx",
+          "sha256": "b0f2455a83ab255dabf89c3a7456f62124620ba190ea7e4d40091d1c9accbd08",
+          "generatedSha256": "be14a8ac65bba2f61703ed267aff72939ef3fbb046ba9f3c0d9797bafe944904",
+          "backend": {
+            "name": "rsvelte",
+            "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+            "version": "0.12.6",
+            "svelteTarget": "5.57.1",
+            "appTarget": "5.53.11",
+            "patches": [
+              "child-reset-5.53.11"
+            ],
+            "clientDevelopment": false
+          }
+        },
+        "Case.svelte": {
+          "language": "typescript",
+          "generated": "Case.svelte.tsx",
+          "sha256": "135bf0f0c98c617719112768371b6e1f8e21f08ab42e9d30b1dd987608580343",
+          "generatedSha256": "134041bd4422bfe3883a13dd31fe98b33cb441390f64126afe16b9f41cff01c9",
+          "backend": {
+            "name": "rsvelte",
+            "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+            "version": "0.12.6",
+            "svelteTarget": "5.57.1",
+            "appTarget": "5.53.11",
+            "patches": [
+              "child-reset-5.53.11"
+            ],
+            "clientDevelopment": false
+          }
+        }
+      },
+      "oracle": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 141,
+          "end": 160,
+          "code": 2304,
+          "category": 1,
+          "source": "",
+          "text": "Cannot find name 'missingTemplateName'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": []
+        }
+      ],
+      "native": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 141,
+          "end": 160,
+          "code": 2304,
+          "category": 1,
+          "source": "",
+          "text": "Cannot find name 'missingTemplateName'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": []
+        }
+      ],
+      "nativeExecution": {
+        "processStatus": 1,
+        "compilerStatus": 2,
+        "complete": true,
+        "output": "",
+        "serializationFailures": [],
+        "unported": []
+      },
+      "assertions": {
+        "oracle": true,
+        "native": true
+      },
+      "mappedOracle": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 141,
+          "end": 160,
+          "code": 2304,
+          "category": 1,
+          "source": "",
+          "text": "Cannot find name 'missingTemplateName'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": [],
+          "original": {
+            "status": "exact",
+            "file": "Case.svelte",
+            "bytes": {
+              "start": 66,
+              "end": 85
+            },
+            "start": {
+              "offset": 66,
+              "line": 3,
+              "character": 12
+            },
+            "end": {
+              "offset": 85,
+              "line": 3,
+              "character": 31
+            }
+          }
+        }
+      ],
+      "mappedNative": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 141,
+          "end": 160,
+          "code": 2304,
+          "category": 1,
+          "source": "",
+          "text": "Cannot find name 'missingTemplateName'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": [],
+          "original": {
+            "status": "exact",
+            "file": "Case.svelte",
+            "bytes": {
+              "start": 66,
+              "end": 85
+            },
+            "start": {
+              "offset": 66,
+              "line": 3,
+              "character": 12
+            },
+            "end": {
+              "offset": 85,
+              "line": 3,
+              "character": 31
+            }
+          }
+        }
+      ],
+      "mappingAssertions": {
+        "expectedText": "missingTemplateName",
+        "oracle": true,
+        "native": true,
+        "rust": true
+      },
+      "mappingSummary": {
+        "oracle": {
+          "exact": 1
+        },
+        "native": {
+          "exact": 1
+        }
+      }
+    },
+    {
+      "name": "missing-import",
+      "language": "typescript",
+      "expectedCodes": [
+        2307
+      ],
+      "complete": true,
+      "match": true,
+      "declarations": {
+        "originalSvelteTypes": "973934bf1acccbd6ad0bc17c06f6dd788ad976664e4857c5004d9af9f2b3a920",
+        "maskedSvelteTypes": "d1b9212fcb6594459241315e0e016b21713d68cb6dcc90b29530058d06f5ad3a",
+        "shim": "f2dfa79c9e867a25d3887446b730f8fbdeaa9b74db3eeab196a2d251227a96a5",
+        "html": "2b3d6cdfd182cbd863e5023db6eb5eb530e8ad6b4f78df8f61fb744a70cd0080"
+      },
+      "sources": {
+        "Child.svelte": {
+          "language": "typescript",
+          "generated": "Child.svelte.tsx",
+          "sha256": "b0f2455a83ab255dabf89c3a7456f62124620ba190ea7e4d40091d1c9accbd08",
+          "generatedSha256": "be14a8ac65bba2f61703ed267aff72939ef3fbb046ba9f3c0d9797bafe944904",
+          "backend": {
+            "name": "rsvelte",
+            "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+            "version": "0.12.6",
+            "svelteTarget": "5.57.1",
+            "appTarget": "5.53.11",
+            "patches": [
+              "child-reset-5.53.11"
+            ],
+            "clientDevelopment": false
+          }
+        },
+        "Case.svelte": {
+          "language": "typescript",
+          "generated": "Case.svelte.tsx",
+          "sha256": "fa14dbba041b9d50de1c0ffd09c28c11afe684aff2b736b2336679db1577b3f4",
+          "generatedSha256": "38e3b4fb77410bfedf7556d742254fa9531d377b7769e6328c123d99e74fd84a",
+          "backend": {
+            "name": "rsvelte",
+            "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+            "version": "0.12.6",
+            "svelteTarget": "5.57.1",
+            "appTarget": "5.53.11",
+            "patches": [
+              "child-reset-5.53.11"
+            ],
+            "clientDevelopment": false
+          }
+        }
+      },
+      "oracle": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 54,
+          "end": 77,
+          "code": 2307,
+          "category": 1,
+          "source": "",
+          "text": "Cannot find module './DoesNotExist.svelte' or its corresponding type declarations.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": []
+        }
+      ],
+      "native": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 54,
+          "end": 77,
+          "code": 2307,
+          "category": 1,
+          "source": "",
+          "text": "Cannot find module './DoesNotExist.svelte' or its corresponding type declarations.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": []
+        }
+      ],
+      "nativeExecution": {
+        "processStatus": 1,
+        "compilerStatus": 2,
+        "complete": true,
+        "output": "",
+        "serializationFailures": [],
+        "unported": []
+      },
+      "assertions": {
+        "oracle": true,
+        "native": true
+      },
+      "mappedOracle": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 54,
+          "end": 77,
+          "code": 2307,
+          "category": 1,
+          "source": "",
+          "text": "Cannot find module './DoesNotExist.svelte' or its corresponding type declarations.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": [],
+          "original": {
+            "status": "exact",
+            "file": "Case.svelte",
+            "bytes": {
+              "start": 41,
+              "end": 64
+            },
+            "start": {
+              "offset": 41,
+              "line": 1,
+              "character": 22
+            },
+            "end": {
+              "offset": 64,
+              "line": 1,
+              "character": 45
+            }
+          }
+        }
+      ],
+      "mappedNative": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 54,
+          "end": 77,
+          "code": 2307,
+          "category": 1,
+          "source": "",
+          "text": "Cannot find module './DoesNotExist.svelte' or its corresponding type declarations.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": [],
+          "original": {
+            "status": "exact",
+            "file": "Case.svelte",
+            "bytes": {
+              "start": 41,
+              "end": 64
+            },
+            "start": {
+              "offset": 41,
+              "line": 1,
+              "character": 22
+            },
+            "end": {
+              "offset": 64,
+              "line": 1,
+              "character": 45
+            }
+          }
+        }
+      ],
+      "mappingSummary": {
+        "oracle": {
+          "exact": 1
+        },
+        "native": {
+          "exact": 1
+        }
+      }
+    },
+    {
+      "name": "emoji",
+      "language": "typescript",
+      "expectedCodes": [
+        2304
+      ],
+      "complete": true,
+      "match": true,
+      "declarations": {
+        "originalSvelteTypes": "973934bf1acccbd6ad0bc17c06f6dd788ad976664e4857c5004d9af9f2b3a920",
+        "maskedSvelteTypes": "d1b9212fcb6594459241315e0e016b21713d68cb6dcc90b29530058d06f5ad3a",
+        "shim": "f2dfa79c9e867a25d3887446b730f8fbdeaa9b74db3eeab196a2d251227a96a5",
+        "html": "2b3d6cdfd182cbd863e5023db6eb5eb530e8ad6b4f78df8f61fb744a70cd0080"
+      },
+      "sources": {
+        "Child.svelte": {
+          "language": "typescript",
+          "generated": "Child.svelte.tsx",
+          "sha256": "b0f2455a83ab255dabf89c3a7456f62124620ba190ea7e4d40091d1c9accbd08",
+          "generatedSha256": "be14a8ac65bba2f61703ed267aff72939ef3fbb046ba9f3c0d9797bafe944904",
+          "backend": {
+            "name": "rsvelte",
+            "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+            "version": "0.12.6",
+            "svelteTarget": "5.57.1",
+            "appTarget": "5.53.11",
+            "patches": [
+              "child-reset-5.53.11"
+            ],
+            "clientDevelopment": false
+          }
+        },
+        "Case.svelte": {
+          "language": "typescript",
+          "generated": "Case.svelte.tsx",
+          "sha256": "33e362a00ba86a24c758e661a4c2abbed6f5e92e08db7d6d850bc51f4d04f288",
+          "generatedSha256": "29592102d6652f85c8a3081a8daff8e67daf5ff5b08c2bcf22ba58b8b306aa6f",
+          "backend": {
+            "name": "rsvelte",
+            "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+            "version": "0.12.6",
+            "svelteTarget": "5.57.1",
+            "appTarget": "5.53.11",
+            "patches": [
+              "child-reset-5.53.11"
+            ],
+            "clientDevelopment": false
+          }
+        }
+      },
+      "oracle": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 155,
+          "end": 172,
+          "code": 2304,
+          "category": 1,
+          "source": "",
+          "text": "Cannot find name 'missingAfterEmoji'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": []
+        }
+      ],
+      "native": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 155,
+          "end": 172,
+          "code": 2304,
+          "category": 1,
+          "source": "",
+          "text": "Cannot find name 'missingAfterEmoji'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": []
+        }
+      ],
+      "nativeExecution": {
+        "processStatus": 1,
+        "compilerStatus": 2,
+        "complete": true,
+        "output": "",
+        "serializationFailures": [],
+        "unported": []
+      },
+      "assertions": {
+        "oracle": true,
+        "native": true
+      },
+      "mappedOracle": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 155,
+          "end": 172,
+          "code": 2304,
+          "category": 1,
+          "source": "",
+          "text": "Cannot find name 'missingAfterEmoji'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": [],
+          "original": {
+            "status": "exact",
+            "file": "Case.svelte",
+            "bytes": {
+              "start": 83,
+              "end": 100
+            },
+            "start": {
+              "offset": 80,
+              "line": 3,
+              "character": 15
+            },
+            "end": {
+              "offset": 97,
+              "line": 3,
+              "character": 32
+            }
+          }
+        }
+      ],
+      "mappedNative": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 155,
+          "end": 172,
+          "code": 2304,
+          "category": 1,
+          "source": "",
+          "text": "Cannot find name 'missingAfterEmoji'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": [],
+          "original": {
+            "status": "exact",
+            "file": "Case.svelte",
+            "bytes": {
+              "start": 83,
+              "end": 100
+            },
+            "start": {
+              "offset": 80,
+              "line": 3,
+              "character": 15
+            },
+            "end": {
+              "offset": 97,
+              "line": 3,
+              "character": 32
+            }
+          }
+        }
+      ],
+      "mappingAssertions": {
+        "expectedText": "missingAfterEmoji",
+        "oracle": true,
+        "native": true,
+        "rust": true
+      },
+      "mappingSummary": {
+        "oracle": {
+          "exact": 1
+        },
+        "native": {
+          "exact": 1
+        }
+      }
+    },
+    {
+      "name": "no-check-override",
+      "language": "typescript",
+      "expectedCodes": [
+        2304
+      ],
+      "complete": true,
+      "match": true,
+      "declarations": {
+        "originalSvelteTypes": "973934bf1acccbd6ad0bc17c06f6dd788ad976664e4857c5004d9af9f2b3a920",
+        "maskedSvelteTypes": "d1b9212fcb6594459241315e0e016b21713d68cb6dcc90b29530058d06f5ad3a",
+        "shim": "f2dfa79c9e867a25d3887446b730f8fbdeaa9b74db3eeab196a2d251227a96a5",
+        "html": "2b3d6cdfd182cbd863e5023db6eb5eb530e8ad6b4f78df8f61fb744a70cd0080"
+      },
+      "sources": {
+        "Child.svelte": {
+          "language": "typescript",
+          "generated": "Child.svelte.tsx",
+          "sha256": "b0f2455a83ab255dabf89c3a7456f62124620ba190ea7e4d40091d1c9accbd08",
+          "generatedSha256": "be14a8ac65bba2f61703ed267aff72939ef3fbb046ba9f3c0d9797bafe944904",
+          "backend": {
+            "name": "rsvelte",
+            "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+            "version": "0.12.6",
+            "svelteTarget": "5.57.1",
+            "appTarget": "5.53.11",
+            "patches": [
+              "child-reset-5.53.11"
+            ],
+            "clientDevelopment": false
+          }
+        },
+        "Case.svelte": {
+          "language": "typescript",
+          "generated": "Case.svelte.tsx",
+          "sha256": "135bf0f0c98c617719112768371b6e1f8e21f08ab42e9d30b1dd987608580343",
+          "generatedSha256": "134041bd4422bfe3883a13dd31fe98b33cb441390f64126afe16b9f41cff01c9",
+          "backend": {
+            "name": "rsvelte",
+            "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+            "version": "0.12.6",
+            "svelteTarget": "5.57.1",
+            "appTarget": "5.53.11",
+            "patches": [
+              "child-reset-5.53.11"
+            ],
+            "clientDevelopment": false
+          }
+        }
+      },
+      "oracle": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 141,
+          "end": 160,
+          "code": 2304,
+          "category": 1,
+          "source": "",
+          "text": "Cannot find name 'missingTemplateName'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": []
+        }
+      ],
+      "native": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 141,
+          "end": 160,
+          "code": 2304,
+          "category": 1,
+          "source": "",
+          "text": "Cannot find name 'missingTemplateName'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": []
+        }
+      ],
+      "nativeExecution": {
+        "processStatus": 1,
+        "compilerStatus": 2,
+        "complete": true,
+        "output": "",
+        "serializationFailures": [],
+        "unported": []
+      },
+      "assertions": {
+        "oracle": true,
+        "native": true
+      },
+      "mappedOracle": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 141,
+          "end": 160,
+          "code": 2304,
+          "category": 1,
+          "source": "",
+          "text": "Cannot find name 'missingTemplateName'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": [],
+          "original": {
+            "status": "exact",
+            "file": "Case.svelte",
+            "bytes": {
+              "start": 66,
+              "end": 85
+            },
+            "start": {
+              "offset": 66,
+              "line": 3,
+              "character": 12
+            },
+            "end": {
+              "offset": 85,
+              "line": 3,
+              "character": 31
+            }
+          }
+        }
+      ],
+      "mappedNative": [
+        {
+          "file": "Case.svelte.tsx",
+          "start": 141,
+          "end": 160,
+          "code": 2304,
+          "category": 1,
+          "source": "",
+          "text": "Cannot find name 'missingTemplateName'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": [],
+          "original": {
+            "status": "exact",
+            "file": "Case.svelte",
+            "bytes": {
+              "start": 66,
+              "end": 85
+            },
+            "start": {
+              "offset": 66,
+              "line": 3,
+              "character": 12
+            },
+            "end": {
+              "offset": 85,
+              "line": 3,
+              "character": 31
+            }
+          }
+        }
+      ],
+      "mappingAssertions": {
+        "expectedText": "missingTemplateName",
+        "oracle": true,
+        "native": true,
+        "rust": true
+      },
+      "mappingSummary": {
+        "oracle": {
+          "exact": 1
+        },
+        "native": {
+          "exact": 1
+        }
+      }
+    },
+    {
+      "name": "javascript-jsdoc-valid",
+      "language": "javascript",
+      "expectedCodes": [],
+      "complete": true,
+      "match": true,
+      "declarations": {
+        "originalSvelteTypes": "973934bf1acccbd6ad0bc17c06f6dd788ad976664e4857c5004d9af9f2b3a920",
+        "maskedSvelteTypes": "d1b9212fcb6594459241315e0e016b21713d68cb6dcc90b29530058d06f5ad3a",
+        "shim": "f2dfa79c9e867a25d3887446b730f8fbdeaa9b74db3eeab196a2d251227a96a5",
+        "html": "2b3d6cdfd182cbd863e5023db6eb5eb530e8ad6b4f78df8f61fb744a70cd0080"
+      },
+      "sources": {
+        "Child.svelte": {
+          "language": "typescript",
+          "generated": "Child.svelte.tsx",
+          "sha256": "b0f2455a83ab255dabf89c3a7456f62124620ba190ea7e4d40091d1c9accbd08",
+          "generatedSha256": "be14a8ac65bba2f61703ed267aff72939ef3fbb046ba9f3c0d9797bafe944904",
+          "backend": {
+            "name": "rsvelte",
+            "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+            "version": "0.12.6",
+            "svelteTarget": "5.57.1",
+            "appTarget": "5.53.11",
+            "patches": [
+              "child-reset-5.53.11"
+            ],
+            "clientDevelopment": false
+          }
+        },
+        "Case.svelte": {
+          "language": "javascript",
+          "generated": "Case.svelte.jsx",
+          "sha256": "700deb045b70ddde9fdf7805ea0d0a6ae35f7fd879a9482394db972a89769a3f",
+          "generatedSha256": "442b174386c951a9de75db08170ae84632e94e6517da59e3ae16f5a6db9778b9",
+          "backend": {
+            "name": "rsvelte",
+            "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+            "version": "0.12.6",
+            "svelteTarget": "5.57.1",
+            "appTarget": "5.53.11",
+            "patches": [
+              "child-reset-5.53.11"
+            ],
+            "clientDevelopment": false
+          }
+        }
+      },
+      "oracle": [],
+      "native": [],
+      "nativeExecution": {
+        "processStatus": 0,
+        "compilerStatus": 0,
+        "complete": true,
+        "output": "",
+        "serializationFailures": [],
+        "unported": []
+      },
+      "assertions": {
+        "oracle": true,
+        "native": true
+      },
+      "mappedOracle": [],
+      "mappedNative": [],
+      "mappingSummary": {
+        "oracle": {},
+        "native": {}
+      }
+    },
+    {
+      "name": "javascript-jsdoc-mismatch",
+      "language": "javascript",
+      "expectedCodes": [
+        2322
+      ],
+      "complete": true,
+      "match": true,
+      "declarations": {
+        "originalSvelteTypes": "973934bf1acccbd6ad0bc17c06f6dd788ad976664e4857c5004d9af9f2b3a920",
+        "maskedSvelteTypes": "d1b9212fcb6594459241315e0e016b21713d68cb6dcc90b29530058d06f5ad3a",
+        "shim": "f2dfa79c9e867a25d3887446b730f8fbdeaa9b74db3eeab196a2d251227a96a5",
+        "html": "2b3d6cdfd182cbd863e5023db6eb5eb530e8ad6b4f78df8f61fb744a70cd0080"
+      },
+      "sources": {
+        "Child.svelte": {
+          "language": "typescript",
+          "generated": "Child.svelte.tsx",
+          "sha256": "b0f2455a83ab255dabf89c3a7456f62124620ba190ea7e4d40091d1c9accbd08",
+          "generatedSha256": "be14a8ac65bba2f61703ed267aff72939ef3fbb046ba9f3c0d9797bafe944904",
+          "backend": {
+            "name": "rsvelte",
+            "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+            "version": "0.12.6",
+            "svelteTarget": "5.57.1",
+            "appTarget": "5.53.11",
+            "patches": [
+              "child-reset-5.53.11"
+            ],
+            "clientDevelopment": false
+          }
+        },
+        "Case.svelte": {
+          "language": "javascript",
+          "generated": "Case.svelte.jsx",
+          "sha256": "295354348af50c40773c6e0cd232219e7bc5c37b42895913cf29e417aeb0e51f",
+          "generatedSha256": "2347b5b61d7cda6a3ac06531a8cb9b7fa25c4dacae03e8bd30b7f591655249fd",
+          "backend": {
+            "name": "rsvelte",
+            "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+            "version": "0.12.6",
+            "svelteTarget": "5.57.1",
+            "appTarget": "5.53.11",
+            "patches": [
+              "child-reset-5.53.11"
+            ],
+            "clientDevelopment": false
+          }
+        }
+      },
+      "oracle": [
+        {
+          "file": "Case.svelte.jsx",
+          "start": 86,
+          "end": 91,
+          "code": 2322,
+          "category": 1,
+          "source": "",
+          "text": "Type 'string' is not assignable to type 'number'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": []
+        }
+      ],
+      "native": [
+        {
+          "file": "Case.svelte.jsx",
+          "start": 86,
+          "end": 91,
+          "code": 2322,
+          "category": 1,
+          "source": "",
+          "text": "Type 'string' is not assignable to type 'number'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": []
+        }
+      ],
+      "nativeExecution": {
+        "processStatus": 1,
+        "compilerStatus": 2,
+        "complete": true,
+        "output": "",
+        "serializationFailures": [],
+        "unported": []
+      },
+      "assertions": {
+        "oracle": true,
+        "native": true
+      },
+      "mappedOracle": [
+        {
+          "file": "Case.svelte.jsx",
+          "start": 86,
+          "end": 91,
+          "code": 2322,
+          "category": 1,
+          "source": "",
+          "text": "Type 'string' is not assignable to type 'number'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": [],
+          "original": {
+            "status": "exact",
+            "file": "Case.svelte",
+            "bytes": {
+              "start": 39,
+              "end": 44
+            },
+            "start": {
+              "offset": 39,
+              "line": 2,
+              "character": 6
+            },
+            "end": {
+              "offset": 44,
+              "line": 2,
+              "character": 11
+            }
+          }
+        }
+      ],
+      "mappedNative": [
+        {
+          "file": "Case.svelte.jsx",
+          "start": 86,
+          "end": 91,
+          "code": 2322,
+          "category": 1,
+          "source": "",
+          "text": "Type 'string' is not assignable to type 'number'.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": [],
+          "original": {
+            "status": "exact",
+            "file": "Case.svelte",
+            "bytes": {
+              "start": 39,
+              "end": 44
+            },
+            "start": {
+              "offset": 39,
+              "line": 2,
+              "character": 6
+            },
+            "end": {
+              "offset": 44,
+              "line": 2,
+              "character": 11
+            }
+          }
+        }
+      ],
+      "mappingAssertions": {
+        "expectedText": "value",
+        "oracle": true,
+        "native": true,
+        "rust": true
+      },
+      "mappingSummary": {
+        "oracle": {
+          "exact": 1
+        },
+        "native": {
+          "exact": 1
+        }
+      }
+    }
+  ],
+  "identity": {
+    "startedAt": "2026-10-10T20:39:55.026Z",
+    "node": "v24.21.0",
+    "typescript": "5.9.3",
+    "svelte": "5.53.11",
+    "compiler": {
+      "path": "/home/yycholla/Projects/ts-rust/target/release/svelte-tool",
+      "sha256": "8f1f87a97768e5863254090c0582cd8e2d58cdff891bff5fc771cf7f409bc3b8"
+    },
+    "checker": {
+      "path": "/home/yycholla/Projects/ts-rust/target/release/svelte-ts-check",
+      "sha256": "f215c68765142ffac4a239f1295b26f0ca042c40d95a55d2341a7a94f211ad34"
+    },
+    "typescriptEntrySha256": "3ae902c92cc44dace175c0e69e13a4b0899f6983c6121d76b9ab8dd5795e7675"
+  },
+  "summary": {
+    "cases": 10,
+    "matched": 10,
+    "incomplete": 0,
+    "differences": 0
+  },
+  "completedAt": "2026-10-10T20:40:18.686Z"
+}

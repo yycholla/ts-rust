@@ -1,0 +1,22 @@
+{
+  "mode": "official",
+  "command": [
+    "/etc/profiles/per-user/yycholla/bin/node",
+    "/home/yycholla/Projects/ts-rust/target/svelte-application-official-6/app/node_modules/vite/bin/vite.js",
+    "build",
+    "--configLoader",
+    "runner"
+  ],
+  "exitCode": 0,
+  "sourceStable": true,
+  "binariesStable": true,
+  "elapsedSeconds": 159.76736968799378,
+  "sourceUnchanged": true,
+  "controls": [
+    "Disable Sentry sourcemap upload in isolated config",
+    "No .env files or inherited credentials",
+    "Reminder scheduler disabled"
+  ],
+  "buildExists": true,
+  "nativeScope": null
+}

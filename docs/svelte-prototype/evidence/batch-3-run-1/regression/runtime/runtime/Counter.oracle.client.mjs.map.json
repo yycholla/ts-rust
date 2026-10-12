@@ -1,0 +1,11 @@
+{
+  "version": 3,
+  "names": [],
+  "sources": [
+    "Counter.svelte"
+  ],
+  "sourcesContent": [
+    "<script lang=\"ts\">\n  let { step = 1, label = 'Count' }: { step?: number; label?: string } = $props();\n  let count = $state(0);\n  let doubled = $derived(count * 2);\n</script>\n<button type=\"button\" onclick={() => count += step}>{label}: {count} / {doubled}</button>\n"
+  ],
+  "mappings": ";;;;;mDAAA,CAAC;KACO,IAAI,8BAAG,CAAC;EAAE,KAAK,+BAAG,OAAO;;KAC3B,KAAK,GAAG,OAAM,CAAC,CAAC;KAChB,OAAO,yBAAY,KAAK,IAAG,CAAC;KAEjC,MAAM;oBAAN,MAAM;;SAAN,MAAM;6CAA8C,KAAK,mBAAI,KAAK,mBAAK,OAAO;sBAA9E,MAAM,cAA8B,KAAK,QAAL,KAAK,IAAI,IAAI;oBAAjD,MAAM;AADC,CAAC;;"
+}

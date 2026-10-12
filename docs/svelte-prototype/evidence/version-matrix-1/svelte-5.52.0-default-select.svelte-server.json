@@ -1,0 +1,236 @@
+{
+  "source": "<select defaultValue=\"b\"><option value=\"a\">A</option><option value=\"b\">B</option></select>\n",
+  "settings": {
+    "filename": "default-select.svelte",
+    "generate": "server",
+    "css": "external",
+    "dev": false,
+    "runes": true
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "default-select.svelte",
+        "version": 1,
+        "text": "<select defaultValue=\"b\"><option value=\"a\">A</option><option value=\"b\">B</option></select>\n"
+      },
+      "target": "server",
+      "dev": false,
+      "runes": true,
+      "compatibility": {
+        "svelteVersion": "5.52.0"
+      }
+    },
+    "exit": 0,
+    "signal": null,
+    "stdout": "{\"ok\":true,\"result\":{\"uri\":\"default-select.svelte\",\"version\":1,\"javascript\":{\"code\":\"import * as $ from 'svelte/internal/server';\\n\\nexport default function Default_select($$renderer) {\\n\\t$$renderer.select({ defaultValue: 'b' }, ($$renderer) => {\\n\\t\\t$$renderer.option({ value: 'a' }, ($$renderer) => {\\n\\t\\t\\t$$renderer.push(`A`);\\n\\t\\t});\\n\\n\\t\\t$$renderer.option({ value: 'b' }, ($$renderer) => {\\n\\t\\t\\t$$renderer.push(`B`);\\n\\t\\t});\\n\\t});\\n}\",\"map\":\"{\\\"version\\\":3,\\\"sources\\\":[\\\"default-select.svelte\\\"],\\\"sourcesContent\\\":[\\\"<select defaultValue=\\\\\\\"b\\\\\\\"><option value=\\\\\\\"a\\\\\\\">A</option><option value=\\\\\\\"b\\\\\\\">B</option></select>\\\\n\\\"],\\\"names\\\":[],\\\"mappings\\\":\\\";;;YAAC,MAAM,GAAC,YAAY;aAAM,MAAM,GAAC,KAAK;;;;aAAQ,MAAM,GAAS,KAAK;;;;\\\"}\"},\"css\":null,\"diagnostics\":[],\"runes\":true,\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.52.0\",\"patches\":[\"child-reset-5.53.11\"],\"clientDevelopment\":false},\"compatibility\":{\"id\":\"v1:svelte=5.52.0;kit=none;ts=unspecified\",\"svelteVersion\":\"5.52.0\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": true,
+      "result": {
+        "uri": "default-select.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import * as $ from 'svelte/internal/server';\n\nexport default function Default_select($$renderer) {\n\t$$renderer.select({ defaultValue: 'b' }, ($$renderer) => {\n\t\t$$renderer.option({ value: 'a' }, ($$renderer) => {\n\t\t\t$$renderer.push(`A`);\n\t\t});\n\n\t\t$$renderer.option({ value: 'b' }, ($$renderer) => {\n\t\t\t$$renderer.push(`B`);\n\t\t});\n\t});\n}",
+          "map": "{\"version\":3,\"sources\":[\"default-select.svelte\"],\"sourcesContent\":[\"<select defaultValue=\\\"b\\\"><option value=\\\"a\\\">A</option><option value=\\\"b\\\">B</option></select>\\n\"],\"names\":[],\"mappings\":\";;;YAAC,MAAM,GAAC,YAAY;aAAM,MAAM,GAAC,KAAK;;;;aAAQ,MAAM,GAAS,KAAK;;;;\"}"
+        },
+        "css": null,
+        "diagnostics": [],
+        "runes": true,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.52.0",
+          "patches": [
+            "child-reset-5.53.11"
+          ],
+          "clientDevelopment": false
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.52.0;kit=none;ts=unspecified",
+          "svelteVersion": "5.52.0",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": true,
+    "artifact": {
+      "js": {
+        "code": "import * as $ from 'svelte/internal/server';\n\nexport default function Default_select($$renderer) {\n\t$$renderer.push(`<select>`);\n\n\t$$renderer.option({ value: 'a' }, ($$renderer) => {\n\t\t$$renderer.push(`A`);\n\t});\n\n\t$$renderer.option({ value: 'b' }, ($$renderer) => {\n\t\t$$renderer.push(`B`);\n\t});\n\n\t$$renderer.push(`</select>`);\n}",
+        "map": {
+          "version": 3,
+          "names": [],
+          "sources": [
+            "default-select.svelte"
+          ],
+          "sourcesContent": [
+            "<select defaultValue=\"b\"><option value=\"a\">A</option><option value=\"b\">B</option></select>\n"
+          ],
+          "mappings": ";;;;;;;;;;;;;;"
+        }
+      },
+      "css": null,
+      "warnings": [],
+      "metadata": {
+        "runes": true
+      },
+      "ast": {
+        "html": {
+          "type": "Fragment",
+          "start": 0,
+          "end": 90,
+          "children": [
+            {
+              "type": "Element",
+              "start": 0,
+              "end": 90,
+              "name": "select",
+              "attributes": [
+                {
+                  "type": "Attribute",
+                  "start": 8,
+                  "end": 24,
+                  "name": "defaultValue",
+                  "name_loc": {
+                    "start": {
+                      "line": 1,
+                      "column": 8,
+                      "character": 8
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 20,
+                      "character": 20
+                    }
+                  },
+                  "value": [
+                    {
+                      "start": 22,
+                      "end": 23,
+                      "type": "Text",
+                      "raw": "b",
+                      "data": "b"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "Element",
+                  "start": 25,
+                  "end": 53,
+                  "name": "option",
+                  "attributes": [
+                    {
+                      "type": "Attribute",
+                      "start": 33,
+                      "end": 42,
+                      "name": "value",
+                      "name_loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 33,
+                          "character": 33
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 38,
+                          "character": 38
+                        }
+                      },
+                      "value": [
+                        {
+                          "start": 40,
+                          "end": 41,
+                          "type": "Text",
+                          "raw": "a",
+                          "data": "a"
+                        }
+                      ]
+                    }
+                  ],
+                  "children": [
+                    {
+                      "type": "Text",
+                      "start": 43,
+                      "end": 44,
+                      "raw": "A",
+                      "data": "A"
+                    }
+                  ]
+                },
+                {
+                  "type": "Element",
+                  "start": 53,
+                  "end": 81,
+                  "name": "option",
+                  "attributes": [
+                    {
+                      "type": "Attribute",
+                      "start": 61,
+                      "end": 70,
+                      "name": "value",
+                      "name_loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 61,
+                          "character": 61
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 66,
+                          "character": 66
+                        }
+                      },
+                      "value": [
+                        {
+                          "start": 68,
+                          "end": 69,
+                          "type": "Text",
+                          "raw": "b",
+                          "data": "b"
+                        }
+                      ]
+                    }
+                  ],
+                  "children": [
+                    {
+                      "type": "Text",
+                      "start": 71,
+                      "end": 72,
+                      "raw": "B",
+                      "data": "B"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "comparable": {
+      "ok": true,
+      "runes": true,
+      "diagnostics": []
+    }
+  }
+}

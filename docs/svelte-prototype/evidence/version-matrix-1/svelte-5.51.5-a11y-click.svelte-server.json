@@ -1,0 +1,452 @@
+{
+  "source": "<script>let count = $state(0);</script>\n<div onclick={() => count++}>{count}</div>\n",
+  "settings": {
+    "filename": "a11y-click.svelte",
+    "generate": "server",
+    "css": "external",
+    "dev": false,
+    "runes": true
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "a11y-click.svelte",
+        "version": 1,
+        "text": "<script>let count = $state(0);</script>\n<div onclick={() => count++}>{count}</div>\n"
+      },
+      "target": "server",
+      "dev": false,
+      "runes": true,
+      "compatibility": {
+        "svelteVersion": "5.51.5"
+      }
+    },
+    "exit": 0,
+    "signal": null,
+    "stdout": "{\"ok\":true,\"result\":{\"uri\":\"a11y-click.svelte\",\"version\":1,\"javascript\":{\"code\":\"import * as $ from 'svelte/internal/server';\\n\\nexport default function A11y_click($$renderer) {\\n\\tlet count = 0;\\n\\n\\t$$renderer.push(`<div>${$.escape(count)}</div>`);\\n}\",\"map\":\"{\\\"version\\\":3,\\\"sources\\\":[\\\"a11y-click.svelte\\\"],\\\"sourcesContent\\\":[\\\"<script>let count = $state(0);</script>\\\\n<div onclick={() => count++}>{count}</div>\\\\n\\\"],\\\"names\\\":[],\\\"mappings\\\":\\\";;+CAAA,CAAC;CAAO,IAAI,AAAA,KAAK,GAAU,CAAC;;kCACR,KAAK;AADa,CAAC\\\"}\"},\"css\":null,\"diagnostics\":[{\"code\":\"a11y_click_events_have_key_events\",\"message\":\"Visible, non-interactive elements with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type=\\\"button\\\">` or `<a>` might be more appropriate\\nhttps://svelte.dev/e/a11y_click_events_have_key_events\",\"severity\":\"warning\",\"uri\":\"a11y-click.svelte\",\"bytes\":{\"start\":40,\"end\":82},\"range\":{\"start\":{\"line\":1,\"character\":0},\"end\":{\"line\":1,\"character\":42}}},{\"code\":\"a11y_no_static_element_interactions\",\"message\":\"`<div>` with a click handler must have an ARIA role\\nhttps://svelte.dev/e/a11y_no_static_element_interactions\",\"severity\":\"warning\",\"uri\":\"a11y-click.svelte\",\"bytes\":{\"start\":40,\"end\":82},\"range\":{\"start\":{\"line\":1,\"character\":0},\"end\":{\"line\":1,\"character\":42}}}],\"runes\":true,\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.51.5\",\"patches\":[\"child-reset-5.53.11\"],\"clientDevelopment\":false},\"compatibility\":{\"id\":\"v1:svelte=5.51.5;kit=none;ts=unspecified\",\"svelteVersion\":\"5.51.5\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": true,
+      "result": {
+        "uri": "a11y-click.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import * as $ from 'svelte/internal/server';\n\nexport default function A11y_click($$renderer) {\n\tlet count = 0;\n\n\t$$renderer.push(`<div>${$.escape(count)}</div>`);\n}",
+          "map": "{\"version\":3,\"sources\":[\"a11y-click.svelte\"],\"sourcesContent\":[\"<script>let count = $state(0);</script>\\n<div onclick={() => count++}>{count}</div>\\n\"],\"names\":[],\"mappings\":\";;+CAAA,CAAC;CAAO,IAAI,AAAA,KAAK,GAAU,CAAC;;kCACR,KAAK;AADa,CAAC\"}"
+        },
+        "css": null,
+        "diagnostics": [
+          {
+            "code": "a11y_click_events_have_key_events",
+            "message": "Visible, non-interactive elements with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type=\"button\">` or `<a>` might be more appropriate\nhttps://svelte.dev/e/a11y_click_events_have_key_events",
+            "severity": "warning",
+            "uri": "a11y-click.svelte",
+            "bytes": {
+              "start": 40,
+              "end": 82
+            },
+            "range": {
+              "start": {
+                "line": 1,
+                "character": 0
+              },
+              "end": {
+                "line": 1,
+                "character": 42
+              }
+            }
+          },
+          {
+            "code": "a11y_no_static_element_interactions",
+            "message": "`<div>` with a click handler must have an ARIA role\nhttps://svelte.dev/e/a11y_no_static_element_interactions",
+            "severity": "warning",
+            "uri": "a11y-click.svelte",
+            "bytes": {
+              "start": 40,
+              "end": 82
+            },
+            "range": {
+              "start": {
+                "line": 1,
+                "character": 0
+              },
+              "end": {
+                "line": 1,
+                "character": 42
+              }
+            }
+          }
+        ],
+        "runes": true,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.51.5",
+          "patches": [
+            "child-reset-5.53.11"
+          ],
+          "clientDevelopment": false
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.51.5;kit=none;ts=unspecified",
+          "svelteVersion": "5.51.5",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": true,
+    "artifact": {
+      "js": {
+        "code": "import * as $ from 'svelte/internal/server';\n\nexport default function A11y_click($$renderer) {\n\tlet count = 0;\n\n\t$$renderer.push(`<div>${$.escape(count)}</div>`);\n}",
+        "map": {
+          "version": 3,
+          "names": [],
+          "sources": [
+            "a11y-click.svelte"
+          ],
+          "sourcesContent": [
+            "<script>let count = $state(0);</script>\n<div onclick={() => count++}>{count}</div>\n"
+          ],
+          "mappings": ";;+CAAA,CAAC;CAAO,GAAG,CAAC,KAAK,GAAU,CAAC,CAAE;;kCACA,KAAK;AADG,CAAC"
+        }
+      },
+      "css": null,
+      "warnings": [
+        {
+          "code": "a11y_click_events_have_key_events",
+          "message": "Visible, non-interactive elements with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type=\"button\">` or `<a>` might be more appropriate\nhttps://svelte.dev/e/a11y_click_events_have_key_events",
+          "filename": "a11y-click.svelte",
+          "start": {
+            "line": 2,
+            "column": 0,
+            "character": 40
+          },
+          "end": {
+            "line": 2,
+            "column": 42,
+            "character": 82
+          },
+          "position": [
+            40,
+            82
+          ],
+          "frame": "1: <script>let count = $state(0);</script>\n2: <div onclick={() => count++}>{count}</div>\n                                             ^\n3: "
+        },
+        {
+          "code": "a11y_no_static_element_interactions",
+          "message": "`<div>` with a click handler must have an ARIA role\nhttps://svelte.dev/e/a11y_no_static_element_interactions",
+          "filename": "a11y-click.svelte",
+          "start": {
+            "line": 2,
+            "column": 0,
+            "character": 40
+          },
+          "end": {
+            "line": 2,
+            "column": 42,
+            "character": 82
+          },
+          "position": [
+            40,
+            82
+          ],
+          "frame": "1: <script>let count = $state(0);</script>\n2: <div onclick={() => count++}>{count}</div>\n                                             ^\n3: "
+        }
+      ],
+      "metadata": {
+        "runes": true
+      },
+      "ast": {
+        "html": {
+          "type": "Fragment",
+          "start": 40,
+          "end": 82,
+          "children": [
+            {
+              "type": "Text",
+              "start": 39,
+              "end": 40,
+              "raw": "\n",
+              "data": "\n"
+            },
+            {
+              "type": "Element",
+              "start": 40,
+              "end": 82,
+              "name": "div",
+              "attributes": [
+                {
+                  "type": "Attribute",
+                  "start": 45,
+                  "end": 68,
+                  "name": "onclick",
+                  "name_loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 5,
+                      "character": 45
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 12,
+                      "character": 52
+                    }
+                  },
+                  "value": [
+                    {
+                      "type": "MustacheTag",
+                      "start": 53,
+                      "end": 68,
+                      "expression": {
+                        "type": "ArrowFunctionExpression",
+                        "start": 54,
+                        "end": 67,
+                        "loc": {
+                          "start": {
+                            "line": 2,
+                            "column": 14
+                          },
+                          "end": {
+                            "line": 2,
+                            "column": 27
+                          }
+                        },
+                        "id": null,
+                        "expression": true,
+                        "generator": false,
+                        "async": false,
+                        "params": [],
+                        "body": {
+                          "type": "UpdateExpression",
+                          "start": 60,
+                          "end": 67,
+                          "loc": {
+                            "start": {
+                              "line": 2,
+                              "column": 20
+                            },
+                            "end": {
+                              "line": 2,
+                              "column": 27
+                            }
+                          },
+                          "operator": "++",
+                          "prefix": false,
+                          "argument": {
+                            "type": "Identifier",
+                            "start": 60,
+                            "end": 65,
+                            "loc": {
+                              "start": {
+                                "line": 2,
+                                "column": 20
+                              },
+                              "end": {
+                                "line": 2,
+                                "column": 25
+                              }
+                            },
+                            "name": "count"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "MustacheTag",
+                  "start": 69,
+                  "end": 76,
+                  "expression": {
+                    "type": "Identifier",
+                    "start": 70,
+                    "end": 75,
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 30
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 35
+                      }
+                    },
+                    "name": "count"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "instance": {
+          "type": "Script",
+          "start": 0,
+          "end": 39,
+          "context": "default",
+          "content": {
+            "type": "Program",
+            "start": 8,
+            "end": 30,
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 39
+              }
+            },
+            "body": [
+              {
+                "type": "VariableDeclaration",
+                "start": 8,
+                "end": 30,
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 8
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 30
+                  }
+                },
+                "declarations": [
+                  {
+                    "type": "VariableDeclarator",
+                    "start": 12,
+                    "end": 29,
+                    "loc": {
+                      "start": {
+                        "line": 1,
+                        "column": 12
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 29
+                      }
+                    },
+                    "id": {
+                      "type": "Identifier",
+                      "start": 12,
+                      "end": 17,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 12
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 17
+                        }
+                      },
+                      "name": "count"
+                    },
+                    "init": {
+                      "type": "CallExpression",
+                      "start": 20,
+                      "end": 29,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 20
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 29
+                        }
+                      },
+                      "callee": {
+                        "type": "Identifier",
+                        "start": 20,
+                        "end": 26,
+                        "loc": {
+                          "start": {
+                            "line": 1,
+                            "column": 20
+                          },
+                          "end": {
+                            "line": 1,
+                            "column": 26
+                          }
+                        },
+                        "name": "$state"
+                      },
+                      "arguments": [
+                        {
+                          "type": "Literal",
+                          "start": 27,
+                          "end": 28,
+                          "loc": {
+                            "start": {
+                              "line": 1,
+                              "column": 27
+                            },
+                            "end": {
+                              "line": 1,
+                              "column": 28
+                            }
+                          },
+                          "value": 0,
+                          "raw": "0"
+                        }
+                      ],
+                      "optional": false
+                    }
+                  }
+                ],
+                "kind": "let"
+              }
+            ],
+            "sourceType": "module"
+          }
+        }
+      }
+    },
+    "comparable": {
+      "ok": true,
+      "runes": true,
+      "diagnostics": [
+        {
+          "code": "a11y_click_events_have_key_events",
+          "severity": "warning",
+          "message": "Visible, non-interactive elements with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type=\"button\">` or `<a>` might be more appropriate\nhttps://svelte.dev/e/a11y_click_events_have_key_events",
+          "bytes": {
+            "start": 40,
+            "end": 82
+          }
+        },
+        {
+          "code": "a11y_no_static_element_interactions",
+          "severity": "warning",
+          "message": "`<div>` with a click handler must have an ARIA role\nhttps://svelte.dev/e/a11y_no_static_element_interactions",
+          "bytes": {
+            "start": 40,
+            "end": 82
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,335 @@
+{
+  "source": "<script lang=\"ts\">\r\n  let greeting: string = '😀 café';\r\n</script>\r\n<p>{greeting}</p>\r\n<img src=\"/emoji.png\">\r\n",
+  "settings": {
+    "filename": "emoji-crlf.svelte",
+    "generate": "client",
+    "css": "external",
+    "dev": false,
+    "runes": true
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "emoji-crlf.svelte",
+        "version": 1,
+        "text": "<script lang=\"ts\">\r\n  let greeting: string = '😀 café';\r\n</script>\r\n<p>{greeting}</p>\r\n<img src=\"/emoji.png\">\r\n"
+      },
+      "target": "client",
+      "dev": false,
+      "runes": true,
+      "compatibility": {
+        "svelteVersion": "5.53.5"
+      }
+    },
+    "exit": 0,
+    "signal": null,
+    "stdout": "{\"ok\":true,\"result\":{\"uri\":\"emoji-crlf.svelte\",\"version\":1,\"javascript\":{\"code\":\"import 'svelte/internal/disclose-version';\\nimport * as $ from 'svelte/internal/client';\\n\\nvar root = $.from_html(`<p></p> <img src=\\\"/emoji.png\\\"/>`, 1);\\n\\nexport default function Emoji_crlf($$anchor) {\\n\\tlet greeting = '😀 café';\\n\\tvar fragment = root();\\n\\tvar p = $.first_child(fragment);\\n\\n\\tp.textContent = '😀 café';\\n\\t$.next(2);\\n\\t$.append($$anchor, fragment);\\n}\",\"map\":\"{\\\"version\\\":3,\\\"sources\\\":[\\\"emoji-crlf.svelte\\\"],\\\"sourcesContent\\\":[\\\"<script lang=\\\\\\\"ts\\\\\\\">\\\\r\\\\n  let greeting: string = '😀 café';\\\\r\\\\n</script>\\\\r\\\\n<p>{greeting}</p>\\\\r\\\\n<img src=\\\\\\\"/emoji.png\\\\\\\">\\\\r\\\\n\\\"],\\\"names\\\":[],\\\"mappings\\\":\\\";;;;;6CAAA,CAAC;CACC,IAAI,AAAA,QAAgB,GAAG,QAAS;;KAEjC,CAAC;;CAAD,CAAC;;;AADM,CAAC\\\"}\"},\"css\":null,\"diagnostics\":[{\"code\":\"a11y_missing_attribute\",\"message\":\"`<img>` element should have an alt attribute\\nhttps://svelte.dev/e/a11y_missing_attribute\",\"severity\":\"warning\",\"uri\":\"emoji-crlf.svelte\",\"bytes\":{\"start\":90,\"end\":112},\"range\":{\"start\":{\"line\":4,\"character\":0},\"end\":{\"line\":4,\"character\":22}}}],\"runes\":true,\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.53.5\",\"patches\":[\"child-reset-5.53.11\",\"declaration-tags-5.56\",\"select-default-5.57\"],\"clientDevelopment\":false},\"compatibility\":{\"id\":\"v1:svelte=5.53.5;kit=none;ts=unspecified\",\"svelteVersion\":\"5.53.5\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": true,
+      "result": {
+        "uri": "emoji-crlf.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import 'svelte/internal/disclose-version';\nimport * as $ from 'svelte/internal/client';\n\nvar root = $.from_html(`<p></p> <img src=\"/emoji.png\"/>`, 1);\n\nexport default function Emoji_crlf($$anchor) {\n\tlet greeting = '😀 café';\n\tvar fragment = root();\n\tvar p = $.first_child(fragment);\n\n\tp.textContent = '😀 café';\n\t$.next(2);\n\t$.append($$anchor, fragment);\n}",
+          "map": "{\"version\":3,\"sources\":[\"emoji-crlf.svelte\"],\"sourcesContent\":[\"<script lang=\\\"ts\\\">\\r\\n  let greeting: string = '😀 café';\\r\\n</script>\\r\\n<p>{greeting}</p>\\r\\n<img src=\\\"/emoji.png\\\">\\r\\n\"],\"names\":[],\"mappings\":\";;;;;6CAAA,CAAC;CACC,IAAI,AAAA,QAAgB,GAAG,QAAS;;KAEjC,CAAC;;CAAD,CAAC;;;AADM,CAAC\"}"
+        },
+        "css": null,
+        "diagnostics": [
+          {
+            "code": "a11y_missing_attribute",
+            "message": "`<img>` element should have an alt attribute\nhttps://svelte.dev/e/a11y_missing_attribute",
+            "severity": "warning",
+            "uri": "emoji-crlf.svelte",
+            "bytes": {
+              "start": 90,
+              "end": 112
+            },
+            "range": {
+              "start": {
+                "line": 4,
+                "character": 0
+              },
+              "end": {
+                "line": 4,
+                "character": 22
+              }
+            }
+          }
+        ],
+        "runes": true,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.53.5",
+          "patches": [
+            "child-reset-5.53.11",
+            "declaration-tags-5.56",
+            "select-default-5.57"
+          ],
+          "clientDevelopment": false
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.53.5;kit=none;ts=unspecified",
+          "svelteVersion": "5.53.5",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": true,
+    "artifact": {
+      "js": {
+        "code": "import 'svelte/internal/disclose-version';\nimport * as $ from 'svelte/internal/client';\n\nvar root = $.from_html(`<p></p> <img src=\"/emoji.png\"/>`, 1);\n\nexport default function Emoji_crlf($$anchor) {\n\tlet greeting = '😀 café';\n\tvar fragment = root();\n\tvar p = $.first_child(fragment);\n\n\tp.textContent = '😀 café';\n\t$.next(2);\n\t$.append($$anchor, fragment);\n}",
+        "map": {
+          "version": 3,
+          "names": [],
+          "sources": [
+            "emoji-crlf.svelte"
+          ],
+          "sourcesContent": [
+            "<script lang=\"ts\">\r\n  let greeting: string = '😀 café';\r\n</script>\r\n<p>{greeting}</p>\r\n<img src=\"/emoji.png\">\r\n"
+          ],
+          "mappings": ";;;;;6CAAA,CAAC;CACC,GAAG,CAAC,QAAQ,AAAQ,GAAG,SAAS,CAAC;;KAElC,CAAC;;CAAD,CAAC;;;AADM,CAAC"
+        }
+      },
+      "css": null,
+      "warnings": [
+        {
+          "code": "a11y_missing_attribute",
+          "message": "`<img>` element should have an alt attribute\nhttps://svelte.dev/e/a11y_missing_attribute",
+          "filename": "emoji-crlf.svelte",
+          "start": {
+            "line": 5,
+            "column": 0,
+            "character": 87
+          },
+          "end": {
+            "line": 5,
+            "column": 22,
+            "character": 109
+          },
+          "position": [
+            87,
+            109
+          ],
+          "frame": "3: </script>\r\n4: <p>{greeting}</p>\r\n5: <img src=\"/emoji.png\">\r\n                         ^\n6: "
+        }
+      ],
+      "metadata": {
+        "runes": true
+      },
+      "ast": {
+        "html": {
+          "type": "Fragment",
+          "start": 68,
+          "end": 109,
+          "children": [
+            {
+              "type": "Text",
+              "start": 66,
+              "end": 68,
+              "raw": "\r\n",
+              "data": "\r\n"
+            },
+            {
+              "type": "Element",
+              "start": 68,
+              "end": 85,
+              "name": "p",
+              "attributes": [],
+              "children": [
+                {
+                  "type": "MustacheTag",
+                  "start": 71,
+                  "end": 81,
+                  "expression": {
+                    "type": "Identifier",
+                    "start": 72,
+                    "end": 80,
+                    "loc": {
+                      "start": {
+                        "line": 4,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 4,
+                        "column": 12
+                      }
+                    },
+                    "name": "greeting"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "Text",
+              "start": 85,
+              "end": 87,
+              "raw": " ",
+              "data": " "
+            },
+            {
+              "type": "Element",
+              "start": 87,
+              "end": 109,
+              "name": "img",
+              "attributes": [
+                {
+                  "type": "Attribute",
+                  "start": 92,
+                  "end": 108,
+                  "name": "src",
+                  "name_loc": {
+                    "start": {
+                      "line": 5,
+                      "column": 5,
+                      "character": 92
+                    },
+                    "end": {
+                      "line": 5,
+                      "column": 8,
+                      "character": 95
+                    }
+                  },
+                  "value": [
+                    {
+                      "start": 97,
+                      "end": 107,
+                      "type": "Text",
+                      "raw": "/emoji.png",
+                      "data": "/emoji.png"
+                    }
+                  ]
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        "instance": {
+          "type": "Script",
+          "start": 0,
+          "end": 66,
+          "context": "default",
+          "content": {
+            "type": "Program",
+            "start": 18,
+            "end": 57,
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 0
+              },
+              "end": {
+                "line": 3,
+                "column": 9
+              }
+            },
+            "body": [
+              {
+                "type": "VariableDeclaration",
+                "start": 22,
+                "end": 55,
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 35
+                  }
+                },
+                "declarations": [
+                  {
+                    "type": "VariableDeclarator",
+                    "start": 26,
+                    "end": 54,
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 6
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 34
+                      }
+                    },
+                    "id": {
+                      "type": "Identifier",
+                      "start": 26,
+                      "end": 42,
+                      "loc": {
+                        "start": {
+                          "line": 2,
+                          "column": 6
+                        },
+                        "end": {
+                          "line": 2,
+                          "column": 22
+                        }
+                      },
+                      "name": "greeting"
+                    },
+                    "init": {
+                      "type": "Literal",
+                      "start": 45,
+                      "end": 54,
+                      "loc": {
+                        "start": {
+                          "line": 2,
+                          "column": 25
+                        },
+                        "end": {
+                          "line": 2,
+                          "column": 34
+                        }
+                      },
+                      "value": "😀 café",
+                      "raw": "'😀 café'"
+                    }
+                  }
+                ],
+                "kind": "let"
+              }
+            ],
+            "sourceType": "module"
+          }
+        }
+      }
+    },
+    "comparable": {
+      "ok": true,
+      "runes": true,
+      "diagnostics": [
+        {
+          "code": "a11y_missing_attribute",
+          "severity": "warning",
+          "message": "`<img>` element should have an alt attribute\nhttps://svelte.dev/e/a11y_missing_attribute",
+          "bytes": {
+            "start": 90,
+            "end": 112
+          }
+        }
+      ]
+    }
+  }
+}

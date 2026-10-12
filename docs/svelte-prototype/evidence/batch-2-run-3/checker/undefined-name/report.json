@@ -1,0 +1,173 @@
+{
+  "name": "undefined-name",
+  "language": "typescript",
+  "expectedCodes": [
+    2304
+  ],
+  "complete": true,
+  "match": true,
+  "declarations": {
+    "originalSvelteTypes": "973934bf1acccbd6ad0bc17c06f6dd788ad976664e4857c5004d9af9f2b3a920",
+    "maskedSvelteTypes": "d1b9212fcb6594459241315e0e016b21713d68cb6dcc90b29530058d06f5ad3a",
+    "shim": "f2dfa79c9e867a25d3887446b730f8fbdeaa9b74db3eeab196a2d251227a96a5",
+    "html": "2b3d6cdfd182cbd863e5023db6eb5eb530e8ad6b4f78df8f61fb744a70cd0080"
+  },
+  "sources": {
+    "Child.svelte": {
+      "language": "typescript",
+      "generated": "Child.svelte.tsx",
+      "sha256": "b0f2455a83ab255dabf89c3a7456f62124620ba190ea7e4d40091d1c9accbd08",
+      "generatedSha256": "be14a8ac65bba2f61703ed267aff72939ef3fbb046ba9f3c0d9797bafe944904",
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.53.11",
+        "patches": [
+          "child-reset-5.53.11"
+        ],
+        "clientDevelopment": false
+      }
+    },
+    "Case.svelte": {
+      "language": "typescript",
+      "generated": "Case.svelte.tsx",
+      "sha256": "135bf0f0c98c617719112768371b6e1f8e21f08ab42e9d30b1dd987608580343",
+      "generatedSha256": "134041bd4422bfe3883a13dd31fe98b33cb441390f64126afe16b9f41cff01c9",
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.53.11",
+        "patches": [
+          "child-reset-5.53.11"
+        ],
+        "clientDevelopment": false
+      }
+    }
+  },
+  "oracle": [
+    {
+      "file": "Case.svelte.tsx",
+      "start": 141,
+      "end": 160,
+      "code": 2304,
+      "category": 1,
+      "source": "",
+      "text": "Cannot find name 'missingTemplateName'.",
+      "unnecessary": false,
+      "deprecated": false,
+      "chain": [],
+      "related": []
+    }
+  ],
+  "native": [
+    {
+      "file": "Case.svelte.tsx",
+      "start": 141,
+      "end": 160,
+      "code": 2304,
+      "category": 1,
+      "source": "",
+      "text": "Cannot find name 'missingTemplateName'.",
+      "unnecessary": false,
+      "deprecated": false,
+      "chain": [],
+      "related": []
+    }
+  ],
+  "nativeExecution": {
+    "processStatus": 1,
+    "compilerStatus": 2,
+    "complete": true,
+    "output": "",
+    "serializationFailures": [],
+    "unported": []
+  },
+  "assertions": {
+    "oracle": true,
+    "native": true
+  },
+  "mappedOracle": [
+    {
+      "file": "Case.svelte.tsx",
+      "start": 141,
+      "end": 160,
+      "code": 2304,
+      "category": 1,
+      "source": "",
+      "text": "Cannot find name 'missingTemplateName'.",
+      "unnecessary": false,
+      "deprecated": false,
+      "chain": [],
+      "related": [],
+      "original": {
+        "status": "exact",
+        "file": "Case.svelte",
+        "bytes": {
+          "start": 66,
+          "end": 85
+        },
+        "start": {
+          "offset": 66,
+          "line": 3,
+          "character": 12
+        },
+        "end": {
+          "offset": 85,
+          "line": 3,
+          "character": 31
+        }
+      }
+    }
+  ],
+  "mappedNative": [
+    {
+      "file": "Case.svelte.tsx",
+      "start": 141,
+      "end": 160,
+      "code": 2304,
+      "category": 1,
+      "source": "",
+      "text": "Cannot find name 'missingTemplateName'.",
+      "unnecessary": false,
+      "deprecated": false,
+      "chain": [],
+      "related": [],
+      "original": {
+        "status": "exact",
+        "file": "Case.svelte",
+        "bytes": {
+          "start": 66,
+          "end": 85
+        },
+        "start": {
+          "offset": 66,
+          "line": 3,
+          "character": 12
+        },
+        "end": {
+          "offset": 85,
+          "line": 3,
+          "character": 31
+        }
+      }
+    }
+  ],
+  "mappingAssertions": {
+    "expectedText": "missingTemplateName",
+    "oracle": true,
+    "native": true,
+    "rust": true
+  },
+  "mappingSummary": {
+    "oracle": {
+      "exact": 1
+    },
+    "native": {
+      "exact": 1
+    }
+  }
+}

@@ -1,0 +1,233 @@
+{
+  "environment": "JSDOM; no real-browser verification",
+  "scope": "one counter fixture, SSR and hydration interaction matrix",
+  "props": {
+    "step": 2,
+    "label": "Count"
+  },
+  "expected": {
+    "initial": "Count: 0 / 0",
+    "afterClick": "Count: 2 / 4"
+  },
+  "compilation": [
+    {
+      "side": "oracle",
+      "target": "server",
+      "ok": true,
+      "artifact": "runtime/Counter.oracle.server.mjs",
+      "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf",
+      "diagnostics": []
+    },
+    {
+      "side": "oracle",
+      "target": "client",
+      "ok": true,
+      "artifact": "runtime/Counter.oracle.client.mjs",
+      "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680",
+      "diagnostics": []
+    },
+    {
+      "side": "native",
+      "target": "server",
+      "ok": true,
+      "artifact": "runtime/Counter.native.server.mjs",
+      "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf",
+      "diagnostics": [],
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.53.11"
+      }
+    },
+    {
+      "side": "native",
+      "target": "client",
+      "ok": true,
+      "artifact": "runtime/Counter.native.client.mjs",
+      "sha256": "294a41ba37374492f226019af2838c24745927a5b399c27963715fc8e3f998f3",
+      "diagnostics": [],
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.53.11"
+      }
+    }
+  ],
+  "server": {
+    "oracle": {
+      "status": 0,
+      "signal": null,
+      "stdout": "{\"ok\":true,\"warnings\":[],\"errors\":[],\"logs\":[],\"body\":\"<!--[--><button type=\\\"button\\\">Count: 0 / 0</button><!--]-->\",\"head\":\"\"}",
+      "stderr": "",
+      "response": {
+        "ok": true,
+        "warnings": [],
+        "errors": [],
+        "logs": [],
+        "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+        "head": ""
+      },
+      "complete": true
+    },
+    "native": {
+      "status": 0,
+      "signal": null,
+      "stdout": "{\"ok\":true,\"warnings\":[],\"errors\":[],\"logs\":[],\"body\":\"<!--[--><button type=\\\"button\\\">Count: 0 / 0</button><!--]-->\",\"head\":\"\"}",
+      "stderr": "",
+      "response": {
+        "ok": true,
+        "warnings": [],
+        "errors": [],
+        "logs": [],
+        "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+        "head": ""
+      },
+      "complete": true
+    }
+  },
+  "hydration": [
+    {
+      "server": "oracle",
+      "client": "oracle",
+      "ok": true,
+      "process": {
+        "status": 0,
+        "signal": null,
+        "stdout": "{\"ok\":true,\"environment\":\"jsdom\",\"warnings\":[],\"errors\":[],\"logs\":[],\"serverText\":\"Count: 0 / 0\",\"reusedServerNode\":true,\"initialText\":\"Count: 0 / 0\",\"afterClickText\":\"Count: 2 / 4\",\"cleanup\":{\"buttonDisconnected\":true,\"elements\":0,\"text\":\"\",\"html\":\"\"}}",
+        "stderr": "",
+        "response": {
+          "ok": true,
+          "environment": "jsdom",
+          "warnings": [],
+          "errors": [],
+          "logs": [],
+          "serverText": "Count: 0 / 0",
+          "reusedServerNode": true,
+          "initialText": "Count: 0 / 0",
+          "afterClickText": "Count: 2 / 4",
+          "cleanup": {
+            "buttonDisconnected": true,
+            "elements": 0,
+            "text": "",
+            "html": ""
+          }
+        },
+        "complete": true
+      }
+    },
+    {
+      "server": "oracle",
+      "client": "native",
+      "ok": false,
+      "process": {
+        "status": 1,
+        "signal": null,
+        "stdout": "{\"ok\":false,\"environment\":\"jsdom\",\"warnings\":[\"Failed to hydrate:  TypeError: $.only_child is not a function\\n    at Counter (file:///home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/batch-2-run-1/runtime/runtime/Counter.native.client.mjs:13:15)\\n    at file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/render.js:197:17\\n    at Boundary.#children (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/dom/blocks/boundary.js:154:4)\\n    at file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/dom/blocks/boundary.js:192:51\\n    at update_reaction (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/runtime.js:258:16)\\n    at update_effect (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/runtime.js:460:18)\\n    at create_effect (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/reactivity/effects.js:136:4)\\n    at branch (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/reactivity/effects.js:438:9)\\n    at #hydrate_resolved_content (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/dom/blocks/boundary.js:192:24)\\n    at file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/dom/blocks/boundary.js:178:36\"],\"errors\":[],\"logs\":[],\"serverText\":\"Count: 0 / 0\",\"failure\":\"Error: https://svelte.dev/e/hydration_failed\\n    at Module.hydration_failed (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/errors.js:344:9)\\n    at Module.hydrate (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/render.js:139:6)\\n    at file:///home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/batch-2-run-1/runtime/runtime/[eval1]:34:22\"}",
+        "stderr": "",
+        "response": {
+          "ok": false,
+          "environment": "jsdom",
+          "warnings": [
+            "Failed to hydrate:  TypeError: $.only_child is not a function\n    at Counter (file:///home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/batch-2-run-1/runtime/runtime/Counter.native.client.mjs:13:15)\n    at file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/render.js:197:17\n    at Boundary.#children (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/dom/blocks/boundary.js:154:4)\n    at file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/dom/blocks/boundary.js:192:51\n    at update_reaction (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/runtime.js:258:16)\n    at update_effect (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/runtime.js:460:18)\n    at create_effect (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/reactivity/effects.js:136:4)\n    at branch (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/reactivity/effects.js:438:9)\n    at #hydrate_resolved_content (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/dom/blocks/boundary.js:192:24)\n    at file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/dom/blocks/boundary.js:178:36"
+          ],
+          "errors": [],
+          "logs": [],
+          "serverText": "Count: 0 / 0",
+          "failure": "Error: https://svelte.dev/e/hydration_failed\n    at Module.hydration_failed (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/errors.js:344:9)\n    at Module.hydrate (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/render.js:139:6)\n    at file:///home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/batch-2-run-1/runtime/runtime/[eval1]:34:22"
+        },
+        "complete": true
+      }
+    },
+    {
+      "server": "native",
+      "client": "oracle",
+      "ok": true,
+      "process": {
+        "status": 0,
+        "signal": null,
+        "stdout": "{\"ok\":true,\"environment\":\"jsdom\",\"warnings\":[],\"errors\":[],\"logs\":[],\"serverText\":\"Count: 0 / 0\",\"reusedServerNode\":true,\"initialText\":\"Count: 0 / 0\",\"afterClickText\":\"Count: 2 / 4\",\"cleanup\":{\"buttonDisconnected\":true,\"elements\":0,\"text\":\"\",\"html\":\"\"}}",
+        "stderr": "",
+        "response": {
+          "ok": true,
+          "environment": "jsdom",
+          "warnings": [],
+          "errors": [],
+          "logs": [],
+          "serverText": "Count: 0 / 0",
+          "reusedServerNode": true,
+          "initialText": "Count: 0 / 0",
+          "afterClickText": "Count: 2 / 4",
+          "cleanup": {
+            "buttonDisconnected": true,
+            "elements": 0,
+            "text": "",
+            "html": ""
+          }
+        },
+        "complete": true
+      }
+    },
+    {
+      "server": "native",
+      "client": "native",
+      "ok": false,
+      "process": {
+        "status": 1,
+        "signal": null,
+        "stdout": "{\"ok\":false,\"environment\":\"jsdom\",\"warnings\":[\"Failed to hydrate:  TypeError: $.only_child is not a function\\n    at Counter (file:///home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/batch-2-run-1/runtime/runtime/Counter.native.client.mjs:13:15)\\n    at file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/render.js:197:17\\n    at Boundary.#children (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/dom/blocks/boundary.js:154:4)\\n    at file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/dom/blocks/boundary.js:192:51\\n    at update_reaction (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/runtime.js:258:16)\\n    at update_effect (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/runtime.js:460:18)\\n    at create_effect (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/reactivity/effects.js:136:4)\\n    at branch (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/reactivity/effects.js:438:9)\\n    at #hydrate_resolved_content (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/dom/blocks/boundary.js:192:24)\\n    at file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/dom/blocks/boundary.js:178:36\"],\"errors\":[],\"logs\":[],\"serverText\":\"Count: 0 / 0\",\"failure\":\"Error: https://svelte.dev/e/hydration_failed\\n    at Module.hydration_failed (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/errors.js:344:9)\\n    at Module.hydrate (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/render.js:139:6)\\n    at file:///home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/batch-2-run-1/runtime/runtime/[eval1]:34:22\"}",
+        "stderr": "",
+        "response": {
+          "ok": false,
+          "environment": "jsdom",
+          "warnings": [
+            "Failed to hydrate:  TypeError: $.only_child is not a function\n    at Counter (file:///home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/batch-2-run-1/runtime/runtime/Counter.native.client.mjs:13:15)\n    at file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/render.js:197:17\n    at Boundary.#children (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/dom/blocks/boundary.js:154:4)\n    at file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/dom/blocks/boundary.js:192:51\n    at update_reaction (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/runtime.js:258:16)\n    at update_effect (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/runtime.js:460:18)\n    at create_effect (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/reactivity/effects.js:136:4)\n    at branch (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/reactivity/effects.js:438:9)\n    at #hydrate_resolved_content (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/dom/blocks/boundary.js:192:24)\n    at file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/dom/blocks/boundary.js:178:36"
+          ],
+          "errors": [],
+          "logs": [],
+          "serverText": "Count: 0 / 0",
+          "failure": "Error: https://svelte.dev/e/hydration_failed\n    at Module.hydration_failed (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/errors.js:344:9)\n    at Module.hydrate (file:///home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/render.js:139:6)\n    at file:///home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/batch-2-run-1/runtime/runtime/[eval1]:34:22"
+        },
+        "complete": true
+      }
+    }
+  ],
+  "identity": {
+    "startedAt": "2026-10-10T20:06:11.953Z",
+    "node": "v24.21.0",
+    "svelte": "5.53.11",
+    "jsdom": "26.1.0",
+    "fixture": {
+      "path": "scripts/svelte/fixtures/runtime/Counter.svelte",
+      "sha256": "c1dc099a8efd8a36febc2a11154024758a763dc5b8f045875e683fe35f4e2ad1"
+    },
+    "nativeCompiler": {
+      "path": "/home/yycholla/Projects/ts-rust/target/release/svelte-tool",
+      "sha256": "b3648a002e109507e99f95aec5c06edd0e74732d7f1d5be824647818226f3003"
+    },
+    "oracleCompiler": {
+      "path": "/home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/compiler/index.js",
+      "sha256": "ea18a96a9f7d594f4ddb377224dcc146b34d9e11c1015d3be585204f3a43e4b4"
+    },
+    "compileOptions": {
+      "filename": "Counter.svelte",
+      "runes": true,
+      "dev": false,
+      "css": "external"
+    }
+  },
+  "serverAgreement": true,
+  "summary": {
+    "compilations": 4,
+    "compilationFailures": 0,
+    "serverAgreement": true,
+    "hydrationCases": 4,
+    "hydrationPassed": 2,
+    "hydrationUnrun": 0
+  },
+  "ok": false,
+  "completedAt": "2026-10-10T20:06:13.879Z"
+}

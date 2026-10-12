@@ -1,0 +1,166 @@
+{
+  "source": "{let a}\n",
+  "settings": {
+    "filename": "declaration-uninitialized-let.svelte",
+    "generate": "client",
+    "css": "external",
+    "dev": false
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "declaration-uninitialized-let.svelte",
+        "version": 1,
+        "text": "{let a}\n"
+      },
+      "target": "client",
+      "dev": false,
+      "compatibility": {
+        "svelteVersion": "5.57.2"
+      }
+    },
+    "exit": 0,
+    "signal": null,
+    "stdout": "{\"ok\":true,\"result\":{\"uri\":\"declaration-uninitialized-let.svelte\",\"version\":1,\"javascript\":{\"code\":\"import 'svelte/internal/disclose-version';\\nimport 'svelte/internal/flags/legacy';\\nimport * as $ from 'svelte/internal/client';\\n\\nexport default function Declaration_uninitialized_let($$anchor) {\\n\\tlet a;\\n}\",\"map\":\"{\\\"version\\\":3,\\\"sources\\\":[\\\"declaration-uninitialized-let.svelte\\\"],\\\"sourcesContent\\\":[\\\"{let a}\\\\n\\\"],\\\"names\\\":[],\\\"mappings\\\":\\\"AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA\\\"}\"},\"css\":null,\"diagnostics\":[],\"runes\":false,\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.57.2\",\"patches\":[\"child-reset-5.53.11\",\"declaration-tags-5.56\",\"select-default-5.57\"],\"clientDevelopment\":true},\"compatibility\":{\"id\":\"v1:svelte=5.57.2;kit=none;ts=unspecified\",\"svelteVersion\":\"5.57.2\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": true,
+      "result": {
+        "uri": "declaration-uninitialized-let.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import 'svelte/internal/disclose-version';\nimport 'svelte/internal/flags/legacy';\nimport * as $ from 'svelte/internal/client';\n\nexport default function Declaration_uninitialized_let($$anchor) {\n\tlet a;\n}",
+          "map": "{\"version\":3,\"sources\":[\"declaration-uninitialized-let.svelte\"],\"sourcesContent\":[\"{let a}\\n\"],\"names\":[],\"mappings\":\"AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA\"}"
+        },
+        "css": null,
+        "diagnostics": [],
+        "runes": false,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.57.2",
+          "patches": [
+            "child-reset-5.53.11",
+            "declaration-tags-5.56",
+            "select-default-5.57"
+          ],
+          "clientDevelopment": true
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.57.2;kit=none;ts=unspecified",
+          "svelteVersion": "5.57.2",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": true,
+    "artifact": {
+      "js": {
+        "code": "import 'svelte/internal/disclose-version';\nimport 'svelte/internal/flags/legacy';\nimport * as $ from 'svelte/internal/client';\n\nexport default function Declaration_uninitialized_let($$anchor) {\n\tlet a;\n}",
+        "map": {
+          "version": 3,
+          "names": [],
+          "sources": [
+            "declaration-uninitialized-let.svelte"
+          ],
+          "sourcesContent": [
+            "{let a}\n"
+          ],
+          "mappings": ";;;;;CAAC,GAAG,CAAC,CAAC,CAAA;"
+        }
+      },
+      "css": null,
+      "warnings": [],
+      "metadata": {
+        "runes": false
+      },
+      "ast": {
+        "html": {
+          "type": "Fragment",
+          "start": 0,
+          "end": 7,
+          "children": [
+            {
+              "type": "DeclarationTag",
+              "start": 0,
+              "end": 7,
+              "declaration": {
+                "type": "VariableDeclaration",
+                "start": 1,
+                "end": 6,
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 6
+                  }
+                },
+                "declarations": [
+                  {
+                    "type": "VariableDeclarator",
+                    "start": 5,
+                    "end": 6,
+                    "loc": {
+                      "start": {
+                        "line": 1,
+                        "column": 5
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 6
+                      }
+                    },
+                    "id": {
+                      "type": "Identifier",
+                      "start": 5,
+                      "end": 6,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 6
+                        }
+                      },
+                      "name": "a"
+                    },
+                    "init": null
+                  }
+                ],
+                "kind": "let"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "comparable": {
+      "ok": true,
+      "runes": false,
+      "diagnostics": []
+    }
+  }
+}

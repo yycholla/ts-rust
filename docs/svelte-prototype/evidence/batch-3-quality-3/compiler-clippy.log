@@ -1,0 +1,89 @@
+    Checking rsvelte_core v0.12.6 (/home/yycholla/Projects/ts-rust/crates/ts_svelte_compiler/vendor/rsvelte_core)
+    Checking ts_svelte v0.1.0 (/home/yycholla/Projects/ts-rust/crates/ts_svelte)
+    Checking rsvelte_projection v0.12.6 (https://github.com/baseballyama/rsvelte?rev=5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b#5ed8ea3a)
+    Checking rsvelte v0.12.6 (https://github.com/baseballyama/rsvelte?rev=5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b#5ed8ea3a)
+    Checking ts_svelte_compiler v0.1.0 (/home/yycholla/Projects/ts-rust/crates/ts_svelte_compiler)
+error: this function has too many lines (122/100)
+  --> src/runtime.rs:21:1
+   |
+21 | / pub fn validate(
+22 | |     code: &str,
+23 | |     profile: &ts_svelte::compatibility::Profile,
+24 | |     client: bool,
+25 | | ) -> Result<(), String> {
+   | |_______________________^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#too_many_lines
+   = note: `-D clippy::too-many-lines` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::too_many_lines)]`
+
+error: these match arms have identical bodies
+  --> src/runtime.rs:35:9
+   |
+35 | /         "5.53.5" => (
+36 | |             include_str!("profiles/client-5.53.5.txt"),
+37 | |             include_str!("profiles/server-5.53.5.txt"),
+38 | |         ),
+   | |_________^
+39 | /         "5.53.11" => (
+40 | |             include_str!("profiles/client-5.53.11.txt"),
+41 | |             include_str!("profiles/server-5.53.11.txt"),
+42 | |         ),
+   | |_________^
+   |
+   = help: if this is unintentional make the arms return different values
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#match_same_arms
+   = note: `-D clippy::match-same-arms` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::match_same_arms)]`
+help: otherwise merge the patterns into a single arm
+   |
+35 ~         "5.53.5" | "5.53.11" => (
+36 |             include_str!("profiles/client-5.53.5.txt"),
+37 |             include_str!("profiles/server-5.53.5.txt"),
+38 |         ),
+39 ~         "5.53.13" => (
+   |
+
+error: these match arms have identical bodies
+  --> src/runtime.rs:43:9
+   |
+43 | /         "5.53.13" => (
+44 | |             include_str!("profiles/client-5.53.13.txt"),
+45 | |             include_str!("profiles/server-5.53.13.txt"),
+46 | |         ),
+   | |_________^
+47 | /         "5.54.1" => (
+48 | |             include_str!("profiles/client-5.54.1.txt"),
+49 | |             include_str!("profiles/server-5.54.1.txt"),
+50 | |         ),
+   | |_________^
+51 | /         "5.55.10" => (
+52 | |             include_str!("profiles/client-5.55.10.txt"),
+53 | |             include_str!("profiles/server-5.55.10.txt"),
+54 | |         ),
+   | |_________^
+   |
+   = help: if this is unintentional make the arms return different values
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#match_same_arms
+help: otherwise merge the patterns into a single arm
+   |
+43 ~         "5.53.13" | "5.54.1" | "5.55.10" => (
+44 |             include_str!("profiles/client-5.53.13.txt"),
+45 |             include_str!("profiles/server-5.53.13.txt"),
+46 |         ),
+47 ~         "5.56.10" => (
+   |
+
+error: calling `Versions::default()` is more clear than this expression
+  --> src/runtime.rs:17:54
+   |
+17 |     let profile = ts_svelte::compatibility::resolve(&Default::default()).unwrap();
+   |                                                      ^^^^^^^^^^^^^^^^^^ help: try: `Versions::default()`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#default_trait_access
+   = note: `-D clippy::default-trait-access` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::default_trait_access)]`
+
+error: could not compile `ts_svelte_compiler` (lib) due to 3 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `ts_svelte_compiler` (lib test) due to 4 previous errors

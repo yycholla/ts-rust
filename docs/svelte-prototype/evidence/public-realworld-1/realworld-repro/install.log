@@ -1,0 +1,24 @@
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +102
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 102, reused 46, downloaded 35, added 81
+Progress: resolved 102, reused 46, downloaded 56, added 102, done
+.../esbuild@0.25.12/node_modules/esbuild postinstall$ node install.js
+.../esbuild@0.27.7/node_modules/esbuild postinstall$ node install.js
+.../esbuild@0.25.12/node_modules/esbuild postinstall: Done
+.../esbuild@0.27.7/node_modules/esbuild postinstall: Done
+
+devDependencies:
++ @sveltejs/adapter-vercel 6.3.2
++ @sveltejs/kit 2.52.2
++ @sveltejs/vite-plugin-svelte 6.2.1
++ marked 16.4.1
++ prettier 3.6.2
++ prettier-plugin-svelte 3.4.0
++ sanitize-html 2.17.0
++ svelte 5.53.5
++ typescript 5.9.3
++ vite 7.3.2
+
+Done in 2.8s using pnpm v10.20.0

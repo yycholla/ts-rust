@@ -1,0 +1,7 @@
+{
+  "status": 1,
+  "signal": null,
+  "elapsedMs": 2.6624630000000025,
+  "stderr": "",
+  "stdout": "{\"ok\":true,\"files\":1,\"results\":[{\"path\":\"/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/lint/control.ts\",\"diagnostics\":[{\"code\":\"no-debugger\",\"message\":\"Unexpected debugger statement.\",\"severity\":\"warning\",\"uri\":\"/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/lint/control.ts\",\"bytes\":{\"start\":44,\"end\":53},\"range\":{\"start\":{\"line\":2,\"character\":0},\"end\":{\"line\":2,\"character\":9}}},{\"code\":\"eqeqeq\",\"message\":\"Use strict equality or inequality.\",\"severity\":\"warning\",\"uri\":\"/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/lint/control.ts\",\"bytes\":{\"start\":58,\"end\":64},\"range\":{\"start\":{\"line\":3,\"character\":4},\"end\":{\"line\":3,\"character\":10}}}],\"error\":null}],\"rules\":[\"svelte/compiler\",\"no-debugger\",\"eqeqeq\"],\"configuration\":\"built-in subset; no formatting\"}\n"
+}

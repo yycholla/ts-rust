@@ -1,0 +1,77 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "noEmit": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "preserve",
+    "allowArbitraryExtensions": true,
+    "allowImportingTsExtensions": true,
+    "types": [],
+    "allowJs": false,
+    "checkJs": false,
+    "noCheck": false,
+    "typeRoots": [
+      "/home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/batch-3-run-1/regression/checker/missing-props/type-roots",
+      "/home/yycholla/Documents/MoncuraHR/node_modules/@types"
+    ],
+    "paths": {
+      "svelte": [
+        "./svelte-types.d.ts"
+      ],
+      "svelte/action": [
+        "./svelte-types.d.ts"
+      ],
+      "svelte/animate": [
+        "./svelte-types.d.ts"
+      ],
+      "svelte/attachments": [
+        "./svelte-types.d.ts"
+      ],
+      "svelte/compiler": [
+        "./svelte-types.d.ts"
+      ],
+      "svelte/easing": [
+        "./svelte-types.d.ts"
+      ],
+      "svelte/legacy": [
+        "./svelte-types.d.ts"
+      ],
+      "svelte/motion": [
+        "./svelte-types.d.ts"
+      ],
+      "svelte/reactivity": [
+        "./svelte-types.d.ts"
+      ],
+      "svelte/reactivity/window": [
+        "./svelte-types.d.ts"
+      ],
+      "svelte/server": [
+        "./svelte-types.d.ts"
+      ],
+      "svelte/store": [
+        "./svelte-types.d.ts"
+      ],
+      "svelte/transition": [
+        "./svelte-types.d.ts"
+      ],
+      "svelte/events": [
+        "./svelte-types.d.ts"
+      ],
+      "svelte/types/compiler/preprocess": [
+        "./svelte-types.d.ts"
+      ],
+      "svelte/types/compiler/interfaces": [
+        "./svelte-types.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "svelte-types.d.ts",
+    "svelte-shims-v4.d.ts",
+    "/home/yycholla/Documents/MoncuraHR/node_modules/svelte/svelte-html.d.ts",
+    "Child.svelte.tsx",
+    "Case.svelte.tsx"
+  ]
+}

@@ -1,0 +1,9 @@
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+    Checking memchr v2.8.3
+    Checking serde_json v1.0.150
+   Compiling syn v2.0.119
+   Compiling serde_derive v1.0.228
+    Checking serde v1.0.228
+    Checking ts_svelte_kit v0.1.0 (/home/yycholla/Projects/ts-rust/crates/ts_svelte_kit)
+    Finished `release` profile [optimized] target(s) in 5.83s

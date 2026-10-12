@@ -1,0 +1,46 @@
+✔ native/WASM parity: capabilities (11.729184ms)
+✔ native/WASM parity: UTF-16/UTF-8 and CRLF (4.973774ms)
+✔ native/WASM parity: invalid surrogate boundary (3.140139ms)
+✔ native/WASM parity: invalid UTF-8 boundary (2.820284ms)
+✔ native/WASM parity: invalid CRLF boundary (3.053445ms)
+✔ native/WASM parity: invalid line (2.992372ms)
+✔ native/WASM parity: sequential edits (4.319584ms)
+✔ native/WASM parity: stale version (3.104393ms)
+✔ native/WASM parity: full replacement (3.101494ms)
+✔ native/WASM parity: exact mapping (5.14546ms)
+✔ native/WASM parity: unpaired surrogate (3.934384ms)
+✔ native/WASM parity: unknown field (4.705172ms)
+✔ native/WASM parity: unknown operation (3.11741ms)
+✔ native/WASM parity: negative offset (3.358658ms)
+✔ native/WASM parity: offset 4294967295 (2.684007ms)
+✔ native/WASM parity: copy range 4294967295 (3.510638ms)
+✔ native/WASM parity: generated range 4294967295 (2.676313ms)
+✔ native/WASM parity: offset 4294967296 (2.948093ms)
+✔ native/WASM parity: copy range 4294967296 (3.018852ms)
+✔ native/WASM parity: generated range 4294967296 (3.037129ms)
+✔ native/WASM parity: offset 9007199254740991 (4.242604ms)
+✔ native/WASM parity: copy range 9007199254740991 (3.200946ms)
+✔ native/WASM parity: generated range 9007199254740991 (3.017851ms)
+✔ native/WASM parity: offset 0.5 (3.240669ms)
+✔ native/WASM parity: copy range 0.5 (2.919428ms)
+✔ native/WASM parity: generated range 0.5 (3.19042ms)
+✔ native/WASM parity: offset 1e+100 (3.29329ms)
+✔ native/WASM parity: copy range 1e+100 (3.2762ms)
+✔ native/WASM parity: generated range 1e+100 (3.275369ms)
+✔ native/WASM parity: operation limit (6.364196ms)
+✔ native/WASM parity: scan-work limit (25.400616ms)
+✔ coordinate results have independently specified expected values (0.946755ms)
+✔ actual WASM has no imports and handles memory growth and repeated calls (26.189814ms)
+✔ disposal is idempotent and prevents use (1.309737ms)
+✔ host serialization errors do not poison the instance (0.848245ms)
+✔ reentrant requests during serialization are rejected (0.537328ms)
+✔ WASM ABI cannot replay a stale request after run or rejected allocation (0.395451ms)
+✔ requests over the byte cap are rejected without poisoning the wrapper (65.109776ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 340.266664

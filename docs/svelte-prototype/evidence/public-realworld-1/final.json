@@ -1,0 +1,219 @@
+{
+  "completedAt": "2026-10-10T21:09:18.005211+00:00",
+  "acceptedSourceFingerprint": "af2ce5d3e5536af9c882d025f0a7d8600b009a1e17fdbf4a0ec5369fc7e08dd5",
+  "acceptedSourceFilesChanged": [],
+  "binaryChanges": [],
+  "compilerAcceptance": "Unchanged accepted prototype; this is additional comparison evidence, not expanded compiler acceptance",
+  "harnessFinal": {
+    "scripts/svelte/public-finalize.py": "62945c060aef39b420378030b0b84948fd67df772aa8ab0bf879383d01e6ce1f",
+    "scripts/svelte/public-projects.py": "172f778cf3be60a90c19a18aaf686610cc8903d4d160bc1c0b4fc893c622960e",
+    "scripts/svelte/public-components.mjs": "1d26d79fd616c50f15350e2c74d746fb222c72a178f8c2a6248473923e503f1d"
+  },
+  "projects": {
+    "realworld-repro": {
+      "trackedFilesChanged": [],
+      "trackedFilesAdded": [],
+      "commitUnchanged": true,
+      "allTrackedComponents": 24,
+      "selectedSourcePrefix": "src/",
+      "componentsOutsideSelectedSrc": [],
+      "operations": {
+        "install": {
+          "command": [
+            "npm",
+            "exec",
+            "--yes",
+            "--package=pnpm@10.20.0",
+            "--",
+            "pnpm",
+            "install",
+            "--frozen-lockfile"
+          ],
+          "cwd": "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld-repro",
+          "exitCode": 0,
+          "timeout": false,
+          "timeoutSeconds": 600,
+          "wallSeconds": 3.802,
+          "log": "install.log",
+          "timeSeconds": 3.76,
+          "maxRssKiB": 549040,
+          "userSeconds": 6.76,
+          "systemSeconds": 1.1
+        },
+        "build": {
+          "command": [
+            "npm",
+            "exec",
+            "--yes",
+            "--package=pnpm@10.20.0",
+            "--",
+            "pnpm",
+            "run",
+            "build"
+          ],
+          "cwd": "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld-repro",
+          "exitCode": 0,
+          "timeout": false,
+          "timeoutSeconds": 300,
+          "wallSeconds": 5.375,
+          "log": "build.log",
+          "timeSeconds": 5.34,
+          "maxRssKiB": 553712,
+          "userSeconds": 7.2,
+          "systemSeconds": 0.62
+        },
+        "check": {
+          "status": "unavailable",
+          "reason": "No upstream script"
+        },
+        "lint": {
+          "command": [
+            "npm",
+            "exec",
+            "--yes",
+            "--package=pnpm@10.20.0",
+            "--",
+            "pnpm",
+            "run",
+            "lint"
+          ],
+          "cwd": "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld-repro",
+          "exitCode": 1,
+          "timeout": false,
+          "timeoutSeconds": 300,
+          "wallSeconds": 1.918,
+          "log": "lint.log",
+          "timeSeconds": 1.87,
+          "maxRssKiB": 174408,
+          "userSeconds": 2.09,
+          "systemSeconds": 0.25
+        },
+        "supplemental-check": {
+          "command": [
+            "node",
+            "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld-check-tools/node_modules/svelte-check/bin/svelte-check",
+            "--workspace",
+            "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld-repro",
+            "--tsconfig",
+            "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld-repro/jsconfig.json"
+          ],
+          "cwd": "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld-repro",
+          "exitCode": 0,
+          "timeout": false,
+          "timeoutSeconds": 300,
+          "wallSeconds": 2.018,
+          "log": "supplemental-check.log",
+          "timeSeconds": 1.97,
+          "maxRssKiB": 397356,
+          "userSeconds": 3.43,
+          "systemSeconds": 0.23
+        },
+        "native-check": {
+          "command": [
+            "/home/yycholla/Projects/ts-rust/target/release/svelte-project"
+          ],
+          "cwd": "/home/yycholla/Projects/ts-rust",
+          "exitCode": 1,
+          "timeout": false,
+          "timeoutSeconds": 180,
+          "wallSeconds": 0.004,
+          "log": "native-check.log",
+          "timeSeconds": 0.0,
+          "maxRssKiB": 2792,
+          "userSeconds": 0.0,
+          "systemSeconds": 0.0
+        },
+        "components": {
+          "command": [
+            "node",
+            "scripts/svelte/public-components.mjs",
+            "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld-repro",
+            "/home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/public-realworld-1/realworld-repro/components"
+          ],
+          "cwd": "/home/yycholla/Projects/ts-rust",
+          "exitCode": 0,
+          "timeout": false,
+          "timeoutSeconds": 300,
+          "wallSeconds": 1.217,
+          "log": "components.log",
+          "timeSeconds": 1.18,
+          "maxRssKiB": 170308,
+          "userSeconds": 1.29,
+          "systemSeconds": 0.26
+        }
+      },
+      "componentSummary": {
+        "files": 24,
+        "cases": 48,
+        "projectComparison": {
+          "match": 48,
+          "difference": 0,
+          "harnessFailure": 0,
+          "unrun": 0
+        },
+        "supportedComparison": {
+          "match": 48,
+          "difference": 0,
+          "harnessFailure": 0,
+          "unrun": 0
+        },
+        "official": {
+          "success": 48,
+          "errors": 0
+        },
+        "supported": {
+          "success": 48,
+          "errors": 0
+        },
+        "native": {
+          "success": 48,
+          "errors": 0
+        }
+      },
+      "projectOracle": {
+        "version": "5.53.5",
+        "packageSha256": "0b46614593b079b0831f2074ad9245c6391b3e06f79c6719f47e7f30ca34a32d",
+        "entrySha256": "ea18a96a9f7d594f4ddb377224dcc146b34d9e11c1015d3be585204f3a43e4b4"
+      },
+      "supportedOracle": {
+        "version": "5.53.11",
+        "packageSha256": "ac62c99567cd559a6051d94062df421525c040f24a012317702b0d1abaff744c",
+        "entrySha256": "ea18a96a9f7d594f4ddb377224dcc146b34d9e11c1015d3be585204f3a43e4b4"
+      }
+    }
+  },
+  "evidenceSha256": {
+    "identity.json": "d4d7d0b6193c65f6b0fd984975ff2b520c97c990442c0fc0563ab663d9951dd6",
+    "realworld-repro/build.json": "cd1ffeae2ba7d914f3d05c167b01c7a25f3328a100de443fd9706c54ff10ba3a",
+    "realworld-repro/build.log": "8686ea212d13576a89fee46f3b93bb3db142d6c51ee4cfe30794fdde1159bab9",
+    "realworld-repro/build.time": "8fc22b4dcc93261278258acd33f43b99060b7772398989bb2eb7549e950a3f33",
+    "realworld-repro/check.json": "6675559fab5b9dfd78ec8ee99bf5e67394e8e0e489ddb370d4148854f219db1d",
+    "realworld-repro/components/report.json": "8d0e913e6dd5e54b918afd015ee75cc8c2312869b926b7498d3f075442e5f925",
+    "realworld-repro/components.json": "a9ed98807248528d310638c162b92bf8b3fcfe93f47b9df60630b036bd1e6f36",
+    "realworld-repro/components.log": "0bb904924daa6d22f8ec32c27f2bd7cb5c2b28df391e8f00b866888fb22d154a",
+    "realworld-repro/components.time": "f1fc757d4e4ad5d325f63af22d4ed6c0a380a3fe95574fee11bb14fc3fcc4d9f",
+    "realworld-repro/install.json": "9a310869a0c5e0683c677503ae68791f893f92ff4973cb9b4c12aefb26384018",
+    "realworld-repro/install.log": "d5858d304302970d2086597e1320caf556cd1a38d99e4812dc9576e942caa0da",
+    "realworld-repro/install.time": "d60bb488b2d97a725a3dcbd79e5f74228c5a9a8c53a960ffb609f5850ddc47af",
+    "realworld-repro/lint.json": "a52b3879a3745409452c65bf85b645a28451cdae94a195d76b42b2a2bd27aa9e",
+    "realworld-repro/lint.log": "b050835bea514a27728ac3ce2a34bc6227f182a674808cc142ee38b6e6f0ebd4",
+    "realworld-repro/lint.time": "92668ea98b15ddcee5b29b97e74a79173c5ff4f16414ee16b95168212804b71d",
+    "realworld-repro/native-check.json": "0c89082b1767ce1215dcc7b5a4255437c68a73891b384194dfcf9abe6d932ce2",
+    "realworld-repro/native-check.log": "bceccf05d877205affda3acf809cd6303cefcf82cce79ba66509565453f006be",
+    "realworld-repro/native-check.time": "e90ffb6234dbe544772da20051d6cc67397ec57b96dfa5faf285dfb291769e8c",
+    "realworld-repro/native-input.json": "d3dbc69f934311b412cf9df6ca1af336918ef0bdb7418bdd551c924335daf463",
+    "realworld-repro/native-scope.json": "7e953f0d03f5c09ff8be56eee2340e13158c04ac79c0d4e3952c0b02ee3d42b3",
+    "realworld-repro/project.json": "5e08390abb5fe8080bdc0348d1a70a69b472d32033cb1ccf1e5cb3e2d3c02f64",
+    "realworld-repro/snapshot-after-native.json": "d081b9bd462d2ed5010574c1cf7c131d48bab8ee3417ba9d5d9a3ff4cc560a16",
+    "realworld-repro/snapshot-after-official.json": "d081b9bd462d2ed5010574c1cf7c131d48bab8ee3417ba9d5d9a3ff4cc560a16",
+    "realworld-repro/snapshot-before.json": "d081b9bd462d2ed5010574c1cf7c131d48bab8ee3417ba9d5d9a3ff4cc560a16",
+    "realworld-repro/supplemental-check.json": "da217b90fb530193d3c5edd202928665b4de4ca29ef0105e5e645facb21bf661",
+    "realworld-repro/supplemental-check.log": "efc9d358a90843b8e716c627d2f9dc3654b61ab670b33db7350f4ee99a9707fb",
+    "realworld-repro/supplemental-check.time": "59d8d363f0576f26e58a7dbec9afd2ed4a4aa261728d21173f8f79a80dcc3adf",
+    "realworld-repro/supplemental-install.json": "ab2c3aee03de19868b27e6607fe8e7c22533a81e962220c357b38cfeb0ef129f",
+    "realworld-repro/supplemental-install.log": "1e8119eb127be24881532ad22fce43f1aa90abc55d29514371b31129c88e6f98",
+    "realworld-repro/supplemental-install.time": "63445c8589614dcfa359f2079cdb3e8ebd084c65f0f5aabb21d3d164d04cea65",
+    "realworld-repro/supplemental-tools.json": "e3b92c88a6b1ab44e02585b1705dda8a01de3d34212420bbc28a86c54969ae8b",
+    "realworld-repro/versions.json": "41f139bc78d7fcb00cb18a1b2d55f92d80513346cedc53b7af1ec9bf9506d7b2"
+  }
+}

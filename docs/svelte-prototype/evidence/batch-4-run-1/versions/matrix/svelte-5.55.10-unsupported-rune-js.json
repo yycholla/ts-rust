@@ -1,0 +1,43 @@
+{
+  "request": {
+    "workspace": "/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/matrix/svelte-5.55.10-unsupported-rune-js-workspace",
+    "dependencies": "/home/yycholla/Projects/ts-rust/target/svelte-versions/svelte-5.55.10/node_modules",
+    "allowPrerelease": false,
+    "components": [],
+    "files": [
+      {
+        "path": "state.svelte.js",
+        "text": "export const value = $state({ count: 0 });"
+      }
+    ]
+  },
+  "exit": 1,
+  "signal": null,
+  "stdout": "{\"compatibility\":{\"capabilities\":{\"checkingProjection\":\"prototype\",\"componentCompiler\":\"prototype\",\"kitBuild\":false,\"kitGraph\":false,\"lsp\":false,\"projectCheck\":\"explicit-input-prototype\"},\"channel\":\"stable\",\"id\":\"v1:svelte=5.55.10;kit=none;ts=5.9.3\",\"kitConfig\":null,\"kitEnvironmentModule\":null,\"kitLibraryAlias\":null,\"kitVersion\":null,\"svelteVersion\":\"5.55.10\",\"typescriptVersion\":\"5.9.3\"},\"error\":{\"code\":\"unsupported_rune_module\",\"message\":\"Rune module compiler diagnostics are not implemented yet: state.svelte.js\"},\"ok\":false}\n",
+  "stderr": "",
+  "response": {
+    "compatibility": {
+      "capabilities": {
+        "checkingProjection": "prototype",
+        "componentCompiler": "prototype",
+        "kitBuild": false,
+        "kitGraph": false,
+        "lsp": false,
+        "projectCheck": "explicit-input-prototype"
+      },
+      "channel": "stable",
+      "id": "v1:svelte=5.55.10;kit=none;ts=5.9.3",
+      "kitConfig": null,
+      "kitEnvironmentModule": null,
+      "kitLibraryAlias": null,
+      "kitVersion": null,
+      "svelteVersion": "5.55.10",
+      "typescriptVersion": "5.9.3"
+    },
+    "error": {
+      "code": "unsupported_rune_module",
+      "message": "Rune module compiler diagnostics are not implemented yet: state.svelte.js"
+    },
+    "ok": false
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "status": 1,
+  "signal": null,
+  "stdout": "{\"ok\":false,\"error\":{\"code\":\"runtime_compatibility\",\"message\":\"Client development instrumentation requires a newer Svelte runtime; Svelte 5.53.11 is not supported in dev mode yet\"}}\n",
+  "stderr": "",
+  "response": {
+    "ok": false,
+    "error": {
+      "code": "runtime_compatibility",
+      "message": "Client development instrumentation requires a newer Svelte runtime; Svelte 5.53.11 is not supported in dev mode yet"
+    }
+  },
+  "complete": true
+}

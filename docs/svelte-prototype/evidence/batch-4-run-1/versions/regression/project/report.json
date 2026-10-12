@@ -1,0 +1,846 @@
+{
+  "binarySha256": "ff9576e2aa8ab0fcd279d3e78d1059af52e5348c58ac14d09c64c292d736971a",
+  "cases": [
+    {
+      "name": "typescript-valid",
+      "expectedCode": null,
+      "passed": true,
+      "run": {
+        "exit": 0,
+        "stderr": "",
+        "response": {
+          "checker": {
+            "diagnostics": [],
+            "error": null,
+            "ok": true,
+            "output": "",
+            "projectionsVerified": true,
+            "serializationFailures": [],
+            "status": 0,
+            "unported": []
+          },
+          "compatibility": {
+            "capabilities": {
+              "checkingProjection": "prototype",
+              "componentCompiler": "prototype",
+              "kitBuild": false,
+              "kitGraph": false,
+              "lsp": false,
+              "projectCheck": "explicit-input-prototype"
+            },
+            "channel": "stable",
+            "id": "v1:svelte=5.53.11;kit=2.69.2;ts=5.9.3",
+            "kitConfig": "svelte-config-or-vite-plugin",
+            "kitEnvironmentModule": "$app/environment",
+            "kitLibraryAlias": "$lib",
+            "kitVersion": "2.69.2",
+            "svelteVersion": "5.53.11",
+            "typescriptVersion": "5.9.3"
+          },
+          "compilerDiagnostics": [],
+          "ok": true,
+          "stage": "check",
+          "workspace": "/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/regression/project/typescript-valid"
+        }
+      },
+      "reusedWorkspace": {
+        "exit": 1,
+        "stderr": "",
+        "response": {
+          "compatibility": {
+            "capabilities": {
+              "checkingProjection": "prototype",
+              "componentCompiler": "prototype",
+              "kitBuild": false,
+              "kitGraph": false,
+              "lsp": false,
+              "projectCheck": "explicit-input-prototype"
+            },
+            "channel": "stable",
+            "id": "v1:svelte=5.53.11;kit=2.69.2;ts=5.9.3",
+            "kitConfig": "svelte-config-or-vite-plugin",
+            "kitEnvironmentModule": "$app/environment",
+            "kitLibraryAlias": "$lib",
+            "kitVersion": "2.69.2",
+            "svelteVersion": "5.53.11",
+            "typescriptVersion": "5.9.3"
+          },
+          "error": {
+            "code": "project_failed",
+            "message": "File exists (os error 17)"
+          },
+          "ok": false
+        }
+      }
+    },
+    {
+      "name": "typescript-wrong-props",
+      "expectedCode": 2322,
+      "passed": true,
+      "run": {
+        "exit": 1,
+        "stderr": "",
+        "response": {
+          "checker": {
+            "diagnostics": [
+              {
+                "category": 1,
+                "code": 2322,
+                "end": 233,
+                "endPosition": {
+                  "character": 121,
+                  "line": 8
+                },
+                "fileName": "/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/regression/project/typescript-wrong-props/Case.svelte.tsx",
+                "original": {
+                  "status": "unmapped",
+                  "uri": "file:///Case.svelte",
+                  "version": 1
+                },
+                "pos": 226,
+                "sourceLines": [
+                  {
+                    "line": 8,
+                    "text": " { const $$_dlihC0C = __sveltets_2_ensureComponent(Child); new $$_dlihC0C({ target: __sveltets_2_any(), props: {  \"count\":'wrong',}});}\n"
+                  }
+                ],
+                "startPosition": {
+                  "character": 114,
+                  "line": 8
+                },
+                "text": "Type 'string' is not assignable to type 'number'."
+              }
+            ],
+            "error": null,
+            "ok": true,
+            "output": "",
+            "projectionsVerified": true,
+            "serializationFailures": [],
+            "status": 2,
+            "unported": []
+          },
+          "compatibility": {
+            "capabilities": {
+              "checkingProjection": "prototype",
+              "componentCompiler": "prototype",
+              "kitBuild": false,
+              "kitGraph": false,
+              "lsp": false,
+              "projectCheck": "explicit-input-prototype"
+            },
+            "channel": "stable",
+            "id": "v1:svelte=5.53.11;kit=2.69.2;ts=5.9.3",
+            "kitConfig": "svelte-config-or-vite-plugin",
+            "kitEnvironmentModule": "$app/environment",
+            "kitLibraryAlias": "$lib",
+            "kitVersion": "2.69.2",
+            "svelteVersion": "5.53.11",
+            "typescriptVersion": "5.9.3"
+          },
+          "compilerDiagnostics": [],
+          "ok": true,
+          "stage": "check",
+          "workspace": "/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/regression/project/typescript-wrong-props"
+        }
+      },
+      "reusedWorkspace": {
+        "exit": 1,
+        "stderr": "",
+        "response": {
+          "compatibility": {
+            "capabilities": {
+              "checkingProjection": "prototype",
+              "componentCompiler": "prototype",
+              "kitBuild": false,
+              "kitGraph": false,
+              "lsp": false,
+              "projectCheck": "explicit-input-prototype"
+            },
+            "channel": "stable",
+            "id": "v1:svelte=5.53.11;kit=2.69.2;ts=5.9.3",
+            "kitConfig": "svelte-config-or-vite-plugin",
+            "kitEnvironmentModule": "$app/environment",
+            "kitLibraryAlias": "$lib",
+            "kitVersion": "2.69.2",
+            "svelteVersion": "5.53.11",
+            "typescriptVersion": "5.9.3"
+          },
+          "error": {
+            "code": "project_failed",
+            "message": "File exists (os error 17)"
+          },
+          "ok": false
+        }
+      }
+    },
+    {
+      "name": "typescript-emoji",
+      "expectedCode": 2304,
+      "passed": true,
+      "run": {
+        "exit": 1,
+        "stderr": "",
+        "response": {
+          "checker": {
+            "diagnostics": [
+              {
+                "category": 1,
+                "code": 2304,
+                "end": 172,
+                "endPosition": {
+                  "character": 64,
+                  "line": 6
+                },
+                "fileName": "/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/regression/project/typescript-emoji/Case.svelte.tsx",
+                "original": {
+                  "bytes": {
+                    "end": 100,
+                    "start": 83
+                  },
+                  "range": {
+                    "end": {
+                      "character": 32,
+                      "line": 3
+                    },
+                    "start": {
+                      "character": 15,
+                      "line": 3
+                    }
+                  },
+                  "status": "mapped",
+                  "uri": "file:///Case.svelte",
+                  "version": 1
+                },
+                "pos": 155,
+                "sourceLines": [
+                  {
+                    "line": 6,
+                    "text": " { svelteHTML.createElement(\"p\", {});greeting; missingAfterEmoji; }\n"
+                  }
+                ],
+                "startPosition": {
+                  "character": 47,
+                  "line": 6
+                },
+                "text": "Cannot find name 'missingAfterEmoji'."
+              }
+            ],
+            "error": null,
+            "ok": true,
+            "output": "",
+            "projectionsVerified": true,
+            "serializationFailures": [],
+            "status": 2,
+            "unported": []
+          },
+          "compatibility": {
+            "capabilities": {
+              "checkingProjection": "prototype",
+              "componentCompiler": "prototype",
+              "kitBuild": false,
+              "kitGraph": false,
+              "lsp": false,
+              "projectCheck": "explicit-input-prototype"
+            },
+            "channel": "stable",
+            "id": "v1:svelte=5.53.11;kit=2.69.2;ts=5.9.3",
+            "kitConfig": "svelte-config-or-vite-plugin",
+            "kitEnvironmentModule": "$app/environment",
+            "kitLibraryAlias": "$lib",
+            "kitVersion": "2.69.2",
+            "svelteVersion": "5.53.11",
+            "typescriptVersion": "5.9.3"
+          },
+          "compilerDiagnostics": [],
+          "ok": true,
+          "stage": "check",
+          "workspace": "/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/regression/project/typescript-emoji"
+        }
+      },
+      "reusedWorkspace": {
+        "exit": 1,
+        "stderr": "",
+        "response": {
+          "compatibility": {
+            "capabilities": {
+              "checkingProjection": "prototype",
+              "componentCompiler": "prototype",
+              "kitBuild": false,
+              "kitGraph": false,
+              "lsp": false,
+              "projectCheck": "explicit-input-prototype"
+            },
+            "channel": "stable",
+            "id": "v1:svelte=5.53.11;kit=2.69.2;ts=5.9.3",
+            "kitConfig": "svelte-config-or-vite-plugin",
+            "kitEnvironmentModule": "$app/environment",
+            "kitLibraryAlias": "$lib",
+            "kitVersion": "2.69.2",
+            "svelteVersion": "5.53.11",
+            "typescriptVersion": "5.9.3"
+          },
+          "error": {
+            "code": "project_failed",
+            "message": "File exists (os error 17)"
+          },
+          "ok": false
+        }
+      }
+    },
+    {
+      "name": "javascript-valid",
+      "expectedCode": null,
+      "passed": true,
+      "run": {
+        "exit": 0,
+        "stderr": "",
+        "response": {
+          "checker": {
+            "diagnostics": [],
+            "error": null,
+            "ok": true,
+            "output": "",
+            "projectionsVerified": true,
+            "serializationFailures": [],
+            "status": 0,
+            "unported": []
+          },
+          "compatibility": {
+            "capabilities": {
+              "checkingProjection": "prototype",
+              "componentCompiler": "prototype",
+              "kitBuild": false,
+              "kitGraph": false,
+              "lsp": false,
+              "projectCheck": "explicit-input-prototype"
+            },
+            "channel": "stable",
+            "id": "v1:svelte=5.53.11;kit=2.69.2;ts=5.9.3",
+            "kitConfig": "svelte-config-or-vite-plugin",
+            "kitEnvironmentModule": "$app/environment",
+            "kitLibraryAlias": "$lib",
+            "kitVersion": "2.69.2",
+            "svelteVersion": "5.53.11",
+            "typescriptVersion": "5.9.3"
+          },
+          "compilerDiagnostics": [],
+          "ok": true,
+          "stage": "check",
+          "workspace": "/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/regression/project/javascript-valid"
+        }
+      },
+      "reusedWorkspace": {
+        "exit": 1,
+        "stderr": "",
+        "response": {
+          "compatibility": {
+            "capabilities": {
+              "checkingProjection": "prototype",
+              "componentCompiler": "prototype",
+              "kitBuild": false,
+              "kitGraph": false,
+              "lsp": false,
+              "projectCheck": "explicit-input-prototype"
+            },
+            "channel": "stable",
+            "id": "v1:svelte=5.53.11;kit=2.69.2;ts=5.9.3",
+            "kitConfig": "svelte-config-or-vite-plugin",
+            "kitEnvironmentModule": "$app/environment",
+            "kitLibraryAlias": "$lib",
+            "kitVersion": "2.69.2",
+            "svelteVersion": "5.53.11",
+            "typescriptVersion": "5.9.3"
+          },
+          "error": {
+            "code": "project_failed",
+            "message": "File exists (os error 17)"
+          },
+          "ok": false
+        }
+      }
+    },
+    {
+      "name": "javascript-jsdoc-error",
+      "expectedCode": 2322,
+      "passed": true,
+      "run": {
+        "exit": 1,
+        "stderr": "",
+        "response": {
+          "checker": {
+            "diagnostics": [
+              {
+                "category": 1,
+                "code": 2322,
+                "end": 86,
+                "endPosition": {
+                  "character": 31,
+                  "line": 2
+                },
+                "fileName": "/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/regression/project/javascript-jsdoc-error/Case.svelte.jsx",
+                "original": {
+                  "bytes": {
+                    "end": 39,
+                    "start": 34
+                  },
+                  "range": {
+                    "end": {
+                      "character": 39,
+                      "line": 0
+                    },
+                    "start": {
+                      "character": 34,
+                      "line": 0
+                    }
+                  },
+                  "status": "mapped",
+                  "uri": "file:///Case.svelte",
+                  "version": 1
+                },
+                "pos": 81,
+                "sourceLines": [
+                  {
+                    "line": 2,
+                    "text": "/** @type {number} */ let value = 'bad';;\n"
+                  }
+                ],
+                "startPosition": {
+                  "character": 26,
+                  "line": 2
+                },
+                "text": "Type 'string' is not assignable to type 'number'."
+              }
+            ],
+            "error": null,
+            "ok": true,
+            "output": "",
+            "projectionsVerified": true,
+            "serializationFailures": [],
+            "status": 2,
+            "unported": []
+          },
+          "compatibility": {
+            "capabilities": {
+              "checkingProjection": "prototype",
+              "componentCompiler": "prototype",
+              "kitBuild": false,
+              "kitGraph": false,
+              "lsp": false,
+              "projectCheck": "explicit-input-prototype"
+            },
+            "channel": "stable",
+            "id": "v1:svelte=5.53.11;kit=2.69.2;ts=5.9.3",
+            "kitConfig": "svelte-config-or-vite-plugin",
+            "kitEnvironmentModule": "$app/environment",
+            "kitLibraryAlias": "$lib",
+            "kitVersion": "2.69.2",
+            "svelteVersion": "5.53.11",
+            "typescriptVersion": "5.9.3"
+          },
+          "compilerDiagnostics": [],
+          "ok": true,
+          "stage": "check",
+          "workspace": "/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/regression/project/javascript-jsdoc-error"
+        }
+      },
+      "reusedWorkspace": {
+        "exit": 1,
+        "stderr": "",
+        "response": {
+          "compatibility": {
+            "capabilities": {
+              "checkingProjection": "prototype",
+              "componentCompiler": "prototype",
+              "kitBuild": false,
+              "kitGraph": false,
+              "lsp": false,
+              "projectCheck": "explicit-input-prototype"
+            },
+            "channel": "stable",
+            "id": "v1:svelte=5.53.11;kit=2.69.2;ts=5.9.3",
+            "kitConfig": "svelte-config-or-vite-plugin",
+            "kitEnvironmentModule": "$app/environment",
+            "kitLibraryAlias": "$lib",
+            "kitVersion": "2.69.2",
+            "svelteVersion": "5.53.11",
+            "typescriptVersion": "5.9.3"
+          },
+          "error": {
+            "code": "project_failed",
+            "message": "File exists (os error 17)"
+          },
+          "ok": false
+        }
+      }
+    },
+    {
+      "name": "javascript-template-error",
+      "expectedCode": 2339,
+      "passed": true,
+      "run": {
+        "exit": 1,
+        "stderr": "",
+        "response": {
+          "checker": {
+            "diagnostics": [
+              {
+                "category": 1,
+                "code": 2339,
+                "end": 149,
+                "endPosition": {
+                  "character": 70,
+                  "line": 3
+                },
+                "fileName": "/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/regression/project/javascript-template-error/Case.svelte.jsx",
+                "original": {
+                  "bytes": {
+                    "end": 63,
+                    "start": 49
+                  },
+                  "range": {
+                    "end": {
+                      "character": 63,
+                      "line": 0
+                    },
+                    "start": {
+                      "character": 49,
+                      "line": 0
+                    }
+                  },
+                  "status": "mapped",
+                  "uri": "file:///Case.svelte",
+                  "version": 1
+                },
+                "pos": 135,
+                "sourceLines": [
+                  {
+                    "line": 3,
+                    "text": "async () => { { svelteHTML.createElement(\"p\", {});value.notARealMember(); }};\n"
+                  }
+                ],
+                "startPosition": {
+                  "character": 56,
+                  "line": 3
+                },
+                "text": "Property 'notARealMember' does not exist on type 'number'."
+              }
+            ],
+            "error": null,
+            "ok": true,
+            "output": "",
+            "projectionsVerified": true,
+            "serializationFailures": [],
+            "status": 2,
+            "unported": []
+          },
+          "compatibility": {
+            "capabilities": {
+              "checkingProjection": "prototype",
+              "componentCompiler": "prototype",
+              "kitBuild": false,
+              "kitGraph": false,
+              "lsp": false,
+              "projectCheck": "explicit-input-prototype"
+            },
+            "channel": "stable",
+            "id": "v1:svelte=5.53.11;kit=2.69.2;ts=5.9.3",
+            "kitConfig": "svelte-config-or-vite-plugin",
+            "kitEnvironmentModule": "$app/environment",
+            "kitLibraryAlias": "$lib",
+            "kitVersion": "2.69.2",
+            "svelteVersion": "5.53.11",
+            "typescriptVersion": "5.9.3"
+          },
+          "compilerDiagnostics": [],
+          "ok": true,
+          "stage": "check",
+          "workspace": "/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/regression/project/javascript-template-error"
+        }
+      },
+      "reusedWorkspace": {
+        "exit": 1,
+        "stderr": "",
+        "response": {
+          "compatibility": {
+            "capabilities": {
+              "checkingProjection": "prototype",
+              "componentCompiler": "prototype",
+              "kitBuild": false,
+              "kitGraph": false,
+              "lsp": false,
+              "projectCheck": "explicit-input-prototype"
+            },
+            "channel": "stable",
+            "id": "v1:svelte=5.53.11;kit=2.69.2;ts=5.9.3",
+            "kitConfig": "svelte-config-or-vite-plugin",
+            "kitEnvironmentModule": "$app/environment",
+            "kitLibraryAlias": "$lib",
+            "kitVersion": "2.69.2",
+            "svelteVersion": "5.53.11",
+            "typescriptVersion": "5.9.3"
+          },
+          "error": {
+            "code": "project_failed",
+            "message": "File exists (os error 17)"
+          },
+          "ok": false
+        }
+      }
+    },
+    {
+      "name": "literal-directive-preserved",
+      "expectedCode": null,
+      "passed": true,
+      "run": {
+        "exit": 0,
+        "stderr": "",
+        "response": {
+          "checker": {
+            "diagnostics": [],
+            "error": null,
+            "ok": true,
+            "output": "",
+            "projectionsVerified": true,
+            "serializationFailures": [],
+            "status": 0,
+            "unported": []
+          },
+          "compatibility": {
+            "capabilities": {
+              "checkingProjection": "prototype",
+              "componentCompiler": "prototype",
+              "kitBuild": false,
+              "kitGraph": false,
+              "lsp": false,
+              "projectCheck": "explicit-input-prototype"
+            },
+            "channel": "stable",
+            "id": "v1:svelte=5.53.11;kit=2.69.2;ts=5.9.3",
+            "kitConfig": "svelte-config-or-vite-plugin",
+            "kitEnvironmentModule": "$app/environment",
+            "kitLibraryAlias": "$lib",
+            "kitVersion": "2.69.2",
+            "svelteVersion": "5.53.11",
+            "typescriptVersion": "5.9.3"
+          },
+          "compilerDiagnostics": [],
+          "ok": true,
+          "stage": "check",
+          "workspace": "/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/regression/project/literal-directive-preserved"
+        }
+      },
+      "reusedWorkspace": {
+        "exit": 1,
+        "stderr": "",
+        "response": {
+          "compatibility": {
+            "capabilities": {
+              "checkingProjection": "prototype",
+              "componentCompiler": "prototype",
+              "kitBuild": false,
+              "kitGraph": false,
+              "lsp": false,
+              "projectCheck": "explicit-input-prototype"
+            },
+            "channel": "stable",
+            "id": "v1:svelte=5.53.11;kit=2.69.2;ts=5.9.3",
+            "kitConfig": "svelte-config-or-vite-plugin",
+            "kitEnvironmentModule": "$app/environment",
+            "kitLibraryAlias": "$lib",
+            "kitVersion": "2.69.2",
+            "svelteVersion": "5.53.11",
+            "typescriptVersion": "5.9.3"
+          },
+          "error": {
+            "code": "project_failed",
+            "message": "File exists (os error 17)"
+          },
+          "ok": false
+        }
+      }
+    },
+    {
+      "name": "unsupported-rune-ts",
+      "passed": true,
+      "run": {
+        "exit": 1,
+        "stderr": "",
+        "response": {
+          "compatibility": {
+            "capabilities": {
+              "checkingProjection": "prototype",
+              "componentCompiler": "prototype",
+              "kitBuild": false,
+              "kitGraph": false,
+              "lsp": false,
+              "projectCheck": "explicit-input-prototype"
+            },
+            "channel": "stable",
+            "id": "v1:svelte=5.53.11;kit=2.69.2;ts=5.9.3",
+            "kitConfig": "svelte-config-or-vite-plugin",
+            "kitEnvironmentModule": "$app/environment",
+            "kitLibraryAlias": "$lib",
+            "kitVersion": "2.69.2",
+            "svelteVersion": "5.53.11",
+            "typescriptVersion": "5.9.3"
+          },
+          "error": {
+            "code": "unsupported_rune_module",
+            "message": "Rune module compiler diagnostics are not implemented yet: state.svelte.ts"
+          },
+          "ok": false
+        }
+      }
+    },
+    {
+      "name": "unsupported-rune-js",
+      "passed": true,
+      "run": {
+        "exit": 1,
+        "stderr": "",
+        "response": {
+          "compatibility": {
+            "capabilities": {
+              "checkingProjection": "prototype",
+              "componentCompiler": "prototype",
+              "kitBuild": false,
+              "kitGraph": false,
+              "lsp": false,
+              "projectCheck": "explicit-input-prototype"
+            },
+            "channel": "stable",
+            "id": "v1:svelte=5.53.11;kit=2.69.2;ts=5.9.3",
+            "kitConfig": "svelte-config-or-vite-plugin",
+            "kitEnvironmentModule": "$app/environment",
+            "kitLibraryAlias": "$lib",
+            "kitVersion": "2.69.2",
+            "svelteVersion": "5.53.11",
+            "typescriptVersion": "5.9.3"
+          },
+          "error": {
+            "code": "unsupported_rune_module",
+            "message": "Rune module compiler diagnostics are not implemented yet: state.svelte.js"
+          },
+          "ok": false
+        }
+      }
+    },
+    {
+      "name": "compiler-error",
+      "passed": true,
+      "run": {
+        "exit": 1,
+        "stderr": "",
+        "response": {
+          "compatibility": {
+            "capabilities": {
+              "checkingProjection": "prototype",
+              "componentCompiler": "prototype",
+              "kitBuild": false,
+              "kitGraph": false,
+              "lsp": false,
+              "projectCheck": "explicit-input-prototype"
+            },
+            "channel": "stable",
+            "id": "v1:svelte=5.53.11;kit=2.69.2;ts=5.9.3",
+            "kitConfig": "svelte-config-or-vite-plugin",
+            "kitEnvironmentModule": "$app/environment",
+            "kitLibraryAlias": "$lib",
+            "kitVersion": "2.69.2",
+            "svelteVersion": "5.53.11",
+            "typescriptVersion": "5.9.3"
+          },
+          "diagnostics": [
+            {
+              "bytes": {
+                "end": 30,
+                "start": 20
+              },
+              "code": "rune_invalid_arguments_length",
+              "message": "`$derived` must be called with exactly one argument\nhttps://svelte.dev/e/rune_invalid_arguments_length",
+              "range": {
+                "end": {
+                  "character": 30,
+                  "line": 0
+                },
+                "start": {
+                  "character": 20,
+                  "line": 0
+                }
+              },
+              "severity": "error",
+              "uri": "file:///Case.svelte"
+            }
+          ],
+          "failure": {
+            "backend": {
+              "appTarget": "5.53.11",
+              "clientDevelopment": false,
+              "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+              "name": "rsvelte",
+              "patches": [
+                "child-reset-5.53.11",
+                "declaration-tags-5.56",
+                "select-default-5.57"
+              ],
+              "svelteTarget": "5.57.1",
+              "version": "0.12.6"
+            },
+            "compatibility": {
+              "capabilities": {
+                "checkingProjection": "prototype",
+                "componentCompiler": "prototype",
+                "kitBuild": false,
+                "kitGraph": false,
+                "lsp": false,
+                "projectCheck": "explicit-input-prototype"
+              },
+              "channel": "stable",
+              "id": "v1:svelte=5.53.11;kit=2.69.2;ts=5.9.3",
+              "kitConfig": "svelte-config-or-vite-plugin",
+              "kitEnvironmentModule": "$app/environment",
+              "kitLibraryAlias": "$lib",
+              "kitVersion": "2.69.2",
+              "svelteVersion": "5.53.11",
+              "typescriptVersion": "5.9.3"
+            },
+            "diagnostics": [
+              {
+                "bytes": {
+                  "end": 30,
+                  "start": 20
+                },
+                "code": "rune_invalid_arguments_length",
+                "message": "`$derived` must be called with exactly one argument\nhttps://svelte.dev/e/rune_invalid_arguments_length",
+                "range": {
+                  "end": {
+                    "character": 30,
+                    "line": 0
+                  },
+                  "start": {
+                    "character": 20,
+                    "line": 0
+                  }
+                },
+                "severity": "error",
+                "uri": "file:///Case.svelte"
+              }
+            ],
+            "error": {
+              "code": "svelte_compile",
+              "message": "`$derived` must be called with exactly one argument\nhttps://svelte.dev/e/rune_invalid_arguments_length"
+            },
+            "ok": false
+          },
+          "ok": false,
+          "stage": "compile",
+          "workspace": "/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/regression/project/compiler-error"
+        }
+      }
+    }
+  ],
+  "summary": {
+    "cases": 10,
+    "passed": 10
+  }
+}

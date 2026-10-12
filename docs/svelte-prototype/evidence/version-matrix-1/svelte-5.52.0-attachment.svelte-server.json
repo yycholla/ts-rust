@@ -1,0 +1,484 @@
+{
+  "source": "<script>\n  function label(node) { node.setAttribute('title', 'attached'); return () => node.removeAttribute('title'); }\n</script>\n<button {@attach label}>Attached</button>\n",
+  "settings": {
+    "filename": "attachment.svelte",
+    "generate": "server",
+    "css": "external",
+    "dev": false,
+    "runes": true
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "attachment.svelte",
+        "version": 1,
+        "text": "<script>\n  function label(node) { node.setAttribute('title', 'attached'); return () => node.removeAttribute('title'); }\n</script>\n<button {@attach label}>Attached</button>\n"
+      },
+      "target": "server",
+      "dev": false,
+      "runes": true,
+      "compatibility": {
+        "svelteVersion": "5.52.0"
+      }
+    },
+    "exit": 0,
+    "signal": null,
+    "stdout": "{\"ok\":true,\"result\":{\"uri\":\"attachment.svelte\",\"version\":1,\"javascript\":{\"code\":\"import * as $ from 'svelte/internal/server';\\n\\nexport default function Attachment($$renderer) {\\n\\tfunction label(node) {\\n\\t\\tnode.setAttribute('title', 'attached');\\n\\n\\t\\treturn () => node.removeAttribute('title');\\n\\t}\\n\\n\\t$$renderer.push(`<button>Attached</button>`);\\n}\",\"map\":\"{\\\"version\\\":3,\\\"sources\\\":[\\\"attachment.svelte\\\"],\\\"sourcesContent\\\":[\\\"<script>\\\\n  function label(node) { node.setAttribute('title', 'attached'); return () => node.removeAttribute('title'); }\\\\n</script>\\\\n<button {@attach label}>Attached</button>\\\\n\\\"],\\\"names\\\":[],\\\"mappings\\\":\\\";;+CAAA,CAAC;UACU,KAAK,CAAC,IAAI;EAAI,IAAI,CAAC,YAAY,CAAC,OAAO,EAAE,UAAU;;eAAgB,IAAI,CAAC,eAAe,CAAC,OAAO;;;;AAClG,CAAC\\\"}\"},\"css\":null,\"diagnostics\":[],\"runes\":true,\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.52.0\",\"patches\":[\"child-reset-5.53.11\"],\"clientDevelopment\":false},\"compatibility\":{\"id\":\"v1:svelte=5.52.0;kit=none;ts=unspecified\",\"svelteVersion\":\"5.52.0\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": true,
+      "result": {
+        "uri": "attachment.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import * as $ from 'svelte/internal/server';\n\nexport default function Attachment($$renderer) {\n\tfunction label(node) {\n\t\tnode.setAttribute('title', 'attached');\n\n\t\treturn () => node.removeAttribute('title');\n\t}\n\n\t$$renderer.push(`<button>Attached</button>`);\n}",
+          "map": "{\"version\":3,\"sources\":[\"attachment.svelte\"],\"sourcesContent\":[\"<script>\\n  function label(node) { node.setAttribute('title', 'attached'); return () => node.removeAttribute('title'); }\\n</script>\\n<button {@attach label}>Attached</button>\\n\"],\"names\":[],\"mappings\":\";;+CAAA,CAAC;UACU,KAAK,CAAC,IAAI;EAAI,IAAI,CAAC,YAAY,CAAC,OAAO,EAAE,UAAU;;eAAgB,IAAI,CAAC,eAAe,CAAC,OAAO;;;;AAClG,CAAC\"}"
+        },
+        "css": null,
+        "diagnostics": [],
+        "runes": true,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.52.0",
+          "patches": [
+            "child-reset-5.53.11"
+          ],
+          "clientDevelopment": false
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.52.0;kit=none;ts=unspecified",
+          "svelteVersion": "5.52.0",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": true,
+    "artifact": {
+      "js": {
+        "code": "import * as $ from 'svelte/internal/server';\n\nexport default function Attachment($$renderer) {\n\tfunction label(node) {\n\t\tnode.setAttribute('title', 'attached');\n\n\t\treturn () => node.removeAttribute('title');\n\t}\n\n\t$$renderer.push(`<button>Attached</button>`);\n}",
+        "map": {
+          "version": 3,
+          "names": [],
+          "sources": [
+            "attachment.svelte"
+          ],
+          "sourcesContent": [
+            "<script>\n  function label(node) { node.setAttribute('title', 'attached'); return () => node.removeAttribute('title'); }\n</script>\n<button {@attach label}>Attached</button>\n"
+          ],
+          "mappings": ";;+CAAA,CAAC;CACC,SAAS,KAAK,CAAC,IAAI,EAAE,CAAC;EAAC,IAAI,CAAC,YAAY,CAAC,OAAO,EAAE,UAAU,CAAC,CAAC;;EAAC,MAAM,CAAC,MAAM,IAAI,CAAC,eAAe,CAAC,OAAO,CAAC,CAAC;CAAC,CAAC;;;AACtG,CAAC"
+        }
+      },
+      "css": null,
+      "warnings": [],
+      "metadata": {
+        "runes": true
+      },
+      "ast": {
+        "html": {
+          "type": "Fragment",
+          "start": 130,
+          "end": 171,
+          "children": [
+            {
+              "type": "Text",
+              "start": 129,
+              "end": 130,
+              "raw": "\n",
+              "data": "\n"
+            },
+            {
+              "type": "Element",
+              "start": 130,
+              "end": 171,
+              "name": "button",
+              "attributes": [
+                {
+                  "type": "AttachTag",
+                  "start": 138,
+                  "end": 153,
+                  "expression": {
+                    "type": "Identifier",
+                    "start": 147,
+                    "end": 152,
+                    "loc": {
+                      "start": {
+                        "line": 4,
+                        "column": 17
+                      },
+                      "end": {
+                        "line": 4,
+                        "column": 22
+                      }
+                    },
+                    "name": "label"
+                  }
+                }
+              ],
+              "children": [
+                {
+                  "type": "Text",
+                  "start": 154,
+                  "end": 162,
+                  "raw": "Attached",
+                  "data": "Attached"
+                }
+              ]
+            }
+          ]
+        },
+        "instance": {
+          "type": "Script",
+          "start": 0,
+          "end": 129,
+          "context": "default",
+          "content": {
+            "type": "Program",
+            "start": 8,
+            "end": 120,
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 0
+              },
+              "end": {
+                "line": 3,
+                "column": 9
+              }
+            },
+            "body": [
+              {
+                "type": "FunctionDeclaration",
+                "start": 11,
+                "end": 119,
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 110
+                  }
+                },
+                "id": {
+                  "type": "Identifier",
+                  "start": 20,
+                  "end": 25,
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 11
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 16
+                    }
+                  },
+                  "name": "label"
+                },
+                "expression": false,
+                "generator": false,
+                "async": false,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "start": 26,
+                    "end": 30,
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 17
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 21
+                      }
+                    },
+                    "name": "node"
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "start": 32,
+                  "end": 119,
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 23
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 110
+                    }
+                  },
+                  "body": [
+                    {
+                      "type": "ExpressionStatement",
+                      "start": 34,
+                      "end": 73,
+                      "loc": {
+                        "start": {
+                          "line": 2,
+                          "column": 25
+                        },
+                        "end": {
+                          "line": 2,
+                          "column": 64
+                        }
+                      },
+                      "expression": {
+                        "type": "CallExpression",
+                        "start": 34,
+                        "end": 72,
+                        "loc": {
+                          "start": {
+                            "line": 2,
+                            "column": 25
+                          },
+                          "end": {
+                            "line": 2,
+                            "column": 63
+                          }
+                        },
+                        "callee": {
+                          "type": "MemberExpression",
+                          "start": 34,
+                          "end": 51,
+                          "loc": {
+                            "start": {
+                              "line": 2,
+                              "column": 25
+                            },
+                            "end": {
+                              "line": 2,
+                              "column": 42
+                            }
+                          },
+                          "object": {
+                            "type": "Identifier",
+                            "start": 34,
+                            "end": 38,
+                            "loc": {
+                              "start": {
+                                "line": 2,
+                                "column": 25
+                              },
+                              "end": {
+                                "line": 2,
+                                "column": 29
+                              }
+                            },
+                            "name": "node"
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "start": 39,
+                            "end": 51,
+                            "loc": {
+                              "start": {
+                                "line": 2,
+                                "column": 30
+                              },
+                              "end": {
+                                "line": 2,
+                                "column": 42
+                              }
+                            },
+                            "name": "setAttribute"
+                          },
+                          "computed": false,
+                          "optional": false
+                        },
+                        "arguments": [
+                          {
+                            "type": "Literal",
+                            "start": 52,
+                            "end": 59,
+                            "loc": {
+                              "start": {
+                                "line": 2,
+                                "column": 43
+                              },
+                              "end": {
+                                "line": 2,
+                                "column": 50
+                              }
+                            },
+                            "value": "title",
+                            "raw": "'title'"
+                          },
+                          {
+                            "type": "Literal",
+                            "start": 61,
+                            "end": 71,
+                            "loc": {
+                              "start": {
+                                "line": 2,
+                                "column": 52
+                              },
+                              "end": {
+                                "line": 2,
+                                "column": 62
+                              }
+                            },
+                            "value": "attached",
+                            "raw": "'attached'"
+                          }
+                        ],
+                        "optional": false
+                      }
+                    },
+                    {
+                      "type": "ReturnStatement",
+                      "start": 74,
+                      "end": 117,
+                      "loc": {
+                        "start": {
+                          "line": 2,
+                          "column": 65
+                        },
+                        "end": {
+                          "line": 2,
+                          "column": 108
+                        }
+                      },
+                      "argument": {
+                        "type": "ArrowFunctionExpression",
+                        "start": 81,
+                        "end": 116,
+                        "loc": {
+                          "start": {
+                            "line": 2,
+                            "column": 72
+                          },
+                          "end": {
+                            "line": 2,
+                            "column": 107
+                          }
+                        },
+                        "id": null,
+                        "expression": true,
+                        "generator": false,
+                        "async": false,
+                        "params": [],
+                        "body": {
+                          "type": "CallExpression",
+                          "start": 87,
+                          "end": 116,
+                          "loc": {
+                            "start": {
+                              "line": 2,
+                              "column": 78
+                            },
+                            "end": {
+                              "line": 2,
+                              "column": 107
+                            }
+                          },
+                          "callee": {
+                            "type": "MemberExpression",
+                            "start": 87,
+                            "end": 107,
+                            "loc": {
+                              "start": {
+                                "line": 2,
+                                "column": 78
+                              },
+                              "end": {
+                                "line": 2,
+                                "column": 98
+                              }
+                            },
+                            "object": {
+                              "type": "Identifier",
+                              "start": 87,
+                              "end": 91,
+                              "loc": {
+                                "start": {
+                                  "line": 2,
+                                  "column": 78
+                                },
+                                "end": {
+                                  "line": 2,
+                                  "column": 82
+                                }
+                              },
+                              "name": "node"
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "start": 92,
+                              "end": 107,
+                              "loc": {
+                                "start": {
+                                  "line": 2,
+                                  "column": 83
+                                },
+                                "end": {
+                                  "line": 2,
+                                  "column": 98
+                                }
+                              },
+                              "name": "removeAttribute"
+                            },
+                            "computed": false,
+                            "optional": false
+                          },
+                          "arguments": [
+                            {
+                              "type": "Literal",
+                              "start": 108,
+                              "end": 115,
+                              "loc": {
+                                "start": {
+                                  "line": 2,
+                                  "column": 99
+                                },
+                                "end": {
+                                  "line": 2,
+                                  "column": 106
+                                }
+                              },
+                              "value": "title",
+                              "raw": "'title'"
+                            }
+                          ],
+                          "optional": false
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "sourceType": "module"
+          }
+        }
+      }
+    },
+    "comparable": {
+      "ok": true,
+      "runes": true,
+      "diagnostics": []
+    }
+  }
+}

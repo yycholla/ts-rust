@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "compilations": 4,
+  "compilationFailures": 0,
+  "serverAgreement": true,
+  "hydrationCases": 4,
+  "hydrationPassed": 4,
+  "hydrationUnrun": 0,
+  "unsupportedClientControls": 1,
+  "unsupportedClientControlsPassed": 1,
+  "report": "/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/versions/regression/runtime/report.json"
+}
+

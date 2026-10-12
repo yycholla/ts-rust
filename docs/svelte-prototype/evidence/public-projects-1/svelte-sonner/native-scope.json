@@ -1,0 +1,18 @@
+{
+  "base": "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/svelte-sonner",
+  "components": 30,
+  "files": 16,
+  "runeModules": [
+    "src/lib/internal/use-document-hidden.svelte.ts",
+    "src/lib/toast-state.svelte.ts"
+  ],
+  "excludedSrcFiles": [
+    "src/app.html",
+    "src/routes/styles.css"
+  ],
+  "outsideSrc": "All files outside the selected src tree are excluded",
+  "languageDetection": "Exact lang=ts quoted attribute substring heuristic; only an explicit-input attempt, not project parity",
+  "fullBuild": "unsupported: no native bundler/Kit/adapter pipeline",
+  "lint": "unsupported: no ESLint/Prettier/oxlint implementation",
+  "check": "Explicit src inputs; native fixed config, no Kit generated types, preprocessing or alias configuration"
+}

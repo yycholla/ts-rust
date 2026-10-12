@@ -1,0 +1,77 @@
+{
+  "status": 0,
+  "signal": null,
+  "stderr": "",
+  "stdout": "{\"ok\":true,\"result\":{\"uri\":\"Case.svelte\",\"version\":1,\"code\":\"///<reference types=\\\"svelte\\\" />\\n;\\n;type $$ComponentProps =  { count: number };function $$render() {\\n\\n  let { count }:/*Ωignore_startΩ*/$$ComponentProps/*Ωignore_endΩ*/ = $props();\\n;\\nasync () => {\\n { svelteHTML.createElement(\\\"p\\\", {});count.notARealMember(); }\\n};\\nreturn { props: {} as any as $$ComponentProps, exports: {}, bindings: __sveltets_$$bindings(''), slots: {}, events: {} }}\\nconst Case__SvelteComponent_ = __sveltets_2_fn_component($$render());\\n/*Ωignore_startΩ*/type Case__SvelteComponent_ = ReturnType<typeof Case__SvelteComponent_>;\\n/*Ωignore_endΩ*/export default Case__SvelteComponent_;\",\"map\":\"{\\\"version\\\":3,\\\"file\\\":null,\\\"sources\\\":[\\\"Case.svelte\\\"],\\\"sourcesContent\\\":[],\\\"names\\\":[],\\\"mappings\\\":\\\";AAAA,CAAC;AAAA;AAAiB;AAClB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,kDAAkB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC9C;AAAA,aAAS;AACT,qCAAI,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAI;\\\"}\",\"mappings\":[{\"source\":{\"start\":18,\"end\":35},\"generated\":{\"start\":100,\"end\":117}},{\"source\":{\"start\":53,\"end\":66},\"generated\":{\"start\":171,\"end\":184}},{\"source\":{\"start\":80,\"end\":102},\"generated\":{\"start\":237,\"end\":259}},{\"source\":{\"start\":107,\"end\":108},\"generated\":{\"start\":262,\"end\":263}}],\"runes\":true,\"props\":[{\"name\":\"count\",\"optional\":false,\"bindable\":false,\"type\":null}],\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.53.11\",\"patches\":[\"child-reset-5.53.11\"],\"clientDevelopment\":false}}}\n",
+  "response": {
+    "ok": true,
+    "result": {
+      "uri": "Case.svelte",
+      "version": 1,
+      "code": "///<reference types=\"svelte\" />\n;\n;type $$ComponentProps =  { count: number };function $$render() {\n\n  let { count }:/*Ωignore_startΩ*/$$ComponentProps/*Ωignore_endΩ*/ = $props();\n;\nasync () => {\n { svelteHTML.createElement(\"p\", {});count.notARealMember(); }\n};\nreturn { props: {} as any as $$ComponentProps, exports: {}, bindings: __sveltets_$$bindings(''), slots: {}, events: {} }}\nconst Case__SvelteComponent_ = __sveltets_2_fn_component($$render());\n/*Ωignore_startΩ*/type Case__SvelteComponent_ = ReturnType<typeof Case__SvelteComponent_>;\n/*Ωignore_endΩ*/export default Case__SvelteComponent_;",
+      "map": "{\"version\":3,\"file\":null,\"sources\":[\"Case.svelte\"],\"sourcesContent\":[],\"names\":[],\"mappings\":\";AAAA,CAAC;AAAA;AAAiB;AAClB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,kDAAkB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC9C;AAAA,aAAS;AACT,qCAAI,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAI;\"}",
+      "mappings": [
+        {
+          "source": {
+            "start": 18,
+            "end": 35
+          },
+          "generated": {
+            "start": 100,
+            "end": 117
+          }
+        },
+        {
+          "source": {
+            "start": 53,
+            "end": 66
+          },
+          "generated": {
+            "start": 171,
+            "end": 184
+          }
+        },
+        {
+          "source": {
+            "start": 80,
+            "end": 102
+          },
+          "generated": {
+            "start": 237,
+            "end": 259
+          }
+        },
+        {
+          "source": {
+            "start": 107,
+            "end": 108
+          },
+          "generated": {
+            "start": 262,
+            "end": 263
+          }
+        }
+      ],
+      "runes": true,
+      "props": [
+        {
+          "name": "count",
+          "optional": false,
+          "bindable": false,
+          "type": null
+        }
+      ],
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.53.11",
+        "patches": [
+          "child-reset-5.53.11"
+        ],
+        "clientDevelopment": false
+      }
+    }
+  }
+}

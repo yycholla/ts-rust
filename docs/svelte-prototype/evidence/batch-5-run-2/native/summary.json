@@ -1,0 +1,13 @@
+{
+  "status": 0,
+  "complete": true,
+  "stage": "check",
+  "error": null,
+  "checkerStatus": 2,
+  "diagnostics": 0,
+  "requestBytes": 21173353,
+  "elapsedSeconds": 15.697849401010899,
+  "inputsStable": true,
+  "sourceStable": true,
+  "binariesStable": true
+}

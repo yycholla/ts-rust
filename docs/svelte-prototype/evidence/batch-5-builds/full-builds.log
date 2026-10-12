@@ -1,0 +1,44 @@
+{"mode": "official", "command": ["/etc/profiles/per-user/yycholla/bin/node", "/home/yycholla/Projects/ts-rust/target/svelte-project-build-official-1/app/node_modules/vite/bin/vite.js", "build", "--configLoader", "runner"], "exitCode": 0, "sourceStable": true, "binariesStable": true, "elapsedSeconds": 137.29754240400507, "sourceUnchanged": true, "controls": ["Disable Sentry sourcemap upload in isolated config", "No .env files or inherited credentials", "Reminder scheduler disabled"], "buildExists": true, "nativeScope": null}
+{"mode": "native", "command": ["/home/yycholla/Projects/ts-rust/target/release/ts_svelte_kit", "/home/yycholla/Projects/ts-rust/target/svelte-project-build-native-1/app", "/etc/profiles/per-user/yycholla/bin/node", "/home/yycholla/Projects/ts-rust/scripts/svelte/register-build-loader.mjs", "/home/yycholla/Projects/ts-rust/target/release/svelte-tool", "/home/yycholla/Projects/ts-rust/target/svelte-project-build-native-1/native-calls.jsonl"], "exitCode": 0, "sourceStable": true, "binariesStable": true, "elapsedSeconds": 121.54439072898822, "sourceUnchanged": true, "controls": ["Disable Sentry sourcemap upload in isolated config", "No .env files or inherited credentials", "Reminder scheduler disabled"], "buildExists": true, "nativeScope": "Svelte component and rune-module compilation only; Kit/Vite/preprocessing/bundling/adapter remain JavaScript"}
+{
+  "passed": true,
+  "comparisons": [
+    {
+      "route": "/health",
+      "matched": true,
+      "officialStatus": 200,
+      "nativeStatus": 200,
+      "nativeErrors": []
+    },
+    {
+      "route": "/login",
+      "matched": true,
+      "officialStatus": 200,
+      "nativeStatus": 200,
+      "nativeErrors": [],
+      "hydratedInputInteraction": true,
+      "svelteStateToggle": true
+    },
+    {
+      "route": "/oauth/login",
+      "matched": true,
+      "officialStatus": 400,
+      "nativeStatus": 400,
+      "nativeErrors": []
+    },
+    {
+      "route": "/docs",
+      "matched": true,
+      "officialStatus": 200,
+      "nativeStatus": 200,
+      "nativeErrors": [],
+      "hydratedInputInteraction": true,
+      "svelteStateToggle": true
+    }
+  ],
+  "errors": [
+    null,
+    null
+  ]
+}
+DONE

@@ -1,0 +1,18 @@
+{
+  "command": [
+    "node",
+    "scripts/svelte/public-components.mjs",
+    "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/bits-ui/packages/bits-ui",
+    "/home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/public-projects-1/bits-ui/components"
+  ],
+  "cwd": "/home/yycholla/Projects/ts-rust",
+  "exitCode": 0,
+  "timeout": false,
+  "timeoutSeconds": 300,
+  "wallSeconds": 6.529,
+  "log": "components.log",
+  "timeSeconds": 6.48,
+  "maxRssKiB": 304592,
+  "userSeconds": 6.5,
+  "systemSeconds": 2.1
+}

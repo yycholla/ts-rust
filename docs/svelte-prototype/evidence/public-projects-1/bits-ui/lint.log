@@ -1,0 +1,6 @@
+
+> root@0.0.0 lint /home/yycholla/Projects/ts-rust/target/svelte-public-projects/bits-ui
+> oxlint . && eslint .
+
+Found 0 warnings and 0 errors.
+Finished in 111ms on 1092 files using 16 threads.

@@ -1,0 +1,419 @@
+{
+  "tests": [
+    {
+      "name": "initialize explicit native semantic project",
+      "status": "pass"
+    },
+    {
+      "name": "typed consumer diagnostic with negative document version",
+      "status": "pass"
+    },
+    {
+      "name": "child contract edit invalidates untouched consumer and pull agrees",
+      "status": "pass"
+    },
+    {
+      "name": "closing child restores disk contract and clears its diagnostics",
+      "status": "pass"
+    },
+    {
+      "name": "conflicting project configuration is rejected without changing diagnostics",
+      "status": "pass"
+    },
+    {
+      "name": "disk file size limit remains a visible incomplete check",
+      "status": "pass"
+    },
+    {
+      "name": "saving preserves semantic errors in every publication",
+      "status": "pass"
+    },
+    {
+      "name": "alternate encoded URI cannot silently replace an open buffer",
+      "status": "pass"
+    }
+  ],
+  "history": [
+    {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "capabilities": {
+          "positionEncoding": "utf-16",
+          "textDocumentSync": {
+            "openClose": true,
+            "change": 2,
+            "save": {
+              "includeText": false
+            }
+          },
+          "diagnosticProvider": {
+            "identifier": "ts-rust-svelte",
+            "interFileDependencies": true,
+            "workspaceDiagnostics": false
+          }
+        },
+        "serverInfo": {
+          "name": "ts-rust-svelte",
+          "version": "0.1.0"
+        }
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "method": "textDocument/publishDiagnostics",
+      "params": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-project-verification-2/retained/lsp-project/project%20space%20%23%20%25%20%E6%97%A5%E6%9C%AC/Parent.svelte",
+        "diagnostics": [
+          {
+            "range": {
+              "start": {
+                "line": 0,
+                "character": 0
+              },
+              "end": {
+                "line": 0,
+                "character": 0
+              }
+            },
+            "severity": 1,
+            "code": 2322,
+            "source": "ts-rust-svelte",
+            "message": "Type 'string' is not assignable to type 'number'.",
+            "data": {
+              "unmapped": true
+            }
+          }
+        ],
+        "version": -2
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "result": {
+        "documents": 1,
+        "sourceBytes": 85,
+        "cachedDiagnostics": 1,
+        "typeChecking": false
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "method": "textDocument/publishDiagnostics",
+      "params": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-project-verification-2/retained/lsp-project/project%20space%20%23%20%25%20%E6%97%A5%E6%9C%AC/Child.svelte",
+        "diagnostics": [],
+        "version": -1
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "method": "textDocument/publishDiagnostics",
+      "params": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-project-verification-2/retained/lsp-project/project%20space%20%23%20%25%20%E6%97%A5%E6%9C%AC/Parent.svelte",
+        "diagnostics": [
+          {
+            "range": {
+              "start": {
+                "line": 0,
+                "character": 0
+              },
+              "end": {
+                "line": 0,
+                "character": 0
+              }
+            },
+            "severity": 1,
+            "code": 2322,
+            "source": "ts-rust-svelte",
+            "message": "Type 'string' is not assignable to type 'number'.",
+            "data": {
+              "unmapped": true
+            }
+          }
+        ],
+        "version": -2
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "result": {
+        "documents": 2,
+        "sourceBytes": 170,
+        "cachedDiagnostics": 2,
+        "typeChecking": false
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "method": "textDocument/publishDiagnostics",
+      "params": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-project-verification-2/retained/lsp-project/project%20space%20%23%20%25%20%E6%97%A5%E6%9C%AC/Child.svelte",
+        "diagnostics": [],
+        "version": 0
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "method": "textDocument/publishDiagnostics",
+      "params": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-project-verification-2/retained/lsp-project/project%20space%20%23%20%25%20%E6%97%A5%E6%9C%AC/Parent.svelte",
+        "diagnostics": [],
+        "version": -2
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 4,
+      "result": {
+        "documents": 2,
+        "sourceBytes": 170,
+        "cachedDiagnostics": 2,
+        "typeChecking": false
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 5,
+      "result": {
+        "kind": "full",
+        "items": []
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "method": "textDocument/publishDiagnostics",
+      "params": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-project-verification-2/retained/lsp-project/project%20space%20%23%20%25%20%E6%97%A5%E6%9C%AC/Child.svelte",
+        "diagnostics": []
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "method": "textDocument/publishDiagnostics",
+      "params": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-project-verification-2/retained/lsp-project/project%20space%20%23%20%25%20%E6%97%A5%E6%9C%AC/Parent.svelte",
+        "diagnostics": [
+          {
+            "range": {
+              "start": {
+                "line": 0,
+                "character": 0
+              },
+              "end": {
+                "line": 0,
+                "character": 0
+              }
+            },
+            "severity": 1,
+            "code": 2322,
+            "source": "ts-rust-svelte",
+            "message": "Type 'string' is not assignable to type 'number'.",
+            "data": {
+              "unmapped": true
+            }
+          }
+        ],
+        "version": -2
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 6,
+      "result": {
+        "documents": 1,
+        "sourceBytes": 85,
+        "cachedDiagnostics": 1,
+        "typeChecking": false
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "method": "window/logMessage",
+      "params": {
+        "type": 1,
+        "message": "Session runes conflicts with explicit project runes"
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 7,
+      "result": {
+        "documents": 1,
+        "sourceBytes": 85,
+        "cachedDiagnostics": 1,
+        "typeChecking": false
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 8,
+      "result": {
+        "kind": "full",
+        "items": [
+          {
+            "range": {
+              "start": {
+                "line": 0,
+                "character": 0
+              },
+              "end": {
+                "line": 0,
+                "character": 0
+              }
+            },
+            "severity": 1,
+            "code": 2322,
+            "source": "ts-rust-svelte",
+            "message": "Type 'string' is not assignable to type 'number'.",
+            "data": {
+              "unmapped": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "method": "textDocument/publishDiagnostics",
+      "params": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-project-verification-2/retained/lsp-project/project%20space%20%23%20%25%20%E6%97%A5%E6%9C%AC/Parent.svelte",
+        "diagnostics": [
+          {
+            "range": {
+              "start": {
+                "line": 0,
+                "character": 0
+              },
+              "end": {
+                "line": 0,
+                "character": 0
+              }
+            },
+            "severity": 1,
+            "code": "incomplete_project_check",
+            "source": "ts-rust-svelte",
+            "message": "Input exceeds 1048576 bytes",
+            "data": {
+              "unmapped": true
+            }
+          }
+        ],
+        "version": -2
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 9,
+      "result": {
+        "documents": 1,
+        "sourceBytes": 85,
+        "cachedDiagnostics": 1,
+        "typeChecking": false
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "method": "textDocument/publishDiagnostics",
+      "params": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-project-verification-2/retained/lsp-project/project%20space%20%23%20%25%20%E6%97%A5%E6%9C%AC/Parent.svelte",
+        "diagnostics": [
+          {
+            "range": {
+              "start": {
+                "line": 0,
+                "character": 0
+              },
+              "end": {
+                "line": 0,
+                "character": 0
+              }
+            },
+            "severity": 1,
+            "code": 2322,
+            "source": "ts-rust-svelte",
+            "message": "Type 'string' is not assignable to type 'number'.",
+            "data": {
+              "unmapped": true
+            }
+          }
+        ],
+        "version": -2
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 10,
+      "result": {
+        "documents": 1,
+        "sourceBytes": 85,
+        "cachedDiagnostics": 1,
+        "typeChecking": false
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "method": "textDocument/publishDiagnostics",
+      "params": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-project-verification-2/retained/lsp-project/project%20space%20%23%20%25%20%E6%97%A5%E6%9C%AC/Parent.svelte",
+        "diagnostics": [
+          {
+            "range": {
+              "start": {
+                "line": 0,
+                "character": 0
+              },
+              "end": {
+                "line": 0,
+                "character": 0
+              }
+            },
+            "severity": 1,
+            "code": 2322,
+            "source": "ts-rust-svelte",
+            "message": "Type 'string' is not assignable to type 'number'.",
+            "data": {
+              "unmapped": true
+            }
+          }
+        ],
+        "version": -2
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 11,
+      "result": {
+        "documents": 1,
+        "sourceBytes": 85,
+        "cachedDiagnostics": 1,
+        "typeChecking": false
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "method": "window/logMessage",
+      "params": {
+        "type": 1,
+        "message": "Source already open under another URI"
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 12,
+      "result": {
+        "documents": 1,
+        "sourceBytes": 85,
+        "cachedDiagnostics": 1,
+        "typeChecking": false
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 13,
+      "result": null
+    }
+  ]
+}

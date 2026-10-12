@@ -1,0 +1,288 @@
+{
+  "workspace": "/home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/public-projects-1/realworld/native-workspace",
+  "dependencies": "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/node_modules",
+  "components": [
+    {
+      "path": "src/lib/ArticleList/ArticlePreview.svelte",
+      "document": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/src/lib/ArticleList/ArticlePreview.svelte",
+        "version": 1,
+        "text": "<script>\n\timport { enhance } from '$app/forms';\n\n\tconst { article, user } = $props();\n</script>\n\n<div class=\"article-preview\">\n\t<div class=\"article-meta\">\n\t\t<a href=\"/profile/@{article.author.username}\">\n\t\t\t<img src={article.author.image} alt={article.author.username} />\n\t\t</a>\n\n\t\t<div class=\"info\">\n\t\t\t<a class=\"author\" href=\"/profile/@{article.author.username}\">{article.author.username}</a>\n\t\t\t<span class=\"date\">{new Date(article.createdAt).toDateString()}</span>\n\t\t</div>\n\n\t\t{#if user}\n\t\t\t<form\n\t\t\t\tmethod=\"POST\"\n\t\t\t\taction=\"/article/{article.slug}?/toggleFavorite\"\n\t\t\t\tuse:enhance={({ form }) => {\n\t\t\t\t\t// optimistic UI\n\t\t\t\t\tif (article.favorited) {\n\t\t\t\t\t\tarticle.favorited = false;\n\t\t\t\t\t\tarticle.favoritesCount -= 1;\n\t\t\t\t\t} else {\n\t\t\t\t\t\tarticle.favorited = true;\n\t\t\t\t\t\tarticle.favoritesCount += 1;\n\t\t\t\t\t}\n\n\t\t\t\t\tconst button = form.querySelector('button');\n\t\t\t\t\tbutton.disabled = true;\n\n\t\t\t\t\treturn ({ result, update }) => {\n\t\t\t\t\t\tbutton.disabled = false;\n\t\t\t\t\t\tif (result.type === 'error') update();\n\t\t\t\t\t};\n\t\t\t\t}}\n\t\t\t\tclass=\"pull-xs-right\"\n\t\t\t>\n\t\t\t\t<input hidden type=\"checkbox\" name=\"favorited\" checked={article.favorited} />\n\t\t\t\t<button class=\"btn btn-sm {article.favorited ? 'btn-primary' : 'btn-outline-primary'}\">\n\t\t\t\t\t<i class=\"ion-heart\"></i>\n\t\t\t\t\t{article.favoritesCount}\n\t\t\t\t</button>\n\t\t\t</form>\n\t\t{/if}\n\t</div>\n\n\t<a href=\"/article/{article.slug}\" class=\"preview-link\">\n\t\t<h1>{article.title}</h1>\n\t\t<p>{article.description}</p>\n\t\t<span>Read more...</span>\n\t\t<ul class=\"tag-list\">\n\t\t\t{#each article.tagList as tag}\n\t\t\t\t<li class=\"tag-default tag-pill tag-outline\">{tag}</li>\n\t\t\t{/each}\n\t\t</ul>\n\t</a>\n</div>\n"
+      },
+      "typescript": false
+    },
+    {
+      "path": "src/lib/ArticleList/index.svelte",
+      "document": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/src/lib/ArticleList/index.svelte",
+        "version": 1,
+        "text": "<script>\n\timport { page } from '$app/state';\n\timport ArticlePreview from './ArticlePreview.svelte';\n\n\tconst { articles } = $props();\n</script>\n\n{#if articles.length === 0}\n\t<div class=\"article-preview\">No articles are here... yet.</div>\n{:else}\n\t<div>\n\t\t{#each articles as article (article.slug)}\n\t\t\t<ArticlePreview {article} user={page.data.user} />\n\t\t{/each}\n\t</div>\n{/if}\n"
+      },
+      "typescript": false
+    },
+    {
+      "path": "src/lib/ListErrors.svelte",
+      "document": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/src/lib/ListErrors.svelte",
+        "version": 1,
+        "text": "<script>\n\tconst { errors } = $props();\n</script>\n\n{#if errors}\n\t<ul class=\"error-messages\">\n\t\t{#each Object.keys(errors) as key}\n\t\t\t<li>{key} {errors[key]}</li>\n\t\t{/each}\n\t</ul>\n{/if}\n"
+      },
+      "typescript": false
+    },
+    {
+      "path": "src/routes/+error.svelte",
+      "document": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/src/routes/%2Berror.svelte",
+        "version": 1,
+        "text": "<script>\n\timport { page } from '$app/state';\n</script>\n\n<svelte:head>\n\t<title>{page.status}</title>\n</svelte:head>\n\n<div>\n\t{#if page.status === 404}\n\t\t<h1>Not found!</h1>\n\t{:else}\n\t\t<h1>Something went wrong</h1>\n\t{/if}\n</div>\n\n<style>\n\th1 {\n\t\tmargin: 4em 0;\n\t\ttext-align: center;\n\t}\n\n\t@media (min-width: 480px) {\n\t\th1 {\n\t\t\tfont-size: 4em;\n\t\t}\n\t}\n</style>\n"
+      },
+      "typescript": false
+    },
+    {
+      "path": "src/routes/+layout.svelte",
+      "document": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/src/routes/%2Blayout.svelte",
+        "version": 1,
+        "text": "<script>\n\timport { navigating } from '$app/state';\n\timport favicon from '$lib/assets/favicon.ico';\n\timport Nav from './Nav.svelte';\n\timport PreloadingIndicator from './PreloadingIndicator.svelte';\n\n\tconst { children } = $props();\n</script>\n\n<svelte:head>\n\t<link rel=\"icon\" href={favicon} />\n</svelte:head>\n\n{#if navigating.from}\n\t<PreloadingIndicator />\n{/if}\n\n<Nav />\n\n<main>\n\t{@render children()}\n</main>\n"
+      },
+      "typescript": false
+    },
+    {
+      "path": "src/routes/+page.svelte",
+      "document": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/src/routes/%2Bpage.svelte",
+        "version": 1,
+        "text": "<script>\n\timport { page } from '$app/stores';\n\timport ArticleList from '$lib/ArticleList/index.svelte';\n\timport logo from '$lib/assets/conduit-logo.svg';\n\timport Pagination from './Pagination.svelte';\n\n\tconst { data } = $props();\n\n\tconst p = $derived(+($page.url.searchParams.get('page') ?? '1'));\n\tconst tag = $derived($page.url.searchParams.get('tag'));\n\tconst tab = $derived($page.url.searchParams.get('tab') ?? 'all');\n\tconst page_link_base = $derived(tag ? `tag=${tag}` : `tab=${tab}`);\n</script>\n\n<svelte:head>\n\t<title>Conduit</title>\n</svelte:head>\n\n<div class=\"home-page\">\n\t{#if !data.user}\n\t\t<div class=\"banner\">\n\t\t\t<div class=\"container\">\n\t\t\t\t<h1 class=\"logo-font\">\n\t\t\t\t\t<img src={logo} alt=\"Conduit\" class=\"banner-logo\" />\n\t\t\t\t</h1>\n\t\t\t\t<p>A place to share your knowledge.</p>\n\t\t\t</div>\n\t\t</div>\n\t{/if}\n\n\t<div class=\"container page\">\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-md-9\">\n\t\t\t\t<div class=\"feed-toggle\">\n\t\t\t\t\t<ul class=\"nav nav-pills outline-active\">\n\t\t\t\t\t\t<li class=\"nav-item\">\n\t\t\t\t\t\t\t<a href=\"/?tab=all\" class=\"nav-link\" class:active={tab === 'all' && !tag}>\n\t\t\t\t\t\t\t\tGlobal Feed\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t</li>\n\n\t\t\t\t\t\t{#if data.user}\n\t\t\t\t\t\t\t<li class=\"nav-item\">\n\t\t\t\t\t\t\t\t<a href=\"/?tab=feed\" class=\"nav-link\" class:active={tab === 'feed'}>Your Feed</a>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t{:else}\n\t\t\t\t\t\t\t<li class=\"nav-item\">\n\t\t\t\t\t\t\t\t<a href=\"/login\" class=\"nav-link\">Sign in to see your Feed</a>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t{/if}\n\n\t\t\t\t\t\t{#if tag}\n\t\t\t\t\t\t\t<li class=\"nav-item\">\n\t\t\t\t\t\t\t\t<a href=\"/?tag={tag}\" class=\"nav-link active\">\n\t\t\t\t\t\t\t\t\t<i class=\"ion-pound\"></i>\n\t\t\t\t\t\t\t\t\t{tag}\n\t\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t{/if}\n\t\t\t\t\t</ul>\n\t\t\t\t</div>\n\n\t\t\t\t<ArticleList articles={data.articles} />\n\t\t\t\t<Pagination pages={data.pages} {p} href={(p) => `/?${page_link_base}&page=${p}`} />\n\t\t\t</div>\n\n\t\t\t<div class=\"col-md-3\">\n\t\t\t\t<div class=\"sidebar\">\n\t\t\t\t\t<p>Popular Tags</p>\n\t\t\t\t\t<div class=\"tag-list\">\n\t\t\t\t\t\t{#each data.tags as tag}\n\t\t\t\t\t\t\t<a href=\"/?tag={tag}\" class=\"tag-default tag-pill\">{tag}</a>\n\t\t\t\t\t\t{/each}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n"
+      },
+      "typescript": false
+    },
+    {
+      "path": "src/routes/Nav.svelte",
+      "document": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/src/routes/Nav.svelte",
+        "version": 1,
+        "text": "<script>\n\timport { page } from '$app/state';\n\timport logo from '$lib/assets/conduit-logo.svg';\n</script>\n\n<nav class=\"navbar navbar-light\">\n\t<div class=\"container\">\n\t\t<a class=\"navbar-brand\" href=\"/\">\n\t\t\t<img src={logo} alt=\"Conduit\" class=\"navbar-logo\" />\n\t\t</a>\n\t\t<ul class=\"nav navbar-nav pull-xs-right\">\n\t\t\t<li class=\"nav-item\">\n\t\t\t\t<a class=\"nav-link\" class:active={page.url.pathname === '/'} href=\"/\">Home</a>\n\t\t\t</li>\n\n\t\t\t{#if page.data.user}\n\t\t\t\t<li class=\"nav-item\">\n\t\t\t\t\t<a href=\"/editor\" class=\"nav-link\" class:active={page.url.pathname === '/editor'}>\n\t\t\t\t\t\t<i class=\"ion-compose\"></i>&nbsp;New Post\n\t\t\t\t\t</a>\n\t\t\t\t</li>\n\n\t\t\t\t<li class=\"nav-item\">\n\t\t\t\t\t<a href=\"/settings\" class=\"nav-link\" class:active={page.url.pathname === '/settings'}>\n\t\t\t\t\t\t<i class=\"ion-gear-a\"></i>&nbsp;Settings\n\t\t\t\t\t</a>\n\t\t\t\t</li>\n\n\t\t\t\t<li class=\"nav-item\">\n\t\t\t\t\t<a href=\"/profile/@{page.data.user.username}\" class=\"nav-link\">\n\t\t\t\t\t\t{page.data.user.username}\n\t\t\t\t\t</a>\n\t\t\t\t</li>\n\t\t\t{:else}\n\t\t\t\t<li class=\"nav-item\">\n\t\t\t\t\t<a href=\"/login\" class=\"nav-link\" class:active={page.url.pathname === '/login'}>\n\t\t\t\t\t\tSign in\n\t\t\t\t\t</a>\n\t\t\t\t</li>\n\n\t\t\t\t<li class=\"nav-item\">\n\t\t\t\t\t<a href=\"/register\" class=\"nav-link\" class:active={page.url.pathname === '/register'}>\n\t\t\t\t\t\tSign up\n\t\t\t\t\t</a>\n\t\t\t\t</li>\n\t\t\t{/if}\n\t\t</ul>\n\t</div>\n</nav>\n"
+      },
+      "typescript": false
+    },
+    {
+      "path": "src/routes/Pagination.svelte",
+      "document": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/src/routes/Pagination.svelte",
+        "version": 1,
+        "text": "<script>\n\tconst { pages, p, href } = $props();\n\n\tconst range = $derived.by(() => {\n\t\tconst result = [];\n\t\tfor (let i = 1; i <= pages; i++) {\n\t\t\tresult.push(i);\n\t\t}\n\t\treturn result;\n\t});\n</script>\n\n{#if pages > 1}\n\t<nav>\n\t\t<ul class=\"pagination\">\n\t\t\t{#each range as n}\n\t\t\t\t<li class=\"page-item\" class:active={n == p}><a class=\"page-link\" href={href(n)}>{n}</a></li>\n\t\t\t{/each}\n\t\t</ul>\n\t</nav>\n{/if}\n"
+      },
+      "typescript": false
+    },
+    {
+      "path": "src/routes/PreloadingIndicator.svelte",
+      "document": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/src/routes/PreloadingIndicator.svelte",
+        "version": 1,
+        "text": "<script>\n\timport { onMount } from 'svelte';\n\n\tlet p = $state(0);\n\tlet visible = $state(false);\n\n\tonMount(() => {\n\t\tvisible = true;\n\t\tfunction next() {\n\t\t\tp += 0.1;\n\t\t\tconst remaining = 1 - p;\n\t\t\tif (remaining > 0.15) setTimeout(next, 500 / remaining);\n\t\t}\n\t\tsetTimeout(next, 250);\n\t});\n</script>\n\n{#if visible}\n\t<div class=\"progress-container\">\n\t\t<div class=\"progress\" style=\"width: {p * 100}%\"></div>\n\t</div>\n{/if}\n\n{#if p >= 0.4}\n\t<div class=\"fade\"></div>\n{/if}\n\n<style>\n\t.progress-container {\n\t\tposition: absolute;\n\t\ttop: 0;\n\t\tleft: 0;\n\t\twidth: 100%;\n\t\theight: 4px;\n\t\tz-index: 999;\n\t}\n\n\t.progress {\n\t\tposition: absolute;\n\t\tleft: 0;\n\t\ttop: 0;\n\t\theight: 100%;\n\t\tbackground-color: #5cb85c;\n\t\ttransition: width 0.4s;\n\t}\n\n\t.fade {\n\t\tposition: fixed;\n\t\twidth: 100%;\n\t\theight: 100%;\n\t\tbackground-color: rgba(255, 255, 255, 0.3);\n\t\tpointer-events: none;\n\t\tz-index: 998;\n\t\tanimation: fade 0.4s;\n\t}\n\n\t@keyframes fade {\n\t\tfrom {\n\t\t\topacity: 0;\n\t\t}\n\t\tto {\n\t\t\topacity: 1;\n\t\t}\n\t}\n</style>\n"
+      },
+      "typescript": false
+    },
+    {
+      "path": "src/routes/article/[slug]/+page.svelte",
+      "document": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/src/routes/article/%5Bslug%5D/%2Bpage.svelte",
+        "version": 1,
+        "text": "<script>\n\timport ArticleMeta from './ArticleMeta.svelte';\n\timport CommentContainer from './CommentContainer.svelte';\n\n\tconst { data } = $props();\n</script>\n\n<svelte:head>\n\t<title>{data.article.title}</title>\n</svelte:head>\n\n<div class=\"article-page\">\n\t<div class=\"banner\">\n\t\t<div class=\"container\">\n\t\t\t<h1>{data.article.title}</h1>\n\t\t\t<ArticleMeta article={data.article} user={data.user} />\n\t\t</div>\n\t</div>\n\n\t<div class=\"container page\">\n\t\t<div class=\"row article-content\">\n\t\t\t<div class=\"col-xs-12\">\n\t\t\t\t<div>\n\t\t\t\t\t{@html data.article.body}\n\t\t\t\t</div>\n\n\t\t\t\t<ul class=\"tag-list\">\n\t\t\t\t\t{#each data.article.tagList as tag}\n\t\t\t\t\t\t<li class=\"tag-default tag-pill tag-outline\">{tag}</li>\n\t\t\t\t\t{/each}\n\t\t\t\t</ul>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<hr />\n\n\t\t<div class=\"article-actions\"></div>\n\n\t\t<div class=\"row\">\n\t\t\t<CommentContainer comments={data.comments} user={data.user} errors={[]} />\n\t\t</div>\n\t</div>\n</div>\n"
+      },
+      "typescript": false
+    },
+    {
+      "path": "src/routes/article/[slug]/ArticleMeta.svelte",
+      "document": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/src/routes/article/%5Bslug%5D/ArticleMeta.svelte",
+        "version": 1,
+        "text": "<script>\n\timport { enhance } from '$app/forms';\n\n\tconst { article, user } = $props();\n</script>\n\n<div class=\"article-meta\">\n\t<a href=\"/profile/@{article.author.username}\">\n\t\t<img src={article.author.image} alt={article.author.username} />\n\t</a>\n\n\t<div class=\"info\">\n\t\t<a href=\"/profile/@{article.author.username}\" class=\"author\">{article.author.username}</a>\n\t\t<span class=\"date\">\n\t\t\t{new Date(article.createdAt).toDateString()}\n\t\t</span>\n\t</div>\n\n\t{#if article.author.username === user?.username}\n\t\t<span>\n\t\t\t<a href=\"/editor/{article.slug}\" class=\"btn btn-outline-secondary btn-sm\">\n\t\t\t\t<i class=\"ion-edit\"></i> Edit Article\n\t\t\t</a>\n\n\t\t\t<form use:enhance method=\"POST\" action=\"?/deleteArticle\">\n\t\t\t\t<button class=\"btn btn-outline-danger btn-sm\">\n\t\t\t\t\t<i class=\"ion-trash-a\"></i> Delete Article\n\t\t\t\t</button>\n\t\t\t</form>\n\t\t</span>\n\t{/if}\n</div>\n"
+      },
+      "typescript": false
+    },
+    {
+      "path": "src/routes/article/[slug]/Comment.svelte",
+      "document": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/src/routes/article/%5Bslug%5D/Comment.svelte",
+        "version": 1,
+        "text": "<script>\n\timport { enhance } from '$app/forms';\n\n\tconst { comment, user } = $props();\n</script>\n\n<div class=\"card\">\n\t<div class=\"card-block\">\n\t\t<p class=\"card-text\">{comment.body}</p>\n\t</div>\n\n\t<div class=\"card-footer\">\n\t\t<a href=\"/profile/@{comment.author.username}\" class=\"comment-author\">\n\t\t\t<img src={comment.author.image} class=\"comment-author-img\" alt={comment.author.username} />\n\t\t</a>\n\n\t\t<a href=\"/profile/@{comment.author.username}\" class=\"comment-author\">\n\t\t\t{comment.author.username}\n\t\t</a>\n\n\t\t<span class=\"date-posted\">{new Date(comment.createdAt).toDateString()}</span>\n\n\t\t{#if user && comment.author.username === user.username}\n\t\t\t<form use:enhance method=\"POST\" action=\"?/deleteComment&id={comment.id}\" class=\"mod-options\">\n\t\t\t\t<button class=\"ion-trash-a\" aria-label=\"Delete comment\"></button>\n\t\t\t</form>\n\t\t{/if}\n\t</div>\n</div>\n\n<style>\n\tbutton {\n\t\tbackground: none;\n\t\tborder: none;\n\t\tpadding: 0;\n\t\tmargin: 0;\n\t\tfont-size: inherit;\n\t\tmargin-left: 5px;\n\t\topacity: 0.6;\n\t\tcursor: pointer;\n\t}\n</style>\n"
+      },
+      "typescript": false
+    },
+    {
+      "path": "src/routes/article/[slug]/CommentContainer.svelte",
+      "document": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/src/routes/article/%5Bslug%5D/CommentContainer.svelte",
+        "version": 1,
+        "text": "<script>\n\timport CommentInput from './CommentInput.svelte';\n\timport Comment from './Comment.svelte';\n\n\tconst { comments, user } = $props();\n</script>\n\n<div class=\"col-xs-12 col-md-8 offset-md-2\">\n\t{#if user}\n\t\t<div>\n\t\t\t<CommentInput {user} />\n\t\t</div>\n\t{:else}\n\t\t<p>\n\t\t\t<a href=\"/login\">Sign in</a>\n\t\t\tor\n\t\t\t<a href=\"/register\">sign up</a>\n\t\t\tto add comments on this article.\n\t\t</p>\n\t{/if}\n\n\t{#each comments as comment (comment.id)}\n\t\t<Comment {comment} {user} />\n\t{/each}\n</div>\n"
+      },
+      "typescript": false
+    },
+    {
+      "path": "src/routes/article/[slug]/CommentInput.svelte",
+      "document": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/src/routes/article/%5Bslug%5D/CommentInput.svelte",
+        "version": 1,
+        "text": "<script>\n\timport { enhance } from '$app/forms';\n\timport { placeholder } from '$lib/constants.js';\n\n\tconst { user } = $props();\n</script>\n\n<form use:enhance method=\"POST\" action=\"?/createComment\" class=\"card comment-form\">\n\t<div class=\"card-block\">\n\t\t<textarea class=\"form-control\" name=\"comment\" placeholder=\"Write a comment...\" rows=\"3\"\n\t\t></textarea>\n\t</div>\n\n\t<div class=\"card-footer\">\n\t\t<img src={user.image || placeholder} class=\"comment-author-img\" alt={user.username} />\n\t\t<button class=\"btn btn-sm btn-primary\" type=\"submit\">Post Comment</button>\n\t</div>\n</form>\n"
+      },
+      "typescript": false
+    },
+    {
+      "path": "src/routes/editor/+page.svelte",
+      "document": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/src/routes/editor/%2Bpage.svelte",
+        "version": 1,
+        "text": "<script>\n\timport Editor from './Editor.svelte';\n\n\tconst { form } = $props();\n</script>\n\n<Editor\n\tarticle={{\n\t\ttitle: '',\n\t\tdescription: '',\n\t\tbody: '',\n\t\ttagList: []\n\t}}\n\terrors={form?.errors}\n/>\n"
+      },
+      "typescript": false
+    },
+    {
+      "path": "src/routes/editor/Editor.svelte",
+      "document": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/src/routes/editor/Editor.svelte",
+        "version": 1,
+        "text": "<script>\n\timport { scale } from 'svelte/transition';\n\timport { flip } from 'svelte/animate';\n\timport { enhance } from '$app/forms';\n\timport ListErrors from '$lib/ListErrors.svelte';\n\n\tconst { article, errors } = $props();\n\n\tlet tagList = $state(article.tagList);\n</script>\n\n<div class=\"editor-page\">\n\t<div class=\"container page\">\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-md-10 offset-md-1 col-xs-12\">\n\t\t\t\t<ListErrors {errors} />\n\n\t\t\t\t<form use:enhance method=\"POST\">\n\t\t\t\t\t<fieldset class=\"form-group\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tname=\"title\"\n\t\t\t\t\t\t\tclass=\"form-control form-control-lg\"\n\t\t\t\t\t\t\tplaceholder=\"Article Title\"\n\t\t\t\t\t\t\tvalue={article.title}\n\t\t\t\t\t\t/>\n\t\t\t\t\t</fieldset>\n\n\t\t\t\t\t<fieldset class=\"form-group\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tname=\"description\"\n\t\t\t\t\t\t\tclass=\"form-control\"\n\t\t\t\t\t\t\tplaceholder=\"What's this article about?\"\n\t\t\t\t\t\t\tvalue={article.description}\n\t\t\t\t\t\t/>\n\t\t\t\t\t</fieldset>\n\n\t\t\t\t\t<fieldset class=\"form-group\">\n\t\t\t\t\t\t<textarea\n\t\t\t\t\t\t\tname=\"body\"\n\t\t\t\t\t\t\tclass=\"form-control\"\n\t\t\t\t\t\t\trows=\"8\"\n\t\t\t\t\t\t\tplaceholder=\"Write your article (in markdown)\"\n\t\t\t\t\t\t\tvalue={article.body}\n\t\t\t\t\t\t></textarea>\n\t\t\t\t\t</fieldset>\n\n\t\t\t\t\t<fieldset class=\"form-group\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"form-control\"\n\t\t\t\t\t\t\tplaceholder=\"Enter tags\"\n\t\t\t\t\t\t\tonkeydown={(event) => {\n\t\t\t\t\t\t\t\tif (event.key === 'Enter') {\n\t\t\t\t\t\t\t\t\tevent.preventDefault();\n\t\t\t\t\t\t\t\t\tif (!tagList.includes(event.target.value)) {\n\t\t\t\t\t\t\t\t\t\ttagList.push(event.target.value);\n\t\t\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\t\t\tevent.target.value = '';\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}}\n\t\t\t\t\t\t/>\n\t\t\t\t\t</fieldset>\n\n\t\t\t\t\t<div class=\"tag-list\">\n\t\t\t\t\t\t{#each tagList as tag, i (tag)}\n\t\t\t\t\t\t\t<button\n\t\t\t\t\t\t\t\ttransition:scale|local={{ duration: 200 }}\n\t\t\t\t\t\t\t\tanimate:flip={{ duration: 200 }}\n\t\t\t\t\t\t\t\tclass=\"tag-default tag-pill\"\n\t\t\t\t\t\t\t\ttype=\"button\"\n\t\t\t\t\t\t\t\tonclick={() => {\n\t\t\t\t\t\t\t\t\ttagList.splice(i, 1);\n\t\t\t\t\t\t\t\t}}\n\t\t\t\t\t\t\t\taria-label=\"Remove {tag} tag\"\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t<i class=\"ion-close-round\"></i>\n\t\t\t\t\t\t\t\t{tag}\n\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t{/each}\n\t\t\t\t\t</div>\n\n\t\t\t\t\t{#each tagList as tag}\n\t\t\t\t\t\t<input hidden name=\"tag\" value={tag} />\n\t\t\t\t\t{/each}\n\n\t\t\t\t\t<button class=\"btn btn-lg pull-xs-right btn-primary\">Publish Article</button>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n<style>\n\t.tag-pill {\n\t\tborder: none;\n\t}\n</style>\n"
+      },
+      "typescript": false
+    },
+    {
+      "path": "src/routes/editor/[slug]/+page.svelte",
+      "document": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/src/routes/editor/%5Bslug%5D/%2Bpage.svelte",
+        "version": 1,
+        "text": "<script>\n\timport Editor from '../Editor.svelte';\n\n\tconst { data, form } = $props();\n</script>\n\n<Editor article={data.article} errors={form?.errors} />\n"
+      },
+      "typescript": false
+    },
+    {
+      "path": "src/routes/login/+page.svelte",
+      "document": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/src/routes/login/%2Bpage.svelte",
+        "version": 1,
+        "text": "<script>\n\timport { enhance } from '$app/forms';\n\timport ListErrors from '$lib/ListErrors.svelte';\n\n\tconst { form } = $props();\n</script>\n\n<svelte:head>\n\t<title>Sign in \u2022 Conduit</title>\n</svelte:head>\n\n<div class=\"auth-page\">\n\t<div class=\"container page\">\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-md-6 offset-md-3 col-xs-12\">\n\t\t\t\t<h1 class=\"text-xs-center\">Sign In</h1>\n\t\t\t\t<p class=\"text-xs-center\">\n\t\t\t\t\t<a href=\"/register\">Need an account?</a>\n\t\t\t\t</p>\n\n\t\t\t\t<ListErrors errors={form?.errors} />\n\n\t\t\t\t<form use:enhance method=\"POST\">\n\t\t\t\t\t<fieldset class=\"form-group\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"form-control form-control-lg\"\n\t\t\t\t\t\t\tname=\"email\"\n\t\t\t\t\t\t\ttype=\"email\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tplaceholder=\"Email\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</fieldset>\n\t\t\t\t\t<fieldset class=\"form-group\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"form-control form-control-lg\"\n\t\t\t\t\t\t\tname=\"password\"\n\t\t\t\t\t\t\ttype=\"password\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tplaceholder=\"Password\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</fieldset>\n\t\t\t\t\t<button class=\"btn btn-lg btn-primary pull-xs-right\" type=\"submit\">Sign in</button>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n"
+      },
+      "typescript": false
+    },
+    {
+      "path": "src/routes/profile/+page.svelte",
+      "document": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/src/routes/profile/%2Bpage.svelte",
+        "version": 1,
+        "text": ""
+      },
+      "typescript": false
+    },
+    {
+      "path": "src/routes/profile/@[user]/+layout.svelte",
+      "document": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/src/routes/profile/%40%5Buser%5D/%2Blayout.svelte",
+        "version": 1,
+        "text": "<script>\n\timport { enhance } from '$app/forms';\n\timport { page } from '$app/stores';\n\n\tconst { children, data } = $props();\n\n\tconst is_favorites = $derived($page.route.id === '/profile/@[user]/favorites');\n</script>\n\n<svelte:head>\n\t<title>{data.profile.username} \u2022 Conduit</title>\n</svelte:head>\n\n<div class=\"profile-page\">\n\t<div class=\"user-info\">\n\t\t<div class=\"container\">\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-xs-12 col-md-10 offset-md-1\">\n\t\t\t\t\t<img src={data.profile.image} class=\"user-img\" alt={data.profile.username} />\n\t\t\t\t\t<h4>{data.profile.username}</h4>\n\t\t\t\t\t{#if data.profile.bio}\n\t\t\t\t\t\t<p>{data.profile.bio}</p>\n\t\t\t\t\t{/if}\n\n\t\t\t\t\t{#if data.profile.username === data.user?.username}\n\t\t\t\t\t\t<a href=\"/settings\" class=\"btn btn-sm btn-outline-secondary action-btn\">\n\t\t\t\t\t\t\t<i class=\"ion-gear-a\"></i>\n\t\t\t\t\t\t\tEdit Profile Settings\n\t\t\t\t\t\t</a>\n\t\t\t\t\t{:else if data.user}\n\t\t\t\t\t\t<form\n\t\t\t\t\t\t\tmethod=\"POST\"\n\t\t\t\t\t\t\taction=\"/profile/@{data.profile.username}?/toggleFollow\"\n\t\t\t\t\t\t\tuse:enhance={({ form }) => {\n\t\t\t\t\t\t\t\t// optimistic UI\n\t\t\t\t\t\t\t\tdata.profile.following = !data.profile.following;\n\n\t\t\t\t\t\t\t\tconst button = form.querySelector('button');\n\t\t\t\t\t\t\t\tbutton.disabled = true;\n\n\t\t\t\t\t\t\t\treturn ({ result, update }) => {\n\t\t\t\t\t\t\t\t\tbutton.disabled = false;\n\t\t\t\t\t\t\t\t\tif (result.type === 'error') update();\n\t\t\t\t\t\t\t\t};\n\t\t\t\t\t\t\t}}\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t<input hidden type=\"checkbox\" name=\"following\" checked={data.profile.following} />\n\t\t\t\t\t\t\t<button\n\t\t\t\t\t\t\t\tclass=\"btn btn-sm action-btn\"\n\t\t\t\t\t\t\t\tclass:btn-secondary={data.profile.following}\n\t\t\t\t\t\t\t\tclass:btn-outline-secondary={!data.profile.following}\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t<i class=\"ion-plus-round\"></i>\n\t\t\t\t\t\t\t\t{data.profile.following ? 'Unfollow' : 'Follow'}\n\t\t\t\t\t\t\t\t{data.profile.username}\n\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t</form>\n\t\t\t\t\t{:else}\n\t\t\t\t\t\t<a href=\"/login\">Sign in to follow</a>\n\t\t\t\t\t{/if}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\n\t<div class=\"container\">\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-xs-12 col-md-10 offset-md-1\">\n\t\t\t\t<div class=\"articles-toggle\">\n\t\t\t\t\t<ul class=\"nav nav-pills outline-active\">\n\t\t\t\t\t\t<li class=\"nav-item\">\n\t\t\t\t\t\t\t<a\n\t\t\t\t\t\t\t\thref=\"/profile/@{data.profile.username}\"\n\t\t\t\t\t\t\t\tclass=\"nav-link\"\n\t\t\t\t\t\t\t\tclass:active={!is_favorites}\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\tArticles\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t</li>\n\n\t\t\t\t\t\t<li class=\"nav-item\">\n\t\t\t\t\t\t\t<a\n\t\t\t\t\t\t\t\thref=\"/profile/@{data.profile.username}/favorites\"\n\t\t\t\t\t\t\t\tclass=\"nav-link\"\n\t\t\t\t\t\t\t\tclass:active={is_favorites}\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\tFavorites\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t</ul>\n\t\t\t\t</div>\n\n\t\t\t\t{@render children()}\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n"
+      },
+      "typescript": false
+    },
+    {
+      "path": "src/routes/profile/@[user]/+page.svelte",
+      "document": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/src/routes/profile/%40%5Buser%5D/%2Bpage.svelte",
+        "version": 1,
+        "text": "<script>\n\timport ArticleList from '$lib/ArticleList/index.svelte';\n\n\tconst { data } = $props();\n</script>\n\n<ArticleList articles={data.articles} />\n"
+      },
+      "typescript": false
+    },
+    {
+      "path": "src/routes/profile/@[user]/favorites/+page.svelte",
+      "document": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/src/routes/profile/%40%5Buser%5D/favorites/%2Bpage.svelte",
+        "version": 1,
+        "text": "<script>\n\timport ArticleList from '$lib/ArticleList/index.svelte';\n\n\tconst { data } = $props();\n</script>\n\n<ArticleList articles={data.articles} />\n"
+      },
+      "typescript": false
+    },
+    {
+      "path": "src/routes/register/+page.svelte",
+      "document": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/src/routes/register/%2Bpage.svelte",
+        "version": 1,
+        "text": "<script>\n\timport { enhance } from '$app/forms';\n\timport ListErrors from '$lib/ListErrors.svelte';\n\n\tconst { form } = $props();\n</script>\n\n<svelte:head>\n\t<title>Sign up \u2022 Conduit</title>\n</svelte:head>\n\n<div class=\"auth-page\">\n\t<div class=\"container page\">\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-md-6 offset-md-3 col-xs-12\">\n\t\t\t\t<h1 class=\"text-xs-center\">Sign up</h1>\n\t\t\t\t<p class=\"text-xs-center\">\n\t\t\t\t\t<a href=\"/login\">Have an account?</a>\n\t\t\t\t</p>\n\n\t\t\t\t<ListErrors errors={form?.errors} />\n\n\t\t\t\t<form use:enhance method=\"POST\">\n\t\t\t\t\t<fieldset class=\"form-group\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"form-control form-control-lg\"\n\t\t\t\t\t\t\tname=\"username\"\n\t\t\t\t\t\t\ttype=\"text\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tplaceholder=\"Your Name\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</fieldset>\n\t\t\t\t\t<fieldset class=\"form-group\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"form-control form-control-lg\"\n\t\t\t\t\t\t\tname=\"email\"\n\t\t\t\t\t\t\ttype=\"email\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tplaceholder=\"Email\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</fieldset>\n\t\t\t\t\t<fieldset class=\"form-group\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"form-control form-control-lg\"\n\t\t\t\t\t\t\tname=\"password\"\n\t\t\t\t\t\t\ttype=\"password\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tplaceholder=\"Password\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</fieldset>\n\t\t\t\t\t<button class=\"btn btn-lg btn-primary pull-xs-right\">Sign up</button>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n"
+      },
+      "typescript": false
+    },
+    {
+      "path": "src/routes/settings/+page.svelte",
+      "document": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/src/routes/settings/%2Bpage.svelte",
+        "version": 1,
+        "text": "<script>\n\timport { enhance } from '$app/forms';\n\timport ListErrors from '$lib/ListErrors.svelte';\n\n\tconst { data, form } = $props();\n</script>\n\n<svelte:head>\n\t<title>Settings \u2022 Conduit</title>\n</svelte:head>\n\n<div class=\"settings-page\">\n\t<div class=\"container page\">\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-md-6 offset-md-3 col-xs-12\">\n\t\t\t\t<h1 class=\"text-xs-center\">Your Settings</h1>\n\n\t\t\t\t<ListErrors errors={form?.errors} />\n\n\t\t\t\t<form\n\t\t\t\t\tuse:enhance={() => {\n\t\t\t\t\t\treturn ({ update }) => {\n\t\t\t\t\t\t\t// don't clear the form when we update the profile\n\t\t\t\t\t\t\tupdate({ reset: false });\n\t\t\t\t\t\t};\n\t\t\t\t\t}}\n\t\t\t\t\tmethod=\"POST\"\n\t\t\t\t\taction=\"?/save\"\n\t\t\t\t>\n\t\t\t\t\t<fieldset>\n\t\t\t\t\t\t<fieldset class=\"form-group\">\n\t\t\t\t\t\t\t<input\n\t\t\t\t\t\t\t\tclass=\"form-control\"\n\t\t\t\t\t\t\t\tname=\"image\"\n\t\t\t\t\t\t\t\ttype=\"text\"\n\t\t\t\t\t\t\t\tplaceholder=\"URL of profile picture\"\n\t\t\t\t\t\t\t\tvalue={data.user.image}\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t</fieldset>\n\n\t\t\t\t\t\t<fieldset class=\"form-group\">\n\t\t\t\t\t\t\t<input\n\t\t\t\t\t\t\t\tclass=\"form-control form-control-lg\"\n\t\t\t\t\t\t\t\tname=\"username\"\n\t\t\t\t\t\t\t\ttype=\"text\"\n\t\t\t\t\t\t\t\tplaceholder=\"Username\"\n\t\t\t\t\t\t\t\tvalue={data.user.username}\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t</fieldset>\n\n\t\t\t\t\t\t<fieldset class=\"form-group\">\n\t\t\t\t\t\t\t<textarea\n\t\t\t\t\t\t\t\tclass=\"form-control form-control-lg\"\n\t\t\t\t\t\t\t\tname=\"bio\"\n\t\t\t\t\t\t\t\trows=\"8\"\n\t\t\t\t\t\t\t\tplaceholder=\"Short bio about you\"\n\t\t\t\t\t\t\t\tvalue={data.user.bio}\n\t\t\t\t\t\t\t></textarea>\n\t\t\t\t\t\t</fieldset>\n\n\t\t\t\t\t\t<fieldset class=\"form-group\">\n\t\t\t\t\t\t\t<input\n\t\t\t\t\t\t\t\tclass=\"form-control form-control-lg\"\n\t\t\t\t\t\t\t\tname=\"email\"\n\t\t\t\t\t\t\t\ttype=\"email\"\n\t\t\t\t\t\t\t\tplaceholder=\"Email\"\n\t\t\t\t\t\t\t\tvalue={data.user.email}\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t</fieldset>\n\n\t\t\t\t\t\t<fieldset class=\"form-group\">\n\t\t\t\t\t\t\t<input\n\t\t\t\t\t\t\t\tclass=\"form-control form-control-lg\"\n\t\t\t\t\t\t\t\tname=\"password\"\n\t\t\t\t\t\t\t\ttype=\"password\"\n\t\t\t\t\t\t\t\tplaceholder=\"New Password\"\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t</fieldset>\n\n\t\t\t\t\t\t<button class=\"btn btn-lg btn-primary pull-xs-right\">Update Settings</button>\n\t\t\t\t\t</fieldset>\n\t\t\t\t</form>\n\n\t\t\t\t<hr />\n\n\t\t\t\t<form use:enhance method=\"POST\" action=\"?/logout\">\n\t\t\t\t\t<button class=\"btn btn-outline-danger\">Or click here to logout.</button>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n"
+      },
+      "typescript": false
+    }
+  ],
+  "files": [
+    {
+      "path": "src/hooks.server.js",
+      "text": "/** @type {import('@sveltejs/kit').Handle} */\nexport function handle({ event, resolve }) {\n\tconst jwt = event.cookies.get('jwt');\n\tevent.locals.user = jwt ? JSON.parse(atob(jwt)) : null;\n\n\treturn resolve(event);\n}\n"
+    },
+    {
+      "path": "src/lib/api.js",
+      "text": "import { error } from '@sveltejs/kit';\n\nconst base = 'https://api.realworld.show/api';\n\nasync function send({ method, path, data, token }) {\n\tconst opts = { method, headers: {} };\n\n\tif (data) {\n\t\topts.headers['Content-Type'] = 'application/json';\n\t\topts.body = JSON.stringify(data);\n\t}\n\n\tif (token) {\n\t\topts.headers['Authorization'] = `Token ${token}`;\n\t}\n\n\tconst res = await fetch(`${base}/${path}`, opts);\n\tif (res.ok || res.status === 422) {\n\t\tconst text = await res.text();\n\t\treturn text ? JSON.parse(text) : {};\n\t}\n\n\terror(res.status);\n}\n\nexport function get(path, token) {\n\treturn send({ method: 'GET', path, token });\n}\n\nexport function del(path, token) {\n\treturn send({ method: 'DELETE', path, token });\n}\n\nexport function post(path, data, token) {\n\treturn send({ method: 'POST', path, data, token });\n}\n\nexport function put(path, data, token) {\n\treturn send({ method: 'PUT', path, data, token });\n}\n"
+    },
+    {
+      "path": "src/lib/constants.js",
+      "text": "export const page_size = 10;\nexport const placeholder = 'https://static.productionready.io/images/smiley-cyrus.jpg';\n"
+    },
+    {
+      "path": "src/routes/+layout.server.js",
+      "text": "/** @type {import('./$types').LayoutServerLoad} */\nexport function load({ locals }) {\n\treturn {\n\t\tuser: locals.user && {\n\t\t\tusername: locals.user.username,\n\t\t\temail: locals.user.email,\n\t\t\timage: locals.user.image,\n\t\t\tbio: locals.user.bio\n\t\t}\n\t};\n}\n"
+    },
+    {
+      "path": "src/routes/+page.server.js",
+      "text": "import * as api from '$lib/api';\nimport { page_size } from '$lib/constants';\n\n/** @type {import('./$types').PageServerLoad} */\nexport async function load({ locals, url }) {\n\tconst tab = url.searchParams.get('tab') || 'all';\n\tconst tag = url.searchParams.get('tag');\n\tconst page = +(url.searchParams.get('page') ?? '1');\n\n\tconst endpoint = tab === 'feed' ? 'articles/feed' : 'articles';\n\n\tconst q = new URLSearchParams();\n\n\tq.set('limit', page_size);\n\tq.set('offset', (page - 1) * page_size);\n\tif (tag) q.set('tag', tag);\n\n\tconst [{ articles, articlesCount }, { tags }] = await Promise.all([\n\t\tapi.get(`${endpoint}?${q}`, locals.user?.token),\n\t\tapi.get('tags')\n\t]);\n\n\treturn {\n\t\tarticles,\n\t\tpages: Math.ceil(articlesCount / page_size),\n\t\ttags\n\t};\n}\n"
+    },
+    {
+      "path": "src/routes/article/[slug]/+page.server.js",
+      "text": "import * as api from '$lib/api.js';\nimport { error, redirect } from '@sveltejs/kit';\nimport { marked } from 'marked';\nimport sanitizeHtml from 'sanitize-html';\n\n/** @type {import('./$types').PageServerLoad} */\nexport async function load({ locals, params }) {\n\tconst [{ article }, { comments }] = await Promise.all([\n\t\tapi.get(`articles/${params.slug}`, locals.user?.token),\n\t\tapi.get(`articles/${params.slug}/comments`, locals.user?.token)\n\t]);\n\n\tconst dirty = marked(article.body);\n\tarticle.body = sanitizeHtml(dirty);\n\n\treturn { article, comments };\n}\n\n/** @type {import('./$types').Actions} */\nexport const actions = {\n\tcreateComment: async ({ locals, params, request }) => {\n\t\tif (!locals.user) error(401);\n\n\t\tconst data = await request.formData();\n\n\t\tawait api.post(\n\t\t\t`articles/${params.slug}/comments`,\n\t\t\t{\n\t\t\t\tcomment: {\n\t\t\t\t\tbody: data.get('comment')\n\t\t\t\t}\n\t\t\t},\n\t\t\tlocals.user.token\n\t\t);\n\t},\n\n\tdeleteComment: async ({ locals, params, url }) => {\n\t\tif (!locals.user) error(401);\n\n\t\tconst id = url.searchParams.get('id');\n\t\tconst result = await api.del(`articles/${params.slug}/comments/${id}`, locals.user.token);\n\n\t\tif (result.error) error(result.status, result.error);\n\t},\n\n\tdeleteArticle: async ({ locals, params }) => {\n\t\tif (!locals.user) error(401);\n\n\t\tawait api.del(`articles/${params.slug}`, locals.user.token);\n\t\tredirect(307, '/');\n\t},\n\n\ttoggleFavorite: async ({ locals, params, request }) => {\n\t\tif (!locals.user) error(401);\n\n\t\tconst data = await request.formData();\n\t\tconst favorited = data.get('favorited') !== 'on';\n\n\t\tif (favorited) {\n\t\t\tapi.post(`articles/${params.slug}/favorite`, null, locals.user.token);\n\t\t} else {\n\t\t\tapi.del(`articles/${params.slug}/favorite`, locals.user.token);\n\t\t}\n\n\t\tredirect(307, request.headers.get('referer') ?? `/article/${params.slug}`);\n\t}\n};\n"
+    },
+    {
+      "path": "src/routes/editor/+page.server.js",
+      "text": "import { error, fail, redirect } from '@sveltejs/kit';\nimport * as api from '$lib/api.js';\n\n/** @type {import('./$types').PageServerLoad} */\nexport async function load({ locals }) {\n\tif (!locals.user) redirect(302, `/login`);\n}\n\n/** @type {import('./$types').Actions} */\nexport const actions = {\n\tdefault: async ({ locals, request }) => {\n\t\tif (!locals.user) error(401);\n\n\t\tconst data = await request.formData();\n\n\t\tconst result = await api.post(\n\t\t\t'articles',\n\t\t\t{\n\t\t\t\tarticle: {\n\t\t\t\t\ttitle: data.get('title'),\n\t\t\t\t\tdescription: data.get('description'),\n\t\t\t\t\tbody: data.get('body'),\n\t\t\t\t\ttagList: data.getAll('tag')\n\t\t\t\t}\n\t\t\t},\n\t\t\tlocals.user.token\n\t\t);\n\n\t\tif (result.errors) return fail(400, result);\n\n\t\tredirect(303, `/article/${result.article.slug}`);\n\t}\n};\n"
+    },
+    {
+      "path": "src/routes/editor/[slug]/+page.server.js",
+      "text": "import { error, redirect } from '@sveltejs/kit';\nimport * as api from '$lib/api.js';\n\nexport async function load({ locals, params }) {\n\tif (!locals.user) redirect(302, `/login`);\n\n\tconst { article } = await api.get(`articles/${params.slug}`, locals.user.token);\n\treturn { article };\n}\n\n/** @type {import('./$types').Actions} */\nexport const actions = {\n\tdefault: async ({ locals, params, request }) => {\n\t\tif (!locals.user) error(401);\n\n\t\tconst data = await request.formData();\n\n\t\tconst result = await api.put(\n\t\t\t`articles/${params.slug}`,\n\t\t\t{\n\t\t\t\tarticle: {\n\t\t\t\t\ttitle: data.get('title'),\n\t\t\t\t\tdescription: data.get('description'),\n\t\t\t\t\tbody: data.get('body'),\n\t\t\t\t\ttagList: data.getAll('tag')\n\t\t\t\t}\n\t\t\t},\n\t\t\tlocals.user.token\n\t\t);\n\n\t\tif (result.errors) error(400, result.errors);\n\n\t\tredirect(303, `/article/${result.article.slug}`);\n\t}\n};\n"
+    },
+    {
+      "path": "src/routes/login/+page.server.js",
+      "text": "import { fail, redirect } from '@sveltejs/kit';\nimport * as api from '$lib/api.js';\n\n/** @type {import('./$types').PageServerLoad} */\nexport async function load({ locals }) {\n\tif (locals.user) redirect(307, '/');\n}\n\n/** @type {import('./$types').Actions} */\nexport const actions = {\n\tdefault: async ({ cookies, request }) => {\n\t\tconst data = await request.formData();\n\n\t\tconst body = await api.post('users/login', {\n\t\t\tuser: {\n\t\t\t\temail: data.get('email'),\n\t\t\t\tpassword: data.get('password')\n\t\t\t}\n\t\t});\n\n\t\tif (body.errors) {\n\t\t\treturn fail(401, body);\n\t\t}\n\n\t\tconst value = btoa(JSON.stringify(body.user));\n\t\tcookies.set('jwt', value, { path: '/' });\n\n\t\tredirect(307, '/');\n\t}\n};\n"
+    },
+    {
+      "path": "src/routes/profile/+page.js",
+      "text": "import { redirect } from '@sveltejs/kit';\n\nexport async function load({ parent }) {\n\tconst { user } = await parent();\n\tredirect(307, user ? `/profile/@${user.username}` : '/login');\n}\n"
+    },
+    {
+      "path": "src/routes/profile/@[user]/+layout.server.js",
+      "text": "import * as api from '$lib/api.js';\n\nexport async function load({ locals, params }) {\n\tconst { profile } = await api.get(`profiles/${params.user}`, locals.user?.token);\n\n\treturn {\n\t\tprofile\n\t};\n}\n"
+    },
+    {
+      "path": "src/routes/profile/@[user]/+page.server.js",
+      "text": "import * as api from '$lib/api.js';\nimport { error, fail } from '@sveltejs/kit';\nimport { get_articles } from './get_articles';\n\n/** @type {import('./$types').PageServerLoad} */\nexport async function load(event) {\n\tconst { articles, page } = await get_articles(event, 'author');\n\treturn { articles, page };\n}\n\n/** @type {import('./$types').Actions} */\nexport const actions = {\n\ttoggleFollow: async ({ locals, params, request }) => {\n\t\tif (!locals.user) error(401);\n\n\t\tconst data = await request.formData();\n\t\tconst following = data.get('following') !== 'on';\n\n\t\tconst result = following\n\t\t\t? await api.post(`profiles/${params.user}/follow`, null, locals.user.token)\n\t\t\t: await api.del(`profiles/${params.user}/follow`, locals.user.token);\n\n\t\tif (result.errors) {\n\t\t\treturn fail(422, result);\n\t\t}\n\t}\n};\n"
+    },
+    {
+      "path": "src/routes/profile/@[user]/favorites/+page.server.js",
+      "text": "import { get_articles } from '../get_articles';\n\n/** @type {import('./$types').PageServerLoad} */\nexport async function load(event) {\n\tconst { articles, page } = await get_articles(event, 'favorited');\n\treturn { articles, page };\n}\n"
+    },
+    {
+      "path": "src/routes/profile/@[user]/get_articles.js",
+      "text": "import * as api from '$lib/api.js';\nimport { page_size } from '$lib/constants.js';\n\nexport async function get_articles({ url, params, locals }, type) {\n\tconst p = +url.searchParams.get('page') || 1;\n\n\tconst q = new URLSearchParams();\n\tq.set('limit', page_size);\n\tq.set('offset', (p - 1) * page_size);\n\tq.set(type, params.user);\n\n\tconst { articles, articlesCount } = await api.get(\n\t\t`articles?${q}`,\n\t\tlocals.user && locals.user.token\n\t);\n\n\treturn {\n\t\tarticles,\n\t\tpages: Math.ceil(articlesCount / page_size)\n\t};\n}\n"
+    },
+    {
+      "path": "src/routes/register/+page.server.js",
+      "text": "import { fail, redirect } from '@sveltejs/kit';\nimport * as api from '$lib/api.js';\n\n/** @type {import('./$types').PageServerLoad} */\nexport async function load({ parent }) {\n\tconst { user } = await parent();\n\tif (user) redirect(307, '/');\n}\n\n/** @type {import('./$types').Actions} */\nexport const actions = {\n\tdefault: async ({ cookies, request }) => {\n\t\tconst data = await request.formData();\n\n\t\tconst user = {\n\t\t\tusername: data.get('username'),\n\t\t\temail: data.get('email'),\n\t\t\tpassword: data.get('password')\n\t\t};\n\n\t\tconst body = await api.post('users', { user });\n\n\t\tif (body.errors) {\n\t\t\treturn fail(401, body);\n\t\t}\n\n\t\tconst value = btoa(JSON.stringify(body.user));\n\t\tcookies.set('jwt', value, { path: '/' });\n\n\t\tredirect(307, '/');\n\t}\n};\n"
+    },
+    {
+      "path": "src/routes/settings/+page.server.js",
+      "text": "import { error, fail, redirect } from '@sveltejs/kit';\nimport * as api from '$lib/api.js';\n\nexport function load({ locals }) {\n\tif (!locals.user) redirect(302, '/login');\n}\n\n/** @type {import('./$types').Actions} */\nexport const actions = {\n\tlogout: async ({ cookies, locals }) => {\n\t\tcookies.delete('jwt', { path: '/' });\n\t\tlocals.user = null;\n\t},\n\n\tsave: async ({ cookies, locals, request }) => {\n\t\tif (!locals.user) error(401);\n\n\t\tconst data = await request.formData();\n\n\t\tconst user = {\n\t\t\tusername: data.get('username'),\n\t\t\temail: data.get('email'),\n\t\t\tpassword: data.get('password'),\n\t\t\timage: data.get('image'),\n\t\t\tbio: data.get('bio')\n\t\t};\n\n\t\tconst body = await api.put('user', { user }, locals.user.token);\n\t\tif (body.errors) return fail(400, body.errors);\n\n\t\tconst value = btoa(JSON.stringify(body.user));\n\t\tcookies.set('jwt', value, { path: '/' });\n\n\t\tlocals.user = body.user;\n\t}\n};\n"
+    }
+  ]
+}

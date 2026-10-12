@@ -1,0 +1,540 @@
+{
+  "source": "<script lang=\"ts\">\n  let { count, name = 'visitor' }: { count: number; name?: string } = $props();\n</script>\n<svelte:head><title>Hello {name}</title></svelte:head>\n<p>{name}: {count.toFixed(0)}</p>\n",
+  "settings": {
+    "filename": "typed-props.svelte",
+    "generate": "server",
+    "css": "external",
+    "dev": false,
+    "runes": true
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "typed-props.svelte",
+        "version": 1,
+        "text": "<script lang=\"ts\">\n  let { count, name = 'visitor' }: { count: number; name?: string } = $props();\n</script>\n<svelte:head><title>Hello {name}</title></svelte:head>\n<p>{name}: {count.toFixed(0)}</p>\n"
+      },
+      "target": "server",
+      "dev": false,
+      "runes": true,
+      "compatibility": {
+        "svelteVersion": "5.52.0"
+      }
+    },
+    "exit": 0,
+    "signal": null,
+    "stdout": "{\"ok\":true,\"result\":{\"uri\":\"typed-props.svelte\",\"version\":1,\"javascript\":{\"code\":\"import * as $ from 'svelte/internal/server';\\n\\nexport default function Typed_props($$renderer, $$props) {\\n\\t$$renderer.component(($$renderer) => {\\n\\t\\tlet { count, name = 'visitor' } = $$props;\\n\\n\\t\\t$.head('1l8o2ip', $$renderer, ($$renderer) => {\\n\\t\\t\\t$$renderer.title(($$renderer) => {\\n\\t\\t\\t\\t$$renderer.push(`<title>Hello ${$.escape(name)}</title>`);\\n\\t\\t\\t});\\n\\t\\t});\\n\\n\\t\\t$$renderer.push(`<p>${$.escape(name)}: ${$.escape(count.toFixed(0))}</p>`);\\n\\t});\\n}\",\"map\":\"{\\\"version\\\":3,\\\"sources\\\":[\\\"typed-props.svelte\\\"],\\\"sourcesContent\\\":[\\\"<script lang=\\\\\\\"ts\\\\\\\">\\\\n  let { count, name = 'visitor' }: { count: number; name?: string } = $props();\\\\n</script>\\\\n<svelte:head><title>Hello {name}</title></svelte:head>\\\\n<p>{name}: {count.toFixed(0)}</p>\\\\n\\\"],\\\"names\\\":[],\\\"mappings\\\":\\\";;yDAAA,CAAC;sCAAD,CAAC;EACC,IAAI,EAAE,KAAK,EAAE,IAAI,GAAG,SAAS;;IAEvB,IAAI;cAAE,KAAK;6CAFiC,IAAI;;;;iCAE7B,IAAI,eAFM,KAAK,CAGxB,OAAO,CAAC,CAAC;CAFnB,CAAC;AAAD,CAAC\\\"}\"},\"css\":null,\"diagnostics\":[],\"runes\":true,\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.52.0\",\"patches\":[\"child-reset-5.53.11\",\"declaration-tags-5.56\",\"select-default-5.57\"],\"clientDevelopment\":false},\"compatibility\":{\"id\":\"v1:svelte=5.52.0;kit=none;ts=unspecified\",\"svelteVersion\":\"5.52.0\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": true,
+      "result": {
+        "uri": "typed-props.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import * as $ from 'svelte/internal/server';\n\nexport default function Typed_props($$renderer, $$props) {\n\t$$renderer.component(($$renderer) => {\n\t\tlet { count, name = 'visitor' } = $$props;\n\n\t\t$.head('1l8o2ip', $$renderer, ($$renderer) => {\n\t\t\t$$renderer.title(($$renderer) => {\n\t\t\t\t$$renderer.push(`<title>Hello ${$.escape(name)}</title>`);\n\t\t\t});\n\t\t});\n\n\t\t$$renderer.push(`<p>${$.escape(name)}: ${$.escape(count.toFixed(0))}</p>`);\n\t});\n}",
+          "map": "{\"version\":3,\"sources\":[\"typed-props.svelte\"],\"sourcesContent\":[\"<script lang=\\\"ts\\\">\\n  let { count, name = 'visitor' }: { count: number; name?: string } = $props();\\n</script>\\n<svelte:head><title>Hello {name}</title></svelte:head>\\n<p>{name}: {count.toFixed(0)}</p>\\n\"],\"names\":[],\"mappings\":\";;yDAAA,CAAC;sCAAD,CAAC;EACC,IAAI,EAAE,KAAK,EAAE,IAAI,GAAG,SAAS;;IAEvB,IAAI;cAAE,KAAK;6CAFiC,IAAI;;;;iCAE7B,IAAI,eAFM,KAAK,CAGxB,OAAO,CAAC,CAAC;CAFnB,CAAC;AAAD,CAAC\"}"
+        },
+        "css": null,
+        "diagnostics": [],
+        "runes": true,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.52.0",
+          "patches": [
+            "child-reset-5.53.11",
+            "declaration-tags-5.56",
+            "select-default-5.57"
+          ],
+          "clientDevelopment": false
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.52.0;kit=none;ts=unspecified",
+          "svelteVersion": "5.52.0",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": true,
+    "artifact": {
+      "js": {
+        "code": "import * as $ from 'svelte/internal/server';\n\nexport default function Typed_props($$renderer, $$props) {\n\t$$renderer.component(($$renderer) => {\n\t\tlet { count, name = 'visitor' } = $$props;\n\n\t\t$.head('1l8o2ip', $$renderer, ($$renderer) => {\n\t\t\t$$renderer.title(($$renderer) => {\n\t\t\t\t$$renderer.push(`<title>Hello ${$.escape(name)}</title>`);\n\t\t\t});\n\t\t});\n\n\t\t$$renderer.push(`<p>${$.escape(name)}: ${$.escape(count.toFixed(0))}</p>`);\n\t});\n}",
+        "map": {
+          "version": 3,
+          "names": [],
+          "sources": [
+            "typed-props.svelte"
+          ],
+          "sourcesContent": [
+            "<script lang=\"ts\">\n  let { count, name = 'visitor' }: { count: number; name?: string } = $props();\n</script>\n<svelte:head><title>Hello {name}</title></svelte:head>\n<p>{name}: {count.toFixed(0)}</p>\n"
+          ],
+          "mappings": ";;;sCAAA,CAAC;EACC,GAAG,CAAC,EAAE,KAAK,EAAE,IAAI,GAAG,SAAS,EAAoC,WAAY;;;;6CAEpD,IAAI;;;;iCAC3B,IAAI,eAAI,KAAK,CAAC,OAAO,CAAC,CAAC,CAAC;CAFpB,CAAC;"
+        }
+      },
+      "css": null,
+      "warnings": [],
+      "metadata": {
+        "runes": true
+      },
+      "ast": {
+        "html": {
+          "type": "Fragment",
+          "start": 109,
+          "end": 197,
+          "children": [
+            {
+              "type": "Text",
+              "start": 108,
+              "end": 109,
+              "raw": "\n",
+              "data": "\n"
+            },
+            {
+              "type": "Head",
+              "name": "svelte:head",
+              "start": 109,
+              "end": 163,
+              "attributes": [],
+              "children": [
+                {
+                  "type": "Title",
+                  "name": "title",
+                  "start": 122,
+                  "end": 149,
+                  "attributes": [],
+                  "children": [
+                    {
+                      "type": "Text",
+                      "start": 129,
+                      "end": 135,
+                      "raw": "Hello ",
+                      "data": "Hello "
+                    },
+                    {
+                      "type": "MustacheTag",
+                      "start": 135,
+                      "end": 141,
+                      "expression": {
+                        "type": "Identifier",
+                        "start": 136,
+                        "end": 140,
+                        "loc": {
+                          "start": {
+                            "line": 4,
+                            "column": 27
+                          },
+                          "end": {
+                            "line": 4,
+                            "column": 31
+                          }
+                        },
+                        "name": "name"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Text",
+              "start": 163,
+              "end": 164,
+              "raw": "\n",
+              "data": "\n"
+            },
+            {
+              "type": "Element",
+              "start": 164,
+              "end": 197,
+              "name": "p",
+              "attributes": [],
+              "children": [
+                {
+                  "type": "MustacheTag",
+                  "start": 167,
+                  "end": 173,
+                  "expression": {
+                    "type": "Identifier",
+                    "start": 168,
+                    "end": 172,
+                    "loc": {
+                      "start": {
+                        "line": 5,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 5,
+                        "column": 8
+                      }
+                    },
+                    "name": "name"
+                  }
+                },
+                {
+                  "type": "Text",
+                  "start": 173,
+                  "end": 175,
+                  "raw": ": ",
+                  "data": ": "
+                },
+                {
+                  "type": "MustacheTag",
+                  "start": 175,
+                  "end": 193,
+                  "expression": {
+                    "type": "CallExpression",
+                    "start": 176,
+                    "end": 192,
+                    "loc": {
+                      "start": {
+                        "line": 5,
+                        "column": 12
+                      },
+                      "end": {
+                        "line": 5,
+                        "column": 28
+                      }
+                    },
+                    "callee": {
+                      "type": "MemberExpression",
+                      "start": 176,
+                      "end": 189,
+                      "loc": {
+                        "start": {
+                          "line": 5,
+                          "column": 12
+                        },
+                        "end": {
+                          "line": 5,
+                          "column": 25
+                        }
+                      },
+                      "object": {
+                        "type": "Identifier",
+                        "start": 176,
+                        "end": 181,
+                        "loc": {
+                          "start": {
+                            "line": 5,
+                            "column": 12
+                          },
+                          "end": {
+                            "line": 5,
+                            "column": 17
+                          }
+                        },
+                        "name": "count"
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "start": 182,
+                        "end": 189,
+                        "loc": {
+                          "start": {
+                            "line": 5,
+                            "column": 18
+                          },
+                          "end": {
+                            "line": 5,
+                            "column": 25
+                          }
+                        },
+                        "name": "toFixed"
+                      },
+                      "computed": false,
+                      "optional": false
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "start": 190,
+                        "end": 191,
+                        "loc": {
+                          "start": {
+                            "line": 5,
+                            "column": 26
+                          },
+                          "end": {
+                            "line": 5,
+                            "column": 27
+                          }
+                        },
+                        "value": 0,
+                        "raw": "0"
+                      }
+                    ],
+                    "optional": false
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "instance": {
+          "type": "Script",
+          "start": 0,
+          "end": 108,
+          "context": "default",
+          "content": {
+            "type": "Program",
+            "start": 18,
+            "end": 99,
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 0
+              },
+              "end": {
+                "line": 3,
+                "column": 9
+              }
+            },
+            "body": [
+              {
+                "type": "VariableDeclaration",
+                "start": 21,
+                "end": 98,
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 79
+                  }
+                },
+                "declarations": [
+                  {
+                    "type": "VariableDeclarator",
+                    "start": 25,
+                    "end": 97,
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 6
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 78
+                      }
+                    },
+                    "id": {
+                      "type": "ObjectPattern",
+                      "start": 25,
+                      "end": 86,
+                      "loc": {
+                        "start": {
+                          "line": 2,
+                          "column": 6
+                        },
+                        "end": {
+                          "line": 2,
+                          "column": 67
+                        }
+                      },
+                      "properties": [
+                        {
+                          "type": "Property",
+                          "start": 27,
+                          "end": 32,
+                          "loc": {
+                            "start": {
+                              "line": 2,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 2,
+                              "column": 13
+                            }
+                          },
+                          "method": false,
+                          "shorthand": true,
+                          "computed": false,
+                          "key": {
+                            "type": "Identifier",
+                            "start": 27,
+                            "end": 32,
+                            "loc": {
+                              "start": {
+                                "line": 2,
+                                "column": 8
+                              },
+                              "end": {
+                                "line": 2,
+                                "column": 13
+                              }
+                            },
+                            "name": "count"
+                          },
+                          "value": {
+                            "type": "Identifier",
+                            "start": 27,
+                            "end": 32,
+                            "loc": {
+                              "start": {
+                                "line": 2,
+                                "column": 8
+                              },
+                              "end": {
+                                "line": 2,
+                                "column": 13
+                              }
+                            },
+                            "name": "count"
+                          },
+                          "kind": "init"
+                        },
+                        {
+                          "type": "Property",
+                          "start": 34,
+                          "end": 50,
+                          "loc": {
+                            "start": {
+                              "line": 2,
+                              "column": 15
+                            },
+                            "end": {
+                              "line": 2,
+                              "column": 31
+                            }
+                          },
+                          "method": false,
+                          "shorthand": true,
+                          "computed": false,
+                          "key": {
+                            "type": "Identifier",
+                            "start": 34,
+                            "end": 38,
+                            "loc": {
+                              "start": {
+                                "line": 2,
+                                "column": 15
+                              },
+                              "end": {
+                                "line": 2,
+                                "column": 19
+                              }
+                            },
+                            "name": "name"
+                          },
+                          "value": {
+                            "type": "AssignmentPattern",
+                            "start": 34,
+                            "end": 50,
+                            "loc": {
+                              "start": {
+                                "line": 2,
+                                "column": 15
+                              },
+                              "end": {
+                                "line": 2,
+                                "column": 31
+                              }
+                            },
+                            "left": {
+                              "type": "Identifier",
+                              "start": 34,
+                              "end": 38,
+                              "loc": {
+                                "start": {
+                                  "line": 2,
+                                  "column": 15
+                                },
+                                "end": {
+                                  "line": 2,
+                                  "column": 19
+                                }
+                              },
+                              "name": "name"
+                            },
+                            "right": {
+                              "type": "Literal",
+                              "start": 41,
+                              "end": 50,
+                              "loc": {
+                                "start": {
+                                  "line": 2,
+                                  "column": 22
+                                },
+                                "end": {
+                                  "line": 2,
+                                  "column": 31
+                                }
+                              },
+                              "value": "visitor",
+                              "raw": "'visitor'"
+                            }
+                          },
+                          "kind": "init"
+                        }
+                      ]
+                    },
+                    "init": {
+                      "type": "CallExpression",
+                      "start": 89,
+                      "end": 97,
+                      "loc": {
+                        "start": {
+                          "line": 2,
+                          "column": 70
+                        },
+                        "end": {
+                          "line": 2,
+                          "column": 78
+                        }
+                      },
+                      "callee": {
+                        "type": "Identifier",
+                        "start": 89,
+                        "end": 95,
+                        "loc": {
+                          "start": {
+                            "line": 2,
+                            "column": 70
+                          },
+                          "end": {
+                            "line": 2,
+                            "column": 76
+                          }
+                        },
+                        "name": "$props"
+                      },
+                      "arguments": [],
+                      "optional": false
+                    }
+                  }
+                ],
+                "kind": "let"
+              }
+            ],
+            "sourceType": "module"
+          }
+        }
+      }
+    },
+    "comparable": {
+      "ok": true,
+      "runes": true,
+      "diagnostics": []
+    }
+  }
+}

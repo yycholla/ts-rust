@@ -1,0 +1,69 @@
+{
+  "name": "javascript-jsdoc-valid",
+  "language": "javascript",
+  "expectedCodes": [],
+  "complete": true,
+  "match": true,
+  "declarations": {
+    "originalSvelteTypes": "973934bf1acccbd6ad0bc17c06f6dd788ad976664e4857c5004d9af9f2b3a920",
+    "maskedSvelteTypes": "d1b9212fcb6594459241315e0e016b21713d68cb6dcc90b29530058d06f5ad3a",
+    "shim": "f2dfa79c9e867a25d3887446b730f8fbdeaa9b74db3eeab196a2d251227a96a5",
+    "html": "2b3d6cdfd182cbd863e5023db6eb5eb530e8ad6b4f78df8f61fb744a70cd0080"
+  },
+  "sources": {
+    "Child.svelte": {
+      "language": "typescript",
+      "generated": "Child.svelte.tsx",
+      "sha256": "b0f2455a83ab255dabf89c3a7456f62124620ba190ea7e4d40091d1c9accbd08",
+      "generatedSha256": "be14a8ac65bba2f61703ed267aff72939ef3fbb046ba9f3c0d9797bafe944904",
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.53.11",
+        "patches": [
+          "child-reset-5.53.11"
+        ],
+        "clientDevelopment": false
+      }
+    },
+    "Case.svelte": {
+      "language": "javascript",
+      "generated": "Case.svelte.jsx",
+      "sha256": "700deb045b70ddde9fdf7805ea0d0a6ae35f7fd879a9482394db972a89769a3f",
+      "generatedSha256": "442b174386c951a9de75db08170ae84632e94e6517da59e3ae16f5a6db9778b9",
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.53.11",
+        "patches": [
+          "child-reset-5.53.11"
+        ],
+        "clientDevelopment": false
+      }
+    }
+  },
+  "oracle": [],
+  "native": [],
+  "nativeExecution": {
+    "processStatus": 0,
+    "compilerStatus": 0,
+    "complete": true,
+    "output": "",
+    "serializationFailures": [],
+    "unported": []
+  },
+  "assertions": {
+    "oracle": true,
+    "native": true
+  },
+  "mappedOracle": [],
+  "mappedNative": [],
+  "mappingSummary": {
+    "oracle": {},
+    "native": {}
+  }
+}

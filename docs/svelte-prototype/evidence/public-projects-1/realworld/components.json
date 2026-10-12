@@ -1,0 +1,18 @@
+{
+  "command": [
+    "node",
+    "scripts/svelte/public-components.mjs",
+    "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld",
+    "/home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/public-projects-1/realworld/components"
+  ],
+  "cwd": "/home/yycholla/Projects/ts-rust",
+  "exitCode": 0,
+  "timeout": false,
+  "timeoutSeconds": 300,
+  "wallSeconds": 0.866,
+  "log": "components.log",
+  "timeSeconds": 0.81,
+  "maxRssKiB": 120168,
+  "userSeconds": 0.85,
+  "systemSeconds": 0.21
+}

@@ -1,0 +1,7 @@
+    Finished `release` profile [optimized] target(s) in 0.26s
+   Compiling rsvelte_core v0.12.6 (/home/yycholla/Projects/ts-rust/crates/ts_svelte_compiler/vendor/rsvelte_core)
+   Compiling ts_svelte v0.1.0 (/home/yycholla/Projects/ts-rust/crates/ts_svelte)
+   Compiling rsvelte_projection v0.12.6 (https://github.com/baseballyama/rsvelte?rev=5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b#5ed8ea3a)
+   Compiling rsvelte v0.12.6 (https://github.com/baseballyama/rsvelte?rev=5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b#5ed8ea3a)
+   Compiling ts_svelte_compiler v0.1.0 (/home/yycholla/Projects/ts-rust/crates/ts_svelte_compiler)
+    Finished `release` profile [optimized] target(s) in 8m 24s

@@ -1,0 +1,44 @@
+{
+  "status": 1,
+  "signal": null,
+  "stderr": "",
+  "stdout": "{\"diagnostics\":[{\"category\":1,\"code\":2322,\"end\":233,\"endPosition\":{\"character\":121,\"line\":8},\"fileName\":\"/home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/batch-3-run-4/regression/checker/wrong-props/Case.svelte.tsx\",\"original\":{\"status\":\"unmapped\",\"uri\":\"Case.svelte\",\"version\":1},\"pos\":226,\"sourceLines\":[{\"line\":8,\"text\":\" { const $$_dlihC0C = __sveltets_2_ensureComponent(Child); new $$_dlihC0C({ target: __sveltets_2_any(), props: {  \\\"count\\\":'wrong',}});}\\n\"}],\"startPosition\":{\"character\":114,\"line\":8},\"text\":\"Type 'string' is not assignable to type 'number'.\"}],\"error\":null,\"ok\":true,\"output\":\"\",\"projectionsVerified\":true,\"serializationFailures\":[],\"status\":2,\"unported\":[]}\n",
+  "response": {
+    "diagnostics": [
+      {
+        "category": 1,
+        "code": 2322,
+        "end": 233,
+        "endPosition": {
+          "character": 121,
+          "line": 8
+        },
+        "fileName": "/home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/batch-3-run-4/regression/checker/wrong-props/Case.svelte.tsx",
+        "original": {
+          "status": "unmapped",
+          "uri": "Case.svelte",
+          "version": 1
+        },
+        "pos": 226,
+        "sourceLines": [
+          {
+            "line": 8,
+            "text": " { const $$_dlihC0C = __sveltets_2_ensureComponent(Child); new $$_dlihC0C({ target: __sveltets_2_any(), props: {  \"count\":'wrong',}});}\n"
+          }
+        ],
+        "startPosition": {
+          "character": 114,
+          "line": 8
+        },
+        "text": "Type 'string' is not assignable to type 'number'."
+      }
+    ],
+    "error": null,
+    "ok": true,
+    "output": "",
+    "projectionsVerified": true,
+    "serializationFailures": [],
+    "status": 2,
+    "unported": []
+  }
+}

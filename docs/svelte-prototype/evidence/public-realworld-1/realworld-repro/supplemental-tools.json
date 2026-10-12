@@ -1,0 +1,7 @@
+{
+  "lockSha256": "4fa13a9e70e3d04598490c1482a09c87919d91ed3d76df6fd5e4e6261e3a6789",
+  "svelte": "5.53.5",
+  "svelte-check": "4.4.5",
+  "typescript": "5.9.3",
+  "scope": "Explicit svelte-check invocation; not an upstream project script"
+}

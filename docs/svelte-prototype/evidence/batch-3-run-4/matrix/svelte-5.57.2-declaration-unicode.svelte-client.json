@@ -1,0 +1,226 @@
+{
+  "source": "😀\r\n{let value = 1}\r\n<p>{value}</p>\r\n",
+  "settings": {
+    "filename": "declaration-unicode.svelte",
+    "generate": "client",
+    "css": "external",
+    "dev": false
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "declaration-unicode.svelte",
+        "version": 1,
+        "text": "😀\r\n{let value = 1}\r\n<p>{value}</p>\r\n"
+      },
+      "target": "client",
+      "dev": false,
+      "compatibility": {
+        "svelteVersion": "5.57.2"
+      }
+    },
+    "exit": 0,
+    "signal": null,
+    "stdout": "{\"ok\":true,\"result\":{\"uri\":\"declaration-unicode.svelte\",\"version\":1,\"javascript\":{\"code\":\"import 'svelte/internal/disclose-version';\\nimport 'svelte/internal/flags/legacy';\\nimport * as $ from 'svelte/internal/client';\\n\\nvar root = $.from_html(`😀 <p></p>`, 1);\\n\\nexport default function Declaration_unicode($$anchor) {\\n\\tlet value = 1;\\n\\n\\t$.next();\\n\\n\\tvar fragment = root();\\n\\tvar p = $.sibling($.first_child(fragment));\\n\\n\\tp.textContent = '1';\\n\\t$.append($$anchor, fragment);\\n}\",\"map\":\"{\\\"version\\\":3,\\\"sources\\\":[\\\"declaration-unicode.svelte\\\"],\\\"sourcesContent\\\":[\\\"😀\\\\r\\\\n{let value = 1}\\\\r\\\\n<p>{value}</p>\\\\r\\\\n\\\"],\\\"names\\\":[],\\\"mappings\\\":\\\";;;;;;;;;;;;KAEC,CAAC;;CAAD,CAAC;;\\\"}\"},\"css\":null,\"diagnostics\":[],\"runes\":false,\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.57.2\",\"patches\":[\"child-reset-5.53.11\",\"declaration-tags-5.56\",\"select-default-5.57\"],\"clientDevelopment\":true},\"compatibility\":{\"id\":\"v1:svelte=5.57.2;kit=none;ts=unspecified\",\"svelteVersion\":\"5.57.2\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": true,
+      "result": {
+        "uri": "declaration-unicode.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import 'svelte/internal/disclose-version';\nimport 'svelte/internal/flags/legacy';\nimport * as $ from 'svelte/internal/client';\n\nvar root = $.from_html(`😀 <p></p>`, 1);\n\nexport default function Declaration_unicode($$anchor) {\n\tlet value = 1;\n\n\t$.next();\n\n\tvar fragment = root();\n\tvar p = $.sibling($.first_child(fragment));\n\n\tp.textContent = '1';\n\t$.append($$anchor, fragment);\n}",
+          "map": "{\"version\":3,\"sources\":[\"declaration-unicode.svelte\"],\"sourcesContent\":[\"😀\\r\\n{let value = 1}\\r\\n<p>{value}</p>\\r\\n\"],\"names\":[],\"mappings\":\";;;;;;;;;;;;KAEC,CAAC;;CAAD,CAAC;;\"}"
+        },
+        "css": null,
+        "diagnostics": [],
+        "runes": false,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.57.2",
+          "patches": [
+            "child-reset-5.53.11",
+            "declaration-tags-5.56",
+            "select-default-5.57"
+          ],
+          "clientDevelopment": true
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.57.2;kit=none;ts=unspecified",
+          "svelteVersion": "5.57.2",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": true,
+    "artifact": {
+      "js": {
+        "code": "import 'svelte/internal/disclose-version';\nimport 'svelte/internal/flags/legacy';\nimport * as $ from 'svelte/internal/client';\n\nvar root = $.from_html(`😀 <p></p>`, 1);\n\nexport default function Declaration_unicode($$anchor) {\n\tlet value = 1;\n\n\t$.next();\n\n\tvar fragment = root();\n\tvar p = $.sibling($.first_child(fragment));\n\n\tp.textContent = '1';\n\t$.append($$anchor, fragment);\n}",
+        "map": {
+          "version": 3,
+          "names": [],
+          "sources": [
+            "declaration-unicode.svelte"
+          ],
+          "sourcesContent": [
+            "😀\r\n{let value = 1}\r\n<p>{value}</p>\r\n"
+          ],
+          "mappings": ";;;;;;;CACC,GAAG,CAAC,KAAK,GAAG,CAAC,CAAA;;;;;KACb,CAAC;;CAAD,CAAC;;"
+        }
+      },
+      "css": null,
+      "warnings": [],
+      "metadata": {
+        "runes": false
+      },
+      "ast": {
+        "html": {
+          "type": "Fragment",
+          "start": 0,
+          "end": 35,
+          "children": [
+            {
+              "type": "Text",
+              "start": 0,
+              "end": 4,
+              "raw": "😀 ",
+              "data": "😀 "
+            },
+            {
+              "type": "DeclarationTag",
+              "start": 4,
+              "end": 19,
+              "declaration": {
+                "type": "VariableDeclaration",
+                "start": 5,
+                "end": 18,
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 14
+                  }
+                },
+                "declarations": [
+                  {
+                    "type": "VariableDeclarator",
+                    "start": 9,
+                    "end": 18,
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 5
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 14
+                      }
+                    },
+                    "id": {
+                      "type": "Identifier",
+                      "start": 9,
+                      "end": 14,
+                      "loc": {
+                        "start": {
+                          "line": 2,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 2,
+                          "column": 10
+                        }
+                      },
+                      "name": "value"
+                    },
+                    "init": {
+                      "type": "Literal",
+                      "start": 17,
+                      "end": 18,
+                      "loc": {
+                        "start": {
+                          "line": 2,
+                          "column": 13
+                        },
+                        "end": {
+                          "line": 2,
+                          "column": 14
+                        }
+                      },
+                      "value": 1,
+                      "raw": "1"
+                    }
+                  }
+                ],
+                "kind": "let"
+              }
+            },
+            {
+              "type": "Text",
+              "start": 19,
+              "end": 21,
+              "raw": "",
+              "data": ""
+            },
+            {
+              "type": "Element",
+              "start": 21,
+              "end": 35,
+              "name": "p",
+              "attributes": [],
+              "children": [
+                {
+                  "type": "MustacheTag",
+                  "start": 24,
+                  "end": 31,
+                  "expression": {
+                    "type": "Identifier",
+                    "start": 25,
+                    "end": 30,
+                    "loc": {
+                      "start": {
+                        "line": 3,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 3,
+                        "column": 9
+                      }
+                    },
+                    "name": "value"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "comparable": {
+      "ok": true,
+      "runes": false,
+      "diagnostics": []
+    }
+  }
+}

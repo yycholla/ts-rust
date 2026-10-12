@@ -1,0 +1,13 @@
+{
+  "command": [
+    "node",
+    "node_modules/svelte-check/bin/svelte-check",
+    "--tsconfig",
+    "./tsconfig.json",
+    "--output",
+    "machine-verbose"
+  ],
+  "status": 0,
+  "elapsedSeconds": 51.92579663099605,
+  "inputsUnchanged": true
+}

@@ -1,0 +1,32 @@
+{
+  "status": 1,
+  "signal": null,
+  "stdout": "{\"ok\":false,\"error\":{\"code\":\"runtime_compatibility\",\"message\":\"Client development instrumentation requires a newer Svelte runtime; Svelte 5.53.11 is not supported in dev mode yet\"},\"compatibility\":{\"id\":\"v1:svelte=5.53.11;kit=none;ts=unspecified\",\"svelteVersion\":\"5.53.11\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}\n",
+  "stderr": "",
+  "response": {
+    "ok": false,
+    "error": {
+      "code": "runtime_compatibility",
+      "message": "Client development instrumentation requires a newer Svelte runtime; Svelte 5.53.11 is not supported in dev mode yet"
+    },
+    "compatibility": {
+      "id": "v1:svelte=5.53.11;kit=none;ts=unspecified",
+      "svelteVersion": "5.53.11",
+      "kitVersion": null,
+      "typescriptVersion": null,
+      "channel": "stable",
+      "kitConfig": null,
+      "kitLibraryAlias": null,
+      "kitEnvironmentModule": null,
+      "capabilities": {
+        "componentCompiler": "prototype",
+        "checkingProjection": "prototype",
+        "projectCheck": "explicit-input-prototype",
+        "kitGraph": false,
+        "kitBuild": false,
+        "lsp": false
+      }
+    }
+  },
+  "complete": true
+}

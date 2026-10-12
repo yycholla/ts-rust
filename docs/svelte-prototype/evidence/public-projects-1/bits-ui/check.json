@@ -1,0 +1,24 @@
+{
+  "command": [
+    "npm",
+    "exec",
+    "--yes",
+    "--package=pnpm@10.33.0",
+    "--",
+    "pnpm",
+    "--filter",
+    "bits-ui",
+    "run",
+    "check"
+  ],
+  "cwd": "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/bits-ui",
+  "exitCode": 0,
+  "timeout": false,
+  "timeoutSeconds": 300,
+  "wallSeconds": 19.989,
+  "log": "check.log",
+  "timeSeconds": 19.94,
+  "maxRssKiB": 888404,
+  "userSeconds": 30.36,
+  "systemSeconds": 1.41
+}

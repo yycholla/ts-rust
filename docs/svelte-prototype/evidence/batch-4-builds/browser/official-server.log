@@ -1,0 +1,9 @@
+Listening on http://127.0.0.1:49171
+{"timestamp":"2026-10-11T00:27:01.009Z","level":"warn","message":"fetch failed","endpoint":"http://127.0.0.1:4000/graphql","timedOut":false}
+{"timestamp":"2026-10-11T00:27:01.011Z","level":"warn","message":"[GraphQL Proxy] Backend unavailable for request","backendEndpoint":"http://127.0.0.1:4000/graphql","cause":"fetch failed"}
+{"timestamp":"2026-10-11T00:27:01.012Z","level":"error","message":"POST /api/graphql 503 16ms","method":"POST","url":"/api/graphql","statusCode":503,"duration":16,"requestId":"7c323c19-f05e-49af-8ad4-f9fd982a7830"}
+{"timestamp":"2026-10-11T00:27:01.893Z","level":"warn","message":"[oauth/login] Missing login_challenge","correlationId":"af3d54dd-e6a6-4bfa-8934-e930a641ceb3"}
+{"timestamp":"2026-10-11T00:27:01.905Z","level":"warn","message":"GET /oauth/login 400 13ms","method":"GET","url":"/oauth/login","statusCode":400,"duration":13,"requestId":"af3d54dd-e6a6-4bfa-8934-e930a641ceb3"}
+{"timestamp":"2026-10-11T00:27:03.093Z","level":"warn","message":"fetch failed","endpoint":"http://127.0.0.1:4000/graphql","timedOut":false}
+{"timestamp":"2026-10-11T00:27:03.094Z","level":"warn","message":"[GraphQL Proxy] Backend unavailable for request","backendEndpoint":"http://127.0.0.1:4000/graphql","cause":"fetch failed"}
+{"timestamp":"2026-10-11T00:27:03.095Z","level":"error","message":"POST /api/graphql 503 4ms","method":"POST","url":"/api/graphql","statusCode":503,"duration":4,"requestId":"2f94e340-43f7-4437-83ff-2cafe92d3111"}

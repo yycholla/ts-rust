@@ -1,0 +1,304 @@
+{
+  "source": "<script lang=\"ts\"></script>{const a: number=1,b: number=2}<p>{a}{b}</p>\n",
+  "settings": {
+    "filename": "declaration-valid-types.svelte",
+    "generate": "client",
+    "css": "external",
+    "dev": false
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "declaration-valid-types.svelte",
+        "version": 1,
+        "text": "<script lang=\"ts\"></script>{const a: number=1,b: number=2}<p>{a}{b}</p>\n"
+      },
+      "target": "client",
+      "dev": false,
+      "compatibility": {
+        "svelteVersion": "5.57.2"
+      }
+    },
+    "exit": 0,
+    "signal": null,
+    "stdout": "{\"ok\":true,\"result\":{\"uri\":\"declaration-valid-types.svelte\",\"version\":1,\"javascript\":{\"code\":\"import 'svelte/internal/disclose-version';\\nimport 'svelte/internal/flags/legacy';\\nimport * as $ from 'svelte/internal/client';\\n\\nvar root = $.from_html(`<p></p>`);\\n\\nexport default function Declaration_valid_types($$anchor) {\\n\\tconst a = 1, b = 2;\\n\\tvar p = root();\\n\\n\\tp.textContent = '12';\\n\\t$.append($$anchor, p);\\n}\",\"map\":\"{\\\"version\\\":3,\\\"sources\\\":[\\\"declaration-valid-types.svelte\\\"],\\\"sourcesContent\\\":[\\\"<script lang=\\\\\\\"ts\\\\\\\"></script>{const a: number=1,b: number=2}<p>{a}{b}</p>\\\\n\\\"],\\\"names\\\":[],\\\"mappings\\\":\\\";;;;;;0DAAA,CAAC;CAAD,MAAM,AAAA,CAAC,GAAC,CAAC,EAAC,CAAC,GAAC,CAAC;KAA8C,CAAC;;CAAD,CAAC;CAAF,mBAAC,CAAC,CAAW;AAA7C,CAAC\\\"}\"},\"css\":null,\"diagnostics\":[],\"runes\":false,\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.57.2\",\"patches\":[\"child-reset-5.53.11\",\"declaration-tags-5.56\",\"select-default-5.57\"],\"clientDevelopment\":true},\"compatibility\":{\"id\":\"v1:svelte=5.57.2;kit=none;ts=unspecified\",\"svelteVersion\":\"5.57.2\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": true,
+      "result": {
+        "uri": "declaration-valid-types.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import 'svelte/internal/disclose-version';\nimport 'svelte/internal/flags/legacy';\nimport * as $ from 'svelte/internal/client';\n\nvar root = $.from_html(`<p></p>`);\n\nexport default function Declaration_valid_types($$anchor) {\n\tconst a = 1, b = 2;\n\tvar p = root();\n\n\tp.textContent = '12';\n\t$.append($$anchor, p);\n}",
+          "map": "{\"version\":3,\"sources\":[\"declaration-valid-types.svelte\"],\"sourcesContent\":[\"<script lang=\\\"ts\\\"></script>{const a: number=1,b: number=2}<p>{a}{b}</p>\\n\"],\"names\":[],\"mappings\":\";;;;;;0DAAA,CAAC;CAAD,MAAM,AAAA,CAAC,GAAC,CAAC,EAAC,CAAC,GAAC,CAAC;KAA8C,CAAC;;CAAD,CAAC;CAAF,mBAAC,CAAC,CAAW;AAA7C,CAAC\"}"
+        },
+        "css": null,
+        "diagnostics": [],
+        "runes": false,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.57.2",
+          "patches": [
+            "child-reset-5.53.11",
+            "declaration-tags-5.56",
+            "select-default-5.57"
+          ],
+          "clientDevelopment": true
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.57.2;kit=none;ts=unspecified",
+          "svelteVersion": "5.57.2",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": true,
+    "artifact": {
+      "js": {
+        "code": "import 'svelte/internal/disclose-version';\nimport 'svelte/internal/flags/legacy';\nimport * as $ from 'svelte/internal/client';\n\nvar root = $.from_html(`<p></p>`);\n\nexport default function Declaration_valid_types($$anchor) {\n\tconst a = 1, b = 2;\n\tvar p = root();\n\n\tp.textContent = '12';\n\t$.append($$anchor, p);\n}",
+        "map": {
+          "version": 3,
+          "names": [],
+          "sources": [
+            "declaration-valid-types.svelte"
+          ],
+          "sourcesContent": [
+            "<script lang=\"ts\"></script>{const a: number=1,b: number=2}<p>{a}{b}</p>\n"
+          ],
+          "mappings": ";;;;;;0DAAA,CAAC;CAA2B,KAAK,CAAC,CAAC,AAAQ,GAAC,CAAC,EAAC,CAAC,AAAQ,GAAC,CAAC,CAAA;KAAE,CAAC;;CAAD,CAAC;oBAAD,CAAC;AAAlC,CAAC"
+        }
+      },
+      "css": null,
+      "warnings": [],
+      "metadata": {
+        "runes": false
+      },
+      "ast": {
+        "html": {
+          "type": "Fragment",
+          "start": 27,
+          "end": 71,
+          "children": [
+            {
+              "type": "DeclarationTag",
+              "start": 27,
+              "end": 58,
+              "declaration": {
+                "type": "VariableDeclaration",
+                "start": 28,
+                "end": 57,
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 28
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 57
+                  }
+                },
+                "declarations": [
+                  {
+                    "type": "VariableDeclarator",
+                    "start": 34,
+                    "end": 45,
+                    "loc": {
+                      "start": {
+                        "line": 1,
+                        "column": 34
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 45
+                      }
+                    },
+                    "id": {
+                      "type": "Identifier",
+                      "start": 34,
+                      "end": 43,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 34
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 43
+                        }
+                      },
+                      "name": "a"
+                    },
+                    "init": {
+                      "type": "Literal",
+                      "start": 44,
+                      "end": 45,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 44
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 45
+                        }
+                      },
+                      "value": 1,
+                      "raw": "1"
+                    }
+                  },
+                  {
+                    "type": "VariableDeclarator",
+                    "start": 46,
+                    "end": 57,
+                    "loc": {
+                      "start": {
+                        "line": 1,
+                        "column": 46
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 57
+                      }
+                    },
+                    "id": {
+                      "type": "Identifier",
+                      "start": 46,
+                      "end": 55,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 46
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 55
+                        }
+                      },
+                      "name": "b"
+                    },
+                    "init": {
+                      "type": "Literal",
+                      "start": 56,
+                      "end": 57,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 56
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 57
+                        }
+                      },
+                      "value": 2,
+                      "raw": "2"
+                    }
+                  }
+                ],
+                "kind": "const"
+              }
+            },
+            {
+              "type": "Element",
+              "start": 58,
+              "end": 71,
+              "name": "p",
+              "attributes": [],
+              "children": [
+                {
+                  "type": "MustacheTag",
+                  "start": 61,
+                  "end": 64,
+                  "expression": {
+                    "type": "Identifier",
+                    "start": 62,
+                    "end": 63,
+                    "loc": {
+                      "start": {
+                        "line": 1,
+                        "column": 62
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 63
+                      }
+                    },
+                    "name": "a"
+                  }
+                },
+                {
+                  "type": "MustacheTag",
+                  "start": 64,
+                  "end": 67,
+                  "expression": {
+                    "type": "Identifier",
+                    "start": 65,
+                    "end": 66,
+                    "loc": {
+                      "start": {
+                        "line": 1,
+                        "column": 65
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 66
+                      }
+                    },
+                    "name": "b"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "instance": {
+          "type": "Script",
+          "start": 0,
+          "end": 27,
+          "context": "default",
+          "content": {
+            "type": "Program",
+            "start": 18,
+            "end": 18,
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 27
+              }
+            },
+            "body": [],
+            "sourceType": "module"
+          }
+        }
+      }
+    },
+    "comparable": {
+      "ok": true,
+      "runes": false,
+      "diagnostics": []
+    }
+  }
+}

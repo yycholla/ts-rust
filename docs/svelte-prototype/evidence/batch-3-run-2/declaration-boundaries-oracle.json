@@ -1,0 +1,26 @@
+[
+  {
+    "text": "{const a=1; /* tail */}",
+    "code": "expected_token",
+    "message": "Expected token }\nhttps://svelte.dev/e/expected_token",
+    "start": 12
+  },
+  {
+    "text": "{const a=1 /* tail */}",
+    "code": "expected_token",
+    "message": "Expected token }\nhttps://svelte.dev/e/expected_token",
+    "start": 11
+  },
+  {
+    "text": "{const a=1; let b=}",
+    "code": "expected_token",
+    "message": "Expected token }\nhttps://svelte.dev/e/expected_token",
+    "start": 12
+  },
+  {
+    "text": "{const a=1\nlet b=}",
+    "code": "expected_token",
+    "message": "Expected token }\nhttps://svelte.dev/e/expected_token",
+    "start": 11
+  }
+]

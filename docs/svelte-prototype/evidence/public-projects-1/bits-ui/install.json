@@ -1,0 +1,22 @@
+{
+  "command": [
+    "npm",
+    "exec",
+    "--yes",
+    "--package=pnpm@10.33.0",
+    "--",
+    "pnpm",
+    "install",
+    "--frozen-lockfile"
+  ],
+  "cwd": "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/bits-ui",
+  "exitCode": 0,
+  "timeout": false,
+  "timeoutSeconds": 600,
+  "wallSeconds": 10.125,
+  "log": "install.log",
+  "timeSeconds": 10.08,
+  "maxRssKiB": 1398896,
+  "userSeconds": 20.71,
+  "systemSeconds": 4.69
+}

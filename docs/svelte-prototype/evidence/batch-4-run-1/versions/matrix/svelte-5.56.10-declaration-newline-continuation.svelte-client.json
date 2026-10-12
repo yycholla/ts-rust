@@ -1,0 +1,249 @@
+{
+  "source": "{const a = (() => 1)\n()}<p>{a}</p>\n",
+  "settings": {
+    "filename": "declaration-newline-continuation.svelte",
+    "generate": "client",
+    "css": "external",
+    "dev": false
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "declaration-newline-continuation.svelte",
+        "version": 1,
+        "text": "{const a = (() => 1)\n()}<p>{a}</p>\n"
+      },
+      "target": "client",
+      "dev": false,
+      "compatibility": {
+        "svelteVersion": "5.56.10"
+      }
+    },
+    "exit": 0,
+    "signal": null,
+    "stdout": "{\"ok\":true,\"result\":{\"uri\":\"declaration-newline-continuation.svelte\",\"version\":1,\"javascript\":{\"code\":\"import 'svelte/internal/disclose-version';\\nimport 'svelte/internal/flags/legacy';\\nimport * as $ from 'svelte/internal/client';\\n\\nvar root = $.from_html(`<p> </p>`);\\n\\nexport default function Declaration_newline_continuation($$anchor, $$props) {\\n\\t$.push($$props, false);\\n\\t$.init();\\n\\n\\tconst a = (() => 1)\\n();\\n\\n\\tvar p = root();\\n\\tvar text = $.child(p, true);\\n\\n\\t$.reset(p);\\n\\t$.template_effect(() => $.set_text(text, a));\\n\\t$.append($$anchor, p);\\n\\t$.pop();\\n}\",\"map\":\"{\\\"version\\\":3,\\\"sources\\\":[\\\"declaration-newline-continuation.svelte\\\"],\\\"sourcesContent\\\":[\\\"{const a = (() => 1)\\\\n()}<p>{a}</p>\\\\n\\\"],\\\"names\\\":[],\\\"mappings\\\":\\\";;;;;;;;;;;;;KACI,CAAC;oBAAD,CAAC;;SAAD,CAAC;0CAAE,CAAC;CAAL,mBAAC,CAAC,CAAQ;;\\\"}\"},\"css\":null,\"diagnostics\":[],\"runes\":false,\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.56.10\",\"patches\":[\"child-reset-5.53.11\",\"declaration-tags-5.56\",\"select-default-5.57\"],\"clientDevelopment\":false},\"compatibility\":{\"id\":\"v1:svelte=5.56.10;kit=none;ts=unspecified\",\"svelteVersion\":\"5.56.10\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": true,
+      "result": {
+        "uri": "declaration-newline-continuation.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import 'svelte/internal/disclose-version';\nimport 'svelte/internal/flags/legacy';\nimport * as $ from 'svelte/internal/client';\n\nvar root = $.from_html(`<p> </p>`);\n\nexport default function Declaration_newline_continuation($$anchor, $$props) {\n\t$.push($$props, false);\n\t$.init();\n\n\tconst a = (() => 1)\n();\n\n\tvar p = root();\n\tvar text = $.child(p, true);\n\n\t$.reset(p);\n\t$.template_effect(() => $.set_text(text, a));\n\t$.append($$anchor, p);\n\t$.pop();\n}",
+          "map": "{\"version\":3,\"sources\":[\"declaration-newline-continuation.svelte\"],\"sourcesContent\":[\"{const a = (() => 1)\\n()}<p>{a}</p>\\n\"],\"names\":[],\"mappings\":\";;;;;;;;;;;;;KACI,CAAC;oBAAD,CAAC;;SAAD,CAAC;0CAAE,CAAC;CAAL,mBAAC,CAAC,CAAQ;;\"}"
+        },
+        "css": null,
+        "diagnostics": [],
+        "runes": false,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.56.10",
+          "patches": [
+            "child-reset-5.53.11",
+            "declaration-tags-5.56",
+            "select-default-5.57"
+          ],
+          "clientDevelopment": false
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.56.10;kit=none;ts=unspecified",
+          "svelteVersion": "5.56.10",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": true,
+    "artifact": {
+      "js": {
+        "code": "import 'svelte/internal/disclose-version';\nimport 'svelte/internal/flags/legacy';\nimport * as $ from 'svelte/internal/client';\n\nvar root = $.from_html(`<p> </p>`);\n\nexport default function Declaration_newline_continuation($$anchor, $$props) {\n\t$.push($$props, false);\n\t$.init();\n\n\tconst a = (() => 1)();\n\tvar p = root();\n\tvar text = $.child(p, true);\n\n\t$.reset(p);\n\t$.template_effect(() => $.set_text(text, a));\n\t$.append($$anchor, p);\n\t$.pop();\n}",
+        "map": {
+          "version": 3,
+          "names": [],
+          "sources": [
+            "declaration-newline-continuation.svelte"
+          ],
+          "sourcesContent": [
+            "{const a = (() => 1)\n()}<p>{a}</p>\n"
+          ],
+          "mappings": ";;;;;;;;;;CAAC,KAAK,CAAC,CAAC,GAAG,AAAC,CAAA,MAAM,CAAC,CAAA,EACjB,CAAA;KAAE,CAAC;oBAAD,CAAC;;SAAD,CAAC;0CAAE,CAAC;oBAAJ,CAAC;;"
+        }
+      },
+      "css": null,
+      "warnings": [],
+      "metadata": {
+        "runes": false
+      },
+      "ast": {
+        "html": {
+          "type": "Fragment",
+          "start": 0,
+          "end": 34,
+          "children": [
+            {
+              "type": "DeclarationTag",
+              "start": 0,
+              "end": 24,
+              "declaration": {
+                "type": "VariableDeclaration",
+                "start": 1,
+                "end": 23,
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 2
+                  }
+                },
+                "declarations": [
+                  {
+                    "type": "VariableDeclarator",
+                    "start": 7,
+                    "end": 23,
+                    "loc": {
+                      "start": {
+                        "line": 1,
+                        "column": 7
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 2
+                      }
+                    },
+                    "id": {
+                      "type": "Identifier",
+                      "start": 7,
+                      "end": 8,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 7
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 8
+                        }
+                      },
+                      "name": "a"
+                    },
+                    "init": {
+                      "type": "CallExpression",
+                      "start": 11,
+                      "end": 23,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 11
+                        },
+                        "end": {
+                          "line": 2,
+                          "column": 2
+                        }
+                      },
+                      "callee": {
+                        "type": "ArrowFunctionExpression",
+                        "start": 12,
+                        "end": 19,
+                        "loc": {
+                          "start": {
+                            "line": 1,
+                            "column": 12
+                          },
+                          "end": {
+                            "line": 1,
+                            "column": 19
+                          }
+                        },
+                        "id": null,
+                        "expression": true,
+                        "generator": false,
+                        "async": false,
+                        "params": [],
+                        "body": {
+                          "type": "Literal",
+                          "start": 18,
+                          "end": 19,
+                          "loc": {
+                            "start": {
+                              "line": 1,
+                              "column": 18
+                            },
+                            "end": {
+                              "line": 1,
+                              "column": 19
+                            }
+                          },
+                          "value": 1,
+                          "raw": "1"
+                        }
+                      },
+                      "arguments": [],
+                      "optional": false
+                    }
+                  }
+                ],
+                "kind": "const"
+              }
+            },
+            {
+              "type": "Element",
+              "start": 24,
+              "end": 34,
+              "name": "p",
+              "attributes": [],
+              "children": [
+                {
+                  "type": "MustacheTag",
+                  "start": 27,
+                  "end": 30,
+                  "expression": {
+                    "type": "Identifier",
+                    "start": 28,
+                    "end": 29,
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 7
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 8
+                      }
+                    },
+                    "name": "a"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "comparable": {
+      "ok": true,
+      "runes": false,
+      "diagnostics": []
+    }
+  }
+}

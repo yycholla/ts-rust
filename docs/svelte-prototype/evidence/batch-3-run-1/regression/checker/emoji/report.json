@@ -1,0 +1,177 @@
+{
+  "name": "emoji",
+  "language": "typescript",
+  "expectedCodes": [
+    2304
+  ],
+  "complete": true,
+  "match": true,
+  "declarations": {
+    "originalSvelteTypes": "973934bf1acccbd6ad0bc17c06f6dd788ad976664e4857c5004d9af9f2b3a920",
+    "maskedSvelteTypes": "d1b9212fcb6594459241315e0e016b21713d68cb6dcc90b29530058d06f5ad3a",
+    "shim": "f2dfa79c9e867a25d3887446b730f8fbdeaa9b74db3eeab196a2d251227a96a5",
+    "html": "2b3d6cdfd182cbd863e5023db6eb5eb530e8ad6b4f78df8f61fb744a70cd0080"
+  },
+  "sources": {
+    "Child.svelte": {
+      "language": "typescript",
+      "generated": "Child.svelte.tsx",
+      "sha256": "b0f2455a83ab255dabf89c3a7456f62124620ba190ea7e4d40091d1c9accbd08",
+      "generatedSha256": "be14a8ac65bba2f61703ed267aff72939ef3fbb046ba9f3c0d9797bafe944904",
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.53.11",
+        "patches": [
+          "child-reset-5.53.11",
+          "declaration-tags-5.56",
+          "select-default-5.57"
+        ],
+        "clientDevelopment": false
+      }
+    },
+    "Case.svelte": {
+      "language": "typescript",
+      "generated": "Case.svelte.tsx",
+      "sha256": "33e362a00ba86a24c758e661a4c2abbed6f5e92e08db7d6d850bc51f4d04f288",
+      "generatedSha256": "29592102d6652f85c8a3081a8daff8e67daf5ff5b08c2bcf22ba58b8b306aa6f",
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.53.11",
+        "patches": [
+          "child-reset-5.53.11",
+          "declaration-tags-5.56",
+          "select-default-5.57"
+        ],
+        "clientDevelopment": false
+      }
+    }
+  },
+  "oracle": [
+    {
+      "file": "Case.svelte.tsx",
+      "start": 155,
+      "end": 172,
+      "code": 2304,
+      "category": 1,
+      "source": "",
+      "text": "Cannot find name 'missingAfterEmoji'.",
+      "unnecessary": false,
+      "deprecated": false,
+      "chain": [],
+      "related": []
+    }
+  ],
+  "native": [
+    {
+      "file": "Case.svelte.tsx",
+      "start": 155,
+      "end": 172,
+      "code": 2304,
+      "category": 1,
+      "source": "",
+      "text": "Cannot find name 'missingAfterEmoji'.",
+      "unnecessary": false,
+      "deprecated": false,
+      "chain": [],
+      "related": []
+    }
+  ],
+  "nativeExecution": {
+    "processStatus": 1,
+    "compilerStatus": 2,
+    "complete": true,
+    "output": "",
+    "serializationFailures": [],
+    "unported": []
+  },
+  "assertions": {
+    "oracle": true,
+    "native": true
+  },
+  "mappedOracle": [
+    {
+      "file": "Case.svelte.tsx",
+      "start": 155,
+      "end": 172,
+      "code": 2304,
+      "category": 1,
+      "source": "",
+      "text": "Cannot find name 'missingAfterEmoji'.",
+      "unnecessary": false,
+      "deprecated": false,
+      "chain": [],
+      "related": [],
+      "original": {
+        "status": "exact",
+        "file": "Case.svelte",
+        "bytes": {
+          "start": 83,
+          "end": 100
+        },
+        "start": {
+          "offset": 80,
+          "line": 3,
+          "character": 15
+        },
+        "end": {
+          "offset": 97,
+          "line": 3,
+          "character": 32
+        }
+      }
+    }
+  ],
+  "mappedNative": [
+    {
+      "file": "Case.svelte.tsx",
+      "start": 155,
+      "end": 172,
+      "code": 2304,
+      "category": 1,
+      "source": "",
+      "text": "Cannot find name 'missingAfterEmoji'.",
+      "unnecessary": false,
+      "deprecated": false,
+      "chain": [],
+      "related": [],
+      "original": {
+        "status": "exact",
+        "file": "Case.svelte",
+        "bytes": {
+          "start": 83,
+          "end": 100
+        },
+        "start": {
+          "offset": 80,
+          "line": 3,
+          "character": 15
+        },
+        "end": {
+          "offset": 97,
+          "line": 3,
+          "character": 32
+        }
+      }
+    }
+  ],
+  "mappingAssertions": {
+    "expectedText": "missingAfterEmoji",
+    "oracle": true,
+    "native": true,
+    "rust": true
+  },
+  "mappingSummary": {
+    "oracle": {
+      "exact": 1
+    },
+    "native": {
+      "exact": 1
+    }
+  }
+}

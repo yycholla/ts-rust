@@ -1,0 +1,128 @@
+{
+  "source": "<script>\n  const letter = 1, let$ = 2, letπ = 3, leta = 4, constant = 5, constπ = 6;\n  const object = { let: 7, const: 8 };\n</script>\n<p>{letter} {let$} {letπ} {let\\u0061} {constant} {constπ} {object.let} {object.const} {({let: 1}).let} {'let value=1'} {/const/.source}</p>\n",
+  "settings": {
+    "filename": "declaration-token-boundaries.svelte",
+    "generate": "server",
+    "css": "external",
+    "dev": false
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "declaration-token-boundaries.svelte",
+        "version": 1,
+        "text": "<script>\n  const letter = 1, let$ = 2, letπ = 3, leta = 4, constant = 5, constπ = 6;\n  const object = { let: 7, const: 8 };\n</script>\n<p>{letter} {let$} {letπ} {let\\u0061} {constant} {constπ} {object.let} {object.const} {({let: 1}).let} {'let value=1'} {/const/.source}</p>\n"
+      },
+      "target": "server",
+      "dev": false,
+      "compatibility": {
+        "svelteVersion": "5.57.2"
+      }
+    },
+    "exit": 1,
+    "signal": null,
+    "stdout": "{\"ok\":false,\"error\":{\"code\":\"svelte_compile\",\"message\":\"Unexpected block closing tag\\nhttps://svelte.dev/e/block_unexpected_close\"},\"diagnostics\":[{\"code\":\"block_unexpected_close\",\"message\":\"Unexpected block closing tag\\nhttps://svelte.dev/e/block_unexpected_close\",\"severity\":\"error\",\"uri\":\"declaration-token-boundaries.svelte\",\"bytes\":{\"start\":258,\"end\":258},\"range\":{\"start\":{\"line\":4,\"character\":120},\"end\":{\"line\":4,\"character\":120}}}],\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.57.2\",\"patches\":[\"child-reset-5.53.11\",\"declaration-tags-5.56\",\"select-default-5.57\"],\"clientDevelopment\":true},\"compatibility\":{\"id\":\"v1:svelte=5.57.2;kit=none;ts=unspecified\",\"svelteVersion\":\"5.57.2\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": false,
+      "error": {
+        "code": "svelte_compile",
+        "message": "Unexpected block closing tag\nhttps://svelte.dev/e/block_unexpected_close"
+      },
+      "diagnostics": [
+        {
+          "code": "block_unexpected_close",
+          "message": "Unexpected block closing tag\nhttps://svelte.dev/e/block_unexpected_close",
+          "severity": "error",
+          "uri": "declaration-token-boundaries.svelte",
+          "bytes": {
+            "start": 258,
+            "end": 258
+          },
+          "range": {
+            "start": {
+              "line": 4,
+              "character": 120
+            },
+            "end": {
+              "line": 4,
+              "character": 120
+            }
+          }
+        }
+      ],
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.57.2",
+        "patches": [
+          "child-reset-5.53.11",
+          "declaration-tags-5.56",
+          "select-default-5.57"
+        ],
+        "clientDevelopment": true
+      },
+      "compatibility": {
+        "id": "v1:svelte=5.57.2;kit=none;ts=unspecified",
+        "svelteVersion": "5.57.2",
+        "kitVersion": null,
+        "typescriptVersion": null,
+        "channel": "stable",
+        "kitConfig": null,
+        "kitLibraryAlias": null,
+        "kitEnvironmentModule": null,
+        "capabilities": {
+          "componentCompiler": "prototype",
+          "checkingProjection": "prototype",
+          "projectCheck": "explicit-input-prototype",
+          "kitGraph": false,
+          "kitBuild": false,
+          "lsp": false
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": false,
+    "error": {
+      "message": "Unexpected block closing tag\nhttps://svelte.dev/e/block_unexpected_close",
+      "name": "CompileError",
+      "code": "block_unexpected_close",
+      "filename": "declaration-token-boundaries.svelte",
+      "position": [
+        254,
+        254
+      ],
+      "start": {
+        "line": 5,
+        "column": 120,
+        "character": 254
+      },
+      "end": {
+        "line": 5,
+        "column": 120,
+        "character": 254
+      },
+      "frame": "3:   const object = { let: 7, const: 8 };\n4: </script>\n5: <p>{letter} {let$} {letπ} {let\\u0061} {constant} {constπ} {object.let} {object.const} {({let: 1}).let} {'let value=1'} {/const/.source}</p>\n                                                                                                                           ^\n6: ",
+      "stack": ""
+    },
+    "comparable": {
+      "ok": false,
+      "runes": null,
+      "diagnostics": [
+        {
+          "code": "block_unexpected_close",
+          "severity": "error",
+          "message": "Unexpected block closing tag\nhttps://svelte.dev/e/block_unexpected_close",
+          "bytes": {
+            "start": 258,
+            "end": 258
+          }
+        }
+      ]
+    }
+  }
+}

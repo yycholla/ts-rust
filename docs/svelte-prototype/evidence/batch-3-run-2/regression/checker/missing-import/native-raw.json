@@ -1,0 +1,58 @@
+{
+  "status": 1,
+  "signal": null,
+  "stderr": "",
+  "stdout": "{\"diagnostics\":[{\"category\":1,\"code\":2307,\"end\":77,\"endPosition\":{\"character\":43,\"line\":2},\"fileName\":\"/home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/batch-3-run-2/regression/checker/missing-import/Case.svelte.tsx\",\"original\":{\"bytes\":{\"end\":64,\"start\":41},\"range\":{\"end\":{\"character\":45,\"line\":1},\"start\":{\"character\":22,\"line\":1}},\"status\":\"mapped\",\"uri\":\"Case.svelte\",\"version\":1},\"pos\":54,\"sourceLines\":[{\"line\":2,\"text\":\"import Missing from './DoesNotExist.svelte';\\n\"}],\"startPosition\":{\"character\":20,\"line\":2},\"text\":\"Cannot find module './DoesNotExist.svelte' or its corresponding type declarations.\"}],\"error\":null,\"ok\":true,\"output\":\"\",\"projectionsVerified\":true,\"serializationFailures\":[],\"status\":2,\"unported\":[]}\n",
+  "response": {
+    "diagnostics": [
+      {
+        "category": 1,
+        "code": 2307,
+        "end": 77,
+        "endPosition": {
+          "character": 43,
+          "line": 2
+        },
+        "fileName": "/home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/batch-3-run-2/regression/checker/missing-import/Case.svelte.tsx",
+        "original": {
+          "bytes": {
+            "end": 64,
+            "start": 41
+          },
+          "range": {
+            "end": {
+              "character": 45,
+              "line": 1
+            },
+            "start": {
+              "character": 22,
+              "line": 1
+            }
+          },
+          "status": "mapped",
+          "uri": "Case.svelte",
+          "version": 1
+        },
+        "pos": 54,
+        "sourceLines": [
+          {
+            "line": 2,
+            "text": "import Missing from './DoesNotExist.svelte';\n"
+          }
+        ],
+        "startPosition": {
+          "character": 20,
+          "line": 2
+        },
+        "text": "Cannot find module './DoesNotExist.svelte' or its corresponding type declarations."
+      }
+    ],
+    "error": null,
+    "ok": true,
+    "output": "",
+    "projectionsVerified": true,
+    "serializationFailures": [],
+    "status": 2,
+    "unported": []
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "status": 1,
+  "signal": null,
+  "stdout": "{\"ok\":false,\"error\":{\"code\":\"runtime_compatibility\",\"message\":\"Svelte 5.53.11 runtime does not export required helpers: set_default_select_value\"},\"diagnostics\":[]}\n",
+  "stderr": "",
+  "response": {
+    "ok": false,
+    "error": {
+      "code": "runtime_compatibility",
+      "message": "Svelte 5.53.11 runtime does not export required helpers: set_default_select_value"
+    },
+    "diagnostics": []
+  },
+  "complete": true
+}

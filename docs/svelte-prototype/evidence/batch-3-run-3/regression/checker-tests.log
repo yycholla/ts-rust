@@ -1,0 +1,17 @@
+    Finished `release` profile [optimized] target(s) in 0.14s
+     Running unittests src/bin/svelte-project.rs (target/release/deps/svelte_project-79311da206454ac4)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (target/release/deps/svelte_ts_check-a526c6904c868f1d)
+
+running 4 tests
+test mapping::tests::bad_copied_spans_and_duplicate_files_are_rejected ... ok
+test mapping::tests::fileless_and_unprojected_messages_are_preserved ... ok
+test mapping::tests::generated_and_invalid_surrogate_locations_remain_unmapped ... ok
+test mapping::tests::recursive_diagnostics_keep_generated_details_and_map_original_ranges ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

@@ -1,0 +1,8 @@
+{
+  "cases": 1340,
+  "matched": 1340,
+  "differences": 0,
+  "harnessFailures": 0,
+  "report": "/home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/batch-3-run-1/regression/oracle/report.json"
+}
+

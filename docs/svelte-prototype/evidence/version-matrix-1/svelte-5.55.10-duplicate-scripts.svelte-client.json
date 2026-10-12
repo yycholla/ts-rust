@@ -1,0 +1,128 @@
+{
+  "source": "<script>let first = 1;</script>\n<script>let second = 2;</script>\n<p>{first} {second}</p>\n",
+  "settings": {
+    "filename": "duplicate-scripts.svelte",
+    "generate": "client",
+    "css": "external",
+    "dev": false,
+    "runes": true
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "duplicate-scripts.svelte",
+        "version": 1,
+        "text": "<script>let first = 1;</script>\n<script>let second = 2;</script>\n<p>{first} {second}</p>\n"
+      },
+      "target": "client",
+      "dev": false,
+      "runes": true,
+      "compatibility": {
+        "svelteVersion": "5.55.10"
+      }
+    },
+    "exit": 1,
+    "signal": null,
+    "stdout": "{\"ok\":false,\"error\":{\"code\":\"svelte_compile\",\"message\":\"A component can have a single top-level `<script>` element and/or a single top-level `<script module>` element\\nhttps://svelte.dev/e/script_duplicate\"},\"diagnostics\":[{\"code\":\"script_duplicate\",\"message\":\"A component can have a single top-level `<script>` element and/or a single top-level `<script module>` element\\nhttps://svelte.dev/e/script_duplicate\",\"severity\":\"error\",\"uri\":\"duplicate-scripts.svelte\",\"bytes\":{\"start\":32,\"end\":32},\"range\":{\"start\":{\"line\":1,\"character\":0},\"end\":{\"line\":1,\"character\":0}}}],\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.55.10\",\"patches\":[\"child-reset-5.53.11\"],\"clientDevelopment\":false},\"compatibility\":{\"id\":\"v1:svelte=5.55.10;kit=none;ts=unspecified\",\"svelteVersion\":\"5.55.10\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": false,
+      "error": {
+        "code": "svelte_compile",
+        "message": "A component can have a single top-level `<script>` element and/or a single top-level `<script module>` element\nhttps://svelte.dev/e/script_duplicate"
+      },
+      "diagnostics": [
+        {
+          "code": "script_duplicate",
+          "message": "A component can have a single top-level `<script>` element and/or a single top-level `<script module>` element\nhttps://svelte.dev/e/script_duplicate",
+          "severity": "error",
+          "uri": "duplicate-scripts.svelte",
+          "bytes": {
+            "start": 32,
+            "end": 32
+          },
+          "range": {
+            "start": {
+              "line": 1,
+              "character": 0
+            },
+            "end": {
+              "line": 1,
+              "character": 0
+            }
+          }
+        }
+      ],
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.55.10",
+        "patches": [
+          "child-reset-5.53.11"
+        ],
+        "clientDevelopment": false
+      },
+      "compatibility": {
+        "id": "v1:svelte=5.55.10;kit=none;ts=unspecified",
+        "svelteVersion": "5.55.10",
+        "kitVersion": null,
+        "typescriptVersion": null,
+        "channel": "stable",
+        "kitConfig": null,
+        "kitLibraryAlias": null,
+        "kitEnvironmentModule": null,
+        "capabilities": {
+          "componentCompiler": "prototype",
+          "checkingProjection": "prototype",
+          "projectCheck": "explicit-input-prototype",
+          "kitGraph": false,
+          "kitBuild": false,
+          "lsp": false
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": false,
+    "error": {
+      "message": "A component can have a single top-level `<script>` element and/or a single top-level `<script module>` element\nhttps://svelte.dev/e/script_duplicate",
+      "name": "CompileError",
+      "code": "script_duplicate",
+      "filename": "duplicate-scripts.svelte",
+      "position": [
+        32,
+        32
+      ],
+      "start": {
+        "line": 2,
+        "column": 0,
+        "character": 32
+      },
+      "end": {
+        "line": 2,
+        "column": 0,
+        "character": 32
+      },
+      "frame": "1: <script>let first = 1;</script>\n2: <script>let second = 2;</script>\n   ^\n3: <p>{first} {second}</p>\n4: ",
+      "stack": ""
+    },
+    "comparable": {
+      "ok": false,
+      "runes": null,
+      "diagnostics": [
+        {
+          "code": "script_duplicate",
+          "severity": "error",
+          "message": "A component can have a single top-level `<script>` element and/or a single top-level `<script module>` element\nhttps://svelte.dev/e/script_duplicate",
+          "bytes": {
+            "start": 32,
+            "end": 32
+          }
+        }
+      ]
+    }
+  }
+}

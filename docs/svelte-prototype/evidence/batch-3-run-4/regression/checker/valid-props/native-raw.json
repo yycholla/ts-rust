@@ -1,0 +1,16 @@
+{
+  "status": 0,
+  "signal": null,
+  "stderr": "",
+  "stdout": "{\"diagnostics\":[],\"error\":null,\"ok\":true,\"output\":\"\",\"projectionsVerified\":true,\"serializationFailures\":[],\"status\":0,\"unported\":[]}\n",
+  "response": {
+    "diagnostics": [],
+    "error": null,
+    "ok": true,
+    "output": "",
+    "projectionsVerified": true,
+    "serializationFailures": [],
+    "status": 0,
+    "unported": []
+  }
+}

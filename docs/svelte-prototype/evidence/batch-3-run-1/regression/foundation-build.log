@@ -1,0 +1,4 @@
+    Finished `release` profile [optimized] target(s) in 0.04s
+   Compiling ts_svelte v0.1.0 (/home/yycholla/Projects/ts-rust/crates/ts_svelte)
+   Compiling ts_svelte_wasm v0.1.0 (/home/yycholla/Projects/ts-rust/crates/ts_svelte_wasm)
+    Finished `release` profile [optimized] target(s) in 5.70s

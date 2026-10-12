@@ -1,0 +1,8 @@
+target/release/svelte-lsp: OK
+target/release/svelte-lint: OK
+target/release/svelte-service: OK
+target/release/ts_svelte_kit: OK
+npm/svelte/generated/ts_svelte_tools_bg.wasm: OK
+npm/svelte/generated/ts_svelte_tools_bg.wasm.d.ts: OK
+npm/svelte/generated/ts_svelte_tools.d.ts: OK
+npm/svelte/generated/ts_svelte_tools.js: OK

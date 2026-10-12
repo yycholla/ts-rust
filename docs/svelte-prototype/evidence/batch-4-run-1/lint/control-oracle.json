@@ -1,0 +1,7 @@
+{
+  "status": 0,
+  "signal": null,
+  "elapsedMs": 60.432863999999995,
+  "stderr": "",
+  "stdout": "{ \"diagnostics\": [{\"message\": \"Expected === and instead saw ==\",\"code\": \"eslint(eqeqeq)\",\"severity\": \"warning\",\"causes\": [],\"url\": \"https://oxc.rs/docs/guide/usage/linter/rules/eslint/eqeqeq.html\",\"help\": \"Prefer === operator\",\"filename\": \"target/svelte-application-verify-1/lint/control.ts\",\"labels\": [{\"span\": {\"offset\": 60,\"length\": 2,\"line\": 4,\"column\": 7}}],\"related\": []},\n{\"message\": \"`debugger` statement is not allowed\",\"code\": \"eslint(no-debugger)\",\"severity\": \"warning\",\"causes\": [],\"url\": \"https://oxc.rs/docs/guide/usage/linter/rules/eslint/no-debugger.html\",\"help\": \"Remove the debugger statement\",\"filename\": \"target/svelte-application-verify-1/lint/control.ts\",\"labels\": [{\"span\": {\"offset\": 44,\"length\": 9,\"line\": 3,\"column\": 1}}],\"related\": []}],\n              \"number_of_files\": 1,\n              \"number_of_rules\": 2,\n              \"threads_count\": 16,\n              \"start_time\": 0.009031334\n            }\n            "
+}

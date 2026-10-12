@@ -1,0 +1,8 @@
+{
+  "svelte": "5.46.4",
+  "svelte-check": "4.3.1",
+  "typescript": "5.9.3",
+  "@sveltejs/kit": "2.49.5",
+  "vite": "7.1.5",
+  "eslint": "9.35.0"
+}

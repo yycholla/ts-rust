@@ -1,0 +1,18 @@
+{
+  "command": [
+    "node",
+    "scripts/svelte/public-components.mjs",
+    "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/svelte-sonner",
+    "/home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/public-projects-1/svelte-sonner/components"
+  ],
+  "cwd": "/home/yycholla/Projects/ts-rust",
+  "exitCode": 1,
+  "timeout": false,
+  "timeoutSeconds": 300,
+  "wallSeconds": 1.919,
+  "log": "components.log",
+  "timeSeconds": 1.89,
+  "maxRssKiB": 212036,
+  "userSeconds": 2.44,
+  "systemSeconds": 0.38
+}

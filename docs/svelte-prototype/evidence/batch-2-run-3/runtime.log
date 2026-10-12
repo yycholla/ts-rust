@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "compilations": 4,
+  "compilationFailures": 0,
+  "serverAgreement": true,
+  "hydrationCases": 4,
+  "hydrationPassed": 4,
+  "hydrationUnrun": 0,
+  "unsupportedClientControls": 2,
+  "unsupportedClientControlsPassed": 2,
+  "report": "/home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/batch-2-run-3/runtime/report.json"
+}
+

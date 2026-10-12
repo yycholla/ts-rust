@@ -1,0 +1,274 @@
+{
+  "name": "missing-props",
+  "language": "typescript",
+  "expectedCodes": [
+    2741,
+    2345
+  ],
+  "complete": true,
+  "match": true,
+  "declarations": {
+    "originalSvelteTypes": "973934bf1acccbd6ad0bc17c06f6dd788ad976664e4857c5004d9af9f2b3a920",
+    "maskedSvelteTypes": "d1b9212fcb6594459241315e0e016b21713d68cb6dcc90b29530058d06f5ad3a",
+    "shim": "f2dfa79c9e867a25d3887446b730f8fbdeaa9b74db3eeab196a2d251227a96a5",
+    "html": "2b3d6cdfd182cbd863e5023db6eb5eb530e8ad6b4f78df8f61fb744a70cd0080"
+  },
+  "sources": {
+    "Child.svelte": {
+      "language": "typescript",
+      "generated": "Child.svelte.tsx",
+      "sha256": "b0f2455a83ab255dabf89c3a7456f62124620ba190ea7e4d40091d1c9accbd08",
+      "generatedSha256": "be14a8ac65bba2f61703ed267aff72939ef3fbb046ba9f3c0d9797bafe944904",
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.53.11",
+        "patches": [
+          "child-reset-5.53.11"
+        ],
+        "clientDevelopment": false
+      }
+    },
+    "Case.svelte": {
+      "language": "typescript",
+      "generated": "Case.svelte.tsx",
+      "sha256": "cca449af4f15d3ff219b7b57937ed2c123923902c6b314e534afb53cdd6d2844",
+      "generatedSha256": "ca69061122dd78e6b25bc6830817c3c5f08e398efa7109821900bb66fb9c48d5",
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.53.11",
+        "patches": [
+          "child-reset-5.53.11"
+        ],
+        "clientDevelopment": false
+      }
+    }
+  },
+  "oracle": [
+    {
+      "file": "Case.svelte.tsx",
+      "start": 216,
+      "end": 221,
+      "code": 2741,
+      "category": 1,
+      "source": "",
+      "text": "Property 'count' is missing in type '{}' but required in type '$$ComponentProps'.",
+      "unnecessary": false,
+      "deprecated": false,
+      "chain": [],
+      "related": [
+        {
+          "file": "Child.svelte.tsx",
+          "start": 62,
+          "end": 67,
+          "code": 2728,
+          "category": 3,
+          "source": "",
+          "text": "'count' is declared here.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": []
+        },
+        {
+          "file": "svelte-types.d.ts",
+          "start": 510,
+          "end": 515,
+          "code": 6500,
+          "category": 3,
+          "source": "",
+          "text": "The expected type comes from property 'props' which is declared here on type 'ComponentConstructorOptions<$$ComponentProps>'",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": []
+        }
+      ]
+    }
+  ],
+  "native": [
+    {
+      "file": "Case.svelte.tsx",
+      "start": 216,
+      "end": 221,
+      "code": 2741,
+      "category": 1,
+      "source": "",
+      "text": "Property 'count' is missing in type '{}' but required in type '$$ComponentProps'.",
+      "unnecessary": false,
+      "deprecated": false,
+      "chain": [],
+      "related": [
+        {
+          "file": "Child.svelte.tsx",
+          "start": 62,
+          "end": 67,
+          "code": 2728,
+          "category": 3,
+          "source": "",
+          "text": "'count' is declared here.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": []
+        },
+        {
+          "file": "svelte-types.d.ts",
+          "start": 510,
+          "end": 515,
+          "code": 6500,
+          "category": 3,
+          "source": "",
+          "text": "The expected type comes from property 'props' which is declared here on type 'ComponentConstructorOptions<$$ComponentProps>'",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": []
+        }
+      ]
+    }
+  ],
+  "nativeExecution": {
+    "processStatus": 1,
+    "compilerStatus": 2,
+    "complete": true,
+    "output": "",
+    "serializationFailures": [],
+    "unported": []
+  },
+  "assertions": {
+    "oracle": true,
+    "native": true
+  },
+  "mappedOracle": [
+    {
+      "file": "Case.svelte.tsx",
+      "start": 216,
+      "end": 221,
+      "code": 2741,
+      "category": 1,
+      "source": "",
+      "text": "Property 'count' is missing in type '{}' but required in type '$$ComponentProps'.",
+      "unnecessary": false,
+      "deprecated": false,
+      "chain": [],
+      "related": [
+        {
+          "file": "Child.svelte.tsx",
+          "start": 62,
+          "end": 67,
+          "code": 2728,
+          "category": 3,
+          "source": "",
+          "text": "'count' is declared here.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": [],
+          "original": {
+            "status": "unmapped",
+            "generatedBytes": {
+              "start": 62,
+              "end": 67
+            }
+          }
+        },
+        {
+          "file": "svelte-types.d.ts",
+          "start": 510,
+          "end": 515,
+          "code": 6500,
+          "category": 3,
+          "source": "",
+          "text": "The expected type comes from property 'props' which is declared here on type 'ComponentConstructorOptions<$$ComponentProps>'",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": [],
+          "original": {
+            "status": "not-component"
+          }
+        }
+      ],
+      "original": {
+        "status": "unmapped",
+        "generatedBytes": {
+          "start": 216,
+          "end": 221
+        }
+      }
+    }
+  ],
+  "mappedNative": [
+    {
+      "file": "Case.svelte.tsx",
+      "start": 216,
+      "end": 221,
+      "code": 2741,
+      "category": 1,
+      "source": "",
+      "text": "Property 'count' is missing in type '{}' but required in type '$$ComponentProps'.",
+      "unnecessary": false,
+      "deprecated": false,
+      "chain": [],
+      "related": [
+        {
+          "file": "Child.svelte.tsx",
+          "start": 62,
+          "end": 67,
+          "code": 2728,
+          "category": 3,
+          "source": "",
+          "text": "'count' is declared here.",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": [],
+          "original": {
+            "status": "unmapped",
+            "generatedBytes": {
+              "start": 62,
+              "end": 67
+            }
+          }
+        },
+        {
+          "file": "svelte-types.d.ts",
+          "start": 510,
+          "end": 515,
+          "code": 6500,
+          "category": 3,
+          "source": "",
+          "text": "The expected type comes from property 'props' which is declared here on type 'ComponentConstructorOptions<$$ComponentProps>'",
+          "unnecessary": false,
+          "deprecated": false,
+          "chain": [],
+          "related": [],
+          "original": {
+            "status": "not-component"
+          }
+        }
+      ],
+      "original": {
+        "status": "unmapped",
+        "generatedBytes": {
+          "start": 216,
+          "end": 221
+        }
+      }
+    }
+  ],
+  "mappingSummary": {
+    "oracle": {
+      "unmapped": 1
+    },
+    "native": {
+      "unmapped": 1
+    }
+  }
+}

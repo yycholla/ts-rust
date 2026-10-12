@@ -1,0 +1,130 @@
+{
+  "source": "<script>\n  const value = $derived();\n</script>\n<p>{value}</p>\n",
+  "settings": {
+    "filename": "invalid-rune.svelte",
+    "generate": "server",
+    "css": "external",
+    "dev": false,
+    "runes": true
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "invalid-rune.svelte",
+        "version": 1,
+        "text": "<script>\n  const value = $derived();\n</script>\n<p>{value}</p>\n"
+      },
+      "target": "server",
+      "dev": false,
+      "runes": true,
+      "compatibility": {
+        "svelteVersion": "5.53.5"
+      }
+    },
+    "exit": 1,
+    "signal": null,
+    "stdout": "{\"ok\":false,\"error\":{\"code\":\"svelte_compile\",\"message\":\"`$derived` must be called with exactly one argument\\nhttps://svelte.dev/e/rune_invalid_arguments_length\"},\"diagnostics\":[{\"code\":\"rune_invalid_arguments_length\",\"message\":\"`$derived` must be called with exactly one argument\\nhttps://svelte.dev/e/rune_invalid_arguments_length\",\"severity\":\"error\",\"uri\":\"invalid-rune.svelte\",\"bytes\":{\"start\":25,\"end\":35},\"range\":{\"start\":{\"line\":1,\"character\":16},\"end\":{\"line\":1,\"character\":26}}}],\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.53.5\",\"patches\":[\"child-reset-5.53.11\",\"declaration-tags-5.56\",\"select-default-5.57\"],\"clientDevelopment\":false},\"compatibility\":{\"id\":\"v1:svelte=5.53.5;kit=none;ts=unspecified\",\"svelteVersion\":\"5.53.5\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": false,
+      "error": {
+        "code": "svelte_compile",
+        "message": "`$derived` must be called with exactly one argument\nhttps://svelte.dev/e/rune_invalid_arguments_length"
+      },
+      "diagnostics": [
+        {
+          "code": "rune_invalid_arguments_length",
+          "message": "`$derived` must be called with exactly one argument\nhttps://svelte.dev/e/rune_invalid_arguments_length",
+          "severity": "error",
+          "uri": "invalid-rune.svelte",
+          "bytes": {
+            "start": 25,
+            "end": 35
+          },
+          "range": {
+            "start": {
+              "line": 1,
+              "character": 16
+            },
+            "end": {
+              "line": 1,
+              "character": 26
+            }
+          }
+        }
+      ],
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.53.5",
+        "patches": [
+          "child-reset-5.53.11",
+          "declaration-tags-5.56",
+          "select-default-5.57"
+        ],
+        "clientDevelopment": false
+      },
+      "compatibility": {
+        "id": "v1:svelte=5.53.5;kit=none;ts=unspecified",
+        "svelteVersion": "5.53.5",
+        "kitVersion": null,
+        "typescriptVersion": null,
+        "channel": "stable",
+        "kitConfig": null,
+        "kitLibraryAlias": null,
+        "kitEnvironmentModule": null,
+        "capabilities": {
+          "componentCompiler": "prototype",
+          "checkingProjection": "prototype",
+          "projectCheck": "explicit-input-prototype",
+          "kitGraph": false,
+          "kitBuild": false,
+          "lsp": false
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": false,
+    "error": {
+      "message": "`$derived` must be called with exactly one argument\nhttps://svelte.dev/e/rune_invalid_arguments_length",
+      "name": "CompileError",
+      "code": "rune_invalid_arguments_length",
+      "filename": "invalid-rune.svelte",
+      "position": [
+        25,
+        35
+      ],
+      "start": {
+        "line": 2,
+        "column": 16,
+        "character": 25
+      },
+      "end": {
+        "line": 2,
+        "column": 26,
+        "character": 35
+      },
+      "frame": "1: <script>\n2:   const value = $derived();\n                             ^\n3: </script>\n4: <p>{value}</p>",
+      "stack": ""
+    },
+    "comparable": {
+      "ok": false,
+      "runes": null,
+      "diagnostics": [
+        {
+          "code": "rune_invalid_arguments_length",
+          "severity": "error",
+          "message": "`$derived` must be called with exactly one argument\nhttps://svelte.dev/e/rune_invalid_arguments_length",
+          "bytes": {
+            "start": 25,
+            "end": 35
+          }
+        }
+      ]
+    }
+  }
+}

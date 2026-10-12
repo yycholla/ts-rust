@@ -1,0 +1,9 @@
+npm warn Unknown project config "resolution-mode". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> svelte-sonner@1.2.1 check /home/yycholla/Projects/ts-rust/target/svelte-public-projects/svelte-sonner
+> svelte-kit sync && svelte-check --tsconfig ./tsconfig.json
+
+Loading svelte-check in workspace: /home/yycholla/Projects/ts-rust/target/svelte-public-projects/svelte-sonner
+Getting Svelte diagnostics...
+
+svelte-check found 0 errors and 0 warnings

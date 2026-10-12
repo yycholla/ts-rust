@@ -1,0 +1,3608 @@
+{
+  "scope": "Bounded JSDOM runtime behavior, not browser/full application conformance",
+  "binarySha256": "10406dc7363a9d214629df8327897f3a5a689109f152466d1bf1807118706e13",
+  "installations": [
+    {
+      "version": "5.51.5",
+      "path": "/home/yycholla/Projects/ts-rust/target/svelte-versions/svelte-5.51.5",
+      "hashes": {
+        "package-lock.json": "c98e7417f934b1ff1b4e36e0012f3f41274d698683d4e7975d520d23d21738fc",
+        "node_modules/svelte/package.json": "2d13a163766b84c9d5eb5527af687e66157e7bfdb5b8c4395b5bdeac34eea7ed",
+        "node_modules/svelte/src/compiler/index.js": "ea18a96a9f7d594f4ddb377224dcc146b34d9e11c1015d3be585204f3a43e4b4",
+        "node_modules/svelte/src/internal/client/index.js": "41c3d08a27701c5c7cea870b43606af8d9811203de1f9caa36d3056917b0a8d0",
+        "node_modules/svelte/src/internal/server/index.js": "79a4bb873eb27ef6b0c5298eb85d407f713814f2abdcfe9a91e07d55298b877d",
+        "node_modules/jsdom/package.json": "9670cfae0de2c46a3276fa20815328e3903275b04cc8969a6f6be01f2c580043"
+      }
+    },
+    {
+      "version": "5.52.0",
+      "path": "/home/yycholla/Projects/ts-rust/target/svelte-versions/svelte-5.52.0",
+      "hashes": {
+        "package-lock.json": "e3b3b52cf769f8a1c3373610b0d5e0d20edecd5a791107914f4fbdde546811d7",
+        "node_modules/svelte/package.json": "69aa29eb7ceeccdd57d45eb5be304bd4739cc835c122a64d617dee38fa800d26",
+        "node_modules/svelte/src/compiler/index.js": "ea18a96a9f7d594f4ddb377224dcc146b34d9e11c1015d3be585204f3a43e4b4",
+        "node_modules/svelte/src/internal/client/index.js": "65e40aa376f26d3df7362d10d6958e93170e62569ef9c120cbf4ed8d9fbbd318",
+        "node_modules/svelte/src/internal/server/index.js": "7733899bbd61998c43d52c36bb062572dbd9f43dd5a4dbfe43955c3597544719",
+        "node_modules/jsdom/package.json": "9670cfae0de2c46a3276fa20815328e3903275b04cc8969a6f6be01f2c580043"
+      }
+    },
+    {
+      "version": "5.53.5",
+      "path": "/home/yycholla/Projects/ts-rust/target/svelte-versions/svelte-5.53.5",
+      "hashes": {
+        "package-lock.json": "cb6f4298be3ca5fefa1a3642d33e669768d25d33264667061ced914e63298544",
+        "node_modules/svelte/package.json": "0b46614593b079b0831f2074ad9245c6391b3e06f79c6719f47e7f30ca34a32d",
+        "node_modules/svelte/src/compiler/index.js": "ea18a96a9f7d594f4ddb377224dcc146b34d9e11c1015d3be585204f3a43e4b4",
+        "node_modules/svelte/src/internal/client/index.js": "65e40aa376f26d3df7362d10d6958e93170e62569ef9c120cbf4ed8d9fbbd318",
+        "node_modules/svelte/src/internal/server/index.js": "e969a8e9686bc3be8b05d72cf0da616a67039088124afb281661921459653f6d",
+        "node_modules/jsdom/package.json": "9670cfae0de2c46a3276fa20815328e3903275b04cc8969a6f6be01f2c580043"
+      }
+    },
+    {
+      "version": "5.53.11",
+      "path": "/home/yycholla/Projects/ts-rust/target/svelte-versions/svelte-5.53.11",
+      "hashes": {
+        "package-lock.json": "ba57d886e6b9c6e62be43bf37452cc138171ba2e3af5cbe149bd82c77a3c2a03",
+        "node_modules/svelte/package.json": "ac62c99567cd559a6051d94062df421525c040f24a012317702b0d1abaff744c",
+        "node_modules/svelte/src/compiler/index.js": "ea18a96a9f7d594f4ddb377224dcc146b34d9e11c1015d3be585204f3a43e4b4",
+        "node_modules/svelte/src/internal/client/index.js": "65e40aa376f26d3df7362d10d6958e93170e62569ef9c120cbf4ed8d9fbbd318",
+        "node_modules/svelte/src/internal/server/index.js": "5830ab744d69f95cc5534fdffb8744134c2e31bb3089cb17289b20bc16c79aa4",
+        "node_modules/jsdom/package.json": "9670cfae0de2c46a3276fa20815328e3903275b04cc8969a6f6be01f2c580043"
+      }
+    },
+    {
+      "version": "5.53.13",
+      "path": "/home/yycholla/Projects/ts-rust/target/svelte-versions/svelte-5.53.13",
+      "hashes": {
+        "package-lock.json": "d5fb70c7f7533b641ee84c5e5dd6659999141497a26afb3fc7bd798f100f39d0",
+        "node_modules/svelte/package.json": "963cc0117d002394b84c3ec9fb6f82ca258858de746e18742c8f17bcebb78fc7",
+        "node_modules/svelte/src/compiler/index.js": "ea18a96a9f7d594f4ddb377224dcc146b34d9e11c1015d3be585204f3a43e4b4",
+        "node_modules/svelte/src/internal/client/index.js": "716c23b24599df5dd863055e45540de2c7fd236abb37b1b6a87061b80973dc23",
+        "node_modules/svelte/src/internal/server/index.js": "5830ab744d69f95cc5534fdffb8744134c2e31bb3089cb17289b20bc16c79aa4",
+        "node_modules/jsdom/package.json": "9670cfae0de2c46a3276fa20815328e3903275b04cc8969a6f6be01f2c580043"
+      }
+    },
+    {
+      "version": "5.54.1",
+      "path": "/home/yycholla/Projects/ts-rust/target/svelte-versions/svelte-5.54.1",
+      "hashes": {
+        "package-lock.json": "aeae9f157e8cbd2a7dd4365bf1522bd5970e62f27a119406425a33627149f6d6",
+        "node_modules/svelte/package.json": "0d1777f8acc3104e6646c2360f42f01aa15680a66474320fd11f9de2fa4d0ffb",
+        "node_modules/svelte/src/compiler/index.js": "df2134797b03e75e0311e9ad0d2833d19e9e66198364a58097026822a16195c1",
+        "node_modules/svelte/src/internal/client/index.js": "716c23b24599df5dd863055e45540de2c7fd236abb37b1b6a87061b80973dc23",
+        "node_modules/svelte/src/internal/server/index.js": "5830ab744d69f95cc5534fdffb8744134c2e31bb3089cb17289b20bc16c79aa4",
+        "node_modules/jsdom/package.json": "9670cfae0de2c46a3276fa20815328e3903275b04cc8969a6f6be01f2c580043"
+      }
+    },
+    {
+      "version": "5.55.10",
+      "path": "/home/yycholla/Projects/ts-rust/target/svelte-versions/svelte-5.55.10",
+      "hashes": {
+        "package-lock.json": "90fc7c383f321a84210175d6e378a2e67e4ce2b327ea012616e18b4e6c335324",
+        "node_modules/svelte/package.json": "090379c01eb9a6ea848b7d789c64dd48a6cd1005d6468974e403b8a58bb1d8f3",
+        "node_modules/svelte/src/compiler/index.js": "df2134797b03e75e0311e9ad0d2833d19e9e66198364a58097026822a16195c1",
+        "node_modules/svelte/src/internal/client/index.js": "716c23b24599df5dd863055e45540de2c7fd236abb37b1b6a87061b80973dc23",
+        "node_modules/svelte/src/internal/server/index.js": "10e503dddcfe6f3ced6219ee077a0dbc9cf3a4d3108e4795070bf1438ebbd38a",
+        "node_modules/jsdom/package.json": "9670cfae0de2c46a3276fa20815328e3903275b04cc8969a6f6be01f2c580043"
+      }
+    },
+    {
+      "version": "5.56.10",
+      "path": "/home/yycholla/Projects/ts-rust/target/svelte-versions/svelte-5.56.10",
+      "hashes": {
+        "package-lock.json": "ff98a76c299a9aaa5435a838a0c86fdab5cd66a2f12655dd401cb93e77a45cc9",
+        "node_modules/svelte/package.json": "7b20b2d7fbd40ef6b08521fd30c85dd254fdff0af8f50496f5d4ae79c057fd92",
+        "node_modules/svelte/src/compiler/index.js": "875855ca6aed120cd7b3919582ea67e62ec79ed2c03b60d5d6311cafdfd6ce0b",
+        "node_modules/svelte/src/internal/client/index.js": "1c11fb4114d51acd1e46d570ff49094fd885c869667793ee728f8f0dfa625f28",
+        "node_modules/svelte/src/internal/server/index.js": "10e503dddcfe6f3ced6219ee077a0dbc9cf3a4d3108e4795070bf1438ebbd38a",
+        "node_modules/jsdom/package.json": "9670cfae0de2c46a3276fa20815328e3903275b04cc8969a6f6be01f2c580043"
+      }
+    },
+    {
+      "version": "5.57.2",
+      "path": "/home/yycholla/Projects/ts-rust/target/svelte-versions/svelte-5.57.2",
+      "hashes": {
+        "package-lock.json": "291dffcb0b5f958847f3da0621f9b464ffc7d3983b3e1728408eba05f2f1a109",
+        "node_modules/svelte/package.json": "ff172e5c3bca15a8840bdce0818fd96c7ff26fbc076f0f247bd9cb30d985eb53",
+        "node_modules/svelte/src/compiler/index.js": "875855ca6aed120cd7b3919582ea67e62ec79ed2c03b60d5d6311cafdfd6ce0b",
+        "node_modules/svelte/src/internal/client/index.js": "5b16e981b8093b9c49512fc642c1b8364e8b1f4a3e3a4731446cc70032c523a9",
+        "node_modules/svelte/src/internal/server/index.js": "b9f3a4558acc8f904008fe9383d07285f7e67f672bd1a217667caa9afd9322e7",
+        "node_modules/jsdom/package.json": "9670cfae0de2c46a3276fa20815328e3903275b04cc8969a6f6be01f2c580043"
+      }
+    }
+  ],
+  "cases": [
+    {
+      "version": "5.51.5",
+      "name": "counter",
+      "file": "Counter.svelte",
+      "dev": false,
+      "kind": "counter",
+      "sourceSha256": "c1dc099a8efd8a36febc2a11154024758a763dc5b8f045875e683fe35f4e2ad1",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "53f88672b7bcb615da6085e7ee101349d698d18778b8c0117d65465dc99efd2c"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "mount": [
+        {
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true,
+      "behaviorMatch": true
+    },
+    {
+      "version": "5.51.5",
+      "name": "select",
+      "file": "DefaultSelect.svelte",
+      "dev": false,
+      "kind": "select",
+      "sourceSha256": "a844a835129590bf7095a3dd058656e99319648390302ec388c4fd17c0e3bc0e",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "caa19815e85fe0d9c81b6ee68206e18252e7910d65711d40dafcd9c2e5eead5d"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "98964dc37466da9cb883f9aef890cd1c25cedb2c7425e6f246ec3dd95d8486ea"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "caa19815e85fe0d9c81b6ee68206e18252e7910d65711d40dafcd9c2e5eead5d"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "98964dc37466da9cb883f9aef890cd1c25cedb2c7425e6f246ec3dd95d8486ea"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><select aria-label=\"Choice\"><option value=\"first\">First</option><option value=\"second\">Second</option></select><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><select aria-label=\"Choice\"><option value=\"first\">First</option><option value=\"second\">Second</option></select><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "mount": [
+        {
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true,
+      "behaviorMatch": true
+    },
+    {
+      "version": "5.52.0",
+      "name": "counter",
+      "file": "Counter.svelte",
+      "dev": false,
+      "kind": "counter",
+      "sourceSha256": "c1dc099a8efd8a36febc2a11154024758a763dc5b8f045875e683fe35f4e2ad1",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "mount": [
+        {
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true,
+      "behaviorMatch": true
+    },
+    {
+      "version": "5.52.0",
+      "name": "select",
+      "file": "DefaultSelect.svelte",
+      "dev": false,
+      "kind": "select",
+      "sourceSha256": "a844a835129590bf7095a3dd058656e99319648390302ec388c4fd17c0e3bc0e",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "caa19815e85fe0d9c81b6ee68206e18252e7910d65711d40dafcd9c2e5eead5d"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "98964dc37466da9cb883f9aef890cd1c25cedb2c7425e6f246ec3dd95d8486ea"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "caa19815e85fe0d9c81b6ee68206e18252e7910d65711d40dafcd9c2e5eead5d"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "98964dc37466da9cb883f9aef890cd1c25cedb2c7425e6f246ec3dd95d8486ea"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><select aria-label=\"Choice\"><option value=\"first\">First</option><option value=\"second\">Second</option></select><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><select aria-label=\"Choice\"><option value=\"first\">First</option><option value=\"second\">Second</option></select><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "mount": [
+        {
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true,
+      "behaviorMatch": true
+    },
+    {
+      "version": "5.53.5",
+      "name": "counter",
+      "file": "Counter.svelte",
+      "dev": false,
+      "kind": "counter",
+      "sourceSha256": "c1dc099a8efd8a36febc2a11154024758a763dc5b8f045875e683fe35f4e2ad1",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "mount": [
+        {
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true,
+      "behaviorMatch": true
+    },
+    {
+      "version": "5.53.5",
+      "name": "select",
+      "file": "DefaultSelect.svelte",
+      "dev": false,
+      "kind": "select",
+      "sourceSha256": "a844a835129590bf7095a3dd058656e99319648390302ec388c4fd17c0e3bc0e",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "caa19815e85fe0d9c81b6ee68206e18252e7910d65711d40dafcd9c2e5eead5d"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "98964dc37466da9cb883f9aef890cd1c25cedb2c7425e6f246ec3dd95d8486ea"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "caa19815e85fe0d9c81b6ee68206e18252e7910d65711d40dafcd9c2e5eead5d"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "98964dc37466da9cb883f9aef890cd1c25cedb2c7425e6f246ec3dd95d8486ea"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><select aria-label=\"Choice\"><option value=\"first\">First</option><option value=\"second\">Second</option></select><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><select aria-label=\"Choice\"><option value=\"first\">First</option><option value=\"second\">Second</option></select><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "mount": [
+        {
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true,
+      "behaviorMatch": true
+    },
+    {
+      "version": "5.53.11",
+      "name": "counter",
+      "file": "Counter.svelte",
+      "dev": false,
+      "kind": "counter",
+      "sourceSha256": "c1dc099a8efd8a36febc2a11154024758a763dc5b8f045875e683fe35f4e2ad1",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "mount": [
+        {
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true,
+      "behaviorMatch": true
+    },
+    {
+      "version": "5.53.11",
+      "name": "select",
+      "file": "DefaultSelect.svelte",
+      "dev": false,
+      "kind": "select",
+      "sourceSha256": "a844a835129590bf7095a3dd058656e99319648390302ec388c4fd17c0e3bc0e",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "caa19815e85fe0d9c81b6ee68206e18252e7910d65711d40dafcd9c2e5eead5d"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "98964dc37466da9cb883f9aef890cd1c25cedb2c7425e6f246ec3dd95d8486ea"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "caa19815e85fe0d9c81b6ee68206e18252e7910d65711d40dafcd9c2e5eead5d"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "98964dc37466da9cb883f9aef890cd1c25cedb2c7425e6f246ec3dd95d8486ea"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><select aria-label=\"Choice\"><option value=\"first\">First</option><option value=\"second\">Second</option></select><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><select aria-label=\"Choice\"><option value=\"first\">First</option><option value=\"second\">Second</option></select><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "mount": [
+        {
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true,
+      "behaviorMatch": true
+    },
+    {
+      "version": "5.53.13",
+      "name": "counter",
+      "file": "Counter.svelte",
+      "dev": false,
+      "kind": "counter",
+      "sourceSha256": "c1dc099a8efd8a36febc2a11154024758a763dc5b8f045875e683fe35f4e2ad1",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "mount": [
+        {
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true,
+      "behaviorMatch": true
+    },
+    {
+      "version": "5.53.13",
+      "name": "select",
+      "file": "DefaultSelect.svelte",
+      "dev": false,
+      "kind": "select",
+      "sourceSha256": "a844a835129590bf7095a3dd058656e99319648390302ec388c4fd17c0e3bc0e",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "caa19815e85fe0d9c81b6ee68206e18252e7910d65711d40dafcd9c2e5eead5d"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "98964dc37466da9cb883f9aef890cd1c25cedb2c7425e6f246ec3dd95d8486ea"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "caa19815e85fe0d9c81b6ee68206e18252e7910d65711d40dafcd9c2e5eead5d"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "98964dc37466da9cb883f9aef890cd1c25cedb2c7425e6f246ec3dd95d8486ea"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><select aria-label=\"Choice\"><option value=\"first\">First</option><option value=\"second\">Second</option></select><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><select aria-label=\"Choice\"><option value=\"first\">First</option><option value=\"second\">Second</option></select><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "mount": [
+        {
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true,
+      "behaviorMatch": true
+    },
+    {
+      "version": "5.54.1",
+      "name": "counter",
+      "file": "Counter.svelte",
+      "dev": false,
+      "kind": "counter",
+      "sourceSha256": "c1dc099a8efd8a36febc2a11154024758a763dc5b8f045875e683fe35f4e2ad1",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "mount": [
+        {
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true,
+      "behaviorMatch": true
+    },
+    {
+      "version": "5.54.1",
+      "name": "select",
+      "file": "DefaultSelect.svelte",
+      "dev": false,
+      "kind": "select",
+      "sourceSha256": "a844a835129590bf7095a3dd058656e99319648390302ec388c4fd17c0e3bc0e",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "caa19815e85fe0d9c81b6ee68206e18252e7910d65711d40dafcd9c2e5eead5d"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "98964dc37466da9cb883f9aef890cd1c25cedb2c7425e6f246ec3dd95d8486ea"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "caa19815e85fe0d9c81b6ee68206e18252e7910d65711d40dafcd9c2e5eead5d"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "98964dc37466da9cb883f9aef890cd1c25cedb2c7425e6f246ec3dd95d8486ea"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><select aria-label=\"Choice\"><option value=\"first\">First</option><option value=\"second\">Second</option></select><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><select aria-label=\"Choice\"><option value=\"first\">First</option><option value=\"second\">Second</option></select><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "mount": [
+        {
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true,
+      "behaviorMatch": true
+    },
+    {
+      "version": "5.55.10",
+      "name": "counter",
+      "file": "Counter.svelte",
+      "dev": false,
+      "kind": "counter",
+      "sourceSha256": "c1dc099a8efd8a36febc2a11154024758a763dc5b8f045875e683fe35f4e2ad1",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "mount": [
+        {
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true,
+      "behaviorMatch": true
+    },
+    {
+      "version": "5.55.10",
+      "name": "select",
+      "file": "DefaultSelect.svelte",
+      "dev": false,
+      "kind": "select",
+      "sourceSha256": "a844a835129590bf7095a3dd058656e99319648390302ec388c4fd17c0e3bc0e",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "caa19815e85fe0d9c81b6ee68206e18252e7910d65711d40dafcd9c2e5eead5d"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "98964dc37466da9cb883f9aef890cd1c25cedb2c7425e6f246ec3dd95d8486ea"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "caa19815e85fe0d9c81b6ee68206e18252e7910d65711d40dafcd9c2e5eead5d"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "98964dc37466da9cb883f9aef890cd1c25cedb2c7425e6f246ec3dd95d8486ea"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><select aria-label=\"Choice\"><option value=\"first\">First</option><option value=\"second\">Second</option></select><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><select aria-label=\"Choice\"><option value=\"first\">First</option><option value=\"second\">Second</option></select><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "mount": [
+        {
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true,
+      "behaviorMatch": true
+    },
+    {
+      "version": "5.56.10",
+      "name": "counter",
+      "file": "Counter.svelte",
+      "dev": false,
+      "kind": "counter",
+      "sourceSha256": "c1dc099a8efd8a36febc2a11154024758a763dc5b8f045875e683fe35f4e2ad1",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "mount": [
+        {
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true,
+      "behaviorMatch": true
+    },
+    {
+      "version": "5.56.10",
+      "name": "select",
+      "file": "DefaultSelect.svelte",
+      "dev": false,
+      "kind": "select",
+      "sourceSha256": "a844a835129590bf7095a3dd058656e99319648390302ec388c4fd17c0e3bc0e",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "caa19815e85fe0d9c81b6ee68206e18252e7910d65711d40dafcd9c2e5eead5d"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "98964dc37466da9cb883f9aef890cd1c25cedb2c7425e6f246ec3dd95d8486ea"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "caa19815e85fe0d9c81b6ee68206e18252e7910d65711d40dafcd9c2e5eead5d"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "98964dc37466da9cb883f9aef890cd1c25cedb2c7425e6f246ec3dd95d8486ea"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><select aria-label=\"Choice\"><option value=\"first\">First</option><option value=\"second\">Second</option></select><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><select aria-label=\"Choice\"><option value=\"first\">First</option><option value=\"second\">Second</option></select><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "mount": [
+        {
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "value": "first",
+              "defaultSelected": [
+                false,
+                false
+              ],
+              "after": "second",
+              "reset": "first",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true,
+      "behaviorMatch": true
+    },
+    {
+      "version": "5.57.2",
+      "name": "counter",
+      "file": "Counter.svelte",
+      "dev": false,
+      "kind": "counter",
+      "sourceSha256": "c1dc099a8efd8a36febc2a11154024758a763dc5b8f045875e683fe35f4e2ad1",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "294a41ba37374492f226019af2838c24745927a5b399c27963715fc8e3f998f3"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "mount": [
+        {
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true,
+      "behaviorMatch": true
+    },
+    {
+      "version": "5.57.2",
+      "name": "select",
+      "file": "DefaultSelect.svelte",
+      "dev": false,
+      "kind": "select",
+      "sourceSha256": "a844a835129590bf7095a3dd058656e99319648390302ec388c4fd17c0e3bc0e",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "a6682c100966df676ba4ce04593b19aca12d7e77715ace35319bb27c8192d924"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "01bc6f963a7fc188e96835ed362be7fc286732d159edcb2ed34d3327a1a1a263"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "a6682c100966df676ba4ce04593b19aca12d7e77715ace35319bb27c8192d924"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "01bc6f963a7fc188e96835ed362be7fc286732d159edcb2ed34d3327a1a1a263"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><select aria-label=\"Choice\"><option value=\"first\">First</option><option value=\"second\" selected=\"\">Second</option></select><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><select aria-label=\"Choice\"><option value=\"first\">First</option><option value=\"second\" selected=\"\">Second</option></select><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "second",
+              "defaultSelected": [
+                false,
+                true
+              ],
+              "after": "first",
+              "reset": "second",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "second",
+              "defaultSelected": [
+                false,
+                true
+              ],
+              "after": "first",
+              "reset": "second",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "second",
+              "defaultSelected": [
+                false,
+                true
+              ],
+              "after": "first",
+              "reset": "second",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "value": "second",
+              "defaultSelected": [
+                false,
+                true
+              ],
+              "after": "first",
+              "reset": "second",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "mount": [
+        {
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "value": "second",
+              "defaultSelected": [
+                false,
+                true
+              ],
+              "after": "first",
+              "reset": "second",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "value": "second",
+              "defaultSelected": [
+                false,
+                true
+              ],
+              "after": "first",
+              "reset": "second",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true,
+      "behaviorMatch": true
+    },
+    {
+      "version": "5.57.2",
+      "name": "counter-dev",
+      "file": "Counter.svelte",
+      "dev": true,
+      "kind": "counter",
+      "sourceSha256": "c1dc099a8efd8a36febc2a11154024758a763dc5b8f045875e683fe35f4e2ad1",
+      "compilation": [
+        {
+          "side": "oracle",
+          "target": "client",
+          "sha256": "42cba7bdce3836335b92879145cb3a3cd3c4f44453c702b121e4f29bbc887acb"
+        },
+        {
+          "side": "oracle",
+          "target": "server",
+          "sha256": "50fba787886bf6ebaf669109b2abfe4d35fdf6b832881e106610973c90b572c6"
+        },
+        {
+          "side": "native",
+          "target": "client",
+          "sha256": "2feaa287914de7da9c586d8406617c8b4e22380fe712cc16180232c57eb95c05"
+        },
+        {
+          "side": "native",
+          "target": "server",
+          "sha256": "50fba787886bf6ebaf669109b2abfe4d35fdf6b832881e106610973c90b572c6"
+        }
+      ],
+      "ssr": {
+        "oracle": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        },
+        "native": {
+          "status": 0,
+          "signal": null,
+          "stderr": "",
+          "response": {
+            "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+            "head": ""
+          }
+        }
+      },
+      "hydration": [
+        {
+          "server": "oracle",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "oracle",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "server": "native",
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": true,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "mount": [
+        {
+          "client": "oracle",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        },
+        {
+          "client": "native",
+          "process": {
+            "status": 0,
+            "signal": null,
+            "stderr": "",
+            "response": {
+              "ok": true,
+              "reused": false,
+              "initial": "Count: 0 / 0",
+              "after": "Count: 2 / 4",
+              "cleaned": true,
+              "errors": [],
+              "warnings": []
+            }
+          },
+          "ok": true
+        }
+      ],
+      "ok": true,
+      "ssrMatch": true,
+      "behaviorMatch": true
+    }
+  ],
+  "summary": {
+    "cases": 19,
+    "passed": 19,
+    "hydrationCases": 76,
+    "hydrationPassed": 76,
+    "mountCases": 38,
+    "mountPassed": 38
+  },
+  "sourceStable": true,
+  "binaryStable": true,
+  "oraclesStable": true
+}

@@ -1,0 +1,8 @@
+{
+  "cases": 10,
+  "matched": 10,
+  "incomplete": 0,
+  "differences": 0,
+  "report": "/home/yycholla/Projects/ts-rust/target/svelte-project-verification-2/retained/versions/regression/checker/report.json"
+}
+

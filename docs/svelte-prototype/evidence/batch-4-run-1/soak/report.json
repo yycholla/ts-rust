@@ -1,0 +1,128 @@
+{
+  "passed": true,
+  "edits": 1200,
+  "elapsedMs": 392.25734800000004,
+  "samples": [
+    {
+      "edits": 100,
+      "rssBytes": 16986112,
+      "stats": {
+        "documents": 1,
+        "sourceBytes": 85,
+        "cachedDiagnostics": 1,
+        "typeChecking": false
+      }
+    },
+    {
+      "edits": 200,
+      "rssBytes": 16986112,
+      "stats": {
+        "documents": 1,
+        "sourceBytes": 85,
+        "cachedDiagnostics": 1,
+        "typeChecking": false
+      }
+    },
+    {
+      "edits": 300,
+      "rssBytes": 16986112,
+      "stats": {
+        "documents": 1,
+        "sourceBytes": 85,
+        "cachedDiagnostics": 1,
+        "typeChecking": false
+      }
+    },
+    {
+      "edits": 400,
+      "rssBytes": 16986112,
+      "stats": {
+        "documents": 1,
+        "sourceBytes": 85,
+        "cachedDiagnostics": 1,
+        "typeChecking": false
+      }
+    },
+    {
+      "edits": 500,
+      "rssBytes": 16986112,
+      "stats": {
+        "documents": 1,
+        "sourceBytes": 85,
+        "cachedDiagnostics": 1,
+        "typeChecking": false
+      }
+    },
+    {
+      "edits": 600,
+      "rssBytes": 16986112,
+      "stats": {
+        "documents": 1,
+        "sourceBytes": 85,
+        "cachedDiagnostics": 1,
+        "typeChecking": false
+      }
+    },
+    {
+      "edits": 700,
+      "rssBytes": 16986112,
+      "stats": {
+        "documents": 1,
+        "sourceBytes": 85,
+        "cachedDiagnostics": 1,
+        "typeChecking": false
+      }
+    },
+    {
+      "edits": 800,
+      "rssBytes": 16986112,
+      "stats": {
+        "documents": 1,
+        "sourceBytes": 85,
+        "cachedDiagnostics": 1,
+        "typeChecking": false
+      }
+    },
+    {
+      "edits": 900,
+      "rssBytes": 16986112,
+      "stats": {
+        "documents": 1,
+        "sourceBytes": 85,
+        "cachedDiagnostics": 1,
+        "typeChecking": false
+      }
+    },
+    {
+      "edits": 1000,
+      "rssBytes": 16986112,
+      "stats": {
+        "documents": 1,
+        "sourceBytes": 86,
+        "cachedDiagnostics": 1,
+        "typeChecking": false
+      }
+    },
+    {
+      "edits": 1100,
+      "rssBytes": 16986112,
+      "stats": {
+        "documents": 1,
+        "sourceBytes": 86,
+        "cachedDiagnostics": 1,
+        "typeChecking": false
+      }
+    },
+    {
+      "edits": 1200,
+      "rssBytes": 16986112,
+      "stats": {
+        "documents": 1,
+        "sourceBytes": 86,
+        "cachedDiagnostics": 1,
+        "typeChecking": false
+      }
+    }
+  ],
+  "scope": "One persistent native session, 1200 full-buffer edits, post-warmup RSS cap; not a comparative performance benchmark"
+}

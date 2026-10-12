@@ -1,0 +1,38 @@
+{
+  "request": {
+    "op": "resolveCompatibility",
+    "versions": {
+      "svelteVersion": "5.57.2",
+      "typescriptVersion": "6.0.3",
+      "kitVersion": "3.0.0-next.32",
+      "allowPrerelease": true
+    }
+  },
+  "exit": 0,
+  "signal": null,
+  "stdout": "{\"ok\":true,\"result\":{\"compatibility\":{\"id\":\"v1:svelte=5.57.2;kit=3.0.0-next.32;ts=6.0.3\",\"svelteVersion\":\"5.57.2\",\"kitVersion\":\"3.0.0-next.32\",\"typescriptVersion\":\"6.0.3\",\"channel\":\"experimental\",\"kitConfig\":\"vite-plugin\",\"kitLibraryAlias\":\"#lib\",\"kitEnvironmentModule\":\"$app/env\",\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}}\n",
+  "stderr": "",
+  "response": {
+    "ok": true,
+    "result": {
+      "compatibility": {
+        "id": "v1:svelte=5.57.2;kit=3.0.0-next.32;ts=6.0.3",
+        "svelteVersion": "5.57.2",
+        "kitVersion": "3.0.0-next.32",
+        "typescriptVersion": "6.0.3",
+        "channel": "experimental",
+        "kitConfig": "vite-plugin",
+        "kitLibraryAlias": "#lib",
+        "kitEnvironmentModule": "$app/env",
+        "capabilities": {
+          "componentCompiler": "prototype",
+          "checkingProjection": "prototype",
+          "projectCheck": "explicit-input-prototype",
+          "kitGraph": false,
+          "kitBuild": false,
+          "lsp": false
+        }
+      }
+    }
+  }
+}

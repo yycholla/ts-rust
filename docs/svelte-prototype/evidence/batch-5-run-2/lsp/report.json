@@ -1,0 +1,245 @@
+{
+  "tests": [
+    {
+      "name": "Kit plugin discovers and initializes persistent semantic LSP",
+      "status": "pass",
+      "milliseconds": 226.31869300000002
+    },
+    {
+      "name": "full MoncuraHR graph checks on open without synthetic props error",
+      "status": "pass",
+      "milliseconds": 17491.137938
+    },
+    {
+      "name": "unsaved source error appears in same LSP process",
+      "status": "pass",
+      "milliseconds": 20739.754653999997
+    },
+    {
+      "name": "repair removes semantic error and pull agrees",
+      "status": "pass",
+      "milliseconds": 20488.886312000002
+    },
+    {
+      "name": "route load edit explicitly invalidates generated type snapshot",
+      "status": "pass",
+      "milliseconds": 20158.758026999996
+    }
+  ],
+  "history": [
+    {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "capabilities": {
+          "positionEncoding": "utf-16",
+          "textDocumentSync": {
+            "openClose": true,
+            "change": 2,
+            "save": {
+              "includeText": false
+            }
+          },
+          "diagnosticProvider": {
+            "identifier": "ts-rust-svelte",
+            "interFileDependencies": true,
+            "workspaceDiagnostics": false
+          }
+        },
+        "serverInfo": {
+          "name": "ts-rust-svelte",
+          "version": "0.1.0"
+        }
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "method": "textDocument/publishDiagnostics",
+      "params": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-project-app-2/app/src/routes/admin/settings/integrations/payroll-providers/+page.svelte",
+        "diagnostics": [],
+        "version": 1
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "result": {
+        "documents": 1,
+        "sourceBytes": 11744,
+        "cachedDiagnostics": 1,
+        "typeChecking": false
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "method": "textDocument/publishDiagnostics",
+      "params": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-project-app-2/app/src/routes/admin/settings/integrations/payroll-providers/+page.svelte",
+        "diagnostics": [
+          {
+            "range": {
+              "end": {
+                "character": 35,
+                "line": 362
+              },
+              "start": {
+                "character": 4,
+                "line": 362
+              }
+            },
+            "severity": 1,
+            "code": 2304,
+            "source": "ts-rust-svelte",
+            "message": "Cannot find name '__svelte_project_missing_name__'.",
+            "data": {
+              "unmapped": false
+            }
+          }
+        ],
+        "version": 2
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "result": {
+        "documents": 1,
+        "sourceBytes": 11786,
+        "cachedDiagnostics": 1,
+        "typeChecking": false
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "method": "textDocument/publishDiagnostics",
+      "params": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-project-app-2/app/src/routes/admin/settings/integrations/payroll-providers/+page.svelte",
+        "diagnostics": [],
+        "version": 3
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 4,
+      "result": {
+        "documents": 1,
+        "sourceBytes": 11744,
+        "cachedDiagnostics": 1,
+        "typeChecking": false
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 5,
+      "result": {
+        "kind": "full",
+        "items": []
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "method": "textDocument/publishDiagnostics",
+      "params": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-project-app-2/app/src/routes/admin/settings/integrations/payroll-providers/+page.server.ts",
+        "diagnostics": [
+          {
+            "range": {
+              "start": {
+                "line": 0,
+                "character": 0
+              },
+              "end": {
+                "line": 0,
+                "character": 0
+              }
+            },
+            "severity": 1,
+            "code": "incomplete_project_check",
+            "source": "ts-rust-svelte",
+            "message": "Generated project snapshot is stale after src/routes/admin/settings/integrations/payroll-providers/+page.server.ts changed; regenerate framework types and reinitialize",
+            "data": {
+              "unmapped": true
+            }
+          }
+        ],
+        "version": 1
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "method": "textDocument/publishDiagnostics",
+      "params": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-project-app-2/app/src/routes/admin/settings/integrations/payroll-providers/+page.svelte",
+        "diagnostics": [
+          {
+            "range": {
+              "start": {
+                "line": 0,
+                "character": 0
+              },
+              "end": {
+                "line": 0,
+                "character": 0
+              }
+            },
+            "severity": 1,
+            "code": "incomplete_project_check",
+            "source": "ts-rust-svelte",
+            "message": "Generated project snapshot is stale after src/routes/admin/settings/integrations/payroll-providers/+page.server.ts changed; regenerate framework types and reinitialize",
+            "data": {
+              "unmapped": true
+            }
+          }
+        ],
+        "version": 3
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 6,
+      "result": {
+        "documents": 2,
+        "sourceBytes": 20458,
+        "cachedDiagnostics": 2,
+        "typeChecking": false
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "method": "textDocument/publishDiagnostics",
+      "params": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-project-app-2/app/src/routes/admin/settings/integrations/payroll-providers/+page.server.ts",
+        "diagnostics": []
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "method": "textDocument/publishDiagnostics",
+      "params": {
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-project-app-2/app/src/routes/admin/settings/integrations/payroll-providers/+page.svelte",
+        "diagnostics": [],
+        "version": 3
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 7,
+      "result": {
+        "documents": 1,
+        "sourceBytes": 11744,
+        "cachedDiagnostics": 1,
+        "typeChecking": false
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 8,
+      "result": null
+    }
+  ],
+  "exit": {
+    "code": 0,
+    "signal": null
+  }
+}

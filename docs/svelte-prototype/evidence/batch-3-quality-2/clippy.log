@@ -1,0 +1,26 @@
+    Checking ts_svelte v0.1.0 (/home/yycholla/Projects/ts-rust/crates/ts_svelte)
+    Checking ts_svelte_check v0.1.0 (/home/yycholla/Projects/ts-rust/crates/ts_svelte_check)
+    Checking ts_svelte_wasm v0.1.0 (/home/yycholla/Projects/ts-rust/crates/ts_svelte_wasm)
+error: this function's return value is unnecessarily wrapped by `Option`
+  --> crates/ts_svelte_check/src/bin/svelte-project.rs:27:1
+   |
+27 | const fn default_runes() -> Option<bool> {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#unnecessary_wraps
+   = note: `-D clippy::unnecessary-wraps` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::unnecessary_wraps)]`
+help: remove `Option` from the return type...
+   |
+27 - const fn default_runes() -> Option<bool> {
+27 + const fn default_runes() -> bool {
+   |
+help: ...and then remove the surrounding `Some()` from returning expressions
+   |
+28 -     Some(true)
+28 +     true
+   |
+
+error: could not compile `ts_svelte_check` (bin "svelte-project" test) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `ts_svelte_check` (bin "svelte-project") due to 1 previous error

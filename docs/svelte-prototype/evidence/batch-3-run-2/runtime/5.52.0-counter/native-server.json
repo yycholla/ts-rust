@@ -1,0 +1,50 @@
+{
+  "status": 0,
+  "signal": null,
+  "stderr": "",
+  "response": {
+    "ok": true,
+    "result": {
+      "uri": "Counter.svelte",
+      "version": 1,
+      "javascript": {
+        "code": "import * as $ from 'svelte/internal/server';\n\nexport default function Counter($$renderer, $$props) {\n\tlet { step = 1, label = 'Count' } = $$props;\n\tlet count = 0;\n\tlet doubled = $.derived(() => count * 2);\n\n\t$$renderer.push(`<button type=\"button\">${$.escape(label)}: ${$.escape(count)} / ${$.escape(doubled())}</button>`);\n}",
+        "map": "{\"version\":3,\"sources\":[\"Counter.svelte\"],\"sourcesContent\":[\"<script lang=\\\"ts\\\">\\n  let { step = 1, label = 'Count' }: { step?: number; label?: string } = $props();\\n  let count = $state(0);\\n  let doubled = $derived(count * 2);\\n</script>\\n<button type=\\\"button\\\" onclick={() => count += step}>{label}: {count} / {doubled}</button>\\n\"],\"names\":[],\"mappings\":\";;qDAAA,CAAC;CACC,IAAI,EAAE,IAAI,GAAG,CAAC,EAAE,KAAK,GAAG,OAAO;CAC/B,AAAA,IAAI,AAAA,KAAK,GAAU,CAAC;CACpB,AAAA,IAAI,AAAA,OAAO,mBAAY,KAAK,GAAG,CAAC;;mDAFoB,KAAK,eAItB,KAAK,gBAA8B,OAAO;AADvE,CAAC\"}"
+      },
+      "css": null,
+      "diagnostics": [],
+      "runes": true,
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.52.0",
+        "patches": [
+          "child-reset-5.53.11",
+          "declaration-tags-5.56",
+          "select-default-5.57"
+        ],
+        "clientDevelopment": false
+      },
+      "compatibility": {
+        "id": "v1:svelte=5.52.0;kit=none;ts=unspecified",
+        "svelteVersion": "5.52.0",
+        "kitVersion": null,
+        "typescriptVersion": null,
+        "channel": "stable",
+        "kitConfig": null,
+        "kitLibraryAlias": null,
+        "kitEnvironmentModule": null,
+        "capabilities": {
+          "componentCompiler": "prototype",
+          "checkingProjection": "prototype",
+          "projectCheck": "explicit-input-prototype",
+          "kitGraph": false,
+          "kitBuild": false,
+          "lsp": false
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,587 @@
+{
+  "schemaVersion": 1,
+  "id": "svelte-project-5",
+  "batch": "svelte-project-5",
+  "status": "accepted-bounded-native-project-checking-hybrid-build-lint-persistent-lsp",
+  "baseCommit": "8c224ef35077254e75c9ff6cf7a4a54a14394b86",
+  "sourceFingerprint": "8cd3f175d2c1573ba983de10f454a94740b5898eead7eb6091c35c586cbf0d22",
+  "primaryImplementer": "/root",
+  "reviewer": "/root/project_graph_reviewer",
+  "auditor": "/root/project_graph_auditor",
+  "authorization": "User continue after accepted application4; advance native MoncuraHR checking and LSP with Svelte/plugin separation",
+  "scope": [
+    "native Kit project discovery and explicit plugin/checker contract",
+    "existing generated route/environment type consumption with visible provenance",
+    "automatic CLI/LSP input discovery",
+    "bounded full application semantic-check attempts preserving unsupported results"
+  ],
+  "hypothesis": "Keep Kit graph discovery in the plugin and extend framework-neutral checker input contracts. Preserve config/module resolution rather than inventing declarations. Measure actual projection and graph gaps before claiming full checking.",
+  "previousAccepted": {
+    "record": "docs/svelte-prototype/evidence/application-4-accepted.json",
+    "sourceFingerprint": "66fcdaae71d772d928246a2d1f5a11331c3b9ff5e647f8e25f685588e0c51ae8",
+    "artifacts": "target/svelte-application-candidate-4/artifacts.json"
+  },
+  "evidence": "docs/svelte-prototype/evidence/batch-5-run-2",
+  "originalEvidence": "target/svelte-project-verification-2",
+  "quality": {
+    "evidence": "docs/svelte-prototype/evidence/batch-5-quality-6",
+    "format": "PASS",
+    "clippy": "PASS",
+    "declarations": "PASS",
+    "sourceFingerprint": "8cd3f175d2c1573ba983de10f454a94740b5898eead7eb6091c35c586cbf0d22"
+  },
+  "buildEvidence": "docs/svelte-prototype/evidence/batch-5-builds",
+  "preservedArtifacts": "target/svelte-project-candidate-5r2/artifacts.json",
+  "sourceArchive": "target/svelte-project-candidate-5r2/source.tar.gz",
+  "versions": {
+    "svelte": [
+      "5.51.5",
+      "5.52.0",
+      "5.53.5",
+      "5.53.11",
+      "5.53.13",
+      "5.54.1",
+      "5.55.10",
+      "5.56.10",
+      "5.57.2"
+    ],
+    "kit": [
+      "2.67.0",
+      "2.68.0",
+      "2.69.2",
+      "2.69.3",
+      "2.70.3",
+      "3.0.1",
+      "3.0.0-next.32"
+    ]
+  },
+  "measuredRuns": [
+    {
+      "path": "target/svelte-project-inventory-1",
+      "status": "pass-investigation",
+      "source": "accepted application4 saved compiler",
+      "scope": "660/660 .svelte projections in TypeScript mode; not semantic check or language detection"
+    },
+    {
+      "path": "target/svelte-project-kit-tests-1.log",
+      "status": "pass-exploratory",
+      "tests": 2
+    },
+    {
+      "path": "target/svelte-project-discovery-1",
+      "status": "pass-exploratory",
+      "inputs": 2837,
+      "scope": "isolated fullbuild app graph; compilercheck not yetrun"
+    },
+    {
+      "path": "target/svelte-project-check-1",
+      "status": "incomplete",
+      "reason": "Unsupported runtime TS constructor parameter properties in rune modules"
+    },
+    {
+      "path": "target/svelte-project-check-build-2.log",
+      "status": "failed",
+      "reason": "new native transpile bridge diagnostic borrow type; fixed"
+    },
+    {
+      "path": "target/svelte-project-check-2",
+      "status": "incomplete",
+      "reason": "Projected checker request exceeds previous16MiB cap; compiler not started"
+    },
+    {
+      "path": "target/svelte-project-check-3",
+      "status": "config-diagnostics-not-semantic-acceptance",
+      "diagnostics": 11,
+      "reason": "Native checker reached graph but alias paths require ./ prefix; corrected in pending source"
+    },
+    {
+      "path": "target/svelte-project-check-4",
+      "status": "discovery-failed",
+      "detail": "Oversized static PDF worker; auxiliary discovery now excludes static asset directory"
+    },
+    {
+      "path": "target/svelte-project-check-5",
+      "status": "incomplete-input-copy",
+      "detail": "125 diagnostics on build copy lacking tests; not parity evidence"
+    },
+    {
+      "path": "target/svelte-project-check-6",
+      "status": "completed-exploratory",
+      "detail": "15 TS diagnostics:4 copied-helper omissions,10 shadowed JS wildcard errors,1 generated-helper error;9 compiler warnings"
+    },
+    {
+      "path": "target/svelte-project-oracle-1",
+      "status": "completed-exploratory",
+      "detail": "Official4 errors and9warnings on same partial copy; helper scripts missing from both"
+    },
+    {
+      "path": "target/svelte-project-graph-oracle-1",
+      "status": "completed-exploratory",
+      "detail": "3082 official roots,3083 native; one shadowed JS extra"
+    },
+    {
+      "path": "target/svelte-project-tools-test-1.log",
+      "status": "dependency-resolution-failed",
+      "detail": "Offline dependency cache conflict; no tests ran"
+    },
+    {
+      "path": "target/svelte-project-tools-test-2.log",
+      "status": "pass-exploratory",
+      "detail": "5 existing tools tests pass"
+    },
+    {
+      "path": "target/svelte-project-check-7",
+      "status": "pass-exploratory",
+      "detail": "Complete original source/test/script copy: zero visible TS errors,9compilerwarnings,1rawsynthetic diagnostic retained"
+    },
+    {
+      "path": "target/svelte-project-oracle-2",
+      "status": "pass-exploratory",
+      "detail": "Pinned official checker:10619files0errors9warnings,inputsunchanged"
+    },
+    {
+      "path": "target/svelte-project-graph-oracle-2",
+      "status": "pass-exploratory",
+      "detail": "3082/3082 roots exact"
+    },
+    {
+      "path": "target/svelte-project-compare-1",
+      "status": "harness-error",
+      "detail": "Incorrect assumed1-basedmachine-verbosepositions; pinned implementation proves0-based; fixedwithoutalteringrawlogs"
+    },
+    {
+      "path": "target/svelte-project-compare-2",
+      "status": "pass-exploratory",
+      "detail": "Exact9warnings byfile/code/severity/message/UTF16range"
+    },
+    {
+      "path": "target/svelte-project-lsp-1",
+      "status": "pass-exploratory",
+      "detail": "5persistentfullMoncuraLSPcases,~15sfullrechecks; sourcebindingnotfinal"
+    },
+    {
+      "path": "target/svelte-project-controls-1",
+      "status": "failed",
+      "detail": "2/8controlsfailed: hiddenwildcardroots,JSXoverlaywithallowJsdisabled; fixedhiddenwildcards; JSoverlayrestrictionexplicit"
+    },
+    {
+      "path": "target/svelte-project-controls-2",
+      "status": "pass-exploratory",
+      "detail": "8controls passed; subsequentreviewrejectsforceallowJs approach, nowexplicitunsupported"
+    },
+    {
+      "path": "target/svelte-project-quality-1",
+      "status": "failed",
+      "detail": "clippy3violations innew orchestration; repaired"
+    },
+    {
+      "path": "target/svelte-project-quality-2",
+      "status": "failed",
+      "detail": "Tools clippy errors plus source changed during exploratory run"
+    },
+    {
+      "path": "target/svelte-project-quality-3",
+      "status": "failed",
+      "detail": "LSP needless pass-by-value lint"
+    },
+    {
+      "path": "target/svelte-project-quality-4",
+      "status": "pass",
+      "detail": "All formatting/clippy/declarations pass"
+    },
+    {
+      "path": "target/svelte-project-verification-1",
+      "source": "1992de590ff16150631d30bab9d7fbe04e0f1adc364cdaf73f7f0cc78c0e184c",
+      "status": "all-suites-pass-not-accepted",
+      "reason": "Independent launcher lifecycle blocker; sourcearchivepreserved; repairs inprogress"
+    },
+    {
+      "path": "target/svelte-project-tools-build-4.log",
+      "status": "dependency-resolution-failed",
+      "detail": "Offline cache attempted stale js-sys/wasm-bindgen; online resolution preserved wasm0.2.129"
+    },
+    {
+      "path": "target/svelte-project-lifecycle-1",
+      "status": "pass-exploratory",
+      "cases": 6,
+      "detail": "PIDcontinuity,normalshutdown,EOF,idle+active SIGTERM,execfailure,parsefailurecleanup; finalboundrepeatpending"
+    },
+    {
+      "path": "target/svelte-project-quality-5",
+      "status": "pass-exploratory",
+      "scope": "Beforewholeworkspace-lifetimerepair"
+    },
+    {
+      "path": "target/svelte-project-quality-6",
+      "status": "pass",
+      "source": "8cd3f175d2c1573ba983de10f454a94740b5898eead7eb6091c35c586cbf0d22"
+    },
+    {
+      "path": "target/svelte-project-lifecycle-2",
+      "status": "pass-exploratory",
+      "tests": 7
+    },
+    {
+      "path": "target/svelte-project-verification-2",
+      "source": "8cd3f175d2c1573ba983de10f454a94740b5898eead7eb6091c35c586cbf0d22",
+      "status": "pass-frozen-source",
+      "detail": "All retained and new suites pass; both independent final verdicts and fullbuild/browser validation PASS."
+    },
+    {
+      "path": "target/svelte-project-build-official-1",
+      "status": "pass-frozen-source",
+      "source": "8cd3f175d2c1573ba983de10f454a94740b5898eead7eb6091c35c586cbf0d22"
+    },
+    {
+      "path": "target/svelte-project-build-native-1",
+      "status": "pass-frozen-source",
+      "source": "8cd3f175d2c1573ba983de10f454a94740b5898eead7eb6091c35c586cbf0d22"
+    },
+    {
+      "path": "target/svelte-project-browser-1",
+      "status": "pass-frozen-source",
+      "source": "8cd3f175d2c1573ba983de10f454a94740b5898eead7eb6091c35c586cbf0d22"
+    }
+  ],
+  "findings": [
+    {
+      "id": "kit-serve-process-lifetime",
+      "reviewer": "project_graph_reviewer",
+      "status": "closed-by-repair-and-review",
+      "detail": "Command.status launcher can orphan LSP child on parent-only termination. Preserve current frozen verification; repair through Unix exec replacement and explicit owned temp config startup cleanup, then rebind/retest.",
+      "resolution": "Unix exec launcher; owned config deleted on open; whole workspace lifetime registered for Linux termination cleanup. Final seven lifecycle cases PASS; reviewer static and measured closure on source8cd3f175."
+    }
+  ],
+  "architecture": "docs/svelte-prototype/application-architecture.md",
+  "report": "docs/svelte-prototype/project-results.md",
+  "comparisonWithAccepted": {
+    "rust": {
+      "retained": 45,
+      "newPassing": 5,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    },
+    "javascript": {
+      "retained": 64,
+      "newPassing": 1,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    },
+    "compiler": {
+      "retained": 1340,
+      "newPassing": 0,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    },
+    "checker": {
+      "retained": 10,
+      "newPassing": 0,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    },
+    "project": {
+      "retained": 10,
+      "newPassing": 0,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    },
+    "versionCompiler": {
+      "retained": 792,
+      "newPassing": 0,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    },
+    "versionChecker": {
+      "retained": 64,
+      "newPassing": 0,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    },
+    "versionControls": {
+      "retained": 50,
+      "newPassing": 0,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    },
+    "runtimeScenarios": {
+      "retained": 37,
+      "newPassing": 0,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    },
+    "protocol": {
+      "retained": 9,
+      "newPassing": 0,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    },
+    "semanticLsp": {
+      "retained": 8,
+      "newPassing": 0,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    },
+    "checkerFailure": {
+      "retained": 3,
+      "newPassing": 0,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    }
+  },
+  "comparisonWithUnacceptedVerification1": {
+    "rustRetained": 50,
+    "javascriptRetained": 65,
+    "lost": 0,
+    "absent": 0,
+    "unrun": 0
+  },
+  "tests": {
+    "rust": {
+      "passed": 50,
+      "failed": 0,
+      "skipped": 0
+    },
+    "javascript": {
+      "passed": 65,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "additionalChecks": {
+    "kitControls": 9,
+    "fullProjectLsp": 5,
+    "lifecycle": 7,
+    "protocol": 9,
+    "semanticLsp": 8,
+    "checkerFailure": 3,
+    "soak": {
+      "edits": 1200,
+      "rssAfterWarmupBytes": 13709312,
+      "semanticProject": false
+    },
+    "runtime": {
+      "scenarios": 37,
+      "hydrations": 148,
+      "mounts": 74
+    },
+    "lint": {
+      "files": 2392,
+      "findings": 77,
+      "incomplete": 0,
+      "rules": [
+        "no-debugger",
+        "eqeqeq"
+      ],
+      "compilerDiagnostics": true
+    },
+    "build": {
+      "official": "PASS",
+      "hybrid": "PASS",
+      "nativeCalls": 5722,
+      "appRuneModules": 24,
+      "ordinaryInputFiles": 2486,
+      "unchanged": true
+    },
+    "browser": {
+      "routes": 4,
+      "authenticated": false,
+      "passed": true,
+      "stableArtifactsPerBuild": 4533
+    },
+    "moncuraProject": {
+      "complete": true,
+      "nativeInputs": 3296,
+      "matchingRoots": 3082,
+      "visibleErrors": 0,
+      "warnings": 9,
+      "exactDiagnosticMatch": true,
+      "suppressedSyntheticDiagnostics": 1,
+      "nativeRawCheckerStatus": 2,
+      "nativeCliStatus": 0,
+      "nativeCheckStageSeconds": 15.697849401010899,
+      "officialWholeCheckSeconds": 51.925796631,
+      "comparableTiming": false
+    }
+  },
+  "verdicts": [
+    {
+      "role": "independentReviewer",
+      "agent": "/root/project_graph_reviewer",
+      "batch": "svelte-project-5",
+      "sourceFingerprint": "8cd3f175d2c1573ba983de10f454a94740b5898eead7eb6091c35c586cbf0d22",
+      "verdict": "PASS",
+      "findings": "Complete operation reviewed. MoncuraHR graph and nine diagnostic fields match; lifecycle blockers closed. Official/hybrid full builds and four browser comparisons pass. Crate separation and unchanged TS core confirmed. Acceptance limited to existing synced declarations, hybrid build, fresh semantic processes and documented fallback ranges."
+    },
+    {
+      "role": "regressionAuditor",
+      "agent": "/root/project_graph_auditor",
+      "batch": "svelte-project-5",
+      "sourceFingerprint": "8cd3f175d2c1573ba983de10f454a94740b5898eead7eb6091c35c586cbf0d22",
+      "verdict": "PASS",
+      "findings": "Exact comparisons retain all accepted and verification1 passing names: zero lost, absent or unrun retained cases; recovered zero. Rehashed521 source files,19 saved artifacts and4533 files per build. Same2486 build inputs,5722 balanced successful calls/all24 application rune modules. Baseline and historical state preserved. Upstream protected suites/Query/Hono unrun locally."
+    }
+  ],
+  "verdictEvidence": "docs/svelte-prototype/evidence/batch-5-run-2/verdicts.json",
+  "limitations": [
+    "Consumes existing Kit sync output; route/environment type generation remains JavaScript. Initial generated-type freshness is not independently proved.",
+    "Full builds remain hybrid with official Kit/Vite/preprocessing/Tailwind/adapter. Full build host validated on MoncuraHR Kit2.69.2/vite-plugin-svelte6.2.4 only; version profiles do not establish general Kit build compatibility.",
+    "Persistent native diagnostic LSP, but semantic checker runs fresh each request (~15s for full MoncuraHR). No semantic incremental engine, completion or hover.",
+    "Native lint covers compiler diagnostics and two AST script rules; no full ESLint/oxlint/Prettier parity.",
+    "WASM supports compiler/lint sessions and erasable TypeScript module checks; full native project/process orchestration is not a browser API.",
+    "Runtime TypeScript fallback compiler diagnostic ranges can be explicitly unmapped; raw synthetic helper diagnostic is preserved separately.",
+    "Package extends, baseUrl, references and TS plugins rejected. JS component projection requires application allowJs. Auxiliary discovery excludes build/static/hidden trees except Kit types; unused unprojectable auxiliary components can prevent preparation.",
+    "Browser probes cover four unauthenticated routes only. Linux lifecycle probes exclude Windows and uncatchable SIGKILL cleanup.",
+    "No comparative speedup or memory reduction established. Stage timings have different boundaries.",
+    "Upstream protected suites and Query/Hono unrun locally; historical typechecker current state unchanged."
+  ],
+  "evidenceHashes": {
+    "docs/svelte-prototype/evidence/batch-5-run-2/verdicts.json": "567a960fff25817872162326b1bbf78df0fd92c3cc970bff5ad5cc342bce5c92",
+    "docs/svelte-prototype/evidence/batch-5-run-2/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/result.txt": "8221ac66be71558c921fb44cfb66f7997699aea754d917763882d6d9eddc836e",
+    "docs/svelte-prototype/evidence/batch-5-run-2/source-after.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/original-evidence-hashes.json": "bf45efe36a074c215a703d3544f6678b2eca105eb000965c7a71a4882ef8f964",
+    "docs/svelte-prototype/evidence/batch-5-run-2/native/summary.json": "4ed77c8a6fc3f78db13ae64eaf164c2269a451f5f90bc839e7a533da56672b92",
+    "docs/svelte-prototype/evidence/batch-5-run-2/native/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/native/graph.json": "2f8cf421ebccd27cabeacff50f04e2c8a57497439c361203afe42faa980def04",
+    "docs/svelte-prototype/evidence/batch-5-run-2/native/source-after.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/native/binaries.json": "5f06f41da8234758c62d19b20b14336c61feae23b4cd0b8ac541fe473a7a5390",
+    "docs/svelte-prototype/evidence/batch-5-run-2/native/graph-after.json": "2f8cf421ebccd27cabeacff50f04e2c8a57497439c361203afe42faa980def04",
+    "docs/svelte-prototype/evidence/batch-5-run-2/native/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-5-run-2/graph/report.json": "44b021269408a492d29a818e4cf0b927fef286970c29e00ad7709004f80fb4fd",
+    "docs/svelte-prototype/evidence/batch-5-run-2/official/inputs.json": "1568f5d61a440998260e60526e0649a568a1917559616d06cdeb80f3ef69118a",
+    "docs/svelte-prototype/evidence/batch-5-run-2/official/stdout.log": "c1aa5ac13a085c31bbfe2ba83957552c9bcc544d707909fb2dd63d9d63b6acd1",
+    "docs/svelte-prototype/evidence/batch-5-run-2/official/report.json": "ba146ffb7c39861396f6f5fb11d049731ec29e019cbbfc58af62c8135225a519",
+    "docs/svelte-prototype/evidence/batch-5-run-2/official/packages.json": "2abbece47c476a9d8db25a219a27c515d4390aa90ef2e1a8079b9b6b4ef223c4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/official/oracle-code.json": "a1c6bcbc8ce8348ea60ccc08c985202336b3b37040d65818246e55596f43025b",
+    "docs/svelte-prototype/evidence/batch-5-run-2/official/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-5-run-2/comparison/report.json": "9ed15760f51d2a59c417ad70ecc0aa4d7425193b8d2c2b984c853ec5f968b18a",
+    "docs/svelte-prototype/evidence/batch-5-run-2/lifecycle/report.json": "2340f014ac9d15bcec58e23b05d1bdc09ec65a6804eaa1242ba5f6df3244362e",
+    "docs/svelte-prototype/evidence/batch-5-run-2/controls/report.json": "dbe699c33d697324ee085435e02c39b35abf90eaf3e04788926d224895e3adc9",
+    "docs/svelte-prototype/evidence/batch-5-run-2/lsp/report.json": "0471038d0431cf26ab157335b09e7af4df354bf99edc7af7310ecdc04086da20",
+    "docs/svelte-prototype/evidence/batch-5-run-2/lsp/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/tools-tests.log": "84f45b8ec5ab36a643ceaa59cc716bdca72a1ace724b9d09b79303833700a462",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/kit-tests.log": "d7b98176bf6bfa8718331999c7063c7c2126b153523ac6736752b6335973c470",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/result.txt": "8221ac66be71558c921fb44cfb66f7997699aea754d917763882d6d9eddc836e",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/source-after.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/tools-artifacts-verified.log": "ec9acd160c7f82d0f01ce11e04109f385da1390a8449d83fd0a4a2b6503b0f49",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/tools-build.log": "6a71090902451ba79623ae9a1a4d96f4ba1244d3c8ed5cb088f365e708b295f6",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/tooling-js-tests.log": "4595e49a8ae746bc4a3e01a9649fc580aaa475a073b5be6e3ea357ec546c7634",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/lsp-project/report.json": "e826fb4706e4399d08deab9fb3d961b360fc61816e583a20149250a219677ead",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/lsp-failure/report.json": "f1fb8fccdad2cd14e1c849131a67519989eb301abfe9991f8d6ce1a1a368a18a",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/result.txt": "8221ac66be71558c921fb44cfb66f7997699aea754d917763882d6d9eddc836e",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/source-after.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/native-build.log": "85c8dbac64ed6a362d668bf3988686e26e947620bb15cfdbe2e999a0ff8261b2",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/soak/report.json": "d0ec7ba09b097a43a2c807b972d8781181eb6b02afe4f75f20b22860340b6ac7",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/lint/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/lint/source-after.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/lint/report.json": "de7b7d8c019d205610a993aa9f9f8f6d7d574ed8154d41400b808fa82979d370",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/protocol/report.json": "d747afd8e1a1a2a03bcdb3b1816be63b59a8211e051aedd17e46e189b56156d4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/matrix/report.json": "39b75fed378c062bed4fc2911652fb38afa78499937a9d85defd26f60d6ac924",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/compiler-build.log": "5c4da42089657bae730043ce771b22ca754abb8aac68229eb495d5739c51207a",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/oracle.log": "e7cb2da7497eb56ba62dfba134abe5fc4c2d7cc50596dd7a719c7f39279e998c",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/foundation-build.log": "ffd6a003faf3091dc25dbca7adb5815f6513cdba2e87c850543bdcd43dfcb496",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/runtime.log": "ceb8b635ba7fae353e138360aecd80af4371a5c0cd0919b3c307f3efe5a98961",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker-tests.log": "9c078e2211130740b1372c856fba5efac24346786065c8e8d71b4f1eae407777",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/project.log": "ed0f573860c4cc442406c8a3b719fe7953b8ac8ff8f92c52e8e96119c9b48b01",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/result.txt": "8221ac66be71558c921fb44cfb66f7997699aea754d917763882d6d9eddc836e",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/js-tests.log": "a0d45483214dd99f6e633f9b333b01b103ec611e4cd4cb0ebb286fc1cf77aadb",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker.log": "4bd2176cb14a888e0509525b4b3643f816750205004eb2cc9166f124ba1554eb",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/source-after.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker-build.log": "7a7bb64a28cdda9b91e6e27f41be455104d929b5d7ad6dd5beca75fc5a47f1f4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/compiler-tests.log": "c7788059bc4af96456cfde94e251890c445778e8ed7e6131e101a97c9ce102b6",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/foundation-tests.log": "b27adf956c3f81087553770579a40d5b512f3110f4fc0ba2ecdb89640fa49aa2",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/runtime/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/runtime/source-after.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/runtime/report.json": "2efd7679336f0349eafe5b14246d87dd8addc4d2589a6bcb1c248a6355da1155",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/oracle/report.json": "b39e07118793cdcdc39bda11a866b9e473ef2921aafa8fdb32f2f09ff7c7621e",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/project/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/project/report.json": "af3269d72d073e1bbca5c8a53bf18b611a6c408a447d41a621228ad736f1f423",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker/report.json": "4fc84e7f0d12bac91d37ebdc35b5182d07055355ddc0f3c9b8229292e96ab80f",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/runtime/report.json": "0be30eb7e1f50801413ed902ac2fc9c4e9bc20f235616761a73bbb67f7cbd82c",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker/no-check-override/report.json": "54b0ae5e7e709f862ed4c026a1d2134c6fd880075c7d3dc0321b80806f700ddf",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker/undefined-name/report.json": "74118a6c792b6ae42e4408037e2641c9525bf4a02ae2fb1bba4f19ea987d8ae2",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker/javascript-jsdoc-mismatch/report.json": "fd645ca03a920eff56e13b5055dd24031489ced4cea2105771a9aea1ca2ffdf8",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker/missing-props/report.json": "835cc9fa91cff866321b365e2dd279ca01ecfbe6580798a4b18a632de6ba02a1",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker/javascript-jsdoc-valid/report.json": "cddc6ee59b170911bb9794d391e7a3d613c8f1c4c9f591f72657a56d6c343a45",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker/emoji/report.json": "939d926c0ccdf9cf82a8c6387fcb3d2a866bd07eee2f0dca7e040f04621d4f80",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker/template-member/report.json": "62631ae409aaa19b31b7187608ec736935fa7b7e2ba8ce9831bb092baa4d37cb",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker/valid-props/report.json": "b3b7663fb7531304364e0265f7d8a2b752f98251e8760309c874dc0a60bc9d4a",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker/missing-import/report.json": "4c2f1b4218d93e354021312829ef148d5315808fb95326be5978b9f07e8a6758",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker/wrong-props/report.json": "c5b91fa21e5dc2569ab0cafb6a8131fe9d98442f76cfbe7f79e136716033c8ad",
+    "docs/svelte-prototype/evidence/batch-5-run-2/controls/priority/graph.json": "7e1a41b29e466bf7f4aea47712c3ef7a208f36cdac695372ee591a18d8b7ce45",
+    "docs/svelte-prototype/evidence/batch-5-run-2/controls/explicit/graph.json": "12bf7cf51ca384c423600fcf71cf208286c6d0b70a5764b47ce4c4c4e11c7f49",
+    "docs/svelte-prototype/evidence/batch-5-run-2/controls/json/graph.json": "2b83452e042b9da8f96786e331b7d57658d0bc44cc6e2506742df92a89ad79f1",
+    "docs/svelte-prototype/evidence/batch-5-run-2/controls/checkjs/graph.json": "350d392c899e267dd9e389a97a8de0067ee7e353566d67ef7ec2d2fd42dc0397",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/compiler-clippy.log": "85c8dbac64ed6a362d668bf3988686e26e947620bb15cfdbe2e999a0ff8261b2",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/vendor-format.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/toolchain.txt": "2d65913be579a9932e833cc5a9ec9da203ac9b56868eee0f01b450c929001c40",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/compiler-format.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/ts_svelte_tools-format.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/clippy.log": "3997fc6790b8063b86c119e91f87ac7395ac6cf26135da637dcb229006bc32dc",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/result.txt": "8221ac66be71558c921fb44cfb66f7997699aea754d917763882d6d9eddc836e",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/ts_svelte_kit-format.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/ts_svelte_tools-clippy.log": "215102132e7c4417feb90330bd33574970929473a7ee6e07bd199e74575a9afa",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/source-after.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/declarations.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/format.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/ts_svelte_kit-clippy.log": "9576f1f7e73fc2bb1ec2336aae60cb485c591eadc60a1b998573411c34057e08",
+    "docs/svelte-prototype/evidence/batch-5-builds/full-builds.log": "b1f72020f936db3e9f050b85967fad69855e51db616fd8f4d36be265b829370b",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/official-_login.png": "40e8a63ead3a7bab63b8856796c83e8b89854694585b587f35bd993cefa7599e",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/native-_docs.png": "40e8a63ead3a7bab63b8856796c83e8b89854694585b587f35bd993cefa7599e",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/official-_docs.png": "ddf67011b3c7c3c6fc261fdb128ed87383cd447179ba8fa59b811a226b212464",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/native-server.log": "290d3a04cd689b035d63ecdd4fcdea2ccee736209b368640ad1af47bd9a9dd5b",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/official-_health.png": "71ff2e6b0f8966d4fc525e283359241ea157b35d577d865b4839b6f61a7ae745",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/artifacts.json": "31fdd9ea702c95bf6ac8833f66f062d6cbc3ac5f72ce9838188d8b995b9afdc2",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/native-_oauth_login.png": "47aafb3fc81994f0685f5c1aad447c9573d91188c8b76e1997fed20bd72879c0",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/native-_health.png": "682c9d0e013e2ccc657b0990427154960180cf6e37163780a2b4478589442a3c",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/source-after.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/report.json": "36cc5e5f0d9b1f3cfc5d129702592c561f652983a5720ff7052330a430f1793f",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/official-server.log": "8e72170668d71feccdaaed977dc3eea90bcaeae94107293b8d95038bd256b584",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/native-_login.png": "1bc3d475a1129f35abd172b4948a1fdd7151d078f5e051c42d54f7ce3949b0c6",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/official-_oauth_login.png": "47aafb3fc81994f0685f5c1aad447c9573d91188c8b76e1997fed20bd72879c0",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-official-1/sync.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-official-1/inputs.json": "bb80eb6a6de76c11757c6665b6066171b3b4cd2d1a8e33d9756e4b322ab6dd13",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-official-1/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-official-1/result.json": "3c2407621a7687bc664baef2fae53468fd7e39767cf29b9ab30cfbb5012483bf",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-official-1/build.log": "554f856d13ab5736ce1e06d3d8baec9ca229f4317f6cce01c2292d09877c80de",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-official-1/source-after.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-official-1/binaries.json": "230811fd4bfae60df060ef9859701b9c3a68e4d16a564934922895b7bfc07fee",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-native-1/sync.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-native-1/inputs.json": "bb80eb6a6de76c11757c6665b6066171b3b4cd2d1a8e33d9756e4b322ab6dd13",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-native-1/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-native-1/native-calls.jsonl": "42d1b9beffb4d5ef32ddd4c6b558cb9b66596825d34d156d12c5a7a8cf7d8f9b",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-native-1/result.json": "a8c6e0249872938e47d6ac9cdc981440d737ab8c7720b56fa7d8c2f8e2e6332e",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-native-1/build.log": "ac416fee58eebc5c27c9eeaadfc792542db3b166a200ec49174abdddef5aaf5c",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-native-1/source-after.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-native-1/binaries.json": "230811fd4bfae60df060ef9859701b9c3a68e4d16a564934922895b7bfc07fee"
+  }
+}

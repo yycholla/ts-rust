@@ -1,0 +1,8 @@
+
+> bits-ui@2.19.5 check /home/yycholla/Projects/ts-rust/target/svelte-public-projects/bits-ui/packages/bits-ui
+> svelte-check --tsconfig ./tsconfig.json
+
+Loading svelte-check in workspace: /home/yycholla/Projects/ts-rust/target/svelte-public-projects/bits-ui/packages/bits-ui
+Getting Svelte diagnostics...
+
+svelte-check found 0 errors and 0 warnings

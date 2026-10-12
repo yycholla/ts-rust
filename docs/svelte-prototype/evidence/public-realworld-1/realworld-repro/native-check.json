@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/home/yycholla/Projects/ts-rust/target/release/svelte-project"
+  ],
+  "cwd": "/home/yycholla/Projects/ts-rust",
+  "exitCode": 1,
+  "timeout": false,
+  "timeoutSeconds": 180,
+  "wallSeconds": 0.004,
+  "log": "native-check.log",
+  "timeSeconds": 0.0,
+  "maxRssKiB": 2792,
+  "userSeconds": 0.0,
+  "systemSeconds": 0.0
+}

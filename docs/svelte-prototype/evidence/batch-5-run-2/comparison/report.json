@@ -1,0 +1,347 @@
+{
+  "match": true,
+  "nativeCount": 9,
+  "officialCount": 9,
+  "native": [
+    {
+      "file": "src/routes/dashboard/management/leave-timeline/components/Timeline.svelte",
+      "code": "a11y_no_static_element_interactions",
+      "severity": "warning",
+      "message": "`<div>` with a pointerdown, pointermove, pointerup, pointercancel or pointerleave handler must have an ARIA role\nhttps://svelte.dev/e/a11y_no_static_element_interactions",
+      "range": {
+        "end": {
+          "character": 9,
+          "line": 885
+        },
+        "start": {
+          "character": 3,
+          "line": 799
+        }
+      }
+    },
+    {
+      "file": "src/lib/components/ui/expandable-screen/expandable-screen.svelte",
+      "code": "state_referenced_locally",
+      "severity": "warning",
+      "message": "This reference only captures the initial value of `defaultExpanded`. Did you mean to reference it inside a derived instead?\nhttps://svelte.dev/e/state_referenced_locally",
+      "range": {
+        "end": {
+          "character": 72,
+          "line": 33
+        },
+        "start": {
+          "character": 57,
+          "line": 33
+        }
+      }
+    },
+    {
+      "file": "src/lib/components/ui/popover-form/popover-form.svelte",
+      "code": "state_referenced_locally",
+      "severity": "warning",
+      "message": "This reference only captures the initial value of `defaultOpen`. Did you mean to reference it inside a derived instead?\nhttps://svelte.dev/e/state_referenced_locally",
+      "range": {
+        "end": {
+          "character": 71,
+          "line": 29
+        },
+        "start": {
+          "character": 60,
+          "line": 29
+        }
+      }
+    },
+    {
+      "file": "src/lib/components/ui/popover-form/popover-form.svelte",
+      "code": "state_referenced_locally",
+      "severity": "warning",
+      "message": "This reference only captures the initial value of `openProp`. Did you mean to reference it inside a derived instead?\nhttps://svelte.dev/e/state_referenced_locally",
+      "range": {
+        "end": {
+          "character": 56,
+          "line": 29
+        },
+        "start": {
+          "character": 48,
+          "line": 29
+        }
+      }
+    },
+    {
+      "file": "src/lib/components/ui/spreadsheet/SpreadsheetTable.svelte",
+      "code": "state_referenced_locally",
+      "severity": "warning",
+      "message": "This reference only captures the initial value of `config`. Did you mean to reference it inside a derived instead?\nhttps://svelte.dev/e/state_referenced_locally",
+      "range": {
+        "end": {
+          "character": 81,
+          "line": 95
+        },
+        "start": {
+          "character": 75,
+          "line": 95
+        }
+      }
+    },
+    {
+      "file": "src/routes/admin/compliance/+page.svelte",
+      "code": "state_referenced_locally",
+      "severity": "warning",
+      "message": "This reference only captures the initial value of `data`. Did you mean to reference it inside a closure instead?\nhttps://svelte.dev/e/state_referenced_locally",
+      "range": {
+        "end": {
+          "character": 61,
+          "line": 19
+        },
+        "start": {
+          "character": 57,
+          "line": 19
+        }
+      }
+    },
+    {
+      "file": "src/routes/admin/users/+page.svelte",
+      "code": "state_referenced_locally",
+      "severity": "warning",
+      "message": "This reference only captures the initial value of `data`. Did you mean to reference it inside a closure instead?\nhttps://svelte.dev/e/state_referenced_locally",
+      "range": {
+        "end": {
+          "character": 27,
+          "line": 170
+        },
+        "start": {
+          "character": 23,
+          "line": 170
+        }
+      }
+    },
+    {
+      "file": "src/routes/admin/users/+page.svelte",
+      "code": "state_referenced_locally",
+      "severity": "warning",
+      "message": "This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?\nhttps://svelte.dev/e/state_referenced_locally",
+      "range": {
+        "end": {
+          "character": 30,
+          "line": 169
+        },
+        "start": {
+          "character": 26,
+          "line": 169
+        }
+      }
+    },
+    {
+      "file": "src/routes/dashboard/management/leave-timeline/components/TimelineFilters.svelte",
+      "code": "state_referenced_locally",
+      "severity": "warning",
+      "message": "This reference only captures the initial value of `searchTerm`. Did you mean to reference it inside a closure instead?\nhttps://svelte.dev/e/state_referenced_locally",
+      "range": {
+        "end": {
+          "character": 34,
+          "line": 53
+        },
+        "start": {
+          "character": 24,
+          "line": 53
+        }
+      }
+    }
+  ],
+  "official": [
+    {
+      "file": "src/routes/dashboard/management/leave-timeline/components/Timeline.svelte",
+      "code": "a11y_no_static_element_interactions",
+      "severity": "warning",
+      "message": "`<div>` with a pointerdown, pointermove, pointerup, pointercancel or pointerleave handler must have an ARIA role\nhttps://svelte.dev/e/a11y_no_static_element_interactions",
+      "range": {
+        "start": {
+          "line": 799,
+          "character": 3
+        },
+        "end": {
+          "line": 885,
+          "character": 9
+        }
+      }
+    },
+    {
+      "file": "src/lib/components/ui/expandable-screen/expandable-screen.svelte",
+      "code": "state_referenced_locally",
+      "severity": "warning",
+      "message": "This reference only captures the initial value of `defaultExpanded`. Did you mean to reference it inside a derived instead?\nhttps://svelte.dev/e/state_referenced_locally",
+      "range": {
+        "start": {
+          "line": 33,
+          "character": 57
+        },
+        "end": {
+          "line": 33,
+          "character": 72
+        }
+      }
+    },
+    {
+      "file": "src/lib/components/ui/popover-form/popover-form.svelte",
+      "code": "state_referenced_locally",
+      "severity": "warning",
+      "message": "This reference only captures the initial value of `defaultOpen`. Did you mean to reference it inside a derived instead?\nhttps://svelte.dev/e/state_referenced_locally",
+      "range": {
+        "start": {
+          "line": 29,
+          "character": 60
+        },
+        "end": {
+          "line": 29,
+          "character": 71
+        }
+      }
+    },
+    {
+      "file": "src/lib/components/ui/popover-form/popover-form.svelte",
+      "code": "state_referenced_locally",
+      "severity": "warning",
+      "message": "This reference only captures the initial value of `openProp`. Did you mean to reference it inside a derived instead?\nhttps://svelte.dev/e/state_referenced_locally",
+      "range": {
+        "start": {
+          "line": 29,
+          "character": 48
+        },
+        "end": {
+          "line": 29,
+          "character": 56
+        }
+      }
+    },
+    {
+      "file": "src/lib/components/ui/spreadsheet/SpreadsheetTable.svelte",
+      "code": "state_referenced_locally",
+      "severity": "warning",
+      "message": "This reference only captures the initial value of `config`. Did you mean to reference it inside a derived instead?\nhttps://svelte.dev/e/state_referenced_locally",
+      "range": {
+        "start": {
+          "line": 95,
+          "character": 75
+        },
+        "end": {
+          "line": 95,
+          "character": 81
+        }
+      }
+    },
+    {
+      "file": "src/routes/admin/compliance/+page.svelte",
+      "code": "state_referenced_locally",
+      "severity": "warning",
+      "message": "This reference only captures the initial value of `data`. Did you mean to reference it inside a closure instead?\nhttps://svelte.dev/e/state_referenced_locally",
+      "range": {
+        "start": {
+          "line": 19,
+          "character": 57
+        },
+        "end": {
+          "line": 19,
+          "character": 61
+        }
+      }
+    },
+    {
+      "file": "src/routes/admin/users/+page.svelte",
+      "code": "state_referenced_locally",
+      "severity": "warning",
+      "message": "This reference only captures the initial value of `data`. Did you mean to reference it inside a closure instead?\nhttps://svelte.dev/e/state_referenced_locally",
+      "range": {
+        "start": {
+          "line": 170,
+          "character": 23
+        },
+        "end": {
+          "line": 170,
+          "character": 27
+        }
+      }
+    },
+    {
+      "file": "src/routes/admin/users/+page.svelte",
+      "code": "state_referenced_locally",
+      "severity": "warning",
+      "message": "This reference only captures the initial value of `data`. Did you mean to reference it inside a derived instead?\nhttps://svelte.dev/e/state_referenced_locally",
+      "range": {
+        "start": {
+          "line": 169,
+          "character": 26
+        },
+        "end": {
+          "line": 169,
+          "character": 30
+        }
+      }
+    },
+    {
+      "file": "src/routes/dashboard/management/leave-timeline/components/TimelineFilters.svelte",
+      "code": "state_referenced_locally",
+      "severity": "warning",
+      "message": "This reference only captures the initial value of `searchTerm`. Did you mean to reference it inside a closure instead?\nhttps://svelte.dev/e/state_referenced_locally",
+      "range": {
+        "start": {
+          "line": 53,
+          "character": 24
+        },
+        "end": {
+          "line": 53,
+          "character": 34
+        }
+      }
+    }
+  ],
+  "suppressedDiagnostics": [
+    {
+      "category": 1,
+      "code": 2558,
+      "end": 1395,
+      "endPosition": {
+        "character": 66,
+        "line": 53
+      },
+      "fileName": "/home/yycholla/Projects/ts-rust/target/svelte-project-verification-2/native/workspace/src/routes/admin/settings/integrations/payroll-providers/+page.svelte.tsx",
+      "original": {
+        "status": "unmapped",
+        "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-project-app-2/app/src/routes/admin/settings/integrations/payroll-providers/+page.svelte",
+        "version": 0
+      },
+      "pos": 1379,
+      "sourceLines": [
+        {
+          "line": 53,
+          "text": "\tconst { data, form } = $props</*\u03a9ignore_start\u03a9*/ $$ComponentProps /*\u03a9ignore_end\u03a9*/>();\n"
+        }
+      ],
+      "startPosition": {
+        "character": 50,
+        "line": 53
+      },
+      "suppression": {
+        "bytes": {
+          "end": 1418,
+          "start": 1362
+        },
+        "reason": "svelte-generated-ignore-span"
+      },
+      "text": "Expected 0 type arguments, but got 1."
+    }
+  ],
+  "evidenceHashes": {
+    "/home/yycholla/Projects/ts-rust/scripts/svelte/compare-kit-checks.py": "ef148d883edbd8c50ed84d2b6150d4b3984ae9417ba097bae372d2bcfc0fab92",
+    "target/svelte-project-verification-2/native/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "target/svelte-project-verification-2/native/summary.json": "4ed77c8a6fc3f78db13ae64eaf164c2269a451f5f90bc839e7a533da56672b92",
+    "target/svelte-project-verification-2/native/graph.json": "2f8cf421ebccd27cabeacff50f04e2c8a57497439c361203afe42faa980def04",
+    "target/svelte-project-verification-2/native/graph-after.json": "2f8cf421ebccd27cabeacff50f04e2c8a57497439c361203afe42faa980def04",
+    "target/svelte-project-verification-2/native/binaries.json": "5f06f41da8234758c62d19b20b14336c61feae23b4cd0b8ac541fe473a7a5390",
+    "target/svelte-project-verification-2/native/response.json": "606588d387e3c23f7e6972f2e0b1d4494ac0aab29f0100eaba9307f3b1d7eb20",
+    "target/svelte-project-verification-2/official/inputs.json": "1568f5d61a440998260e60526e0649a568a1917559616d06cdeb80f3ef69118a",
+    "target/svelte-project-verification-2/official/packages.json": "2abbece47c476a9d8db25a219a27c515d4390aa90ef2e1a8079b9b6b4ef223c4",
+    "target/svelte-project-verification-2/official/oracle-code.json": "a1c6bcbc8ce8348ea60ccc08c985202336b3b37040d65818246e55596f43025b",
+    "target/svelte-project-verification-2/official/stdout.log": "c1aa5ac13a085c31bbfe2ba83957552c9bcc544d707909fb2dd63d9d63b6acd1",
+    "target/svelte-project-verification-2/official/report.json": "ba146ffb7c39861396f6f5fb11d049731ec29e019cbbfc58af62c8135225a519"
+  }
+}

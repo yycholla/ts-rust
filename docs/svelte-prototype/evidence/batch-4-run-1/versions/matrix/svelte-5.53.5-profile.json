@@ -1,0 +1,37 @@
+{
+  "request": {
+    "op": "resolveCompatibility",
+    "versions": {
+      "svelteVersion": "5.53.5",
+      "typescriptVersion": "5.9.3",
+      "allowPrerelease": false
+    }
+  },
+  "exit": 0,
+  "signal": null,
+  "stdout": "{\"ok\":true,\"result\":{\"compatibility\":{\"id\":\"v1:svelte=5.53.5;kit=none;ts=5.9.3\",\"svelteVersion\":\"5.53.5\",\"kitVersion\":null,\"typescriptVersion\":\"5.9.3\",\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}}\n",
+  "stderr": "",
+  "response": {
+    "ok": true,
+    "result": {
+      "compatibility": {
+        "id": "v1:svelte=5.53.5;kit=none;ts=5.9.3",
+        "svelteVersion": "5.53.5",
+        "kitVersion": null,
+        "typescriptVersion": "5.9.3",
+        "channel": "stable",
+        "kitConfig": null,
+        "kitLibraryAlias": null,
+        "kitEnvironmentModule": null,
+        "capabilities": {
+          "componentCompiler": "prototype",
+          "checkingProjection": "prototype",
+          "projectCheck": "explicit-input-prototype",
+          "kitGraph": false,
+          "kitBuild": false,
+          "lsp": false
+        }
+      }
+    }
+  }
+}

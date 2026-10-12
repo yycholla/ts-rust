@@ -1,0 +1,58 @@
+{
+  "status": 1,
+  "signal": null,
+  "stderr": "",
+  "stdout": "{\"diagnostics\":[{\"category\":1,\"code\":2304,\"end\":172,\"endPosition\":{\"character\":64,\"line\":6},\"fileName\":\"/home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/batch-3-run-1/regression/checker/emoji/Case.svelte.tsx\",\"original\":{\"bytes\":{\"end\":100,\"start\":83},\"range\":{\"end\":{\"character\":32,\"line\":3},\"start\":{\"character\":15,\"line\":3}},\"status\":\"mapped\",\"uri\":\"Case.svelte\",\"version\":1},\"pos\":155,\"sourceLines\":[{\"line\":6,\"text\":\" { svelteHTML.createElement(\\\"p\\\", {});greeting; missingAfterEmoji; }\\n\"}],\"startPosition\":{\"character\":47,\"line\":6},\"text\":\"Cannot find name 'missingAfterEmoji'.\"}],\"error\":null,\"ok\":true,\"output\":\"\",\"projectionsVerified\":true,\"serializationFailures\":[],\"status\":2,\"unported\":[]}\n",
+  "response": {
+    "diagnostics": [
+      {
+        "category": 1,
+        "code": 2304,
+        "end": 172,
+        "endPosition": {
+          "character": 64,
+          "line": 6
+        },
+        "fileName": "/home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/batch-3-run-1/regression/checker/emoji/Case.svelte.tsx",
+        "original": {
+          "bytes": {
+            "end": 100,
+            "start": 83
+          },
+          "range": {
+            "end": {
+              "character": 32,
+              "line": 3
+            },
+            "start": {
+              "character": 15,
+              "line": 3
+            }
+          },
+          "status": "mapped",
+          "uri": "Case.svelte",
+          "version": 1
+        },
+        "pos": 155,
+        "sourceLines": [
+          {
+            "line": 6,
+            "text": " { svelteHTML.createElement(\"p\", {});greeting; missingAfterEmoji; }\n"
+          }
+        ],
+        "startPosition": {
+          "character": 47,
+          "line": 6
+        },
+        "text": "Cannot find name 'missingAfterEmoji'."
+      }
+    ],
+    "error": null,
+    "ok": true,
+    "output": "",
+    "projectionsVerified": true,
+    "serializationFailures": [],
+    "status": 2,
+    "unported": []
+  }
+}

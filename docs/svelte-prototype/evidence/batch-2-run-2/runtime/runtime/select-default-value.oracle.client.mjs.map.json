@@ -1,0 +1,11 @@
+{
+  "version": 3,
+  "names": [],
+  "sources": [
+    "DefaultSelect.svelte"
+  ],
+  "sourcesContent": [
+    "<script lang=\"ts\">\n  let { choice = 'second' }: { choice?: string } = $props();\n</script>\n<select defaultValue={choice} aria-label=\"Choice\">\n  <option value=\"first\">First</option>\n  <option value=\"second\">Second</option>\n</select>\n"
+  ],
+  "mappings": ";;;;;yDAAA,CAAC;KACO,MAAM,gCAAG,QAAQ;KAExB,MAAM;KACJ,MAAM,WADR,MAAM;;CACJ,MAAM,SAAN,MAAM;;KACN,QAAM,aADN,MAAM;;CACN,QAAM,SAAN,QAAM;SAFR,MAAM;yBAAN,MAAM,gBAAe,MAAM;oBAA3B,MAAM;AADC,CAAC"
+}

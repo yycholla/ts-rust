@@ -1,0 +1,169 @@
+{
+  "reports": [
+    {
+      "mode": "official",
+      "routes": [
+        {
+          "route": "/health",
+          "status": 200,
+          "url": "/health",
+          "title": "",
+          "text": "{\"status\":\"healthy\",\"timestamp\":\"2026-10-11T00:27:00.036Z\",\"service\":\"sveltehr-frontend\",\"version\":\"1.0.0\"}",
+          "inputs": 0,
+          "errors": [],
+          "failed": [],
+          "comparableText": "{\"status\":\"healthy\",\"service\":\"sveltehr-frontend\",\"version\":\"1.0.0\"}",
+          "normalization": "Health timestamp only",
+          "buttons": []
+        },
+        {
+          "route": "/login",
+          "status": 200,
+          "url": "/login",
+          "title": "Moncura HR",
+          "text": "Welcome back! Please sign in to your account.\n\nBackend Unavailable\nBackend is not available. Sign in will be enabled once it is running.\nEmail address\nPassword\nForgot your password?\nBackend unavailable\n\nDon't have an account? Contact HR to get started\n\n© 2026 Moncura HR. All rights reserved. prototype-build\n\nPrivacy Policy\n•\nTerms of Service\n•\nSupport",
+          "inputs": 2,
+          "errors": [],
+          "failed": [],
+          "emailInteraction": true,
+          "passwordToggle": true,
+          "buttons": [
+            "",
+            "Backend unavailable"
+          ]
+        },
+        {
+          "route": "/oauth/login",
+          "status": 400,
+          "url": "/oauth/login",
+          "title": "Something Went Wrong - Moncura HR",
+          "text": "Something Went Wrong\n\nAn unexpected error occurred. Please try again or contact support if the problem persists.\n\nError\n\nThis sign-in request has expired or is no longer valid. Please return to the application and try again.\n\nTry Again\nGo Home",
+          "inputs": 0,
+          "errors": [],
+          "failed": [],
+          "buttons": [
+            " Try Again",
+            " Go Home"
+          ]
+        },
+        {
+          "route": "/docs",
+          "status": 200,
+          "url": "/login?redirectTo=%2Fdocs",
+          "title": "Moncura HR",
+          "text": "Welcome back! Please sign in to your account.\n\nBackend Unavailable\nBackend is not available. Sign in will be enabled once it is running.\nEmail address\nPassword\nForgot your password?\nBackend unavailable\n\nDon't have an account? Contact HR to get started\n\n© 2026 Moncura HR. All rights reserved. prototype-build\n\nPrivacy Policy\n•\nTerms of Service\n•\nSupport",
+          "inputs": 2,
+          "errors": [],
+          "failed": [],
+          "emailInteraction": true,
+          "passwordToggle": true,
+          "buttons": [
+            "",
+            "Backend unavailable"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "native",
+      "routes": [
+        {
+          "route": "/health",
+          "status": 200,
+          "url": "/health",
+          "title": "",
+          "text": "{\"status\":\"healthy\",\"timestamp\":\"2026-10-11T00:27:08.033Z\",\"service\":\"sveltehr-frontend\",\"version\":\"1.0.0\"}",
+          "inputs": 0,
+          "errors": [],
+          "failed": [],
+          "comparableText": "{\"status\":\"healthy\",\"service\":\"sveltehr-frontend\",\"version\":\"1.0.0\"}",
+          "normalization": "Health timestamp only",
+          "buttons": []
+        },
+        {
+          "route": "/login",
+          "status": 200,
+          "url": "/login",
+          "title": "Moncura HR",
+          "text": "Welcome back! Please sign in to your account.\n\nBackend Unavailable\nBackend is not available. Sign in will be enabled once it is running.\nEmail address\nPassword\nForgot your password?\nBackend unavailable\n\nDon't have an account? Contact HR to get started\n\n© 2026 Moncura HR. All rights reserved. prototype-build\n\nPrivacy Policy\n•\nTerms of Service\n•\nSupport",
+          "inputs": 2,
+          "errors": [],
+          "failed": [],
+          "emailInteraction": true,
+          "passwordToggle": true,
+          "buttons": [
+            "",
+            "Backend unavailable"
+          ]
+        },
+        {
+          "route": "/oauth/login",
+          "status": 400,
+          "url": "/oauth/login",
+          "title": "Something Went Wrong - Moncura HR",
+          "text": "Something Went Wrong\n\nAn unexpected error occurred. Please try again or contact support if the problem persists.\n\nError\n\nThis sign-in request has expired or is no longer valid. Please return to the application and try again.\n\nTry Again\nGo Home",
+          "inputs": 0,
+          "errors": [],
+          "failed": [],
+          "buttons": [
+            " Try Again",
+            " Go Home"
+          ]
+        },
+        {
+          "route": "/docs",
+          "status": 200,
+          "url": "/login?redirectTo=%2Fdocs",
+          "title": "Moncura HR",
+          "text": "Welcome back! Please sign in to your account.\n\nBackend Unavailable\nBackend is not available. Sign in will be enabled once it is running.\nEmail address\nPassword\nForgot your password?\nBackend unavailable\n\nDon't have an account? Contact HR to get started\n\n© 2026 Moncura HR. All rights reserved. prototype-build\n\nPrivacy Policy\n•\nTerms of Service\n•\nSupport",
+          "inputs": 2,
+          "errors": [],
+          "failed": [],
+          "emailInteraction": true,
+          "passwordToggle": true,
+          "buttons": [
+            "",
+            "Backend unavailable"
+          ]
+        }
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "route": "/health",
+      "matched": true,
+      "officialStatus": 200,
+      "nativeStatus": 200,
+      "nativeErrors": []
+    },
+    {
+      "route": "/login",
+      "matched": true,
+      "officialStatus": 200,
+      "nativeStatus": 200,
+      "nativeErrors": [],
+      "hydratedInputInteraction": true,
+      "svelteStateToggle": true
+    },
+    {
+      "route": "/oauth/login",
+      "matched": true,
+      "officialStatus": 400,
+      "nativeStatus": 400,
+      "nativeErrors": []
+    },
+    {
+      "route": "/docs",
+      "matched": true,
+      "officialStatus": 200,
+      "nativeStatus": 200,
+      "nativeErrors": [],
+      "hydratedInputInteraction": true,
+      "svelteStateToggle": true
+    }
+  ],
+  "sourceStable": true,
+  "artifactsStable": true,
+  "passed": true
+}

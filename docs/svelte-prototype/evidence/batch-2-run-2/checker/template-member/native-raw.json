@@ -1,0 +1,58 @@
+{
+  "status": 1,
+  "signal": null,
+  "stderr": "",
+  "stdout": "{\"diagnostics\":[{\"category\":1,\"code\":2339,\"end\":253,\"endPosition\":{\"character\":57,\"line\":7},\"fileName\":\"/home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/batch-2-run-2/checker/template-member/Case.svelte.tsx\",\"original\":{\"bytes\":{\"end\":100,\"start\":86},\"range\":{\"end\":{\"character\":24,\"line\":3},\"start\":{\"character\":10,\"line\":3}},\"status\":\"mapped\",\"uri\":\"Case.svelte\",\"version\":1},\"pos\":239,\"sourceLines\":[{\"line\":7,\"text\":\" { svelteHTML.createElement(\\\"p\\\", {});count.notARealMember(); }\\n\"}],\"startPosition\":{\"character\":43,\"line\":7},\"text\":\"Property 'notARealMember' does not exist on type 'number'.\"}],\"error\":null,\"ok\":true,\"output\":\"\",\"projectionsVerified\":true,\"serializationFailures\":[],\"status\":2,\"unported\":[]}\n",
+  "response": {
+    "diagnostics": [
+      {
+        "category": 1,
+        "code": 2339,
+        "end": 253,
+        "endPosition": {
+          "character": 57,
+          "line": 7
+        },
+        "fileName": "/home/yycholla/Projects/ts-rust/docs/svelte-prototype/evidence/batch-2-run-2/checker/template-member/Case.svelte.tsx",
+        "original": {
+          "bytes": {
+            "end": 100,
+            "start": 86
+          },
+          "range": {
+            "end": {
+              "character": 24,
+              "line": 3
+            },
+            "start": {
+              "character": 10,
+              "line": 3
+            }
+          },
+          "status": "mapped",
+          "uri": "Case.svelte",
+          "version": 1
+        },
+        "pos": 239,
+        "sourceLines": [
+          {
+            "line": 7,
+            "text": " { svelteHTML.createElement(\"p\", {});count.notARealMember(); }\n"
+          }
+        ],
+        "startPosition": {
+          "character": 43,
+          "line": 7
+        },
+        "text": "Property 'notARealMember' does not exist on type 'number'."
+      }
+    ],
+    "error": null,
+    "ok": true,
+    "output": "",
+    "projectionsVerified": true,
+    "serializationFailures": [],
+    "status": 2,
+    "unported": []
+  }
+}

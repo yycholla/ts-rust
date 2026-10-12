@@ -1,0 +1,22 @@
+{
+  "command": [
+    "npm",
+    "exec",
+    "--yes",
+    "--package=pnpm@10.20.0",
+    "--",
+    "pnpm",
+    "run",
+    "build"
+  ],
+  "cwd": "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld-repro",
+  "exitCode": 0,
+  "timeout": false,
+  "timeoutSeconds": 300,
+  "wallSeconds": 5.375,
+  "log": "build.log",
+  "timeSeconds": 5.34,
+  "maxRssKiB": 553712,
+  "userSeconds": 7.2,
+  "systemSeconds": 0.62
+}

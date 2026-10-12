@@ -1,0 +1,889 @@
+{
+  "environment": "JSDOM; no real-browser verification",
+  "scope": "counter SSR/hydration matrix and explicit unsupported-client controls",
+  "props": {
+    "step": 2,
+    "label": "Count"
+  },
+  "expected": {
+    "initial": "Count: 0 / 0",
+    "afterClick": "Count: 2 / 4"
+  },
+  "compilation": [
+    {
+      "side": "oracle",
+      "target": "server",
+      "ok": true,
+      "artifact": "runtime/Counter.oracle.server.mjs",
+      "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf",
+      "diagnostics": []
+    },
+    {
+      "side": "oracle",
+      "target": "client",
+      "ok": true,
+      "artifact": "runtime/Counter.oracle.client.mjs",
+      "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680",
+      "diagnostics": [],
+      "helperAudit": {
+        "ok": true,
+        "method": "TypeScript AST; namespace properties and named imports, fail closed for unresolved accesses; does not validate helper argument ABI",
+        "namespaces": [
+          "$"
+        ],
+        "uses": [
+          {
+            "name": "from_html",
+            "start": 100,
+            "form": "namespace-property"
+          },
+          {
+            "name": "prop",
+            "start": 215,
+            "form": "namespace-property"
+          },
+          {
+            "name": "prop",
+            "start": 256,
+            "form": "namespace-property"
+          },
+          {
+            "name": "state",
+            "start": 308,
+            "form": "namespace-property"
+          },
+          {
+            "name": "derived",
+            "start": 335,
+            "form": "namespace-property"
+          },
+          {
+            "name": "get",
+            "start": 351,
+            "form": "namespace-property"
+          },
+          {
+            "name": "child",
+            "start": 404,
+            "form": "namespace-property"
+          },
+          {
+            "name": "reset",
+            "start": 423,
+            "form": "namespace-property"
+          },
+          {
+            "name": "template_effect",
+            "start": 441,
+            "form": "namespace-property"
+          },
+          {
+            "name": "set_text",
+            "start": 465,
+            "form": "namespace-property"
+          },
+          {
+            "name": "get",
+            "start": 503,
+            "form": "namespace-property"
+          },
+          {
+            "name": "get",
+            "start": 527,
+            "form": "namespace-property"
+          },
+          {
+            "name": "delegated",
+            "start": 554,
+            "form": "namespace-property"
+          },
+          {
+            "name": "set",
+            "start": 589,
+            "form": "namespace-property"
+          },
+          {
+            "name": "get",
+            "start": 602,
+            "form": "namespace-property"
+          },
+          {
+            "name": "append",
+            "start": 628,
+            "form": "namespace-property"
+          },
+          {
+            "name": "delegate",
+            "start": 659,
+            "form": "namespace-property"
+          }
+        ],
+        "missing": [],
+        "unresolved": [],
+        "parseDiagnostics": []
+      }
+    },
+    {
+      "side": "native",
+      "target": "server",
+      "ok": true,
+      "artifact": "runtime/Counter.native.server.mjs",
+      "sha256": "322fefc8767ee82d9fe3d18d8ff252e5900480a3cb3fc12a8c9a8a23310b5cdf",
+      "diagnostics": [],
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.53.11",
+        "patches": [
+          "child-reset-5.53.11",
+          "declaration-tags-5.56",
+          "select-default-5.57"
+        ],
+        "clientDevelopment": false
+      }
+    },
+    {
+      "side": "native",
+      "target": "client",
+      "ok": true,
+      "artifact": "runtime/Counter.native.client.mjs",
+      "sha256": "a0e2c6320657aff5c9499c6cd39d8924536618705645df48857638d8b7b5d680",
+      "diagnostics": [],
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.53.11",
+        "patches": [
+          "child-reset-5.53.11",
+          "declaration-tags-5.56",
+          "select-default-5.57"
+        ],
+        "clientDevelopment": false
+      },
+      "helperAudit": {
+        "ok": true,
+        "method": "TypeScript AST; namespace properties and named imports, fail closed for unresolved accesses; does not validate helper argument ABI",
+        "namespaces": [
+          "$"
+        ],
+        "uses": [
+          {
+            "name": "from_html",
+            "start": 100,
+            "form": "namespace-property"
+          },
+          {
+            "name": "prop",
+            "start": 215,
+            "form": "namespace-property"
+          },
+          {
+            "name": "prop",
+            "start": 256,
+            "form": "namespace-property"
+          },
+          {
+            "name": "state",
+            "start": 308,
+            "form": "namespace-property"
+          },
+          {
+            "name": "derived",
+            "start": 335,
+            "form": "namespace-property"
+          },
+          {
+            "name": "get",
+            "start": 351,
+            "form": "namespace-property"
+          },
+          {
+            "name": "child",
+            "start": 404,
+            "form": "namespace-property"
+          },
+          {
+            "name": "reset",
+            "start": 423,
+            "form": "namespace-property"
+          },
+          {
+            "name": "template_effect",
+            "start": 441,
+            "form": "namespace-property"
+          },
+          {
+            "name": "set_text",
+            "start": 465,
+            "form": "namespace-property"
+          },
+          {
+            "name": "get",
+            "start": 503,
+            "form": "namespace-property"
+          },
+          {
+            "name": "get",
+            "start": 527,
+            "form": "namespace-property"
+          },
+          {
+            "name": "delegated",
+            "start": 554,
+            "form": "namespace-property"
+          },
+          {
+            "name": "set",
+            "start": 589,
+            "form": "namespace-property"
+          },
+          {
+            "name": "get",
+            "start": 602,
+            "form": "namespace-property"
+          },
+          {
+            "name": "append",
+            "start": 628,
+            "form": "namespace-property"
+          },
+          {
+            "name": "delegate",
+            "start": 659,
+            "form": "namespace-property"
+          }
+        ],
+        "missing": [],
+        "unresolved": [],
+        "parseDiagnostics": []
+      }
+    }
+  ],
+  "server": {
+    "oracle": {
+      "status": 0,
+      "signal": null,
+      "stdout": "{\"ok\":true,\"warnings\":[],\"errors\":[],\"logs\":[],\"body\":\"<!--[--><button type=\\\"button\\\">Count: 0 / 0</button><!--]-->\",\"head\":\"\"}",
+      "stderr": "",
+      "response": {
+        "ok": true,
+        "warnings": [],
+        "errors": [],
+        "logs": [],
+        "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+        "head": ""
+      },
+      "complete": true
+    },
+    "native": {
+      "status": 0,
+      "signal": null,
+      "stdout": "{\"ok\":true,\"warnings\":[],\"errors\":[],\"logs\":[],\"body\":\"<!--[--><button type=\\\"button\\\">Count: 0 / 0</button><!--]-->\",\"head\":\"\"}",
+      "stderr": "",
+      "response": {
+        "ok": true,
+        "warnings": [],
+        "errors": [],
+        "logs": [],
+        "body": "<!--[--><button type=\"button\">Count: 0 / 0</button><!--]-->",
+        "head": ""
+      },
+      "complete": true
+    }
+  },
+  "hydration": [
+    {
+      "server": "oracle",
+      "client": "oracle",
+      "ok": true,
+      "process": {
+        "status": 0,
+        "signal": null,
+        "stdout": "{\"ok\":true,\"environment\":\"jsdom\",\"warnings\":[],\"errors\":[],\"logs\":[],\"serverText\":\"Count: 0 / 0\",\"reusedServerNode\":true,\"initialText\":\"Count: 0 / 0\",\"afterClickText\":\"Count: 2 / 4\",\"cleanup\":{\"buttonDisconnected\":true,\"elements\":0,\"text\":\"\",\"html\":\"\"}}",
+        "stderr": "",
+        "response": {
+          "ok": true,
+          "environment": "jsdom",
+          "warnings": [],
+          "errors": [],
+          "logs": [],
+          "serverText": "Count: 0 / 0",
+          "reusedServerNode": true,
+          "initialText": "Count: 0 / 0",
+          "afterClickText": "Count: 2 / 4",
+          "cleanup": {
+            "buttonDisconnected": true,
+            "elements": 0,
+            "text": "",
+            "html": ""
+          }
+        },
+        "complete": true
+      }
+    },
+    {
+      "server": "oracle",
+      "client": "native",
+      "ok": true,
+      "process": {
+        "status": 0,
+        "signal": null,
+        "stdout": "{\"ok\":true,\"environment\":\"jsdom\",\"warnings\":[],\"errors\":[],\"logs\":[],\"serverText\":\"Count: 0 / 0\",\"reusedServerNode\":true,\"initialText\":\"Count: 0 / 0\",\"afterClickText\":\"Count: 2 / 4\",\"cleanup\":{\"buttonDisconnected\":true,\"elements\":0,\"text\":\"\",\"html\":\"\"}}",
+        "stderr": "",
+        "response": {
+          "ok": true,
+          "environment": "jsdom",
+          "warnings": [],
+          "errors": [],
+          "logs": [],
+          "serverText": "Count: 0 / 0",
+          "reusedServerNode": true,
+          "initialText": "Count: 0 / 0",
+          "afterClickText": "Count: 2 / 4",
+          "cleanup": {
+            "buttonDisconnected": true,
+            "elements": 0,
+            "text": "",
+            "html": ""
+          }
+        },
+        "complete": true
+      }
+    },
+    {
+      "server": "native",
+      "client": "oracle",
+      "ok": true,
+      "process": {
+        "status": 0,
+        "signal": null,
+        "stdout": "{\"ok\":true,\"environment\":\"jsdom\",\"warnings\":[],\"errors\":[],\"logs\":[],\"serverText\":\"Count: 0 / 0\",\"reusedServerNode\":true,\"initialText\":\"Count: 0 / 0\",\"afterClickText\":\"Count: 2 / 4\",\"cleanup\":{\"buttonDisconnected\":true,\"elements\":0,\"text\":\"\",\"html\":\"\"}}",
+        "stderr": "",
+        "response": {
+          "ok": true,
+          "environment": "jsdom",
+          "warnings": [],
+          "errors": [],
+          "logs": [],
+          "serverText": "Count: 0 / 0",
+          "reusedServerNode": true,
+          "initialText": "Count: 0 / 0",
+          "afterClickText": "Count: 2 / 4",
+          "cleanup": {
+            "buttonDisconnected": true,
+            "elements": 0,
+            "text": "",
+            "html": ""
+          }
+        },
+        "complete": true
+      }
+    },
+    {
+      "server": "native",
+      "client": "native",
+      "ok": true,
+      "process": {
+        "status": 0,
+        "signal": null,
+        "stdout": "{\"ok\":true,\"environment\":\"jsdom\",\"warnings\":[],\"errors\":[],\"logs\":[],\"serverText\":\"Count: 0 / 0\",\"reusedServerNode\":true,\"initialText\":\"Count: 0 / 0\",\"afterClickText\":\"Count: 2 / 4\",\"cleanup\":{\"buttonDisconnected\":true,\"elements\":0,\"text\":\"\",\"html\":\"\"}}",
+        "stderr": "",
+        "response": {
+          "ok": true,
+          "environment": "jsdom",
+          "warnings": [],
+          "errors": [],
+          "logs": [],
+          "serverText": "Count: 0 / 0",
+          "reusedServerNode": true,
+          "initialText": "Count: 0 / 0",
+          "afterClickText": "Count: 2 / 4",
+          "cleanup": {
+            "buttonDisconnected": true,
+            "elements": 0,
+            "text": "",
+            "html": ""
+          }
+        },
+        "complete": true
+      }
+    }
+  ],
+  "unsupportedClientControls": [
+    {
+      "name": "development-client",
+      "filename": "Counter.svelte",
+      "sourceSha256": "c1dc099a8efd8a36febc2a11154024758a763dc5b8f045875e683fe35f4e2ad1",
+      "dev": true,
+      "expectedError": "runtime_compatibility",
+      "ok": true,
+      "oracle": {
+        "artifact": "runtime/development-client.oracle.client.mjs",
+        "sha256": "2feaa287914de7da9c586d8406617c8b4e22380fe712cc16180232c57eb95c05",
+        "diagnostics": [],
+        "helperAudit": {
+          "ok": true,
+          "method": "TypeScript AST; namespace properties and named imports, fail closed for unresolved accesses; does not validate helper argument ABI",
+          "namespaces": [
+            "$"
+          ],
+          "uses": [
+            {
+              "name": "FILENAME",
+              "start": 52,
+              "form": "namespace-property"
+            },
+            {
+              "name": "add_locations",
+              "start": 142,
+              "form": "namespace-property"
+            },
+            {
+              "name": "from_html",
+              "start": 158,
+              "form": "namespace-property"
+            },
+            {
+              "name": "FILENAME",
+              "start": 215,
+              "form": "namespace-property"
+            },
+            {
+              "name": "check_target",
+              "start": 294,
+              "form": "namespace-property"
+            },
+            {
+              "name": "push",
+              "start": 323,
+              "form": "namespace-property"
+            },
+            {
+              "name": "prop",
+              "start": 368,
+              "form": "namespace-property"
+            },
+            {
+              "name": "prop",
+              "start": 409,
+              "form": "namespace-property"
+            },
+            {
+              "name": "tag",
+              "start": 461,
+              "form": "namespace-property"
+            },
+            {
+              "name": "state",
+              "start": 467,
+              "form": "namespace-property"
+            },
+            {
+              "name": "tag",
+              "start": 504,
+              "form": "namespace-property"
+            },
+            {
+              "name": "derived",
+              "start": 510,
+              "form": "namespace-property"
+            },
+            {
+              "name": "get",
+              "start": 526,
+              "form": "namespace-property"
+            },
+            {
+              "name": "legacy_api",
+              "start": 579,
+              "form": "namespace-property"
+            },
+            {
+              "name": "child",
+              "start": 631,
+              "form": "namespace-property"
+            },
+            {
+              "name": "reset",
+              "start": 650,
+              "form": "namespace-property"
+            },
+            {
+              "name": "template_effect",
+              "start": 668,
+              "form": "namespace-property"
+            },
+            {
+              "name": "set_text",
+              "start": 692,
+              "form": "namespace-property"
+            },
+            {
+              "name": "get",
+              "start": 730,
+              "form": "namespace-property"
+            },
+            {
+              "name": "get",
+              "start": 754,
+              "form": "namespace-property"
+            },
+            {
+              "name": "delegated",
+              "start": 782,
+              "form": "namespace-property"
+            },
+            {
+              "name": "set",
+              "start": 839,
+              "form": "namespace-property"
+            },
+            {
+              "name": "get",
+              "start": 852,
+              "form": "namespace-property"
+            },
+            {
+              "name": "append",
+              "start": 883,
+              "form": "namespace-property"
+            },
+            {
+              "name": "pop",
+              "start": 920,
+              "form": "namespace-property"
+            },
+            {
+              "name": "delegate",
+              "start": 941,
+              "form": "namespace-property"
+            }
+          ],
+          "missing": [],
+          "unresolved": [],
+          "parseDiagnostics": []
+        }
+      },
+      "native": {
+        "status": 1,
+        "signal": null,
+        "stdout": "{\"ok\":false,\"error\":{\"code\":\"runtime_compatibility\",\"message\":\"Client development instrumentation requires a newer Svelte runtime; Svelte 5.53.11 is not supported in dev mode yet\"},\"compatibility\":{\"id\":\"v1:svelte=5.53.11;kit=none;ts=unspecified\",\"svelteVersion\":\"5.53.11\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}\n",
+        "stderr": "",
+        "response": {
+          "ok": false,
+          "error": {
+            "code": "runtime_compatibility",
+            "message": "Client development instrumentation requires a newer Svelte runtime; Svelte 5.53.11 is not supported in dev mode yet"
+          },
+          "compatibility": {
+            "id": "v1:svelte=5.53.11;kit=none;ts=unspecified",
+            "svelteVersion": "5.53.11",
+            "kitVersion": null,
+            "typescriptVersion": null,
+            "channel": "stable",
+            "kitConfig": null,
+            "kitLibraryAlias": null,
+            "kitEnvironmentModule": null,
+            "capabilities": {
+              "componentCompiler": "prototype",
+              "checkingProjection": "prototype",
+              "projectCheck": "explicit-input-prototype",
+              "kitGraph": false,
+              "kitBuild": false,
+              "lsp": false
+            }
+          }
+        },
+        "complete": true
+      }
+    }
+  ],
+  "runtimeExports": {
+    "path": "/home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/internal/client/index.js",
+    "sha256": "65e40aa376f26d3df7362d10d6958e93170e62569ef9c120cbf4ed8d9fbbd318",
+    "names": [
+      "CLASS",
+      "FILENAME",
+      "HMR",
+      "NAMESPACE_SVG",
+      "STYLE",
+      "aborted",
+      "action",
+      "active_effect",
+      "add_legacy_event_listener",
+      "add_locations",
+      "add_svelte_meta",
+      "animation",
+      "append",
+      "append_styles",
+      "apply",
+      "assign",
+      "assign_and",
+      "assign_nullish",
+      "assign_or",
+      "async",
+      "async_derived",
+      "attach",
+      "attachment",
+      "attr",
+      "attribute_effect",
+      "autofocus",
+      "await",
+      "bind_active_element",
+      "bind_buffered",
+      "bind_checked",
+      "bind_content_editable",
+      "bind_current_time",
+      "bind_element_size",
+      "bind_ended",
+      "bind_files",
+      "bind_focused",
+      "bind_group",
+      "bind_muted",
+      "bind_online",
+      "bind_paused",
+      "bind_playback_rate",
+      "bind_played",
+      "bind_prop",
+      "bind_property",
+      "bind_ready_state",
+      "bind_resize_observer",
+      "bind_seekable",
+      "bind_seeking",
+      "bind_select_value",
+      "bind_this",
+      "bind_value",
+      "bind_volume",
+      "bind_window_scroll",
+      "bind_window_size",
+      "boundary",
+      "bubble_event",
+      "check_target",
+      "child",
+      "cleanup_styles",
+      "clsx",
+      "comment",
+      "component",
+      "create_custom_element",
+      "create_ownership_validator",
+      "css_props",
+      "customizable_select",
+      "deep_read",
+      "deep_read_state",
+      "deferred_template_effect",
+      "delegate",
+      "delegated",
+      "derived",
+      "derived_safe_equal",
+      "document",
+      "each",
+      "eager",
+      "effect",
+      "effect_root",
+      "effect_tracking",
+      "element",
+      "equals",
+      "event",
+      "exclude_from_object",
+      "fallback",
+      "first_child",
+      "flush",
+      "for_await_track_reactivity_loss",
+      "from_html",
+      "from_mathml",
+      "from_svg",
+      "from_tree",
+      "get",
+      "head",
+      "hmr",
+      "html",
+      "hydrate_template",
+      "if",
+      "index",
+      "init",
+      "init_select",
+      "inspect",
+      "invalid_default_snippet",
+      "invalidate_inner_signals",
+      "invalidate_store",
+      "invoke_error_boundary",
+      "key",
+      "legacy_api",
+      "legacy_pre_effect",
+      "legacy_pre_effect_reset",
+      "legacy_rest_props",
+      "log_if_contains_state",
+      "mark_store_binding",
+      "mutable_source",
+      "mutate",
+      "next",
+      "noop",
+      "once",
+      "pending",
+      "pop",
+      "preventDefault",
+      "prevent_snippet_stringification",
+      "prop",
+      "props_id",
+      "proxy",
+      "push",
+      "raf",
+      "reactive_import",
+      "remove_input_defaults",
+      "remove_textarea_child",
+      "render_effect",
+      "replay_events",
+      "reset",
+      "rest_props",
+      "run",
+      "run_after_blockers",
+      "safe_get",
+      "sanitize_slots",
+      "save",
+      "select_option",
+      "selectedcontent",
+      "self",
+      "set",
+      "set_attribute",
+      "set_checked",
+      "set_class",
+      "set_custom_element_data",
+      "set_default_checked",
+      "set_default_value",
+      "set_selected",
+      "set_style",
+      "set_text",
+      "set_value",
+      "set_xlink_attribute",
+      "setup_stores",
+      "sibling",
+      "slot",
+      "snapshot",
+      "snippet",
+      "spread_props",
+      "state",
+      "stopImmediatePropagation",
+      "stopPropagation",
+      "store_get",
+      "store_mutate",
+      "store_set",
+      "store_unsub",
+      "strict_equals",
+      "tag",
+      "tag_proxy",
+      "template_effect",
+      "text",
+      "tick",
+      "to_array",
+      "trace",
+      "track_reactivity_loss",
+      "transition",
+      "trusted",
+      "untrack",
+      "update",
+      "update_legacy_props",
+      "update_pre",
+      "update_pre_prop",
+      "update_pre_store",
+      "update_prop",
+      "update_store",
+      "user_effect",
+      "user_pre_effect",
+      "validate_binding",
+      "validate_dynamic_element_tag",
+      "validate_snippet_args",
+      "validate_store",
+      "validate_void_dynamic_element",
+      "wait",
+      "window",
+      "with_script",
+      "wrap_snippet"
+    ],
+    "parseDiagnostics": [],
+    "unsupported": []
+  },
+  "helperAuditControls": {
+    "knownMissing": {
+      "ok": false,
+      "method": "TypeScript AST; namespace properties and named imports, fail closed for unresolved accesses; does not validate helper argument ABI",
+      "namespaces": [
+        "runtime"
+      ],
+      "uses": [
+        {
+          "name": "only_child",
+          "start": 51,
+          "form": "namespace-property"
+        }
+      ],
+      "missing": [
+        "only_child"
+      ],
+      "unresolved": [],
+      "parseDiagnostics": []
+    },
+    "stringOnly": {
+      "ok": true,
+      "method": "TypeScript AST; namespace properties and named imports, fail closed for unresolved accesses; does not validate helper argument ABI",
+      "namespaces": [
+        "runtime"
+      ],
+      "uses": [
+        {
+          "name": "child",
+          "start": 123,
+          "form": "namespace-property"
+        }
+      ],
+      "missing": [],
+      "unresolved": [],
+      "parseDiagnostics": []
+    },
+    "ok": true
+  },
+  "identity": {
+    "startedAt": "2026-10-10T22:57:45.384Z",
+    "node": "v24.21.0",
+    "svelte": "5.53.11",
+    "jsdom": "26.1.0",
+    "fixture": {
+      "path": "scripts/svelte/fixtures/runtime/Counter.svelte",
+      "sha256": "c1dc099a8efd8a36febc2a11154024758a763dc5b8f045875e683fe35f4e2ad1"
+    },
+    "nativeCompiler": {
+      "path": "/home/yycholla/Projects/ts-rust/target/release/svelte-tool",
+      "sha256": "aa3e97a5c560d05f5d4322a80eef1af8a1763592c9a92f883a31932acd58697a"
+    },
+    "oracleCompiler": {
+      "path": "/home/yycholla/Documents/MoncuraHR/node_modules/svelte/src/compiler/index.js",
+      "sha256": "ea18a96a9f7d594f4ddb377224dcc146b34d9e11c1015d3be585204f3a43e4b4"
+    },
+    "auditParser": {
+      "version": "5.9.3",
+      "sha256": "3ae902c92cc44dace175c0e69e13a4b0899f6983c6121d76b9ab8dd5795e7675"
+    },
+    "compileOptions": {
+      "filename": "Counter.svelte",
+      "runes": true,
+      "dev": false,
+      "css": "external"
+    }
+  },
+  "serverAgreement": true,
+  "summary": {
+    "compilations": 4,
+    "compilationFailures": 0,
+    "serverAgreement": true,
+    "hydrationCases": 4,
+    "hydrationPassed": 4,
+    "hydrationUnrun": 0,
+    "unsupportedClientControls": 1,
+    "unsupportedClientControlsPassed": 1
+  },
+  "ok": true,
+  "completedAt": "2026-10-10T22:57:49.265Z"
+}

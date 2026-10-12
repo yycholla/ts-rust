@@ -1,0 +1,23 @@
+{
+  "scope": "Native compiler diagnostics and two script rules; control compares rule hits only, not rule messages/ranges or project ESLint/oxlint/Prettier parity",
+  "controls": {
+    "matched": true,
+    "names": [
+      "eqeqeq",
+      "no-debugger"
+    ]
+  },
+  "application": {
+    "complete": true,
+    "files": 2392,
+    "counts": {
+      "eqeqeq": 68,
+      "state_referenced_locally": 8,
+      "a11y_no_static_element_interactions": 1
+    },
+    "errors": [],
+    "status": 1,
+    "elapsedMs": 2475.934589
+  },
+  "sourceStable": true
+}

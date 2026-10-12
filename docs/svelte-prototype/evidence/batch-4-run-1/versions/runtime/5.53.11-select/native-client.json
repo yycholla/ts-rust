@@ -1,0 +1,50 @@
+{
+  "status": 0,
+  "signal": null,
+  "stderr": "",
+  "response": {
+    "ok": true,
+    "result": {
+      "uri": "DefaultSelect.svelte",
+      "version": 1,
+      "javascript": {
+        "code": "import 'svelte/internal/disclose-version';\nimport * as $ from 'svelte/internal/client';\n\nvar root = $.from_html(`<select aria-label=\"Choice\"><option>First</option><option>Second</option></select>`);\n\nexport default function DefaultSelect($$anchor, $$props) {\n\tlet choice = $.prop($$props, 'choice', 3, 'second');\n\tvar select = root();\n\tvar option = $.child(select);\n\n\toption.value = option.__value = 'first';\n\n\tvar option_1 = $.sibling(option);\n\n\toption_1.value = option_1.__value = 'second';\n\t$.reset(select);\n\t$.template_effect(() => select.defaultValue = choice());\n\t$.append($$anchor, select);\n}",
+        "map": "{\"version\":3,\"sources\":[\"DefaultSelect.svelte\"],\"sourcesContent\":[\"<script lang=\\\"ts\\\">\\n  let { choice = 'second' }: { choice?: string } = $props();\\n</script>\\n<select defaultValue={choice} aria-label=\\\"Choice\\\">\\n  <option value=\\\"first\\\">First</option>\\n  <option value=\\\"second\\\">Second</option>\\n</select>\\n\"],\"names\":[],\"mappings\":\";;;;;yDAAA,CAAC;CACC,IAAI,AAAA,MAAQ,GAAG,EADF,IACf,CAAC,OAAO,EAAE,QAAQ,EAAE,CAAC,EAAJ,QAAQ,CAAkC;KAE1D,MAAM;KACJ,MAAM,WADR,MAAM;;CACJ,MAAM,SAAN,MAAM;;KACN,QAAM,aADN,MAAM;;CACN,QAAM,SAAN,QAAM;SAFR,MAAM;yBAAN,MAAM,gBAAe,MAAM;CAA5B,mBAAC,MAAM,CAGE;AAJD,CAAC\"}"
+      },
+      "css": null,
+      "diagnostics": [],
+      "runes": true,
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.53.11",
+        "patches": [
+          "child-reset-5.53.11",
+          "declaration-tags-5.56",
+          "select-default-5.57"
+        ],
+        "clientDevelopment": false
+      },
+      "compatibility": {
+        "id": "v1:svelte=5.53.11;kit=none;ts=unspecified",
+        "svelteVersion": "5.53.11",
+        "kitVersion": null,
+        "typescriptVersion": null,
+        "channel": "stable",
+        "kitConfig": null,
+        "kitLibraryAlias": null,
+        "kitEnvironmentModule": null,
+        "capabilities": {
+          "componentCompiler": "prototype",
+          "checkingProjection": "prototype",
+          "projectCheck": "explicit-input-prototype",
+          "kitGraph": false,
+          "kitBuild": false,
+          "lsp": false
+        }
+      }
+    }
+  }
+}

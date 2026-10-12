@@ -1,0 +1,15 @@
+{
+  "acceptedSourceFingerprint": "af2ce5d3e5536af9c882d025f0a7d8600b009a1e17fdbf4a0ec5369fc7e08dd5",
+  "acceptedManifestFilesChanged": [],
+  "harness": {
+    "scripts/svelte/public-projects.py": "da8f536a3629140b5ac7610f13a5c0c04c443dd81a75c7299c48918eb93c0686"
+  },
+  "binaries": {
+    "svelte-ts-check": "f215c68765142ffac4a239f1295b26f0ca042c40d95a55d2341a7a94f211ad34",
+    "svelte-project": "402d613b071f678d44aeea65197e397924be5f783874faf0bcceb7a63d9a9f66",
+    "svelte-source": "f22582e01b52cd8561238d06844acf1ac6ced552f633f199cca88e69251cb109",
+    "svelte-tool": "8f1f87a97768e5863254090c0582cd8e2d58cdff891bff5fc771cf7f409bc3b8"
+  },
+  "node": "v24.21.0",
+  "timingScope": "Single operational sample; GNU time max RSS is largest child high-water mark, not process-tree total; no speedup claim."
+}

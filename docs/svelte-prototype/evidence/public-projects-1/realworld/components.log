@@ -1,0 +1,29 @@
+{
+  "files": 24,
+  "cases": 48,
+  "projectComparison": {
+    "match": 0,
+    "difference": 0,
+    "harnessFailure": 0,
+    "unrun": 48
+  },
+  "supportedComparison": {
+    "match": 48,
+    "difference": 0,
+    "harnessFailure": 0,
+    "unrun": 0
+  },
+  "official": {
+    "success": 0,
+    "errors": 0
+  },
+  "supported": {
+    "success": 48,
+    "errors": 0
+  },
+  "native": {
+    "success": 48,
+    "errors": 0
+  }
+}
+

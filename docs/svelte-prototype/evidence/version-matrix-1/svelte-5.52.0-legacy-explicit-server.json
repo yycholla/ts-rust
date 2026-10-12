@@ -1,0 +1,409 @@
+{
+  "source": "<script>export let name = 'world'; $: greeting = `Hello ${name}`;</script>\n<p>{greeting}</p>\n",
+  "settings": {
+    "filename": "legacy-inferred.svelte",
+    "generate": "server",
+    "css": "external",
+    "dev": false,
+    "runes": false
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "legacy-inferred.svelte",
+        "version": 1,
+        "text": "<script>export let name = 'world'; $: greeting = `Hello ${name}`;</script>\n<p>{greeting}</p>\n"
+      },
+      "target": "server",
+      "dev": false,
+      "runes": false,
+      "compatibility": {
+        "svelteVersion": "5.52.0"
+      }
+    },
+    "exit": 0,
+    "signal": null,
+    "stdout": "{\"ok\":true,\"result\":{\"uri\":\"legacy-inferred.svelte\",\"version\":1,\"javascript\":{\"code\":\"import * as $ from 'svelte/internal/server';\\n\\nexport default function Legacy_inferred($$renderer, $$props) {\\n\\tlet greeting;\\n\\tlet name = $.fallback($$props['name'], 'world');\\n\\n\\t$: greeting = `Hello ${name}`;\\n\\n\\t$$renderer.push(`<p>${$.escape(greeting)}</p>`);\\n\\t$.bind_props($$props, { name });\\n}\",\"map\":\"{\\\"version\\\":3,\\\"sources\\\":[\\\"legacy-inferred.svelte\\\"],\\\"sourcesContent\\\":[\\\"<script>export let name = 'world'; $: greeting = `Hello ${name}`;</script>\\\\n<p>{greeting}</p>\\\\n\\\"],\\\"names\\\":[],\\\"mappings\\\":\\\";;6DAAA,CAAC;CAAc,IAAI,AAAmB,QAAQ;CAA/B,CAAC,CAAC,CAAC,CAAC,AAAA,CAAC,CAAC,CAAC,CAAC,AAAA,CAAC,CAAC,CAAC,4BAAA,OAAO;;IAC7B,QAAQ,YAD8C,IAAI;;;;AAAW,CAAC\\\"}\"},\"css\":null,\"diagnostics\":[],\"runes\":false,\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.52.0\",\"patches\":[\"child-reset-5.53.11\"],\"clientDevelopment\":false},\"compatibility\":{\"id\":\"v1:svelte=5.52.0;kit=none;ts=unspecified\",\"svelteVersion\":\"5.52.0\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": true,
+      "result": {
+        "uri": "legacy-inferred.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import * as $ from 'svelte/internal/server';\n\nexport default function Legacy_inferred($$renderer, $$props) {\n\tlet greeting;\n\tlet name = $.fallback($$props['name'], 'world');\n\n\t$: greeting = `Hello ${name}`;\n\n\t$$renderer.push(`<p>${$.escape(greeting)}</p>`);\n\t$.bind_props($$props, { name });\n}",
+          "map": "{\"version\":3,\"sources\":[\"legacy-inferred.svelte\"],\"sourcesContent\":[\"<script>export let name = 'world'; $: greeting = `Hello ${name}`;</script>\\n<p>{greeting}</p>\\n\"],\"names\":[],\"mappings\":\";;6DAAA,CAAC;CAAc,IAAI,AAAmB,QAAQ;CAA/B,CAAC,CAAC,CAAC,CAAC,AAAA,CAAC,CAAC,CAAC,CAAC,AAAA,CAAC,CAAC,CAAC,4BAAA,OAAO;;IAC7B,QAAQ,YAD8C,IAAI;;;;AAAW,CAAC\"}"
+        },
+        "css": null,
+        "diagnostics": [],
+        "runes": false,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.52.0",
+          "patches": [
+            "child-reset-5.53.11"
+          ],
+          "clientDevelopment": false
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.52.0;kit=none;ts=unspecified",
+          "svelteVersion": "5.52.0",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": true,
+    "artifact": {
+      "js": {
+        "code": "import * as $ from 'svelte/internal/server';\n\nexport default function Legacy_inferred($$renderer, $$props) {\n\tlet greeting;\n\tlet name = $.fallback($$props['name'], 'world');\n\n\t$: greeting = `Hello ${name}`;\n\n\t$$renderer.push(`<p>${$.escape(greeting)}</p>`);\n\t$.bind_props($$props, { name });\n}",
+        "map": {
+          "version": 3,
+          "names": [],
+          "sources": [
+            "legacy-inferred.svelte"
+          ],
+          "sourcesContent": [
+            "<script>export let name = 'world'; $: greeting = `Hello ${name}`;</script>\n<p>{greeting}</p>\n"
+          ],
+          "mappings": ";;6DAAA,CAAC;KAAqC,QAAQ;CAA/B,GAAG,CAAC,IAAI,+BAAG,OAAO,EAAC;;IAAI,QAAQ,GAAG,SAAS,IAAI,EAAE,CAAC;;gCAC7D,QAAQ;;AAD6D,CAAC"
+        }
+      },
+      "css": null,
+      "warnings": [],
+      "metadata": {
+        "runes": false
+      },
+      "ast": {
+        "html": {
+          "type": "Fragment",
+          "start": 75,
+          "end": 92,
+          "children": [
+            {
+              "type": "Text",
+              "start": 74,
+              "end": 75,
+              "raw": "\n",
+              "data": "\n"
+            },
+            {
+              "type": "Element",
+              "start": 75,
+              "end": 92,
+              "name": "p",
+              "attributes": [],
+              "children": [
+                {
+                  "type": "MustacheTag",
+                  "start": 78,
+                  "end": 88,
+                  "expression": {
+                    "type": "Identifier",
+                    "start": 79,
+                    "end": 87,
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 12
+                      }
+                    },
+                    "name": "greeting"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "instance": {
+          "type": "Script",
+          "start": 0,
+          "end": 74,
+          "context": "default",
+          "content": {
+            "type": "Program",
+            "start": 8,
+            "end": 65,
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 74
+              }
+            },
+            "body": [
+              {
+                "type": "ExportNamedDeclaration",
+                "start": 8,
+                "end": 34,
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 8
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 34
+                  }
+                },
+                "declaration": {
+                  "type": "VariableDeclaration",
+                  "start": 15,
+                  "end": 34,
+                  "loc": {
+                    "start": {
+                      "line": 1,
+                      "column": 15
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 34
+                    }
+                  },
+                  "declarations": [
+                    {
+                      "type": "VariableDeclarator",
+                      "start": 19,
+                      "end": 33,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 19
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 33
+                        }
+                      },
+                      "id": {
+                        "type": "Identifier",
+                        "start": 19,
+                        "end": 23,
+                        "loc": {
+                          "start": {
+                            "line": 1,
+                            "column": 19
+                          },
+                          "end": {
+                            "line": 1,
+                            "column": 23
+                          }
+                        },
+                        "name": "name"
+                      },
+                      "init": {
+                        "type": "Literal",
+                        "start": 26,
+                        "end": 33,
+                        "loc": {
+                          "start": {
+                            "line": 1,
+                            "column": 26
+                          },
+                          "end": {
+                            "line": 1,
+                            "column": 33
+                          }
+                        },
+                        "value": "world",
+                        "raw": "'world'"
+                      }
+                    }
+                  ],
+                  "kind": "let"
+                },
+                "specifiers": [],
+                "source": null,
+                "attributes": []
+              },
+              {
+                "type": "LabeledStatement",
+                "start": 35,
+                "end": 65,
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 35
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 65
+                  }
+                },
+                "body": {
+                  "type": "ExpressionStatement",
+                  "start": 38,
+                  "end": 65,
+                  "loc": {
+                    "start": {
+                      "line": 1,
+                      "column": 38
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 65
+                    }
+                  },
+                  "expression": {
+                    "type": "AssignmentExpression",
+                    "start": 38,
+                    "end": 64,
+                    "loc": {
+                      "start": {
+                        "line": 1,
+                        "column": 38
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 64
+                      }
+                    },
+                    "operator": "=",
+                    "left": {
+                      "type": "Identifier",
+                      "start": 38,
+                      "end": 46,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 38
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 46
+                        }
+                      },
+                      "name": "greeting"
+                    },
+                    "right": {
+                      "type": "TemplateLiteral",
+                      "start": 49,
+                      "end": 64,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 49
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 64
+                        }
+                      },
+                      "expressions": [
+                        {
+                          "type": "Identifier",
+                          "start": 58,
+                          "end": 62,
+                          "loc": {
+                            "start": {
+                              "line": 1,
+                              "column": 58
+                            },
+                            "end": {
+                              "line": 1,
+                              "column": 62
+                            }
+                          },
+                          "name": "name"
+                        }
+                      ],
+                      "quasis": [
+                        {
+                          "type": "TemplateElement",
+                          "start": 50,
+                          "end": 56,
+                          "loc": {
+                            "start": {
+                              "line": 1,
+                              "column": 50
+                            },
+                            "end": {
+                              "line": 1,
+                              "column": 56
+                            }
+                          },
+                          "value": {
+                            "raw": "Hello ",
+                            "cooked": "Hello "
+                          },
+                          "tail": false
+                        },
+                        {
+                          "type": "TemplateElement",
+                          "start": 63,
+                          "end": 63,
+                          "loc": {
+                            "start": {
+                              "line": 1,
+                              "column": 63
+                            },
+                            "end": {
+                              "line": 1,
+                              "column": 63
+                            }
+                          },
+                          "value": {
+                            "raw": "",
+                            "cooked": ""
+                          },
+                          "tail": true
+                        }
+                      ]
+                    }
+                  }
+                },
+                "label": {
+                  "type": "Identifier",
+                  "start": 35,
+                  "end": 36,
+                  "loc": {
+                    "start": {
+                      "line": 1,
+                      "column": 35
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 36
+                    }
+                  },
+                  "name": "$"
+                }
+              }
+            ],
+            "sourceType": "module"
+          }
+        }
+      }
+    },
+    "comparable": {
+      "ok": true,
+      "runes": false,
+      "diagnostics": []
+    }
+  }
+}

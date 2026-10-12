@@ -1,0 +1,12 @@
+Loading svelte-check in workspace: /home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld-repro
+Getting Svelte diagnostics...
+
+/home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld-repro/src/routes/editor/Editor.svelte:9:23
+Warn: This reference only captures the initial value of `article`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally (svelte)
+
+	let tagList = $state(article.tagList);
+</script>
+
+====================================
+svelte-check found 0 errors and 1 warning in 1 file

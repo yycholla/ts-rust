@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "batch": "svelte-foundation-1",
+  "status": "accepted-foundation-only",
+  "sourceFingerprint": "58bb49c148e3efe26f0df1a3cbf74f3f9b005287394f282840cb5615d30f0c4d",
+  "baseCommit": "8c224ef35077254e75c9ff6cf7a4a54a14394b86",
+  "scope": [
+    "immutable source documents",
+    "UTF-8/UTF-16 coordinates",
+    "sequential transactional edits",
+    "copied-span mappings",
+    "native CLI",
+    "import-free WASM",
+    "JavaScript/TypeScript interface"
+  ],
+  "evidence": "docs/svelte-prototype/evidence/batch-1-run-2",
+  "runs": [
+    "docs/svelte-prototype/evidence/batch-1-run-1",
+    "docs/svelte-prototype/evidence/batch-1-run-2"
+  ],
+  "tests": {
+    "rust": {
+      "passed": 21,
+      "failed": 0
+    },
+    "javascript": {
+      "passed": 38,
+      "failed": 0
+    }
+  },
+  "comparisonWithEarlierMeasuredAttempt": {
+    "rust": {
+      "retained": 21,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    },
+    "javascript": {
+      "retained": 7,
+      "recovered": 31,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    },
+    "reason": "Earlier JS harness passed a URL to spawnSync; invocation corrected with fileURLToPath. Assertions unchanged. Earlier attempt was not accepted."
+  },
+  "quality": {
+    "format": "pass",
+    "clippy": "pass; no warnings; Rust 1.96.1, both crates all native targets including WASM ABI via cfg(test)",
+    "typescriptDeclarations": "pass: MoncuraHR installed TypeScript tsc --noEmit --strict --target ES2022 --module NodeNext --lib ES2022,DOM npm/svelte/index.d.ts; no project config executed"
+  },
+  "verdicts": [
+    {
+      "role": "independentReviewer",
+      "agent": "/root/svelte_reviewer",
+      "verdict": "PASS",
+      "scope": "source foundation only",
+      "sourceFingerprint": "58bb49c148e3efe26f0df1a3cbf74f3f9b005287394f282840cb5615d30f0c4d",
+      "findings": "Fixed-width wire coordinates and bounded requests close both review blockers. No Svelte or performance claim."
+    },
+    {
+      "role": "regressionAuditor",
+      "agent": "/root/svelte_auditor",
+      "verdict": "PASS",
+      "scope": "source foundation only",
+      "sourceFingerprint": "58bb49c148e3efe26f0df1a3cbf74f3f9b005287394f282840cb5615d30f0c4d",
+      "findings": "Source/binary hashes verified, 21 Rust and 38 JS tests pass; current.json unchanged; history append-only; existing TypeScript source and dependency versions unchanged."
+    }
+  ],
+  "exploratoryAttempts": [
+    {
+      "source": "unbound earlier draft",
+      "result": "19 Rust tests passed, 1 failed: malformed_protocol_requests_are_structured_errors. Serde unit variant accepted an unknown field. Repaired by an empty struct variant; full test now passes. This exploratory result is not evidence for the accepted source."
+    },
+    {
+      "source": "environment setup",
+      "result": "Default rustc launcher failed. Initial capped runner could not access systemd bus in sandbox. Escalated capped runs used installed Nix toolchains; missing cc and lld resolved by selecting installed binaries. No cap removed."
+    }
+  ],
+  "unrun": [
+    "upstream protected test suite",
+    "upstream gates and oracles",
+    "Query",
+    "Hono",
+    "MoncuraHR checking and compilation",
+    "real-browser execution",
+    "performance comparisons"
+  ],
+  "absentHistoricalEvidence": "Inherited R188 artifacts are absent locally and were not reconstructed.",
+  "remaining": [
+    "Svelte parsing and analysis",
+    "checking projection and ts-rust integration",
+    "SvelteKit project/type generation",
+    "LSP integration",
+    "client/server JS and CSS compilation",
+    "MoncuraHR build pipeline and parity",
+    "native/WASM performance measurements"
+  ],
+  "nextAction": "Evaluate reusable native Rust Svelte parser/compiler/projection implementation before implementing a handwritten parser.",
+  "research": "docs/svelte-prototype/rsvelte-evaluation.json"
+}

@@ -1,0 +1,11 @@
+✔ Kit host resolves relative trace paths and loads adapters from paths with spaces (58.429477ms)
+✔ persistent native and WASM sessions agree on lint, edits, rejection and cleanup (204.685187ms)
+✔ WASM tooling workers own separate sessions (150.01175ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 522.083063

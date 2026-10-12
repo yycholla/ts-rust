@@ -1,0 +1,232 @@
+{
+  "tests": [
+    {
+      "name": "missing diagnostics",
+      "status": "pass",
+      "elapsedMs": 39,
+      "history": [
+        {
+          "jsonrpc": "2.0",
+          "id": 1,
+          "result": {
+            "capabilities": {
+              "positionEncoding": "utf-16",
+              "textDocumentSync": {
+                "openClose": true,
+                "change": 2,
+                "save": {
+                  "includeText": false
+                }
+              },
+              "diagnosticProvider": {
+                "identifier": "ts-rust-svelte",
+                "interFileDependencies": true,
+                "workspaceDiagnostics": false
+              }
+            },
+            "serverInfo": {
+              "name": "ts-rust-svelte",
+              "version": "0.1.0"
+            }
+          }
+        },
+        {
+          "jsonrpc": "2.0",
+          "method": "textDocument/publishDiagnostics",
+          "params": {
+            "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/lsp-failure/project/A.svelte",
+            "diagnostics": [
+              {
+                "range": {
+                  "start": {
+                    "line": 0,
+                    "character": 0
+                  },
+                  "end": {
+                    "line": 0,
+                    "character": 0
+                  }
+                },
+                "severity": 1,
+                "code": "incomplete_project_check",
+                "source": "ts-rust-svelte",
+                "message": "Checker response missing diagnostics",
+                "data": {
+                  "unmapped": true
+                }
+              }
+            ],
+            "version": 1
+          }
+        },
+        {
+          "jsonrpc": "2.0",
+          "id": 2,
+          "result": {
+            "documents": 1,
+            "sourceBytes": 11,
+            "cachedDiagnostics": 1,
+            "typeChecking": false
+          }
+        },
+        {
+          "jsonrpc": "2.0",
+          "id": 3,
+          "result": null
+        }
+      ]
+    },
+    {
+      "name": "invalid exit",
+      "status": "pass",
+      "elapsedMs": 35,
+      "history": [
+        {
+          "jsonrpc": "2.0",
+          "id": 1,
+          "result": {
+            "capabilities": {
+              "positionEncoding": "utf-16",
+              "textDocumentSync": {
+                "openClose": true,
+                "change": 2,
+                "save": {
+                  "includeText": false
+                }
+              },
+              "diagnosticProvider": {
+                "identifier": "ts-rust-svelte",
+                "interFileDependencies": true,
+                "workspaceDiagnostics": false
+              }
+            },
+            "serverInfo": {
+              "name": "ts-rust-svelte",
+              "version": "0.1.0"
+            }
+          }
+        },
+        {
+          "jsonrpc": "2.0",
+          "method": "textDocument/publishDiagnostics",
+          "params": {
+            "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/lsp-failure/project/A.svelte",
+            "diagnostics": [
+              {
+                "range": {
+                  "start": {
+                    "line": 0,
+                    "character": 0
+                  },
+                  "end": {
+                    "line": 0,
+                    "character": 0
+                  }
+                },
+                "severity": 1,
+                "code": "incomplete_project_check",
+                "source": "ts-rust-svelte",
+                "message": "Invalid checker exit status: exit status: 42",
+                "data": {
+                  "unmapped": true
+                }
+              }
+            ],
+            "version": 1
+          }
+        },
+        {
+          "jsonrpc": "2.0",
+          "id": 2,
+          "result": {
+            "documents": 1,
+            "sourceBytes": 11,
+            "cachedDiagnostics": 1,
+            "typeChecking": false
+          }
+        },
+        {
+          "jsonrpc": "2.0",
+          "id": 3,
+          "result": null
+        }
+      ]
+    },
+    {
+      "name": "timeout",
+      "status": "pass",
+      "elapsedMs": 30013,
+      "history": [
+        {
+          "jsonrpc": "2.0",
+          "id": 1,
+          "result": {
+            "capabilities": {
+              "positionEncoding": "utf-16",
+              "textDocumentSync": {
+                "openClose": true,
+                "change": 2,
+                "save": {
+                  "includeText": false
+                }
+              },
+              "diagnosticProvider": {
+                "identifier": "ts-rust-svelte",
+                "interFileDependencies": true,
+                "workspaceDiagnostics": false
+              }
+            },
+            "serverInfo": {
+              "name": "ts-rust-svelte",
+              "version": "0.1.0"
+            }
+          }
+        },
+        {
+          "jsonrpc": "2.0",
+          "method": "textDocument/publishDiagnostics",
+          "params": {
+            "uri": "file:///home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/lsp-failure/project/A.svelte",
+            "diagnostics": [
+              {
+                "range": {
+                  "start": {
+                    "line": 0,
+                    "character": 0
+                  },
+                  "end": {
+                    "line": 0,
+                    "character": 0
+                  }
+                },
+                "severity": 1,
+                "code": "incomplete_project_check",
+                "source": "ts-rust-svelte",
+                "message": "Project check exceeded 30 seconds",
+                "data": {
+                  "unmapped": true
+                }
+              }
+            ],
+            "version": 1
+          }
+        },
+        {
+          "jsonrpc": "2.0",
+          "id": 2,
+          "result": {
+            "documents": 1,
+            "sourceBytes": 11,
+            "cachedDiagnostics": 1,
+            "typeChecking": false
+          }
+        },
+        {
+          "jsonrpc": "2.0",
+          "id": 3,
+          "result": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+
+> bits-ui@2.19.5 build /home/yycholla/Projects/ts-rust/target/svelte-public-projects/bits-ui/packages/bits-ui
+> pnpm package
+
+
+> bits-ui@2.19.5 package /home/yycholla/Projects/ts-rust/target/svelte-public-projects/bits-ui/packages/bits-ui
+> svelte-kit sync && svelte-package && publint
+
+src/lib -> dist
+bits-ui lint results:
+All good!

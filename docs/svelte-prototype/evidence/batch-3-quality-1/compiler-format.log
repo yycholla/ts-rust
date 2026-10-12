@@ -1,0 +1,41 @@
+Diff in /home/yycholla/Projects/ts-rust/crates/ts_svelte_compiler/tests/compiler.rs:147:
+ fn selected_profile_follows_success_and_failure_without_leaking() {
+     for version in ts_svelte::compatibility::SVELTE_VERSIONS {
+         for source in ["<p>valid</p>", "<script><script>"] {
+-            let response = request("compile", source, json!({"target":"server","compatibility":{"svelteVersion":version}}));
+-            let body = if response["ok"] == true { &response["result"] } else { &response };
++            let response = request(
++                "compile",
++                source,
++                json!({"target":"server","compatibility":{"svelteVersion":version}}),
++            );
++            let body = if response["ok"] == true {
++                &response["result"]
++            } else {
++                &response
++            };
+             assert_eq!(body["compatibility"]["svelteVersion"], *version);
+         }
+     }
+Diff in /home/yycholla/Projects/ts-rust/crates/ts_svelte_compiler/tests/compiler.rs:155:
+     let response = request("compile", "<p>default</p>", json!({"target":"server"}));
+-    assert_eq!(response["result"]["compatibility"]["svelteVersion"], "5.53.11");
++    assert_eq!(
++        response["result"]["compatibility"]["svelteVersion"],
++        "5.53.11"
++    );
+ }
+ 
+ #[test]
+Diff in /home/yycholla/Projects/ts-rust/crates/ts_svelte_compiler/tests/compiler.rs:160:
+ fn unknown_version_is_not_silently_compiled_with_the_default() {
+     for op in ["compile", "project"] {
+-        let options = if op == "compile" {json!({"target":"server","compatibility":{"svelteVersion":"latest"}})} else {json!({"typescript":true,"compatibility":{"svelteVersion":"latest"}})};
++        let options = if op == "compile" {
++            json!({"target":"server","compatibility":{"svelteVersion":"latest"}})
++        } else {
++            json!({"typescript":true,"compatibility":{"svelteVersion":"latest"}})
++        };
+         let response = request(op, "<p>valid</p>", options);
+         assert_eq!(response["ok"], false);
+         assert_eq!(response["error"]["code"], "unsupported_version");

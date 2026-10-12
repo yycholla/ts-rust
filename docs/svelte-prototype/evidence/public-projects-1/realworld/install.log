@@ -1,0 +1,9 @@
+ ERR_PNPM_BROKEN_LOCKFILE  The lockfile at "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld/pnpm-lock.yaml" is broken: duplicated mapping key (656:3)
+
+ 653 |   devalue@5.8.1:
+ 654 |     resolution: {integrity: sha51 ...
+ 655 | 
+ 656 |   devalue@5.8.1:
+---------^
+ 657 |     resolution: {integrity: sha51 ...
+ 658 | 

@@ -1,0 +1,1477 @@
+{
+  "scope": "Raw component compile diagnostics, no project build/check/lint or runtime equivalence",
+  "project": "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld",
+  "projectVersion": null,
+  "supportedVersion": "5.53.11",
+  "options": {
+    "dev": false,
+    "css": "external",
+    "runes": true
+  },
+  "runtimeGuard": "Native emitted client helpers are guarded for 5.53.11 even when comparing another compiler version",
+  "timing": "Oracle milliseconds exclude process startup; native milliseconds include one process per component. Not comparable performance.",
+  "files": [
+    {
+      "file": "src/lib/ArticleList/ArticlePreview.svelte",
+      "sha256": "1ca40f32d4c256ac1f931a767ae5b98485a7b5b5eaad7709ba1bb62ce0ab6a78"
+    },
+    {
+      "file": "src/lib/ArticleList/index.svelte",
+      "sha256": "1da765ffe5cd23cb5c03234d49baae2ba9a16a8f828e84aa95a93c31845dae6a"
+    },
+    {
+      "file": "src/lib/ListErrors.svelte",
+      "sha256": "7fa4653b61637fa7d629a433833f8701b67da7070d8689d5d9cd8edb4ef53419"
+    },
+    {
+      "file": "src/routes/+error.svelte",
+      "sha256": "560c1e7d5bcda9e40c9cc31909f7d03e44da5f93f60a3f027825eca685cc7a53"
+    },
+    {
+      "file": "src/routes/+layout.svelte",
+      "sha256": "16838af1653b17fce85547603273f012181d38c914b43147408b5e3b4e5bf4fe"
+    },
+    {
+      "file": "src/routes/+page.svelte",
+      "sha256": "d0a1108f28b3d69fb2851b70a6fc4d0a435b8156863f21e4c62b76c0566e006d"
+    },
+    {
+      "file": "src/routes/article/[slug]/+page.svelte",
+      "sha256": "f5951f917466d96644d58b7d87514d66ab6d8791c8a6f877ffc0f82829bc714d"
+    },
+    {
+      "file": "src/routes/article/[slug]/ArticleMeta.svelte",
+      "sha256": "184a5af5179457b644215f1c7d8878b15bfc98c97f7f548e7a791a52a3b05368"
+    },
+    {
+      "file": "src/routes/article/[slug]/Comment.svelte",
+      "sha256": "753babb3f8e6207b9159cbec14b9917027d4e9b5eb7c2efbcdfa3aefaad532e9"
+    },
+    {
+      "file": "src/routes/article/[slug]/CommentContainer.svelte",
+      "sha256": "55d2f1aec0ddaaba023e96696f7cb6250ab6f6d41171a417b9873922d0a6872d"
+    },
+    {
+      "file": "src/routes/article/[slug]/CommentInput.svelte",
+      "sha256": "98d3517b6a53982d5407ac1c5cb57a253352eaec0f7476d78d565eaf8b8b019d"
+    },
+    {
+      "file": "src/routes/editor/[slug]/+page.svelte",
+      "sha256": "019d7c9815c4dd7b200c520133c8176b1931cd1d136f38a9c456538733bf53ee"
+    },
+    {
+      "file": "src/routes/editor/+page.svelte",
+      "sha256": "e206f1412c76e255cce7b5ddf0cd6fbfb775dfc755d2b4e2b4d64560815b4199"
+    },
+    {
+      "file": "src/routes/editor/Editor.svelte",
+      "sha256": "14baa346ae744af8e1a153aab8abbe33b729f8d3bc5009b1ab20fc614050a995"
+    },
+    {
+      "file": "src/routes/login/+page.svelte",
+      "sha256": "c6a9f4a9bf2466be39c29497afdebc959050f15a4b5bbd1c4d8d35988f72487b"
+    },
+    {
+      "file": "src/routes/Nav.svelte",
+      "sha256": "928c4a4cd13c9ac2169dce4bda7d84317c7be88ae3823a38afc957f70bf2946e"
+    },
+    {
+      "file": "src/routes/Pagination.svelte",
+      "sha256": "b096cc4b5b6c55ee9cbaab34fdd403ef5aad59d767bf4e1927d243dc214c1f7c"
+    },
+    {
+      "file": "src/routes/PreloadingIndicator.svelte",
+      "sha256": "3de89f48a005a7d8f8b4cb7090b74fa441748a85586e6efc91ac14c8dafba002"
+    },
+    {
+      "file": "src/routes/profile/@[user]/+layout.svelte",
+      "sha256": "8b0b3026fb0aacf03d7d4c1bb3b1d7a43b555963ca145efce7fa2dfefa71f27c"
+    },
+    {
+      "file": "src/routes/profile/@[user]/+page.svelte",
+      "sha256": "1fcd32e8116bcaa784d721c57c8d141b02d827654f44ef2ca141cfa35de0055a"
+    },
+    {
+      "file": "src/routes/profile/@[user]/favorites/+page.svelte",
+      "sha256": "1fcd32e8116bcaa784d721c57c8d141b02d827654f44ef2ca141cfa35de0055a"
+    },
+    {
+      "file": "src/routes/profile/+page.svelte",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "src/routes/register/+page.svelte",
+      "sha256": "1055e0274756f3a92abe7115926688da818db78d636604c1499661a29775e9a8"
+    },
+    {
+      "file": "src/routes/settings/+page.svelte",
+      "sha256": "29d23c78b89bfd4a98f84404e20db14c9716edf5198d8927fb9674d84b8af01c"
+    }
+  ],
+  "cases": [
+    {
+      "file": "src/lib/ArticleList/ArticlePreview.svelte",
+      "target": "client",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "82caac2fbadf27bd943f42f1e81660185c1d81991a7490b87219e1eb7a1a09fc",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 58.21229299999999
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 7.8300160000000005,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "4ca78cc2796d7c2a10c7a68eb4719d66de856efcb839bdb4b5b4d28f6176407d",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/lib/ArticleList/ArticlePreview.svelte",
+      "target": "server",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "e365b3fa00d776f717d3ea4e15b8f49041b18a9828de2167cc9f28d625cb68cf",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 11.142073000000039
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 5.18036699999999,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "c794e3cc130f14876a772998d44d03281b964b25a15846477153cff25b399ca6",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/lib/ArticleList/index.svelte",
+      "target": "client",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "a36cf45c61b8ca541767c2d8be66a7e933f082f66f646dfe55ef73f9af76bcf6",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 5.603048000000001
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 4.934328999999991,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "d6da79f90c1e5dcf9fac7eb8c269c8e68f14ea0424ec0b365d58f0f290c1f15c",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/lib/ArticleList/index.svelte",
+      "target": "server",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "4f033e360c2fe2f204ee97016e4fd4e29d3b6904e76095ffce757c66cf04dd3c",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 3.3301640000000248
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 4.686251000000027,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "9d1b2971c6f7085739a7a1ef658902e54346fefc557613237f4e4091f3fa27b5",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/lib/ListErrors.svelte",
+      "target": "client",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "8e9c689ae3de5f5936189bdd75378a88adcdce155837f6ce742ec32b4d4f6ff7",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 2.407452000000035
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 4.826825999999983,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "dc0c55e2db3ebcb7a2589f37d14353b7c7c07cb953e72785d0292383fbb06112",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/lib/ListErrors.svelte",
+      "target": "server",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "946ceba6e67823eb5d90c6c1ec37c187517a7e90b7e30708c879526b9db71196",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 2.260910000000024
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 4.605170999999984,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "a97b2a025d5e719912f5c03f148600bfe9b1382837a151dca130f1693a1c20ca",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/+error.svelte",
+      "target": "client",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "c7f3142085fa96b62e5b85166c5d325edd2f14b1c13b625f5602b5d1d1efcef5",
+        "cssSha256": "f0a58ba62fcbd51d093dd12a52ff495e82711e3bb3bf969559dd00e941e9d04a",
+        "milliseconds": 10.501858000000027
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 4.917346000000009,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "de2f4d2bcd4dd53a697c7b165225957c4e9a336613f8d6f852f9b37f4e1a5976",
+        "cssSha256": "f0a58ba62fcbd51d093dd12a52ff495e82711e3bb3bf969559dd00e941e9d04a"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/+error.svelte",
+      "target": "server",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "cfa20a1a3f6d72f4a86f7a1b89dc7a5ac9656db1cee5a12490a495947485383f",
+        "cssSha256": "f0a58ba62fcbd51d093dd12a52ff495e82711e3bb3bf969559dd00e941e9d04a",
+        "milliseconds": 2.9890379999999936
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 4.7161780000000135,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "4b1e588ac557b2d73e49e6e59c38fd448fa89f294d3b2fb35654bc086ede5b57",
+        "cssSha256": "f0a58ba62fcbd51d093dd12a52ff495e82711e3bb3bf969559dd00e941e9d04a"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/+layout.svelte",
+      "target": "client",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "3b448e29c82ca45c87400e024a9c1444173be50950c5a3121d28a27e875c1a64",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 3.265954000000022
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 5.094104000000016,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "e64e4bab2065d23a1db00b6be8c558288b0bd495b79a80ea2657033680d4907a",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/+layout.svelte",
+      "target": "server",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "3ecde2ab5a24eb34ccc9b698116e94a10c6f06d0ccc597185f06f8158f042cc3",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 2.231137999999987
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 4.528976,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "3ecde2ab5a24eb34ccc9b698116e94a10c6f06d0ccc597185f06f8158f042cc3",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/+page.svelte",
+      "target": "client",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "e1d5efc2f98227d3d2fe9848ebb3909e71354b6cb08f4decdfd034d9bcf6b7da",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 15.040515999999968
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 7.752127999999971,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "48201c0fce848449786400a457ce45d9d85188fc2fe58e5e3095ae5941589295",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/+page.svelte",
+      "target": "server",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "cc813e87cc7642b5be3718e374e380912de6ba9ad4f54f6179786e127bbf6d9c",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 6.963728000000003
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 6.898148999999989,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "c219b744193837fa933f608fba1ce21e222ba20876c2e4b73172eb094bf8da38",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/article/[slug]/+page.svelte",
+      "target": "client",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "8df0334395646119616bc124b0fd7ea5f8830c1acf4a96075e334588537d7667",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 4.4607879999999795
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 6.269320999999991,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "53994f2a828cce13d391ec48c6ac6b898c2f328fb39aeee5ee91ef42bd52a1ac",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/article/[slug]/+page.svelte",
+      "target": "server",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "069fff2d688cb90d0e86eadf088ecb0f7e589dba83b0eed263e171b0e7460b41",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 3.969626000000005
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 4.766262999999981,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "069fff2d688cb90d0e86eadf088ecb0f7e589dba83b0eed263e171b0e7460b41",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/article/[slug]/ArticleMeta.svelte",
+      "target": "client",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "697766584403bd362a554f395b2342474e212403f38c82b7b6a0f7cf4e4b72c9",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 3.439911000000052
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 5.896329000000037,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "c6f514c3136451702df1cc855cd38f6330357bfc29b9b8839818886e6c3f5ab2",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/article/[slug]/ArticleMeta.svelte",
+      "target": "server",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "9a9a8edccff0eac65575fbfc0bfc0b2b9dbaf77987088afa5f8bc8d5fab12f68",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 3.269104000000084
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 5.1053229999999985,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "0a66b762bc19abe110bc16da2341d7174eed70457c67995a4c84c89d0263037b",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/article/[slug]/Comment.svelte",
+      "target": "client",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "3bdbc4a686b267a4ad9b109ebc822d81eaea5b4f29cd886dae329ea6353c74d4",
+        "cssSha256": "a8c91d92ec3e6263954fda958cf63156955219fd9a58ef37b59d6574d532d79a",
+        "milliseconds": 4.4645249999999805
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 6.197197999999958,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "a4cf8946eeaec63bcba639e4a406fade1ad5125d50ed8844d01507e5583ffb2e",
+        "cssSha256": "a8c91d92ec3e6263954fda958cf63156955219fd9a58ef37b59d6574d532d79a"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/article/[slug]/Comment.svelte",
+      "target": "server",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "055c3daee3a8802278ddd6e9b1b6b3341c0c27f2d343f1e44f3be4ee4a471fe0",
+        "cssSha256": "a8c91d92ec3e6263954fda958cf63156955219fd9a58ef37b59d6574d532d79a",
+        "milliseconds": 3.7746960000000627
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 4.688621000000012,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "05b6cdd5a946e0757f62db4cebbd69afdd5642dc05646738215a4e0845f9952f",
+        "cssSha256": "a8c91d92ec3e6263954fda958cf63156955219fd9a58ef37b59d6574d532d79a"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/article/[slug]/CommentContainer.svelte",
+      "target": "client",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "3a9bf309f052919ffec170f6fbb25b3a7889c834317a1fe62f8ac1bdda428204",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 1.9926459999999224
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 5.586050999999998,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "7879ede11e41c89628306c0d2fed07a807af270bbeb64a206d84fa83b96d8487",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/article/[slug]/CommentContainer.svelte",
+      "target": "server",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "1d28477502b8630c84f39a49bdf5eeb027dea855fbe28c40b200c04b8617292d",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 1.4045249999999214
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 5.05450600000006,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "7e9926b2c797ac24fd77644abb7f057db6d06e2ab810eeec6f08ed16e0f4331f",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/article/[slug]/CommentInput.svelte",
+      "target": "client",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "d03fdf0053e8357abb84a6e6ef46f3bbc30a7ef60aff9fc1b5e11b9a34097053",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 1.8870180000000119
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 5.002327000000037,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "d03fdf0053e8357abb84a6e6ef46f3bbc30a7ef60aff9fc1b5e11b9a34097053",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/article/[slug]/CommentInput.svelte",
+      "target": "server",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "81bfca8c5dc1e2fc6abb35ccc2ad139f25664f0663845468daba2e6758448fbf",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 1.36133899999993
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 3.7313500000000204,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "81bfca8c5dc1e2fc6abb35ccc2ad139f25664f0663845468daba2e6758448fbf",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/editor/[slug]/+page.svelte",
+      "target": "client",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "8b8d3f05995798e13e1b705377f78218a13685270e1fdb1f2042007cac82cfa6",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 1.0769470000000183
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 3.7190590000000157,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "8b8d3f05995798e13e1b705377f78218a13685270e1fdb1f2042007cac82cfa6",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/editor/[slug]/+page.svelte",
+      "target": "server",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "beaef87b28c781425e57318b291cbb7a54abf80198bc515fb82d86fcb8371dc8",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 0.9644409999999652
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 3.7483889999999747,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "beaef87b28c781425e57318b291cbb7a54abf80198bc515fb82d86fcb8371dc8",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/editor/+page.svelte",
+      "target": "client",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "bdb65bffce3b6ea8d76dc0fbbb70d435d0f88032f27c7377ab96fa5f0f6385c0",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 1.0305509999999458
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 4.8550539999999955,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "bdb65bffce3b6ea8d76dc0fbbb70d435d0f88032f27c7377ab96fa5f0f6385c0",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/editor/+page.svelte",
+      "target": "server",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "c948fd6fa6ea4a8f2634a5946e4246c9b1ad964c90a92195c1ab0e6f2ff3585a",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 1.0291690000000244
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 4.4135729999999285,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "c948fd6fa6ea4a8f2634a5946e4246c9b1ad964c90a92195c1ab0e6f2ff3585a",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/editor/Editor.svelte",
+      "target": "client",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [
+          {
+            "code": "state_referenced_locally",
+            "severity": "warning",
+            "message": "This reference only captures the initial value of `article`. Did you mean to reference it inside a derived instead?\nhttps://svelte.dev/e/state_referenced_locally",
+            "bytes": {
+              "start": 245,
+              "end": 252
+            }
+          }
+        ],
+        "runes": true,
+        "jsSha256": "3d686601ab8a8aea5997c4f071be9755e61cf51ecc91f1b30d642076e7d28d3a",
+        "cssSha256": "48efd74d43b5df9d8e2c5bb1d44b5a6908ea0ee417fa56e1c3c0932fb04fbcaf",
+        "milliseconds": 9.636205000000018
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 7.298915000000079,
+        "diagnostics": [
+          {
+            "code": "state_referenced_locally",
+            "severity": "warning",
+            "message": "This reference only captures the initial value of `article`. Did you mean to reference it inside a derived instead?\nhttps://svelte.dev/e/state_referenced_locally",
+            "bytes": {
+              "start": 245,
+              "end": 252
+            }
+          }
+        ],
+        "runes": true,
+        "jsSha256": "f0629e9fd1bb69e5f48ed9eb912c68d230c6b06b5367c1df572718cc2e6b11de",
+        "cssSha256": "48efd74d43b5df9d8e2c5bb1d44b5a6908ea0ee417fa56e1c3c0932fb04fbcaf"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/editor/Editor.svelte",
+      "target": "server",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [
+          {
+            "code": "state_referenced_locally",
+            "severity": "warning",
+            "message": "This reference only captures the initial value of `article`. Did you mean to reference it inside a derived instead?\nhttps://svelte.dev/e/state_referenced_locally",
+            "bytes": {
+              "start": 245,
+              "end": 252
+            }
+          }
+        ],
+        "runes": true,
+        "jsSha256": "70fe0af77754e3ea0450b9813ba6a246b15a1bc6b0f4f1c6efeb17cf8165d7e5",
+        "cssSha256": "48efd74d43b5df9d8e2c5bb1d44b5a6908ea0ee417fa56e1c3c0932fb04fbcaf",
+        "milliseconds": 5.592479000000026
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 5.849044999999933,
+        "diagnostics": [
+          {
+            "code": "state_referenced_locally",
+            "severity": "warning",
+            "message": "This reference only captures the initial value of `article`. Did you mean to reference it inside a derived instead?\nhttps://svelte.dev/e/state_referenced_locally",
+            "bytes": {
+              "start": 245,
+              "end": 252
+            }
+          }
+        ],
+        "runes": true,
+        "jsSha256": "70fe0af77754e3ea0450b9813ba6a246b15a1bc6b0f4f1c6efeb17cf8165d7e5",
+        "cssSha256": "48efd74d43b5df9d8e2c5bb1d44b5a6908ea0ee417fa56e1c3c0932fb04fbcaf"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/login/+page.svelte",
+      "target": "client",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "7211469452a2ada1a3bceb634e63a2affc3ec87a4a8db5fd72ac689594a7f48e",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 10.375335999999947
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 5.59857599999998,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "7211469452a2ada1a3bceb634e63a2affc3ec87a4a8db5fd72ac689594a7f48e",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/login/+page.svelte",
+      "target": "server",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "254cea60784696bcd2050ed20ee70d3839123e0905390f4b34b4e8f351ed532f",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 2.472859000000085
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 4.341207000000054,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "254cea60784696bcd2050ed20ee70d3839123e0905390f4b34b4e8f351ed532f",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/Nav.svelte",
+      "target": "client",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "032f915af028028152e94030aa51311330722c927fc058eef1dda9e0e909ab73",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 3.835277000000019
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 5.7574469999999565,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "bab7df1dce9dc01c7d9cd0b97f691f909d5b1d80e9a944255cc4be4f8e58307a",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/Nav.svelte",
+      "target": "server",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "dcf4a7c6630ff62f5ea08501a62c2ff121a556a1fc2f1e59a44f6d89c312ffb2",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 3.594873000000007
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 5.8493989999999485,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "da62109f20a8570ad42b9c8deeaf7e86f23684d4d031cada7bf4e8a8bf4915cb",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/Pagination.svelte",
+      "target": "client",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "5514a8e19a0cab07253060eea28dd3058b5d9e665bba85e0c4fd65ad42165a60",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 3.306934999999953
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 5.893622999999934,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "ed1d890ae44d65d61c7c63985278f91d18075ec6b703f4bf492891ad8e9dec20",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/Pagination.svelte",
+      "target": "server",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "2da58217e63356b05a866da16bb570ef897e36361e97fc808bb68414281e08a0",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 2.093782000000033
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 3.5803500000000668,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "d90a1eda07498fc0bceed59cef0d538b9418b6cb6c26ce8d4e15b940b261af9a",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/PreloadingIndicator.svelte",
+      "target": "client",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "66c6011cf54137a5c9e6c7bac68e83a79eb9671ced89dec097624210424a143d",
+        "cssSha256": "c466c63c409556a65e247f2a197267eb0eef4c67226f72cc0fb5bfed542de2df",
+        "milliseconds": 4.16077800000005
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 6.303672000000006,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "bafebb6a6f70103d7637799b130499bf6acd861d660869f9002bc20fd671a68d",
+        "cssSha256": "c466c63c409556a65e247f2a197267eb0eef4c67226f72cc0fb5bfed542de2df"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/PreloadingIndicator.svelte",
+      "target": "server",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "bfc099e3b7f6926d123a7e4f5d20208aad26e7576859aacc4d1cbb3a7356023f",
+        "cssSha256": "c466c63c409556a65e247f2a197267eb0eef4c67226f72cc0fb5bfed542de2df",
+        "milliseconds": 3.8908629999999675
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 5.124401000000034,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "8477725b361bef381b0e9b32139e6a1e3a49677d18a1d47dd3221dea9b97377b",
+        "cssSha256": "c466c63c409556a65e247f2a197267eb0eef4c67226f72cc0fb5bfed542de2df"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/profile/@[user]/+layout.svelte",
+      "target": "client",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "dbe6429baf1c5fd347bc964df5bebe653ba82b875c727a051081b96cb080a473",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 8.206323999999995
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 7.617922000000021,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "140a694e5c6bde0c06f60df1f41a5f7a4365ac5095e331aeb00a48a0a79ae0c5",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/profile/@[user]/+layout.svelte",
+      "target": "server",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "4426088b856c42781538d462bb4c73bddf588a8bf486cb78217e7e9282ddbfd2",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 5.002840999999989
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 7.129431999999952,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "48f2df513cabe14c51a77db3d22efafbc948f658d823984a7187682a797d1bb5",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/profile/@[user]/+page.svelte",
+      "target": "client",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "0ece6c533c5fa34365b758b43748437802c53c91601dd95eb6c823c643fc2f3d",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 0.9327519999999367
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 4.428417999999965,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "0ece6c533c5fa34365b758b43748437802c53c91601dd95eb6c823c643fc2f3d",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/profile/@[user]/+page.svelte",
+      "target": "server",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "a8b206e4f7e67d8a8ad61b51e1f43dc89620c5de48976829513383a2145d77fd",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 0.8591600000000881
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 3.85664399999996,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "a8b206e4f7e67d8a8ad61b51e1f43dc89620c5de48976829513383a2145d77fd",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/profile/@[user]/favorites/+page.svelte",
+      "target": "client",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "0ece6c533c5fa34365b758b43748437802c53c91601dd95eb6c823c643fc2f3d",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 0.8746710000000348
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 3.4609080000000176,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "0ece6c533c5fa34365b758b43748437802c53c91601dd95eb6c823c643fc2f3d",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/profile/@[user]/favorites/+page.svelte",
+      "target": "server",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "a8b206e4f7e67d8a8ad61b51e1f43dc89620c5de48976829513383a2145d77fd",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 0.6461980000000267
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 2.8515240000000404,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "a8b206e4f7e67d8a8ad61b51e1f43dc89620c5de48976829513383a2145d77fd",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/profile/+page.svelte",
+      "target": "client",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "c0b4bb8be854c6c22a9bd06d0107a088a514629e5e52d4fe043eef2320e114bf",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 0.22296800000003714
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 2.2246569999999792,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "c0b4bb8be854c6c22a9bd06d0107a088a514629e5e52d4fe043eef2320e114bf",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/profile/+page.svelte",
+      "target": "server",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "47f5627bf38520dfe5f4ce431da433bca14c902cd2cb2b5958e613ed3053f4dc",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 0.18849599999998645
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 2.332746000000043,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "47f5627bf38520dfe5f4ce431da433bca14c902cd2cb2b5958e613ed3053f4dc",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/register/+page.svelte",
+      "target": "client",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "5d3295385473539fa64339ee289c64b09ac013712828e47c346fb690169e286d",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 2.6376559999999927
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 5.670889999999986,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "5d3295385473539fa64339ee289c64b09ac013712828e47c346fb690169e286d",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/register/+page.svelte",
+      "target": "server",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "b20cd9f286cb419478127d5b20fcbca864a7c4573639932fd41e46118cab41ac",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 2.240737000000081
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 5.3442589999999655,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "b20cd9f286cb419478127d5b20fcbca864a7c4573639932fd41e46118cab41ac",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/settings/+page.svelte",
+      "target": "client",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "dd0264364b4769eaf03fa9b46a6afadb755e4e47381fe35c152363a432c3fbac",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 4.118916000000013
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 4.824410999999941,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "dd0264364b4769eaf03fa9b46a6afadb755e4e47381fe35c152363a432c3fbac",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    },
+    {
+      "file": "src/routes/settings/+page.svelte",
+      "target": "server",
+      "official": {
+        "unrun": "Project dependencies unavailable"
+      },
+      "supported": {
+        "ok": true,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "1acd37330543a92b0aee0eced0a955c13bb3e65f1d503cc7a77caf6d7a50722d",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "milliseconds": 3.248829999999998
+      },
+      "native": {
+        "ok": true,
+        "exitCode": 0,
+        "stderr": "",
+        "milliseconds": 4.929324999999949,
+        "diagnostics": [],
+        "runes": true,
+        "jsSha256": "1acd37330543a92b0aee0eced0a955c13bb3e65f1d503cc7a77caf6d7a50722d",
+        "cssSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "projectComparison": "unrun",
+      "supportedComparison": "match"
+    }
+  ],
+  "summary": {
+    "files": 24,
+    "cases": 48,
+    "projectComparison": {
+      "match": 0,
+      "difference": 0,
+      "harnessFailure": 0,
+      "unrun": 48
+    },
+    "supportedComparison": {
+      "match": 48,
+      "difference": 0,
+      "harnessFailure": 0,
+      "unrun": 0
+    },
+    "official": {
+      "success": 0,
+      "errors": 0
+    },
+    "supported": {
+      "success": 48,
+      "errors": 0
+    },
+    "native": {
+      "success": 48,
+      "errors": 0
+    }
+  }
+}

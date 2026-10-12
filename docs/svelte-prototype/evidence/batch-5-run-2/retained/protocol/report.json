@@ -1,0 +1,136 @@
+{
+  "tests": [
+    {
+      "name": "session open lint and clear after edit",
+      "status": "pass"
+    },
+    {
+      "name": "stale version cannot replace newer diagnostics",
+      "status": "pass"
+    },
+    {
+      "name": "atomic invalid second edit and unicode CRLF",
+      "status": "pass"
+    },
+    {
+      "name": "syntax invalid then fixed",
+      "status": "pass"
+    },
+    {
+      "name": "profile invalidation changes grammar diagnostics",
+      "status": "pass"
+    },
+    {
+      "name": "native syntax rules ignore strings and comments",
+      "status": "pass"
+    },
+    {
+      "name": "repeated edits keep bounded session state and close clears",
+      "status": "pass"
+    },
+    {
+      "name": "LSP initialize rejects preinitialize and advertises real scope",
+      "status": "pass"
+    },
+    {
+      "name": "LSP open edit pull close clear and shutdown",
+      "status": "pass"
+    }
+  ],
+  "passed": 9,
+  "failed": 0,
+  "messages": [
+    {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "error": {
+        "code": -32002,
+        "message": "Server not initialized"
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "result": {
+        "capabilities": {
+          "positionEncoding": "utf-16",
+          "textDocumentSync": {
+            "openClose": true,
+            "change": 2,
+            "save": {
+              "includeText": false
+            }
+          },
+          "diagnosticProvider": {
+            "identifier": "ts-rust-svelte",
+            "interFileDependencies": false,
+            "workspaceDiagnostics": false
+          }
+        },
+        "serverInfo": {
+          "name": "ts-rust-svelte",
+          "version": "0.1.0"
+        }
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "method": "textDocument/publishDiagnostics",
+      "params": {
+        "uri": "file:///test.svelte",
+        "diagnostics": [
+          {
+            "range": {
+              "start": {
+                "line": 0,
+                "character": 8
+              },
+              "end": {
+                "line": 0,
+                "character": 17
+              }
+            },
+            "severity": 2,
+            "code": "no-debugger",
+            "source": "ts-rust-svelte",
+            "message": "Unexpected debugger statement.",
+            "data": {
+              "unmapped": false
+            }
+          }
+        ],
+        "version": 1
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "method": "textDocument/publishDiagnostics",
+      "params": {
+        "uri": "file:///test.svelte",
+        "diagnostics": [],
+        "version": 2
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "result": {
+        "kind": "full",
+        "items": []
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "method": "textDocument/publishDiagnostics",
+      "params": {
+        "uri": "file:///test.svelte",
+        "diagnostics": []
+      }
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 4,
+      "result": null
+    }
+  ]
+}

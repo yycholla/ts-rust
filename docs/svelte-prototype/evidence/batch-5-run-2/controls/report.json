@@ -1,0 +1,40 @@
+{
+  "tests": [
+    {
+      "name": "wildcard JS precedence matches TypeScript",
+      "status": "pass"
+    },
+    {
+      "name": "explicit JS root survives a TS counterpart",
+      "status": "pass"
+    },
+    {
+      "name": "allowJs false and explicit JSON patterns match TypeScript",
+      "status": "pass"
+    },
+    {
+      "name": "checkJs implies allowJs when allowJs is omitted",
+      "status": "pass"
+    },
+    {
+      "name": "generated props helper is retained as evidence but CLI succeeds",
+      "status": "pass"
+    },
+    {
+      "name": "real source error next to generated props remains visible",
+      "status": "pass"
+    },
+    {
+      "name": "excluded imported dependency is checked and unreachable rune module is ignored",
+      "status": "pass"
+    },
+    {
+      "name": "native TypeScript parameter properties support rune-module validation",
+      "status": "pass"
+    },
+    {
+      "name": "allowJs false cannot silently change JS import semantics",
+      "status": "pass"
+    }
+  ]
+}

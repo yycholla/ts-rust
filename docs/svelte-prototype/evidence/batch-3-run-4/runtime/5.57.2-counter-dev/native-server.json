@@ -1,0 +1,50 @@
+{
+  "status": 0,
+  "signal": null,
+  "stderr": "",
+  "response": {
+    "ok": true,
+    "result": {
+      "uri": "Counter.svelte",
+      "version": 1,
+      "javascript": {
+        "code": "Counter[$.FILENAME] = 'Counter.svelte';\n\nimport * as $ from 'svelte/internal/server';\n\nfunction Counter($$renderer, $$props) {\n\t$$renderer.component(\n\t\t($$renderer) => {\n\t\t\tlet { step = 1, label = 'Count' } = $$props;\n\t\t\tlet count = 0;\n\t\t\tlet doubled = $.derived(() => count * 2);\n\n\t\t\t$$renderer.push(`<button type=\"button\">`);\n\t\t\t$.push_element($$renderer, 'button', 6, 0);\n\t\t\t$$renderer.push(`${$.escape(label)}: ${$.escape(count)} / ${$.escape(doubled())}</button>`);\n\t\t\t$.pop_element();\n\t\t},\n\t\tCounter\n\t);\n}\n\nCounter.render = function () {\n\tthrow new Error('Component.render(...) is no longer valid in Svelte 5. See https://svelte.dev/docs/svelte/v5-migration-guide#Components-are-no-longer-classes for more information');\n};\n\nexport default Counter;",
+        "map": "{\"version\":3,\"sources\":[\"Counter.svelte\"],\"sourcesContent\":[\"<script lang=\\\"ts\\\">\\n  let { step = 1, label = 'Count' }: { step?: number; label?: string } = $props();\\n  let count = $state(0);\\n  let doubled = $derived(count * 2);\\n</script>\\n<button type=\\\"button\\\" onclick={() => count += step}>{label}: {count} / {doubled}</button>\\n\"],\"names\":[],\"mappings\":\";;;;;;kBAAA,CAAC;GACC,IAAI,EAAE,IAAI,GAAG,CAAC,EAAE,KAAK,GAAG,OAAO;GAC/B,AAAA,IAAI,AAAA,KAAK,GAAU,CAAC;GACpB,AAAA,IAAI,AAAA,OAAO,mBAAY,KAAK,GAAG,CAAC;;;;+BAFoB,KAAK,eAItB,KAAK,gBAA8B,OAAO;;EADvE,CAAC;;;;;;;;;\"}"
+      },
+      "css": null,
+      "diagnostics": [],
+      "runes": true,
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.57.2",
+        "patches": [
+          "child-reset-5.53.11",
+          "declaration-tags-5.56",
+          "select-default-5.57"
+        ],
+        "clientDevelopment": true
+      },
+      "compatibility": {
+        "id": "v1:svelte=5.57.2;kit=none;ts=unspecified",
+        "svelteVersion": "5.57.2",
+        "kitVersion": null,
+        "typescriptVersion": null,
+        "channel": "stable",
+        "kitConfig": null,
+        "kitLibraryAlias": null,
+        "kitEnvironmentModule": null,
+        "capabilities": {
+          "componentCompiler": "prototype",
+          "checkingProjection": "prototype",
+          "projectCheck": "explicit-input-prototype",
+          "kitGraph": false,
+          "kitBuild": false,
+          "lsp": false
+        }
+      }
+    }
+  }
+}

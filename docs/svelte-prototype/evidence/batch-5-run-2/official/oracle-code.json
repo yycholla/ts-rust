@@ -1,0 +1,5 @@
+{
+  "typescript/lib/typescript.js": "3ae902c92cc44dace175c0e69e13a4b0899f6983c6121d76b9ab8dd5795e7675",
+  "svelte-check/dist/src/index.js": "c9ddf6eb7930497c39f940fee577b3ed9173625e383fb4419077b863d5ad7a21",
+  "svelte/compiler/index.js": "6b8769509c9e20a4b90e7fb9a3dfb9bd9ab642b4a70d730f53b0d8b0561567d8"
+}

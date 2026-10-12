@@ -1,0 +1,16 @@
+{
+  "base": "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld",
+  "components": 24,
+  "files": 16,
+  "runeModules": [],
+  "excludedSrcFiles": [
+    "src/app.html",
+    "src/lib/assets/conduit-logo.svg",
+    "src/lib/assets/favicon.ico"
+  ],
+  "outsideSrc": "All files outside the selected src tree are excluded",
+  "languageDetection": "Exact lang=ts quoted attribute substring heuristic; only an explicit-input attempt, not project parity",
+  "fullBuild": "unsupported: no native bundler/Kit/adapter pipeline",
+  "lint": "unsupported: no ESLint/Prettier/oxlint implementation",
+  "check": "Explicit src inputs; native fixed config, no Kit generated types, preprocessing or alias configuration"
+}

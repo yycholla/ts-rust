@@ -1,0 +1,327 @@
+{
+  "source": "<p class=\"used\">hello</p>\n<style>\n  .used { color: red; }\n  .unused { color: blue; }\n</style>\n",
+  "settings": {
+    "filename": "css-warning.svelte",
+    "generate": "client",
+    "css": "external",
+    "dev": false,
+    "runes": true
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "css-warning.svelte",
+        "version": 1,
+        "text": "<p class=\"used\">hello</p>\n<style>\n  .used { color: red; }\n  .unused { color: blue; }\n</style>\n"
+      },
+      "target": "client",
+      "dev": false,
+      "runes": true,
+      "compatibility": {
+        "svelteVersion": "5.53.13"
+      }
+    },
+    "exit": 0,
+    "signal": null,
+    "stdout": "{\"ok\":true,\"result\":{\"uri\":\"css-warning.svelte\",\"version\":1,\"javascript\":{\"code\":\"import 'svelte/internal/disclose-version';\\nimport * as $ from 'svelte/internal/client';\\n\\nvar root = $.from_html(`<p class=\\\"used svelte-1t8axlq\\\">hello</p>`);\\n\\nexport default function Css_warning($$anchor) {\\n\\tvar p = root();\\n\\n\\t$.append($$anchor, p);\\n}\",\"map\":\"{\\\"version\\\":3,\\\"sources\\\":[\\\"css-warning.svelte\\\"],\\\"sourcesContent\\\":[\\\"<p class=\\\\\\\"used\\\\\\\">hello</p>\\\\n<style>\\\\n  .used { color: red; }\\\\n  .unused { color: blue; }\\\\n</style>\\\\n\\\"],\\\"names\\\":[],\\\"mappings\\\":\\\";;;;;;KAAC,CAAC;;CAAF,mBAAC,CAAC,CAAuB;\\\"}\"},\"css\":{\"code\":\"\\n  .used.svelte-1t8axlq { color: red; }\\n  /* (unused) .unused { color: blue; }*/\\n\",\"map\":\"{\\\"version\\\":3,\\\"file\\\":\\\"css-warning.svelte\\\",\\\"sources\\\":[\\\"css-warning.svelte\\\"],\\\"sourcesContent\\\":[\\\"<p class=\\\\\\\"used\\\\\\\">hello</p>\\\\n<style>\\\\n  .used { color: red; }\\\\n  .unused { color: blue; }\\\\n</style>\\\\n\\\"],\\\"names\\\":[],\\\"mappings\\\":\\\";AAEA,EAAE,oBAAK,CAAC,EAAE,UAAU;AACpB,cAAE;\\\"}\",\"scope\":\"svelte-1t8axlq\"},\"diagnostics\":[{\"code\":\"css_unused_selector\",\"message\":\"Unused CSS selector \\\".unused\\\"\\nhttps://svelte.dev/e/css_unused_selector\",\"severity\":\"warning\",\"uri\":\"css-warning.svelte\",\"bytes\":{\"start\":60,\"end\":67},\"range\":{\"start\":{\"line\":3,\"character\":2},\"end\":{\"line\":3,\"character\":9}}}],\"runes\":true,\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.53.13\",\"patches\":[\"child-reset-5.53.11\",\"declaration-tags-5.56\",\"select-default-5.57\"],\"clientDevelopment\":false},\"compatibility\":{\"id\":\"v1:svelte=5.53.13;kit=none;ts=unspecified\",\"svelteVersion\":\"5.53.13\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": true,
+      "result": {
+        "uri": "css-warning.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import 'svelte/internal/disclose-version';\nimport * as $ from 'svelte/internal/client';\n\nvar root = $.from_html(`<p class=\"used svelte-1t8axlq\">hello</p>`);\n\nexport default function Css_warning($$anchor) {\n\tvar p = root();\n\n\t$.append($$anchor, p);\n}",
+          "map": "{\"version\":3,\"sources\":[\"css-warning.svelte\"],\"sourcesContent\":[\"<p class=\\\"used\\\">hello</p>\\n<style>\\n  .used { color: red; }\\n  .unused { color: blue; }\\n</style>\\n\"],\"names\":[],\"mappings\":\";;;;;;KAAC,CAAC;;CAAF,mBAAC,CAAC,CAAuB;\"}"
+        },
+        "css": {
+          "code": "\n  .used.svelte-1t8axlq { color: red; }\n  /* (unused) .unused { color: blue; }*/\n",
+          "map": "{\"version\":3,\"file\":\"css-warning.svelte\",\"sources\":[\"css-warning.svelte\"],\"sourcesContent\":[\"<p class=\\\"used\\\">hello</p>\\n<style>\\n  .used { color: red; }\\n  .unused { color: blue; }\\n</style>\\n\"],\"names\":[],\"mappings\":\";AAEA,EAAE,oBAAK,CAAC,EAAE,UAAU;AACpB,cAAE;\"}",
+          "scope": "svelte-1t8axlq"
+        },
+        "diagnostics": [
+          {
+            "code": "css_unused_selector",
+            "message": "Unused CSS selector \".unused\"\nhttps://svelte.dev/e/css_unused_selector",
+            "severity": "warning",
+            "uri": "css-warning.svelte",
+            "bytes": {
+              "start": 60,
+              "end": 67
+            },
+            "range": {
+              "start": {
+                "line": 3,
+                "character": 2
+              },
+              "end": {
+                "line": 3,
+                "character": 9
+              }
+            }
+          }
+        ],
+        "runes": true,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.53.13",
+          "patches": [
+            "child-reset-5.53.11",
+            "declaration-tags-5.56",
+            "select-default-5.57"
+          ],
+          "clientDevelopment": false
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.53.13;kit=none;ts=unspecified",
+          "svelteVersion": "5.53.13",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": true,
+    "artifact": {
+      "js": {
+        "code": "import 'svelte/internal/disclose-version';\nimport * as $ from 'svelte/internal/client';\n\nvar root = $.from_html(`<p class=\"used svelte-1t8axlq\">hello</p>`);\n\nexport default function Css_warning($$anchor) {\n\tvar p = root();\n\n\t$.append($$anchor, p);\n}",
+        "map": {
+          "version": 3,
+          "names": [],
+          "sources": [
+            "css-warning.svelte"
+          ],
+          "sourcesContent": [
+            "<p class=\"used\">hello</p>\n<style>\n  .used { color: red; }\n  .unused { color: blue; }\n</style>\n"
+          ],
+          "mappings": ";;;;;;KAAC,CAAC;;oBAAD,CAAC;"
+        }
+      },
+      "css": {
+        "code": "\n  .used.svelte-1t8axlq { color: red; }\n  /* (unused) .unused { color: blue; }*/\n",
+        "map": {
+          "version": 3,
+          "file": "css-warning.svelte",
+          "sources": [
+            "css-warning.svelte"
+          ],
+          "sourcesContent": [
+            "<p class=\"used\">hello</p>\n<style>\n  .used { color: red; }\n  .unused { color: blue; }\n</style>\n"
+          ],
+          "names": [],
+          "mappings": ";AAEA,EAAE,oBAAK,CAAC,EAAE,UAAU;AACpB,cAAE;"
+        },
+        "hasGlobal": false
+      },
+      "warnings": [
+        {
+          "code": "css_unused_selector",
+          "message": "Unused CSS selector \".unused\"\nhttps://svelte.dev/e/css_unused_selector",
+          "filename": "css-warning.svelte",
+          "start": {
+            "line": 4,
+            "column": 2,
+            "character": 60
+          },
+          "end": {
+            "line": 4,
+            "column": 9,
+            "character": 67
+          },
+          "position": [
+            60,
+            67
+          ],
+          "frame": "2: <style>\n3:   .used { color: red; }\n4:   .unused { color: blue; }\n            ^\n5: </style>\n6: "
+        }
+      ],
+      "metadata": {
+        "runes": true
+      },
+      "ast": {
+        "html": {
+          "type": "Fragment",
+          "start": 0,
+          "end": 25,
+          "children": [
+            {
+              "type": "Element",
+              "start": 0,
+              "end": 25,
+              "name": "p",
+              "attributes": [
+                {
+                  "type": "Attribute",
+                  "start": 3,
+                  "end": 15,
+                  "name": "class",
+                  "name_loc": {
+                    "start": {
+                      "line": 1,
+                      "column": 3,
+                      "character": 3
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 8,
+                      "character": 8
+                    }
+                  },
+                  "value": [
+                    {
+                      "start": 10,
+                      "end": 14,
+                      "type": "Text",
+                      "raw": "used",
+                      "data": "used"
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "Text",
+                  "start": 16,
+                  "end": 21,
+                  "raw": "hello",
+                  "data": "hello"
+                }
+              ]
+            },
+            {
+              "type": "Text",
+              "start": 25,
+              "end": 26,
+              "raw": "\n",
+              "data": "\n"
+            }
+          ]
+        },
+        "css": {
+          "type": "Style",
+          "start": 26,
+          "end": 93,
+          "attributes": [],
+          "children": [
+            {
+              "type": "Rule",
+              "prelude": {
+                "type": "SelectorList",
+                "start": 36,
+                "end": 41,
+                "children": [
+                  {
+                    "type": "Selector",
+                    "start": 36,
+                    "end": 41,
+                    "children": [
+                      {
+                        "type": "ClassSelector",
+                        "name": "used",
+                        "start": 36,
+                        "end": 41
+                      }
+                    ]
+                  }
+                ]
+              },
+              "block": {
+                "type": "Block",
+                "start": 42,
+                "end": 57,
+                "children": [
+                  {
+                    "type": "Declaration",
+                    "start": 44,
+                    "end": 54,
+                    "property": "color",
+                    "value": "red"
+                  }
+                ]
+              },
+              "start": 36,
+              "end": 57
+            },
+            {
+              "type": "Rule",
+              "prelude": {
+                "type": "SelectorList",
+                "start": 60,
+                "end": 67,
+                "children": [
+                  {
+                    "type": "Selector",
+                    "start": 60,
+                    "end": 67,
+                    "children": [
+                      {
+                        "type": "ClassSelector",
+                        "name": "unused",
+                        "start": 60,
+                        "end": 67
+                      }
+                    ]
+                  }
+                ]
+              },
+              "block": {
+                "type": "Block",
+                "start": 68,
+                "end": 84,
+                "children": [
+                  {
+                    "type": "Declaration",
+                    "start": 70,
+                    "end": 81,
+                    "property": "color",
+                    "value": "blue"
+                  }
+                ]
+              },
+              "start": 60,
+              "end": 84
+            }
+          ],
+          "content": {
+            "start": 33,
+            "end": 85,
+            "styles": "\n  .used { color: red; }\n  .unused { color: blue; }\n",
+            "comment": null
+          }
+        }
+      }
+    },
+    "comparable": {
+      "ok": true,
+      "runes": true,
+      "diagnostics": [
+        {
+          "code": "css_unused_selector",
+          "severity": "warning",
+          "message": "Unused CSS selector \".unused\"\nhttps://svelte.dev/e/css_unused_selector",
+          "bytes": {
+            "start": 60,
+            "end": 67
+          }
+        }
+      ]
+    }
+  }
+}

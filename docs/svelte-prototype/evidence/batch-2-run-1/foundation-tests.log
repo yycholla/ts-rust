@@ -1,0 +1,52 @@
+    Finished `release` profile [optimized] target(s) in 0.04s
+     Running unittests src/lib.rs (target/release/deps/ts_svelte-e54da976352c95e8)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/svelte-source.rs (target/release/deps/svelte_source-6c3d4bea7581a0f1)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/source.rs (target/release/deps/source-592043957915e383)
+
+running 21 tests
+test all_representable_boundaries_round_trip_across_many_lines ... ok
+test ascii_bmp_astral_and_combining_characters_round_trip ... ok
+test capabilities_do_not_claim_svelte_support ... ok
+test contiguous_copies_coalesce_and_map_cross_segment_ranges ... ok
+test edits_use_sequential_coordinates_and_preserve_original ... ok
+test empty_copy_does_not_invent_a_mapping ... ok
+test empty_document_has_one_line_and_an_eof_position ... ok
+test failed_second_edit_does_not_publish_first_edit ... ok
+test full_replacement_and_empty_edits_advance_versions ... ok
+test generated_helpers_and_ranges_crossing_them_are_unmapped ... ok
+test invalid_copy_and_generated_boundaries_are_errors ... ok
+test malformed_protocol_requests_are_structured_errors ... ok
+test mixed_line_endings_have_exact_positions_and_trailing_empty_line ... ok
+test projection_expansion_is_bounded ... ok
+test projection_remains_tied_to_original_snapshot_after_edit ... ok
+test protocol_budgets_bound_operation_count_and_repeated_scans ... ok
+test reordered_and_repeated_copies_do_not_map_across_boundaries ... ok
+test stale_versions_reversed_ranges_and_surrogate_splits_are_errors ... ok
+test unambiguous_start_end_and_interior_points_map ... ok
+test unicode_line_separators_are_content_not_lsp_line_endings ... ok
+test virtual_script_maps_a_real_svelte_error_to_original_utf16_range ... ok
+
+test result: ok. 21 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running unittests src/lib.rs (target/release/deps/ts_svelte_wasm-9984e697bcd6acf1)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests ts_svelte
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

@@ -1,0 +1,130 @@
+{
+  "source": "<script>let value = $state(1);</script>\n<section>{value}\n",
+  "settings": {
+    "filename": "unclosed-syntax.svelte",
+    "generate": "server",
+    "css": "external",
+    "dev": false,
+    "runes": true
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "unclosed-syntax.svelte",
+        "version": 1,
+        "text": "<script>let value = $state(1);</script>\n<section>{value}\n"
+      },
+      "target": "server",
+      "dev": false,
+      "runes": true,
+      "compatibility": {
+        "svelteVersion": "5.51.5"
+      }
+    },
+    "exit": 1,
+    "signal": null,
+    "stdout": "{\"ok\":false,\"error\":{\"code\":\"svelte_compile\",\"message\":\"`<section>` was left open\\nhttps://svelte.dev/e/element_unclosed\"},\"diagnostics\":[{\"code\":\"element_unclosed\",\"message\":\"`<section>` was left open\\nhttps://svelte.dev/e/element_unclosed\",\"severity\":\"error\",\"uri\":\"unclosed-syntax.svelte\",\"bytes\":{\"start\":40,\"end\":41},\"range\":{\"start\":{\"line\":1,\"character\":0},\"end\":{\"line\":1,\"character\":1}}}],\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.51.5\",\"patches\":[\"child-reset-5.53.11\",\"declaration-tags-5.56\",\"select-default-5.57\"],\"clientDevelopment\":false},\"compatibility\":{\"id\":\"v1:svelte=5.51.5;kit=none;ts=unspecified\",\"svelteVersion\":\"5.51.5\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": false,
+      "error": {
+        "code": "svelte_compile",
+        "message": "`<section>` was left open\nhttps://svelte.dev/e/element_unclosed"
+      },
+      "diagnostics": [
+        {
+          "code": "element_unclosed",
+          "message": "`<section>` was left open\nhttps://svelte.dev/e/element_unclosed",
+          "severity": "error",
+          "uri": "unclosed-syntax.svelte",
+          "bytes": {
+            "start": 40,
+            "end": 41
+          },
+          "range": {
+            "start": {
+              "line": 1,
+              "character": 0
+            },
+            "end": {
+              "line": 1,
+              "character": 1
+            }
+          }
+        }
+      ],
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.51.5",
+        "patches": [
+          "child-reset-5.53.11",
+          "declaration-tags-5.56",
+          "select-default-5.57"
+        ],
+        "clientDevelopment": false
+      },
+      "compatibility": {
+        "id": "v1:svelte=5.51.5;kit=none;ts=unspecified",
+        "svelteVersion": "5.51.5",
+        "kitVersion": null,
+        "typescriptVersion": null,
+        "channel": "stable",
+        "kitConfig": null,
+        "kitLibraryAlias": null,
+        "kitEnvironmentModule": null,
+        "capabilities": {
+          "componentCompiler": "prototype",
+          "checkingProjection": "prototype",
+          "projectCheck": "explicit-input-prototype",
+          "kitGraph": false,
+          "kitBuild": false,
+          "lsp": false
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": false,
+    "error": {
+      "message": "`<section>` was left open\nhttps://svelte.dev/e/element_unclosed",
+      "name": "CompileError",
+      "code": "element_unclosed",
+      "filename": "unclosed-syntax.svelte",
+      "position": [
+        40,
+        41
+      ],
+      "start": {
+        "line": 2,
+        "column": 0,
+        "character": 40
+      },
+      "end": {
+        "line": 2,
+        "column": 1,
+        "character": 41
+      },
+      "frame": "1: <script>let value = $state(1);</script>\n2: <section>{value}\n    ^\n3: ",
+      "stack": ""
+    },
+    "comparable": {
+      "ok": false,
+      "runes": null,
+      "diagnostics": [
+        {
+          "code": "element_unclosed",
+          "severity": "error",
+          "message": "`<section>` was left open\nhttps://svelte.dev/e/element_unclosed",
+          "bytes": {
+            "start": 40,
+            "end": 41
+          }
+        }
+      ]
+    }
+  }
+}

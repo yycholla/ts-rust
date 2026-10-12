@@ -1,0 +1,21 @@
+{
+  "sourceFingerprint": "66fcdaae71d772d928246a2d1f5a11331c3b9ff5e647f8e25f685588e0c51ae8",
+  "artifacts": {
+    "target/svelte-application-candidate-4/artifacts/svelte-source": "b5f381c23e2ed85ec41a558b75c8c8b0a9a201df9e4876f1d973486e177ff931",
+    "target/svelte-application-candidate-4/artifacts/svelte-tool": "0ebd43dfe9d4e70b98f9b1a35f835b07f0cdf9721bb37ebc52ddd1ff9bbf8da3",
+    "target/svelte-application-candidate-4/artifacts/svelte-ts-check": "de906fcd2d5cedf756dfd85a58d11c7f44a64378f65015cde7183b2a60fac69c",
+    "target/svelte-application-candidate-4/artifacts/svelte-project": "ff9576e2aa8ab0fcd279d3e78d1059af52e5348c58ac14d09c64c292d736971a",
+    "target/svelte-application-candidate-4/artifacts/svelte-lsp": "77d358c48014166d2698aa7cc76a2fbc5681de97c15bf4db361eb5657e29a538",
+    "target/svelte-application-candidate-4/artifacts/svelte-lint": "4c01046d078253361f40392cd8823ede4eb3d5eca0529974b9b7be582e03c5ae",
+    "target/svelte-application-candidate-4/artifacts/svelte-service": "a340f9f7015afbe22897886b13f41fa115e056adb3b629f8592e6ff58b9f1858",
+    "target/svelte-application-candidate-4/artifacts/ts_svelte_kit": "57f202518f8b66aadfbc26c60fa1bc5a1ad76d06eb31620e84830ca168868ee2",
+    "target/svelte-application-candidate-4/artifacts/ts_svelte_tools_bg.wasm.d.ts": "ad3f0ecd9e649fa1d8060bbba66f76965f12741ad07e557ec29e794a5133733e",
+    "target/svelte-application-candidate-4/artifacts/ts_svelte_tools.d.ts": "1a4b8ebaf6a60f846e6fb185612eabf2ab085e85420045550619dbfdb6169432",
+    "target/svelte-application-candidate-4/artifacts/ts_svelte_tools_bg.wasm": "57723ff7ee239f47faedae061adbfa0f65ca07d3097f9b641d35c39d43572f88",
+    "target/svelte-application-candidate-4/artifacts/ts_svelte_compiler_bg.wasm.d.ts": "a52a95ee0afae6ed4d9f89b267fbe7a4208509fc359af02aaea47dfb6638fe40",
+    "target/svelte-application-candidate-4/artifacts/ts_svelte_compiler.d.ts": "f4f9e85f9cc7c6b38d9cf61b71cf047497713bbc2c23d5c8e9e0dccbd2140438",
+    "target/svelte-application-candidate-4/artifacts/ts_svelte_tools.js": "abc3b2dc52bd495aa4cfcdaa346e2ee501bf9e89a34c6d813ec03ffd48e7b6ea",
+    "target/svelte-application-candidate-4/artifacts/ts_svelte_compiler_bg.wasm": "a4fa278595d946ff3c6c3070acf9735396c9000b4c4e5678844196e5bb5de786",
+    "target/svelte-application-candidate-4/artifacts/ts_svelte_compiler.js": "fe94e2f313dd352b3afdc880dfd7dd732be7d499aceeeab338980587674b93b4"
+  }
+}

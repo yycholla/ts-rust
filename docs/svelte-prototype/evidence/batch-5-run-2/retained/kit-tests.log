@@ -1,0 +1,29 @@
+   Compiling ts_svelte_kit v0.1.0 (/home/yycholla/Projects/ts-rust/crates/ts_svelte_kit)
+    Finished `release` profile [optimized] target(s) in 0.24s
+     Running unittests src/lib.rs (target/release/deps/ts_svelte_kit-8e390aeb8fd9394f)
+
+running 3 tests
+test jsonc::tests::comments_strings_unicode_and_trailing_commas ... ok
+test project::tests::rebasing_and_route_globs ... ok
+test project::tests::wildcard_extension_priority_preserves_explicit_files ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/svelte-kit-project.rs (target/release/deps/svelte_kit_project-3289f5d7099f1f76)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (target/release/deps/ts_svelte_kit-0bdf6b4872f89dc3)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests ts_svelte_kit
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

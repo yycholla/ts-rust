@@ -1,0 +1,46 @@
+    Checking ts_svelte_compiler v0.1.0 (/home/yycholla/Projects/ts-rust/crates/ts_svelte_compiler)
+error: this argument is passed by value, but not consumed in the function body
+ --> tests/compiler.rs:4:43
+  |
+4 | fn request(op: &str, source: &str, extra: Value) -> Value {
+  |                                           ^^^^^
+  |
+  = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#needless_pass_by_value
+  = note: `-D clippy::needless-pass-by-value` implied by `-D warnings`
+  = help: to override `-D warnings` add `#[allow(clippy::needless_pass_by_value)]`
+help: consider taking a reference instead
+  |
+4 | fn request(op: &str, source: &str, extra: &Value) -> Value {
+  |                                           +
+
+error: casting `u64` to `usize` may truncate the value on targets with 32-bit wide pointers
+  --> tests/compiler.rs:43:18
+   |
+43 |             text[range["start"].as_u64().unwrap() as usize..range["end"].as_u64().unwrap() as usize]
+   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#cast_possible_truncation
+   = note: `-D clippy::cast-possible-truncation` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::cast_possible_truncation)]`
+help: ... or use `try_from` and handle the error accordingly
+   |
+43 -             text[range["start"].as_u64().unwrap() as usize..range["end"].as_u64().unwrap() as usize]
+43 +             text[usize::try_from(range["start"].as_u64().unwrap())..range["end"].as_u64().unwrap() as usize]
+   |
+
+error: casting `u64` to `usize` may truncate the value on targets with 32-bit wide pointers
+  --> tests/compiler.rs:43:61
+   |
+43 |             text[range["start"].as_u64().unwrap() as usize..range["end"].as_u64().unwrap() as usize]
+   |                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#cast_possible_truncation
+help: ... or use `try_from` and handle the error accordingly
+   |
+43 -             text[range["start"].as_u64().unwrap() as usize..range["end"].as_u64().unwrap() as usize]
+43 +             text[range["start"].as_u64().unwrap() as usize..usize::try_from(range["end"].as_u64().unwrap())]
+   |
+
+error: could not compile `ts_svelte_compiler` (test "compiler") due to 3 previous errors

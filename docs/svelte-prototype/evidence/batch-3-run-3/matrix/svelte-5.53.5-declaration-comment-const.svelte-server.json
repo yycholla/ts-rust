@@ -1,0 +1,128 @@
+{
+  "source": "{ /* prefix */ const value = 1 }\n",
+  "settings": {
+    "filename": "declaration-comment-const.svelte",
+    "generate": "server",
+    "css": "external",
+    "dev": false
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "declaration-comment-const.svelte",
+        "version": 1,
+        "text": "{ /* prefix */ const value = 1 }\n"
+      },
+      "target": "server",
+      "dev": false,
+      "compatibility": {
+        "svelteVersion": "5.53.5"
+      }
+    },
+    "exit": 1,
+    "signal": null,
+    "stdout": "{\"ok\":false,\"error\":{\"code\":\"svelte_compile\",\"message\":\"Unexpected token\\nhttps://svelte.dev/e/js_parse_error\"},\"diagnostics\":[{\"code\":\"js_parse_error\",\"message\":\"Unexpected token\\nhttps://svelte.dev/e/js_parse_error\",\"severity\":\"error\",\"uri\":\"declaration-comment-const.svelte\",\"bytes\":{\"start\":15,\"end\":15},\"range\":{\"start\":{\"line\":0,\"character\":15},\"end\":{\"line\":0,\"character\":15}}}],\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.53.5\",\"patches\":[\"child-reset-5.53.11\",\"declaration-tags-5.56\",\"select-default-5.57\"],\"clientDevelopment\":false},\"compatibility\":{\"id\":\"v1:svelte=5.53.5;kit=none;ts=unspecified\",\"svelteVersion\":\"5.53.5\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": false,
+      "error": {
+        "code": "svelte_compile",
+        "message": "Unexpected token\nhttps://svelte.dev/e/js_parse_error"
+      },
+      "diagnostics": [
+        {
+          "code": "js_parse_error",
+          "message": "Unexpected token\nhttps://svelte.dev/e/js_parse_error",
+          "severity": "error",
+          "uri": "declaration-comment-const.svelte",
+          "bytes": {
+            "start": 15,
+            "end": 15
+          },
+          "range": {
+            "start": {
+              "line": 0,
+              "character": 15
+            },
+            "end": {
+              "line": 0,
+              "character": 15
+            }
+          }
+        }
+      ],
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.53.5",
+        "patches": [
+          "child-reset-5.53.11",
+          "declaration-tags-5.56",
+          "select-default-5.57"
+        ],
+        "clientDevelopment": false
+      },
+      "compatibility": {
+        "id": "v1:svelte=5.53.5;kit=none;ts=unspecified",
+        "svelteVersion": "5.53.5",
+        "kitVersion": null,
+        "typescriptVersion": null,
+        "channel": "stable",
+        "kitConfig": null,
+        "kitLibraryAlias": null,
+        "kitEnvironmentModule": null,
+        "capabilities": {
+          "componentCompiler": "prototype",
+          "checkingProjection": "prototype",
+          "projectCheck": "explicit-input-prototype",
+          "kitGraph": false,
+          "kitBuild": false,
+          "lsp": false
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": false,
+    "error": {
+      "message": "Unexpected token\nhttps://svelte.dev/e/js_parse_error",
+      "name": "CompileError",
+      "code": "js_parse_error",
+      "filename": "declaration-comment-const.svelte",
+      "position": [
+        15,
+        15
+      ],
+      "start": {
+        "line": 1,
+        "column": 15,
+        "character": 15
+      },
+      "end": {
+        "line": 1,
+        "column": 15,
+        "character": 15
+      },
+      "frame": "1: { /* prefix */ const value = 1 }\n                  ^\n2: ",
+      "stack": ""
+    },
+    "comparable": {
+      "ok": false,
+      "runes": null,
+      "diagnostics": [
+        {
+          "code": "js_parse_error",
+          "severity": "error",
+          "message": "Unexpected token\nhttps://svelte.dev/e/js_parse_error",
+          "bytes": {
+            "start": 15,
+            "end": 15
+          }
+        }
+      ]
+    }
+  }
+}

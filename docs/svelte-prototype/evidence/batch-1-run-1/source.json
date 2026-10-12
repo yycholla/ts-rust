@@ -1,0 +1,28 @@
+{
+  "baseCommit": "8c224ef35077254e75c9ff6cf7a4a54a14394b86",
+  "sourceFingerprint": "a23a67bc3ebce7928a39c56052d42822d7880efd743448935f8220c23f7f41f8",
+  "files": {
+    "AGENTS.md": "8df9624d5956c83c9f070a44d2a80e690fc3197476a5670f991ec17bd05c2cc5",
+    "Cargo.lock": "1acee0e906e8b4115916d5a280d0eac8078653c0dc06957c315993fc7f4ae889",
+    "Cargo.toml": "c4a5c802758506b3265e4bb9e783d84ebdebb425d688ff58e61d969d1048314a",
+    "crates/ts_svelte/Cargo.toml": "6be2b834820a0cf10cf21aa36f4f919844db1d09a81a01c7315d157c9170349f",
+    "crates/ts_svelte/src/bin/svelte-source.rs": "20dd44b097c9f95f10d21fd51394222c9ad8323fbf4285cc72860ee96cb03962",
+    "crates/ts_svelte/src/document.rs": "5371d69a2d40de780d47139f74e9aff33cdb5a1b0710672511fcb64f40ffcc4f",
+    "crates/ts_svelte/src/lib.rs": "47dfbe1dd2b75f817b50f40db12c4c442ab1d9e1c8a7bb12c96feae11d5144de",
+    "crates/ts_svelte/src/mapping.rs": "067fd56edfe3de383f1d4b13afac13d1a96349161ca7dab6844c5a4d8cc260e4",
+    "crates/ts_svelte/src/protocol.rs": "ae54883990b0e07c3c1687fb2f28dfc741109b26519300e4dc45f02b022758a0",
+    "crates/ts_svelte/tests/source.rs": "acf8b0d9d34a354cd64263ea7d9b8057b9fcb895a21af74accd757a6a37965e1",
+    "crates/ts_svelte_wasm/Cargo.toml": "76a929d6d7842d9aac02e9bfb7ac49ac2859f6f8d4fcf88e9bd61c33327e2a5f",
+    "crates/ts_svelte_wasm/src/lib.rs": "6ea8f16bd2e986f6499ee7ced06234959f9d34d601fb9eacc7897eb72b9702fa",
+    "docs/svelte-prototype/plan.md": "03f9049bcdf8b55eb230d8dadcac10560d6db9c0554a408d3898e727ec8d615a",
+    "npm/svelte/.gitignore": "68706b3a09b9ea7673f29d8c3cf87b473e0ccc7637af0f4525c231daf07a307a",
+    "npm/svelte/README.md": "33e4d2cf3900af38ee25fd6d4103cdd7e5c6965f3a943ac9a7f5f20204c8e4ae",
+    "npm/svelte/index.d.ts": "d50f65d855078a60c0d6cdc04b705b678d061ac688e45295da6f16f3734edb01",
+    "npm/svelte/index.js": "fc257edf57c7a5b1b6594d934c2544cbc3cfe537caa12ac131d7dae29c0d75a5",
+    "npm/svelte/package.json": "90197b2598baf6c8c945789ec1183f9f899a34a598f887989df34c11ac60d106",
+    "npm/svelte/test/source.test.mjs": "a05af396a3119a4df80f09d22eb5d3594e059b78f0aada3ba172c89bf062b50b",
+    "scripts/svelte/build.sh": "d084ae44e75243f762b5b83ccbef0c9a7e22fe522bc460ce3089c4b8a7f0e0b1",
+    "scripts/svelte/source-identity.py": "c376f67fc3495b138db6a1c13759e87124629555b1855db2fc87e80ae659381e",
+    "scripts/svelte/verify.sh": "1a225bdc0ba65e06e873822c182f484750221119a783eb1fd90130a60d19ac5b"
+  }
+}

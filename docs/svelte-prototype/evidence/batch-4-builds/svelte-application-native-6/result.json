@@ -1,0 +1,23 @@
+{
+  "mode": "native",
+  "command": [
+    "/home/yycholla/Projects/ts-rust/target/release/ts_svelte_kit",
+    "/home/yycholla/Projects/ts-rust/target/svelte-application-native-6/app",
+    "/etc/profiles/per-user/yycholla/bin/node",
+    "/home/yycholla/Projects/ts-rust/scripts/svelte/register-build-loader.mjs",
+    "/home/yycholla/Projects/ts-rust/target/release/svelte-tool",
+    "/home/yycholla/Projects/ts-rust/target/svelte-application-native-6/native-calls.jsonl"
+  ],
+  "exitCode": 0,
+  "sourceStable": true,
+  "binariesStable": true,
+  "elapsedSeconds": 145.93799013498938,
+  "sourceUnchanged": true,
+  "controls": [
+    "Disable Sentry sourcemap upload in isolated config",
+    "No .env files or inherited credentials",
+    "Reminder scheduler disabled"
+  ],
+  "buildExists": true,
+  "nativeScope": "Svelte component and rune-module compilation only; Kit/Vite/preprocessing/bundling/adapter remain JavaScript"
+}

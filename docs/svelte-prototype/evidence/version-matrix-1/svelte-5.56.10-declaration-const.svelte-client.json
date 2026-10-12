@@ -1,0 +1,217 @@
+{
+  "source": "{const answer = 42}\n<p>{answer}</p>\n",
+  "settings": {
+    "filename": "declaration-const.svelte",
+    "generate": "client",
+    "css": "external",
+    "dev": false
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "declaration-const.svelte",
+        "version": 1,
+        "text": "{const answer = 42}\n<p>{answer}</p>\n"
+      },
+      "target": "client",
+      "dev": false,
+      "compatibility": {
+        "svelteVersion": "5.56.10"
+      }
+    },
+    "exit": 0,
+    "signal": null,
+    "stdout": "{\"ok\":true,\"result\":{\"uri\":\"declaration-const.svelte\",\"version\":1,\"javascript\":{\"code\":\"import 'svelte/internal/disclose-version';\\nimport 'svelte/internal/flags/legacy';\\nimport * as $ from 'svelte/internal/client';\\n\\nvar root = $.from_html(`<p></p>`);\\n\\nexport default function Declaration_const($$anchor) {\\n\\tconst answer = 42;\\n\\tvar p = root();\\n\\n\\tp.textContent = '42';\\n\\t$.append($$anchor, p);\\n}\",\"map\":\"{\\\"version\\\":3,\\\"sources\\\":[\\\"declaration-const.svelte\\\"],\\\"sourcesContent\\\":[\\\"{const answer = 42}\\\\n<p>{answer}</p>\\\\n\\\"],\\\"names\\\":[],\\\"mappings\\\":\\\";;;;;;;;KACC,CAAC;;CAAD,CAAC;CAAF,mBAAC,CAAC,CAAa;\\\"}\"},\"css\":null,\"diagnostics\":[],\"runes\":false,\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.56.10\",\"patches\":[\"child-reset-5.53.11\"],\"clientDevelopment\":false},\"compatibility\":{\"id\":\"v1:svelte=5.56.10;kit=none;ts=unspecified\",\"svelteVersion\":\"5.56.10\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": true,
+      "result": {
+        "uri": "declaration-const.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import 'svelte/internal/disclose-version';\nimport 'svelte/internal/flags/legacy';\nimport * as $ from 'svelte/internal/client';\n\nvar root = $.from_html(`<p></p>`);\n\nexport default function Declaration_const($$anchor) {\n\tconst answer = 42;\n\tvar p = root();\n\n\tp.textContent = '42';\n\t$.append($$anchor, p);\n}",
+          "map": "{\"version\":3,\"sources\":[\"declaration-const.svelte\"],\"sourcesContent\":[\"{const answer = 42}\\n<p>{answer}</p>\\n\"],\"names\":[],\"mappings\":\";;;;;;;;KACC,CAAC;;CAAD,CAAC;CAAF,mBAAC,CAAC,CAAa;\"}"
+        },
+        "css": null,
+        "diagnostics": [],
+        "runes": false,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.56.10",
+          "patches": [
+            "child-reset-5.53.11"
+          ],
+          "clientDevelopment": false
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.56.10;kit=none;ts=unspecified",
+          "svelteVersion": "5.56.10",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": true,
+    "artifact": {
+      "js": {
+        "code": "import 'svelte/internal/disclose-version';\nimport 'svelte/internal/flags/legacy';\nimport * as $ from 'svelte/internal/client';\n\nvar root = $.from_html(`<p></p>`);\n\nexport default function Declaration_const($$anchor) {\n\tconst answer = 42;\n\tvar p = root();\n\n\tp.textContent = '42';\n\t$.append($$anchor, p);\n}",
+        "map": {
+          "version": 3,
+          "names": [],
+          "sources": [
+            "declaration-const.svelte"
+          ],
+          "sourcesContent": [
+            "{const answer = 42}\n<p>{answer}</p>\n"
+          ],
+          "mappings": ";;;;;;;CAAC,KAAK,CAAC,MAAM,GAAG,EAAE,CAAA;KACjB,CAAC;;CAAD,CAAC;oBAAD,CAAC;"
+        }
+      },
+      "css": null,
+      "warnings": [],
+      "metadata": {
+        "runes": false
+      },
+      "ast": {
+        "html": {
+          "type": "Fragment",
+          "start": 0,
+          "end": 35,
+          "children": [
+            {
+              "type": "DeclarationTag",
+              "start": 0,
+              "end": 19,
+              "declaration": {
+                "type": "VariableDeclaration",
+                "start": 1,
+                "end": 18,
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 18
+                  }
+                },
+                "declarations": [
+                  {
+                    "type": "VariableDeclarator",
+                    "start": 7,
+                    "end": 18,
+                    "loc": {
+                      "start": {
+                        "line": 1,
+                        "column": 7
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 18
+                      }
+                    },
+                    "id": {
+                      "type": "Identifier",
+                      "start": 7,
+                      "end": 13,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 7
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 13
+                        }
+                      },
+                      "name": "answer"
+                    },
+                    "init": {
+                      "type": "Literal",
+                      "start": 16,
+                      "end": 18,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 16
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 18
+                        }
+                      },
+                      "value": 42,
+                      "raw": "42"
+                    }
+                  }
+                ],
+                "kind": "const"
+              }
+            },
+            {
+              "type": "Text",
+              "start": 19,
+              "end": 20,
+              "raw": "\n",
+              "data": "\n"
+            },
+            {
+              "type": "Element",
+              "start": 20,
+              "end": 35,
+              "name": "p",
+              "attributes": [],
+              "children": [
+                {
+                  "type": "MustacheTag",
+                  "start": 23,
+                  "end": 31,
+                  "expression": {
+                    "type": "Identifier",
+                    "start": 24,
+                    "end": 30,
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 10
+                      }
+                    },
+                    "name": "answer"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "comparable": {
+      "ok": true,
+      "runes": false,
+      "diagnostics": []
+    }
+  }
+}

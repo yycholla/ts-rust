@@ -1,0 +1,22 @@
+{
+  "command": [
+    "npm",
+    "exec",
+    "--yes",
+    "--package=pnpm@10.20.0",
+    "--",
+    "pnpm",
+    "install",
+    "--frozen-lockfile"
+  ],
+  "cwd": "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/realworld-repro",
+  "exitCode": 0,
+  "timeout": false,
+  "timeoutSeconds": 600,
+  "wallSeconds": 3.802,
+  "log": "install.log",
+  "timeSeconds": 3.76,
+  "maxRssKiB": 549040,
+  "userSeconds": 6.76,
+  "systemSeconds": 1.1
+}

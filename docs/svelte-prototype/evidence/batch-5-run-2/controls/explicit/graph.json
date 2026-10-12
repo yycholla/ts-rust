@@ -1,0 +1,123 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ESNext"
+  },
+  "configHashes": {
+    ".svelte-kit/tsconfig.json": "31f77f3c63ecef588f37fcc3cb18290e43dd8dd58a90a0146b62a9b51a7fa043",
+    "tsconfig.json": "781c9e1e66a04bdd44275126a5c08a785c740776b04c1e672207ae0f4234d9db"
+  },
+  "dependencies": "/home/yycholla/Projects/ts-rust/target/svelte-project-app-2/app/node_modules",
+  "directories": {
+    ".": [
+      ".svelte-kit",
+      "Page.svelte",
+      "main.js",
+      "main.ts",
+      "node_modules",
+      "only.js",
+      "package.json",
+      "tsconfig.json",
+      "types.d.ts",
+      "types.js",
+      "value.json"
+    ],
+    ".svelte-kit": [
+      "ambient.d.ts",
+      "non-ambient.d.ts",
+      "tsconfig.json"
+    ]
+  },
+  "generatedTypes": {
+    "files": 2,
+    "freshness": "snapshot-only; regenerate with Kit sync after route/load/config changes",
+    "markdownComponents": "outside pinned svelte-check component-root coverage",
+    "origin": "existing-kit-sync"
+  },
+  "inputs": [
+    {
+      "kind": "declaration",
+      "path": ".svelte-kit/ambient.d.ts",
+      "root": false,
+      "sha256": "2e29cd9a98755c46896f7a2d56524db2d6d96b248e36db46de14c30bf47c8d05"
+    },
+    {
+      "kind": "declaration",
+      "path": ".svelte-kit/non-ambient.d.ts",
+      "root": false,
+      "sha256": "2e29cd9a98755c46896f7a2d56524db2d6d96b248e36db46de14c30bf47c8d05"
+    },
+    {
+      "kind": "component",
+      "path": "Page.svelte",
+      "root": true,
+      "sha256": "87622117335b8dd9a6da15dab58083bc7212f0994fe5f05ce4708075e98cd61b"
+    },
+    {
+      "kind": "script",
+      "path": "main.js",
+      "root": true,
+      "sha256": "e1ed74e03fbfb2d7fe4e7c6318ec0eaea67fe278a659b0c14b7454ec9afe6e87"
+    },
+    {
+      "kind": "script",
+      "path": "main.ts",
+      "root": true,
+      "sha256": "2e29cd9a98755c46896f7a2d56524db2d6d96b248e36db46de14c30bf47c8d05"
+    },
+    {
+      "kind": "script",
+      "path": "only.js",
+      "root": true,
+      "sha256": "2e29cd9a98755c46896f7a2d56524db2d6d96b248e36db46de14c30bf47c8d05"
+    },
+    {
+      "kind": "auxiliary",
+      "path": "package.json",
+      "root": false,
+      "sha256": "6dc1b06d6b093e9cccb20bee06a93836eee0420ae26803ca2ce4065d82f070d1"
+    },
+    {
+      "kind": "declaration",
+      "path": "types.d.ts",
+      "root": true,
+      "sha256": "2e29cd9a98755c46896f7a2d56524db2d6d96b248e36db46de14c30bf47c8d05"
+    },
+    {
+      "kind": "script",
+      "path": "types.js",
+      "root": true,
+      "sha256": "2e29cd9a98755c46896f7a2d56524db2d6d96b248e36db46de14c30bf47c8d05"
+    },
+    {
+      "kind": "auxiliary",
+      "path": "value.json",
+      "root": false,
+      "sha256": "48208f9428d64634bd8e28ff345bf0eab60d53c18fa2fbdb0b9bc1e84df2b5f6"
+    }
+  ],
+  "packages": {
+    "@sveltejs/kit": {
+      "sha256": "41b7ab341f227ea2cdad7e721153af4f785a4999a74a4b598950a19c97951c1a",
+      "version": "2.69.2"
+    },
+    "svelte": {
+      "sha256": "ac62c99567cd559a6051d94062df421525c040f24a012317702b0d1abaff744c",
+      "version": "5.53.11"
+    },
+    "svelte-check": {
+      "sha256": "c8214611e50768b6ee688e0563b3745a9f014f944166a3cfddd7b4818681d0ec",
+      "version": "4.4.5"
+    },
+    "typescript": {
+      "sha256": "822ef7ca6452205657b6288b066481ecf508bfbf43455d715cf7d3ec457561e6",
+      "version": "5.9.3"
+    }
+  },
+  "root": "/home/yycholla/Projects/ts-rust/target/svelte-project-verification-2/controls/explicit",
+  "schemaVersion": 1
+}

@@ -1,0 +1,46 @@
+Scope: all 5 workspace projects
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +698
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 698, reused 292, downloaded 27, added 33
+Progress: resolved 698, reused 292, downloaded 212, added 102
+Progress: resolved 698, reused 292, downloaded 400, added 236
+Progress: resolved 698, reused 292, downloaded 405, added 697
+Progress: resolved 698, reused 292, downloaded 406, added 698, done
+.../node_modules/@tailwindcss/oxide postinstall$ node ./scripts/install.js
+.../esbuild@0.25.4/node_modules/esbuild postinstall$ node install.js
+.../node_modules/workerd postinstall$ node install.js
+.../esbuild@0.25.9/node_modules/esbuild postinstall$ node install.js
+.../esbuild@0.25.4/node_modules/esbuild postinstall: Done
+.../node_modules/@tailwindcss/oxide postinstall: Done
+.../node_modules/workerd postinstall: Done
+.../esbuild@0.25.9/node_modules/esbuild postinstall: Done
+
+devDependencies:
++ @changesets/cli 2.29.7
++ @eslint/js 9.35.0
++ @svitejs/changesets-changelog-github-compact 1.2.0
++ eslint 9.35.0
++ eslint-config-prettier 10.1.8
++ eslint-plugin-oxlint 1.16.0
++ eslint-plugin-svelte 3.12.3
++ globals 16.4.0
++ oxlint 1.16.0
++ playwright 1.60.0
++ prettier 3.6.2
++ prettier-plugin-svelte 3.4.0
++ prettier-plugin-tailwindcss 0.6.14
++ svelte 5.46.4
++ typescript 5.9.3
++ typescript-eslint 8.44.0
++ wrangler 4.37.1
+
+╭ Warning ─────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│   Ignored build scripts: sharp@0.33.5, sharp@0.34.3.                         │
+│   Run "pnpm approve-builds" to pick which dependencies should be allowed     │
+│   to run scripts.                                                            │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Done in 7.8s using pnpm v10.33.0

@@ -1,0 +1,461 @@
+{
+  "source": "<script lang=\"ts\">\n  let { label = 'world' }: { label?: string } = $props();\n</script>\n{#snippet greeting(value: string)}<strong>Hello {value}</strong>{/snippet}\n<section>{@render greeting(label)}</section>\n",
+  "settings": {
+    "filename": "snippets.svelte",
+    "generate": "server",
+    "css": "external",
+    "dev": false,
+    "runes": true
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "snippets.svelte",
+        "version": 1,
+        "text": "<script lang=\"ts\">\n  let { label = 'world' }: { label?: string } = $props();\n</script>\n{#snippet greeting(value: string)}<strong>Hello {value}</strong>{/snippet}\n<section>{@render greeting(label)}</section>\n"
+      },
+      "target": "server",
+      "dev": false,
+      "runes": true,
+      "compatibility": {
+        "svelteVersion": "5.51.5"
+      }
+    },
+    "exit": 0,
+    "signal": null,
+    "stdout": "{\"ok\":true,\"result\":{\"uri\":\"snippets.svelte\",\"version\":1,\"javascript\":{\"code\":\"import * as $ from 'svelte/internal/server';\\n\\nfunction greeting($$renderer, value) {\\n\\t$$renderer.push(`<strong>Hello ${$.escape(value)}</strong>`);\\n}\\n\\nexport default function Snippets($$renderer, $$props) {\\n\\tlet { label = 'world' } = $$props;\\n\\n\\t$$renderer.push(`<section>`);\\n\\tgreeting($$renderer, label);\\n\\t$$renderer.push(`<!----></section>`);\\n}\",\"map\":\"{\\\"version\\\":3,\\\"sources\\\":[\\\"snippets.svelte\\\"],\\\"sourcesContent\\\":[\\\"<script lang=\\\\\\\"ts\\\\\\\">\\\\n  let { label = 'world' }: { label?: string } = $props();\\\\n</script>\\\\n{#snippet greeting(value: string)}<strong>Hello {value}</strong>{/snippet}\\\\n<section>{@render greeting(label)}</section>\\\\n\\\"],\\\"names\\\":[],\\\"mappings\\\":\\\";;SAGU,QAAQ,aAAC,KAAK;2CAAyB,KAAK;;;sDAHtD,CAAC;CACC,IAAI,EAAE,KAAK,GAAG,OAAO;;;CAGL,QAAQ,aAHG,KAAK;;AAC1B,CAAC\\\"}\"},\"css\":null,\"diagnostics\":[],\"runes\":true,\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.51.5\",\"patches\":[\"child-reset-5.53.11\",\"declaration-tags-5.56\",\"select-default-5.57\"],\"clientDevelopment\":false},\"compatibility\":{\"id\":\"v1:svelte=5.51.5;kit=none;ts=unspecified\",\"svelteVersion\":\"5.51.5\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": true,
+      "result": {
+        "uri": "snippets.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import * as $ from 'svelte/internal/server';\n\nfunction greeting($$renderer, value) {\n\t$$renderer.push(`<strong>Hello ${$.escape(value)}</strong>`);\n}\n\nexport default function Snippets($$renderer, $$props) {\n\tlet { label = 'world' } = $$props;\n\n\t$$renderer.push(`<section>`);\n\tgreeting($$renderer, label);\n\t$$renderer.push(`<!----></section>`);\n}",
+          "map": "{\"version\":3,\"sources\":[\"snippets.svelte\"],\"sourcesContent\":[\"<script lang=\\\"ts\\\">\\n  let { label = 'world' }: { label?: string } = $props();\\n</script>\\n{#snippet greeting(value: string)}<strong>Hello {value}</strong>{/snippet}\\n<section>{@render greeting(label)}</section>\\n\"],\"names\":[],\"mappings\":\";;SAGU,QAAQ,aAAC,KAAK;2CAAyB,KAAK;;;sDAHtD,CAAC;CACC,IAAI,EAAE,KAAK,GAAG,OAAO;;;CAGL,QAAQ,aAHG,KAAK;;AAC1B,CAAC\"}"
+        },
+        "css": null,
+        "diagnostics": [],
+        "runes": true,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.51.5",
+          "patches": [
+            "child-reset-5.53.11",
+            "declaration-tags-5.56",
+            "select-default-5.57"
+          ],
+          "clientDevelopment": false
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.51.5;kit=none;ts=unspecified",
+          "svelteVersion": "5.51.5",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": true,
+    "artifact": {
+      "js": {
+        "code": "import * as $ from 'svelte/internal/server';\n\nfunction greeting($$renderer, value) {\n\t$$renderer.push(`<strong>Hello ${$.escape(value)}</strong>`);\n}\n\nexport default function Snippets($$renderer, $$props) {\n\tlet { label = 'world' } = $$props;\n\n\t$$renderer.push(`<section>`);\n\tgreeting($$renderer, label);\n\t$$renderer.push(`<!----></section>`);\n}",
+        "map": {
+          "version": 3,
+          "names": [],
+          "sources": [
+            "snippets.svelte"
+          ],
+          "sourcesContent": [
+            "<script lang=\"ts\">\n  let { label = 'world' }: { label?: string } = $props();\n</script>\n{#snippet greeting(value: string)}<strong>Hello {value}</strong>{/snippet}\n<section>{@render greeting(label)}</section>\n"
+          ],
+          "mappings": ";;SAGU,QAAQ,aAAC,KAAK,AAAQ;2CAAiB,KAAK;;;sDAHtD,CAAC;CACC,GAAG,CAAC,EAAE,KAAK,GAAG,OAAO,EAAsB,WAAY;;;CAGvC,QAAQ,aAAC,KAAK;;AAFxB,CAAC"
+        }
+      },
+      "css": null,
+      "warnings": [],
+      "metadata": {
+        "runes": true
+      },
+      "ast": {
+        "html": {
+          "type": "Fragment",
+          "start": 87,
+          "end": 206,
+          "children": [
+            {
+              "type": "Text",
+              "start": 86,
+              "end": 87,
+              "raw": "\n",
+              "data": "\n"
+            },
+            {
+              "type": "SnippetBlock",
+              "start": 87,
+              "end": 161,
+              "expression": {
+                "type": "Identifier",
+                "name": "greeting",
+                "start": 97,
+                "end": 105,
+                "loc": {
+                  "start": {
+                    "line": 4,
+                    "column": 10,
+                    "character": 97
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 18,
+                    "character": 105
+                  }
+                }
+              },
+              "parameters": [
+                {
+                  "type": "Identifier",
+                  "start": 106,
+                  "end": 119,
+                  "loc": {
+                    "start": {
+                      "line": 4,
+                      "column": 19
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 32
+                    }
+                  },
+                  "name": "value"
+                }
+              ],
+              "children": [
+                {
+                  "type": "Element",
+                  "start": 121,
+                  "end": 151,
+                  "name": "strong",
+                  "attributes": [],
+                  "children": [
+                    {
+                      "type": "Text",
+                      "start": 129,
+                      "end": 135,
+                      "raw": "Hello ",
+                      "data": "Hello "
+                    },
+                    {
+                      "type": "MustacheTag",
+                      "start": 135,
+                      "end": 142,
+                      "expression": {
+                        "type": "Identifier",
+                        "start": 136,
+                        "end": 141,
+                        "loc": {
+                          "start": {
+                            "line": 4,
+                            "column": 49
+                          },
+                          "end": {
+                            "line": 4,
+                            "column": 54
+                          }
+                        },
+                        "name": "value"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Text",
+              "start": 161,
+              "end": 162,
+              "raw": "\n",
+              "data": "\n"
+            },
+            {
+              "type": "Element",
+              "start": 162,
+              "end": 206,
+              "name": "section",
+              "attributes": [],
+              "children": [
+                {
+                  "type": "RenderTag",
+                  "start": 171,
+                  "end": 196,
+                  "expression": {
+                    "type": "CallExpression",
+                    "start": 180,
+                    "end": 195,
+                    "loc": {
+                      "start": {
+                        "line": 5,
+                        "column": 18
+                      },
+                      "end": {
+                        "line": 5,
+                        "column": 33
+                      }
+                    },
+                    "callee": {
+                      "type": "Identifier",
+                      "start": 180,
+                      "end": 188,
+                      "loc": {
+                        "start": {
+                          "line": 5,
+                          "column": 18
+                        },
+                        "end": {
+                          "line": 5,
+                          "column": 26
+                        }
+                      },
+                      "name": "greeting"
+                    },
+                    "arguments": [
+                      {
+                        "type": "Identifier",
+                        "start": 189,
+                        "end": 194,
+                        "loc": {
+                          "start": {
+                            "line": 5,
+                            "column": 27
+                          },
+                          "end": {
+                            "line": 5,
+                            "column": 32
+                          }
+                        },
+                        "name": "label"
+                      }
+                    ],
+                    "optional": false
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "instance": {
+          "type": "Script",
+          "start": 0,
+          "end": 86,
+          "context": "default",
+          "content": {
+            "type": "Program",
+            "start": 18,
+            "end": 77,
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 0
+              },
+              "end": {
+                "line": 3,
+                "column": 9
+              }
+            },
+            "body": [
+              {
+                "type": "VariableDeclaration",
+                "start": 21,
+                "end": 76,
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 57
+                  }
+                },
+                "declarations": [
+                  {
+                    "type": "VariableDeclarator",
+                    "start": 25,
+                    "end": 75,
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 6
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 56
+                      }
+                    },
+                    "id": {
+                      "type": "ObjectPattern",
+                      "start": 25,
+                      "end": 64,
+                      "loc": {
+                        "start": {
+                          "line": 2,
+                          "column": 6
+                        },
+                        "end": {
+                          "line": 2,
+                          "column": 45
+                        }
+                      },
+                      "properties": [
+                        {
+                          "type": "Property",
+                          "start": 27,
+                          "end": 42,
+                          "loc": {
+                            "start": {
+                              "line": 2,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 2,
+                              "column": 23
+                            }
+                          },
+                          "method": false,
+                          "shorthand": true,
+                          "computed": false,
+                          "key": {
+                            "type": "Identifier",
+                            "start": 27,
+                            "end": 32,
+                            "loc": {
+                              "start": {
+                                "line": 2,
+                                "column": 8
+                              },
+                              "end": {
+                                "line": 2,
+                                "column": 13
+                              }
+                            },
+                            "name": "label"
+                          },
+                          "value": {
+                            "type": "AssignmentPattern",
+                            "start": 27,
+                            "end": 42,
+                            "loc": {
+                              "start": {
+                                "line": 2,
+                                "column": 8
+                              },
+                              "end": {
+                                "line": 2,
+                                "column": 23
+                              }
+                            },
+                            "left": {
+                              "type": "Identifier",
+                              "start": 27,
+                              "end": 32,
+                              "loc": {
+                                "start": {
+                                  "line": 2,
+                                  "column": 8
+                                },
+                                "end": {
+                                  "line": 2,
+                                  "column": 13
+                                }
+                              },
+                              "name": "label"
+                            },
+                            "right": {
+                              "type": "Literal",
+                              "start": 35,
+                              "end": 42,
+                              "loc": {
+                                "start": {
+                                  "line": 2,
+                                  "column": 16
+                                },
+                                "end": {
+                                  "line": 2,
+                                  "column": 23
+                                }
+                              },
+                              "value": "world",
+                              "raw": "'world'"
+                            }
+                          },
+                          "kind": "init"
+                        }
+                      ]
+                    },
+                    "init": {
+                      "type": "CallExpression",
+                      "start": 67,
+                      "end": 75,
+                      "loc": {
+                        "start": {
+                          "line": 2,
+                          "column": 48
+                        },
+                        "end": {
+                          "line": 2,
+                          "column": 56
+                        }
+                      },
+                      "callee": {
+                        "type": "Identifier",
+                        "start": 67,
+                        "end": 73,
+                        "loc": {
+                          "start": {
+                            "line": 2,
+                            "column": 48
+                          },
+                          "end": {
+                            "line": 2,
+                            "column": 54
+                          }
+                        },
+                        "name": "$props"
+                      },
+                      "arguments": [],
+                      "optional": false
+                    }
+                  }
+                ],
+                "kind": "let"
+              }
+            ],
+            "sourceType": "module"
+          }
+        }
+      }
+    },
+    "comparable": {
+      "ok": true,
+      "runes": true,
+      "diagnostics": []
+    }
+  }
+}

@@ -1,0 +1,238 @@
+[
+  {
+    "kind": "svelte",
+    "version": "5.51.5",
+    "directory": "/home/yycholla/Projects/ts-rust/target/svelte-versions/svelte-5.51.5",
+    "dependencies": {
+      "svelte": "5.51.5",
+      "svelte-check": "4.7.6",
+      "typescript": "5.9.3",
+      "jsdom": "26.1.0"
+    },
+    "exitCode": 0,
+    "lockSha256": "c98e7417f934b1ff1b4e36e0012f3f41274d698683d4e7975d520d23d21738fc"
+  },
+  {
+    "kind": "svelte",
+    "version": "5.52.0",
+    "directory": "/home/yycholla/Projects/ts-rust/target/svelte-versions/svelte-5.52.0",
+    "dependencies": {
+      "svelte": "5.52.0",
+      "svelte-check": "4.7.6",
+      "typescript": "5.9.3",
+      "jsdom": "26.1.0"
+    },
+    "exitCode": 0,
+    "lockSha256": "e3b3b52cf769f8a1c3373610b0d5e0d20edecd5a791107914f4fbdde546811d7"
+  },
+  {
+    "kind": "svelte",
+    "version": "5.53.5",
+    "directory": "/home/yycholla/Projects/ts-rust/target/svelte-versions/svelte-5.53.5",
+    "dependencies": {
+      "svelte": "5.53.5",
+      "svelte-check": "4.7.6",
+      "typescript": "5.9.3",
+      "jsdom": "26.1.0"
+    },
+    "exitCode": 0,
+    "lockSha256": "cb6f4298be3ca5fefa1a3642d33e669768d25d33264667061ced914e63298544"
+  },
+  {
+    "kind": "svelte",
+    "version": "5.53.11",
+    "directory": "/home/yycholla/Projects/ts-rust/target/svelte-versions/svelte-5.53.11",
+    "dependencies": {
+      "svelte": "5.53.11",
+      "svelte-check": "4.7.6",
+      "typescript": "5.9.3",
+      "jsdom": "26.1.0"
+    },
+    "exitCode": 0,
+    "lockSha256": "ba57d886e6b9c6e62be43bf37452cc138171ba2e3af5cbe149bd82c77a3c2a03"
+  },
+  {
+    "kind": "svelte",
+    "version": "5.53.13",
+    "directory": "/home/yycholla/Projects/ts-rust/target/svelte-versions/svelte-5.53.13",
+    "dependencies": {
+      "svelte": "5.53.13",
+      "svelte-check": "4.7.6",
+      "typescript": "5.9.3",
+      "jsdom": "26.1.0"
+    },
+    "exitCode": 0,
+    "lockSha256": "d5fb70c7f7533b641ee84c5e5dd6659999141497a26afb3fc7bd798f100f39d0"
+  },
+  {
+    "kind": "svelte",
+    "version": "5.54.1",
+    "directory": "/home/yycholla/Projects/ts-rust/target/svelte-versions/svelte-5.54.1",
+    "dependencies": {
+      "svelte": "5.54.1",
+      "svelte-check": "4.7.6",
+      "typescript": "5.9.3",
+      "jsdom": "26.1.0"
+    },
+    "exitCode": 0,
+    "lockSha256": "aeae9f157e8cbd2a7dd4365bf1522bd5970e62f27a119406425a33627149f6d6"
+  },
+  {
+    "kind": "svelte",
+    "version": "5.55.10",
+    "directory": "/home/yycholla/Projects/ts-rust/target/svelte-versions/svelte-5.55.10",
+    "dependencies": {
+      "svelte": "5.55.10",
+      "svelte-check": "4.7.6",
+      "typescript": "5.9.3",
+      "jsdom": "26.1.0"
+    },
+    "exitCode": 0,
+    "lockSha256": "90fc7c383f321a84210175d6e378a2e67e4ce2b327ea012616e18b4e6c335324"
+  },
+  {
+    "kind": "svelte",
+    "version": "5.56.10",
+    "directory": "/home/yycholla/Projects/ts-rust/target/svelte-versions/svelte-5.56.10",
+    "dependencies": {
+      "svelte": "5.56.10",
+      "svelte-check": "4.7.6",
+      "typescript": "5.9.3",
+      "jsdom": "26.1.0"
+    },
+    "exitCode": 0,
+    "lockSha256": "ff98a76c299a9aaa5435a838a0c86fdab5cd66a2f12655dd401cb93e77a45cc9"
+  },
+  {
+    "kind": "svelte",
+    "version": "5.57.2",
+    "directory": "/home/yycholla/Projects/ts-rust/target/svelte-versions/svelte-5.57.2",
+    "dependencies": {
+      "svelte": "5.57.2",
+      "svelte-check": "4.7.6",
+      "typescript": "5.9.3",
+      "jsdom": "26.1.0"
+    },
+    "exitCode": 0,
+    "lockSha256": "291dffcb0b5f958847f3da0621f9b464ffc7d3983b3e1728408eba05f2f1a109"
+  },
+  {
+    "kind": "kit",
+    "version": "2.67.0",
+    "directory": "/home/yycholla/Projects/ts-rust/target/svelte-versions/kit-2.67.0",
+    "dependencies": {
+      "svelte": "5.53.11",
+      "svelte-check": "4.7.6",
+      "typescript": "5.9.3",
+      "jsdom": "26.1.0",
+      "@sveltejs/kit": "2.67.0",
+      "vite": "7.3.1",
+      "@sveltejs/vite-plugin-svelte": "6.2.4",
+      "@opentelemetry/api": "1.9.0"
+    },
+    "exitCode": 0,
+    "lockSha256": "6b1a6cf4eddfb3b1b6c8d7c51c117a60b3527161b1a2babec98001264d170b47"
+  },
+  {
+    "kind": "kit",
+    "version": "2.68.0",
+    "directory": "/home/yycholla/Projects/ts-rust/target/svelte-versions/kit-2.68.0",
+    "dependencies": {
+      "svelte": "5.53.11",
+      "svelte-check": "4.7.6",
+      "typescript": "5.9.3",
+      "jsdom": "26.1.0",
+      "@sveltejs/kit": "2.68.0",
+      "vite": "7.3.1",
+      "@sveltejs/vite-plugin-svelte": "6.2.4",
+      "@opentelemetry/api": "1.9.0"
+    },
+    "exitCode": 0,
+    "lockSha256": "2b67dfbfc9acd82fe2771ead7494ec3170947497869c97f6fada2d5d01d158fe"
+  },
+  {
+    "kind": "kit",
+    "version": "2.69.2",
+    "directory": "/home/yycholla/Projects/ts-rust/target/svelte-versions/kit-2.69.2",
+    "dependencies": {
+      "svelte": "5.53.11",
+      "svelte-check": "4.7.6",
+      "typescript": "5.9.3",
+      "jsdom": "26.1.0",
+      "@sveltejs/kit": "2.69.2",
+      "vite": "7.3.1",
+      "@sveltejs/vite-plugin-svelte": "6.2.4",
+      "@opentelemetry/api": "1.9.0"
+    },
+    "exitCode": 0,
+    "lockSha256": "350e452b57890924fd739916bdfca0757583cae9780af74f183f45d5a2ea7e1b"
+  },
+  {
+    "kind": "kit",
+    "version": "2.69.3",
+    "directory": "/home/yycholla/Projects/ts-rust/target/svelte-versions/kit-2.69.3",
+    "dependencies": {
+      "svelte": "5.53.11",
+      "svelte-check": "4.7.6",
+      "typescript": "5.9.3",
+      "jsdom": "26.1.0",
+      "@sveltejs/kit": "2.69.3",
+      "vite": "7.3.1",
+      "@sveltejs/vite-plugin-svelte": "6.2.4",
+      "@opentelemetry/api": "1.9.0"
+    },
+    "exitCode": 0,
+    "lockSha256": "bb4c24e4618d346cc8a056d349e3148326193eab9739b1a55feb6707de193d5b"
+  },
+  {
+    "kind": "kit",
+    "version": "2.70.3",
+    "directory": "/home/yycholla/Projects/ts-rust/target/svelte-versions/kit-2.70.3",
+    "dependencies": {
+      "svelte": "5.53.11",
+      "svelte-check": "4.7.6",
+      "typescript": "5.9.3",
+      "jsdom": "26.1.0",
+      "@sveltejs/kit": "2.70.3",
+      "vite": "7.3.1",
+      "@sveltejs/vite-plugin-svelte": "6.2.4",
+      "@opentelemetry/api": "1.9.0"
+    },
+    "exitCode": 0,
+    "lockSha256": "e2b1c711d028f81d2a2e8db687b44143faea89161e549564a0d1049c5eafa0a9"
+  },
+  {
+    "kind": "kit",
+    "version": "3.0.1",
+    "directory": "/home/yycholla/Projects/ts-rust/target/svelte-versions/kit-3.0.1",
+    "dependencies": {
+      "svelte": "5.57.2",
+      "svelte-check": "4.7.6",
+      "typescript": "6.0.3",
+      "jsdom": "26.1.0",
+      "@sveltejs/kit": "3.0.1",
+      "vite": "8.0.12",
+      "@sveltejs/vite-plugin-svelte": "7.0.0",
+      "@opentelemetry/api": "1.9.0"
+    },
+    "exitCode": 0,
+    "lockSha256": "7b5e03e594b2b5d099427ec15708de4be8819b82424763ce6e2f10f0f3cdf1c9"
+  },
+  {
+    "kind": "kit",
+    "version": "3.0.0-next.32",
+    "directory": "/home/yycholla/Projects/ts-rust/target/svelte-versions/kit-3.0.0-next.32",
+    "dependencies": {
+      "svelte": "5.57.2",
+      "svelte-check": "4.7.6",
+      "typescript": "6.0.3",
+      "jsdom": "26.1.0",
+      "@sveltejs/kit": "3.0.0-next.32",
+      "vite": "8.0.12",
+      "@sveltejs/vite-plugin-svelte": "7.0.0",
+      "@opentelemetry/api": "1.9.0"
+    },
+    "exitCode": 0,
+    "lockSha256": "8fb03bb5f192c160e48c872b59afe5d59f9e51bbb122c78e6bbb9500ec929d5b"
+  }
+]

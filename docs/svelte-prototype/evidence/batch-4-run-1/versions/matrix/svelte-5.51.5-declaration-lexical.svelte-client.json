@@ -1,0 +1,295 @@
+{
+  "source": "<script lang=\"ts\">\n  const text: string = '{let value = 1}';\n</script>\n<!-- {const hidden = 2} -->\n<p title={'{const literal = 3}'}>{text}</p>\n",
+  "settings": {
+    "filename": "declaration-lexical.svelte",
+    "generate": "client",
+    "css": "external",
+    "dev": false
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "declaration-lexical.svelte",
+        "version": 1,
+        "text": "<script lang=\"ts\">\n  const text: string = '{let value = 1}';\n</script>\n<!-- {const hidden = 2} -->\n<p title={'{const literal = 3}'}>{text}</p>\n"
+      },
+      "target": "client",
+      "dev": false,
+      "compatibility": {
+        "svelteVersion": "5.51.5"
+      }
+    },
+    "exit": 0,
+    "signal": null,
+    "stdout": "{\"ok\":true,\"result\":{\"uri\":\"declaration-lexical.svelte\",\"version\":1,\"javascript\":{\"code\":\"import 'svelte/internal/disclose-version';\\nimport 'svelte/internal/flags/legacy';\\nimport * as $ from 'svelte/internal/client';\\n\\nvar root = $.from_html(`<p></p>`);\\n\\nexport default function Declaration_lexical($$anchor) {\\n\\tconst text = '{let value = 1}';\\n\\tvar p = root();\\n\\n\\t$.set_attribute(p, 'title', '{const literal = 3}');\\n\\tp.textContent = '{let value = 1}';\\n\\t$.append($$anchor, p);\\n}\",\"map\":\"{\\\"version\\\":3,\\\"sources\\\":[\\\"declaration-lexical.svelte\\\"],\\\"sourcesContent\\\":[\\\"<script lang=\\\\\\\"ts\\\\\\\">\\\\n  const text: string = '{let value = 1}';\\\\n</script>\\\\n<!-- {const hidden = 2} -->\\\\n<p title={'{const literal = 3}'}>{text}</p>\\\\n\\\"],\\\"names\\\":[],\\\"mappings\\\":\\\";;;;;;sDAAA,CAAC;CACC,MAAM,AAAA,IAAY,GAAG,iBAAiB;KAGvC,CAAC;;iBAAD,CAAC,WAAQ,qBAAqB;CAA9B,CAAC;CAAF,mBAAC,CAAC,CAAyC;AAFnC,CAAC\\\"}\"},\"css\":null,\"diagnostics\":[],\"runes\":false,\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.51.5\",\"patches\":[\"child-reset-5.53.11\",\"declaration-tags-5.56\",\"select-default-5.57\"],\"clientDevelopment\":false},\"compatibility\":{\"id\":\"v1:svelte=5.51.5;kit=none;ts=unspecified\",\"svelteVersion\":\"5.51.5\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": true,
+      "result": {
+        "uri": "declaration-lexical.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import 'svelte/internal/disclose-version';\nimport 'svelte/internal/flags/legacy';\nimport * as $ from 'svelte/internal/client';\n\nvar root = $.from_html(`<p></p>`);\n\nexport default function Declaration_lexical($$anchor) {\n\tconst text = '{let value = 1}';\n\tvar p = root();\n\n\t$.set_attribute(p, 'title', '{const literal = 3}');\n\tp.textContent = '{let value = 1}';\n\t$.append($$anchor, p);\n}",
+          "map": "{\"version\":3,\"sources\":[\"declaration-lexical.svelte\"],\"sourcesContent\":[\"<script lang=\\\"ts\\\">\\n  const text: string = '{let value = 1}';\\n</script>\\n<!-- {const hidden = 2} -->\\n<p title={'{const literal = 3}'}>{text}</p>\\n\"],\"names\":[],\"mappings\":\";;;;;;sDAAA,CAAC;CACC,MAAM,AAAA,IAAY,GAAG,iBAAiB;KAGvC,CAAC;;iBAAD,CAAC,WAAQ,qBAAqB;CAA9B,CAAC;CAAF,mBAAC,CAAC,CAAyC;AAFnC,CAAC\"}"
+        },
+        "css": null,
+        "diagnostics": [],
+        "runes": false,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.51.5",
+          "patches": [
+            "child-reset-5.53.11",
+            "declaration-tags-5.56",
+            "select-default-5.57"
+          ],
+          "clientDevelopment": false
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.51.5;kit=none;ts=unspecified",
+          "svelteVersion": "5.51.5",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": true,
+    "artifact": {
+      "js": {
+        "code": "import 'svelte/internal/disclose-version';\nimport 'svelte/internal/flags/legacy';\nimport * as $ from 'svelte/internal/client';\n\nvar root = $.from_html(`<p></p>`);\n\nexport default function Declaration_lexical($$anchor) {\n\tconst text = '{let value = 1}';\n\tvar p = root();\n\n\t$.set_attribute(p, 'title', '{const literal = 3}');\n\tp.textContent = '{let value = 1}';\n\t$.append($$anchor, p);\n}",
+        "map": {
+          "version": 3,
+          "names": [],
+          "sources": [
+            "declaration-lexical.svelte"
+          ],
+          "sourcesContent": [
+            "<script lang=\"ts\">\n  const text: string = '{let value = 1}';\n</script>\n<!-- {const hidden = 2} -->\n<p title={'{const literal = 3}'}>{text}</p>\n"
+          ],
+          "mappings": ";;;;;;sDAAA,CAAC;CACC,KAAK,CAAC,IAAI,AAAQ,GAAG,iBAAiB,CAAC;KAGxC,CAAC;;iBAAD,CAAC,WAAQ,qBAAqB;CAA9B,CAAC;oBAAD,CAAC;AAFM,CAAC"
+        }
+      },
+      "css": null,
+      "warnings": [],
+      "metadata": {
+        "runes": false
+      },
+      "ast": {
+        "html": {
+          "type": "Fragment",
+          "start": 71,
+          "end": 142,
+          "children": [
+            {
+              "type": "Text",
+              "start": 70,
+              "end": 71,
+              "raw": "\n",
+              "data": "\n"
+            },
+            {
+              "type": "Comment",
+              "start": 71,
+              "end": 98,
+              "data": " {const hidden = 2} ",
+              "ignores": []
+            },
+            {
+              "type": "Text",
+              "start": 98,
+              "end": 99,
+              "raw": "\n",
+              "data": "\n"
+            },
+            {
+              "type": "Element",
+              "start": 99,
+              "end": 142,
+              "name": "p",
+              "attributes": [
+                {
+                  "type": "Attribute",
+                  "start": 102,
+                  "end": 131,
+                  "name": "title",
+                  "name_loc": {
+                    "start": {
+                      "line": 5,
+                      "column": 3,
+                      "character": 102
+                    },
+                    "end": {
+                      "line": 5,
+                      "column": 8,
+                      "character": 107
+                    }
+                  },
+                  "value": [
+                    {
+                      "type": "MustacheTag",
+                      "start": 108,
+                      "end": 131,
+                      "expression": {
+                        "type": "Literal",
+                        "start": 109,
+                        "end": 130,
+                        "loc": {
+                          "start": {
+                            "line": 5,
+                            "column": 10
+                          },
+                          "end": {
+                            "line": 5,
+                            "column": 31
+                          }
+                        },
+                        "value": "{const literal = 3}",
+                        "raw": "'{const literal = 3}'"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "MustacheTag",
+                  "start": 132,
+                  "end": 138,
+                  "expression": {
+                    "type": "Identifier",
+                    "start": 133,
+                    "end": 137,
+                    "loc": {
+                      "start": {
+                        "line": 5,
+                        "column": 34
+                      },
+                      "end": {
+                        "line": 5,
+                        "column": 38
+                      }
+                    },
+                    "name": "text"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "instance": {
+          "type": "Script",
+          "start": 0,
+          "end": 70,
+          "context": "default",
+          "content": {
+            "type": "Program",
+            "start": 18,
+            "end": 61,
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 0
+              },
+              "end": {
+                "line": 3,
+                "column": 9
+              }
+            },
+            "body": [
+              {
+                "type": "VariableDeclaration",
+                "start": 21,
+                "end": 60,
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 41
+                  }
+                },
+                "declarations": [
+                  {
+                    "type": "VariableDeclarator",
+                    "start": 27,
+                    "end": 59,
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 40
+                      }
+                    },
+                    "id": {
+                      "type": "Identifier",
+                      "start": 27,
+                      "end": 39,
+                      "loc": {
+                        "start": {
+                          "line": 2,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 2,
+                          "column": 20
+                        }
+                      },
+                      "name": "text"
+                    },
+                    "init": {
+                      "type": "Literal",
+                      "start": 42,
+                      "end": 59,
+                      "loc": {
+                        "start": {
+                          "line": 2,
+                          "column": 23
+                        },
+                        "end": {
+                          "line": 2,
+                          "column": 40
+                        }
+                      },
+                      "value": "{let value = 1}",
+                      "raw": "'{let value = 1}'"
+                    }
+                  }
+                ],
+                "kind": "const"
+              }
+            ],
+            "sourceType": "module"
+          }
+        }
+      }
+    },
+    "comparable": {
+      "ok": true,
+      "runes": false,
+      "diagnostics": []
+    }
+  }
+}

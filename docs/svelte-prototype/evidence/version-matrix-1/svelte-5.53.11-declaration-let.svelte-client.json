@@ -1,0 +1,111 @@
+{
+  "source": "{let count = 1}\n<button onclick={() => count++}>{count}</button>\n",
+  "settings": {
+    "filename": "declaration-let.svelte",
+    "generate": "client",
+    "css": "external",
+    "dev": false
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "declaration-let.svelte",
+        "version": 1,
+        "text": "{let count = 1}\n<button onclick={() => count++}>{count}</button>\n"
+      },
+      "target": "client",
+      "dev": false,
+      "compatibility": {
+        "svelteVersion": "5.53.11"
+      }
+    },
+    "exit": 0,
+    "signal": null,
+    "stdout": "{\"ok\":true,\"result\":{\"uri\":\"declaration-let.svelte\",\"version\":1,\"javascript\":{\"code\":\"import 'svelte/internal/disclose-version';\\nimport 'svelte/internal/flags/legacy';\\nimport * as $ from 'svelte/internal/client';\\n\\nvar root = $.from_html(`<button></button>`);\\n\\nexport default function Declaration_let($$anchor) {\\n\\tlet count = 1;\\n\\tvar button = root();\\n\\n\\tbutton.textContent = count;\\n\\t$.delegated('click', button, () => count++);\\n\\t$.append($$anchor, button);\\n}\\n\\n$.delegate(['click']);\",\"map\":\"{\\\"version\\\":3,\\\"sources\\\":[\\\"declaration-let.svelte\\\"],\\\"sourcesContent\\\":[\\\"{let count = 1}\\\\n<button onclick={() => count++}>{count}</button>\\\\n\\\"],\\\"names\\\":[],\\\"mappings\\\":\\\";;;;;;;;KACC,MAAM;;CAAN,MAAM,eAA0B,KAAK;sBAArC,MAAM,QAAgB,KAAK;CAA5B,mBAAC,MAAM,CAAyC;;;\\\"}\"},\"css\":null,\"diagnostics\":[],\"runes\":false,\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.53.11\",\"patches\":[\"child-reset-5.53.11\"],\"clientDevelopment\":false},\"compatibility\":{\"id\":\"v1:svelte=5.53.11;kit=none;ts=unspecified\",\"svelteVersion\":\"5.53.11\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": true,
+      "result": {
+        "uri": "declaration-let.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import 'svelte/internal/disclose-version';\nimport 'svelte/internal/flags/legacy';\nimport * as $ from 'svelte/internal/client';\n\nvar root = $.from_html(`<button></button>`);\n\nexport default function Declaration_let($$anchor) {\n\tlet count = 1;\n\tvar button = root();\n\n\tbutton.textContent = count;\n\t$.delegated('click', button, () => count++);\n\t$.append($$anchor, button);\n}\n\n$.delegate(['click']);",
+          "map": "{\"version\":3,\"sources\":[\"declaration-let.svelte\"],\"sourcesContent\":[\"{let count = 1}\\n<button onclick={() => count++}>{count}</button>\\n\"],\"names\":[],\"mappings\":\";;;;;;;;KACC,MAAM;;CAAN,MAAM,eAA0B,KAAK;sBAArC,MAAM,QAAgB,KAAK;CAA5B,mBAAC,MAAM,CAAyC;;;\"}"
+        },
+        "css": null,
+        "diagnostics": [],
+        "runes": false,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.53.11",
+          "patches": [
+            "child-reset-5.53.11"
+          ],
+          "clientDevelopment": false
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.53.11;kit=none;ts=unspecified",
+          "svelteVersion": "5.53.11",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": false,
+    "error": {
+      "message": "The keyword 'let' is reserved\nhttps://svelte.dev/e/js_parse_error",
+      "name": "CompileError",
+      "code": "js_parse_error",
+      "filename": "declaration-let.svelte",
+      "position": [
+        1,
+        1
+      ],
+      "start": {
+        "line": 1,
+        "column": 1,
+        "character": 1
+      },
+      "end": {
+        "line": 1,
+        "column": 1,
+        "character": 1
+      },
+      "frame": "1: {let count = 1}\n    ^\n2: <button onclick={() => count++}>{count}</button>\n3: ",
+      "stack": ""
+    },
+    "comparable": {
+      "ok": false,
+      "runes": null,
+      "diagnostics": [
+        {
+          "code": "js_parse_error",
+          "severity": "error",
+          "message": "The keyword 'let' is reserved\nhttps://svelte.dev/e/js_parse_error",
+          "bytes": {
+            "start": 1,
+            "end": 1
+          }
+        }
+      ]
+    }
+  }
+}

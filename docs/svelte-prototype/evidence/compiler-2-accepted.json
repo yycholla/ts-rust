@@ -1,0 +1,328 @@
+{
+  "id": "svelte-compiler-2",
+  "status": "accepted-bounded-compiler-checker",
+  "primaryImplementer": "/root",
+  "reviewer": "/root/compiler_reviewer",
+  "auditor": "/root/compiler_auditor",
+  "hypothesis": "Pinned rsvelte facade can supply native/WASM executable Svelte compilation and checking projections without changing the TypeScript core",
+  "scope": [
+    "crates/ts_svelte_compiler",
+    "npm/svelte compiler interface",
+    "scripts/svelte compiler build/oracle",
+    "workspace manifests",
+    "prototype docs/evidence",
+    "crates/ts_svelte_check: additive native JSON checker bridge, unchanged ts_goport"
+  ],
+  "instruction": "Continue without checking in for foundations",
+  "backend": {
+    "repository": "https://github.com/baseballyama/rsvelte",
+    "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+    "facadeVersion": "0.12.6",
+    "svelteTarget": "5.57.1",
+    "appSvelte": "5.53.11",
+    "dependencies": "isolated Cargo.lock with registry OXC 0.149; upstream Git patches not inherited",
+    "localPatch": "crates/ts_svelte_compiler/vendor/rsvelte_core/UPSTREAM.json"
+  },
+  "exploratoryAttempts": [
+    {
+      "result": "Initial root-workspace build could not resolve smallvec: ts_goport pins 1.15.1; OXC requires >=1.15.2. No compiler ran. Moved new backend crate into excluded standalone workspace; original dependency versions unchanged."
+    },
+    {
+      "result": "Oracle run1 failed before compiler cases because sandboxed Node could not spawn source-identity helper. Empty target/svelte-compiler-oracle-1 preserved; run2 used approved unsandboxed child processes."
+    },
+    {
+      "result": "Initial native checker cold build failed on wrong public Node path. Fixed to ts_goport::prelude::Node; subsequent --bins build passed; original log target/svelte-checker-build-1.log retained."
+    },
+    {
+      "result": "Initial compatibility rebuild saw manifest edited after Cargo graph resolution, so new OXC imports unavailable; parser API uses diagnostics not errors. Corrected before next source-bound verification. Native lint draft found long project function and needless by-value request; split helpers and borrow request."
+    },
+    {
+      "result": "Redundant core build deliberately terminated after detecting nonexistent upstream submodule watch in vendored build.rs. Removed invalid watch, preserved embedded upstream version. Third documented vendor change; final source-bound run rebuilds it."
+    }
+  ],
+  "tooling": {
+    "wasmBindgen": "0.2.129",
+    "source": "official GitHub release x86_64-unknown-linux-musl",
+    "archiveSha256": "82d12bb940e2d4e72e0d5605387fc1b8ca179044e012b620f0ce4e7440e8320e"
+  },
+  "measurements": [
+    {
+      "kind": "native-compiler-oracle",
+      "report": "target/svelte-compiler-oracle-2/report.json",
+      "scope": "660 MoncuraHR components, client/server diagnostics; 10 fixtures; 2 SSR controls",
+      "cases": 1340,
+      "matched": 1332,
+      "differences": 8,
+      "harnessFailures": 0,
+      "accepted": false,
+      "findings": [
+        "All 1320 application compilation cases matched diagnostics; no app config/preprocessing/bundling/runtime validation",
+        "2 SSR fixture render comparisons matched",
+        "6 fixture differences expose facade error formatting/location loss; repaired using structured core errors, remeasurement pending",
+        "2 a11y warning wording differences reflect backend target 5.57.1 versus app5.53.11; retained as compatibility gap"
+      ]
+    },
+    {
+      "kind": "bound-verification",
+      "report": "docs/svelte-prototype/evidence/batch-2-run-1",
+      "sourceFingerprint": "3186229d769015683c2ff703828190ccc2508fb5328319263d35ad2df86b03e7",
+      "accepted": false,
+      "result": "32 Rust and55 JS pass;1340 compiler diagnostic cases match;hydration2/4:missing only_child runtime helper;checker and project stages unrun in bound script"
+    },
+    {
+      "kind": "checker-oracle",
+      "report": "target/svelte-checker-oracle-1/report.json",
+      "cases": 8,
+      "matched": 8,
+      "incomplete": 0,
+      "differences": 0,
+      "scope": "same Rust projection checked by native engine and installed TypeScript5.9.3"
+    },
+    {
+      "kind": "project-smoke",
+      "report": "target/svelte-project-smoke-1/report.json",
+      "cases": 7,
+      "passed": 5,
+      "accepted": false,
+      "result": "JS projections contain generated TypeScript helpers and must not be parsed as JSX"
+    },
+    {
+      "kind": "runtime-oracle",
+      "report": "target/svelte-runtime-oracle-2/report.json",
+      "hydrationPassed": 4,
+      "hydrationCases": 4,
+      "unsupportedControlsPassed": 2,
+      "scope": "counter fixture in JSDOM, not real browser; exploratory before final rebuild"
+    },
+    {
+      "kind": "checker-oracle",
+      "report": "target/svelte-checker-oracle-2/report.json",
+      "cases": 10,
+      "matched": 10,
+      "incomplete": 0,
+      "differences": 0,
+      "scope": "same Rust projections checked by native engine and TypeScript5.9.3, including JSX JSDoc"
+    },
+    {
+      "kind": "project-smoke",
+      "report": "target/svelte-project-smoke-2/report.json",
+      "cases": 8,
+      "passed": 8,
+      "scope": "exploratory before final rebuild"
+    },
+    {
+      "kind": "bound-verification",
+      "report": "docs/svelte-prototype/evidence/batch-2-run-2",
+      "sourceFingerprint": "c53074e9649c498781ff43e7a0c28f346367b7dca96e64bdd74b62876914766a",
+      "result": "34 Rust and57 JS pass;1340 compiler diagnostic comparisons match;runtime4/4 and2unsupported controls pass;checker10/10;project8/8;source unchanged. Not accepted: reviewer required explicit rune-module FileInput rejection.",
+      "accepted": false
+    }
+  ],
+  "repair": "Disable only_child codegen folding for5.53.11; reject client development instrumentation and unavailable runtime helpers via OXC semantic import binding; JS projection emit_jsdoc true preserves JSX/checkJs/JSDoc",
+  "evidence": "docs/svelte-prototype/evidence/batch-2-run-3",
+  "sourceFingerprint": "af2ce5d3e5536af9c882d025f0a7d8600b009a1e17fdbf4a0ec5369fc7e08dd5",
+  "qualityRuns": [
+    "docs/svelte-prototype/evidence/batch-2-quality-1",
+    "docs/svelte-prototype/evidence/batch-2-quality-2",
+    "docs/svelte-prototype/evidence/batch-2-quality-3",
+    "docs/svelte-prototype/evidence/batch-2-quality-4",
+    "docs/svelte-prototype/evidence/batch-2-quality-5"
+  ],
+  "quality": {
+    "evidence": "docs/svelte-prototype/evidence/batch-2-quality-5",
+    "format": "PASS",
+    "clippy": "PASS, no warnings in selected crates",
+    "declarations": "PASS",
+    "sourceFingerprint": "af2ce5d3e5536af9c882d025f0a7d8600b009a1e17fdbf4a0ec5369fc7e08dd5"
+  },
+  "runs": [
+    "docs/svelte-prototype/evidence/batch-2-run-1",
+    "docs/svelte-prototype/evidence/batch-2-run-2",
+    "docs/svelte-prototype/evidence/batch-2-run-3"
+  ],
+  "limitations": [
+    "SvelteKit graph/routes/environment/config/preprocessors not implemented",
+    "No persistent LSP or incremental checking",
+    "WASM source/compiler API only; native project checker not exposed through WASM",
+    "Real-browser execution unrun; runtime coverage one JSDOM counter fixture",
+    "Compiler helper availability guard is not general ABI parity",
+    "Client development mode and missing runtime helpers rejected explicitly",
+    "Explicit rune-module inputs rejected; transitive rune-module compiler diagnostics not covered",
+    "BOM inputs rejected",
+    "Checker comparisons share Rust projections, not full svelte-check transformation parity",
+    "Some generated diagnostic spans remain unmapped and visible",
+    "No speed/memory improvement measured",
+    "Vendored upstream full test suite unrun",
+    "Inherited TS protected suites, Query and Hono unrun locally"
+  ],
+  "schemaVersion": 1,
+  "batch": "svelte-compiler-2",
+  "baseCommit": "8c224ef35077254e75c9ff6cf7a4a54a14394b86",
+  "previousAccepted": {
+    "record": "docs/svelte-prototype/evidence/foundation-accepted.json",
+    "sourceFingerprint": "58bb49c148e3efe26f0df1a3cbf74f3f9b005287394f282840cb5615d30f0c4d"
+  },
+  "acceptanceScope": [
+    "Native Rust client/server component compiler with documented Svelte5.53.11 compatibility limits",
+    "Source/compiler WASM interfaces callable from JavaScript workers",
+    "Full Svelte checking projections for TypeScript and JavaScript/JSDoc",
+    "Native explicit-input project checking through unchanged Rust TypeScript engine",
+    "Verified copied-span diagnostics with preserved unmapped/generated messages"
+  ],
+  "tests": {
+    "rust": {
+      "passed": 34,
+      "failed": 0,
+      "skipped": 0
+    },
+    "javascript": {
+      "passed": 57,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "comparisonWithAcceptedFoundation": {
+    "rust": {
+      "retained": 21,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0,
+      "newPassing": 13
+    },
+    "javascript": {
+      "retained": 38,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0,
+      "newPassing": 19
+    }
+  },
+  "additionalChecks": {
+    "compilerDiagnostics": {
+      "cases": 1340,
+      "matched": 1340,
+      "differences": 0,
+      "harnessFailures": 0,
+      "applicationComponents": 660,
+      "targets": [
+        "client",
+        "server"
+      ]
+    },
+    "runtime": {
+      "ssrAgreement": true,
+      "hydrationCases": 4,
+      "passed": 4,
+      "unsupportedControls": 2,
+      "unsupportedPassed": 2,
+      "environment": "JSDOM, one counter fixture"
+    },
+    "checkerOracle": {
+      "cases": 10,
+      "matched": 10,
+      "incomplete": 0,
+      "differences": 0,
+      "oracle": "TypeScript5.9.3 on the same Rust projections; not svelte-check transform parity"
+    },
+    "nativeProject": {
+      "cases": 10,
+      "passed": 10
+    }
+  },
+  "verdicts": [
+    {
+      "role": "independentReviewer",
+      "agent": "/root/compiler_reviewer",
+      "batch": "svelte-compiler-2",
+      "sourceFingerprint": "af2ce5d3e5536af9c882d025f0a7d8600b009a1e17fdbf4a0ec5369fc7e08dd5",
+      "verdict": "PASS",
+      "findings": "Source/binary bindings verified; full run and quality pass. Worker retirement, map source binding, semantic checking override, JS/JSDoc preservation, runtime compatibility guards and explicit rune-module rejection repaired. Acceptance limited to documented prototype."
+    },
+    {
+      "role": "regressionAuditor",
+      "agent": "/root/compiler_auditor",
+      "batch": "svelte-compiler-2",
+      "sourceFingerprint": "af2ce5d3e5536af9c882d025f0a7d8600b009a1e17fdbf4a0ec5369fc7e08dd5",
+      "verdict": "PASS",
+      "findings": "Retained21 Rust and38 JavaScript foundation passes;0 lost, absent or unrun foundation tests;13 new Rust and19 new JS pass. All additional comparisons pass. Earlier failed evidence retained. TS core, existing dependency versions and historical current state unchanged; history append-only."
+    }
+  ],
+  "unrun": [
+    "Upstream TypeScript protected tests/gates/oracles",
+    "Query",
+    "Hono",
+    "Complete vendored-backend suites",
+    "Real-browser execution",
+    "Svelte checker through WASM",
+    "Complete MoncuraHR checking/build",
+    "Performance comparisons"
+  ],
+  "upstreamGateRegressions": "Unmeasured; no upstream gate verdict or R188 recovery claimed.",
+  "ordinaryQuery": {
+    "status": "unrun locally",
+    "completes": null
+  },
+  "hono": {
+    "status": "unrun locally",
+    "lastLocalMeasurement": null
+  },
+  "absentHistoricalEvidence": "Inherited R188 artifacts are absent locally and were not reconstructed.",
+  "nextAction": "Establish SvelteKit project graph, rune-module diagnostics and route/environment types, then persistent editor sessions; measure performance after semantic coverage is established.",
+  "research": "docs/svelte-prototype/rsvelte-evaluation.json",
+  "evidenceFiles": {
+    "docs/svelte-prototype/evidence/batch-2-run-3/source.json": "23800e8698a6d7b2ccee03263a338aa1bd67dc7ca23dcd06a380e8f5c6527ec4",
+    "docs/svelte-prototype/evidence/batch-2-run-3/source-after.json": "23800e8698a6d7b2ccee03263a338aa1bd67dc7ca23dcd06a380e8f5c6527ec4",
+    "docs/svelte-prototype/evidence/batch-2-run-3/binaries.sha256": "4be9857b4d2ae2a9a889580f1123a4aefce99a4e43de870bc04d6b667a41b3b8",
+    "docs/svelte-prototype/evidence/batch-2-run-3/foundation-tests.log": "af2e337de77b19a3a9a0f6dbf8592b88e15752f18f35e3131b12ee0465111209",
+    "docs/svelte-prototype/evidence/batch-2-run-3/compiler-tests.log": "f193241c61b5fb8f75a63bea813cd902e3097ff0f0e11c5635391308ae34a045",
+    "docs/svelte-prototype/evidence/batch-2-run-3/checker-tests.log": "8e7ba7a15731fcdf463414740f988b48528550c7efa4e4d501aa83e265e4010e",
+    "docs/svelte-prototype/evidence/batch-2-run-3/js-tests.log": "9d6f754c5b3bca111eb5f1eba6f30836b8532cc93400e291c21298e9ec374cee",
+    "docs/svelte-prototype/evidence/batch-2-run-3/result.txt": "8221ac66be71558c921fb44cfb66f7997699aea754d917763882d6d9eddc836e",
+    "docs/svelte-prototype/evidence/batch-2-run-3/oracle/report.json": "0ece588edb704b9dbef3101a3947f303625712d893d2919a41e478647c0205f3",
+    "docs/svelte-prototype/evidence/batch-2-run-3/runtime/report.json": "4a5e55beac657901b59f47b610a898e294b87683e6dcb2de1485eab75a68ed99",
+    "docs/svelte-prototype/evidence/batch-2-run-3/checker/report.json": "4450a91e7fd5076207f39f9c5f007445c665543bb11121db4d475cf88d9cf031",
+    "docs/svelte-prototype/evidence/batch-2-run-3/project/report.json": "f449f23b2538781d67350c5d0a30fee7298371da1830a57d65c54d86c7760213",
+    "docs/svelte-prototype/evidence/batch-2-quality-5/source.json": "23800e8698a6d7b2ccee03263a338aa1bd67dc7ca23dcd06a380e8f5c6527ec4",
+    "docs/svelte-prototype/evidence/batch-2-quality-5/source-after.json": "23800e8698a6d7b2ccee03263a338aa1bd67dc7ca23dcd06a380e8f5c6527ec4",
+    "docs/svelte-prototype/evidence/batch-2-quality-5/format.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-2-quality-5/compiler-format.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-2-quality-5/vendor-format.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-2-quality-5/clippy.log": "92434e198f27984c035c376ec77a7cf9e6ebdde782f8ccb1336ae3329b66ddb7",
+    "docs/svelte-prototype/evidence/batch-2-quality-5/compiler-clippy.log": "85c8dbac64ed6a362d668bf3988686e26e947620bb15cfdbe2e999a0ff8261b2",
+    "docs/svelte-prototype/evidence/batch-2-quality-5/declarations.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-2-quality-5/result.txt": "8221ac66be71558c921fb44cfb66f7997699aea754d917763882d6d9eddc836e"
+  },
+  "latestProjectComparison": {
+    "report": "docs/svelte-prototype/public-project-comparison.md",
+    "acceptedCompilerUnchanged": true,
+    "evidence": [
+      "docs/svelte-prototype/evidence/public-projects-1/final.json",
+      "docs/svelte-prototype/evidence/public-realworld-1/final.json"
+    ],
+    "selectedComponents": 280,
+    "componentTargetCases": 560,
+    "supportedVersionDiagnosticMatches": 560,
+    "projectVersionDiagnosticMatches": 556,
+    "completedNativeProjectChecks": 0,
+    "fullNativeBuild": "unsupported",
+    "nativeLint": "unsupported",
+    "performanceGain": "unestablished",
+    "reviewStatus": "passed-experiment-only",
+    "verdicts": [
+      {
+        "role": "independentReviewer",
+        "agent": "/root/comparison_review",
+        "verdict": "PASS",
+        "scope": "Measured comparison and report only; verified hashes, counts, scopes, failure accounting and version-profile proposal."
+      },
+      {
+        "role": "regressionAuditor",
+        "agent": "/root/comparison_audit",
+        "verdict": "PASS",
+        "scope": "Verified all evidence, accepted source and 9 artifacts, project inputs and counts; no expanded compiler acceptance or regression-free claim."
+      }
+    ]
+  }
+}

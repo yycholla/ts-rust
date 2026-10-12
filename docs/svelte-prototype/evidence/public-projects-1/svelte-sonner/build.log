@@ -1,0 +1,83 @@
+npm warn Unknown project config "resolution-mode". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> svelte-sonner@1.2.1 build /home/yycholla/Projects/ts-rust/target/svelte-public-projects/svelte-sonner
+> vite build && npm run package
+
+▲ [WARNING] Cannot find base config file "./.svelte-kit/tsconfig.json" [tsconfig.json]
+
+    tsconfig.json:2:12:
+      2 │   "extends": "./.svelte-kit/tsconfig.json",
+        ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+vite v6.4.1 building SSR bundle for production...
+transforming...
+✓ 300 modules transformed.
+rendering chunks...
+vite v6.4.1 building for production...
+transforming...
+✓ 266 modules transformed.
+rendering chunks...
+computing gzip size...
+.svelte-kit/output/client/_app/version.json                            0.03 kB │ gzip:  0.05 kB
+.svelte-kit/output/client/.vite/manifest.json                          4.78 kB │ gzip:  0.85 kB
+.svelte-kit/output/client/_app/immutable/assets/0.Dqvm0Ji6.css         2.45 kB │ gzip:  1.03 kB
+.svelte-kit/output/client/_app/immutable/assets/2.BYfup3WK.css         6.44 kB │ gzip:  2.00 kB
+.svelte-kit/output/client/_app/immutable/assets/Toaster.BO4uA7hv.css  14.73 kB │ gzip:  3.04 kB
+.svelte-kit/output/client/_app/immutable/entry/start.BK_d2wgR.js       0.08 kB │ gzip:  0.09 kB
+.svelte-kit/output/client/_app/immutable/chunks/DuVN9ZIk.js            0.18 kB │ gzip:  0.15 kB
+.svelte-kit/output/client/_app/immutable/chunks/DF6GSiQK.js            0.19 kB │ gzip:  0.17 kB
+.svelte-kit/output/client/_app/immutable/nodes/0.Cnenop_V.js           0.22 kB │ gzip:  0.17 kB
+.svelte-kit/output/client/_app/immutable/chunks/DT41rG5S.js            0.24 kB │ gzip:  0.20 kB
+.svelte-kit/output/client/_app/immutable/nodes/1.CTdWParg.js           0.48 kB │ gzip:  0.32 kB
+.svelte-kit/output/client/_app/immutable/chunks/CBeToJi4.js            0.53 kB │ gzip:  0.34 kB
+.svelte-kit/output/client/_app/immutable/chunks/CQIXFCac.js            1.33 kB │ gzip:  0.70 kB
+.svelte-kit/output/client/_app/immutable/chunks/C6-Ah-gG.js            2.16 kB │ gzip:  0.97 kB
+.svelte-kit/output/client/_app/immutable/nodes/3.D7pqHBQv.js           2.41 kB │ gzip:  1.17 kB
+.svelte-kit/output/client/_app/immutable/chunks/CJuSFt3H.js            2.96 kB │ gzip:  1.35 kB
+.svelte-kit/output/client/_app/immutable/entry/app.z2NwiHdy.js         6.15 kB │ gzip:  2.82 kB
+.svelte-kit/output/client/_app/immutable/chunks/ByxL-22-.js            8.38 kB │ gzip:  3.54 kB
+.svelte-kit/output/client/_app/immutable/chunks/BFQjLAEJ.js           24.07 kB │ gzip:  9.28 kB
+.svelte-kit/output/client/_app/immutable/chunks/C2TekHcD.js           28.00 kB │ gzip: 10.88 kB
+.svelte-kit/output/client/_app/immutable/chunks/DkEb2p0c.js           40.88 kB │ gzip: 15.04 kB
+.svelte-kit/output/client/_app/immutable/nodes/2.B5t2mT9E.js          47.46 kB │ gzip: 17.45 kB
+✓ built in 2.61s
+.svelte-kit/output/server/.vite/manifest.json                           4.52 kB
+.svelte-kit/output/server/_app/immutable/assets/_layout.CYyABR55.css    2.35 kB
+.svelte-kit/output/server/_app/immutable/assets/_page.BYfup3WK.css      6.44 kB
+.svelte-kit/output/server/_app/immutable/assets/Toaster.DLTaKdQb.css   14.66 kB
+.svelte-kit/output/server/entries/pages/test/_page.ts.js                0.04 kB
+.svelte-kit/output/server/entries/pages/_layout.svelte.js               0.16 kB
+.svelte-kit/output/server/internal.js                                   0.33 kB
+.svelte-kit/output/server/chunks/equality.js                            0.33 kB
+.svelte-kit/output/server/entries/fallbacks/error.svelte.js             0.34 kB
+.svelte-kit/output/server/chunks/environment.js                         0.66 kB
+.svelte-kit/output/server/chunks/index2.js                              1.10 kB
+.svelte-kit/output/server/chunks/utils.js                               1.15 kB
+.svelte-kit/output/server/entries/pages/test/_page.svelte.js            1.57 kB
+.svelte-kit/output/server/chunks/context.js                             2.74 kB
+.svelte-kit/output/server/chunks/exports.js                             6.96 kB
+.svelte-kit/output/server/chunks/shared.js                             16.57 kB
+.svelte-kit/output/server/entries/pages/_page.svelte.js                16.97 kB
+.svelte-kit/output/server/chunks/index.js                              27.50 kB
+.svelte-kit/output/server/remote-entry.js                              27.92 kB
+.svelte-kit/output/server/chunks/Toaster.js                            37.82 kB
+.svelte-kit/output/server/chunks/internal.js                           75.02 kB
+.svelte-kit/output/server/index.js                                    145.29 kB
+✓ built in 6.70s
+
+Run npm run preview to preview your production build locally.
+
+> Using @sveltejs/adapter-auto
+  Could not detect a supported production environment. See https://svelte.dev/docs/kit/adapters to learn how to configure your app to run on the platform of your choosing
+  ✔ done
+npm warn Unknown env config "resolution-mode". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown project config "resolution-mode". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> svelte-sonner@1.2.1 package
+> svelte-kit sync && svelte-package && publint
+
+src/lib -> dist
+svelte-sonner lint results:
+All good!

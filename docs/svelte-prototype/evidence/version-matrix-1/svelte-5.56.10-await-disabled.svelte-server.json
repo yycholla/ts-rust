@@ -1,0 +1,128 @@
+{
+  "source": "<script>const promise = Promise.resolve(42);</script>\n<p>{await promise}</p>\n",
+  "settings": {
+    "filename": "await-disabled.svelte",
+    "generate": "server",
+    "css": "external",
+    "dev": false,
+    "runes": true
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "await-disabled.svelte",
+        "version": 1,
+        "text": "<script>const promise = Promise.resolve(42);</script>\n<p>{await promise}</p>\n"
+      },
+      "target": "server",
+      "dev": false,
+      "runes": true,
+      "compatibility": {
+        "svelteVersion": "5.56.10"
+      }
+    },
+    "exit": 1,
+    "signal": null,
+    "stdout": "{\"ok\":false,\"error\":{\"code\":\"svelte_compile\",\"message\":\"Cannot use `await` in deriveds and template expressions, or at the top level of a component, unless the `experimental.async` compiler option is `true`\\nhttps://svelte.dev/e/experimental_async\"},\"diagnostics\":[{\"code\":\"experimental_async\",\"message\":\"Cannot use `await` in deriveds and template expressions, or at the top level of a component, unless the `experimental.async` compiler option is `true`\\nhttps://svelte.dev/e/experimental_async\",\"severity\":\"error\",\"uri\":\"await-disabled.svelte\",\"bytes\":{\"start\":58,\"end\":71},\"range\":{\"start\":{\"line\":1,\"character\":4},\"end\":{\"line\":1,\"character\":17}}}],\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.56.10\",\"patches\":[\"child-reset-5.53.11\"],\"clientDevelopment\":false},\"compatibility\":{\"id\":\"v1:svelte=5.56.10;kit=none;ts=unspecified\",\"svelteVersion\":\"5.56.10\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": false,
+      "error": {
+        "code": "svelte_compile",
+        "message": "Cannot use `await` in deriveds and template expressions, or at the top level of a component, unless the `experimental.async` compiler option is `true`\nhttps://svelte.dev/e/experimental_async"
+      },
+      "diagnostics": [
+        {
+          "code": "experimental_async",
+          "message": "Cannot use `await` in deriveds and template expressions, or at the top level of a component, unless the `experimental.async` compiler option is `true`\nhttps://svelte.dev/e/experimental_async",
+          "severity": "error",
+          "uri": "await-disabled.svelte",
+          "bytes": {
+            "start": 58,
+            "end": 71
+          },
+          "range": {
+            "start": {
+              "line": 1,
+              "character": 4
+            },
+            "end": {
+              "line": 1,
+              "character": 17
+            }
+          }
+        }
+      ],
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.56.10",
+        "patches": [
+          "child-reset-5.53.11"
+        ],
+        "clientDevelopment": false
+      },
+      "compatibility": {
+        "id": "v1:svelte=5.56.10;kit=none;ts=unspecified",
+        "svelteVersion": "5.56.10",
+        "kitVersion": null,
+        "typescriptVersion": null,
+        "channel": "stable",
+        "kitConfig": null,
+        "kitLibraryAlias": null,
+        "kitEnvironmentModule": null,
+        "capabilities": {
+          "componentCompiler": "prototype",
+          "checkingProjection": "prototype",
+          "projectCheck": "explicit-input-prototype",
+          "kitGraph": false,
+          "kitBuild": false,
+          "lsp": false
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": false,
+    "error": {
+      "message": "Cannot use `await` in deriveds and template expressions, or at the top level of a component, unless the `experimental.async` compiler option is `true`\nhttps://svelte.dev/e/experimental_async",
+      "name": "CompileError",
+      "code": "experimental_async",
+      "filename": "await-disabled.svelte",
+      "position": [
+        58,
+        71
+      ],
+      "start": {
+        "line": 2,
+        "column": 4,
+        "character": 58
+      },
+      "end": {
+        "line": 2,
+        "column": 17,
+        "character": 71
+      },
+      "frame": "1: <script>const promise = Promise.resolve(42);</script>\n2: <p>{await promise}</p>\n                    ^\n3: ",
+      "stack": ""
+    },
+    "comparable": {
+      "ok": false,
+      "runes": null,
+      "diagnostics": [
+        {
+          "code": "experimental_async",
+          "severity": "error",
+          "message": "Cannot use `await` in deriveds and template expressions, or at the top level of a component, unless the `experimental.async` compiler option is `true`\nhttps://svelte.dev/e/experimental_async",
+          "bytes": {
+            "start": 58,
+            "end": 71
+          }
+        }
+      ]
+    }
+  }
+}

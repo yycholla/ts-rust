@@ -1,0 +1,50 @@
+{
+  "status": 0,
+  "signal": null,
+  "stderr": "",
+  "response": {
+    "ok": true,
+    "result": {
+      "uri": "DefaultSelect.svelte",
+      "version": 1,
+      "javascript": {
+        "code": "import * as $ from 'svelte/internal/server';\n\nexport default function DefaultSelect($$renderer, $$props) {\n\tlet { choice = 'second' } = $$props;\n\n\t$$renderer.push(`<select aria-label=\"Choice\">`);\n\n\t$$renderer.option({ value: 'first' }, ($$renderer) => {\n\t\t$$renderer.push(`First`);\n\t});\n\n\t$$renderer.option({ value: 'second' }, ($$renderer) => {\n\t\t$$renderer.push(`Second`);\n\t});\n\n\t$$renderer.push(`</select>`);\n}",
+        "map": "{\"version\":3,\"sources\":[\"DefaultSelect.svelte\"],\"sourcesContent\":[\"<script lang=\\\"ts\\\">\\n  let { choice = 'second' }: { choice?: string } = $props();\\n</script>\\n<select defaultValue={choice} aria-label=\\\"Choice\\\">\\n  <option value=\\\"first\\\">First</option>\\n  <option value=\\\"second\\\">Second</option>\\n</select>\\n\"],\"names\":[],\"mappings\":\";;2DAAA,CAAC;CACC,IAAI,EAAE,MAAM,GAAG,QAAQ;;;;YAGtB,MAAM,GAAC,KAAK;;;;YAAgB,MAAM,GAC3B,KAAK;;;;;AAHP,CAAC\"}"
+      },
+      "css": null,
+      "diagnostics": [],
+      "runes": true,
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.53.13",
+        "patches": [
+          "child-reset-5.53.11",
+          "declaration-tags-5.56",
+          "select-default-5.57"
+        ],
+        "clientDevelopment": false
+      },
+      "compatibility": {
+        "id": "v1:svelte=5.53.13;kit=none;ts=unspecified",
+        "svelteVersion": "5.53.13",
+        "kitVersion": null,
+        "typescriptVersion": null,
+        "channel": "stable",
+        "kitConfig": null,
+        "kitLibraryAlias": null,
+        "kitEnvironmentModule": null,
+        "capabilities": {
+          "componentCompiler": "prototype",
+          "checkingProjection": "prototype",
+          "projectCheck": "explicit-input-prototype",
+          "kitGraph": false,
+          "kitBuild": false,
+          "lsp": false
+        }
+      }
+    }
+  }
+}

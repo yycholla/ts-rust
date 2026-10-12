@@ -1,0 +1,420 @@
+✖ native/WASM parity: capabilities (7.437517ms)
+✖ native/WASM parity: UTF-16/UTF-8 and CRLF (2.70442ms)
+✖ native/WASM parity: invalid surrogate boundary (1.834297ms)
+✖ native/WASM parity: invalid UTF-8 boundary (0.487728ms)
+✖ native/WASM parity: invalid CRLF boundary (0.484878ms)
+✖ native/WASM parity: invalid line (0.526194ms)
+✖ native/WASM parity: sequential edits (2.012206ms)
+✖ native/WASM parity: stale version (0.51695ms)
+✖ native/WASM parity: full replacement (0.497303ms)
+✖ native/WASM parity: exact mapping (2.247563ms)
+✖ native/WASM parity: unpaired surrogate (0.937054ms)
+✖ native/WASM parity: unknown field (0.896594ms)
+✖ native/WASM parity: unknown operation (0.514479ms)
+✖ native/WASM parity: negative offset (0.639772ms)
+✖ native/WASM parity: offset 4294967295 (0.401092ms)
+✖ native/WASM parity: copy range 4294967295 (0.350095ms)
+✖ native/WASM parity: generated range 4294967295 (0.338964ms)
+✖ native/WASM parity: offset 4294967296 (0.404543ms)
+✖ native/WASM parity: copy range 4294967296 (0.414349ms)
+✖ native/WASM parity: generated range 4294967296 (0.326607ms)
+✖ native/WASM parity: offset 9007199254740991 (0.308036ms)
+✖ native/WASM parity: copy range 9007199254740991 (0.435877ms)
+✖ native/WASM parity: generated range 9007199254740991 (0.493622ms)
+✖ native/WASM parity: offset 0.5 (0.8213ms)
+✖ native/WASM parity: copy range 0.5 (0.377851ms)
+✖ native/WASM parity: generated range 0.5 (0.36246ms)
+✖ native/WASM parity: offset 1e+100 (0.444547ms)
+✖ native/WASM parity: copy range 1e+100 (0.407326ms)
+✖ native/WASM parity: generated range 1e+100 (0.402762ms)
+✖ native/WASM parity: operation limit (1.180552ms)
+✖ native/WASM parity: scan-work limit (11.624733ms)
+✔ coordinate results have independently specified expected values (1.715568ms)
+✔ actual WASM has no imports and handles memory growth and repeated calls (40.353793ms)
+✔ disposal is idempotent and prevents use (0.937154ms)
+✔ host serialization errors do not poison the instance (0.701597ms)
+✔ reentrant requests during serialization are rejected (0.477996ms)
+✔ WASM ABI cannot replay a stale request after run or rejected allocation (0.427392ms)
+✔ requests over the byte cap are rejected without poisoning the wrapper (74.563359ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 7
+ℹ fail 31
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 304.577434
+
+✖ failing tests:
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: capabilities (7.437517ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: UTF-16/UTF-8 and CRLF (2.70442ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: invalid surrogate boundary (1.834297ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: invalid UTF-8 boundary (0.487728ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: invalid CRLF boundary (0.484878ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: invalid line (0.526194ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: sequential edits (2.012206ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: stale version (0.51695ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: full replacement (0.497303ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: exact mapping (2.247563ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: unpaired surrogate (0.937054ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: unknown field (0.896594ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: unknown operation (0.514479ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: negative offset (0.639772ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: offset 4294967295 (0.401092ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: copy range 4294967295 (0.350095ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: generated range 4294967295 (0.338964ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: offset 4294967296 (0.404543ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: copy range 4294967296 (0.414349ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: generated range 4294967296 (0.326607ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: offset 9007199254740991 (0.308036ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: copy range 9007199254740991 (0.435877ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: generated range 9007199254740991 (0.493622ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: offset 0.5 (0.8213ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: copy range 0.5 (0.377851ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: generated range 0.5 (0.36246ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: offset 1e+100 (0.444547ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: copy range 1e+100 (0.407326ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: generated range 1e+100 (0.402762ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: operation limit (1.180552ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+
+test at npm/svelte/test/source.test.mjs:50:5
+✖ native/WASM parity: scan-work limit (11.624733ms)
+  TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received an instance of URL
+      at normalizeSpawnArguments (node:child_process:585:3)
+      at spawnSync (node:child_process:887:8)
+      at runNative (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:14:19)
+      at TestContext.<anonymous> (file:///home/yycholla/Projects/ts-rust/npm/svelte/test/source.test.mjs:52:56)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }

@@ -1,0 +1,620 @@
+[
+  {
+    "text": "{const value = }",
+    "oracle": {
+      "code": "js_parse_error",
+      "message": "Unexpected token\nhttps://svelte.dev/e/js_parse_error",
+      "start": 15,
+      "end": 15
+    },
+    "native": {
+      "ok": true,
+      "result": {
+        "uri": "Case.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import * as $ from 'svelte/internal/server';\n\nexport default function Case($$renderer) {}",
+          "map": "{\"version\":3,\"sources\":[\"Case.svelte\"],\"sourcesContent\":[\"{const value = }\"],\"names\":[],\"mappings\":\"AAAA;AAAA;AAAA\"}"
+        },
+        "css": null,
+        "diagnostics": [],
+        "runes": false,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.57.2",
+          "patches": [
+            "child-reset-5.53.11",
+            "declaration-tags-5.56",
+            "select-default-5.57"
+          ],
+          "clientDevelopment": true
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.57.2;kit=none;ts=unspecified",
+          "svelteVersion": "5.57.2",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "text": "{let a=}",
+    "oracle": {
+      "code": "js_parse_error",
+      "message": "Unexpected token\nhttps://svelte.dev/e/js_parse_error",
+      "start": 7,
+      "end": 7
+    },
+    "native": {
+      "ok": true,
+      "result": {
+        "uri": "Case.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import * as $ from 'svelte/internal/server';\n\nexport default function Case($$renderer) {}",
+          "map": "{\"version\":3,\"sources\":[\"Case.svelte\"],\"sourcesContent\":[\"{let a=}\"],\"names\":[],\"mappings\":\"AAAA;AAAA;AAAA\"}"
+        },
+        "css": null,
+        "diagnostics": [],
+        "runes": false,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.57.2",
+          "patches": [
+            "child-reset-5.53.11",
+            "declaration-tags-5.56",
+            "select-default-5.57"
+          ],
+          "clientDevelopment": true
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.57.2;kit=none;ts=unspecified",
+          "svelteVersion": "5.57.2",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "text": "{const a=1,b=}",
+    "oracle": {
+      "code": "js_parse_error",
+      "message": "Unexpected token\nhttps://svelte.dev/e/js_parse_error",
+      "start": 13,
+      "end": 13
+    },
+    "native": {
+      "ok": true,
+      "result": {
+        "uri": "Case.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import * as $ from 'svelte/internal/server';\n\nexport default function Case($$renderer) {}",
+          "map": "{\"version\":3,\"sources\":[\"Case.svelte\"],\"sourcesContent\":[\"{const a=1,b=}\"],\"names\":[],\"mappings\":\"AAAA;AAAA;AAAA\"}"
+        },
+        "css": null,
+        "diagnostics": [],
+        "runes": false,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.57.2",
+          "patches": [
+            "child-reset-5.53.11",
+            "declaration-tags-5.56",
+            "select-default-5.57"
+          ],
+          "clientDevelopment": true
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.57.2;kit=none;ts=unspecified",
+          "svelteVersion": "5.57.2",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "text": "{const a=1; let b=2}",
+    "oracle": {
+      "code": "expected_token",
+      "message": "Expected token }\nhttps://svelte.dev/e/expected_token",
+      "start": 12,
+      "end": 12
+    },
+    "native": {
+      "ok": true,
+      "result": {
+        "uri": "Case.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import * as $ from 'svelte/internal/server';\n\nexport default function Case($$renderer) {\n\tconst a = 1;\n}",
+          "map": "{\"version\":3,\"sources\":[\"Case.svelte\"],\"sourcesContent\":[\"{const a=1; let b=2}\"],\"names\":[],\"mappings\":\";;;OAAO,CAAC,GAAC,CAAC;\"}"
+        },
+        "css": null,
+        "diagnostics": [],
+        "runes": false,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.57.2",
+          "patches": [
+            "child-reset-5.53.11",
+            "declaration-tags-5.56",
+            "select-default-5.57"
+          ],
+          "clientDevelopment": true
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.57.2;kit=none;ts=unspecified",
+          "svelteVersion": "5.57.2",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "text": "{const a=1 + }",
+    "oracle": {
+      "code": "js_parse_error",
+      "message": "Unexpected token\nhttps://svelte.dev/e/js_parse_error",
+      "start": 13,
+      "end": 13
+    },
+    "native": {
+      "ok": true,
+      "result": {
+        "uri": "Case.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import * as $ from 'svelte/internal/server';\n\nexport default function Case($$renderer) {}",
+          "map": "{\"version\":3,\"sources\":[\"Case.svelte\"],\"sourcesContent\":[\"{const a=1 + }\"],\"names\":[],\"mappings\":\"AAAA;AAAA;AAAA\"}"
+        },
+        "css": null,
+        "diagnostics": [],
+        "runes": false,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.57.2",
+          "patches": [
+            "child-reset-5.53.11",
+            "declaration-tags-5.56",
+            "select-default-5.57"
+          ],
+          "clientDevelopment": true
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.57.2;kit=none;ts=unspecified",
+          "svelteVersion": "5.57.2",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "text": "{const a= /* comment */ }",
+    "oracle": {
+      "code": "js_parse_error",
+      "message": "Unexpected token\nhttps://svelte.dev/e/js_parse_error",
+      "start": 24,
+      "end": 24
+    },
+    "native": {
+      "ok": true,
+      "result": {
+        "uri": "Case.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import * as $ from 'svelte/internal/server';\n\nexport default function Case($$renderer) {}",
+          "map": "{\"version\":3,\"sources\":[\"Case.svelte\"],\"sourcesContent\":[\"{const a= /* comment */ }\"],\"names\":[],\"mappings\":\"AAAA;AAAA;AAAA\"}"
+        },
+        "css": null,
+        "diagnostics": [],
+        "runes": false,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.57.2",
+          "patches": [
+            "child-reset-5.53.11",
+            "declaration-tags-5.56",
+            "select-default-5.57"
+          ],
+          "clientDevelopment": true
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.57.2;kit=none;ts=unspecified",
+          "svelteVersion": "5.57.2",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "text": "{let}",
+    "oracle": {
+      "code": "js_parse_error",
+      "message": "The keyword 'let' is reserved\nhttps://svelte.dev/e/js_parse_error",
+      "start": 1,
+      "end": 1
+    },
+    "native": {
+      "ok": false,
+      "error": {
+        "code": "svelte_compile",
+        "message": "The keyword 'let' is reserved\nhttps://svelte.dev/e/js_parse_error"
+      },
+      "diagnostics": [
+        {
+          "code": "js_parse_error",
+          "message": "The keyword 'let' is reserved\nhttps://svelte.dev/e/js_parse_error",
+          "severity": "error",
+          "uri": "Case.svelte",
+          "bytes": {
+            "start": 1,
+            "end": 1
+          },
+          "range": {
+            "start": {
+              "line": 0,
+              "character": 1
+            },
+            "end": {
+              "line": 0,
+              "character": 1
+            }
+          }
+        }
+      ],
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.57.2",
+        "patches": [
+          "child-reset-5.53.11",
+          "declaration-tags-5.56",
+          "select-default-5.57"
+        ],
+        "clientDevelopment": true
+      },
+      "compatibility": {
+        "id": "v1:svelte=5.57.2;kit=none;ts=unspecified",
+        "svelteVersion": "5.57.2",
+        "kitVersion": null,
+        "typescriptVersion": null,
+        "channel": "stable",
+        "kitConfig": null,
+        "kitLibraryAlias": null,
+        "kitEnvironmentModule": null,
+        "capabilities": {
+          "componentCompiler": "prototype",
+          "checkingProjection": "prototype",
+          "projectCheck": "explicit-input-prototype",
+          "kitGraph": false,
+          "kitBuild": false,
+          "lsp": false
+        }
+      }
+    }
+  },
+  {
+    "text": "{const}",
+    "oracle": {
+      "code": "js_parse_error",
+      "message": "Unexpected token\nhttps://svelte.dev/e/js_parse_error",
+      "start": 6,
+      "end": 6
+    },
+    "native": {
+      "ok": false,
+      "error": {
+        "code": "svelte_compile",
+        "message": "Unexpected token\nhttps://svelte.dev/e/js_parse_error"
+      },
+      "diagnostics": [
+        {
+          "code": "js_parse_error",
+          "message": "Unexpected token\nhttps://svelte.dev/e/js_parse_error",
+          "severity": "error",
+          "uri": "Case.svelte",
+          "bytes": {
+            "start": 6,
+            "end": 6
+          },
+          "range": {
+            "start": {
+              "line": 0,
+              "character": 6
+            },
+            "end": {
+              "line": 0,
+              "character": 6
+            }
+          }
+        }
+      ],
+      "backend": {
+        "name": "rsvelte",
+        "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+        "version": "0.12.6",
+        "svelteTarget": "5.57.1",
+        "appTarget": "5.57.2",
+        "patches": [
+          "child-reset-5.53.11",
+          "declaration-tags-5.56",
+          "select-default-5.57"
+        ],
+        "clientDevelopment": true
+      },
+      "compatibility": {
+        "id": "v1:svelte=5.57.2;kit=none;ts=unspecified",
+        "svelteVersion": "5.57.2",
+        "kitVersion": null,
+        "typescriptVersion": null,
+        "channel": "stable",
+        "kitConfig": null,
+        "kitLibraryAlias": null,
+        "kitEnvironmentModule": null,
+        "capabilities": {
+          "componentCompiler": "prototype",
+          "checkingProjection": "prototype",
+          "projectCheck": "explicit-input-prototype",
+          "kitGraph": false,
+          "kitBuild": false,
+          "lsp": false
+        }
+      }
+    }
+  },
+  {
+    "text": "{let a}",
+    "oracle": {
+      "ok": true,
+      "warnings": []
+    },
+    "native": {
+      "ok": true,
+      "result": {
+        "uri": "Case.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import * as $ from 'svelte/internal/server';\n\nexport default function Case($$renderer) {\n\tlet a;\n}",
+          "map": "{\"version\":3,\"sources\":[\"Case.svelte\"],\"sourcesContent\":[\"{let a}\"],\"names\":[],\"mappings\":\";;;CAAC,IAAI,AAAA,CAAC;\"}"
+        },
+        "css": null,
+        "diagnostics": [],
+        "runes": false,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.57.2",
+          "patches": [
+            "child-reset-5.53.11",
+            "declaration-tags-5.56",
+            "select-default-5.57"
+          ],
+          "clientDevelopment": true
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.57.2;kit=none;ts=unspecified",
+          "svelteVersion": "5.57.2",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "text": "{const {a,b} = {a:1,b:2}}<p>{a}{b}</p>",
+    "oracle": {
+      "ok": true,
+      "warnings": []
+    },
+    "native": {
+      "ok": true,
+      "result": {
+        "uri": "Case.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import * as $ from 'svelte/internal/server';\n\nexport default function Case($$renderer) {\n\tconst { a, b } = { a: 1, b: 2 };\n\n\t$$renderer.push(`<p>${$.escape(a)}${$.escape(b)}</p>`);\n}",
+          "map": "{\"version\":3,\"sources\":[\"Case.svelte\"],\"sourcesContent\":[\"{const {a,b} = {a:1,b:2}}<p>{a}{b}</p>\"],\"names\":[],\"mappings\":\";;;SAAQ,CAAC,EAAC,CAAC,OAAK,CAAC,EAAC,CAAC,EAAC,CAAC,EAAC,CAAC;;gCAAM,CAAC,aAAE,CAAC;\"}"
+        },
+        "css": null,
+        "diagnostics": [],
+        "runes": false,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.57.2",
+          "patches": [
+            "child-reset-5.53.11",
+            "declaration-tags-5.56",
+            "select-default-5.57"
+          ],
+          "clientDevelopment": true
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.57.2;kit=none;ts=unspecified",
+          "svelteVersion": "5.57.2",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  {
+    "text": "<script lang=\"ts\"></script>{const a: number=1,b: number=2}<p>{a}{b}</p>",
+    "oracle": {
+      "ok": true,
+      "warnings": []
+    },
+    "native": {
+      "ok": true,
+      "result": {
+        "uri": "Case.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import * as $ from 'svelte/internal/server';\n\nexport default function Case($$renderer) {\n\tconst a = 1, b = 2;\n\n\t$$renderer.push(`<p>12</p>`);\n}",
+          "map": "{\"version\":3,\"sources\":[\"Case.svelte\"],\"sourcesContent\":[\"<script lang=\\\"ts\\\"></script>{const a: number=1,b: number=2}<p>{a}{b}</p>\"],\"names\":[],\"mappings\":\";;yCAAA,CAAC;CAA2B,MAAM,CAAS,GAAC,CAAC,EAAC,CAAC,GAAS,CAAC;;;AAA/B,CAAC\"}"
+        },
+        "css": null,
+        "diagnostics": [],
+        "runes": false,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.57.2",
+          "patches": [
+            "child-reset-5.53.11",
+            "declaration-tags-5.56",
+            "select-default-5.57"
+          ],
+          "clientDevelopment": true
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.57.2;kit=none;ts=unspecified",
+          "svelteVersion": "5.57.2",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  }
+]

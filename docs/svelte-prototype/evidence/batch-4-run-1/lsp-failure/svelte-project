@@ -1,0 +1,5 @@
+#!/usr/bin/env python3
+import sys,os
+import time
+open("/home/yycholla/Projects/ts-rust/target/svelte-application-verify-1/lsp-failure/child-pid",'w').write(str(os.getpid()))
+time.sleep(90)

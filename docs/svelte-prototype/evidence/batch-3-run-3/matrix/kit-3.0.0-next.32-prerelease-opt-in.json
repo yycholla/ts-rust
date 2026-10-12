@@ -1,0 +1,22 @@
+{
+  "request": {
+    "op": "resolveCompatibility",
+    "versions": {
+      "svelteVersion": "5.57.2",
+      "typescriptVersion": "6.0.3",
+      "kitVersion": "3.0.0-next.32",
+      "allowPrerelease": false
+    }
+  },
+  "exit": 1,
+  "signal": null,
+  "stdout": "{\"ok\":false,\"error\":{\"code\":\"unsupported_version\",\"message\":\"SvelteKit prerelease requires allowPrerelease: true\"}}\n",
+  "stderr": "",
+  "response": {
+    "ok": false,
+    "error": {
+      "code": "unsupported_version",
+      "message": "SvelteKit prerelease requires allowPrerelease: true"
+    }
+  }
+}

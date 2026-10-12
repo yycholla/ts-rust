@@ -1,0 +1,22 @@
+{
+  "command": [
+    "npm",
+    "exec",
+    "--yes",
+    "--package=pnpm@10.20.0",
+    "--",
+    "pnpm",
+    "install",
+    "--frozen-lockfile"
+  ],
+  "cwd": "/home/yycholla/Projects/ts-rust/target/svelte-public-projects/svelte-sonner",
+  "exitCode": 0,
+  "timeout": false,
+  "timeoutSeconds": 600,
+  "wallSeconds": 5.345,
+  "log": "install.log",
+  "timeSeconds": 5.33,
+  "maxRssKiB": 769460,
+  "userSeconds": 11.74,
+  "systemSeconds": 2.25
+}

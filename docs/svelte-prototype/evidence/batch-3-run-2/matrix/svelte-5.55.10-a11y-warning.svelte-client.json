@@ -1,0 +1,407 @@
+{
+  "source": "<p>😀 preceding warning</p>\n<img src=\"/logo.png\">\n<div onclick={() => {}}>Click me</div>\n",
+  "settings": {
+    "filename": "a11y-warning.svelte",
+    "generate": "client",
+    "css": "external",
+    "dev": false,
+    "runes": true
+  },
+  "native": {
+    "request": {
+      "op": "compile",
+      "document": {
+        "uri": "a11y-warning.svelte",
+        "version": 1,
+        "text": "<p>😀 preceding warning</p>\n<img src=\"/logo.png\">\n<div onclick={() => {}}>Click me</div>\n"
+      },
+      "target": "client",
+      "dev": false,
+      "runes": true,
+      "compatibility": {
+        "svelteVersion": "5.55.10"
+      }
+    },
+    "exit": 0,
+    "signal": null,
+    "stdout": "{\"ok\":true,\"result\":{\"uri\":\"a11y-warning.svelte\",\"version\":1,\"javascript\":{\"code\":\"import 'svelte/internal/disclose-version';\\nimport * as $ from 'svelte/internal/client';\\n\\nvar root = $.from_html(`<p>😀 preceding warning</p> <img src=\\\"/logo.png\\\"/> <div>Click me</div>`, 1);\\n\\nexport default function A11y_warning($$anchor) {\\n\\tvar fragment = root();\\n\\tvar div = $.sibling($.first_child(fragment), 4);\\n\\n\\t$.delegated('click', div, () => {});\\n\\t$.append($$anchor, fragment);\\n}\\n\\n$.delegate(['click']);\",\"map\":\"{\\\"version\\\":3,\\\"sources\\\":[\\\"a11y-warning.svelte\\\"],\\\"sourcesContent\\\":[\\\"<p>😀 preceding warning</p>\\\\n<img src=\\\\\\\"/logo.png\\\\\\\">\\\\n<div onclick={() => {}}>Click me</div>\\\\n\\\"],\\\"names\\\":[],\\\"mappings\\\":\\\";;;;;;;KAEC,GAAG;;sBAAH,GAAG;;;;\\\"}\"},\"css\":null,\"diagnostics\":[{\"code\":\"a11y_missing_attribute\",\"message\":\"`<img>` element should have an alt attribute\\nhttps://svelte.dev/e/a11y_missing_attribute\",\"severity\":\"warning\",\"uri\":\"a11y-warning.svelte\",\"bytes\":{\"start\":30,\"end\":51},\"range\":{\"start\":{\"line\":1,\"character\":0},\"end\":{\"line\":1,\"character\":21}}},{\"code\":\"a11y_click_events_have_key_events\",\"message\":\"Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type=\\\"button\\\">` or `<a>` might be more appropriate\\nhttps://svelte.dev/e/a11y_click_events_have_key_events\",\"severity\":\"warning\",\"uri\":\"a11y-warning.svelte\",\"bytes\":{\"start\":52,\"end\":90},\"range\":{\"start\":{\"line\":2,\"character\":0},\"end\":{\"line\":2,\"character\":38}}},{\"code\":\"a11y_no_static_element_interactions\",\"message\":\"`<div>` with a click handler must have an ARIA role\\nhttps://svelte.dev/e/a11y_no_static_element_interactions\",\"severity\":\"warning\",\"uri\":\"a11y-warning.svelte\",\"bytes\":{\"start\":52,\"end\":90},\"range\":{\"start\":{\"line\":2,\"character\":0},\"end\":{\"line\":2,\"character\":38}}}],\"runes\":true,\"backend\":{\"name\":\"rsvelte\",\"commit\":\"5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b\",\"version\":\"0.12.6\",\"svelteTarget\":\"5.57.1\",\"appTarget\":\"5.55.10\",\"patches\":[\"child-reset-5.53.11\",\"declaration-tags-5.56\",\"select-default-5.57\"],\"clientDevelopment\":false},\"compatibility\":{\"id\":\"v1:svelte=5.55.10;kit=none;ts=unspecified\",\"svelteVersion\":\"5.55.10\",\"kitVersion\":null,\"typescriptVersion\":null,\"channel\":\"stable\",\"kitConfig\":null,\"kitLibraryAlias\":null,\"kitEnvironmentModule\":null,\"capabilities\":{\"componentCompiler\":\"prototype\",\"checkingProjection\":\"prototype\",\"projectCheck\":\"explicit-input-prototype\",\"kitGraph\":false,\"kitBuild\":false,\"lsp\":false}}}}\n",
+    "stderr": "",
+    "response": {
+      "ok": true,
+      "result": {
+        "uri": "a11y-warning.svelte",
+        "version": 1,
+        "javascript": {
+          "code": "import 'svelte/internal/disclose-version';\nimport * as $ from 'svelte/internal/client';\n\nvar root = $.from_html(`<p>😀 preceding warning</p> <img src=\"/logo.png\"/> <div>Click me</div>`, 1);\n\nexport default function A11y_warning($$anchor) {\n\tvar fragment = root();\n\tvar div = $.sibling($.first_child(fragment), 4);\n\n\t$.delegated('click', div, () => {});\n\t$.append($$anchor, fragment);\n}\n\n$.delegate(['click']);",
+          "map": "{\"version\":3,\"sources\":[\"a11y-warning.svelte\"],\"sourcesContent\":[\"<p>😀 preceding warning</p>\\n<img src=\\\"/logo.png\\\">\\n<div onclick={() => {}}>Click me</div>\\n\"],\"names\":[],\"mappings\":\";;;;;;;KAEC,GAAG;;sBAAH,GAAG;;;;\"}"
+        },
+        "css": null,
+        "diagnostics": [
+          {
+            "code": "a11y_missing_attribute",
+            "message": "`<img>` element should have an alt attribute\nhttps://svelte.dev/e/a11y_missing_attribute",
+            "severity": "warning",
+            "uri": "a11y-warning.svelte",
+            "bytes": {
+              "start": 30,
+              "end": 51
+            },
+            "range": {
+              "start": {
+                "line": 1,
+                "character": 0
+              },
+              "end": {
+                "line": 1,
+                "character": 21
+              }
+            }
+          },
+          {
+            "code": "a11y_click_events_have_key_events",
+            "message": "Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type=\"button\">` or `<a>` might be more appropriate\nhttps://svelte.dev/e/a11y_click_events_have_key_events",
+            "severity": "warning",
+            "uri": "a11y-warning.svelte",
+            "bytes": {
+              "start": 52,
+              "end": 90
+            },
+            "range": {
+              "start": {
+                "line": 2,
+                "character": 0
+              },
+              "end": {
+                "line": 2,
+                "character": 38
+              }
+            }
+          },
+          {
+            "code": "a11y_no_static_element_interactions",
+            "message": "`<div>` with a click handler must have an ARIA role\nhttps://svelte.dev/e/a11y_no_static_element_interactions",
+            "severity": "warning",
+            "uri": "a11y-warning.svelte",
+            "bytes": {
+              "start": 52,
+              "end": 90
+            },
+            "range": {
+              "start": {
+                "line": 2,
+                "character": 0
+              },
+              "end": {
+                "line": 2,
+                "character": 38
+              }
+            }
+          }
+        ],
+        "runes": true,
+        "backend": {
+          "name": "rsvelte",
+          "commit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+          "version": "0.12.6",
+          "svelteTarget": "5.57.1",
+          "appTarget": "5.55.10",
+          "patches": [
+            "child-reset-5.53.11",
+            "declaration-tags-5.56",
+            "select-default-5.57"
+          ],
+          "clientDevelopment": false
+        },
+        "compatibility": {
+          "id": "v1:svelte=5.55.10;kit=none;ts=unspecified",
+          "svelteVersion": "5.55.10",
+          "kitVersion": null,
+          "typescriptVersion": null,
+          "channel": "stable",
+          "kitConfig": null,
+          "kitLibraryAlias": null,
+          "kitEnvironmentModule": null,
+          "capabilities": {
+            "componentCompiler": "prototype",
+            "checkingProjection": "prototype",
+            "projectCheck": "explicit-input-prototype",
+            "kitGraph": false,
+            "kitBuild": false,
+            "lsp": false
+          }
+        }
+      }
+    }
+  },
+  "oracle": {
+    "ok": true,
+    "artifact": {
+      "js": {
+        "code": "import 'svelte/internal/disclose-version';\nimport * as $ from 'svelte/internal/client';\n\nvar root = $.from_html(`<p>😀 preceding warning</p> <img src=\"/logo.png\"/> <div>Click me</div>`, 1);\n\nexport default function A11y_warning($$anchor) {\n\tvar fragment = root();\n\tvar div = $.sibling($.first_child(fragment), 4);\n\n\t$.delegated('click', div, () => {});\n\t$.append($$anchor, fragment);\n}\n\n$.delegate(['click']);",
+        "map": {
+          "version": 3,
+          "names": [],
+          "sources": [
+            "a11y-warning.svelte"
+          ],
+          "sourcesContent": [
+            "<p>😀 preceding warning</p>\n<img src=\"/logo.png\">\n<div onclick={() => {}}>Click me</div>\n"
+          ],
+          "mappings": ";;;;;;;KAEC,GAAG;;sBAAH,GAAG,EAAU,MAAM,CAAC,CAAC;;;;"
+        }
+      },
+      "css": null,
+      "warnings": [
+        {
+          "code": "a11y_missing_attribute",
+          "message": "`<img>` element should have an alt attribute\nhttps://svelte.dev/e/a11y_missing_attribute",
+          "filename": "a11y-warning.svelte",
+          "start": {
+            "line": 2,
+            "column": 0,
+            "character": 28
+          },
+          "end": {
+            "line": 2,
+            "column": 21,
+            "character": 49
+          },
+          "position": [
+            28,
+            49
+          ],
+          "frame": "1: <p>😀 preceding warning</p>\n2: <img src=\"/logo.png\">\n                        ^\n3: <div onclick={() => {}}>Click me</div>\n4: "
+        },
+        {
+          "code": "a11y_click_events_have_key_events",
+          "message": "Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type=\"button\">` or `<a>` might be more appropriate\nhttps://svelte.dev/e/a11y_click_events_have_key_events",
+          "filename": "a11y-warning.svelte",
+          "start": {
+            "line": 3,
+            "column": 0,
+            "character": 50
+          },
+          "end": {
+            "line": 3,
+            "column": 38,
+            "character": 88
+          },
+          "position": [
+            50,
+            88
+          ],
+          "frame": "1: <p>😀 preceding warning</p>\n2: <img src=\"/logo.png\">\n3: <div onclick={() => {}}>Click me</div>\n                                         ^\n4: "
+        },
+        {
+          "code": "a11y_no_static_element_interactions",
+          "message": "`<div>` with a click handler must have an ARIA role\nhttps://svelte.dev/e/a11y_no_static_element_interactions",
+          "filename": "a11y-warning.svelte",
+          "start": {
+            "line": 3,
+            "column": 0,
+            "character": 50
+          },
+          "end": {
+            "line": 3,
+            "column": 38,
+            "character": 88
+          },
+          "position": [
+            50,
+            88
+          ],
+          "frame": "1: <p>😀 preceding warning</p>\n2: <img src=\"/logo.png\">\n3: <div onclick={() => {}}>Click me</div>\n                                         ^\n4: "
+        }
+      ],
+      "metadata": {
+        "runes": true
+      },
+      "ast": {
+        "html": {
+          "type": "Fragment",
+          "start": 0,
+          "end": 88,
+          "children": [
+            {
+              "type": "Element",
+              "start": 0,
+              "end": 27,
+              "name": "p",
+              "attributes": [],
+              "children": [
+                {
+                  "type": "Text",
+                  "start": 3,
+                  "end": 23,
+                  "raw": "😀 preceding warning",
+                  "data": "😀 preceding warning"
+                }
+              ]
+            },
+            {
+              "type": "Text",
+              "start": 27,
+              "end": 28,
+              "raw": " ",
+              "data": " "
+            },
+            {
+              "type": "Element",
+              "start": 28,
+              "end": 49,
+              "name": "img",
+              "attributes": [
+                {
+                  "type": "Attribute",
+                  "start": 33,
+                  "end": 48,
+                  "name": "src",
+                  "name_loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 5,
+                      "character": 33
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 8,
+                      "character": 36
+                    }
+                  },
+                  "value": [
+                    {
+                      "start": 38,
+                      "end": 47,
+                      "type": "Text",
+                      "raw": "/logo.png",
+                      "data": "/logo.png"
+                    }
+                  ]
+                }
+              ],
+              "children": []
+            },
+            {
+              "type": "Text",
+              "start": 49,
+              "end": 50,
+              "raw": " ",
+              "data": " "
+            },
+            {
+              "type": "Element",
+              "start": 50,
+              "end": 88,
+              "name": "div",
+              "attributes": [
+                {
+                  "type": "Attribute",
+                  "start": 55,
+                  "end": 73,
+                  "name": "onclick",
+                  "name_loc": {
+                    "start": {
+                      "line": 3,
+                      "column": 5,
+                      "character": 55
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 12,
+                      "character": 62
+                    }
+                  },
+                  "value": [
+                    {
+                      "type": "MustacheTag",
+                      "start": 63,
+                      "end": 73,
+                      "expression": {
+                        "type": "ArrowFunctionExpression",
+                        "start": 64,
+                        "end": 72,
+                        "loc": {
+                          "start": {
+                            "line": 3,
+                            "column": 14
+                          },
+                          "end": {
+                            "line": 3,
+                            "column": 22
+                          }
+                        },
+                        "id": null,
+                        "expression": false,
+                        "generator": false,
+                        "async": false,
+                        "params": [],
+                        "body": {
+                          "type": "BlockStatement",
+                          "start": 70,
+                          "end": 72,
+                          "loc": {
+                            "start": {
+                              "line": 3,
+                              "column": 20
+                            },
+                            "end": {
+                              "line": 3,
+                              "column": 22
+                            }
+                          },
+                          "body": []
+                        }
+                      }
+                    }
+                  ]
+                }
+              ],
+              "children": [
+                {
+                  "type": "Text",
+                  "start": 74,
+                  "end": 82,
+                  "raw": "Click me",
+                  "data": "Click me"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "comparable": {
+      "ok": true,
+      "runes": true,
+      "diagnostics": [
+        {
+          "code": "a11y_click_events_have_key_events",
+          "severity": "warning",
+          "message": "Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type=\"button\">` or `<a>` might be more appropriate\nhttps://svelte.dev/e/a11y_click_events_have_key_events",
+          "bytes": {
+            "start": 52,
+            "end": 90
+          }
+        },
+        {
+          "code": "a11y_missing_attribute",
+          "severity": "warning",
+          "message": "`<img>` element should have an alt attribute\nhttps://svelte.dev/e/a11y_missing_attribute",
+          "bytes": {
+            "start": 30,
+            "end": 51
+          }
+        },
+        {
+          "code": "a11y_no_static_element_interactions",
+          "severity": "warning",
+          "message": "`<div>` with a click handler must have an ARIA role\nhttps://svelte.dev/e/a11y_no_static_element_interactions",
+          "bytes": {
+            "start": 52,
+            "end": 90
+          }
+        }
+      ]
+    }
+  }
+}
