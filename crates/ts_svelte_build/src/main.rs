@@ -36,6 +36,7 @@ enum Request {
     },
 }
 async fn dispatch(bytes: &[u8]) -> Value {
+    let started = std::time::Instant::now();
     let input = match serde_json::from_slice::<Request>(bytes) {
         Ok(input) => input,
         Err(error) => return json!({"ok":false,"error":error.to_string()}),
@@ -85,6 +86,7 @@ async fn dispatch(bytes: &[u8]) -> Value {
             return json!({"ok":true,"native":true,"executesApplicationCode":true,"applicationExecutionDefault":false,"runtimeSelection":"explicitRuntimeBinary","writesByDefault":false,"pipeline":["resolvedPlan","serverBundle","nativeRemoteTransforms","featureTracking","staticAnalysis","nativeRuntimeAnalysis","nativeRemoteMetadata","optimizedClientBundle","kit3ManifestFinalization","nodesAndManifest","serviceWorker","adapterNode"],"bundleStrategy":"split","kitFamilies":[2,3],"adapterNodeVersion":"5.5.4","unresolvedStages":["prerenderExecution"],"browserWasm":false});
         }
     };
+    let load_ms = started.elapsed().as_millis() as u64;
     {
         {
             let mut report = if let Some(binary) = runtime_binary {
@@ -98,6 +100,7 @@ async fn dispatch(bytes: &[u8]) -> Value {
                 ts_svelte_build::build(*request).await
             };
             report.add_loader_requirements(loaded.0, &loaded.1);
+            let build_ms = started.elapsed().as_millis() as u64 - load_ms;
             if let Some(directory) = output_directory {
                 if report.status != "complete" {
                     return json!({"ok":false,"error":"Output materialization requires a complete build report","report":report});
@@ -105,15 +108,17 @@ async fn dispatch(bytes: &[u8]) -> Value {
                 if let Err(error) = ts_svelte_build::write_new(&directory, &report.artifacts) {
                     return json!({"ok":false,"error":error,"report":report});
                 }
+                let write_ms = started.elapsed().as_millis() as u64 - load_ms - build_ms;
+                let timings = json!({"loadMs":load_ms,"buildMs":build_ms,"writeMs":write_ms});
                 // The files are on disk; the response lists them without content.
                 let written = std::mem::take(&mut report.artifacts)
                     .into_iter()
                     .map(|(path, artifact)| (path, artifact.kind))
                     .collect::<std::collections::BTreeMap<_, _>>();
                 if full_report {
-                    json!({"ok":true,"outputDirectory":directory,"written":written,"report":report})
+                    json!({"ok":true,"outputDirectory":directory,"timings":timings,"written":written,"report":report})
                 } else {
-                    json!({"ok":true,"outputDirectory":directory,"written":written,"report":{
+                    json!({"ok":true,"outputDirectory":directory,"timings":timings,"written":written,"report":{
                         "status":report.status,"phases":report.phases,
                         "requirements":report.requirements,
                         "acceptedRequirements":report.accepted_requirements,

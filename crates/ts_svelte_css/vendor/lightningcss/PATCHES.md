@@ -24,6 +24,11 @@ Local changes:
   `url()` in a custom property as an ordinary URL dependency of the defining
   stylesheet (Vite's url rewrite) instead of failing with
   `AmbiguousUrlInCustomProperty`. The default keeps upstream behavior.
+- `src/bundler.rs`: reserve each imported file's source-map source when its
+  `source_index` is assigned. Upstream added it after the parallel parse, so
+  the map's source order could differ from the indexes the printer writes and
+  attribute output to the wrong file (nondeterministically). A file with an
+  inline `data:` input map now keeps its reserved, content-less source entry.
 
 The enclosing crate tests the corrected printer and subsequent asset-link map
 shifts. No CSS compilation semantics are intentionally changed unless the

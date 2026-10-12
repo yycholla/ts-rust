@@ -260,7 +260,16 @@ fn compressed(
     use ts_svelte_compress::{
         MAX_BATCH_INPUT_BYTES, MAX_BATCH_WORK_BYTES, MAX_JOBS, MAX_OUTPUT_BYTES,
     };
-    let work_cap = MAX_BATCH_WORK_BYTES.min(MAX_OUTPUT_BYTES / 10 * 9);
+    // At least one batch per available core, so batches compress in parallel.
+    let threads = std::thread::available_parallelism().map_or(1, usize::from);
+    let total_work: usize = plan
+        .compression
+        .iter()
+        .map(|job| plan.files.get(&job.source).map_or(0, Vec::len))
+        .sum();
+    let work_cap = MAX_BATCH_WORK_BYTES
+        .min(MAX_OUTPUT_BYTES / 10 * 9)
+        .min(total_work.div_ceil(threads).max(1));
     let mut by_source: BTreeMap<&str, Vec<ts_svelte_compress::Job>> = BTreeMap::new();
     for job in &plan.compression {
         if !plan.files.contains_key(&job.source) {
@@ -307,11 +316,30 @@ fn compressed(
         input += bytes.len();
         work += job_work;
     }
+    let next = std::sync::atomic::AtomicUsize::new(0);
+    let results = std::sync::Mutex::new(Vec::new());
+    std::thread::scope(|scope| {
+        for _ in 0..threads.min(batches.len()) {
+            scope.spawn(|| {
+                loop {
+                    let index = next.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+                    let Some(batch) = batches.get(index) else {
+                        break;
+                    };
+                    let result = ts_svelte_compress::compress_batch(batch);
+                    results
+                        .lock()
+                        .unwrap_or_else(|e| e.into_inner())
+                        .push((index, result));
+                }
+            });
+        }
+    });
+    let mut results = results.into_inner().unwrap_or_else(|e| e.into_inner());
+    results.sort_by_key(|(index, _)| *index);
     let mut outputs = BTreeMap::new();
-    for batch in &batches {
-        for (file, output) in
-            ts_svelte_compress::compress_batch(batch).map_err(|e| e.to_string())?
-        {
+    for (_, result) in results {
+        for (file, output) in result.map_err(|e| e.to_string())? {
             if outputs.insert(file.clone(), output).is_some() {
                 return Err(format!("Duplicate compression output {file}"));
             }

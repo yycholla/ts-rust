@@ -189,6 +189,8 @@ pub struct Phase {
     pub name: String,
     pub status: String,
     pub outputs: usize,
+    /// Wall-clock milliseconds since the previous phase was recorded.
+    pub elapsed_ms: u64,
 }
 #[derive(Debug, Serialize)]
 #[serde(rename_all = "camelCase")]
@@ -219,6 +221,8 @@ pub struct BuildReport {
     /// Requirements the caller explicitly accepted (`stage/code`); they do not
     /// block completion but stay reported.
     pub accepted_requirements: Vec<Requirement>,
+    #[serde(skip)]
+    clock: std::time::Instant,
 }
 impl BuildReport {
     /// Loader requirements block completion like the build's own, except those
@@ -260,6 +264,7 @@ impl BuildReport {
             service_worker: None,
             generated_sources: BTreeMap::new(),
             accepted_requirements: vec![],
+            clock: std::time::Instant::now(),
         }
     }
     fn requirement(&mut self, stage: &str, code: &str, message: impl Into<String>) {
@@ -270,10 +275,14 @@ impl BuildReport {
         });
     }
     fn phase(&mut self, name: &str, status: &str, outputs: usize) {
+        let now = std::time::Instant::now();
+        let elapsed_ms = now.duration_since(self.clock).as_millis() as u64;
+        self.clock = now;
         self.phases.push(Phase {
             name: name.into(),
             status: status.into(),
             outputs,
+            elapsed_ms,
         });
     }
     fn fail(&mut self, stage: &str, message: impl Into<String>) {

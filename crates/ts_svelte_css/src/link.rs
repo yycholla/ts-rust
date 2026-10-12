@@ -324,6 +324,58 @@ fn doc(text: &str) -> Document {
         text: text.into(),
     })
 }
+/// UTF-16 conversions for ascending queries. Each continues from the previous
+/// answer on the same line instead of rescanning from the line start (a
+/// minified stylesheet is one long line); anything else asks the document.
+struct Sequential<'a> {
+    doc: &'a Document,
+    last: Option<(Position, usize)>,
+}
+impl<'a> Sequential<'a> {
+    fn new(doc: &'a Document) -> Self {
+        Self { doc, last: None }
+    }
+    fn offset_at(&mut self, position: Position) -> Result<usize, ts_svelte::Error> {
+        if let Some((last, mut offset)) = self.last
+            && last.line == position.line
+            && last.character <= position.character
+        {
+            let mut column = u64::from(last.character);
+            let target = u64::from(position.character);
+            for ch in self.doc.text()[offset..].chars() {
+                if column >= target || matches!(ch, '\r' | '\n') {
+                    break;
+                }
+                column += ch.len_utf16() as u64;
+                offset += ch.len_utf8();
+            }
+            if column == target {
+                self.last = Some((position, offset));
+                return Ok(offset);
+            }
+        }
+        let offset = self.doc.offset_at(position)?;
+        self.last = Some((position, offset));
+        Ok(offset)
+    }
+    fn position_at(&mut self, offset: usize) -> Result<Position, ts_svelte::Error> {
+        if let Some((last, from)) = self.last
+            && from <= offset
+            && let Some(between) = self.doc.text().get(from..offset)
+            && !between.contains(['\r', '\n'])
+        {
+            let position = Position {
+                line: last.line,
+                character: last.character + between.encode_utf16().count() as u32,
+            };
+            self.last = Some((position, offset));
+            return Ok(position);
+        }
+        let position = self.doc.position_at(offset)?;
+        self.last = Some((position, offset));
+        Ok(position)
+    }
+}
 fn key(position: Position) -> (u32, u32) {
     (position.line, position.character)
 }
@@ -341,6 +393,7 @@ fn remap(map: &Value, before: &str, after: &str, edits: &[Replacement]) -> Resul
     }
     let before = doc(before);
     let after = doc(after);
+    let mut before_sequential = Sequential::new(&before);
     let mut original = BTreeMap::new();
     for mapping in parsed.get_mappings() {
         let position = Position {
@@ -355,7 +408,7 @@ fn remap(map: &Value, before: &str, after: &str, edits: &[Replacement]) -> Resul
         }) {
             return Err(fail("Source-map index is out of bounds"));
         }
-        before
+        before_sequential
             .offset_at(position)
             .map_err(|error| fail(format!("Invalid generated UTF-16 mapping: {error}")))?;
         original.insert(key(position), mapping.original);
@@ -373,8 +426,10 @@ fn remap(map: &Value, before: &str, after: &str, edits: &[Replacement]) -> Resul
             .map_err(|_| fail("Generated mapping underflow"))
     };
     let mut generated = BTreeMap::<(u32, u32), Option<OriginalLocation>>::new();
+    let mut before_sequential = Sequential::new(&before);
+    let mut after_sequential = Sequential::new(&after);
     for (&(line, column), &location) in &original {
-        let offset = before
+        let offset = before_sequential
             .offset_at(Position {
                 line,
                 character: column,
@@ -384,7 +439,7 @@ fn remap(map: &Value, before: &str, after: &str, edits: &[Replacement]) -> Resul
         if edits.get(next).is_some_and(|edit| edit.start <= offset) {
             continue;
         }
-        let position = after
+        let position = after_sequential
             .position_at(moved(offset)?)
             .map_err(|error| fail(error.to_string()))?;
         generated.insert(key(position), location);
@@ -422,4 +477,46 @@ fn remap(map: &Value, before: &str, after: &str, edits: &[Replacement]) -> Resul
     result["mappings"] =
         json!(String::from_utf8(mappings).map_err(|error| fail(error.to_string()))?);
     Ok(result)
+}
+
+#[cfg(test)]
+mod sequential_tests {
+    use super::*;
+
+    #[test]
+    fn sequential_conversions_match_the_document() {
+        let text = "a{content:\"é😀\"}\r\nb{x:y}\rc{}\n\n😀z";
+        let document = doc(text);
+        let mut positions = vec![];
+        for line in 0..6u32 {
+            for character in 0..12u32 {
+                positions.push(Position { line, character });
+            }
+        }
+        // Ascending, then the same queries descending (fallback path).
+        let reversed: Vec<_> = positions.iter().rev().copied().collect();
+        for order in [&positions, &reversed] {
+            let mut sequential = Sequential::new(&document);
+            for position in order.iter() {
+                assert_eq!(
+                    sequential.offset_at(*position).map_err(|e| e.to_string()),
+                    document.offset_at(*position).map_err(|e| e.to_string()),
+                    "{position:?}"
+                );
+            }
+        }
+        for order in [
+            (0..=text.len()).collect::<Vec<_>>(),
+            (0..=text.len()).rev().collect(),
+        ] {
+            let mut sequential = Sequential::new(&document);
+            for offset in order {
+                assert_eq!(
+                    sequential.position_at(offset).map_err(|e| e.to_string()),
+                    document.position_at(offset).map_err(|e| e.to_string()),
+                    "{offset}"
+                );
+            }
+        }
+    }
 }

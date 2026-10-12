@@ -416,6 +416,16 @@ where
         let source_index = stylesheets.len() as u32;
         self.source_indexes.insert(file.to_owned(), source_index);
 
+        // ts-rust patch: the printer writes `loc.source_index` as the map
+        // source index, so reserve the map source now, under the stylesheet
+        // lock. Adding it after the parallel parse below raced with sibling
+        // imports and could attribute output to the wrong file.
+        if let Some(source_map) = &self.source_map {
+          let mut source_map = source_map.lock().unwrap();
+          let reserved = source_map.add_source(file.to_str().unwrap());
+          debug_assert_eq!(reserved, source_index);
+        }
+
         stylesheets.push(BundleStyleSheet {
           stylesheet: None,
           layer: rule.layer.clone(),
@@ -464,7 +474,6 @@ where
       let sm = stylesheet.source_map_url(0);
       if sm.is_none() || !sm.unwrap().starts_with("data") {
         let mut source_map = source_map.lock().unwrap();
-        let source_index = source_map.add_source(filename);
         let _ = source_map.set_source_content(source_index as usize, code);
       }
     }

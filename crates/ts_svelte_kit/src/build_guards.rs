@@ -340,8 +340,21 @@ fn runtime_name(input: &BuildGuardInput, path: &Path) -> Option<String> {
         .strip_prefix("env/")
         .map(|env| format!("$env/{}", env.strip_suffix(".js").unwrap_or(env)))
 }
+/// Canonical physical path -> observed paths that resolve to it.
+type ReverseRealPaths<'a> = BTreeMap<&'a Path, Vec<&'a PathBuf>>;
+fn reverse_real_paths(input: &BuildGuardInput) -> ReverseRealPaths<'_> {
+    let mut reverse = ReverseRealPaths::new();
+    for (original, canonical) in &input.real_paths {
+        reverse
+            .entry(canonical.as_path())
+            .or_default()
+            .push(original);
+    }
+    reverse
+}
 fn identity(
     input: &BuildGuardInput,
+    reverse: &ReverseRealPaths<'_>,
     kit3: bool,
     id: &str,
     importer: Option<&str>,
@@ -412,13 +425,11 @@ fn identity(
         }
         // Reverse identities preserve an application server-only path even if
         // the loaded graph uses the realpath of an installed symlink target.
-        for (original, canonical) in &input.real_paths {
-            if canonical == &path {
-                paths.insert(original.clone());
-                variants.insert(path_id(original));
-                if let Some(name) = runtime_name(input, original) {
-                    variants.insert(name);
-                }
+        for original in reverse.get(path.as_path()).into_iter().flatten() {
+            paths.insert((*original).clone());
+            variants.insert(path_id(original));
+            if let Some(name) = runtime_name(input, original) {
+                variants.insert(name);
             }
         }
         // Native bundlers may replace a virtual $env/$app import with an
@@ -483,6 +494,7 @@ fn validate_span(span: &Option<GuardSourceSpan>) -> Result<(), String> {
     Ok(())
 }
 fn graph(input: &BuildGuardInput, kit3: bool) -> Result<Graph, String> {
+    let reverse = reverse_real_paths(input);
     let mut graph = Graph {
         nodes: BTreeMap::new(),
         edges: BTreeMap::new(),
@@ -491,7 +503,7 @@ fn graph(input: &BuildGuardInput, kit3: bool) -> Result<Graph, String> {
     };
     let mut module_kinds = BTreeMap::new();
     for module in &input.modules {
-        let value = identity(input, kit3, &module.id, None)?;
+        let value = identity(input, &reverse, kit3, &module.id, None)?;
         if let Some(previous) = module_kinds.insert(value.key.clone(), module.is_external) {
             if previous != module.is_external {
                 return Err(format!(
@@ -530,7 +542,7 @@ fn graph(input: &BuildGuardInput, kit3: bool) -> Result<Graph, String> {
                 return Err("A public external classification requires explicit evidence".into());
             }
         }
-        let value = identity(input, kit3, &external.id, None)?;
+        let value = identity(input, &reverse, kit3, &external.id, None)?;
         if module_kinds.get(&value.key) == Some(&false) {
             return Err(format!(
                 "Module is both loaded and external: {}",
@@ -554,7 +566,7 @@ fn graph(input: &BuildGuardInput, kit3: bool) -> Result<Graph, String> {
         }
     }
     for entry in &input.entrypoints {
-        let key = identity(input, kit3, entry, None)?.key;
+        let key = identity(input, &reverse, kit3, entry, None)?.key;
         if !graph.nodes.contains_key(&key) || graph.externals.contains_key(&key) {
             return Err(format!("Missing loaded guard entrypoint {entry}"));
         }
@@ -568,18 +580,18 @@ fn graph(input: &BuildGuardInput, kit3: bool) -> Result<Graph, String> {
     let mut resolutions: BTreeMap<(String, bool), Vec<&GuardResolution>> = BTreeMap::new();
     for resolution in &input.resolutions {
         validate_span(&resolution.span)?;
-        let importer = identity(input, kit3, &resolution.importer, None)?.key;
+        let importer = identity(input, &reverse, kit3, &resolution.importer, None)?.key;
         resolutions
             .entry((importer, resolution.kind == ImportKind::Dynamic))
             .or_default()
             .push(resolution);
     }
     let mut add_edge = |from: &str, to: &str, kind: ImportKind| -> Result<(), String> {
-        let importer = identity(input, kit3, from, None)?.key;
+        let importer = identity(input, &reverse, kit3, from, None)?.key;
         if !graph.nodes.contains_key(&importer) || graph.externals.contains_key(&importer) {
             return Err(format!("Missing loaded importer {from}"));
         }
-        let mut imported = identity(input, kit3, to, Some(&importer))?;
+        let mut imported = identity(input, &reverse, kit3, to, Some(&importer))?;
         let mut matched = None;
         for resolution in resolutions
             .get(&(importer.clone(), kind == ImportKind::Dynamic))
@@ -587,7 +599,13 @@ fn graph(input: &BuildGuardInput, kit3: bool) -> Result<Graph, String> {
             .flatten()
             .copied()
         {
-            let resolved = identity(input, kit3, &resolution.resolved_id, Some(&importer))?;
+            let resolved = identity(
+                input,
+                &reverse,
+                kit3,
+                &resolution.resolved_id,
+                Some(&importer),
+            )?;
             if clean_id(&resolution.original_id) == clean_id(to) || resolved.key == imported.key {
                 if let Some(previous) = matched {
                     let previous: &GuardResolution = previous;
@@ -598,7 +616,13 @@ fn graph(input: &BuildGuardInput, kit3: bool) -> Result<Graph, String> {
                     }
                 }
                 imported = resolved;
-                let original = identity(input, kit3, &resolution.original_id, Some(&importer))?;
+                let original = identity(
+                    input,
+                    &reverse,
+                    kit3,
+                    &resolution.original_id,
+                    Some(&importer),
+                )?;
                 imported.variants.extend(original.variants);
                 imported.paths.extend(original.paths);
                 matched = Some(resolution);
@@ -861,6 +885,7 @@ fn status(diagnostics: usize, unknowns: usize) -> GuardStatus {
 /// Validate the complete graph without treating successful private-import checks
 /// as proof that unrequested/unknown runtime adapter features are supported.
 pub fn validate_build_imports(input: &BuildGuardInput) -> Result<BuildGuardReport, String> {
+    let reverse = reverse_real_paths(input);
     let kit3 = KitSyncVersion::parse(&input.kit_version)?.is_kit3();
     for path in [
         &input.project_root,
@@ -892,7 +917,7 @@ pub fn validate_build_imports(input: &BuildGuardInput) -> Result<BuildGuardRepor
     let graph = graph(input, kit3)?;
     let mut additional = BTreeSet::new();
     for id in &input.additional_server_only_ids {
-        let value = identity(input, kit3, id, None)?;
+        let value = identity(input, &reverse, kit3, id, None)?;
         additional.extend(value.variants);
         additional.insert(value.key);
     }
@@ -997,9 +1022,10 @@ fn runtime_features(
     graph: &Graph,
     request: &RuntimeFeatureInput,
 ) -> Result<RuntimeFeatureReport, String> {
+    let reverse = reverse_real_paths(input);
     let mut proven = BTreeMap::new();
     for (module, features) in &request.proven_modules {
-        let key = identity(input, kit3, module, None)?.key;
+        let key = identity(input, &reverse, kit3, module, None)?.key;
         if !graph.nodes.contains_key(&key) {
             return Err(format!(
                 "Feature evidence names an unloaded module: {module}"
@@ -1024,7 +1050,7 @@ fn runtime_features(
         }
         let mut roots = Vec::new();
         for source in &route.server_roots {
-            let key = identity(input, kit3, source, None)?.key;
+            let key = identity(input, &reverse, kit3, source, None)?.key;
             if !graph.nodes.contains_key(&key) {
                 return Err(format!("Missing server feature root {source}"));
             }

@@ -580,3 +580,44 @@ fn relative_custom_property_urls_link_from_the_defining_stylesheet() {
         ".after",
     );
 }
+
+#[test]
+fn parallel_imports_map_rules_to_their_own_files() {
+    let files: Vec<(String, String)> = (0..24)
+        .map(|n| (format!("/f{n}.css"), format!(".f{n} {{color: red}}")))
+        .collect();
+    let entry: String = (0..24).map(|n| format!("@import './f{n}.css';")).collect();
+    let mut sources = vec![("/entry.css", entry.as_str())];
+    sources.extend(
+        files
+            .iter()
+            .map(|(path, css)| (path.as_str(), css.as_str())),
+    );
+    let specifiers: Vec<String> = (0..24).map(|n| format!("./f{n}.css")).collect();
+    let imports: Vec<_> = files
+        .iter()
+        .zip(&specifiers)
+        .map(|((path, _), specifier)| ("/entry.css", specifier.as_str(), path.as_str()))
+        .collect();
+    let source = input(&sources, &imports);
+    for _ in 0..20 {
+        let output = bundle(&source).unwrap();
+        let map = output.map.unwrap();
+        let parsed = SourceMap::from_json("/", &map.to_string()).unwrap();
+        for n in 0..24 {
+            let generated = position(&output.code, output.code.find(&format!(".f{n} ")).unwrap());
+            let mapping = parsed
+                .get_mappings()
+                .into_iter()
+                .find(|m| {
+                    m.generated_line == generated.line && m.generated_column == generated.character
+                })
+                .unwrap();
+            let file = &map["sources"][mapping.original.unwrap().source as usize];
+            assert!(
+                file.as_str().unwrap().ends_with(&format!("f{n}.css")),
+                ".f{n} mapped to {file}"
+            );
+        }
+    }
+}

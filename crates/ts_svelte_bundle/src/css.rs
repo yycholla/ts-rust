@@ -729,6 +729,7 @@ impl CssPlugin {
                 })
                 .collect::<anyhow::Result<Vec<_>>>()?;
             map["sources"] = json!(sources);
+            *map = canonical_source_order(map)?;
         }
         let classes = class_exports(&linked.exports, &linked.references)?;
         let map_bytes = linked.map.as_ref().map(serde_json::to_vec).transpose()?;
@@ -1384,6 +1385,60 @@ fn parse_map(map: &Value) -> anyhow::Result<SourceMap> {
     );
     Ok(SourceMap::from_json(serde_json::from_value(map)?)?)
 }
+/// lightningcss assigns bundle source indexes in parallel load order. Number
+/// sources by first use in the output instead (unused ones after, by path),
+/// so equal CSS always gets an equal map and file name.
+fn canonical_source_order(map: &Value) -> anyhow::Result<Value> {
+    let parsed = parse_map(map)?;
+    let mut order = Vec::new();
+    let mut seen = BTreeSet::new();
+    for token in parsed.get_source_view_tokens() {
+        if let Some(id) = token.get_source_id()
+            && seen.insert(id)
+        {
+            order.push(id);
+        }
+    }
+    let mut unused: Vec<u32> = (0..parsed.get_sources().count() as u32)
+        .filter(|id| !seen.contains(id))
+        .collect();
+    unused.sort_by_key(|id| parsed.get_source(*id).map(|s| s.to_string()));
+    order.extend(unused);
+    if order
+        .iter()
+        .enumerate()
+        .all(|(index, id)| index as u32 == *id)
+    {
+        return Ok(map.clone());
+    }
+    let mut builder = SourceMapBuilder::default();
+    let mut ids = BTreeMap::new();
+    for id in order {
+        let source = parsed
+            .get_source(id)
+            .context("CSS map source index is invalid")?;
+        let content = parsed
+            .get_source_content(id)
+            .context("CSS map lacks source content")?;
+        ids.insert(id, builder.add_source_and_content(source, content));
+    }
+    for token in parsed.get_source_view_tokens() {
+        let name = token.get_name().map(|name| builder.add_name(name));
+        builder.add_token(
+            token.get_dst_line(),
+            token.get_dst_col(),
+            token.get_src_line(),
+            token.get_src_col(),
+            token.get_source_id().map(|id| ids[&id]),
+            name,
+        );
+    }
+    let mut result: Value = serde_json::from_str(&builder.into_owned_sourcemap().to_json_string())?;
+    if let Some(file) = map.get("file") {
+        result["file"] = file.clone();
+    }
+    Ok(result)
+}
 fn compose_component(
     last: &Value,
     first: &Value,
@@ -1481,6 +1536,17 @@ mod tailwind_tests;
 
 #[cfg(test)]
 mod tests {
+    #[test]
+    fn css_map_source_order_is_canonical() {
+        // The same output mapped from a.css (line 0) then b.css (line 1),
+        // with the bundler's source list in either order.
+        let first = json!({"version":3,"sources":["/b.css","/a.css"],"sourcesContent":["b{}","a{}"],"names":[],"mappings":"ACAA;ADAA"});
+        let second = json!({"version":3,"sources":["/a.css","/b.css"],"sourcesContent":["a{}","b{}"],"names":[],"mappings":"AAAA;ACAA"});
+        let first = canonical_source_order(&first).unwrap();
+        assert_eq!(first, canonical_source_order(&second).unwrap());
+        assert_eq!(first["sources"], json!(["/a.css", "/b.css"]));
+        assert_eq!(first["sourcesContent"], json!(["a{}", "b{}"]));
+    }
     #[test]
     fn small_assets_inline_like_vite() {
         let request: BundleRequest = serde_json::from_value(json!({"root":"/app","entries":{"entry":"entry.js"},"target":"client","compatibility":{},"output":{"assetFileNames":"_app/immutable/assets/[name].[hash][extname]"}})).unwrap();
