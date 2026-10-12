@@ -1,0 +1,102 @@
+{
+  "repository": "https://github.com/tailwindlabs/tailwindcss",
+  "tag": "v4.2.1",
+  "license": "Tailwind MIT; vendored ignore Unlicense OR MIT",
+  "files": [
+    {
+      "path": "vendor/ignore/COPYING",
+      "upstream": "crates/ignore/COPYING",
+      "sha256": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f"
+    },
+    {
+      "path": "vendor/ignore/Cargo.toml",
+      "upstream": "crates/ignore/Cargo.toml",
+      "sha256": "c37102d264c03094aa0978b6d5a394f9a4ab439073cdce1675859b539dd591d1"
+    },
+    {
+      "path": "vendor/ignore/LICENSE-MIT",
+      "upstream": "crates/ignore/LICENSE-MIT",
+      "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f"
+    },
+    {
+      "path": "vendor/ignore/README.md",
+      "upstream": "crates/ignore/README.md",
+      "sha256": "fad351a4d6dad422368750be404b7a419bc9f6ab5acc86934edb3502fba2029d"
+    },
+    {
+      "path": "vendor/ignore/UNLICENSE",
+      "upstream": "crates/ignore/UNLICENSE",
+      "sha256": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c"
+    },
+    {
+      "path": "vendor/ignore/src/default_types.rs",
+      "upstream": "crates/ignore/src/default_types.rs",
+      "sha256": "039b2b404baa7eecbb13ec3190b1b5f6c77e155db8b2e3b2b3d636964b8d2dd8"
+    },
+    {
+      "path": "vendor/ignore/src/dir.rs",
+      "upstream": "crates/ignore/src/dir.rs",
+      "sha256": "2d8f63e2b54c0f6dfa4d7098890ed03e28a1568fe65ea15392ca2ad32958ff41"
+    },
+    {
+      "path": "vendor/ignore/src/gitignore.rs",
+      "upstream": "crates/ignore/src/gitignore.rs",
+      "sha256": "3b6e77cbc62899a62a947d40c7e577c761d2f3f86973245ced9afb5ef96e8648"
+    },
+    {
+      "path": "vendor/ignore/src/lib.rs",
+      "upstream": "crates/ignore/src/lib.rs",
+      "sha256": "f367ebabaebb4d3480d889fa246589f514d04b86c7de51749703382df109d3e4"
+    },
+    {
+      "path": "vendor/ignore/src/overrides.rs",
+      "upstream": "crates/ignore/src/overrides.rs",
+      "sha256": "3dc08838919e439a5f786f357357320a007dc063ffcebbb5218e96e77911f77a"
+    },
+    {
+      "path": "vendor/ignore/src/pathutil.rs",
+      "upstream": "crates/ignore/src/pathutil.rs",
+      "sha256": "966d1f641c90d5dced35aca1362ca96e8a4fa5572a33b61604f9de0a157c3596"
+    },
+    {
+      "path": "vendor/ignore/src/types.rs",
+      "upstream": "crates/ignore/src/types.rs",
+      "sha256": "4f1feab2c6385a112455f9e6ee51c8bee8495da3836ffb27d9d50e9c89d4e766"
+    },
+    {
+      "path": "vendor/ignore/src/walk.rs",
+      "upstream": "crates/ignore/src/walk.rs",
+      "sha256": "6d18db09b7d202b435ead9932ab96e91f6cd0d8d92099ee520b9a91205c91796"
+    },
+    {
+      "path": "reference/fixtures/binary-extensions.txt",
+      "upstream": "crates/oxide/src/scanner/fixtures/binary-extensions.txt",
+      "sha256": "6c95bf208645736dd74490c1740bba5f33893f514c8ba534b2b20cfe64326088"
+    },
+    {
+      "path": "reference/fixtures/ignored-content-dirs.txt",
+      "upstream": "crates/oxide/src/scanner/fixtures/ignored-content-dirs.txt",
+      "sha256": "4cdf7e1dd10de18526d0418087cc5eeb251e05955bd0e56b9d025f2fe3f05a77"
+    },
+    {
+      "path": "reference/fixtures/ignored-extensions.txt",
+      "upstream": "crates/oxide/src/scanner/fixtures/ignored-extensions.txt",
+      "sha256": "749167ac9bc0a6daaccaf14a56aa41b8b9befd2755b7d7a27ad8cb762230b65e"
+    },
+    {
+      "path": "reference/fixtures/ignored-files.txt",
+      "upstream": "crates/oxide/src/scanner/fixtures/ignored-files.txt",
+      "sha256": "14d3c2a7aa939b238d6b2d6d5c6e6559bbabfbe572490f14c6c0513427577b9e"
+    },
+    {
+      "path": "reference/node-compile.ts",
+      "upstream": "packages/@tailwindcss-node/src/compile.ts",
+      "sha256": "bb8fa453de576ccff0cd4fc4152c073486a1dd34c2e29a873c6051d847847ad7"
+    },
+    {
+      "path": "reference/LICENSE-MIT",
+      "upstream": "LICENSE",
+      "sha256": "60e0b68c0f35c078eef3a5d29419d0b03ff84ec1df9c3f9d6e39a519a5ae7985"
+    }
+  ]
+}

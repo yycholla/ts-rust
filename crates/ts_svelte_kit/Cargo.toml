@@ -1,0 +1,24 @@
+[package]
+name = "ts_svelte_kit"
+version = "0.1.0"
+edition = "2024"
+license = "MIT AND Apache-2.0"
+publish = false
+[dependencies]
+unicode-normalization = "=0.1.25"
+serde = { version = "=1.0.228", features = ["derive"] }
+serde_json = "=1.0.150"
+glob = "=0.3.4"
+sha2 = "=0.10.9"
+url = "=2.5.8"
+oxc_allocator = "=0.149.0"
+oxc_ast = "=0.149.0"
+oxc_ast_visit = "=0.149.0"
+oxc_parser = "=0.149.0"
+oxc_span = "=0.149.0"
+oxc_syntax = "=0.149.0"
+[lints.rust]
+unsafe_code = "forbid"
+
+[workspace]
+resolver = "3"

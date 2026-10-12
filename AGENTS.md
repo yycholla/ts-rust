@@ -1,4 +1,16 @@
-# Typechecker work rules
+# Fork-local Svelte prototype rules (2026-10-10)
+
+For work on this fork's Svelte/MoncuraHR prototype, read
+`docs/svelte-prototype/plan.md` first. The fork owner authorized establishing
+fork-local acceptance rules and delegated implementation judgment on 2026-10-10,
+explicitly requiring native Rust, WebAssembly, and JavaScript support.
+
+The rules in that document supersede the inherited execution rules below only
+for this prototype. Preserve the upstream state and evidence as historical
+records. Do not claim that missing upstream evidence was reproduced. Compiler
+core changes still need a separately measured baseline and independent review.
+
+# Typechecker work rules (inherited upstream)
 
 ## Read before work
 

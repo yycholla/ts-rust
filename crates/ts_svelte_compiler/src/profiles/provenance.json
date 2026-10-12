@@ -1,0 +1,128 @@
+{
+  "client-5.51.5": {
+    "version": "5.51.5",
+    "source": "target/svelte-versions/svelte-5.51.5/node_modules/svelte/src/internal/client/index.js",
+    "sourceSha256": "41c3d08a27701c5c7cea870b43606af8d9811203de1f9caa36d3056917b0a8d0",
+    "exportsSha256": "be09b99884c5f1d7c70cfce40ed2ec5435dffc3b3263ac99fffca721b75087da",
+    "count": 196
+  },
+  "server-5.51.5": {
+    "version": "5.51.5",
+    "source": "target/svelte-versions/svelte-5.51.5/node_modules/svelte/src/internal/server/index.js",
+    "sourceSha256": "79a4bb873eb27ef6b0c5298eb85d407f713814f2abdcfe9a91e07d55298b877d",
+    "exportsSha256": "8e67c4ecc3d9adca1efb0efedd23e69c4a04873b01bed680f245ea7be69db40e",
+    "count": 42
+  },
+  "client-5.52.0": {
+    "version": "5.52.0",
+    "source": "target/svelte-versions/svelte-5.52.0/node_modules/svelte/src/internal/client/index.js",
+    "sourceSha256": "65e40aa376f26d3df7362d10d6958e93170e62569ef9c120cbf4ed8d9fbbd318",
+    "exportsSha256": "be09b99884c5f1d7c70cfce40ed2ec5435dffc3b3263ac99fffca721b75087da",
+    "count": 196
+  },
+  "server-5.52.0": {
+    "version": "5.52.0",
+    "source": "target/svelte-versions/svelte-5.52.0/node_modules/svelte/src/internal/server/index.js",
+    "sourceSha256": "7733899bbd61998c43d52c36bb062572dbd9f43dd5a4dbfe43955c3597544719",
+    "exportsSha256": "9d59c59ef669be5b715af510537db357af569520fa6524d39855b5867f259dde",
+    "count": 44
+  },
+  "client-5.53.5": {
+    "version": "5.53.5",
+    "source": "target/svelte-versions/svelte-5.53.5/node_modules/svelte/src/internal/client/index.js",
+    "sourceSha256": "65e40aa376f26d3df7362d10d6958e93170e62569ef9c120cbf4ed8d9fbbd318",
+    "exportsSha256": "be09b99884c5f1d7c70cfce40ed2ec5435dffc3b3263ac99fffca721b75087da",
+    "count": 196
+  },
+  "server-5.53.5": {
+    "version": "5.53.5",
+    "source": "target/svelte-versions/svelte-5.53.5/node_modules/svelte/src/internal/server/index.js",
+    "sourceSha256": "e969a8e9686bc3be8b05d72cf0da616a67039088124afb281661921459653f6d",
+    "exportsSha256": "00fc397df1e96ccc5fb1afd7f5f9f089cf5a70340e363718431ca53bb4be0209",
+    "count": 46
+  },
+  "client-5.53.11": {
+    "version": "5.53.11",
+    "source": "target/svelte-versions/svelte-5.53.11/node_modules/svelte/src/internal/client/index.js",
+    "sourceSha256": "65e40aa376f26d3df7362d10d6958e93170e62569ef9c120cbf4ed8d9fbbd318",
+    "exportsSha256": "be09b99884c5f1d7c70cfce40ed2ec5435dffc3b3263ac99fffca721b75087da",
+    "count": 196
+  },
+  "server-5.53.11": {
+    "version": "5.53.11",
+    "source": "target/svelte-versions/svelte-5.53.11/node_modules/svelte/src/internal/server/index.js",
+    "sourceSha256": "5830ab744d69f95cc5534fdffb8744134c2e31bb3089cb17289b20bc16c79aa4",
+    "exportsSha256": "00fc397df1e96ccc5fb1afd7f5f9f089cf5a70340e363718431ca53bb4be0209",
+    "count": 46
+  },
+  "client-5.53.13": {
+    "version": "5.53.13",
+    "source": "target/svelte-versions/svelte-5.53.13/node_modules/svelte/src/internal/client/index.js",
+    "sourceSha256": "716c23b24599df5dd863055e45540de2c7fd236abb37b1b6a87061b80973dc23",
+    "exportsSha256": "541327765fdd8804a6d2abc8cea6a27b4bb82792d8d42d235c0d0b612bf18504",
+    "count": 194
+  },
+  "server-5.53.13": {
+    "version": "5.53.13",
+    "source": "target/svelte-versions/svelte-5.53.13/node_modules/svelte/src/internal/server/index.js",
+    "sourceSha256": "5830ab744d69f95cc5534fdffb8744134c2e31bb3089cb17289b20bc16c79aa4",
+    "exportsSha256": "00fc397df1e96ccc5fb1afd7f5f9f089cf5a70340e363718431ca53bb4be0209",
+    "count": 46
+  },
+  "client-5.54.1": {
+    "version": "5.54.1",
+    "source": "target/svelte-versions/svelte-5.54.1/node_modules/svelte/src/internal/client/index.js",
+    "sourceSha256": "716c23b24599df5dd863055e45540de2c7fd236abb37b1b6a87061b80973dc23",
+    "exportsSha256": "541327765fdd8804a6d2abc8cea6a27b4bb82792d8d42d235c0d0b612bf18504",
+    "count": 194
+  },
+  "server-5.54.1": {
+    "version": "5.54.1",
+    "source": "target/svelte-versions/svelte-5.54.1/node_modules/svelte/src/internal/server/index.js",
+    "sourceSha256": "5830ab744d69f95cc5534fdffb8744134c2e31bb3089cb17289b20bc16c79aa4",
+    "exportsSha256": "00fc397df1e96ccc5fb1afd7f5f9f089cf5a70340e363718431ca53bb4be0209",
+    "count": 46
+  },
+  "client-5.55.10": {
+    "version": "5.55.10",
+    "source": "target/svelte-versions/svelte-5.55.10/node_modules/svelte/src/internal/client/index.js",
+    "sourceSha256": "716c23b24599df5dd863055e45540de2c7fd236abb37b1b6a87061b80973dc23",
+    "exportsSha256": "541327765fdd8804a6d2abc8cea6a27b4bb82792d8d42d235c0d0b612bf18504",
+    "count": 194
+  },
+  "server-5.55.10": {
+    "version": "5.55.10",
+    "source": "target/svelte-versions/svelte-5.55.10/node_modules/svelte/src/internal/server/index.js",
+    "sourceSha256": "10e503dddcfe6f3ced6219ee077a0dbc9cf3a4d3108e4795070bf1438ebbd38a",
+    "exportsSha256": "00fc397df1e96ccc5fb1afd7f5f9f089cf5a70340e363718431ca53bb4be0209",
+    "count": 46
+  },
+  "client-5.56.10": {
+    "version": "5.56.10",
+    "source": "target/svelte-versions/svelte-5.56.10/node_modules/svelte/src/internal/client/index.js",
+    "sourceSha256": "1c11fb4114d51acd1e46d570ff49094fd885c869667793ee728f8f0dfa625f28",
+    "exportsSha256": "2fb5d13023618a6f792a79864bcf3b91d12268a602ef2ac08365d07a3a80af66",
+    "count": 193
+  },
+  "server-5.56.10": {
+    "version": "5.56.10",
+    "source": "target/svelte-versions/svelte-5.56.10/node_modules/svelte/src/internal/server/index.js",
+    "sourceSha256": "10e503dddcfe6f3ced6219ee077a0dbc9cf3a4d3108e4795070bf1438ebbd38a",
+    "exportsSha256": "00fc397df1e96ccc5fb1afd7f5f9f089cf5a70340e363718431ca53bb4be0209",
+    "count": 46
+  },
+  "client-5.57.2": {
+    "version": "5.57.2",
+    "source": "target/svelte-versions/svelte-5.57.2/node_modules/svelte/src/internal/client/index.js",
+    "sourceSha256": "5b16e981b8093b9c49512fc642c1b8364e8b1f4a3e3a4731446cc70032c523a9",
+    "exportsSha256": "f5007cf259379d424902b79f8fde507b2f4ef2b892b2511c7a705f20cb408bc9",
+    "count": 196
+  },
+  "server-5.57.2": {
+    "version": "5.57.2",
+    "source": "target/svelte-versions/svelte-5.57.2/node_modules/svelte/src/internal/server/index.js",
+    "sourceSha256": "b9f3a4558acc8f904008fe9383d07285f7e67f672bd1a217667caa9afd9322e7",
+    "exportsSha256": "00fc397df1e96ccc5fb1afd7f5f9f089cf5a70340e363718431ca53bb4be0209",
+    "count": 46
+  }
+}

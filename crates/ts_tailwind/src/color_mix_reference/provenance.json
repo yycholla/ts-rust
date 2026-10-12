@@ -1,0 +1,28 @@
+{
+  "repository": "https://github.com/tailwindlabs/tailwindcss",
+  "tag": "v4.2.1",
+  "algorithm": "optimizeAst colorMixDeclarations collection + fallbacks after unused variable/keyframe pruning and at-root append; before AtProperty fallback insertion",
+  "license": "MIT",
+  "files": [
+    {
+      "file": "LICENSE-MIT",
+      "upstream": "LICENSE",
+      "sha256": "60e0b68c0f35c078eef3a5d29419d0b03ff84ec1df9c3f9d6e39a519a5ae7985"
+    },
+    {
+      "file": "ast.test.ts",
+      "upstream": "packages/tailwindcss/src/ast.test.ts",
+      "sha256": "8e20455e22574acbc1c4372d85ba79f9bf5f0ef7f0e552fae2875500426b460f"
+    },
+    {
+      "file": "ast.ts",
+      "upstream": "packages/tailwindcss/src/ast.ts",
+      "sha256": "066987a78d4d8fa14049df60eb0e3d6f1d4b5241577a60eef1386ea048df43df"
+    },
+    {
+      "file": "walk.ts",
+      "upstream": "packages/tailwindcss/src/walk.ts",
+      "sha256": "45ac3e939460d7c1c1216dce5aaa1f10d4cf6b4051ceb5d096c1a16bd231977f"
+    }
+  ]
+}

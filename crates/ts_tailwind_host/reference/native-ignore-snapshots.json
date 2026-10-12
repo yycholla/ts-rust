@@ -1,0 +1,18 @@
+{
+  "upstream": "./provenance.json",
+  "originals": "./native-ignore-originals/",
+  "patch": "./native-ignore-snapshots.patch",
+  "description": "Add a path-only ignore match using the existing WalkBuilder matcher and ancestor pruning for immutable virtual source files. Existing disk walk behavior is unchanged. Caller uses hidden(false), no size/type/stdout filtering, and applies its source filter separately. Ignore/repository metadata overlays are explicitly rejected by the host. The exposed matcher now uses the existing equivalent strip_if_is_prefix helper, eliminating its unused-function warning.",
+  "files": [
+    {
+      "path": "vendor/ignore/src/dir.rs",
+      "originalSha256": "2d8f63e2b54c0f6dfa4d7098890ed03e28a1568fe65ea15392ca2ad32958ff41",
+      "nativeSha256": "7d8371b93e2d1489890b3485e0d7f93eebc6392c700163cce9ca67925e748180"
+    },
+    {
+      "path": "vendor/ignore/src/walk.rs",
+      "originalSha256": "6d18db09b7d202b435ead9932ab96e91f6cd0d8d92099ee520b9a91205c91796",
+      "nativeSha256": "7895b454e3393f2584a2f225be42f673e968f957bc3ed5f82bd92d49e04f2d71"
+    }
+  ]
+}

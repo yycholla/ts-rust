@@ -1,0 +1,16 @@
+{
+  "plugin": "@tailwindcss/typography",
+  "version": "0.5.19",
+  "tailwindVersion": "4.2.1",
+  "source": "https://github.com/tailwindlabs/tailwindcss-typography/tree/v0.5.19",
+  "license": "MIT",
+  "generation": "Restricted literal parser: ordered objects, arrays, spreads, numeric division and ported round/rem/em/opacity only. No JavaScript runtime or package code executed. css blocks deep merged in order, camelCase CSS properties converted to kebab-case. Colors are the pinned Tailwind 4.2.1 constant table.",
+  "files": {
+    "@tailwindcss/typography/src/styles.js": "45c9b9c89339b29a0e414bb80267c2b697e82f87e5b8f0641d9442b1b4f5e359",
+    "@tailwindcss/typography/src/index.js": "0650b9739a9ae52731159a8bc53fb07de020412b413071fa701fc9ecc8ffbace",
+    "@tailwindcss/typography/src/utils.js": "d6eef872ef76e56bdff51ebd0350818040d7bd53ad0ea96431f08d02cb2ea295",
+    "@tailwindcss/typography/LICENSE": "60e0b68c0f35c078eef3a5d29419d0b03ff84ec1df9c3f9d6e39a519a5ae7985",
+    "tailwindcss/dist/colors.js": "65deff9624403a78bdb93a67e59f140a75ebe69aea9abe4c6d106357e612c2c5"
+  },
+  "generatedSha256": "dc7a2b6e2805d5f3462e34be5e0d1e99297c17d41f985acad6b080d4131f18d1"
+}

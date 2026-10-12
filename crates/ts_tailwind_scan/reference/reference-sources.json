@@ -1,0 +1,26 @@
+{
+  "upstream": "https://github.com/tailwindlabs/tailwindcss",
+  "tag": "v4.2.1",
+  "files": [
+    {
+      "local": "extractor-mod.rs",
+      "path": "crates/oxide/src/extractor/mod.rs",
+      "sha256": "c1686e068c6cf59a6500b2f33e4d8a6e2974ab123bc1f83510ce4523f9d28a8a"
+    },
+    {
+      "local": "oxide-lib.rs",
+      "path": "crates/oxide/src/lib.rs",
+      "sha256": "c94efa9f07400603e48cce57f644c59fa1fc0475c369beba9789130e60ce24a1"
+    },
+    {
+      "local": "oxide-Cargo.toml",
+      "path": "crates/oxide/Cargo.toml",
+      "sha256": "b68d0ae7a430923af2845ec3611292fe1febd84543b49e8ed68f15a4096ab571"
+    },
+    {
+      "local": "scanner-mod.rs",
+      "path": "crates/oxide/src/scanner/mod.rs",
+      "sha256": "3cdcbf5a54de7491b765a54d2dfcd87ad23d2788c76d9becd01201cd440d1390"
+    }
+  ]
+}

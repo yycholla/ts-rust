@@ -1,0 +1,68 @@
+--- a/src/object/builtins/jspromise.rs
++++ b/src/object/builtins/jspromise.rs
+@@ -6,7 +6,7 @@
+     Context, JsArgs, JsError, JsExpect, JsNativeError, JsResult, JsValue, NativeFunction,
+     builtins::{
+         Promise,
+-        promise::{PromiseState, ResolvingFunctions},
++        promise::{PromiseCapability, PromiseState, ResolvingFunctions},
+     },
+     job::NativeAsyncJob,
+     object::JsObject,
+@@ -401,14 +401,17 @@
+     /// [`Promise.resolve()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve
+     /// [thenables]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#thenables
+     pub fn resolve<V: Into<JsValue>>(value: V, context: &mut Context) -> JsResult<Self> {
+-        Promise::promise_resolve(
++        // PromiseResolve step 1.a reads `constructor` from a native promise; an
++        // abrupt getter is an ordinary catchable throw, not an engine failure.
++        // The default resolve functions themselves still cannot throw.
++        let promise = Promise::promise_resolve(
+             &context.intrinsics().constructors().promise().constructor(),
+             value.into(),
+             context,
+-        )
+-        .and_then(Self::from_object)
+-        .js_expect("default resolve functions cannot throw and must return a promise")
+-        .map_err(Into::into)
++        )?;
++        Self::from_object(promise)
++            .js_expect("default resolve functions must return a promise")
++            .map_err(Into::into)
+     }
+ 
+     /// Creates a `JsPromise` that is rejected with the reason `error`.
+@@ -571,6 +574,33 @@
+             .map_err(Into::into)
+     }
+ 
++    /// Attach host-internal reactions without consulting `constructor` or
++    /// `Symbol.species` on this promise. The result is a native promise in the
++    /// current realm. Unlike [`Self::then`], this is intended for specification
++    /// algorithms such as Web IDL "upon fulfillment/rejection", not application
++    /// calls to `Promise.prototype.then`.
++    ///
++    /// Reactions use the engine's ordinary traced promise jobs and preserve
++    /// fulfillment, rejection, thenable assimilation, and microtask ordering.
++    pub fn then_intrinsic(
++        &self,
++        on_fulfilled: Option<JsFunction>,
++        on_rejected: Option<JsFunction>,
++        context: &mut Context,
++    ) -> JsResult<Self> {
++        let constructor = context.intrinsics().constructors().promise().constructor();
++        let capability = PromiseCapability::new(&constructor, context)?;
++        let result = capability.promise.clone();
++        Promise::perform_promise_then(
++            &self.inner,
++            on_fulfilled,
++            on_rejected,
++            Some(capability),
++            context,
++        );
++        Self::from_object(result)
++    }
++
+     /// Schedules a callback to run when the promise is rejected.
+     ///
+     /// Equivalent to the [`Promise.prototype.catch`] method.

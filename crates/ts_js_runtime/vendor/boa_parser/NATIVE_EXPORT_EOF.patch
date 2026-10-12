@@ -1,0 +1,21 @@
+--- a/src/parser/statement/declaration/export.rs
++++ b/src/parser/statement/declaration/export.rs
+@@ -109,12 +109,14 @@
+             TokenKind::Punctuator(Punctuator::OpenBlock) => {
+                 let names = NamedExports.parse(cursor, interner)?;
+ 
+-                let next = cursor.peek(0, interner).or_abrupt()?;
+-
+-                if matches!(
++                // A local named export may terminate at EOF through ASI.
++                // Only re-exports require a following `from` token.
++                let next = cursor.peek(0, interner)?;
++
++                if next.is_some_and(|next| matches!(
+                     next.kind(),
+                     TokenKind::IdentifierName((Sym::FROM, ContainsEscapeSequence(false)))
+-                ) {
++                )) {
+                     let specifier =
+                         FromClause::new("export declaration").parse(cursor, interner)?;
+                     let attributes =

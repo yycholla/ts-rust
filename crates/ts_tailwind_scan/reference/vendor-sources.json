@@ -1,0 +1,207 @@
+{
+  "upstream": "https://github.com/tailwindlabs/tailwindcss",
+  "tag": "v4.2.1",
+  "tree": "1dce64ee7ec2e414c845b4e268ac3b9b89aaf0c8",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "60e0b68c0f35c078eef3a5d29419d0b03ff84ec1df9c3f9d6e39a519a5ae7985",
+      "gitBlob": "d6a82290738a9f78946cbcb4594535d6984086dd"
+    },
+    {
+      "path": "crates/classification-macros/Cargo.toml",
+      "sha256": "2d8e668b81b362250d1b3b7e1a5aeb1d01544909bc782233c46c744adcc77f24",
+      "gitBlob": "7053c893ab69b9f4988fb9f8dfce00b84d87624e"
+    },
+    {
+      "path": "crates/classification-macros/src/lib.rs",
+      "sha256": "70ef9013d13442a904d30acac7d0b7923b71899fde58cc5c0a3d2b2cb761447c",
+      "gitBlob": "7bee55595c6cee03a684dcc08f789f06fe6bdc14"
+    },
+    {
+      "path": "crates/oxide/src/cursor.rs",
+      "sha256": "39869bab0b098d92f858ac02ab2d1566c7a23a6bcf7f9d57811db16d61560756",
+      "gitBlob": "71cdccdf6aeb6ab0396b58f35583ed0fd0cd7be2"
+    },
+    {
+      "path": "crates/oxide/src/extractor/arbitrary_property_machine.rs",
+      "sha256": "ff74cb16362cc53c7a84ed6bd1cd52d65fd26325a3d377d136259e89511b3849",
+      "gitBlob": "a4325333925cb8c35d52b8de10afb8fe41a0e09a"
+    },
+    {
+      "path": "crates/oxide/src/extractor/arbitrary_value_machine.rs",
+      "sha256": "e164fab2faf7f9a50cdfab87cf7d069d09f0d7127eeb123faf6e87396f639bea",
+      "gitBlob": "cbef62c42681e007cbf3fdedefab9efb7647ccd5"
+    },
+    {
+      "path": "crates/oxide/src/extractor/arbitrary_variable_machine.rs",
+      "sha256": "8ad870d7165a1e81ca3ec3f8aa98f0b019453d007179ac283a5f305220b30698",
+      "gitBlob": "e8d4755571c7691b684b3cfa0fd5237c0f478f5c"
+    },
+    {
+      "path": "crates/oxide/src/extractor/boundary.rs",
+      "sha256": "2c19687187d463b94469fabac2336fcf3728aa69759c337595d2edc18d35bcf2",
+      "gitBlob": "78f9d3184a906eaa81e7c12e535e4cbd56d581f3"
+    },
+    {
+      "path": "crates/oxide/src/extractor/bracket_stack.rs",
+      "sha256": "2a3a2728ed11fdd5fb7587bde5c0be0a55c11deb27bd721f62ab1b1f4e1b32fa",
+      "gitBlob": "f34e56ed36745846b6e944b7a6e12912a41feb4a"
+    },
+    {
+      "path": "crates/oxide/src/extractor/candidate_machine.rs",
+      "sha256": "0a8d28385246a73f43b781fcdf95580124cd3becc1ca91cd6cb9fcd30715d1d4",
+      "gitBlob": "a755cf02a2b55ab856258c00867905c0f369ea0e"
+    },
+    {
+      "path": "crates/oxide/src/extractor/css_variable_machine.rs",
+      "sha256": "79bf63d2489010ee5748d3c1829404759d56a69e9108e559855ff34640a29203",
+      "gitBlob": "7beb827ee84bdbeee6246780f02ffd26ae51fa6c"
+    },
+    {
+      "path": "crates/oxide/src/extractor/machine.rs",
+      "sha256": "411d859dd4b6bcbff22d5a7fb8e720659683cfa1672ad3c6b9117a33ecc146e9",
+      "gitBlob": "5874e4b63e381a7c6eab4083dcb60b5733a4c45f"
+    },
+    {
+      "path": "crates/oxide/src/extractor/mod.rs",
+      "sha256": "c1686e068c6cf59a6500b2f33e4d8a6e2974ab123bc1f83510ce4523f9d28a8a",
+      "gitBlob": "a37d6a0a49b383677caf910ff5567f56cbfc0974"
+    },
+    {
+      "path": "crates/oxide/src/extractor/modifier_machine.rs",
+      "sha256": "d81fad7c213dfcd9d07e3179ec9361ce9ca0edecd4ac31b7ea06b37743691b40",
+      "gitBlob": "811bc9ded9e0fbaf051d2efccbc8b3be23ff03a2"
+    },
+    {
+      "path": "crates/oxide/src/extractor/named_utility_machine.rs",
+      "sha256": "2b096d4305aa8ad65f6398fd08294a3524c19b8b8aebc9abc583263d8de00770",
+      "gitBlob": "24dc027b2d6909d1162a03c4bb114e8566bb3891"
+    },
+    {
+      "path": "crates/oxide/src/extractor/named_variant_machine.rs",
+      "sha256": "76320fd0f235e103c1bd24b850788578f4d1c9ecdbf65a6d30da01f2ff208f95",
+      "gitBlob": "285fe6ab51a66af9a95e8b354452eed8382f2930"
+    },
+    {
+      "path": "crates/oxide/src/extractor/pre_processors/clojure.rs",
+      "sha256": "02e6c1ffe93b858775374a760193c48da2bde573fcc6deae90c8b0c3acff11a5",
+      "gitBlob": "3fb4ce601cd6810d492ab2c2e7a30aae3d21b25b"
+    },
+    {
+      "path": "crates/oxide/src/extractor/pre_processors/elixir.rs",
+      "sha256": "f705fa75a87ef7fcf8a43866491b2a3699daea0121f8ba4a7548273b87bd5522",
+      "gitBlob": "7737a6b2d1aebf6fa83eb036e579693eff830bd1"
+    },
+    {
+      "path": "crates/oxide/src/extractor/pre_processors/haml.rs",
+      "sha256": "a78dce438fb1bc4e4acc521fcf4454ad0b8e57061d961fbd9b8981d4874aa6e4",
+      "gitBlob": "99b7bd052302d3017eff26163fccd2adb2beb4d9"
+    },
+    {
+      "path": "crates/oxide/src/extractor/pre_processors/json.rs",
+      "sha256": "bb3b3dfe5720e252e45100739833336c3eddd06dee997570d11de247fede21f1",
+      "gitBlob": "cd457050c5fc185fd58657a3097942b4e8b4bdf5"
+    },
+    {
+      "path": "crates/oxide/src/extractor/pre_processors/markdown.rs",
+      "sha256": "ecf5e9245682205e838b820f9758b80eea716239a7817e3fb1b66076e04c8d56",
+      "gitBlob": "488614ee57bd6a6b344edf018049d72a789fae35"
+    },
+    {
+      "path": "crates/oxide/src/extractor/pre_processors/mod.rs",
+      "sha256": "cdbdb86b1d776f0b87378abb3d917a95b143e15985a12eea847774fd63ab4e23",
+      "gitBlob": "efcbc53d86d29f8ca45130e3aa71257ccdc3e46f"
+    },
+    {
+      "path": "crates/oxide/src/extractor/pre_processors/pre_processor.rs",
+      "sha256": "ade1a591e8338afb3e17093a94c93a7fdc9e99946fbcc46f49818aab72f23008",
+      "gitBlob": "8e02b8f695fedd175733ca35c2d7356932a9b548"
+    },
+    {
+      "path": "crates/oxide/src/extractor/pre_processors/pug.rs",
+      "sha256": "b87d7465175e447202f500dff0a2a5601a0ecc43438cf8889c5638b403d5d547",
+      "gitBlob": "70dfe5683197b7ae64758052cd4c18f6c1a267a9"
+    },
+    {
+      "path": "crates/oxide/src/extractor/pre_processors/razor.rs",
+      "sha256": "73b2a0ca0ac46a9a01b01438cfd27ec7a7f39e35628d236a5cfdd2091d6b595c",
+      "gitBlob": "2713ea748b5784452f12c504dd4e119c4c5dc0a4"
+    },
+    {
+      "path": "crates/oxide/src/extractor/pre_processors/ruby.rs",
+      "sha256": "b865842698f32bf02adeb7a2ca80dc14ffe818d97dd117bf2dba3439f24ae385",
+      "gitBlob": "1f2221414ff4cf00faaf6390c9a6f0d302d17ea1"
+    },
+    {
+      "path": "crates/oxide/src/extractor/pre_processors/rust.rs",
+      "sha256": "d82e6dae9fbed7ccf73930fdbeda4edf1b7e31baf2780c1976f92c776cb5e506",
+      "gitBlob": "34c9e0c916b7129d6900c10c30f5fd9634dab8fe"
+    },
+    {
+      "path": "crates/oxide/src/extractor/pre_processors/slim.rs",
+      "sha256": "b20ce7f8e0f7306b56602cb1dc5dfc878358d6cabde1041612c4c83a9b8cf11e",
+      "gitBlob": "eacfb55eedfd9e3c10c1ca118231dab265ae881c"
+    },
+    {
+      "path": "crates/oxide/src/extractor/pre_processors/svelte.rs",
+      "sha256": "8f258d9267948830a65fcadde01ccaefb1f0dbb21f87f23114e265aeb0976b56",
+      "gitBlob": "5834f7feb290322f8c2794a3b39a96905eae439d"
+    },
+    {
+      "path": "crates/oxide/src/extractor/pre_processors/test-fixtures/haml/dst-17051.haml",
+      "sha256": "a3f39849c106327f354aca40145f98f71e96a299a64f9aad09df61ec00c15bd1",
+      "gitBlob": "4a3543379420f6246c7a88595beb5c21b748b05e"
+    },
+    {
+      "path": "crates/oxide/src/extractor/pre_processors/test-fixtures/haml/dst-17813.haml",
+      "sha256": "abf58a6072f6d2560710508e9ecea0e95eedb68c736b3a1f6f486de5dc8d60c4",
+      "gitBlob": "18f0fdc4b20a716dfa010356505db4d407371516"
+    },
+    {
+      "path": "crates/oxide/src/extractor/pre_processors/test-fixtures/haml/src-17051.haml",
+      "sha256": "b37677ff2a1c67d036fb56a6bc2443f96ab706bafc8725fbbc05c0ba0a823666",
+      "gitBlob": "38e17b1348c3ed3dbb253ae11b1f1bcaf9fccbea"
+    },
+    {
+      "path": "crates/oxide/src/extractor/pre_processors/test-fixtures/haml/src-17813.haml",
+      "sha256": "33eee870bc320e6dce6130913e590151f0e8b76881c29745f3d2db9236087f3f",
+      "gitBlob": "5fdaefdb03c37778c3ac2bd14a0c57a01234fc82"
+    },
+    {
+      "path": "crates/oxide/src/extractor/pre_processors/vue.rs",
+      "sha256": "c25a5def8f3424364121e785cbfa72792abedc96112050692c112941b794e898",
+      "gitBlob": "1b9bf1668cb4762a5fa32c99d20726e8c3ddf028"
+    },
+    {
+      "path": "crates/oxide/src/extractor/string_machine.rs",
+      "sha256": "7355574acb268c99fcecfd41071e0356bc573d9c7e96f6e7739598ed97141c26",
+      "gitBlob": "4fad49faae19414c8983b10994316d6891a47a01"
+    },
+    {
+      "path": "crates/oxide/src/extractor/utility_machine.rs",
+      "sha256": "b8bb8f942ca3857f5752224262320db908166745a09caeb76b8e33f6e49319fa",
+      "gitBlob": "c116ec4e42266460bc7a37630a780a127adbf323"
+    },
+    {
+      "path": "crates/oxide/src/extractor/variant_machine.rs",
+      "sha256": "900ec4209c8eb357f55738d7a68a5a9c615ffc2731571555336ad196e0e13657",
+      "gitBlob": "9ec2adc0922a12716acb140e6129afcf32bd670d"
+    },
+    {
+      "path": "crates/oxide/src/fast_skip.rs",
+      "sha256": "66198a786e839374a4fa14ebf90ee8840e2af9741f5f49d91e5eeccc4e379af4",
+      "gitBlob": "54930548c620448d1d0cf0fc6517f79d818b6eb8"
+    },
+    {
+      "path": "crates/oxide/src/fixtures/example.html",
+      "sha256": "3fd82d209e535801ddfb4c3ecc4aa35e51fd66fd9f87007d6c6f22809c56e438",
+      "gitBlob": "41d8beed611b7612b52c080c4a72c7e8138fe0f1"
+    },
+    {
+      "path": "crates/oxide/src/throughput.rs",
+      "sha256": "eba948fc4923893488e165b0027d4adcb2f4389f2497a2692a5e77f62e0de146",
+      "gitBlob": "19597925f14f4fdc98289e0b4dd55f2866f6bb0a"
+    }
+  ]
+}

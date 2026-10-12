@@ -1,0 +1,42 @@
+[package]
+name = "ts_svelte_bundle"
+version = "0.1.0"
+edition = "2024"
+license = "MIT AND Apache-2.0"
+publish = false
+
+[dependencies]
+anyhow = "=1.0.103"
+base64 = "=0.22.1"
+serde = { version = "=1.0.228", features = ["derive"] }
+serde_json = "=1.0.150"
+tokio = { version = "=1.52.3", features = ["rt-multi-thread", "macros"] }
+rolldown = "=1.2.13"
+rolldown_common = "=1.2.13"
+rolldown_error = "=1.2.13"
+rolldown_sourcemap = "=1.2.13"
+ts_svelte = { path = "../ts_svelte" }
+ts_svelte_compiler = { path = "../ts_svelte_compiler" }
+ts_svelte_preprocess = { path = "../ts_svelte_preprocess" }
+ts_svelte_transpile = { path = "../ts_svelte_transpile" }
+ts_svelte_css = { path = "../ts_svelte_css" }
+ts_tailwind = { path = "../ts_tailwind" }
+ts_tailwind_host = { path = "../ts_tailwind_host" }
+cssparser = "=0.37.0"
+lightningcss = { path = "../ts_svelte_css/vendor/lightningcss", version = "=1.0.0-alpha.72", default-features = false, features = ["visitor"] }
+sha2 = "=0.10.9"
+oxc_allocator = "=0.149.0"
+rsvelte_core = { git = "https://github.com/baseballyama/rsvelte", rev = "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b", default-features = false }
+
+[workspace]
+resolver = "3"
+
+[patch."https://github.com/baseballyama/rsvelte"]
+rsvelte_core = { path = "../ts_svelte_compiler/vendor/rsvelte_core" }
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[[bin]]
+name = "svelte-bundle"
+path = "src/main.rs"

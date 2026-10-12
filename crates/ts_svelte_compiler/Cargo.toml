@@ -1,0 +1,44 @@
+[package]
+name = "ts_svelte_compiler"
+version = "0.1.0"
+edition = "2024"
+license = "MIT AND Apache-2.0"
+publish = false
+
+[lib]
+crate-type = ["rlib", "cdylib"]
+
+[dependencies]
+ts_svelte = { path = "../ts_svelte" }
+serde = { version = "=1.0.228", features = ["derive"] }
+serde_json = "=1.0.150"
+oxc_allocator = "=0.149.0"
+oxc_parser = "=0.149.0"
+oxc_span = "=0.149.0"
+oxc_ast = "=0.149.0"
+oxc_ast_visit = "=0.149.0"
+oxc_semantic = "=0.149.0"
+oxc_syntax = "=0.149.0"
+rsvelte = { git = "https://github.com/baseballyama/rsvelte", rev = "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b", features = ["projection"] }
+rsvelte_core = { git = "https://github.com/baseballyama/rsvelte", rev = "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b", default-features = false }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+rsvelte_core = { git = "https://github.com/baseballyama/rsvelte", rev = "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b", features = ["wasm-target"], default-features = false }
+wasm-bindgen = "0.2"
+
+[workspace]
+resolver = "3"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+all = { level = "warn", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+
+[[bin]]
+name = "svelte-tool"
+path = "src/bin/svelte-tool.rs"
+
+[patch."https://github.com/baseballyama/rsvelte"]
+rsvelte_core = { path = "vendor/rsvelte_core" }

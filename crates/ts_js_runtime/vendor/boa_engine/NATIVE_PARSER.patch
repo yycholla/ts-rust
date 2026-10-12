@@ -1,0 +1,10 @@
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -181,6 +181,7 @@
+ 
+ [dependencies.boa_parser]
+ version = "~0.22.0"
++path = "../boa_parser"
+ 
+ [dependencies.boa_string]
+ version = "~0.22.0"

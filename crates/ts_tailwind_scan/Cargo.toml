@@ -1,0 +1,22 @@
+[package]
+name = "ts_tailwind_scan"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+publish = false
+description = "Snapshot-only native Tailwind 4.2.1 Oxide extraction"
+
+[dependencies]
+classification-macros = { path = "classification-macros" }
+bstr = "=1.13.1"
+regex = "=1.13.1"
+serde = { version = "=1.0.228", features = ["derive"] }
+serde_json = "=1.0.150"
+
+[dev-dependencies]
+pretty_assertions = "=1.4.1"
+unicode-width = "=0.2.2"
+
+[workspace]
+members = ["classification-macros"]
+resolver = "3"

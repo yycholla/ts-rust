@@ -1,0 +1,24 @@
+[package]
+name = "ts_tailwind_host"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+description = "Native filesystem and CSS resolution host for the snapshot Tailwind compiler"
+
+[dependencies]
+ts_tailwind = { path = "../ts_tailwind" }
+ts_tailwind_scan = { path = "../ts_tailwind_scan" }
+serde = { version = "=1.0.228", features = ["derive"] }
+serde_json = "=1.0.150"
+sha2 = "=0.10.9"
+oxc_sourcemap = "=9.0.0"
+# Keep the public FileSystem trait shape stable when linked with Rolldown,
+# which enables this dependency feature. SnapshotFs still uses ordinary files.
+oxc_resolver = { version = "=11.24.3", features = ["yarn_pnp"] }
+ignore = { path = "vendor/ignore" }
+dunce = "=1.0.5"
+fast-glob = "=0.4.3"
+bexpand = "=1.2.0"
+
+[dev-dependencies]
+tempfile = "=3.23.0"

@@ -1,0 +1,8 @@
+{
+  "name": "ts-rust-svelte-kit",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": { "./native-compiler": "./native-compiler.mjs" },
+  "description": "Explicit hybrid SvelteKit host bridge for ts-rust's native Svelte compiler"
+}

@@ -4,10 +4,14 @@ members = [
     "crates/ts_goport/parts/goport_lsproto",
     "crates/ts_goport/parts/goport_util",
     "crates/ts_wasm",
+    "crates/ts_svelte",
+    "crates/ts_svelte_wasm",
+    "crates/ts_svelte_check",
     "tools/ts_ast_codegen",
     "tools/ts_diagnostics_codegen",
 ]
 resolver = "3"
+exclude = ["crates/ts_svelte_compiler", "crates/ts_svelte_tools", "crates/ts_svelte_kit", "crates/ts_svelte_mapping", "crates/ts_svelte_bundle", "crates/ts_svelte_preprocess", "crates/ts_svelte_format", "crates/ts_svelte_css", "crates/ts_svelte_transpile", "crates/ts_svelte_semantic", "crates/ts_svelte_build", "crates/ts_svelte_compress", "crates/ts_tailwind", "crates/ts_js_runtime", "crates/ts_tailwind_scan", "crates/ts_tailwind_host", "crates/ts_svelte_runtime", "crates/ts_svelte_kit_bundle"]
 
 [workspace.package]
 version = "7.0.0-dev"

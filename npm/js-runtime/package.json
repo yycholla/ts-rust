@@ -1,0 +1,12 @@
+{
+  "name": "@ts-rust/js-runtime",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./wasm": "./generated/ts_js_runtime.js"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  }
+}

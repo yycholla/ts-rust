@@ -1,0 +1,28 @@
+{
+  "upstream": "https://github.com/tailwindlabs/tailwindcss",
+  "tag": "v4.2.1",
+  "path": "packages/tailwindcss/src",
+  "sha256": {
+    "css-parser.ts": "1979eeafbf2bd7a62dee48d0646764c021de7c273c125d9e8d35de17a489a928",
+    "value-parser.ts": "3355219bbdaf7365659fbd7ca683f2dd965518c0d52e3acff9a14d48e966bb1f",
+    "candidate.test.ts": "557ba174146eb6295e06c127a7c8b2aeee344377e5ec8a33f2a2b9e117827e3d",
+    "candidate.ts": "60a2ed43d47e9d89111c884df2816b80fa7a454c874908466c5ea7ae2c6b149b",
+    "theme.ts": "2bc4ac9bf0aafd1170fcd7ec619f6befac7e44c56d503306d4747e16577ea688",
+    "css-parser.test.ts": "12575b9c926ef3833c9ab7682cf316bf603a617773bb1b8238322b1a7d480aab",
+    "ast.ts": "066987a78d4d8fa14049df60eb0e3d6f1d4b5241577a60eef1386ea048df43df",
+    "utils/decode-arbitrary-value.ts": "feeeab8252e97cf776396d31871612eb59628402a73d57ca8a2f4e0652438e49",
+    "utils/is-valid-arbitrary.ts": "35cc4891b21f3e3153da5c8fa570d39d6e6082f2e275e0d9575c060e92ac0a71",
+    "utils/escape.ts": "6fd425d5e980774886d1c038ddc952b97073feed236142a70a5c052862a9c992",
+    "utils/math-operators.ts": "6c5e69637f32dc4c88a0c9d45481e5ac8b086119f6b419291b90cf4c240c3725",
+    "utils/segment.ts": "617f0548dc0018f12968d168e2066a3f1adcbd6e9a7746d56777d516e956a1c7",
+    "variants.ts": "6b4b44a824e20cfa6f55fa31987236fcd9324b9ecea9eacb9e7fc897acec845d",
+    "utilities.ts": "404bb46d6c234f0118e71852693beea31920dfe23d43bd9826455d22eba7faca",
+    "utils/infer-data-type.ts": "bba7a89e0e6b5a96152bf5eb15ae6040ef6211fa0c740a33899ca5f02d543ca6",
+    "utils/replace-shadow-colors.ts": "76e292c6c92defa36a57fc13bc2a35f48d5dad782451a3c9e00893bc2d6c67cc",
+    "property-order.ts": "a467a04259a0fc3e2d1d7fd8a1a075e2b00ebda10f55317c3e00482bbfe39dfa",
+    "utils/is-color.ts": "36a469f60f43f2b8a87e004c22324438f9fdac3a5bc6198a1165ec11789f42b6",
+    "utils/compare-breakpoints.ts": "13fe0e0f53801773a5f62e984735422015b496b964988c63d14878e5fd7098d6",
+    "compile.ts": "6e784d1c26d9f146464778e9a6d94b33ebc36fb68cba1f8b12d72a26123162dc",
+    "feature-flags.ts": "5b6f945cf12c924261fb96c1b1dbeef31373c1eedab6cdcbdf343704f9146673"
+  }
+}

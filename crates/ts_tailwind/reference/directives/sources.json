@@ -1,0 +1,16 @@
+{
+  "upstream": "https://github.com/tailwindlabs/tailwindcss",
+  "tag": "v4.2.1",
+  "path": "packages/tailwindcss/src",
+  "sha256": {
+    "LICENSE": "60e0b68c0f35c078eef3a5d29419d0b03ff84ec1df9c3f9d6e39a519a5ae7985",
+    "apply.ts": "d102fe9b829e78a3dd2803bcf5a2dd82a16bf62c4fa19a42a9db66822d0822d5",
+    "at-import.ts": "a971787064c83bd9e1f17e899f38f4a832c39439363c507bdcb14e16c9100255",
+    "css-functions.ts": "a4f9a7d6c055720f05fdf3407e9217a34a5fc3174895e27b26790cad1fdde65e",
+    "design-system.ts": "061f65cfe4042f7344ba463e449b91331f506c348686cfe275512353f621202b",
+    "index.ts": "d688c19042da8dbbac4616f890eca7a7d94fcb5b1e989739c31c3304b1535962",
+    "utilities.ts": "404bb46d6c234f0118e71852693beea31920dfe23d43bd9826455d22eba7faca",
+    "variants.ts": "6b4b44a824e20cfa6f55fa31987236fcd9324b9ecea9eacb9e7fc897acec845d",
+    "walk.ts": "45ac3e939460d7c1c1216dce5aaa1f10d4cf6b4051ceb5d096c1a16bd231977f"
+  }
+}

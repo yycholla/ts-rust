@@ -1,0 +1,1515 @@
+{
+  "schemaVersion": 1,
+  "id": "svelte-project-5",
+  "batch": "svelte-project-5",
+  "status": "accepted-bounded-native-project-checking-hybrid-build-lint-persistent-lsp",
+  "baseCommit": "8c224ef35077254e75c9ff6cf7a4a54a14394b86",
+  "sourceFingerprint": "8cd3f175d2c1573ba983de10f454a94740b5898eead7eb6091c35c586cbf0d22",
+  "primaryImplementer": "/root",
+  "reviewer": "/root/project_graph_reviewer",
+  "auditor": "/root/project_graph_auditor",
+  "authorization": "User continue after accepted application4; advance native MoncuraHR checking and LSP with Svelte/plugin separation",
+  "scope": [
+    "native Kit project discovery and explicit plugin/checker contract",
+    "existing generated route/environment type consumption with visible provenance",
+    "automatic CLI/LSP input discovery",
+    "bounded full application semantic-check attempts preserving unsupported results"
+  ],
+  "hypothesis": "Keep Kit graph discovery in the plugin and extend framework-neutral checker input contracts. Preserve config/module resolution rather than inventing declarations. Measure actual projection and graph gaps before claiming full checking.",
+  "previousAccepted": {
+    "record": "docs/svelte-prototype/evidence/application-4-accepted.json",
+    "sourceFingerprint": "66fcdaae71d772d928246a2d1f5a11331c3b9ff5e647f8e25f685588e0c51ae8",
+    "artifacts": "target/svelte-application-candidate-4/artifacts.json"
+  },
+  "evidence": "docs/svelte-prototype/evidence/batch-5-run-2",
+  "originalEvidence": "target/svelte-project-verification-2",
+  "quality": {
+    "evidence": "docs/svelte-prototype/evidence/batch-5-quality-6",
+    "format": "PASS",
+    "clippy": "PASS",
+    "declarations": "PASS",
+    "sourceFingerprint": "8cd3f175d2c1573ba983de10f454a94740b5898eead7eb6091c35c586cbf0d22"
+  },
+  "buildEvidence": "docs/svelte-prototype/evidence/batch-5-builds",
+  "preservedArtifacts": "target/svelte-project-candidate-5r2/artifacts.json",
+  "sourceArchive": "target/svelte-project-candidate-5r2/source.tar.gz",
+  "versions": {
+    "svelte": [
+      "5.51.5",
+      "5.52.0",
+      "5.53.5",
+      "5.53.11",
+      "5.53.13",
+      "5.54.1",
+      "5.55.10",
+      "5.56.10",
+      "5.57.2"
+    ],
+    "kit": [
+      "2.67.0",
+      "2.68.0",
+      "2.69.2",
+      "2.69.3",
+      "2.70.3",
+      "3.0.1",
+      "3.0.0-next.32"
+    ]
+  },
+  "measuredRuns": [
+    {
+      "path": "target/svelte-project-inventory-1",
+      "status": "pass-investigation",
+      "source": "accepted application4 saved compiler",
+      "scope": "660/660 .svelte projections in TypeScript mode; not semantic check or language detection"
+    },
+    {
+      "path": "target/svelte-project-kit-tests-1.log",
+      "status": "pass-exploratory",
+      "tests": 2
+    },
+    {
+      "path": "target/svelte-project-discovery-1",
+      "status": "pass-exploratory",
+      "inputs": 2837,
+      "scope": "isolated fullbuild app graph; compilercheck not yetrun"
+    },
+    {
+      "path": "target/svelte-project-check-1",
+      "status": "incomplete",
+      "reason": "Unsupported runtime TS constructor parameter properties in rune modules"
+    },
+    {
+      "path": "target/svelte-project-check-build-2.log",
+      "status": "failed",
+      "reason": "new native transpile bridge diagnostic borrow type; fixed"
+    },
+    {
+      "path": "target/svelte-project-check-2",
+      "status": "incomplete",
+      "reason": "Projected checker request exceeds previous16MiB cap; compiler not started"
+    },
+    {
+      "path": "target/svelte-project-check-3",
+      "status": "config-diagnostics-not-semantic-acceptance",
+      "diagnostics": 11,
+      "reason": "Native checker reached graph but alias paths require ./ prefix; corrected in pending source"
+    },
+    {
+      "path": "target/svelte-project-check-4",
+      "status": "discovery-failed",
+      "detail": "Oversized static PDF worker; auxiliary discovery now excludes static asset directory"
+    },
+    {
+      "path": "target/svelte-project-check-5",
+      "status": "incomplete-input-copy",
+      "detail": "125 diagnostics on build copy lacking tests; not parity evidence"
+    },
+    {
+      "path": "target/svelte-project-check-6",
+      "status": "completed-exploratory",
+      "detail": "15 TS diagnostics:4 copied-helper omissions,10 shadowed JS wildcard errors,1 generated-helper error;9 compiler warnings"
+    },
+    {
+      "path": "target/svelte-project-oracle-1",
+      "status": "completed-exploratory",
+      "detail": "Official4 errors and9warnings on same partial copy; helper scripts missing from both"
+    },
+    {
+      "path": "target/svelte-project-graph-oracle-1",
+      "status": "completed-exploratory",
+      "detail": "3082 official roots,3083 native; one shadowed JS extra"
+    },
+    {
+      "path": "target/svelte-project-tools-test-1.log",
+      "status": "dependency-resolution-failed",
+      "detail": "Offline dependency cache conflict; no tests ran"
+    },
+    {
+      "path": "target/svelte-project-tools-test-2.log",
+      "status": "pass-exploratory",
+      "detail": "5 existing tools tests pass"
+    },
+    {
+      "path": "target/svelte-project-check-7",
+      "status": "pass-exploratory",
+      "detail": "Complete original source/test/script copy: zero visible TS errors,9compilerwarnings,1rawsynthetic diagnostic retained"
+    },
+    {
+      "path": "target/svelte-project-oracle-2",
+      "status": "pass-exploratory",
+      "detail": "Pinned official checker:10619files0errors9warnings,inputsunchanged"
+    },
+    {
+      "path": "target/svelte-project-graph-oracle-2",
+      "status": "pass-exploratory",
+      "detail": "3082/3082 roots exact"
+    },
+    {
+      "path": "target/svelte-project-compare-1",
+      "status": "harness-error",
+      "detail": "Incorrect assumed1-basedmachine-verbosepositions; pinned implementation proves0-based; fixedwithoutalteringrawlogs"
+    },
+    {
+      "path": "target/svelte-project-compare-2",
+      "status": "pass-exploratory",
+      "detail": "Exact9warnings byfile/code/severity/message/UTF16range"
+    },
+    {
+      "path": "target/svelte-project-lsp-1",
+      "status": "pass-exploratory",
+      "detail": "5persistentfullMoncuraLSPcases,~15sfullrechecks; sourcebindingnotfinal"
+    },
+    {
+      "path": "target/svelte-project-controls-1",
+      "status": "failed",
+      "detail": "2/8controlsfailed: hiddenwildcardroots,JSXoverlaywithallowJsdisabled; fixedhiddenwildcards; JSoverlayrestrictionexplicit"
+    },
+    {
+      "path": "target/svelte-project-controls-2",
+      "status": "pass-exploratory",
+      "detail": "8controls passed; subsequentreviewrejectsforceallowJs approach, nowexplicitunsupported"
+    },
+    {
+      "path": "target/svelte-project-quality-1",
+      "status": "failed",
+      "detail": "clippy3violations innew orchestration; repaired"
+    },
+    {
+      "path": "target/svelte-project-quality-2",
+      "status": "failed",
+      "detail": "Tools clippy errors plus source changed during exploratory run"
+    },
+    {
+      "path": "target/svelte-project-quality-3",
+      "status": "failed",
+      "detail": "LSP needless pass-by-value lint"
+    },
+    {
+      "path": "target/svelte-project-quality-4",
+      "status": "pass",
+      "detail": "All formatting/clippy/declarations pass"
+    },
+    {
+      "path": "target/svelte-project-verification-1",
+      "source": "1992de590ff16150631d30bab9d7fbe04e0f1adc364cdaf73f7f0cc78c0e184c",
+      "status": "all-suites-pass-not-accepted",
+      "reason": "Independent launcher lifecycle blocker; sourcearchivepreserved; repairs inprogress"
+    },
+    {
+      "path": "target/svelte-project-tools-build-4.log",
+      "status": "dependency-resolution-failed",
+      "detail": "Offline cache attempted stale js-sys/wasm-bindgen; online resolution preserved wasm0.2.129"
+    },
+    {
+      "path": "target/svelte-project-lifecycle-1",
+      "status": "pass-exploratory",
+      "cases": 6,
+      "detail": "PIDcontinuity,normalshutdown,EOF,idle+active SIGTERM,execfailure,parsefailurecleanup; finalboundrepeatpending"
+    },
+    {
+      "path": "target/svelte-project-quality-5",
+      "status": "pass-exploratory",
+      "scope": "Beforewholeworkspace-lifetimerepair"
+    },
+    {
+      "path": "target/svelte-project-quality-6",
+      "status": "pass",
+      "source": "8cd3f175d2c1573ba983de10f454a94740b5898eead7eb6091c35c586cbf0d22"
+    },
+    {
+      "path": "target/svelte-project-lifecycle-2",
+      "status": "pass-exploratory",
+      "tests": 7
+    },
+    {
+      "path": "target/svelte-project-verification-2",
+      "source": "8cd3f175d2c1573ba983de10f454a94740b5898eead7eb6091c35c586cbf0d22",
+      "status": "pass-frozen-source",
+      "detail": "All retained and new suites pass; both independent final verdicts and fullbuild/browser validation PASS."
+    },
+    {
+      "path": "target/svelte-project-build-official-1",
+      "status": "pass-frozen-source",
+      "source": "8cd3f175d2c1573ba983de10f454a94740b5898eead7eb6091c35c586cbf0d22"
+    },
+    {
+      "path": "target/svelte-project-build-native-1",
+      "status": "pass-frozen-source",
+      "source": "8cd3f175d2c1573ba983de10f454a94740b5898eead7eb6091c35c586cbf0d22"
+    },
+    {
+      "path": "target/svelte-project-browser-1",
+      "status": "pass-frozen-source",
+      "source": "8cd3f175d2c1573ba983de10f454a94740b5898eead7eb6091c35c586cbf0d22"
+    }
+  ],
+  "findings": [
+    {
+      "id": "kit-serve-process-lifetime",
+      "reviewer": "project_graph_reviewer",
+      "status": "closed-by-repair-and-review",
+      "detail": "Command.status launcher can orphan LSP child on parent-only termination. Preserve current frozen verification; repair through Unix exec replacement and explicit owned temp config startup cleanup, then rebind/retest.",
+      "resolution": "Unix exec launcher; owned config deleted on open; whole workspace lifetime registered for Linux termination cleanup. Final seven lifecycle cases PASS; reviewer static and measured closure on source8cd3f175."
+    }
+  ],
+  "architecture": "docs/svelte-prototype/application-architecture.md",
+  "report": "docs/svelte-prototype/project-results.md",
+  "comparisonWithAccepted": {
+    "rust": {
+      "retained": 45,
+      "newPassing": 5,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    },
+    "javascript": {
+      "retained": 64,
+      "newPassing": 1,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    },
+    "compiler": {
+      "retained": 1340,
+      "newPassing": 0,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    },
+    "checker": {
+      "retained": 10,
+      "newPassing": 0,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    },
+    "project": {
+      "retained": 10,
+      "newPassing": 0,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    },
+    "versionCompiler": {
+      "retained": 792,
+      "newPassing": 0,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    },
+    "versionChecker": {
+      "retained": 64,
+      "newPassing": 0,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    },
+    "versionControls": {
+      "retained": 50,
+      "newPassing": 0,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    },
+    "runtimeScenarios": {
+      "retained": 37,
+      "newPassing": 0,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    },
+    "protocol": {
+      "retained": 9,
+      "newPassing": 0,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    },
+    "semanticLsp": {
+      "retained": 8,
+      "newPassing": 0,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    },
+    "checkerFailure": {
+      "retained": 3,
+      "newPassing": 0,
+      "recovered": 0,
+      "lost": 0,
+      "absent": 0,
+      "unrun": 0
+    }
+  },
+  "comparisonWithUnacceptedVerification1": {
+    "rustRetained": 50,
+    "javascriptRetained": 65,
+    "lost": 0,
+    "absent": 0,
+    "unrun": 0
+  },
+  "tests": {
+    "rust": {
+      "passed": 50,
+      "failed": 0,
+      "skipped": 0
+    },
+    "javascript": {
+      "passed": 65,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "additionalChecks": {
+    "kitControls": 9,
+    "fullProjectLsp": 5,
+    "lifecycle": 7,
+    "protocol": 9,
+    "semanticLsp": 8,
+    "checkerFailure": 3,
+    "soak": {
+      "edits": 1200,
+      "rssAfterWarmupBytes": 13709312,
+      "semanticProject": false
+    },
+    "runtime": {
+      "scenarios": 37,
+      "hydrations": 148,
+      "mounts": 74
+    },
+    "lint": {
+      "files": 2392,
+      "findings": 77,
+      "incomplete": 0,
+      "rules": [
+        "no-debugger",
+        "eqeqeq"
+      ],
+      "compilerDiagnostics": true
+    },
+    "build": {
+      "official": "PASS",
+      "hybrid": "PASS",
+      "nativeCalls": 5722,
+      "appRuneModules": 24,
+      "ordinaryInputFiles": 2486,
+      "unchanged": true
+    },
+    "browser": {
+      "routes": 4,
+      "authenticated": false,
+      "passed": true,
+      "stableArtifactsPerBuild": 4533
+    },
+    "moncuraProject": {
+      "complete": true,
+      "nativeInputs": 3296,
+      "matchingRoots": 3082,
+      "visibleErrors": 0,
+      "warnings": 9,
+      "exactDiagnosticMatch": true,
+      "suppressedSyntheticDiagnostics": 1,
+      "nativeRawCheckerStatus": 2,
+      "nativeCliStatus": 0,
+      "nativeCheckStageSeconds": 15.697849401010899,
+      "officialWholeCheckSeconds": 51.925796631,
+      "comparableTiming": false
+    }
+  },
+  "verdicts": [
+    {
+      "role": "independentReviewer",
+      "agent": "/root/project_graph_reviewer",
+      "batch": "svelte-project-5",
+      "sourceFingerprint": "8cd3f175d2c1573ba983de10f454a94740b5898eead7eb6091c35c586cbf0d22",
+      "verdict": "PASS",
+      "findings": "Complete operation reviewed. MoncuraHR graph and nine diagnostic fields match; lifecycle blockers closed. Official/hybrid full builds and four browser comparisons pass. Crate separation and unchanged TS core confirmed. Acceptance limited to existing synced declarations, hybrid build, fresh semantic processes and documented fallback ranges."
+    },
+    {
+      "role": "regressionAuditor",
+      "agent": "/root/project_graph_auditor",
+      "batch": "svelte-project-5",
+      "sourceFingerprint": "8cd3f175d2c1573ba983de10f454a94740b5898eead7eb6091c35c586cbf0d22",
+      "verdict": "PASS",
+      "findings": "Exact comparisons retain all accepted and verification1 passing names: zero lost, absent or unrun retained cases; recovered zero. Rehashed521 source files,19 saved artifacts and4533 files per build. Same2486 build inputs,5722 balanced successful calls/all24 application rune modules. Baseline and historical state preserved. Upstream protected suites/Query/Hono unrun locally."
+    }
+  ],
+  "verdictEvidence": "docs/svelte-prototype/evidence/batch-5-run-2/verdicts.json",
+  "limitations": [
+    "Consumes existing Kit sync output; route/environment type generation remains JavaScript. Initial generated-type freshness is not independently proved.",
+    "Full builds remain hybrid with official Kit/Vite/preprocessing/Tailwind/adapter. Full build host validated on MoncuraHR Kit2.69.2/vite-plugin-svelte6.2.4 only; version profiles do not establish general Kit build compatibility.",
+    "Persistent native diagnostic LSP, but semantic checker runs fresh each request (~15s for full MoncuraHR). No semantic incremental engine, completion or hover.",
+    "Native lint covers compiler diagnostics and two AST script rules; no full ESLint/oxlint/Prettier parity.",
+    "WASM supports compiler/lint sessions and erasable TypeScript module checks; full native project/process orchestration is not a browser API.",
+    "Runtime TypeScript fallback compiler diagnostic ranges can be explicitly unmapped; raw synthetic helper diagnostic is preserved separately.",
+    "Package extends, baseUrl, references and TS plugins rejected. JS component projection requires application allowJs. Auxiliary discovery excludes build/static/hidden trees except Kit types; unused unprojectable auxiliary components can prevent preparation.",
+    "Browser probes cover four unauthenticated routes only. Linux lifecycle probes exclude Windows and uncatchable SIGKILL cleanup.",
+    "No comparative speedup or memory reduction established. Stage timings have different boundaries.",
+    "Upstream protected suites and Query/Hono unrun locally; historical typechecker current state unchanged."
+  ],
+  "evidenceHashes": {
+    "docs/svelte-prototype/evidence/batch-5-run-2/verdicts.json": "567a960fff25817872162326b1bbf78df0fd92c3cc970bff5ad5cc342bce5c92",
+    "docs/svelte-prototype/evidence/batch-5-run-2/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/result.txt": "8221ac66be71558c921fb44cfb66f7997699aea754d917763882d6d9eddc836e",
+    "docs/svelte-prototype/evidence/batch-5-run-2/source-after.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/original-evidence-hashes.json": "bf45efe36a074c215a703d3544f6678b2eca105eb000965c7a71a4882ef8f964",
+    "docs/svelte-prototype/evidence/batch-5-run-2/native/summary.json": "4ed77c8a6fc3f78db13ae64eaf164c2269a451f5f90bc839e7a533da56672b92",
+    "docs/svelte-prototype/evidence/batch-5-run-2/native/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/native/graph.json": "2f8cf421ebccd27cabeacff50f04e2c8a57497439c361203afe42faa980def04",
+    "docs/svelte-prototype/evidence/batch-5-run-2/native/source-after.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/native/binaries.json": "5f06f41da8234758c62d19b20b14336c61feae23b4cd0b8ac541fe473a7a5390",
+    "docs/svelte-prototype/evidence/batch-5-run-2/native/graph-after.json": "2f8cf421ebccd27cabeacff50f04e2c8a57497439c361203afe42faa980def04",
+    "docs/svelte-prototype/evidence/batch-5-run-2/native/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-5-run-2/graph/report.json": "44b021269408a492d29a818e4cf0b927fef286970c29e00ad7709004f80fb4fd",
+    "docs/svelte-prototype/evidence/batch-5-run-2/official/inputs.json": "1568f5d61a440998260e60526e0649a568a1917559616d06cdeb80f3ef69118a",
+    "docs/svelte-prototype/evidence/batch-5-run-2/official/stdout.log": "c1aa5ac13a085c31bbfe2ba83957552c9bcc544d707909fb2dd63d9d63b6acd1",
+    "docs/svelte-prototype/evidence/batch-5-run-2/official/report.json": "ba146ffb7c39861396f6f5fb11d049731ec29e019cbbfc58af62c8135225a519",
+    "docs/svelte-prototype/evidence/batch-5-run-2/official/packages.json": "2abbece47c476a9d8db25a219a27c515d4390aa90ef2e1a8079b9b6b4ef223c4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/official/oracle-code.json": "a1c6bcbc8ce8348ea60ccc08c985202336b3b37040d65818246e55596f43025b",
+    "docs/svelte-prototype/evidence/batch-5-run-2/official/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-5-run-2/comparison/report.json": "9ed15760f51d2a59c417ad70ecc0aa4d7425193b8d2c2b984c853ec5f968b18a",
+    "docs/svelte-prototype/evidence/batch-5-run-2/lifecycle/report.json": "2340f014ac9d15bcec58e23b05d1bdc09ec65a6804eaa1242ba5f6df3244362e",
+    "docs/svelte-prototype/evidence/batch-5-run-2/controls/report.json": "dbe699c33d697324ee085435e02c39b35abf90eaf3e04788926d224895e3adc9",
+    "docs/svelte-prototype/evidence/batch-5-run-2/lsp/report.json": "0471038d0431cf26ab157335b09e7af4df354bf99edc7af7310ecdc04086da20",
+    "docs/svelte-prototype/evidence/batch-5-run-2/lsp/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/tools-tests.log": "84f45b8ec5ab36a643ceaa59cc716bdca72a1ace724b9d09b79303833700a462",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/kit-tests.log": "d7b98176bf6bfa8718331999c7063c7c2126b153523ac6736752b6335973c470",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/result.txt": "8221ac66be71558c921fb44cfb66f7997699aea754d917763882d6d9eddc836e",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/source-after.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/tools-artifacts-verified.log": "ec9acd160c7f82d0f01ce11e04109f385da1390a8449d83fd0a4a2b6503b0f49",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/tools-build.log": "6a71090902451ba79623ae9a1a4d96f4ba1244d3c8ed5cb088f365e708b295f6",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/tooling-js-tests.log": "4595e49a8ae746bc4a3e01a9649fc580aaa475a073b5be6e3ea357ec546c7634",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/lsp-project/report.json": "e826fb4706e4399d08deab9fb3d961b360fc61816e583a20149250a219677ead",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/lsp-failure/report.json": "f1fb8fccdad2cd14e1c849131a67519989eb301abfe9991f8d6ce1a1a368a18a",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/result.txt": "8221ac66be71558c921fb44cfb66f7997699aea754d917763882d6d9eddc836e",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/source-after.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/native-build.log": "85c8dbac64ed6a362d668bf3988686e26e947620bb15cfdbe2e999a0ff8261b2",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/soak/report.json": "d0ec7ba09b097a43a2c807b972d8781181eb6b02afe4f75f20b22860340b6ac7",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/lint/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/lint/source-after.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/lint/report.json": "de7b7d8c019d205610a993aa9f9f8f6d7d574ed8154d41400b808fa82979d370",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/protocol/report.json": "d747afd8e1a1a2a03bcdb3b1816be63b59a8211e051aedd17e46e189b56156d4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/matrix/report.json": "39b75fed378c062bed4fc2911652fb38afa78499937a9d85defd26f60d6ac924",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/compiler-build.log": "5c4da42089657bae730043ce771b22ca754abb8aac68229eb495d5739c51207a",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/oracle.log": "e7cb2da7497eb56ba62dfba134abe5fc4c2d7cc50596dd7a719c7f39279e998c",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/foundation-build.log": "ffd6a003faf3091dc25dbca7adb5815f6513cdba2e87c850543bdcd43dfcb496",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/runtime.log": "ceb8b635ba7fae353e138360aecd80af4371a5c0cd0919b3c307f3efe5a98961",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker-tests.log": "9c078e2211130740b1372c856fba5efac24346786065c8e8d71b4f1eae407777",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/project.log": "ed0f573860c4cc442406c8a3b719fe7953b8ac8ff8f92c52e8e96119c9b48b01",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/result.txt": "8221ac66be71558c921fb44cfb66f7997699aea754d917763882d6d9eddc836e",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/js-tests.log": "a0d45483214dd99f6e633f9b333b01b103ec611e4cd4cb0ebb286fc1cf77aadb",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker.log": "4bd2176cb14a888e0509525b4b3643f816750205004eb2cc9166f124ba1554eb",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/source-after.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker-build.log": "7a7bb64a28cdda9b91e6e27f41be455104d929b5d7ad6dd5beca75fc5a47f1f4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/compiler-tests.log": "c7788059bc4af96456cfde94e251890c445778e8ed7e6131e101a97c9ce102b6",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/foundation-tests.log": "b27adf956c3f81087553770579a40d5b512f3110f4fc0ba2ecdb89640fa49aa2",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/runtime/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/runtime/source-after.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/runtime/report.json": "2efd7679336f0349eafe5b14246d87dd8addc4d2589a6bcb1c248a6355da1155",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/oracle/report.json": "b39e07118793cdcdc39bda11a866b9e473ef2921aafa8fdb32f2f09ff7c7621e",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/project/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/project/report.json": "af3269d72d073e1bbca5c8a53bf18b611a6c408a447d41a621228ad736f1f423",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker/report.json": "4fc84e7f0d12bac91d37ebdc35b5182d07055355ddc0f3c9b8229292e96ab80f",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/runtime/report.json": "0be30eb7e1f50801413ed902ac2fc9c4e9bc20f235616761a73bbb67f7cbd82c",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker/no-check-override/report.json": "54b0ae5e7e709f862ed4c026a1d2134c6fd880075c7d3dc0321b80806f700ddf",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker/undefined-name/report.json": "74118a6c792b6ae42e4408037e2641c9525bf4a02ae2fb1bba4f19ea987d8ae2",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker/javascript-jsdoc-mismatch/report.json": "fd645ca03a920eff56e13b5055dd24031489ced4cea2105771a9aea1ca2ffdf8",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker/missing-props/report.json": "835cc9fa91cff866321b365e2dd279ca01ecfbe6580798a4b18a632de6ba02a1",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker/javascript-jsdoc-valid/report.json": "cddc6ee59b170911bb9794d391e7a3d613c8f1c4c9f591f72657a56d6c343a45",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker/emoji/report.json": "939d926c0ccdf9cf82a8c6387fcb3d2a866bd07eee2f0dca7e040f04621d4f80",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker/template-member/report.json": "62631ae409aaa19b31b7187608ec736935fa7b7e2ba8ce9831bb092baa4d37cb",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker/valid-props/report.json": "b3b7663fb7531304364e0265f7d8a2b752f98251e8760309c874dc0a60bc9d4a",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker/missing-import/report.json": "4c2f1b4218d93e354021312829ef148d5315808fb95326be5978b9f07e8a6758",
+    "docs/svelte-prototype/evidence/batch-5-run-2/retained/versions/regression/checker/wrong-props/report.json": "c5b91fa21e5dc2569ab0cafb6a8131fe9d98442f76cfbe7f79e136716033c8ad",
+    "docs/svelte-prototype/evidence/batch-5-run-2/controls/priority/graph.json": "7e1a41b29e466bf7f4aea47712c3ef7a208f36cdac695372ee591a18d8b7ce45",
+    "docs/svelte-prototype/evidence/batch-5-run-2/controls/explicit/graph.json": "12bf7cf51ca384c423600fcf71cf208286c6d0b70a5764b47ce4c4c4e11c7f49",
+    "docs/svelte-prototype/evidence/batch-5-run-2/controls/json/graph.json": "2b83452e042b9da8f96786e331b7d57658d0bc44cc6e2506742df92a89ad79f1",
+    "docs/svelte-prototype/evidence/batch-5-run-2/controls/checkjs/graph.json": "350d392c899e267dd9e389a97a8de0067ee7e353566d67ef7ec2d2fd42dc0397",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/compiler-clippy.log": "85c8dbac64ed6a362d668bf3988686e26e947620bb15cfdbe2e999a0ff8261b2",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/vendor-format.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/toolchain.txt": "2d65913be579a9932e833cc5a9ec9da203ac9b56868eee0f01b450c929001c40",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/compiler-format.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/ts_svelte_tools-format.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/clippy.log": "3997fc6790b8063b86c119e91f87ac7395ac6cf26135da637dcb229006bc32dc",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/result.txt": "8221ac66be71558c921fb44cfb66f7997699aea754d917763882d6d9eddc836e",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/ts_svelte_kit-format.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/ts_svelte_tools-clippy.log": "215102132e7c4417feb90330bd33574970929473a7ee6e07bd199e74575a9afa",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/source-after.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/declarations.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/format.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-5-quality-6/ts_svelte_kit-clippy.log": "9576f1f7e73fc2bb1ec2336aae60cb485c591eadc60a1b998573411c34057e08",
+    "docs/svelte-prototype/evidence/batch-5-builds/full-builds.log": "b1f72020f936db3e9f050b85967fad69855e51db616fd8f4d36be265b829370b",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/official-_login.png": "40e8a63ead3a7bab63b8856796c83e8b89854694585b587f35bd993cefa7599e",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/native-_docs.png": "40e8a63ead3a7bab63b8856796c83e8b89854694585b587f35bd993cefa7599e",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/official-_docs.png": "ddf67011b3c7c3c6fc261fdb128ed87383cd447179ba8fa59b811a226b212464",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/native-server.log": "290d3a04cd689b035d63ecdd4fcdea2ccee736209b368640ad1af47bd9a9dd5b",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/official-_health.png": "71ff2e6b0f8966d4fc525e283359241ea157b35d577d865b4839b6f61a7ae745",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/artifacts.json": "31fdd9ea702c95bf6ac8833f66f062d6cbc3ac5f72ce9838188d8b995b9afdc2",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/native-_oauth_login.png": "47aafb3fc81994f0685f5c1aad447c9573d91188c8b76e1997fed20bd72879c0",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/native-_health.png": "682c9d0e013e2ccc657b0990427154960180cf6e37163780a2b4478589442a3c",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/source-after.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/report.json": "36cc5e5f0d9b1f3cfc5d129702592c561f652983a5720ff7052330a430f1793f",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/official-server.log": "8e72170668d71feccdaaed977dc3eea90bcaeae94107293b8d95038bd256b584",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/native-_login.png": "1bc3d475a1129f35abd172b4948a1fdd7151d078f5e051c42d54f7ce3949b0c6",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-browser-1/official-_oauth_login.png": "47aafb3fc81994f0685f5c1aad447c9573d91188c8b76e1997fed20bd72879c0",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-official-1/sync.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-official-1/inputs.json": "bb80eb6a6de76c11757c6665b6066171b3b4cd2d1a8e33d9756e4b322ab6dd13",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-official-1/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-official-1/result.json": "3c2407621a7687bc664baef2fae53468fd7e39767cf29b9ab30cfbb5012483bf",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-official-1/build.log": "554f856d13ab5736ce1e06d3d8baec9ca229f4317f6cce01c2292d09877c80de",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-official-1/source-after.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-official-1/binaries.json": "230811fd4bfae60df060ef9859701b9c3a68e4d16a564934922895b7bfc07fee",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-native-1/sync.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-native-1/inputs.json": "bb80eb6a6de76c11757c6665b6066171b3b4cd2d1a8e33d9756e4b322ab6dd13",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-native-1/source.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-native-1/native-calls.jsonl": "42d1b9beffb4d5ef32ddd4c6b558cb9b66596825d34d156d12c5a7a8cf7d8f9b",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-native-1/result.json": "a8c6e0249872938e47d6ac9cdc981440d737ab8c7720b56fa7d8c2f8e2e6332e",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-native-1/build.log": "ac416fee58eebc5c27c9eeaadfc792542db3b166a200ec49174abdddef5aaf5c",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-native-1/source-after.json": "f3e836da210dfc6f91963aecebc277a85b3ffee82ea3ef3fd5fa03cc86ddc7a4",
+    "docs/svelte-prototype/evidence/batch-5-builds/svelte-project-build-native-1/binaries.json": "230811fd4bfae60df060ef9859701b9c3a68e4d16a564934922895b7bfc07fee"
+  },
+  "activeDevelopment": {
+    "status": "implementing-full-parity-no-intermediate-audits",
+    "authorization": "User requests full parity without milestone check-ins, benchmarks, trials or independent audits until parity is achieved; prototype judgement delegated to root.",
+    "scope": "Native Svelte/Kit compiler, checker, lint and editor/build functionality; JS/WASM interfaces; registered version window",
+    "next": [
+      "Connect native bundler, Markdown preprocessing and Kit build generators",
+      "Finish lint fixes, native formatting and project reload in persistent editor",
+      "Native CSS/assets/Tailwind and remaining Kit runtime build stages",
+      "Persistent WASM semantic session and remaining registered-version compatibility"
+    ],
+    "audits": "deferred per latest explicit instruction; no new accepted-parity claim",
+    "benchmarks": "deferred",
+    "correctness": "targeted implementation tests continue; no unsupported parity claims",
+    "ownership": {
+      "root": "integration/runtime queue; JS/WASM/protocol; Kit build orchestration",
+      "native_ambient": "native Fetch Body helper layer",
+      "native_route_types": "Tailwind bundler integration",
+      "incremental_design": "native ReadableStream byte/BYOB implementation",
+      "prerenderPolicy": "root after deferredcompletion handoff:20policy tests now, root registration/runtime queued",
+      "nativeVisitor": "root after native_ambient handoff: registered new visitor+5tests, compile pending producer handoff",
+      "remotePrerenderEntry": "root after handoff: registered helper entry+7tests, server graph integration unrun",
+      "nativeCallbackChannel": "root: runtime host_channel and build native_runtime callback framing",
+      "remotePromiseProducer": "root after malformed fixture repairs handoff",
+      "prerenderOutput": "root: registered6new tests queued with20policy tests"
+    },
+    "implementedInProgress": [
+      "Native Kit2 config/env/route/proxy/type generation with sync CLI; Kit3 distinct config/app/env contracts being integrated",
+      "Persistent native TS project service with actual Session reuse and source updates",
+      "Svelte editor hover/completion+resolve/definitions/references/rename integrated with exact copied-span mapping",
+      "Additional editor features and runtime-TS source-map composition being integrated",
+      "Persistent Svelte project WASM composition implemented and Node/browser synthetic semantics pass",
+      "Native formatting integrated into persistent LSP and matching Rust/WASM worker",
+      "Kit versioned build plans,env,analysis,dependencies,guards,adapter,worker,instrumentation,manifest finalization and tracking modules implemented; pipeline integration ongoing",
+      "Independent Tailwind4.2.1 parser/theme foundation written; utility/directive compiler remains",
+      "Native retained feature tracking connected to server/client outputs with map preservation",
+      "Native adapter-node rebundle and codec packaging connected; full synthetic adapter check pending",
+      "Service-worker generation/bundling connected with emitted cache manifest derivation; worker assets/Kit3 remain explicit",
+      "Separate Boa0.22 ESM runtime first build in progress; no Svelte coupling",
+      "Tailwind candidate compilation/lowering and import expansion implemented, focused checks queued",
+      "Synthetic full native Kit2 adapter-node and Kit3 static build paths pass; runtime prerender, worker assets, instrumentation/remotes and stylesheet integration remain"
+    ],
+    "focusedCorrectness": [
+      {
+        "path": "target/svelte-native-sync-tests-1.log",
+        "result": "23 tests pass before latest version additions"
+      },
+      {
+        "path": "target/svelte-native-service-unit-1.json",
+        "result": "persistent initialize/open/hover/projectdiagnostics/change/typeerror/shutdown pass"
+      },
+      {
+        "path": "target/svelte-editor-features-1/report.json",
+        "result": "8 synthetic Svelte editor cases pass"
+      },
+      {
+        "path": "target/svelte-native-editor-tests-1.log",
+        "result": "tools unit/integration tests pass before latestfeature additions"
+      },
+      {
+        "path": "target/svelte-native-sync-tests-3.log",
+        "result": "65 Kit unit cases pass before inventory registration"
+      },
+      {
+        "path": "target/svelte-native-service-build-5.log",
+        "result": "Persistent native TS service builds with pull-client callbacks"
+      },
+      {
+        "path": "target/svelte-editor-more-3/report.json",
+        "result": "11 additional editor and rune-module cases pass before newest tools changes"
+      },
+      {
+        "path": "target/svelte-native-syntax-tests-1.log",
+        "result": "2 native syntax parser cases pass"
+      },
+      {
+        "path": "target/svelte-native-preprocess-tests-1.log",
+        "result": "9 native Markdown/frontmatter/mapping unit cases pass"
+      },
+      {
+        "path": "target/svelte-native-sync-tests-4.log",
+        "result": "71 Kit unit cases pass including route inventory; SSR generator not yet registered in this run"
+      },
+      {
+        "path": "target/svelte-native-tools-tests-4.log",
+        "result": "34 pass, 2 native lint schema failures; repaired in following run"
+      },
+      {
+        "path": "target/svelte-native-tools-tests-5.log",
+        "result": "36 tools library tests and 1 LSP version test pass"
+      },
+      {
+        "path": "target/svelte-editor-native-features-1/report.json",
+        "result": "7 standalone template/lint LSP protocol cases pass; Kit reload unrun"
+      },
+      {
+        "path": "target/svelte-editor-more-4/messages.json",
+        "result": "Protocol stopped on temporary workspace name collision; timestamp repair implemented"
+      },
+      {
+        "path": "target/svelte-editor-more-5/report.json",
+        "result": "11 editor/rune module cases pass with isolated TMPDIR"
+      },
+      {
+        "path": "target/svelte-native-sync-tests-5.log",
+        "result": "78 Kit cases pass; server node generator added afterward, unrun"
+      },
+      {
+        "path": "target/svelte-native-transpile-tests-2.log",
+        "result": "8 native OXC TypeScript transform cases pass"
+      },
+      {
+        "path": "target/svelte-native-bundle-tests-3.log",
+        "result": "5 unit and 4 graph cases pass; 1 graph error-message assertion fails. Root retained plugin error cause; rerun pending"
+      },
+      {
+        "path": "target/svelte-native-tools-build-7.log",
+        "result": "Native tools binaries build before linked-package guard correction"
+      },
+      {
+        "path": "target/svelte-editor-native-features-2/report.json",
+        "result": "7 standalone cases pass; Kit provider initialize fails on linked dependency guard. Package-boundary repair implemented; rerun pending"
+      },
+      {
+        "path": "target/svelte-native-semantic-tests-1.log",
+        "result": "Native semantic crate first compilation in progress"
+      },
+      {
+        "path": "target/svelte-native-semantic-tests-1.log",
+        "result": "8 native persistent semantic host tests pass, including edits/navigation/config/file changes/disposal"
+      },
+      {
+        "path": "target/svelte-native-css-tests-1.log",
+        "result": "One CSS generic type inference compile error; repaired"
+      },
+      {
+        "path": "target/svelte-native-css-tests-2.log",
+        "result": "5 native CSS pipeline cases pass before new asset-linking implementation"
+      },
+      {
+        "path": "target/svelte-native-sync-tests-6.log",
+        "result": "One new test helper import compile error; repaired"
+      },
+      {
+        "path": "target/svelte-native-sync-tests-7.log",
+        "result": "87 Kit cases pass including server nodes and watched route type generation"
+      },
+      {
+        "path": "target/svelte-native-tools-tests-6.log",
+        "result": "38 library, 1 LSP version, 1 project config and 4 session cases pass"
+      },
+      {
+        "path": "target/svelte-editor-native-features-3/report.json",
+        "result": "10 protocol cases pass; opening new route fails because escaped plus URI aliases lose virtual identity. Repair implemented, rerun pending"
+      },
+      {
+        "path": "target/svelte-native-bundle-tests-4.log",
+        "result": "Two source-map conversion compile errors in preprocessing integration; agent repaired production/test sites, rerun pending"
+      },
+      {
+        "path": "target/svelte-semantic-wasi-build-1.log",
+        "result": "Failed due to incompatible official std versus Nix source-built rustc metadata"
+      },
+      {
+        "path": "target/svelte-semantic-wasi-build-2.log",
+        "result": "WASI standard library rebuilt from matching verified Rust source; semantic build in progress"
+      },
+      {
+        "path": "target/svelte-semantic-js-tests-1.log",
+        "result": "Default Node file-isolation run did not enumerate cases; not counted as case evidence"
+      },
+      {
+        "path": "target/svelte-semantic-js-tests-2.log",
+        "result": "3 transport/ABI cases pass; 2 actual-WASI cases explicitly skipped pending module"
+      },
+      {
+        "path": "target/svelte-semantic-wasi-build-2.log",
+        "result": "WASI semantic reactor and matching std build pass"
+      },
+      {
+        "path": "target/svelte-semantic-js-tests-3.log",
+        "result": "5 JavaScript cases pass with actual WASI reactor, no skips; includes persistent edits/navigation/config/files/replay"
+      },
+      {
+        "path": "target/svelte-native-tools-build-9.log",
+        "result": "Native editor tools build with URI-alias lifecycle repair"
+      },
+      {
+        "path": "target/svelte-editor-native-features-4/report.json",
+        "result": "All 11 synthetic editor cases pass; watched new route generates types and reports/repairs data error without restart"
+      },
+      {
+        "path": "target/svelte-native-css-tests-3.log",
+        "result": "Offline dependency resolution unavailable for vendored package; network-enabled retry follows"
+      },
+      {
+        "path": "target/svelte-native-css-tests-4.log",
+        "result": "All 12 CSS unit tests pass, including asset linking/Unicode source maps"
+      },
+      {
+        "path": "target/svelte-native-bundle-tests-5.log",
+        "result": "8 unit and 8 graph cases pass; one raw HTML Markdown location case fails. Comrak terminal-newline copy handling repaired; rerun pending"
+      },
+      {
+        "path": "target/svelte-worker-shared-tests-1.log",
+        "result": "Unrun: requested test filename did not exist; corrected run2 in progress"
+      },
+      {
+        "path": "target/svelte-native-format-tests-1.log",
+        "result": "All 5 native formatter tests pass"
+      },
+      {
+        "path": "target/svelte-worker-shared-tests-2.log",
+        "result": "Stopped: sandbox Node spawnSync subprocess hangs (same command verified outside sandbox)"
+      },
+      {
+        "path": "target/svelte-worker-shared-tests-3.log",
+        "result": "Timed out on same sandbox subprocess hang; no completed suite"
+      },
+      {
+        "path": "target/svelte-worker-shared-tests-4.log",
+        "result": "24 compiler/tooling JS-WASM cases pass outside sandbox"
+      },
+      {
+        "path": "target/svelte-native-bundle-tests-6.log",
+        "result": "CSS map serialization compile error; repaired using sourcemap JSON serializer. Rerun pending"
+      },
+      {
+        "path": "target/svelte-native-sync-tests-8.log",
+        "result": "121 Kit tests pass, including environment/plan/static analysis/dependency traversal"
+      },
+      {
+        "path": "target/svelte-native-tools-tests-7.log",
+        "result": "47 library + 1 LSP + 1 config + 4 session tests pass; includes recoverable malformed/auxiliary WASM projects and transaction host"
+      },
+      {
+        "path": "target/svelte-tools-wasm-build-4.log",
+        "result": "New WASM frontend build in progress"
+      },
+      {
+        "path": "target/svelte-tools-wasm-build-4.log",
+        "result": "WASM tooling/project frontend builds successfully"
+      },
+      {
+        "path": "target/svelte-project-wasm-tests-1.log",
+        "result": "3 failures: bundled TypeScript library identities rejected; repaired frontend"
+      },
+      {
+        "path": "target/svelte-tools-wasm-build-5.log",
+        "result": "Repaired bundled identity frontend builds successfully"
+      },
+      {
+        "path": "target/svelte-project-wasm-tests-2.log",
+        "result": "2 ordinary persistent project cases pass; component case fails due checker URI escaping; normalization repair in progress"
+      },
+      {
+        "path": "target/svelte-native-bundle-tests-7.log",
+        "result": "15 unit and9graph pass,1CSS graph fails: CSS virtual module recompiled as component; repaired; Markdown warning mapping now passes"
+      },
+      {
+        "path": "target/svelte-native-bundle-tests-8.log",
+        "result": "in progress: virtual CSS repair, exact output/alias/module graph case"
+      },
+      {
+        "path": "target/svelte-native-sync-tests-9.log",
+        "result": "compile failed adapter OXC0.149 AST mismatch; repaired, no tests ran"
+      },
+      {
+        "path": "target/svelte-project-wasm-tests-3.log",
+        "result": "3 persistent Node WASM project cases pass; actual component TS diagnostics/UTF16/hover/definition/rename and transactional repairs"
+      },
+      {
+        "path": "target/svelte-project-browser-1.log",
+        "result": "unrun: output directory already held preserved historical application artifacts; no previous artifacts changed"
+      },
+      {
+        "path": "target/svelte-project-browser-2/report.json",
+        "result": "3 synthetic browser Rust WASM project cases pass; no application trial"
+      },
+      {
+        "path": "target/svelte-native-bundle-tests-8.log",
+        "result": "15unit+10graph pass; new fixed-chunk graph case fails Rolldown strict/recursive ownership option; repaired option"
+      },
+      {
+        "path": "target/svelte-native-sync-tests-10.log",
+        "result": "compile failed OXC ParserReturn.errors field in finalization; repaired to diagnostics"
+      },
+      {
+        "path": "target/svelte-native-sync-tests-11.log",
+        "result": "158 focused Kit tests pass, including adapter/import guards/instrumentation/finalization/service worker modules"
+      },
+      {
+        "path": "target/svelte-native-build-tests-1.log",
+        "result": "native server/client orchestration first build/tests in progress"
+      },
+      {
+        "path": "target/svelte-native-build-tests-1.log",
+        "result": "Native server/client orchestration crate compiles;6focusedhelpertests pass; end-to-endbuild not yet demonstrated"
+      },
+      {
+        "path": "target/svelte-native-format-build-1.log",
+        "result": "Nativeformatterbinary builds"
+      },
+      {
+        "path": "target/svelte-editor-native-features-5/report.json",
+        "result": "12syntheticnativeLSPprotocolcases pass including formatterUTF16/CRLF/idempotence and Kitroutewatch reload; noapptrial"
+      },
+      {
+        "path": "target/svelte-formatter-wasm-build-1.log",
+        "result": "isolated formatter WASM build in progress"
+      },
+      {
+        "path": "target/svelte-formatter-wasm-build-1.log",
+        "result": "Standalone formatter WASM build passes; bindings generated"
+      },
+      {
+        "path": "target/svelte-formatter-js-tests-1.log",
+        "result": "4 native/WASM format protocol cases pass:7languagevariants/idempotency/options/UTF16/errors/disposal"
+      },
+      {
+        "path": "target/svelte-native-build-tests-2.log",
+        "result": "Full import guard and staticenv enrichment bridge compiling; tracking source module registered, no orchestration call yet"
+      },
+      {
+        "path": "target/tailwind-foundation-tests-1.log",
+        "result": "16 native parser/theme/candidate/snapshot tests pass; not fullTailwindcompiler"
+      },
+      {
+        "path": "target/svelte-compression-tests-1.log",
+        "result": "6 pureRust gzip/Brotli codec/reference/bounds tests pass"
+      },
+      {
+        "path": "target/svelte-native-build-tests-2.log",
+        "result": "6pass5newfixture-contractfail1ignored; fixturepathsandfeatureflaginputs repaired"
+      },
+      {
+        "path": "target/svelte-native-build-tests-3.log",
+        "result": "10pass1fail1ignored; remainingfailurebeta fixtureSvelteminimum repaired5.57.2"
+      },
+      {
+        "path": "target/svelte-native-build-tests-4.log",
+        "result": "inprogress all12includingfullresolvedsyntheticKit2pipeline; noapplicationtrial"
+      },
+      {
+        "path": "target/svelte-native-build-tests-5.log",
+        "result": "11 pass, full synthetic failed component CSS/source-map asset identity collision"
+      },
+      {
+        "path": "target/svelte-native-build-tests-6.log",
+        "result": "11 pass, 2 fail: symlink module identity and fixed chunk elimination; fixes in progress"
+      },
+      {
+        "path": "target/svelte-tailwind-foundation-tests-2.log",
+        "result": "31 pass, 1 fail canonical -0; repaired in pending utility source"
+      },
+      {
+        "path": "target/svelte-native-sync-tests-12.log",
+        "result": "172 focused Kit tests passed"
+      },
+      {
+        "path": "target/svelte-tailwind-foundation-tests-3.log",
+        "result": "36 focused tests passed: parser/theme/candidates/variants/core utility families"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-1.log",
+        "result": "dependency resolution failed: Boa0.22 requires serde1.0.229; standalone pin repair pending"
+      },
+      {
+        "path": "target/svelte-native-build-tests-7.log",
+        "result": "compile failed adapter map Option type; fixed. Node rebundle and fixed-chunk output compile succeeded before build crate error"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-2.log",
+        "result": "Compiled;5pass2fail numeric JSON integer/float representation; bounded serializer repair in progress"
+      },
+      {
+        "path": "target/svelte-native-build-tests-8.log",
+        "result": "compile failed3ambiguous BTreeSet collect sites in worker bridge; explicit types fixed"
+      },
+      {
+        "path": "target/svelte-tailwind-compiler-tests-1.log",
+        "result": "52focusedtestsPASS including candidatecompile/lowering andimports"
+      },
+      {
+        "path": "target/svelte-native-build-tests-9.log",
+        "result": "compile failed worker default inventory Vec was accidentally typed as set; fixed"
+      },
+      {
+        "path": "target/svelte-native-build-tests-10.log",
+        "result": "25PASS1FAIL fullKit2 needs canonical runtime entry identity; graph fix pendingrerun. Finalization5,worker5,adapter3 passed."
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-3.log",
+        "result": "8PASS native ESM runtime+numeric boundaries"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-4.log",
+        "result": "8PASS2FAIL new JSON protocol fixtures omitted required snapshot resolutions/modules; fixture inputs corrected"
+      },
+      {
+        "path": "target/svelte-tailwind-design-tests-1.log",
+        "result": "70PASS DesignSystem/customutility/CSSfunctions + existing"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-5.log",
+        "result": "10PASS ESMruntime + persistentJSONprotocol"
+      },
+      {
+        "path": "target/svelte-native-build-tests-11.log",
+        "result": "compile failedone ambiguoussetcomparison innewfinalize metadata;fixed"
+      },
+      {
+        "path": "target/svelte-native-build-tests-12.log",
+        "result": "27PASS incl complete syntheticKit2 server-analysis-client-manifest-adapter-node/gzip/Brotli, Kit3 fixedmanifest/finalization and allCSRfalse; noapplicationtrial/performanceclaim"
+      },
+      {
+        "path": "target/svelte-tailwind-apply-variants-tests-1.log",
+        "result": "87PASS @apply/customvariants+allpriorTailwind modules"
+      },
+      {
+        "path": "target/svelte-js-runtime-wasm-build-1.log",
+        "result": "Rust ECMAScript runtime WASM library built"
+      },
+      {
+        "path": "target/svelte-js-runtime-wasm-tests-1.log",
+        "result": "Node runner reported1 file-levelpass; explicitin-process rerun records actualcases"
+      },
+      {
+        "path": "target/svelte-js-runtime-wasm-tests-2.log",
+        "result": "2PASS actualWASM static/dynamicESM promises persistentstate disposal and absent/null values"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-6.log",
+        "result": "compilefailed URLerror borrowedstr lifetime; fixedownedmessage"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-7.log",
+        "result": "10PASS12FAIL URLtestcontextsdefaultVMbudget0; fixturebudgets supplied"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-8.log",
+        "result": "22PASS runtimeandnativeURL; later WebIDLsequenceerror propagation corrected"
+      },
+      {
+        "path": "target/svelte-tailwind-stylesheet-tests-1.log",
+        "result": "98PASS native stylesheetdirectives imports themes utilities variants functions @apply brace expansion; scancrate compiled but own testsnotyetexecuted"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-9.log",
+        "result": "34PASS1FAIL texttestassumedunavailableArrayBuffer.transfer; native detachmenthelperandcorrectWebIDLdetachedsemantics repaired, pendingrerun"
+      },
+      {
+        "path": "target/svelte-tailwind-typography-tests-1.log",
+        "result": "109PASS including nativeTypography0.5.19 andstylesheetplugin directives"
+      },
+      {
+        "path": "target/svelte-tailwind-project-tests-1.log",
+        "result": "123PASS including sourceselection,persistentsessions,realOxideSveltesource-to-CSSandclassremoval"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-10.log",
+        "result": "53PASS4FAIL Blobtests:negativei64conversionbugplusfixtureiterator/prototypeassertions; fixed"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-11.log",
+        "result": "8BlobPASS4FAIL withexplicitmessages; fixeshandedback"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-12.log",
+        "result": "compilefailed BoaJSerrorAPI andtracedEntrymoves inAbort/FormData;fixed"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-13.log",
+        "result": "compilefailedstreams tracedCopy/errorAPI/Chunkmoves andAborterrorResult; fixed"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-14.log",
+        "result": "compilefailed2movedstreamerrors; clonedbeforeopaqueconversion"
+      },
+      {
+        "path": "target/svelte-tailwind-host-tests-1.log",
+        "result": "offlinedependencymissingglobset; no testsrun"
+      },
+      {
+        "path": "target/svelte-tailwind-host-tests-2.log",
+        "result": "compilefailed OXCresolvermethodnow4arguments; fixedNone tsconfig"
+      },
+      {
+        "path": "target/svelte-tailwind-host-tests-3.log",
+        "result": "7PASS1FAIL exactfilename b.html wronglyescapedasbackspace; correctednativeglobencoding"
+      },
+      {
+        "path": "target/svelte-tailwind-host-tests-4.log",
+        "result": "9PASS syntheticfilesystemCSSresolution/gitignore/globs/aliases/symlink/watch/version/bounds; noapplicationtrial"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-15.log",
+        "result": "92 passed; native runtime, Web APIs and default streams"
+      },
+      {
+        "path": "target/svelte-tailwind-project-tests-2.log",
+        "result": "144 passed; native compiler, color mix and source maps"
+      },
+      {
+        "path": "target/svelte-tailwind-host-tests-5.log",
+        "result": "17 passed; host compilation, imported assets and composed source maps"
+      },
+      {
+        "path": "target/svelte-tailwind-scan-tests-1.log",
+        "result": "88 passed;12 upstream ignored performance cases intentionally unrun"
+      },
+      {
+        "path": "target/svelte-tailwind-wasm-build-1.log",
+        "result": "WASM release compiler build passed"
+      },
+      {
+        "path": "target/svelte-tailwind-wasm-tests-1.log",
+        "result": "2 native WASM integration tests passed: source edits and Typography"
+      },
+      {
+        "path": "target/svelte-tailwind-native-build-1.log",
+        "result": "native persistent CLI builds"
+      },
+      {
+        "path": "target/svelte-tailwind-native-protocol-1.json",
+        "result": "fixture request failed: missing required prepare.options"
+      },
+      {
+        "path": "target/svelte-tailwind-native-protocol-2.json",
+        "result": "fixture request failed: missing required options.imports"
+      },
+      {
+        "path": "target/svelte-tailwind-native-protocol-3.json",
+        "result": "native prepare/build/rebuild/dispose passed"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-16.log",
+        "result": "compile failed: six type-inference and traced-field ownership errors"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-17.log",
+        "result": "101 passed,1 failed: fixture used unavailable Boa experimental ArrayBuffer.transfer; fixture repaired using native actual transfer, rerun queued"
+      },
+      {
+        "path": "target/svelte-bundle-tailwind-tests-1.log",
+        "result": "compile failed on one cssparser new_custom_error generic inference; fixed redundant into conversion"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-18.log",
+        "result": "107 passed1failed; old File.stream absence assertion invalidated by implemented Blob/File byte streams; updated to function with real stream behavior case passing"
+      },
+      {
+        "path": "target/svelte-bundle-tailwind-tests-2.log",
+        "result": "14 passed: native Tailwind CSS/assets/maps and existing CSS cases; other bundler cases filtered"
+      },
+      {
+        "path": "target/svelte-tailwind-host-tests-6.log",
+        "result": "Compilation failed: SnapshotIdentity lacked Eq/PartialEq; repaired before run7"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-19.log",
+        "result": "Compilation failed: moved traced BodySource field in test; borrowed field instead"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-20.log",
+        "result": "123 passed, 1 failed: actual Boa JSON.parse rejected valid overflow JSON; intrinsic repaired"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-21.log",
+        "result": "146 passed: native Request/Response, Body, JSON repair and all previous runtime cases"
+      },
+      {
+        "path": "target/svelte-tailwind-host-tests-7.log",
+        "result": "26 passed,2 failed: reference fallback fixture and missing document-only theme sourcesContent; repaired"
+      },
+      {
+        "path": "target/svelte-tailwind-host-tests-8.log",
+        "result": "28 passed: authoritative virtual snapshots, extracted reference styles and composed maps"
+      },
+      {
+        "path": "target/svelte-js-runtime-wasm-build-2.log",
+        "result": "WASM release build passed with native Web APIs and JSON intrinsic repair"
+      },
+      {
+        "path": "target/svelte-js-runtime-wasm-tests-3.log",
+        "result": "4 passed: persistent ESM, Web APIs, byte streams, Request/Response body cloning and JSON edge cases"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-22.log",
+        "result": "Compile failed: one Boa JsError method renamed into_opaque; repaired"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-23.log",
+        "result": "Compile failed: fallible Boa error conversion not propagated; repaired helper/callers"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-24.log",
+        "result": "160 passed: WritableStream14 plus all146 prior runtime cases"
+      },
+      {
+        "path": "target/svelte-native-build-tests-13.log",
+        "result": "Compile failed: resolver FileSystem trait shape changes when Rolldown enables yarn_pnp; host pins same feature with filesystem PnP disabled"
+      },
+      {
+        "path": "target/svelte-native-build-tests-14.log",
+        "result": "44 passed,2 failed: Kit3 fixture generated-directory mismatch and source-free worker facade map expectation; complete Kit2/instrumentedKit2/Kit3 pipelines passed"
+      },
+      {
+        "path": "target/svelte-native-build-tests-15.log",
+        "result": "Compile failed: OXC ExportNamedDeclaration shape in new worker facade assertion; repaired to dedicated named/from variants"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-25.log",
+        "result": "Compile failed: private JsFunction import and obsolete to_opaque method; fixed"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-26.log",
+        "result": "194 passed,3 failed: two crypto fixtures assumed unavailable experimental ArrayBuffer.transfer; transform queue-limit propagated distinct error object identities; repaired fixtures and readable error propagation"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-27.log",
+        "result": "199 passed: async context/builtin aliases, SHA/native entropy, transforms, stream error identity and trusted native driver; all prior runtime cases retained"
+      },
+      {
+        "path": "target/svelte-native-build-tests-16.log",
+        "result": "45 passed,1 failed: worker source-map assertion also needed exact native Rolldown helper identity exemption; original/application/asset chunks still require real maps"
+      },
+      {
+        "path": "target/svelte-bundle-tailwind-tests-3.log",
+        "result": "18 passed (16CSS+2integration),18othercasesfiltered: virtual CSS/imports/dirty sources/extracted component reference+apply/maps/assets"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-28.log",
+        "result": "Compile failed: moving fields out of GC-traced AbortAlgorithm; repaired by borrowing each algorithm"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-29.log",
+        "result": "219 passed,2 pipe fixture failures: sink abort callback deferred behind writable startup; shutdown rejection supersedes source error. Spec-derived strengthened fixtures repaired; rerun pending."
+      },
+      {
+        "path": "target/svelte-server-runtime-tests-1.log",
+        "result": "8 passed: native Kit2/Kit3 initialization, actual asset streams, concurrent/cached node imports, Promise.all rejection order, persistent JSON sessions/bounds/poisoning"
+      },
+      {
+        "path": "target/svelte-native-build-tests-17.log",
+        "result": "58 passed: complete synthetic Kit2/instrumentedKit2/Kit3 pipelines, worker binary assets/maps/manifests, preliminary snapshot generation and emitted ESM runtime bridge. No application trial or parity claim."
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-30.log",
+        "result": "221 passed: all prior199 cases plus17 pipeTo/pipeThrough and5 ordered abort algorithm tests; both prior failing fixtures corrected against specified shutdown ordering"
+      },
+      {
+        "path": "target/svelte-server-runtime-tests-2.log",
+        "result": "20 passed:11 native route metadata/entries cases,1 persistent metadata protocol case plus8 prior bootstrap/session cases"
+      },
+      {
+        "path": "target/svelte-server-runtime-native-build-1.log",
+        "result": "Native svelte-runtime process builds with bootstrap/node/route metadata operations"
+      },
+      {
+        "path": "target/svelte-native-build-tests-18.log",
+        "result": "60 passed: all58 prior plus2 actual emitted Kit2/Kit3 server snapshots initialized/evaluated with native Rust process, env/stream/module/node caching and runtime route metadata; synthetic correctness only"
+      },
+      {
+        "path": "target/svelte-server-runtime-tests-3.log",
+        "result": "29 passed,1 failed: remote dynamic namespace fixture rejected with SyntaxError abrupt end; investigating valid-JS parser EOF handling; compact original node indices regression passes"
+      },
+      {
+        "path": "target/svelte-js-runtime-wasm-build-3.log",
+        "result": "WASM release builds with full implemented streams/crypto/native async context"
+      },
+      {
+        "path": "target/svelte-js-runtime-wasm-tests-4.log",
+        "result": "7 passed actual WASM: piping/aborts, transforms+hash+entropy, async context, ESM persistence, native web APIs, Request/Response bodies"
+      },
+      {
+        "path": "target/svelte-server-runtime-tests-4.log",
+        "result": "31 passed: parser EOF regression repaired without changing valid fixture;9 remote metadata/initializer tests+remote JSON lifecycle case,compact original node indices and prior20 cases all pass"
+      },
+      {
+        "path": "target/svelte-server-runtime-native-build-2.log",
+        "result": "Native binary refreshed with checked remote/route metadata and EOF parser repair"
+      },
+      {
+        "path": "target/svelte-native-build-tests-19.log",
+        "result": "66 passed,1 failed: both actual emitted Kit2/Kit3 runtime-backed builds now COMPLETE through client/manifest; new merge test incorrectly assumed serde rejects overflow JSON under unified arbitrary_precision; explicit numeric boundary repair in progress"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-31.log",
+        "result": "224 passed: all221 prior generic runtime cases plus3 export EOF parser regression cases; no failures"
+      },
+      {
+        "path": "target/svelte-kit-remote-tests-1.log",
+        "result": "9 passed,172 other Kit tests filtered: versioned pure remote discovery/hash/transform/maps/client metadata; no failures"
+      },
+      {
+        "path": "target/svelte-server-runtime-tests-5.log",
+        "result": "37 passed: all31 prior framework cases plus6 rendering lifecycle/realm/native Request+Response/Map cases"
+      },
+      {
+        "path": "target/svelte-native-build-tests-20.log",
+        "result": "67 passed: repaired numeric metadata overflow boundary through actual merge; both real emitted Kit2/Kit3 runtime-backed full fixture builds complete; bundler native-plugin seam compiles"
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-32.log",
+        "result": "226 passed:224 prior runtime cases plus2 branded Response snapshot/raw duplicate byte headers/sliced body/poisoned property/brand cases"
+      },
+      {
+        "path": "target/svelte-kit-bundle-tests-1.log",
+        "result": "9 passed: separate plugin native TS/maps, source/hash identity, actual facade filenames, metadata-driven client, concurrency/collision and explicit unsupported boundaries"
+      },
+      {
+        "path": "target/svelte-server-runtime-tests-6.log",
+        "result": "43 passed:37 prior plus4 bounded prerender visit/publication/body/dependency cases,1 configure/start ordering case,1 mixed metadata/render protocol capacity/disposal case; removed one unused test import afterward"
+      },
+      {
+        "path": "target/svelte-server-runtime-native-build-3.log",
+        "result": "Native binary rebuilt with metadata/remotes and configure/start/visit/publish prerender protocol"
+      },
+      {
+        "path": "target/svelte-native-build-tests-21.log",
+        "result": "75 passed,4 failed:67 prior retained+8 remote receipt cases; two new real SSR cases fail incorrect empty dependency expectation; two new remote builds fail dotted virtual import resolution. Source-backed dependency assertions and appended extension resolution repaired; rerun queued."
+      },
+      {
+        "path": "target/svelte-server-runtime-wasm-build-1.log",
+        "result": "First framework WASM release build passed, including shared metadata and prerender protocol"
+      },
+      {
+        "path": "target/svelte-server-runtime-wasm-tests-1.log",
+        "result": "8 passed3failed: all4 prerender JS/WASM cases pass. Two stale metadata expectations corrected from implementation/pinned source. Actual capabilities unknown-field protocol hole repaired; rebuild/rerun queued."
+      },
+      {
+        "path": "target/svelte-kit-prerender-save-tests-1.log",
+        "result": "17 passed,181other Kit cases filtered: exact versioned save ordering, filename/HTML/redirect handling, custom handler continuation, collisions, dedup and failures."
+      },
+      {
+        "path": "target/svelte-native-build-tests-22.log",
+        "result": "77passed4failed: all75 previous retained plus both actual Kit2/Kit3 repeated SSR/data dependency fixtures pass through typed persistent process transport. Four remote fixtures now resolve and emit correctly, stop at obsolete route metadata merge blanket remote guard. Removed guard because same-build remote validation is now atomic alongside route merge; next run pending."
+      },
+      {
+        "path": "target/svelte-server-runtime-tests-7.log",
+        "result": "Compile failed: remote input helper used removed Boa to_opaque API. Repaired to fallible into_opaque propagation. No tests ran; runtime8 queued."
+      },
+      {
+        "path": "target/svelte-kit-prerender-tests-2.log",
+        "result": "Compile failed on ambiguous crawler result byte counter numeric type. Annotated usize; save/crawl/queue45cases rerun queued."
+      },
+      {
+        "path": "target/svelte-server-runtime-tests-8.log",
+        "result": "49 passed: all43 prior framework cases plus2 staged visit ordering/token cases and4 actual remote input value/order/error cases. Strict capabilities unknown-field rejection now tested natively."
+      },
+      {
+        "path": "target/svelte-kit-prerender-tests-3.log",
+        "result": "49passed177otherKit casesfiltered: save17 + queue16 + crawler12 +4 existing matching tests; all registered pure prerender cases pass after counter annotation."
+      },
+      {
+        "path": "target/svelte-server-runtime-wasm-build-2.log",
+        "result": "WASM release build passed with native49-tested staged visit and remote helper implementation plus strict capabilities parsing."
+      },
+      {
+        "path": "target/svelte-server-runtime-wasm-tests-2.log",
+        "result": "16passed: all11 prior JS/WASM metadata/rendering cases repaired and passing +5 staged ordering/publication/headers/getter/failure/token cases. Actual rebuilt WASM, no fallback."
+      },
+      {
+        "path": "target/svelte-server-runtime-native-build-4.log",
+        "result": "Native runtime executable refreshed with49-test implementation, staged visit protocol and remote input helper."
+      },
+      {
+        "path": "target/svelte-native-build-tests-23.log",
+        "result": "86passed2failed: all4 actual remote Kit2/Kit3 query/prerender-boundary fixtures now PASS, plus7 staged transport/header tests PASS. Both previously passing SSR fixtures now exercise staged native reads+real save/publication/dedup; original SSR/data assertions and artifact bytes pass, new final paths assertion incorrectly omitted saved /__data.json asset. Repaired expected ordered paths from pinned save behavior; rerun queued. No product regression found."
+      },
+      {
+        "path": "target/svelte-native-build-tests-24.log",
+        "result": "88passed0failed: all prior86 retained and strengthened Kit2/Kit3 staged SSR/save/publication cases recovered after correcting paths expectations from pinned save semantics. All4 actual remote fixtures pass. Policy composition and pending dispatch bridge not part of this run."
+      },
+      {
+        "path": "target/svelte-server-runtime-tests-9.log",
+        "result": "55passed0failed:49 prior retained+6 non-draining dispatch/context continuation cases, opaque throw/rejection identity and cross-realm checks. Visitor primitive next."
+      },
+      {
+        "path": "target/svelte-prerender-policy-tests-1.log",
+        "result": "12passed0failed88filtered: native policy save/crawl/queue composition orderedeffects and continuation coverage. Outside-base/custom invalidURL extensions next. Host callback transport additions were written after this build started and are unrun."
+      },
+      {
+        "path": "target/svelte-host-channel-tests-1.log",
+        "result": "2passed0failed55filtered: synchronous framed policycallback round trips, orderedseq, binarypayload, next-request preservation and failure poisoning. HostChannel not yet wired into driver/main."
+      },
+      {
+        "path": "target/svelte-tailwind-host-tests-9.log",
+        "result": "28passed0failed after resolver yarn_pnp feature unification; refreshed standalone lock to matching resolved dependency graph."
+      },
+      {
+        "path": "target/svelte-js-runtime-wasm-build-4.log",
+        "result": "Release WASM rebuilt with native226-tested parserEOF and Response snapshot changes."
+      },
+      {
+        "path": "target/svelte-js-runtime-wasm-tests-5.log",
+        "result": "7passed0failed actual refreshed WASM JS tests."
+      },
+      {
+        "path": "target/svelte-js-runtime-clippy-1.log",
+        "result": "UNRUN: cargo-clippy absent from selected toolchain PATH. Locating installed matching tool before retry."
+      },
+      {
+        "path": "target/svelte-native-build-tests-25.log",
+        "result": "111passed4failed: all18policy,7helper synthetic,2callback tests pass;4 previous actualremote fixtures regress at new helper canonical direct-import validation (before metadata execution). Diagnosing actual resolved graph vs inventory source identity. Known outsidebase deferredqueue correction remains unimplemented."
+      },
+      {
+        "path": "target/svelte-server-runtime-tests-10.log",
+        "result": "Compile failure beforetests: producer_error &str borrowed into static JsNativeError message. Repaired with owned String; runtime11 queued."
+      },
+      {
+        "path": "target/svelte-server-runtime-tests-11.log",
+        "result": "69passed3failed:55prior+2hostchannel+5visitor+6producer+1getter retained/passed. Two newproducerfixtures had malformed object-literal braces (repaired without assertion changes); one newmissing-alias fixture expected wrong original server asset bytes [2,0] vs actual [0,255,0] (corrected). No prior case regressed. Next runtime includes captured native arrayBuffer await correction+1 interleaving regression case."
+      },
+      {
+        "path": "target/svelte-native-build-remote-tests-26.log",
+        "result": "7purehelper tests passed,4 actualremote tests ignored because filter command omitted include-ignored.104other tests filtered. Actualtests run fromsamebinary separately in27."
+      },
+      {
+        "path": "target/svelte-native-build-remote-tests-27.log",
+        "result": "4actual remote Kit2/Kit3 query/prerenderboundary tests PASS on Build26 releasebinary after adding realpath observations for symlinked installed package modules. All4 Build25 regressions recovered; node_modules alias identity remains validated against actual graph."
+      },
+      {
+        "path": "target/svelte-server-runtime-tests-12.log",
+        "result": "72passed1failed: captured native Response.arrayBuffer visitor correction+interleaving case pass. Producer Kit3 adoption case failed: vendored Boa0.22 JsPromise::resolve converted a throwing promise `constructor` getter (PromiseResolve step1.a) into uncatchable EnginePanic."
+      },
+      {
+        "path": "target/svelte-prerender-composition-tests-2.log",
+        "result": "40passed0failed4ignored(fixture-gated): 20 prerender_policy incl. deferred OutsideBaseReturned/complete_outside_visit, 6 prerender_output materialization, 7 remote_entry, 7 transport."
+      },
+      {
+        "path": "target/svelte-js-runtime-tests-promise-resolve-2.log",
+        "result": "227passed0failed: NATIVE_REACTIONS.patch now also repairs JsPromise::resolve to propagate the getter's thrown value (regenerated patch byte-matches diff vs crates.io original); +1 identity regression case in native_session."
+      },
+      {
+        "path": "target/svelte-server-runtime-tests-14.log",
+        "result": "73passed0failed: producer adoption case recovered; no prior case regressed."
+      },
+      {
+        "path": "target/svelte-native-build-tests-27.log",
+        "result": "123passed0failed0ignored with --include-ignored on rebuilt svelte-runtime binary (Kit2.69.2 app fixture, Kit3.0.1 fixture): all 8 fixture-gated remote/prerender runtime tests pass."
+      },
+      {
+        "path": "target/svelte-js-runtime-wasm-tests-7.log",
+        "result": "7passed0failed on rebuilt release WASM (build-6)."
+      },
+      {
+        "path": "target/svelte-server-runtime-wasm-tests-4.log",
+        "result": "16passed0failed on rebuilt release WASM (build-4)."
+      },
+      {
+        "path": "target/clippy-final-ts_js_runtime.log",
+        "result": "PASS -D warnings --all-targets --no-deps with clippy1.98.1 (previously UNRUN). Pre-existing lint debt fixed: clippy --fix plus struct-update initializers in tests."
+      },
+      {
+        "path": "target/clippy-final-ts_svelte_runtime.log",
+        "result": "PASS -D warnings --all-targets --no-deps (first run). clippy --fix plus doc-list break, Paths type alias, and too_many_arguments allow on Kit-mirroring request()."
+      }
+    ],
+    "integrationWork": [
+      "Persistent TS service and shared ts_svelte_mapping for CLI/editor rune transpilation diagnostics",
+      "Kit2/Kit3 sync and client/server/root generators implemented; route inventory integrating",
+      "Native template syntax operations and configurable lint registry integrating",
+      "Standalone Rust bundler and mdsvex preprocessor queued for compilation; formatter in development",
+      "New standalone CSS, formatter and persistent WASI semantic crates; compilation/integration pending",
+      "Server node generation integrated with emit-nodes CLI; focused tests pending",
+      "Native bundler Markdown/rune TypeScript pipeline integration in progress",
+      "Browser/Node semantic worker package exports and reusable WASI build helpers",
+      "Owned Kit sync refresh regenerates route types before rediscovery",
+      "CSS asset linker and vendored UTF-16 printer correction awaiting compilation",
+      "Bundler native Markdown/TypeScript map integration awaiting repaired compilation",
+      "Native formatter process integration into LSP plus shared JS worker interface",
+      "Native CSS plugin connected to bundler as explicit css option; compile pending",
+      "Pure Kit environment generator registered with emit-env CLI",
+      "Standalone native server/client build orchestration crate in progress",
+      "Versioned exact/prefix/children aliases, fixed chunks/output naming and complete module graph connected to bundle, compile pending",
+      "Pure WASM Svelte project frontend and JS composition registered; actual component/browser integration pending",
+      "Kit adapter-node packaging and graph import guards in progress",
+      "Native Tailwind host 9 focused tests passed; compiler composition with source maps and imported URL identity in progress",
+      "Rust readable streams integrated with minimal vendored Boa intrinsic-reaction extension; native runtime tests pending",
+      "Kit3 worker manifest integrated; build crate focused rerun queued",
+      "Native Kit2 instrumentation receipt and adapter startup wrapping integrated; focused end-to-end test queued",
+      "Worker binary asset loader uses native file URL AST hooks and retained module ownership; build pending",
+      "Tailwind host snapshot integration into extracted component CSS in progress",
+      "Preliminary manifest-full/server-node generation implemented; isolated actual server snapshot retained when static analysis requires runtime evaluation",
+      "Separate ts_svelte_runtime crate implements actual Kit2/Kit3 initialization, snapshot read callbacks and concurrent node loaders;6focusedcases pending firstcompile",
+      "Native stream pipeTo/pipeThrough + ordered abort algorithms implemented; runtime28 compiling",
+      "Native framework persistent JSON protocol and WASM export implemented alongside bootstrap; compile pending",
+      "Actual emitted snapshot to runtime bridge implemented with explicit ESM resolutions; registration/tests pending",
+      "Versioned native route metadata, actual async entries, native route substitution and persistent analyzeMetadata API implemented;11 module cases+1 protocol case pending first compile",
+      "Compacted manifest loaders retain original exported node indices (distinct from loader positions); regression case added; remote metadata operation9 cases queued",
+      "Separate ts_svelte_kit_bundle remote plugin registered with generic bundler seam, native same-session route then remote transport, strict remote receipt validation, client transform and actual facade manifest integration; first plugin/build tests queued. PrerenderSession and native/WASM protocol in progress.",
+      "Pure prerender save17cases pass; crawler12 and queue16 registered pending build. Framework staged visit/head/body/dependency API added to preserve policy/save/stream order;2native cases and4 remote-input cases registered for runtime7. Native/WASM strict capabilities parsing repaired. Typed process rendering transport passes both actual SSR fixtures."
+    ],
+    "newAcceptance": false,
+    "tailwindDirectiveDesign": "Pinned source references and next-stage operation order in crates/ts_tailwind/reference/directives/sources.json. Need DesignSystem with ordered multiple utility generators per root: tw-animate delay overlaps built-in. Custom utility ratio/modifier success is shared across nested declarations; no independent declaration-only approximation.",
+    "runtimeWork": "227generic native,73framework native,23frameworkJS/WASM (7 js-runtime+16 svelte-runtime),123 build (incl. 8 fixture-gated) pass. Full scheduler/build integration incomplete.",
+    "tailwindWork": "Native compiler/host/WASM and bundler real-file integration pass focused cases. Host virtual snapshot tests running, followed by component style/snapshot integration.",
+    "nativeMetadataDesign": {
+      "nextCrate": "ts_svelte_runtime, separate framework execution layer on generic ts_js_runtime",
+      "boundary": "versioned JSON across standalone serde pin families; actual manifest callbacks/Sets/namespaces stay inside Boa",
+      "initialization": [
+        "evaluate actual preliminary manifest-full.js",
+        "Kit2: internal.set_building/private_env/public_env/manifest/read, then env.set_env",
+        "Kit3: await actual index.configure({building:true,manifest,env,read})",
+        "start all node loaders before settling",
+        "inspect node and route exports, validate inherited options and await entries",
+        "inspect remotes after routes; no init hooks/route handlers during metadata"
+      ],
+      "requiredBuildChange": "emit preliminary server nodes/full manifest before dynamic analysis; final regeneration after client build",
+      "source": "pinned Kit2.69.2 and Kit3.0.1 src/core/postbuild/analyse.js",
+      "status": "native_operation namespace/call/settle/normalize and concurrent loader tests pass; framework driver/preliminary manifest still next"
+    },
+    "nextNativeOperations": {
+      "remotePlugin": "Separate ts_svelte_kit_bundle crate; native hook after component preprocessing, explicitly lower ordinary TypeScript before remote transform, emit virtual remote wrapper chunks and recover actual filenames by facade ID. Retain metadata source/hash/dynamic and require source-bound runtime analysis before client generation.",
+      "prerender": "Separate fresh PrerenderSession. Configure before selecting remote work, initialize only if work exists. Visit constructs native GET Request, fresh dependencies Map, persistent remote_responses Map and Kit3 resolved_route_ids Set. Await main response bytes before live dependency iteration. Dispatch read differs from initialization: synchronous published/server/static bytes versus stream. Explicit artifact publication after crawler policy; preserve binary and sliced views. decodeURI dependency path, not decodeURIComponent.",
+      "prerenderSources": "Pinned Kit2.69.2 and Kit3.0.1 core/postbuild/prerender.js and types/internal.d.ts; no config/application trial.",
+      "remotePrerenderRewrite": "Pinned exports/vite/build/remote.js: after real prerender responses saved, use evaluated dynamic truthiness; Kit2 selects by remote file basename vs chunk.name, Kit3 by original module ID in chunk.moduleIds. Rewrite current non-dynamic exported variable binding to throwing prerender wrapper, preserve unrelated declarators, handle actual exports/default wrapper ownership, group shared chunks. Rebundle with all imports external; preserve filenames and compose maps. No output-map consumed by this rewrite. Kit2 order prerender→rewrite→filtered manifest; Kit3 prerender→placeholder finalization→filtered manifest→rewrite. No success claim until actual prerender assets exist.",
+      "prerenderSave": "Stateful pure save_response before crawler: decoded/base-relative output filename, global dedup acrosscategories before route bookkeeping, redirect enqueue+escapedHTML+path/redirect metadata, status200-onlywrites and file/directory collision checks, non-2xx HTTP policy continuation, final manifest.assets/saved aliases even nonwritingstatus. Kit2 exact text/html vs Kit3 media-type normalization. Runtimevisit remains separate; saved publication explicit.",
+      "remotePrerenderCompletionGuard": "Implemented explicit remote_execution completion requirement plus2 real remote-prerender fixtures. Build22 now running with dotted basename virtual resolver repair and typed persistent native prerender process transport.",
+      "prerenderScheduler": "Pinned queue.add invokes task immediately when slots free; encodeURI at task start; configured seeds then route entries then Kit2 awaited get_hooks/transport or Kit3 remote inputs. Each visit awaits respond -> mismatch policy -> main body -> save/publish -> each dependency header bookkeeping/body/save -> crawl. Queue completion releases slot in second promise reaction, Kit3 async task adoption differs Kit2 Promise.resolve. Queue may close while producer awaits inputs; no producer latch. Current staged process/JSON API preserves per-visit policy/body boundaries but native_operation drains jobs, so does not provide whole-run producer/visitor await interleaving or concurrent visits. Full parity next needs native promise-graph scheduler with non-settling Renderer.dispatch_pending and synchronous policy callbacks executed inside continuations; external process/WASM callback transport must pause before later jobs run. into_requests enumeration alone is insufficient.",
+      "prerenderDriverIntegration": "After visitor/producer compile: consume a fresh PrerenderSession for one whole run, retaining configured manifest and pristine visit/remote intrinsics. Context-owned driver rooted state; synchronous host callbacks return ordered startVisit/publish/manifest/alias actions and policyfinish results. Start configured seeds immediately, launch native remote producer in same promise graph, complete each visit only in queue second reaction (Kit3 extra async adoption). Apply dependency headers/body callbacks; crawl callback uses fresh mainhead. No producer latch that reopens closed purequeue; producercomplete waits actual active promises then finish coverage. HostChannel JSON callbacks pause child within continuation. Generic wasm export should provide equivalent synchronous host callback with no Promise acceptance. Staged facade remains convenience, never proof of wholequeue parity. Missing saved alias must shadow static/server reads with failure; publication alone insufficient.",
+      "nativePrerenderPrimitiveStatus": "Runtime14 73passed (visitor, producer, getter, missingSavedAlias, hostchannel, arrayBuffer await correction). Build27 123passed incl. fixture-gated. js-runtime/svelte-runtime clippy and fmt PASS. Next: failure-path queue correction (outsideBaseQueueCorrection), then prerenderDriverIntegration.",
+      "outsideBaseQueueCorrection": "Implemented deferred successful outside completion (OutsideBaseReturned +complete_outside_visit), pending20policy tests. Remaining failure-path gap: pure SaveState permanently poisons after HTTP fail/customthrow and QueueState treatsfailureterminal, whereas pinned asyncvisit rejects in first reaction and still releases/dequeues in second. Address separately with explicit visit rejection versus protocol failure after current corrections pass.",
+      "visitorAwaitCorrection": "Implemented and measured: runtime12/14 pass with captured native Response.prototype.arrayBuffer and interleaving regression case."
+    },
+    "toolchain": "Nix cargo/rustc/rustfmt/clippy 1.98.1 + gcc-wrapper15.3.0 + lld21.1.8 on PATH; rustup stable proxy is not executable on this NixOS host. wasm-bindgen 0.2.129 at target/tools/wasm-bindgen-0.2.129-x86_64-unknown-linux-musl."
+  }
+}

@@ -1,0 +1,318 @@
+--- a/src/builtins/json/mod.rs
++++ b/src/builtins/json/mod.rs
+@@ -61,13 +61,55 @@
+ /// text spans for primitive values. Used to provide `context.source` to
+ /// the reviver function in `JSON.parse`.
+ #[derive(Debug)]
+-enum JsonNode {
++struct JsonNode {
++    kind: JsonNodeKind,
++    /// Capture the evaluated value before the first reviver call. SameValue
++    /// checks must preserve negative zero and replaced container identity.
++    value: JsValue,
++}
++
++#[derive(Debug)]
++enum JsonNodeKind {
+     /// A primitive value (string, number, boolean, null) with its original source text.
+-    Primitive(String),
++    Primitive(JsString),
+     /// An array of child nodes.
+     Array(Vec<JsonNode>),
+     /// An object with key-value pairs.
+-    Object(Vec<(String, JsonNode)>),
++    Object(Vec<(JsString, JsonNode)>),
++}
++
++impl JsonNode {
++    fn new(kind: JsonNodeKind) -> Self {
++        Self {
++            kind,
++            value: JsValue::undefined(),
++        }
++    }
++
++    fn capture(&mut self, value: JsValue, context: &mut Context) -> JsResult<()> {
++        if let Some(object) = value.as_object() {
++            match &mut self.kind {
++                JsonNodeKind::Array(children) => {
++                    for (index, child) in children.iter_mut().enumerate() {
++                        child.capture(object.get(index as u32, context)?, context)?;
++                    }
++                }
++                JsonNodeKind::Object(entries) => {
++                    // Duplicate keys use the last parse node, as the evaluator
++                    // already uses the last value. Earlier nodes are irrelevant.
++                    let mut seen = FxHashSet::default();
++                    for (key, child) in entries.iter_mut().rev() {
++                        if seen.insert(key.clone()) {
++                            child.capture(object.get(key.clone(), context)?, context)?;
++                        }
++                    }
++                }
++                JsonNodeKind::Primitive(_) => {}
++            }
++        }
++        self.value = value;
++        Ok(())
++    }
+ }
+ 
+ /// Visitor that builds a `JsonNode` source tree by walking the parsed AST,
+@@ -106,8 +148,9 @@
+     ) -> std::ops::ControlFlow<Self::BreakTy> {
+         let span = node.linear_span();
+         let code_points = self.source_text.get_code_points_from_span(span);
+-        let text = String::from_utf16_lossy(code_points);
+-        self.stack.push(JsonNode::Primitive(text));
++        let text = JsString::from(code_points);
++        self.stack
++            .push(JsonNode::new(JsonNodeKind::Primitive(text)));
+         std::ops::ControlFlow::Continue(())
+     }
+ 
+@@ -124,14 +167,16 @@
+                 self.visit_expression(expr)?;
+             } else {
+                 // Sparse element (should not happen in JSON)
+-                self.stack.push(JsonNode::Primitive("null".to_string()));
++                self.stack
++                    .push(JsonNode::new(JsonNodeKind::Primitive(js_string!("null"))));
+             }
+         }
+ 
+         // Pop the children that were just pushed and collect into array
+         let children: Vec<JsonNode> = self.stack.drain(base..).collect();
+         debug_assert_eq!(children.len(), count);
+-        self.stack.push(JsonNode::Array(children));
++        self.stack
++            .push(JsonNode::new(JsonNodeKind::Array(children)));
+         std::ops::ControlFlow::Continue(())
+     }
+ 
+@@ -142,14 +187,14 @@
+         use boa_ast::expression::literal::PropertyDefinition;
+ 
+         let base = self.stack.len();
+-        let mut keys: Vec<String> = Vec::new();
++        let mut keys: Vec<JsString> = Vec::new();
+ 
+         for prop in node.properties() {
+             if let PropertyDefinition::Property(name, value) = prop {
+                 let key = if let Some(ident) = name.literal() {
+-                    self.interner.resolve_expect(ident.sym()).to_string()
++                    JsString::from(self.interner.resolve_expect(ident.sym()).utf16())
+                 } else {
+-                    String::new()
++                    js_string!()
+                 };
+                 keys.push(key);
+                 // Visit the value expression, which pushes the child node
+@@ -160,8 +205,9 @@
+         // Pop the value nodes and zip with keys
+         let values: Vec<JsonNode> = self.stack.drain(base..).collect();
+         debug_assert_eq!(keys.len(), values.len());
+-        let entries: Vec<(String, JsonNode)> = keys.into_iter().zip(values).collect();
+-        self.stack.push(JsonNode::Object(entries));
++        let entries: Vec<(JsString, JsonNode)> = keys.into_iter().zip(values).collect();
++        self.stack
++            .push(JsonNode::new(JsonNodeKind::Object(entries)));
+         std::ops::ControlFlow::Continue(())
+     }
+ 
+@@ -177,8 +223,12 @@
+         {
+             let span = lit.linear_span();
+             let code_points = self.source_text.get_code_points_from_span(span);
+-            let num_text = String::from_utf16_lossy(code_points);
+-            self.stack.push(JsonNode::Primitive(format!("-{num_text}")));
++            let mut text = vec![u16::from(b'-')];
++            text.extend_from_slice(code_points);
++            self.stack
++                .push(JsonNode::new(JsonNodeKind::Primitive(JsString::from(
++                    text.as_slice(),
++                ))));
+             return std::ops::ControlFlow::Continue(());
+         }
+ 
+@@ -241,24 +291,66 @@
+             .first()
+             .cloned()
+             .unwrap_or_default()
+-            .to_string(context)?
+-            .to_std_string()
+-            .map_err(|e| JsNativeError::syntax().with_message(e.to_string()))?;
++            .to_string(context)?;
+ 
+         // 2. Parse ! StringToCodePoints(jsonString) as a JSON text as specified in ECMA-404.
+         //    Throw a SyntaxError exception if it is not a valid JSON text as defined in that specification.
+-        if let Err(e) = serde_json::from_str::<serde_json::Value>(&json_string) {
++        // IgnoredAny checks grammar without imposing Rust f64/String value
++        // constraints: JSON numbers may overflow to Infinity and strings may
++        // contain lone surrogates. Lossy UTF-8 is used ONLY for this grammar
++        // check. Replacing a raw surrogate with U+FFFD cannot change JSON token
++        // syntax: both are ordinary string content, neither is valid outside a
++        // string, whitespace, an escape character, or an ASCII hex digit.
++        // Evaluation and reviver source tracking use the untouched UTF-16 below.
++        let validation_text = json_string.to_std_string_lossy();
++        if let Err(e) = serde_json::from_str::<serde::de::IgnoredAny>(&validation_text) {
+             return Err(JsNativeError::syntax().with_message(e.to_string()).into());
++        }
++        // IgnoredAny's scanner is iterative; retain the former serde Value
++        // validation's nesting bound before entering Boa's recursive AST walk.
++        let mut depth = 0usize;
++        let mut quoted = false;
++        let mut escaped = false;
++        for byte in validation_text.bytes() {
++            if escaped {
++                escaped = false;
++                continue;
++            }
++            if quoted && byte == b'\\' {
++                escaped = true;
++                continue;
++            }
++            if byte == b'"' {
++                quoted = !quoted;
++                continue;
++            }
++            if !quoted {
++                match byte {
++                    b'[' | b'{' => {
++                        depth += 1;
++                        if depth >= 128 {
++                            return Err(JsNativeError::syntax()
++                                .with_message("JSON nesting limit exceeded")
++                                .into());
++                        }
++                    }
++                    b']' | b'}' => depth -= 1,
++                    _ => {}
++                }
++            }
+         }
+ 
+         // Check if a reviver is provided, to determine if we need source text tracking
+         let has_reviver = args.get_or_undefined(1).is_callable();
+ 
+         // 3. Let scriptString be the string-concatenation of "(", jsonString, and ");".
+-        let script_string = format!("({json_string});");
++        let mut script_string = Vec::with_capacity(json_string.len() + 3);
++        script_string.push(u16::from(b'('));
++        script_string.extend(json_string.iter());
++        script_string.extend([u16::from(b')'), u16::from(b';')]);
+ 
+         // 4-10. Parse and evaluate the script
+-        let source = Source::from_bytes(&script_string);
++        let source = Source::from_utf16(&script_string);
+         let mut parser = Parser::new(source);
+         parser.set_json_parse();
+ 
+@@ -269,7 +361,7 @@
+         // Build the source tree from the AST if a reviver is present.
+         // This walks the parsed AST and extracts source text from LinearSpan information,
+         // avoiding the need to re-parse the JSON string separately.
+-        let source_tree = if has_reviver {
++        let mut source_tree = if has_reviver {
+             let expr = script.statements().statements().first().and_then(|item| {
+                 if let boa_ast::StatementListItem::Statement(stmt) = item
+                     && let boa_ast::Statement::Expression(expr) = stmt.as_ref()
+@@ -331,6 +423,9 @@
+         context.vm.pop_frame();
+ 
+         let unfiltered = record.consume()?;
++        if let Some(tree) = &mut source_tree {
++            tree.capture(unfiltered.clone(), context)?;
++        }
+ 
+         // 11. If IsCallable(reviver) is true, then
+         if let Some(obj) = args.get_or_undefined(1).as_callable() {
+@@ -372,6 +467,7 @@
+     ) -> JsResult<JsValue> {
+         // 1. Let val be ? Get(holder, name).
+         let val = holder.get(name.clone(), context)?;
++        let source_node = source_node.filter(|node| JsValue::same_value(&node.value, &val));
+ 
+         // 2. If Type(val) is Object, then
+         if let Some(obj) = val.as_object() {
+@@ -382,8 +478,8 @@
+                 // ii. Let len be ? LengthOfArrayLike(val).
+                 // iii. Repeat, while I < len,
+                 let len = obj.length_of_array_like(context)? as i64;
+-                let children = match source_node {
+-                    Some(JsonNode::Array(children)) => Some(children),
++                let children = match source_node.map(|node| &node.kind) {
++                    Some(JsonNodeKind::Array(children)) => Some(children),
+                     _ => None,
+                 };
+                 for i in 0..len {
+@@ -417,8 +513,8 @@
+             else {
+                 // i. Let keys be ? EnumerableOwnPropertyNames(val, key).
+                 let keys = obj.enumerable_own_property_names(PropertyNameKind::Key, context)?;
+-                let entries = match source_node {
+-                    Some(JsonNode::Object(entries)) => Some(entries),
++                let entries = match source_node.map(|node| &node.kind) {
++                    Some(JsonNodeKind::Object(entries)) => Some(entries),
+                     _ => None,
+                 };
+ 
+@@ -429,9 +525,8 @@
+                         .as_string()
+                         .js_expect("EnumerableOwnPropertyNames only returns strings")?;
+ 
+-                    let p_std = p.to_std_string_escaped();
+                     let child_node =
+-                        entries.and_then(|e| e.iter().rfind(|(k, _)| k == &p_std).map(|(_, v)| v));
++                        entries.and_then(|e| e.iter().rfind(|(k, _)| k == &p).map(|(_, v)| v));
+ 
+                     // 1. Let newElement be ? InternalizeJSONProperty(val, P, reviver).
+                     let new_element = Self::internalize_json_property(
+@@ -465,41 +560,12 @@
+         // Per spec, source is only provided when the value is still the same
+         // primitive that was produced by parsing the original JSON text.
+         let ctx_obj = JsObject::with_object_proto(context.intrinsics());
+-        if let Some(JsonNode::Primitive(source_text)) = source_node {
+-            // Check if the current value matches what the source text produces.
+-            // If the reviver modified the value, it won't match and we skip source.
+-            let value_matches = match source_text.as_str() {
+-                "null" => val.is_null(),
+-                "true" => val.as_boolean() == Some(true),
+-                "false" => val.as_boolean() == Some(false),
+-                s if s.starts_with('"') => {
+-                    // String: compare parsed string value
+-                    if let Some(js_str) = val.as_string() {
+-                        serde_json::from_str::<String>(s)
+-                            .is_ok_and(|parsed| js_str.to_std_string_escaped() == parsed)
+-                    } else {
+-                        false
+-                    }
+-                }
+-                s => {
+-                    // Number: compare parsed number value
+-                    // Exact comparison is intentional: we want to detect if the
+-                    // value was replaced by the reviver, not approximate equality.
+-                    #[allow(clippy::float_cmp)]
+-                    if let Some(n) = val.as_number() {
+-                        s.parse::<f64>().is_ok_and(|parsed| n == parsed)
+-                    } else {
+-                        false
+-                    }
+-                }
+-            };
+-            if value_matches {
+-                ctx_obj.create_data_property_or_throw(
+-                    js_string!("source"),
+-                    JsValue::from(js_string!(source_text.as_str())),
+-                    context,
+-                )?;
+-            }
++        if let Some(JsonNodeKind::Primitive(source_text)) = source_node.map(|node| &node.kind) {
++            ctx_obj.create_data_property_or_throw(
++                js_string!("source"),
++                JsValue::from(source_text.clone()),
++                context,
++            )?;
+         }
+ 
+         // 3. Return ? Call(reviver, holder, « name, val, context »).

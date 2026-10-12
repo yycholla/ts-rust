@@ -1,0 +1,7 @@
+{
+  "upstream": "https://github.com/tailwindlabs/tailwindcss",
+  "tag": "v4.2.1",
+  "path": "packages/tailwindcss/src/at-import.ts",
+  "license": "MIT",
+  "sha256": "a971787064c83bd9e1f17e899f38f4a832c39439363c507bdcb14e16c9100255"
+}

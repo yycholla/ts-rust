@@ -1,0 +1,2 @@
+{const answer = 42}
+<p>{answer}</p>

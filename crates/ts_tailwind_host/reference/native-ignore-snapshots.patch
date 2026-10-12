@@ -1,0 +1,84 @@
+--- a/vendor/ignore/src/dir.rs
++++ b/vendor/ignore/src/dir.rs
+@@ -199,6 +199,16 @@
+                 return (self.clone(), None);
+             }
+         };
++        self.add_parents_absolute(absolute_base)
++    }
++
++    // Native snapshot extension: caller supplies the normalized absolute path,
++    // including nonexistent directories. Parent ignore files remain on disk.
++    pub(crate) fn add_parents_absolute(
++        &self,
++        absolute_base: Arc<PathBuf>,
++    ) -> (Ignore, Option<Error>) {
++        assert!(self.is_root());
+         // List of parents, from child to root.
+         let mut parents = vec![];
+         let mut path = &**absolute_base;
+@@ -362,13 +372,14 @@
+     /// ignored or not.
+     ///
+     /// The match contains information about its origin.
+-    fn matched<'a, P: AsRef<Path>>(&'a self, path: P, is_dir: bool) -> Match<IgnoreMatch<'a>> {
++    pub(crate) fn matched<'a, P: AsRef<Path>>(
++        &'a self,
++        path: P,
++        is_dir: bool,
++    ) -> Match<IgnoreMatch<'a>> {
+         // We need to be careful with our path. If it has a leading ./, then
+         // strip it because it causes nothing but trouble.
+-        let mut path = path.as_ref();
+-        if let Some(p) = strip_prefix("./", path) {
+-            path = p;
+-        }
++        let path = strip_if_is_prefix("./", path.as_ref());
+         // Match against the override patterns. If an override matches
+         // regardless of whether it's whitelist/ignore, then we quit and
+         // return that result immediately. Overrides have the highest
+--- a/vendor/ignore/src/walk.rs
++++ b/vendor/ignore/src/walk.rs
+@@ -558,6 +558,42 @@
+             filter: None,
+             global_gitignores_relative_to: OnceLock::new(),
+         }
++    }
++
++    /// Evaluate a virtual path using this builder's exact ignore configuration.
++    /// The root and path must be normalized absolute paths. File contents and
++    /// directory entries are not read. Existing ancestor ignore files are read
++    /// through the same matcher as `build`, including repository boundaries.
++    /// Depth-zero roots bypass ignore rules, as in the actual walker. The caller
++    /// applies its filter_entry predicate separately (there is no DirEntry).
++    /// This host extension requires hidden(false), no type/max-size/stdout filters.
++    pub fn snapshot_path_ignored(&self, root: &Path, path: &Path) -> Result<bool, Error> {
++        let relative = match path.strip_prefix(root) {
++            Ok(relative) => relative,
++            Err(_) => return Ok(true),
++        };
++        let ig_root = self
++            .get_or_set_current_dir()
++            .map(|cwd| self.ig_builder.build_with_cwd(Some(cwd.to_path_buf())))
++            .unwrap_or_else(|| self.ig_builder.build());
++        let (mut ig, err) = ig_root.add_parents_absolute(Arc::new(root.to_path_buf()));
++        if let Some(err) = err {
++            return Err(err);
++        }
++        let parts = relative.components().collect::<Vec<_>>();
++        let mut current = root.to_path_buf();
++        for (index, part) in parts.iter().enumerate() {
++            let (child, err) = ig.add_child(&current);
++            if let Some(err) = err {
++                return Err(err);
++            }
++            ig = child;
++            current.push(part.as_os_str());
++            if ig.matched(&current, index + 1 < parts.len()).is_ignore() {
++                return Ok(true);
++            }
++        }
++        Ok(false)
+     }
+ 
+     /// Build a new `Walk` iterator.

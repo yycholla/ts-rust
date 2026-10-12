@@ -1,0 +1,167 @@
+{
+  "compiler": [
+    {
+      "file": "declaration-let.svelte",
+      "note": "Unprefixed let declaration tag, inferred runes mode"
+    },
+    {
+      "file": "declaration-const.svelte",
+      "note": "Unprefixed const declaration tag, inferred runes mode"
+    },
+    {
+      "file": "a11y-click.svelte",
+      "runes": true
+    },
+    {
+      "file": "default-select.svelte",
+      "runes": true,
+      "note": "Version-specific select defaultValue emission; runtime behavior checked separately"
+    },
+    {
+      "file": "await-disabled.svelte",
+      "runes": true,
+      "note": "Async experimental flag remains disabled on both sides; rejection is not async support"
+    },
+    {
+      "file": "legacy-inferred.svelte"
+    },
+    {
+      "file": "legacy-inferred.svelte",
+      "name": "legacy-explicit",
+      "runes": false
+    },
+    {
+      "file": "runes-inferred.svelte"
+    },
+    {
+      "file": "attachment.svelte",
+      "runes": true
+    },
+    {
+      "file": "declaration-lexical.svelte",
+      "note": "Declaration-like text in strings and comments must not trigger version rejection"
+    },
+    {
+      "file": "declaration-unicode.svelte",
+      "note": "Version-dependent diagnostic offsets after non-BMP Unicode and CRLF"
+    },
+    {
+      "file": "declaration-token-boundaries.svelte",
+      "note": "Leading declaration token diagnostic boundary regression"
+    },
+    {
+      "file": "declaration-comment-let.svelte",
+      "note": "Leading declaration token diagnostic boundary regression"
+    },
+    {
+      "file": "declaration-comment-const.svelte",
+      "note": "Leading declaration token diagnostic boundary regression"
+    },
+    {
+      "file": "declaration-comment-cr.svelte",
+      "note": "Leading declaration token diagnostic boundary regression"
+    },
+    {
+      "file": "declaration-comment-ls.svelte",
+      "note": "Leading declaration token diagnostic boundary regression"
+    },
+    {
+      "file": "declaration-comment-ps.svelte",
+      "note": "Leading declaration token diagnostic boundary regression"
+    },
+    {
+      "file": "declaration-malformed.svelte",
+      "note": "Leading declaration token diagnostic boundary regression"
+    },
+    {
+      "file": "declaration-missing-let.svelte",
+      "note": "Strict declaration validation and first-statement consumption control"
+    },
+    {
+      "file": "declaration-missing-multi.svelte",
+      "note": "Strict declaration validation and first-statement consumption control"
+    },
+    {
+      "file": "declaration-invalid-expression.svelte",
+      "note": "Strict declaration validation and first-statement consumption control"
+    },
+    {
+      "file": "declaration-missing-comment.svelte",
+      "note": "Strict declaration validation and first-statement consumption control"
+    },
+    {
+      "file": "declaration-second-statement.svelte",
+      "note": "Strict declaration validation and first-statement consumption control"
+    },
+    {
+      "file": "declaration-invalid-second.svelte",
+      "note": "Strict declaration validation and first-statement consumption control"
+    },
+    {
+      "file": "declaration-asi-invalid-second.svelte",
+      "note": "Strict declaration validation and first-statement consumption control"
+    },
+    {
+      "file": "declaration-trailing-comment.svelte",
+      "note": "Strict declaration validation and first-statement consumption control"
+    },
+    {
+      "file": "declaration-newline-continuation.svelte",
+      "note": "Strict declaration validation and first-statement consumption control"
+    },
+    {
+      "file": "declaration-valid-destructure.svelte",
+      "note": "Strict declaration validation and first-statement consumption control"
+    },
+    {
+      "file": "declaration-valid-types.svelte",
+      "note": "Strict declaration validation and first-statement consumption control"
+    },
+    {
+      "file": "declaration-bare-let.svelte",
+      "note": "Strict declaration validation and first-statement consumption control"
+    },
+    {
+      "file": "declaration-bare-const.svelte",
+      "note": "Strict declaration validation and first-statement consumption control"
+    },
+    {
+      "file": "declaration-uninitialized-let.svelte",
+      "note": "Strict declaration validation and first-statement consumption control"
+    },
+    {
+      "file": "declaration-comment-asi-second.svelte",
+      "note": "ASI within block-comment trivia before a malformed later declaration"
+    },
+    {
+      "file": "declaration-replay-error.svelte",
+      "note": "Eager error replay must preserve selected grammar and earlier-error ordering"
+    }
+  ],
+  "projects": [
+    {
+      "file": "typescript-valid.svelte",
+      "typescript": true,
+      "codes": []
+    },
+    {
+      "file": "typescript-invalid.svelte",
+      "typescript": true,
+      "codes": [
+        2322
+      ]
+    },
+    {
+      "file": "javascript-valid.svelte",
+      "typescript": false,
+      "codes": []
+    },
+    {
+      "file": "javascript-invalid.svelte",
+      "typescript": false,
+      "codes": [
+        2322
+      ]
+    }
+  ]
+}

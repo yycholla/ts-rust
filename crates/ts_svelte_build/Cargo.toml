@@ -1,0 +1,36 @@
+[package]
+name = "ts_svelte_build"
+version = "0.1.0"
+edition = "2024"
+license = "MIT AND Apache-2.0"
+publish = false
+
+[dependencies]
+serde = { version = "=1.0.228", features = ["derive"] }
+serde_json = "=1.0.150"
+base64 = "=0.22.1"
+sha2 = "=0.10.9"
+tokio = { version = "=1.52.3", features = ["rt-multi-thread", "macros"] }
+ts_svelte_kit = { path = "../ts_svelte_kit" }
+ts_svelte_kit_bundle = { path = "../ts_svelte_kit_bundle" }
+ts_svelte_bundle = { path = "../ts_svelte_bundle" }
+ts_svelte_compress = { path = "../ts_svelte_compress" }
+oxc_allocator = "=0.149.0"
+oxc_parser = "=0.149.0"
+oxc_ast = "=0.149.0"
+oxc_ast_visit = "=0.149.0"
+oxc_span = "=0.149.0"
+url = "=2.5.8"
+
+[workspace]
+resolver = "3"
+
+[patch."https://github.com/baseballyama/rsvelte"]
+rsvelte_core = { path = "../ts_svelte_compiler/vendor/rsvelte_core" }
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[[bin]]
+name = "svelte-build"
+path = "src/main.rs"

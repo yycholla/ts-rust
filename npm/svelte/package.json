@@ -1,0 +1,83 @@
+{
+  "name": "ts-rust-svelte",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Experimental Rust/WASM source foundation for Svelte tooling",
+  "license": "MIT AND Apache-2.0",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    },
+    "./ts_svelte.wasm": "./ts_svelte.wasm",
+    "./compiler": {
+      "types": "./compiler.d.ts",
+      "default": "./compiler.js"
+    },
+    "./compiler.wasm": "./generated/ts_svelte_compiler_bg.wasm",
+    "./tooling": {
+      "types": "./tooling.d.ts",
+      "default": "./tooling.js"
+    },
+    "./tooling.wasm": "./generated/ts_svelte_tools_bg.wasm",
+    "./semantic": {
+      "types": "./semantic-node.d.ts",
+      "node": "./semantic-node.js",
+      "browser": "./semantic-browser.js",
+      "default": "./semantic-browser.js"
+    },
+    "./semantic/core": {
+      "types": "./semantic.d.ts",
+      "default": "./semantic.js"
+    },
+    "./semantic.wasm": "./generated/ts_svelte_semantic.wasm",
+    "./formatter": {
+      "types": "./formatter.d.ts",
+      "default": "./formatter.js"
+    },
+    "./formatter.wasm": "./generated/ts_svelte_format_bg.wasm",
+    "./project": {
+      "types": "./project.d.ts",
+      "default": "./project.js"
+    }
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "ts_svelte.wasm",
+    "compiler.js",
+    "compiler.d.ts",
+    "compiler-worker.js",
+    "compiler-worker-runtime.js",
+    "generated",
+    "README.md",
+    "tooling.js",
+    "tooling.d.ts",
+    "tooling-worker.js",
+    "semantic.js",
+    "semantic.d.ts",
+    "semantic-node.js",
+    "semantic-node.d.ts",
+    "semantic-browser.js",
+    "semantic-browser.d.ts",
+    "semantic-client.js",
+    "semantic-client.d.ts",
+    "semantic-worker.js",
+    "worker-client.js",
+    "formatter.js",
+    "formatter-worker.js",
+    "formatter.d.ts",
+    "project.js",
+    "project.d.ts"
+  ],
+  "scripts": {
+    "build": "../../scripts/svelte/build.sh",
+    "test": "node --test --test-isolation=none test/*.test.mjs",
+    "build:semantic": "../../scripts/svelte/build-semantic.sh",
+    "test:semantic": "node --test --test-isolation=none test/semantic.test.mjs",
+    "build:formatter": "../../scripts/svelte/build-formatter.sh",
+    "test:project": "node --test --test-isolation=none test/project.test.mjs",
+    "test:formatter": "node --test --test-isolation=none test/formatter.test.mjs"
+  }
+}

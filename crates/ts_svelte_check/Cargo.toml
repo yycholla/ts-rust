@@ -1,0 +1,20 @@
+[package]
+name = "ts_svelte_check"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+publish = false
+
+[dependencies]
+ts_svelte_mapping = { path = "../ts_svelte_mapping" }
+ts_goport = { path = "../ts_goport", default-features = false }
+ts_svelte = { path = "../ts_svelte" }
+serde = { version = "=1.0.228", features = ["derive"] }
+serde_json = "=1.0.150"
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "svelte-ts-check"
+path = "src/main.rs"

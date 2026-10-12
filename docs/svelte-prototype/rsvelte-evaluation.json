@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-10",
+  "status": "candidate-for-evaluation-not-adopted",
+  "researchAgent": "/root/svelte_parser_research",
+  "localCheckout": "target/research/rsvelte",
+  "sourceCommit": "5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+  "facadeVersionAtSource": "0.12.6",
+  "svelteTargetAtSource": "5.57.1",
+  "applicationSvelteVersion": "5.53.11",
+  "license": "MIT",
+  "registryVerification": [
+    {
+      "command": "scripts/run-cargo-capped.sh info rsvelte@0.12.4",
+      "exit": 101,
+      "result": "Could not find rsvelte@0.12.4 in registry"
+    },
+    {
+      "command": "scripts/run-cargo-capped.sh info rsvelte",
+      "exit": 101,
+      "result": "Could not find rsvelte in registry"
+    }
+  ],
+  "sourceVerification": "git ls-remote and shallow clone succeeded. Cached web pages showed older 0.12.4/Svelte 5.56.10; live cloned source supersedes those version claims.",
+  "advantages": [
+    "Rust facade has owned compiler-neutral artifacts and no filesystem/cache/scheduler ownership",
+    "Engine::prepare shares analysis for client/server output",
+    "Optional projection feature exposes virtual TS/TSX and mapping artifacts",
+    "Existing WASM bindings are a useful reference"
+  ],
+  "unverified": [
+    "dependency build at this exact commit",
+    "native and WASM compatibility in our workspace",
+    "MoncuraHR 5.53.11 diagnostic/runtime compatibility",
+    "projection compatibility with pinned ts-rust checker",
+    "performance"
+  ],
+  "integrationRisks": [
+    "Source workspace patches OXC packages to Git revision 60fa13878c3808413268c462ddadbceaf71c38bb; dependency consumers do not automatically inherit workspace patches",
+    "Core uses OXC 0.149; avoid exposing OXC AST through our public API",
+    "wasm-target enables getrandom/wasm_js; inspect required imports/bindings before promising import-free compiler WASM",
+    "Existing rsvelte CLI/LSP use child TypeScript processes and preprocessing sidecars, which are not our Rust/WASM endpoint",
+    "Current ts_goport contentmapper transform uses Box::leak for projected text; measure sustained editor memory before integration"
+  ],
+  "recommendation": "Evaluate exact pinned rsvelte source as backend before writing a Svelte parser; do not adopt an unverified registry version or silently upgrade MoncuraHR.",
+  "nextSemanticSlice": [
+    "Two-component typed props with TS and JS scripts",
+    "Instance/module scripts, runes, interpolation, if blocks",
+    "Real diagnostics for bad prop types, undefined names and invalid template methods",
+    "Emoji/CRLF range parity and incomplete editor documents",
+    "Native/WASM projection parity and client/server compile smoke tests"
+  ],
+  "futureParallelOwnership": {
+    "root": "Public API, manifests/pins, ts-rust integration, runtime queue",
+    "backendLane": "crates/ts_svelte/src/backend/rsvelte.rs after shared API is fixed",
+    "oracleLane": "scripts/svelte/oracle-* and isolated fixtures",
+    "hostLane": "JS worker transport after shared API is fixed",
+    "reviewerAuditor": "Read-only independent acceptance"
+  },
+  "references": [
+    "https://github.com/baseballyama/rsvelte/tree/5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b",
+    "https://github.com/baseballyama/rsvelte/blob/5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b/crates/rsvelte/README.md",
+    "https://github.com/baseballyama/rsvelte/blob/5ed8ea3a3401b9fbbe780d3b18d6f90073291d6b/crates/rsvelte_core/Cargo.toml"
+  ]
+}

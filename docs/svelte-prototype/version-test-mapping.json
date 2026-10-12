@@ -1,0 +1,15 @@
+{
+  "batch": "svelte-versions-3",
+  "base": "docs/svelte-prototype/evidence/batch-2-run-3/runtime/report.json",
+  "mappings": [
+    {
+      "old": "unsupportedClientControls/select-default-value",
+      "new": "version-runtime/5.53.11-select",
+      "reason": "Previously rejected missing set_default_select_value helper. Version-aware AST emission now follows the older compiler path. Replace rejection with successful client/server compilation, SSR equality, four cross-hydration combinations, two fresh mounts, selection and form reset equality against exact Svelte5.53.11. All other version pins receive the same runtime comparison.",
+      "fixture": "scripts/svelte/fixtures/runtime/DefaultSelect.svelte",
+      "oracle": "target/svelte-versions/svelte-5.53.11/node_modules/svelte"
+    }
+  ],
+  "unchanged": "unsupportedClientControls/development-client remains an explicit rejection for5.53.11",
+  "status": "proposed mapping; final verdict and evidence recorded in batch state"
+}
