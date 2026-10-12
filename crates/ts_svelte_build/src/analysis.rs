@@ -6,7 +6,7 @@ use oxc_ast::ast::{ImportDeclarationSpecifier, Statement};
 use oxc_parser::Parser;
 use oxc_span::SourceType;
 
-fn runtime_imports(file: &str, source: &str) -> Result<BTreeSet<String>, String> {
+pub(crate) fn runtime_imports(file: &str, source: &str) -> Result<BTreeSet<String>, String> {
     let arena = Allocator::default();
     let parsed = Parser::new(
         &arena,
@@ -133,7 +133,24 @@ pub(crate) fn enrich(
             let module = module.ok_or_else(|| {
                 format!("Analysis module {id} was not present in the actual server graph")
             })?;
-            let resolved=module.imports.iter().find(|edge|**edge==target || **edge==canonical(&target)).ok_or_else(||format!("Analysis resolution {id} -> {specifier} -> {target} is not an actual static graph edge"))?;
+            let Some(resolved) = module
+                .imports
+                .iter()
+                .find(|edge| **edge == target || **edge == canonical(&target))
+            else {
+                // The TypeScript transform elides imports whose bindings are
+                // unused, so a supplied resolution may have no edge. Dropping
+                // it is always safe: an elided import cannot affect exports,
+                // and a used import stays unresolved (unknown) instead of
+                // trusting a resolution the bundler did not make.
+                if owned.is_none() {
+                    snapshot.imports.remove(&specifier);
+                    continue;
+                }
+                return Err(format!(
+                    "Analysis resolution {id} -> {specifier} -> {target} is not an actual static graph edge"
+                ));
+            };
             target.clone_from(resolved);
             snapshot.imports.insert(specifier, target.clone());
             if let Some(source) = static_modules

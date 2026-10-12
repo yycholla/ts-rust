@@ -21,7 +21,7 @@ use ts_svelte_kit::{
     build_plan::{ResolvedBuildPlanConfig, ResolvedConfigAlias, ResolvedInstrumentation},
     build_server::{ResolvedServerInput, ResolvedServerOptions},
     sync_config::{self, SyncConfig},
-    vite_env,
+    vite_env, vite_ssr,
 };
 
 const ADAPTER_NODE: &str = "@sveltejs/adapter-node";
@@ -457,6 +457,35 @@ pub fn load(input: &ProjectInput) -> Result<LoadedProject, String> {
         }
     }
 
+    let sentry = match &vite.sentry {
+        Some(options) => Some(sentry_options(
+            &mut loader,
+            options,
+            tracing_server,
+            adapter_name.as_deref(),
+            adapter_options_out(&adapter_options),
+        )?),
+        None => None,
+    };
+    let tailwind = if vite.tailwind {
+        Some(tailwind_options(&mut loader, &root, &root.join(&sync.src))?)
+    } else {
+        None
+    };
+
+    // Vite's own loadEnv: envDir defaults to the root, envPrefix to VITE_. It
+    // runs after Kit's (which may have set VITE_USER_NODE_ENV and friends).
+    let mut vite_process = input.environment.clone();
+    if vite_process.get("NODE_ENV").is_none_or(String::is_empty) {
+        vite_process.insert("NODE_ENV".into(), "production".into());
+    }
+    let _ = vite_env::load_env(
+        &input.mode,
+        &root.join(&sync.env_dir),
+        &[""],
+        &mut vite_process,
+    )?;
+    let vite_values = vite_env::load_env(&input.mode, &root, &["VITE_"], &mut vite_process)?;
     let config = ResolvedBuildPlanConfig {
         out_dir: root.join(&sync.out_dir),
         routes_directory: root.join(&sync.routes),
@@ -478,12 +507,15 @@ pub fn load(input: &ProjectInput) -> Result<LoadedProject, String> {
         remote_modules: vec![],
         server_conditions: vec!["svelte".into(), "node".into(), "production".into()],
         client_conditions: vec!["svelte".into(), "browser".into(), "production".into()],
-        server_externals: vite.ssr_external.clone(),
+        // Vite's externalization (below) covers configured ssr.external too.
+        server_externals: vec![],
+        vite_env: vite_values,
     };
+    let ssr_external = vite_ssr::kit2_server_policy(&root, &vite.ssr_external, &[])?;
 
-    // Module snapshots for native analysis: every universal/server node module,
-    // endpoint and hook. Imports stay unresolved until the bundle graph fills them.
-    let mut modules = BTreeMap::new();
+    // Module snapshots for native analysis: every universal/server node module
+    // and endpoint, plus the project-local modules they import at runtime.
+    // Resolutions are checked against the actual server graph by the build.
     let mut module_files: BTreeSet<PathBuf> = BTreeSet::new();
     for node in &inventory.nodes {
         module_files.extend(node.universal.iter().cloned());
@@ -492,12 +524,8 @@ pub fn load(input: &ProjectInput) -> Result<LoadedProject, String> {
     for route in &inventory.routes {
         module_files.extend(route.endpoint.iter().cloned());
     }
-    for file in module_files {
-        modules.insert(
-            file.to_string_lossy().into_owned(),
-            json!({"source": read_text(&file)?, "imports": {}}),
-        );
-    }
+    let resolver = LocalResolver::new(&root, &config);
+    let modules = local_module_graph(&resolver, module_files)?;
 
     // Static assets: Kit copies kit.files.assets verbatim.
     let mut static_assets = BTreeMap::new();
@@ -573,8 +601,9 @@ pub fn load(input: &ProjectInput) -> Result<LoadedProject, String> {
             "svelteVersion": svelte_version,
             "typescriptVersion": null,
             "runes": runes,
-            "minify": false,
-            "sourcemap": true,
+            "minify": vite.minify,
+            "serverMinify": false,
+            "sourcemap": vite.sourcemap,
             "tsconfig": null,
             "mdsvex": mdsvex,
             "typescript": {},
@@ -583,7 +612,11 @@ pub fn load(input: &ProjectInput) -> Result<LoadedProject, String> {
         "modules": modules,
         "staticAssets": static_assets,
         "staticAssetsComplete": true,
+        "tailwind": tailwind,
+        "sentry": sentry,
+        "treeshake": vite.treeshake,
         "define": vite.define,
+        "ssrExternal": ssr_external,
     });
     Ok(LoadedProject {
         request,
@@ -591,7 +624,377 @@ pub fn load(input: &ProjectInput) -> Result<LoadedProject, String> {
     })
 }
 
+fn adapter_options_out(options: &Option<Value>) -> String {
+    options
+        .as_ref()
+        .and_then(|options| options.get("out"))
+        .and_then(Value::as_str)
+        .unwrap_or("build")
+        .to_owned()
+}
+
+/// `sentrySvelteKit` 10.43.0 option resolution for the module rewrites.
+fn sentry_options(
+    loader: &mut Loader,
+    options: &Value,
+    tracing_server: bool,
+    adapter: Option<&str>,
+    adapter_out: String,
+) -> Result<Value, String> {
+    let (load, server_load) = match options.get("autoInstrument") {
+        None | Some(Value::Bool(true)) => (true, true),
+        Some(Value::Bool(false)) => (false, false),
+        Some(Value::Object(map)) => (
+            map.get("load").and_then(Value::as_bool).unwrap_or(true),
+            map.get("serverLoad")
+                .and_then(Value::as_bool)
+                .unwrap_or(true),
+        ),
+        Some(_) => return Err("sentrySvelteKit autoInstrument must be static".into()),
+    };
+    let upload = options.get("autoUploadSourceMaps").map_or(Ok(true), |v| {
+        v.as_bool().ok_or("autoUploadSourceMaps must be a boolean")
+    })?;
+    // getAdapterOutputDir: adapter-node's `out`; other adapters are not ported.
+    let mut global_values = Map::new();
+    if upload {
+        if adapter != Some(ADAPTER_NODE) {
+            loader.require(
+                "vite",
+                "sentry",
+                "Sentry output directory is only derived for adapter-node",
+            );
+        }
+        global_values.insert("__sentry_sveltekit_output_dir".into(), json!(adapter_out));
+    }
+    Ok(json!({
+        "load": load,
+        "serverLoad": server_load,
+        "onlyInstrumentClient": tracing_server,
+        "serverHooks": "src/hooks.server",
+        "globalValues": global_values,
+    }))
+}
+
+/// Kit's Vite aliases in precedence order (`$lib`, `kit.alias`, then user
+/// `resolve.alias`), relative paths and Vite's default extension probing.
+/// Only project-local, non-`node_modules` script files are followed.
+struct LocalResolver {
+    root: PathBuf,
+    aliases: Vec<(String, PathBuf, bool)>,
+    names: BTreeSet<String>,
+}
+const SCRIPT_EXTENSIONS: [&str; 7] = [".mjs", ".js", ".mts", ".ts", ".jsx", ".tsx", ".json"];
+impl LocalResolver {
+    fn new(root: &Path, config: &ResolvedBuildPlanConfig) -> Self {
+        let mut aliases = vec![("$lib".to_owned(), config.lib_directory.clone(), false)];
+        for alias in &config.aliases {
+            match alias.name.strip_suffix("/*") {
+                Some(base) => aliases.push((base.to_owned(), alias.path.clone(), true)),
+                None => aliases.push((alias.name.clone(), alias.path.clone(), false)),
+            }
+        }
+        let names = config
+            .aliases
+            .iter()
+            .map(|alias| alias.name.clone())
+            .collect();
+        Self {
+            root: root.to_path_buf(),
+            aliases,
+            names,
+        }
+    }
+    fn alias(&self, specifier: &str) -> Option<PathBuf> {
+        for (name, path, children) in &self.aliases {
+            if *children {
+                if let Some(rest) = specifier.strip_prefix(&format!("{name}/")) {
+                    return Some(path.join(rest));
+                }
+            } else if specifier == name {
+                return Some(path.clone());
+            } else if !self.names.contains(&format!("{name}/*")) {
+                if let Some(rest) = specifier.strip_prefix(&format!("{name}/")) {
+                    return Some(path.join(rest));
+                }
+            }
+        }
+        None
+    }
+    fn resolve(&self, specifier: &str, importer: &Path) -> Option<PathBuf> {
+        let base = if specifier.starts_with("./") || specifier.starts_with("../") {
+            resolve(importer.parent()?, specifier)
+        } else {
+            self.alias(specifier)?
+        };
+        let mut candidates = vec![base.clone()];
+        for extension in SCRIPT_EXTENSIONS {
+            candidates.push(PathBuf::from(format!("{}{extension}", base.display())));
+        }
+        // Vite resolves a `.js` import from TypeScript to the `.ts` source.
+        if let Some(stem) = base.to_str().and_then(|path| path.strip_suffix(".js")) {
+            candidates.push(PathBuf::from(format!("{stem}.ts")));
+            candidates.push(PathBuf::from(format!("{stem}.tsx")));
+        }
+        for extension in SCRIPT_EXTENSIONS {
+            candidates.push(base.join(format!("index{extension}")));
+        }
+        let found = candidates
+            .into_iter()
+            .find(|path| path.is_file())?
+            .canonicalize()
+            .ok()?;
+        let script = found
+            .extension()
+            .and_then(|e| e.to_str())
+            .is_some_and(|e| matches!(e, "mjs" | "js" | "mts" | "ts" | "jsx" | "tsx"));
+        let local = found.starts_with(&self.root)
+            && !found.components().any(|c| c.as_os_str() == "node_modules");
+        (script && local).then_some(found)
+    }
+}
+
+/// Source snapshots for the analysis roots and their transitive local imports.
+fn local_module_graph(
+    resolver: &LocalResolver,
+    roots: BTreeSet<PathBuf>,
+) -> Result<BTreeMap<String, Value>, String> {
+    let mut modules = BTreeMap::new();
+    let mut queue: std::collections::VecDeque<PathBuf> = roots.into_iter().collect();
+    while let Some(file) = queue.pop_front() {
+        let id = file.to_string_lossy().into_owned();
+        if modules.contains_key(&id) {
+            continue;
+        }
+        if modules.len() >= 20_000 {
+            return Err("Analysis module graph exceeds 20000 local modules".into());
+        }
+        let source = read_text(&file)?;
+        let mut imports = Map::new();
+        for specifier in crate::analysis::runtime_imports(&id, &source)? {
+            if let Some(target) = resolver.resolve(&specifier, &file) {
+                imports.insert(specifier, json!(target));
+                queue.push_back(target);
+            }
+        }
+        modules.insert(id, json!({"source": source, "imports": imports}));
+    }
+    Ok(modules)
+}
+
+/// Installed plugins verified to define only dev-server hooks
+/// (`configureServer`): they cannot change a build.
+const DEV_SERVER_PLUGINS: &[(&str, &str)] = &[("vite-plugin-devtools-json", "1.0.0")];
+
+/// A local plugin factory whose returned object only names itself and uses
+/// dev/preview server hooks, which never run during `vite build`.
+fn dev_server_only(plugin: &Value) -> bool {
+    let Some(returns) = plugin
+        .get("$localCall")
+        .and_then(|call| call.get("returns"))
+    else {
+        return false;
+    };
+    let Some(object) = returns.as_object() else {
+        return false;
+    };
+    !object.contains_key("$nativeDynamicSpread")
+        && ordered_keys(object).iter().all(|key| {
+            matches!(
+                key.as_str(),
+                "name" | "configureServer" | "configurePreviewServer"
+            )
+        })
+}
+
+/// Vite `build` options for the Kit client/server builds. Kit passes `minify`
+/// and `sourcemap` to its client build; the official server output stays
+/// unminified. Logging-only options are accepted without effect.
+fn vite_build(
+    loader: &mut Loader,
+    project: &mut ViteProject,
+    build: &Map<String, Value>,
+) -> Result<(), String> {
+    for key in ordered_keys(build) {
+        let value = &build[&key];
+        match key.as_str() {
+            "minify" => {
+                project.minify = match value {
+                    Value::Bool(enabled) => *enabled,
+                    Value::String(name) if name == "esbuild" || name == "oxc" => true,
+                    Value::String(name) if name == "false" => false,
+                    _ => {
+                        loader.require(
+                            "vite",
+                            "build",
+                            format!("build.minify {value} is not ported"),
+                        );
+                        true
+                    }
+                }
+            }
+            "sourcemap" => match value {
+                Value::Bool(enabled) => project.sourcemap = *enabled,
+                _ => loader.require(
+                    "vite",
+                    "build",
+                    format!("build.sourcemap {value} is not ported"),
+                ),
+            },
+            // Rolldown's default output target is esnext.
+            "target" if value == "esnext" => {}
+            "rollupOptions" => {
+                let options =
+                    object(Some(value), "build.rollupOptions")?.ok_or("build.rollupOptions")?;
+                for option in ordered_keys(options) {
+                    let value = &options[&option];
+                    match option.as_str() {
+                        // A warning filter changes logs only.
+                        "onwarn" => {}
+                        "output"
+                            if object(Some(value), "output")
+                                .ok()
+                                .flatten()
+                                .is_some_and(|o| ordered_keys(o).is_empty()) => {}
+                        "treeshake" => {
+                            let map = object(Some(value), "treeshake")?.ok_or("treeshake")?;
+                            let mut treeshake = Map::new();
+                            for name in ordered_keys(map) {
+                                match (name.as_str(), &map[&name]) {
+                                    (
+                                        "moduleSideEffects"
+                                        | "propertyReadSideEffects"
+                                        | "unknownGlobalSideEffects",
+                                        Value::Bool(flag),
+                                    ) => {
+                                        treeshake.insert(name.clone(), json!(flag));
+                                    }
+                                    _ => loader.require(
+                                        "vite",
+                                        "build",
+                                        format!("treeshake.{name} is not ported"),
+                                    ),
+                                }
+                            }
+                            project.treeshake = Some(Value::Object(treeshake));
+                        }
+                        other => loader.require(
+                            "vite",
+                            "build",
+                            format!("build.rollupOptions.{other} is not ported"),
+                        ),
+                    }
+                }
+            }
+            // Logging and size reporting only.
+            "reportCompressedSize" | "chunkSizeWarningLimit" => {}
+            // Vite defaults the native pipeline already uses.
+            "assetsInlineLimit" if value.as_f64() == Some(4096.0) => {}
+            "cssCodeSplit" if value == true => {}
+            "cssMinify" if value == true => {}
+            other => loader.require(
+                "vite",
+                "build",
+                format!("build.{other} = {value} is not ported"),
+            ),
+        }
+    }
+    Ok(())
+}
+
+/// Tailwind features that make `@tailwindcss/vite` rewrite a stylesheet.
+const TAILWIND_DIRECTIVES: [&str; 12] = [
+    "@tailwind",
+    "@apply",
+    "@theme",
+    "@utility",
+    "@variant",
+    "@custom-variant",
+    "@source",
+    "@plugin",
+    "@config",
+    "@reference",
+    "theme(",
+    "--theme(",
+];
+
+/// `@tailwindcss/vite` transforms every CSS module but only rewrites those using
+/// Tailwind features. The native pipeline needs those stylesheets explicitly:
+/// project CSS files under `src` that import `tailwindcss` or use a directive.
+/// A dependency stylesheet with directives fails loudly in the CSS pipeline.
+fn tailwind_options(loader: &mut Loader, root: &Path, src: &Path) -> Result<Value, String> {
+    let mut entries = vec![];
+    let mut plugins = BTreeSet::new();
+    let mut stack = vec![src.to_path_buf()];
+    while let Some(directory) = stack.pop() {
+        let mut items = std::fs::read_dir(&directory)
+            .map_err(|e| format!("{}: {e}", directory.display()))?
+            .collect::<Result<Vec<_>, _>>()
+            .map_err(|e| e.to_string())?;
+        items.sort_by_key(|item| item.file_name());
+        for item in items {
+            let path = item.path();
+            if path.is_dir() {
+                if item.file_name() != "node_modules" {
+                    stack.push(path);
+                }
+                continue;
+            }
+            if path.extension().is_none_or(|ext| ext != "css") {
+                continue;
+            }
+            let text = read_text(&path)?;
+            let imports_tailwind = text.contains("'tailwindcss") || text.contains("\"tailwindcss");
+            if !imports_tailwind && !TAILWIND_DIRECTIVES.iter().any(|d| text.contains(d)) {
+                continue;
+            }
+            for line in text.lines() {
+                if let Some(rest) = line.trim_start().strip_prefix("@plugin") {
+                    let rest = rest.trim_start();
+                    let quote = rest.chars().next().filter(|c| *c == '\'' || *c == '"');
+                    if let Some(quote) = quote {
+                        if let Some(name) = rest[1..].split(quote).next() {
+                            plugins.insert(name.to_owned());
+                        }
+                    }
+                }
+            }
+            entries.push(path);
+        }
+    }
+    let mut registrations = vec![];
+    for plugin in plugins {
+        if plugin == "@tailwindcss/typography" {
+            let version = loader.package_version(&plugin)?;
+            if version != "0.5.19" {
+                loader.require(
+                    "tailwind",
+                    "plugin_version",
+                    format!("Native Typography is 0.5.19; installed {version}"),
+                );
+            }
+            registrations
+                .push(json!({"specifier": plugin, "implementation": plugin, "version": version}));
+        } else {
+            loader.require(
+                "tailwind",
+                "plugin",
+                format!("Tailwind plugin {plugin} has no native implementation"),
+            );
+        }
+    }
+    Ok(json!({"entries": entries, "root": root, "plugins": registrations}))
+}
+
 struct ViteProject {
+    /// `@tailwindcss/vite` is among the plugins.
+    tailwind: bool,
+    /// The static options object of `sentrySvelteKit(...)`, when used.
+    sentry: Option<Value>,
+    /// Client minification: Vite's client default is esbuild minification.
+    minify: bool,
+    sourcemap: bool,
+    treeshake: Option<Value>,
     aliases: Vec<(String, PathBuf)>,
     ssr_external: Vec<String>,
     define: BTreeMap<String, String>,
@@ -604,6 +1007,11 @@ fn vite_config(
     input: &ProjectInput,
 ) -> Result<ViteProject, String> {
     let mut project = ViteProject {
+        tailwind: false,
+        sentry: None,
+        minify: true,
+        sourcemap: false,
+        treeshake: None,
         aliases: vec![],
         ssr_external: vec![],
         define: input.define.clone(),
@@ -727,23 +1135,57 @@ fn vite_config(
     if let Some(Value::Array(plugins)) = config.get("plugins") {
         for plugin in plugins {
             match call(plugin) {
-                Some(("@sveltejs/kit/vite", "sveltekit", [])) | Some(("@tailwindcss/vite", "default", [])) => {}
+                Some(("@sveltejs/kit/vite", "sveltekit", [])) => {}
+                Some(("@tailwindcss/vite", "default", [])) => project.tailwind = true,
+                Some(("@sentry/sveltekit", "sentrySvelteKit", arguments))
+                    if arguments.len() <= 1 =>
+                {
+                    let options = arguments.first().map(plain).unwrap_or_else(|| json!({}));
+                    if options.to_string().contains("$nativeDynamic") {
+                        loader.require("vite", "sentry", "sentrySvelteKit options must be static");
+                    }
+                    loader.require(
+                        "vite",
+                        "sentry",
+                        "Sentry release/debug-ID injection and source-map flattening (@sentry/vite-plugin) are not ported; load wrapping and global values are",
+                    );
+                    project.sentry = Some(options);
+                }
+                Some((module, "default", []))
+                    if DEV_SERVER_PLUGINS.iter().any(|(name, version)| {
+                        *name == module && loader.package_version(name).is_ok_and(|v| v == *version)
+                    }) => {}
                 Some((module, export, _)) => loader.require(
                     "vite",
                     "plugin",
                     format!("Vite plugin {module}#{export} has no native equivalent"),
                 ),
+                None if dev_server_only(plugin) => {}
                 None => loader.require(
                     "vite",
                     "plugin",
-                    "Local Vite plugin has no native equivalent (development-only plugins can be ignored)",
+                    format!("Local Vite plugin {plugin} has no native equivalent"),
                 ),
             }
         }
     }
-    for (key, label) in [("build", "build options"), ("esbuild", "esbuild options")] {
-        if config.contains_key(key) {
-            loader.require("vite", key, format!("Vite {label} are not ported"));
+    if let Some(build) = object(config.get("build"), "vite build")? {
+        vite_build(loader, &mut project, build)?;
+    }
+    if let Some(esbuild) = object(config.get("esbuild"), "vite esbuild")? {
+        for key in ordered_keys(esbuild) {
+            match (key.as_str(), &esbuild[&key]) {
+                // `drop: ['debugger']`: Rolldown's client minifier drops debugger
+                // statements; esbuild's TS-transform drop is not ported.
+                ("drop", value) if is_dynamic(value) || value == &json!(["debugger"]) || value == &json!([]) => {
+                    loader.require(
+                        "vite",
+                        "esbuild",
+                        "esbuild.drop on TypeScript transforms is not ported (client minification drops debugger)",
+                    )
+                }
+                (other, _) => loader.require("vite", "esbuild", format!("esbuild.{other} is not ported")),
+            }
         }
     }
     Ok(project)

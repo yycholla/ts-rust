@@ -498,7 +498,11 @@ impl<'i> TokenList<'i> {
           color.to_css(dest, is_custom_property)?;
         }
         TokenOrValue::Url(url) => {
-          if dest.dependencies.is_some() && is_custom_property && !url.is_absolute() {
+          if dest.dependencies.is_some()
+            && is_custom_property
+            && !dest.relative_urls_in_custom_properties
+            && !url.is_absolute()
+          {
             return Err(dest.error(
               PrinterErrorKind::AmbiguousUrlInCustomProperty {
                 url: url.url.as_ref().to_owned(),

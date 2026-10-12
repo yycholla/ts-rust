@@ -89,6 +89,16 @@ pub struct BuildRequest {
     /// not be supplied here or allowed to replace planner-owned modules.
     #[serde(default)]
     pub sources: BTreeMap<PathBuf, String>,
+    /// Vite server-build externalization for the Kit server graph (bare ids
+    /// after aliasing). None keeps only `kit.config.serverExternals`.
+    #[serde(default)]
+    pub ssr_external: Option<ts_svelte_kit::vite_ssr::SsrExternalPolicy>,
+    /// The application's `build.rollupOptions.treeshake` for the Kit graphs.
+    #[serde(default)]
+    pub treeshake: Option<ts_svelte_bundle::Treeshake>,
+    /// `@sentry/sveltekit` Vite plugin module rewrites, when that plugin is used.
+    #[serde(default)]
+    pub sentry: Option<SentryBuildOptions>,
     /// User Vite `define` entries (identifier -> JavaScript expression source).
     /// Kit's own defines take precedence on the same key, as in Vite's merge.
     #[serde(default)]
@@ -100,6 +110,29 @@ pub struct BuildRequest {
     /// an explicitly empty directory. False prevents final manifest completion.
     pub static_assets_complete: bool,
 }
+/// `sentrySvelteKit()` options that change application modules (10.43.0).
+#[derive(Debug, Clone, Deserialize)]
+#[serde(rename_all = "camelCase", deny_unknown_fields)]
+pub struct SentryBuildOptions {
+    pub load: bool,
+    pub server_load: bool,
+    /// Kit tracing is enabled: only the client graph is wrapped.
+    pub only_instrument_client: bool,
+    pub server_hooks: String,
+    #[serde(default)]
+    pub global_values: serde_json::Map<String, Value>,
+}
+impl SentryBuildOptions {
+    /// The plugin's per-build `load` hook decisions.
+    pub fn bundle_options(&self, server: bool) -> ts_svelte_bundle::sentry::SentryOptions {
+        ts_svelte_bundle::sentry::SentryOptions {
+            wrap_load: self.load && !(self.only_instrument_client && server),
+            wrap_server_load: self.server_load && !self.only_instrument_client,
+            server_hooks: self.server_hooks.clone(),
+            global_values: self.global_values.clone(),
+        }
+    }
+}
 #[derive(Debug, Clone, Deserialize)]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
 pub struct CompilerSettings {
@@ -109,8 +142,12 @@ pub struct CompilerSettings {
     pub allow_prerelease: bool,
     #[serde(default)]
     pub runes: Option<bool>,
+    /// Client (and service worker) JavaScript and CSS minification.
     #[serde(default)]
     pub minify: bool,
+    /// Server graph minification; Vite's server environment defaults to off.
+    #[serde(default)]
+    pub server_minify: bool,
     #[serde(default = "enabled")]
     pub sourcemap: bool,
     #[serde(default)]
@@ -179,8 +216,20 @@ pub struct BuildReport {
     pub instrumentation: Option<instrumentation::ServerInstrumentation>,
     pub service_worker: Option<service_worker::ServiceWorkerOutput>,
     pub generated_sources: BTreeMap<PathBuf, String>,
+    /// Requirements the caller explicitly accepted (`stage/code`); they do not
+    /// block completion but stay reported.
+    pub accepted_requirements: Vec<Requirement>,
 }
 impl BuildReport {
+    /// Loader requirements block completion like the build's own, except those
+    /// whose `stage/code` the caller accepted explicitly.
+    pub fn add_loader_requirements(&mut self, requirements: Vec<Requirement>, accepted: &[String]) {
+        let (accepted, blocking): (Vec<_>, Vec<_>) = requirements
+            .into_iter()
+            .partition(|r| accepted.contains(&format!("{}/{}", r.stage, r.code)));
+        self.accepted_requirements.extend(accepted);
+        self.add_requirements(blocking);
+    }
     /// Loader requirements block completion like the build's own.
     pub fn add_requirements(&mut self, requirements: Vec<Requirement>) {
         if !requirements.is_empty() && self.status == "complete" {
@@ -210,6 +259,7 @@ impl BuildReport {
             instrumentation: None,
             service_worker: None,
             generated_sources: BTreeMap::new(),
+            accepted_requirements: vec![],
         }
     }
     fn requirement(&mut self, stage: &str, code: &str, message: impl Into<String>) {

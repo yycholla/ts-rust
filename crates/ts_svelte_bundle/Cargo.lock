@@ -864,6 +864,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "glob"
+version = "0.3.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e4eba85ea1d0a966a983acd07deee566e67395d2d96b6fb39e62b5a833f1eb0b"
+
+[[package]]
 name = "globset"
 version = "0.4.20"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3759,8 +3765,15 @@ dependencies = [
  "anyhow",
  "base64 0.22.1",
  "cssparser",
+ "glob",
  "lightningcss",
  "oxc_allocator 0.149.0",
+ "oxc_ast 0.149.0",
+ "oxc_ast_visit 0.149.0",
+ "oxc_parser 0.149.0",
+ "oxc_resolver",
+ "oxc_span 0.149.0",
+ "regress",
  "rolldown",
  "rolldown_common",
  "rolldown_error",
@@ -3769,10 +3782,12 @@ dependencies = [
  "serde",
  "serde_json",
  "sha2",
+ "string_wizard",
  "tokio",
  "ts_svelte",
  "ts_svelte_compiler",
  "ts_svelte_css",
+ "ts_svelte_kit",
  "ts_svelte_preprocess",
  "ts_svelte_transpile",
  "ts_tailwind",
@@ -3808,6 +3823,25 @@ dependencies = [
  "serde",
  "serde_json",
  "ts_svelte",
+]
+
+[[package]]
+name = "ts_svelte_kit"
+version = "0.1.0"
+dependencies = [
+ "glob",
+ "oxc_allocator 0.149.0",
+ "oxc_ast 0.149.0",
+ "oxc_ast_visit 0.149.0",
+ "oxc_parser 0.149.0",
+ "oxc_span 0.149.0",
+ "oxc_syntax 0.149.0",
+ "regress",
+ "serde",
+ "serde_json",
+ "sha2",
+ "unicode-normalization",
+ "url",
 ]
 
 [[package]]

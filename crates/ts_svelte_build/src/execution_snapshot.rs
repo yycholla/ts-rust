@@ -44,9 +44,23 @@ pub struct Bootstrap {
     pub manifest_entry: String,
     pub initialization: Initialization,
     pub environment: BTreeMap<String, String>,
+    /// Sent as base64 strings: number arrays cost about 3.6 JSON bytes per byte.
+    #[serde(serialize_with = "base64_map")]
     pub assets: BTreeMap<String, Vec<u8>>,
     // RuntimeLimits intentionally omitted: the standalone runtime applies its
     // declared defaults, which the bounds below also respect.
+}
+pub(crate) fn base64_map<S: serde::Serializer>(
+    map: &BTreeMap<String, Vec<u8>>,
+    serializer: S,
+) -> Result<S::Ok, S::Error> {
+    use base64::Engine as _;
+    serializer.collect_map(map.iter().map(|(file, bytes)| {
+        (
+            file,
+            base64::engine::general_purpose::STANDARD.encode(bytes),
+        )
+    }))
 }
 #[derive(Debug, Serialize)]
 #[serde(tag = "profile", rename_all = "camelCase")]

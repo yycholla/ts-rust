@@ -589,7 +589,7 @@
     "authorization": "User requests full parity without milestone check-ins, benchmarks, trials or independent audits until parity is achieved; prototype judgement delegated to root.",
     "scope": "Native Svelte/Kit compiler, checker, lint and editor/build functionality; JS/WASM interfaces; registered version window",
     "next": [
-      "Native MoncuraHR build: Tailwind entries, CSS sourcemap/url fixes, Vite SSR externalization, Sentry plugin behaviors, import.meta.glob and ?raw, then compare with official build",
+      "Native MoncuraHR build follow-ups: explain 86 MB native vs 69 MB official output; Sentry release/debug-ID injection; broaden browser comparison beyond 4 logged-out routes (authenticated flows need a backend); compare server/client chunk graphs and CSS with official; clippy cleanup in bundle/css (pre-existing)",
       "Connect native bundler, Markdown preprocessing and Kit build generators",
       "Finish lint fixes, native formatting and project reload in persistent editor",
       "Native CSS/assets/Tailwind and remaining Kit runtime build stages",
@@ -1462,6 +1462,18 @@
       {
         "path": "target/svelte-native-build-tests-28.log",
         "result": "124passed incl. 8 fixture-gated after BuildRequest.define (user Vite define, Kit defines win) and project loader."
+      },
+      {
+        "path": "target/svelte-native-project-1/build-15.json",
+        "result": "FIRST FULLY NATIVE MoncuraHR BUILD (isolated copy target/svelte-project-app-2/app, project op): planning 223, server 2045, static analysis 372 (no runtime execution), client 1541, manifest finalization 1611, instrumentation entry, nodes+manifests 218, adapter-node 5613 files incl. precompression, prerender skippedExplicitFalse. Status complete with two explicitly accepted loader requirements (vite/sentry release+debug-ID injection; vite/esbuild TS-transform drop). ~2m13s, 2.6 GB peak (not a benchmark)."
+      },
+      {
+        "path": "target/svelte-native-project-1/browser-1/report.json",
+        "result": "PASS official (target/svelte-project-build-official-1/app) vs native (out-2 build with identical node_modules): /health 200, /login 200 with hydrated input + Svelte password toggle, /oauth/login 400, /docs 200 with interactions; no page errors or failed requests. Chromium 149 headless (Playwright 1.59.1 expects 147) used for both sides."
+      },
+      {
+        "path": "target/svelte-native-project-1/suites",
+        "result": "kit 241 (incl. Vite loadEnv and vite-plugin-svelte crawl oracles), bundle 28, css 14, runtime 74, runtime WASM JS 16, build 124 incl. fixture-gated: all pass."
       }
     ],
     "integrationWork": [
@@ -1532,6 +1544,13 @@
       "visitorAwaitCorrection": "Implemented and measured: runtime12/14 pass with captured native Response.prototype.arrayBuffer and interleaving regression case."
     },
     "toolchain": "Nix cargo/rustc/rustfmt/clippy 1.98.1 + gcc-wrapper15.3.0 + lld21.1.8 on PATH; rustup stable proxy is not executable on this NixOS host. wasm-bindgen 0.2.129 at target/tools/wasm-bindgen-0.2.129-x86_64-unknown-linux-musl.",
-    "nativeProjectBuild": "Prerender driver deprioritized 2026-10-12: MoncuraHR prerenders nothing and has no remote functions (Kit returns before Server init). Critical path is the native project build of the isolated copy target/svelte-project-app-2/app."
+    "nativeProjectBuild": "Prerender driver deprioritized 2026-10-12: MoncuraHR prerenders nothing. Native MoncuraHR build passes browser parity checks (2026-10-12). Added: project loader (svelte/vite configs read statically), Vite loadEnv port, Vite SSR externalization (+vite-plugin-svelte crawl), import.meta.glob/?raw, Sentry load wrapping+global values, Tailwind entries, build option mapping (minify/sourcemap/treeshake), import.meta.env defines and client-only process.env, local import resolution for analysis, analysis stable-export rule (Opaque values; assumes successful module init), base64 runtime asset protocol, compression batching, lightningcss printer line counting + custom-property url patch, Node rebundle no-recompile.",
+    "knownDeviations": [
+      "Static analysis assumes successful module initialization (Kit's own analysis would fail the build otherwise).",
+      "import.meta.env unknown keys read a property of the env object (inherited Object.prototype names differ from Vite's undefined).",
+      "Server CSS is not minified (Vite minifies server CSS; only inlined above inlineStyleThreshold, default 0).",
+      "esbuild/Rolldown minifier output differs textually from esbuild's.",
+      "Deep external ids rewrite only for packages without exports (Vite processResult); import.meta.glob supports literal /, ./, ../ patterns with eager/import/query only."
+    ]
   }
 }

@@ -82,6 +82,7 @@ pub struct PrerenderInput {
     pub origin: String,
     pub base: String,
     pub app_dir: String,
+    #[serde(deserialize_with = "crate::byte_map::deserialize")]
     pub static_assets: BTreeMap<String, Vec<u8>>,
     #[serde(default)]
     pub limits: PrerenderLimits,

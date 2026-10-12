@@ -74,6 +74,10 @@ pub struct ResolvedBuildPlanConfig {
     pub client_conditions: Vec<String>,
     /// Explicit adapter/runtime externals, in addition to pinned Kit requirements.
     pub server_externals: Vec<String>,
+    /// Vite `loadEnv(mode, envDir, envPrefix)` values exposed on `import.meta.env`
+    /// (default prefix `VITE_`, default envDir the project root).
+    #[serde(default)]
+    pub vite_env: BTreeMap<String, String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -629,6 +633,40 @@ fn validate(input: &ResolvedNativeBuildInput) -> Result<bool, String> {
     Ok(kit3)
 }
 
+/// Vite 7.3.1 `vite:define` for `import.meta.env`: each env key is replaced by
+/// its JSON value, and the bare object by `serializeDefine` of all keys plus
+/// SSR (sorted). Vite replaces an unknown `import.meta.env.X` with `undefined`;
+/// here it reads a missing property of that object, which is also undefined
+/// except for inherited `Object.prototype` names.
+fn import_meta_env(input: &ResolvedNativeBuildInput, ssr: bool) -> BTreeMap<String, String> {
+    let config = &input.config;
+    // Kit sets Vite `base` to './' for relative paths; Vite resolves that to
+    // '/' for SSR builds and keeps './' for the client.
+    let base_url = if config.paths_relative || !config.assets_url.is_empty() {
+        if ssr { "/".to_owned() } else { "./".to_owned() }
+    } else {
+        format!("{}/", input.environment.base)
+    };
+    let mut values: BTreeMap<String, String> = config
+        .vite_env
+        .iter()
+        .map(|(key, value)| (key.clone(), js(value)))
+        .collect();
+    values.insert("BASE_URL".into(), js(&base_url));
+    values.insert("MODE".into(), js(&config.mode));
+    values.insert("DEV".into(), "false".into());
+    values.insert("PROD".into(), "true".into());
+    values.insert("SSR".into(), ssr.to_string());
+    let object = values
+        .iter()
+        .map(|(key, value)| format!("{}: {value}", js(key)))
+        .collect::<Vec<_>>()
+        .join(", ");
+    BTreeMap::from([
+        ("import.meta.env.BASE_URL".into(), js(&base_url)),
+        ("import.meta.env".into(), format!("{{{object}}}")),
+    ])
+}
 fn common_defines(input: &ResolvedNativeBuildInput, kit3: bool) -> BTreeMap<String, String> {
     let config = &input.config;
     let server = &input.server;
@@ -683,7 +721,11 @@ fn common_defines(input: &ResolvedNativeBuildInput, kit3: bool) -> BTreeMap<Stri
         ("import.meta.env.DEV".into(), "false".into()),
         ("import.meta.env.PROD".into(), "true".into()),
         ("import.meta.env.MODE".into(), js(&config.mode)),
+        ("import.meta.hot".into(), "undefined".into()),
     ]);
+    for (key, value) in &config.vite_env {
+        definitions.insert(format!("import.meta.env.{key}"), js(value));
+    }
     if kit3 {
         definitions.extend([
             (
@@ -866,6 +908,7 @@ pub fn create_build_plan(input: &ResolvedNativeBuildInput) -> Result<NativeBuild
         )?;
     }
     let mut server_defines = common.clone();
+    server_defines.extend(import_meta_env(input, true));
     server_defines.extend([
         ("__SVELTEKIT_HAS_SERVER_LOAD__".into(), "true".into()),
         ("__SVELTEKIT_HAS_UNIVERSAL_LOAD__".into(), "true".into()),
@@ -954,6 +997,7 @@ pub fn create_build_plan(input: &ResolvedNativeBuildInput) -> Result<NativeBuild
         )?;
     }
     let mut client_defines = common;
+    client_defines.extend(import_meta_env(input, false));
     client_defines.insert("import.meta.env.SSR".into(), "false".into());
     client_defines.insert(
         "__SVELTEKIT_PAYLOAD__".into(),
@@ -1377,7 +1421,7 @@ mod tests {
             inventory,
             server: ResolvedServerInput { kit_version: version.into(), output: generated.clone(), app_template: "<!doctype html><html><head>%sveltekit.head%</head><body>%sveltekit.body%</body></html>".into(), error_template: "%sveltekit.status% %sveltekit.error.message%".into(), version_name: "v1".into(), server_hooks: None, universal_hooks: None, runtime_directory: Some(runtime.clone()), svelte_major: 5, service_worker_present: false, options: ResolvedServerOptions::default() },
             environment: ResolvedBuildEnvironment { kit_version: version.into(), environment_directory: generated.join("env"), runtime_directory: runtime, version_name: "v1".into(), base: String::new(), app_dir: "_app".into(), build_values: BTreeMap::new(), public_prefix: "PUBLIC_".into(), private_prefix: String::new(), explicit_environment_variables: false, definition: None },
-            config: ResolvedBuildPlanConfig { out_dir: "/app/.kit".into(), routes_directory: "/app/src/routes".into(), lib_directory: "/app/src/lib".into(), assets_directory: "/app/static".into(), aliases: vec![], bundle_strategy: BundleStrategy::Split, mode: "production".into(), assets_url: String::new(), paths_relative: true, paths_origin: None, fork_preloads: false, tracing_server: false, link_header_preload: false, version_poll_interval: 0, adapter_name: None, instrumentation: None, remote_functions_enabled: false, remote_modules: vec![], server_conditions: vec!["svelte".into(), "node".into(), "production".into()], client_conditions: vec!["svelte".into(), "browser".into(), "production".into()], server_externals: vec![] },
+            config: ResolvedBuildPlanConfig { out_dir: "/app/.kit".into(), routes_directory: "/app/src/routes".into(), lib_directory: "/app/src/lib".into(), assets_directory: "/app/static".into(), aliases: vec![], bundle_strategy: BundleStrategy::Split, mode: "production".into(), assets_url: String::new(), paths_relative: true, paths_origin: None, fork_preloads: false, tracing_server: false, link_header_preload: false, version_poll_interval: 0, adapter_name: None, instrumentation: None, remote_functions_enabled: false, remote_modules: vec![], server_conditions: vec!["svelte".into(), "node".into(), "production".into()], client_conditions: vec!["svelte".into(), "browser".into(), "production".into()], server_externals: vec![], vite_env: BTreeMap::new() },
             client_analysis: None,
         }
     }

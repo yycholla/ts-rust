@@ -48,6 +48,10 @@ pub enum StaticValue {
     Function,
     Object(BTreeMap<String, StaticValue>),
     Array(Vec<StaticValue>),
+    /// A present object or array bound to a stable export whose contents may
+    /// have been changed by unevaluated module initialization. Truthiness is
+    /// known; contents carry the requirements.
+    Opaque(Vec<RuntimeRequirement>),
     Unknown(Vec<RuntimeRequirement>),
 }
 #[derive(Debug, Clone, Deserialize)]
@@ -147,6 +151,19 @@ struct Module {
     exports: BTreeMap<String, Expr>,
     stars: Vec<String>,
     effects: Vec<RuntimeRequirement>,
+    /// Identifiers written anywhere in the module (assignment or update).
+    assigned: BTreeSet<String>,
+}
+/// Collects identifier assignment targets, including destructuring and `++`.
+#[derive(Default)]
+struct Assignments(BTreeSet<String>);
+impl<'a> oxc_ast_visit::Visit<'a> for Assignments {
+    fn visit_simple_assignment_target(&mut self, target: &SimpleAssignmentTarget<'a>) {
+        if let SimpleAssignmentTarget::AssignmentTargetIdentifier(id) = target {
+            self.0.insert(id.name.to_string());
+        }
+        oxc_ast_visit::walk::walk_simple_assignment_target(self, target);
+    }
 }
 fn unknown(module: &str, subject: &str, reason: impl Into<String>) -> StaticValue {
     StaticValue::Unknown(vec![RuntimeRequirement {
@@ -593,6 +610,9 @@ fn parse(id: &str, snapshot: &ModuleSnapshot) -> Result<Module, String> {
             }),
         }
     }
+    let mut assignments = Assignments::default();
+    oxc_ast_visit::Visit::visit_program(&mut assignments, &parsed.program);
+    module.assigned = assignments.0;
     Ok(module)
 }
 fn v_import_source<'a>(statement: &'a Statement<'_>) -> &'a str {
@@ -618,8 +638,9 @@ impl Evaluator {
             return unknown(module, name, "Cyclic or excessively deep export graph");
         }
         let value = if let Some(ir) = self.modules.get(module) {
-            if !ir.effects.is_empty() {
-                StaticValue::Unknown(ir.effects.clone())
+            // Export names are static: effects cannot add or remove one.
+            if !ir.effects.is_empty() && ir.exports.contains_key(name) {
+                self.export_after_effects(module, ir, name, stack)
             } else if let Some(expr) = ir.exports.get(name) {
                 self.eval(module, expr, stack)
             } else if name == "default" {
@@ -647,6 +668,41 @@ impl Evaluator {
         };
         stack.remove(&key);
         value
+    }
+    /// Unevaluated initialization (non-literal initializers, top-level
+    /// statements) cannot rebind a `const` export or an exported function that
+    /// the module never assigns; it can only throw, which fails Kit's own
+    /// analysis. Such bindings keep their primitive or function value, and a
+    /// bound object/array stays present with possibly changed contents.
+    fn export_after_effects(
+        &self,
+        module: &str,
+        ir: &Module,
+        name: &str,
+        stack: &mut BTreeSet<(String, String)>,
+    ) -> StaticValue {
+        let effects = || StaticValue::Unknown(ir.effects.clone());
+        let Some(expr @ Expr::Ref(local, _)) = ir.exports.get(name) else {
+            return effects();
+        };
+        let Some(binding) = ir.bindings.get(local) else {
+            return effects();
+        };
+        if binding.hoisted && ir.assigned.contains(local) {
+            return effects();
+        }
+        match self.eval(module, expr, stack) {
+            value @ (StaticValue::Undefined | StaticValue::Function) => value,
+            StaticValue::Json(value) if !value.is_object() && !value.is_array() => {
+                StaticValue::Json(value)
+            }
+            StaticValue::Json(_)
+            | StaticValue::Object(_)
+            | StaticValue::Array(_)
+            | StaticValue::Opaque(_) => StaticValue::Opaque(ir.effects.clone()),
+            // let/var bindings and unevaluable initializers stay unknown.
+            StaticValue::Unknown(_) => effects(),
+        }
     }
     fn eval(
         &self,
@@ -919,7 +975,9 @@ fn either(left: Fact<bool>, right: Fact<bool>) -> Fact<bool> {
 }
 fn requirements(value: &StaticValue, out: &mut BTreeSet<RuntimeRequirement>) {
     match value {
-        StaticValue::Unknown(reasons) => out.extend(reasons.iter().cloned()),
+        StaticValue::Unknown(reasons) | StaticValue::Opaque(reasons) => {
+            out.extend(reasons.iter().cloned())
+        }
         StaticValue::Object(values) => {
             for value in values.values() {
                 requirements(value, out)
@@ -935,7 +993,7 @@ fn requirements(value: &StaticValue, out: &mut BTreeSet<RuntimeRequirement>) {
 }
 fn json_value(value: &StaticValue) -> Fact<Value> {
     match value {
-        StaticValue::Unknown(requirements) => Fact::Unknown {
+        StaticValue::Unknown(requirements) | StaticValue::Opaque(requirements) => Fact::Unknown {
             requirements: requirements.clone(),
         },
         StaticValue::Json(value) => Fact::known(value.clone()),
@@ -1144,8 +1202,11 @@ pub fn analyze(input: &AnalysisInput) -> Result<AnalysisOutput, String> {
         errors: vec![],
     };
     let mut all = BTreeSet::new();
-    for (id, module) in &evaluator.modules {
-        all.extend(module.effects.iter().cloned());
+    // Requirements come from the facts Kit's analyse reads (node loads, route
+    // options, config, methods, entries), not from every export of every
+    // module: other exports and module effects that cannot change those facts
+    // do not block. Export values stay in `output.modules` for inspection.
+    for id in evaluator.modules.keys() {
         let mut names = BTreeSet::new();
         if !evaluator.names(id, &mut BTreeSet::new(), &mut names) {
             all.insert(RuntimeRequirement {
@@ -1158,7 +1219,6 @@ pub fn analyze(input: &AnalysisInput) -> Result<AnalysisOutput, String> {
             .into_iter()
             .map(|name| {
                 let value = evaluator.get(Some(id), &name);
-                requirements(&value, &mut all);
                 (name, value)
             })
             .collect();
@@ -1416,7 +1476,8 @@ pub fn analyze(input: &AnalysisInput) -> Result<AnalysisOutput, String> {
         collect_fact(&trailing_slash, &mut all);
         collect_fact(&config, &mut all);
         collect_fact(&methods, &mut all);
-        collect_fact(&actions, &mut all);
+        // Action names are supplementary: Kit's analyse reads only `actions`
+        // truthiness (page methods, collected above).
         output.routes.insert(
             route.id.clone(),
             RouteAnalysis {
@@ -1606,7 +1667,6 @@ mod tests {
             "export const csr=process.env.CSR;",
             "export let csr=false;",
             "const value=later;const later=false;export {value as csr};",
-            "export const csr=false;globalThis.run();",
         ] {
             let output = analyze(&input(&[("/page.ts", source)])).unwrap();
             assert!(
@@ -1626,6 +1686,38 @@ mod tests {
                 .iter()
                 .any(|requirement| requirement.subject == "entries")
         );
+    }
+    /// Unevaluated initialization can throw (failing Kit's analysis) but cannot
+    /// rebind const exports or never-assigned exported functions.
+    #[test]
+    fn stable_exports_survive_unevaluated_initialization() {
+        let output = analyze(&input(&[(
+            "/page.ts",
+            "export const csr=false;const QUERY=gql`x`;globalThis.run();export const load=async()=>QUERY;",
+        )]))
+        .unwrap();
+        assert_eq!(output.routes["/"].csr, Fact::known(false));
+        assert_eq!(output.nodes[0].has_server_load, Fact::known(true));
+        assert!(output.requirements.is_empty(), "{:?}", output.requirements);
+        // A reassigned exported function and a let binding stay unknown.
+        for source in [
+            "export function load(){};load=undefined;",
+            "export let load=()=>1;globalThis.run();",
+        ] {
+            let output = analyze(&input(&[("/page.ts", source)])).unwrap();
+            assert!(
+                matches!(output.nodes[0].has_server_load, Fact::Unknown { .. }),
+                "{source}"
+            );
+        }
+        // An object export stays present while its contents become opaque.
+        let output = analyze(&input(&[(
+            "/page.ts",
+            "export const config={runtime:'node'};const x=run();export const load=()=>x;",
+        )]))
+        .unwrap();
+        assert_eq!(output.nodes[0].has_server_load, Fact::known(true));
+        assert!(matches!(output.routes["/"].config, Fact::Unknown { .. }));
     }
     #[test]
     fn endpoint_methods_use_values_and_prerender_rejects_mutative_methods() {
@@ -1680,7 +1772,8 @@ mod tests {
         let output = analyze(&input).unwrap();
         assert_eq!(output.routes["/"].csr, Fact::known(false));
         assert_eq!(output.routes["/"].prerender, Fact::known(json!(false)));
-        assert!(!output.requirements.is_empty());
+        // Kit consumes only the merged route value, which the leaf decides.
+        assert!(output.requirements.is_empty(), "{:?}", output.requirements);
     }
     #[test]
     fn type_declarations_do_not_create_handlers_and_invalid_exports_are_reported() {

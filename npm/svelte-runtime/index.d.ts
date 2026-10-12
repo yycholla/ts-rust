@@ -31,8 +31,9 @@ export interface BootstrapRequest {
   manifestEntry: string;
   initialization: Initialization;
   environment: Record<string, string>;
-  /** Server-relative exact identities mapped to byte arrays (not typed arrays). */
-  assets: Record<string, number[]>;
+  /** Server-relative exact identities mapped to byte arrays (not typed arrays)
+   * or standard base64 strings; prefer base64 for large snapshots. */
+  assets: Record<string, number[] | string>;
   limits?: RuntimeLimits;
 }
 export interface FetchOptions {
@@ -116,8 +117,8 @@ export interface PrerenderInput {
   /** Empty or slash-prefixed path without a trailing slash. */
   base: string;
   appDir: string;
-  /** Static-file identities mapped to byte arrays. Server assets live in bootstrap.assets. */
-  staticAssets: Record<string, number[]>;
+  /** Static-file identities mapped to byte arrays or base64 strings. Server assets live in bootstrap.assets. */
+  staticAssets: Record<string, number[] | string>;
   limits?: PrerenderLimits;
 }
 export interface CreatePrerenderOptions {

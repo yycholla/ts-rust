@@ -252,12 +252,15 @@ fn request_for_plan(
 fn compressed(
     plan: &PackagingPlan,
 ) -> Result<BTreeMap<String, adapter_node::CompressionOutput>, String> {
-    let mut sources = BTreeMap::new();
-    let mut jobs = Vec::new();
+    // The codec bounds each batch (jobs, sources, input, repeated work and
+    // output). Split by source, keeping each source's jobs together; output is
+    // budgeted at a margin below the cap since compressed text rarely grows.
+    use ts_svelte_compress::{
+        MAX_BATCH_INPUT_BYTES, MAX_BATCH_WORK_BYTES, MAX_JOBS, MAX_OUTPUT_BYTES,
+    };
+    let work_cap = MAX_BATCH_WORK_BYTES.min(MAX_OUTPUT_BYTES / 10 * 9);
+    let mut by_source: BTreeMap<&str, Vec<ts_svelte_compress::Job>> = BTreeMap::new();
     for job in &plan.compression {
-        sources
-            .entry(job.source.clone())
-            .or_insert_with(|| plan.files.get(&job.source).cloned().unwrap_or_default());
         if !plan.files.contains_key(&job.source) {
             return Err(format!("Missing compression source {}", job.source));
         }
@@ -265,15 +268,54 @@ fn compressed(
             serde_json::to_value(&job.compression).map_err(|e| e.to_string())?,
         )
         .map_err(|e| format!("Compression options: {e}"))?;
-        jobs.push(ts_svelte_compress::Job {
-            source: job.source.clone(),
-            destination: job.destination.clone(),
-            source_sha256: job.source_sha256.clone(),
-            compression,
-        });
+        by_source
+            .entry(&job.source)
+            .or_default()
+            .push(ts_svelte_compress::Job {
+                source: job.source.clone(),
+                destination: job.destination.clone(),
+                source_sha256: job.source_sha256.clone(),
+                compression,
+            });
     }
-    ts_svelte_compress::compress_batch(&ts_svelte_compress::Batch { sources, jobs })
-        .map_err(|e| e.to_string())?
+    let mut batches = vec![ts_svelte_compress::Batch {
+        sources: BTreeMap::new(),
+        jobs: vec![],
+    }];
+    let (mut input, mut work) = (0usize, 0usize);
+    for (source, jobs) in by_source {
+        let bytes = &plan.files[source];
+        let job_work = bytes.len() * jobs.len();
+        let current = batches.last().expect("one batch");
+        if !current.jobs.is_empty()
+            && (current.jobs.len() + jobs.len() > MAX_JOBS
+                || current.sources.len() + 1 > MAX_JOBS
+                || input + bytes.len() > MAX_BATCH_INPUT_BYTES
+                || work + job_work > work_cap)
+        {
+            batches.push(ts_svelte_compress::Batch {
+                sources: BTreeMap::new(),
+                jobs: vec![],
+            });
+            (input, work) = (0, 0);
+        }
+        let current = batches.last_mut().expect("one batch");
+        current.sources.insert(source.to_owned(), bytes.clone());
+        current.jobs.extend(jobs);
+        input += bytes.len();
+        work += job_work;
+    }
+    let mut outputs = BTreeMap::new();
+    for batch in &batches {
+        for (file, output) in
+            ts_svelte_compress::compress_batch(batch).map_err(|e| e.to_string())?
+        {
+            if outputs.insert(file.clone(), output).is_some() {
+                return Err(format!("Duplicate compression output {file}"));
+            }
+        }
+    }
+    outputs
         .into_iter()
         .map(|(file, output)| {
             Ok((

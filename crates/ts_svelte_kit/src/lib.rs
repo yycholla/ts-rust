@@ -121,3 +121,4 @@ pub mod prerender_crawl;
 pub mod prerender_queue;
 pub mod prerender_save;
 pub mod vite_env;
+pub mod vite_ssr;

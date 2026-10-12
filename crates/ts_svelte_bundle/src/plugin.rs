@@ -19,6 +19,7 @@ pub(crate) struct SveltePlugin {
     pub request: Arc<BundleRequest>,
     pub responses: Arc<Mutex<BTreeMap<String, Value>>>,
     pub css: Option<crate::css::CssState>,
+    pub ssr_externals: Option<Arc<crate::ssr_external::SsrExternals>>,
 }
 
 fn extension(id: &str) -> &str {
@@ -323,6 +324,15 @@ impl Plugin for SveltePlugin {
                 return Ok(Some(HookResolveIdOutput::from_resolved_id(resolved)));
             }
         }
+        if let Some(externals) = &self.ssr_externals {
+            if let Some(id) = externals.external(args.specifier, args.importer) {
+                return Ok(Some(HookResolveIdOutput {
+                    id: id.into(),
+                    external: Some(rolldown_common::ResolvedExternal::Bool(true)),
+                    ..Default::default()
+                }));
+            }
+        }
         Ok(None)
     }
 
@@ -357,7 +367,9 @@ impl Plugin for SveltePlugin {
     ) -> HookTransformReturn {
         // Other plugins' virtual modules may retain a component filename in
         // their identity, but their loaded source is already JavaScript.
-        if args.id.starts_with('\0') {
+        // A Node rebundle consumes compiled output (Kit names server entries
+        // `_page.svelte.js`), so nothing is compiled again.
+        if args.id.starts_with('\0') || self.request.node_rebundle {
             return Ok(None);
         }
         let markdown = self.markdown(args.id);

@@ -265,7 +265,7 @@ async fn actual_emitted_server(kit3: bool) {
             .unwrap()
             .contains("export const manifest")
     );
-    assert!(bootstrap["assets"]["nodes/2.js"].is_array());
+    assert!(bootstrap["assets"]["nodes/2.js"].is_string());
 
     let mut runtime = NativeProcess::start();
     let capabilities = runtime.success(json!({"op":"capabilities"}));

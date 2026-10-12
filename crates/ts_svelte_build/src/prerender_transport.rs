@@ -15,6 +15,7 @@ pub struct PrerenderOptions {
     pub origin: String,
     pub base: String,
     pub app_dir: String,
+    #[serde(serialize_with = "crate::execution_snapshot::base64_map")]
     pub static_assets: BTreeMap<String, Vec<u8>>,
     /// Genuine host-provided random bytes. Deterministic values belong only in
     /// fixtures; production callers must supply a cryptographic entropy source.

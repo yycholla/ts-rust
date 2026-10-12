@@ -1516,4 +1516,100 @@ mod tests {
                 .any(|code| code.contains("await "))
         );
     }
+    /// Reduced from pdfjs-dist/web/pdf_viewer.css and @event-calendar/core:
+    /// a relative url() in a custom property is an asset of the defining
+    /// stylesheet (as in Vite), and multi-line unparsed values keep the
+    /// emitted source map aligned with the emitted CSS.
+    #[tokio::test]
+    async fn custom_property_urls_and_multiline_values_link_and_map() {
+        use rolldown::{Bundler, BundlerOptions, InputItem, OutputFormat, Platform};
+        let root = std::env::temp_dir().join(format!(
+            "ts-svelte-css-custom-property-{}",
+            std::process::id()
+        ));
+        std::fs::create_dir_all(root.join("web/images")).unwrap();
+        struct Fixture(std::path::PathBuf);
+        impl Drop for Fixture {
+            fn drop(&mut self) {
+                let _ = std::fs::remove_dir_all(&self.0);
+            }
+        }
+        let _fixture = Fixture(root.clone());
+        let viewer = ":root {\n  --close-icon:url(images/close.svg);\n}\n.bar {\n  background-image:\n    linear-gradient(to top, var(--c) 1px, transparent 1px),\n    var(--close-icon);\n}\n.after {\n  color: red;\n}\n";
+        for (path, source) in [
+            ("entry.js", "import './web/viewer.css';"),
+            ("web/viewer.css", viewer),
+            (
+                "web/images/close.svg",
+                "<svg xmlns='http://www.w3.org/2000/svg'/>",
+            ),
+        ] {
+            std::fs::write(root.join(path), source).unwrap();
+        }
+        let request: BundleRequest = serde_json::from_value(json!({"root":root,"entries":{"entry":"entry.js"},"target":"client","compatibility":{},"sourcemap":true})).unwrap();
+        let plugin = CssPlugin::new(
+            Arc::new(request),
+            CssOptions::default(),
+            CssState::default(),
+        )
+        .unwrap();
+        let mut bundler = Bundler::with_plugins(
+            BundlerOptions {
+                cwd: Some(root.clone()),
+                input: Some(vec![InputItem {
+                    name: Some("entry".into()),
+                    import: root.join("entry.js").to_string_lossy().into_owned(),
+                }]),
+                format: Some(OutputFormat::Esm),
+                platform: Some(Platform::Browser),
+                entry_filenames: Some("[name].js".to_string().into()),
+                ..Default::default()
+            },
+            vec![Plugin::new_shared(plugin)],
+        )
+        .unwrap();
+        let output = bundler.generate().await.unwrap();
+        bundler.close().await.unwrap();
+        let asset = |suffix: &str| {
+            output
+                .assets
+                .iter()
+                .find_map(|output| match output {
+                    Output::Asset(asset) if asset.filename.ends_with(suffix) => Some(asset),
+                    _ => None,
+                })
+                .unwrap_or_else(|| panic!("No {suffix} asset"))
+        };
+        let svg = asset(".svg").filename.to_string();
+        let css = String::from_utf8(asset(".css").source.as_bytes().to_vec()).unwrap();
+        let linked = format!(
+            "--close-icon: url(\"./{}\")",
+            svg.strip_prefix("assets/").unwrap()
+        );
+        assert!(css.contains(&linked), "{css}");
+        let map = parse_map(&serde_json::from_slice(asset(".css.map").source.as_bytes()).unwrap())
+            .unwrap();
+        let generated = ts_svelte::Document::new(ts_svelte::Snapshot {
+            uri: "out.css".into(),
+            version: 0,
+            text: css.clone(),
+        });
+        for token in map.get_source_view_tokens() {
+            generated
+                .offset_at(ts_svelte::Position {
+                    line: token.get_dst_line(),
+                    character: token.get_dst_col(),
+                })
+                .unwrap_or_else(|error| panic!("{error}: {css}"));
+        }
+        let after = generated.position_at(css.find(".after").unwrap()).unwrap();
+        let token = map
+            .get_source_view_tokens()
+            .find(|token| {
+                (token.get_dst_line(), token.get_dst_col()) == (after.line, after.character)
+            })
+            .unwrap_or_else(|| panic!("No mapping for .after: {css}"));
+        assert!(token.get_source().unwrap().ends_with("/web/viewer.css"));
+        assert_eq!((token.get_src_line(), token.get_src_col()), (8, 0));
+    }
 }

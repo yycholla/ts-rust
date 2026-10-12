@@ -3,6 +3,7 @@
 //! does not execute config files or provide implicit filesystem/network access.
 //! Route validation, entries and prerendering build on this initialized session;
 //! node load facts alone are not a complete metadata-analysis result.
+mod byte_map;
 pub mod host_channel;
 pub mod metadata;
 pub mod prerender_remotes;
@@ -68,7 +69,9 @@ pub struct BootstrapRequest {
     pub manifest_entry: String,
     pub initialization: Initialization,
     pub environment: BTreeMap<String, String>,
-    /// Exact server-relative asset identities. Byte arrays remain data only.
+    /// Exact server-relative asset identities: byte arrays or base64 strings.
+    /// The bytes remain data only.
+    #[serde(deserialize_with = "byte_map::deserialize")]
     pub assets: BTreeMap<String, Vec<u8>>,
     #[serde(default)]
     pub limits: RuntimeLimits,

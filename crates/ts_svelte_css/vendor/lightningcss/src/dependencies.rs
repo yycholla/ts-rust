@@ -24,6 +24,10 @@ use serde::Serialize;
 pub struct DependencyOptions {
   /// Whether to remove `@import` rules.
   pub remove_imports: bool,
+  /// Whether a relative `url()` in a custom property value is recorded as an
+  /// ordinary URL dependency of the stylesheet that defines the property (the
+  /// Vite/PostCSS url-rewrite behavior) instead of being rejected as ambiguous.
+  pub relative_urls_in_custom_properties: bool,
 }
 
 /// A dependency.

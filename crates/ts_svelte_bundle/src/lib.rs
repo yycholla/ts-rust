@@ -17,6 +17,9 @@ pub mod metadata;
 pub mod output;
 mod plugin;
 mod preprocess;
+pub mod sentry;
+mod ssr_external;
+mod vite_features;
 mod worker_assets;
 
 use base64::Engine as _;
@@ -75,6 +78,16 @@ pub struct BundleRequest {
     /// Package names to externalize together with every package subpath.
     #[serde(default)]
     pub external_packages: Vec<String>,
+    /// Vite server-build externalization policy, applied to bare ids after
+    /// aliasing. Only valid for the server target.
+    #[serde(default)]
+    pub ssr_external: Option<ts_svelte_kit::vite_ssr::SsrExternalPolicy>,
+    /// Rollup-style `treeshake` options from the application's build config.
+    #[serde(default)]
+    pub treeshake: Option<Treeshake>,
+    /// `@sentry/sveltekit` module rewrites (load wrapping, global values).
+    #[serde(default)]
+    pub sentry: Option<sentry::SentryOptions>,
     /// Additional package export conditions. Target and mode conditions are
     /// always supplied, including the Svelte condition.
     #[serde(default)]
@@ -162,6 +175,14 @@ pub struct CompilerOptions {
     pub namespace: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub experimental: Option<Experimental>,
+}
+/// Rollup `treeshake` object options; absent fields keep Rolldown's defaults.
+#[derive(Debug, Clone, Default, Deserialize, Serialize)]
+#[serde(rename_all = "camelCase", deny_unknown_fields)]
+pub struct Treeshake {
+    pub module_side_effects: Option<bool>,
+    pub property_read_side_effects: Option<bool>,
+    pub unknown_global_side_effects: Option<bool>,
 }
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(deny_unknown_fields)]
@@ -449,17 +470,28 @@ pub async fn generate_with_plugins(
         Box::pin(async move { Ok(matches) })
     })));
     let mut defines = request.define.clone();
-    if !request.node_rebundle {
-        defines
-            .entry("process.env.NODE_ENV".into())
-            .or_insert_with(|| {
-                if request.dev {
-                    "\"development\""
-                } else {
-                    "\"production\""
-                }
-                .into()
-            });
+    // Vite's define plugin replaces process.env only for client environments;
+    // server environments keep it for runtime (`keepProcessEnv`).
+    if !request.node_rebundle && request.target == Target::Client {
+        let node_env = if request.dev {
+            "\"development\""
+        } else {
+            "\"production\""
+        };
+        for key in [
+            "process.env.NODE_ENV",
+            "global.process.env.NODE_ENV",
+            "globalThis.process.env.NODE_ENV",
+        ] {
+            defines.entry(key.into()).or_insert_with(|| node_env.into());
+        }
+        for key in [
+            "process.env",
+            "global.process.env",
+            "globalThis.process.env",
+        ] {
+            defines.entry(key.into()).or_insert_with(|| "{}".into());
+        }
     }
     let mut module_types = [
         "png", "jpg", "jpeg", "gif", "svg", "webp", "avif", "ico", "woff", "woff2", "ttf", "otf",
@@ -519,6 +551,28 @@ pub async fn generate_with_plugins(
         }),
         sourcemap: request.sourcemap.then_some(SourceMapType::File),
         minify: Some(RawMinifyOptions::Bool(request.minify)),
+        treeshake: match &request.treeshake {
+            Some(settings) => {
+                use rolldown_common::{
+                    InnerOptions, ModuleSideEffects, PropertyReadSideEffects, TreeshakeOptions,
+                };
+                TreeshakeOptions::Option(InnerOptions {
+                    module_side_effects: ModuleSideEffects::Boolean(
+                        settings.module_side_effects.unwrap_or(true),
+                    ),
+                    property_read_side_effects: settings.property_read_side_effects.map(|value| {
+                        if value {
+                            PropertyReadSideEffects::Always
+                        } else {
+                            PropertyReadSideEffects::False
+                        }
+                    }),
+                    unknown_global_side_effects: settings.unknown_global_side_effects,
+                    ..InnerOptions::default()
+                })
+            }
+            None => Default::default(),
+        },
         tsconfig: Some(tsconfig),
         define: Some(defines.into_iter().collect()),
         module_types: Some(module_types.into_iter().collect()),
@@ -545,12 +599,35 @@ pub async fn generate_with_plugins(
             .map_err(|error| BundleError::invalid(error.to_string()))?,
         ));
     }
+    let ssr_externals = match &request.ssr_external {
+        Some(_) if request.target != Target::Server => {
+            return Err(BundleError::invalid(
+                "ssrExternal applies only to the server target",
+            ));
+        }
+        Some(policy) => Some(Arc::new(
+            ssr_external::SsrExternals::new(&request.root, policy.clone())
+                .map_err(BundleError::invalid)?,
+        )),
+        None => None,
+    };
+    if let Some(options) = &request.sentry {
+        // Sentry's load hook is `enforce: 'pre'`: it precedes source overlays.
+        plugins.push(Plugin::new_shared(
+            sentry::SentryPlugin::new(options.clone())
+                .map_err(|error| BundleError::invalid(error.to_string()))?,
+        ));
+    }
     let plugin = plugin::SveltePlugin {
         request: Arc::new(request.clone()),
         responses: Arc::clone(&responses),
         css: request.css.as_ref().map(|_| css_state.clone()),
+        ssr_externals,
     };
     plugins.push(Plugin::new_shared(plugin));
+    plugins.push(Plugin::new_shared(vite_features::ViteFeatures {
+        root: request.root.clone(),
+    }));
     plugins.extend(additional_plugins);
     let metadata = metadata::Metadata::default();
     plugins.push(Plugin::new_shared(metadata.clone()));

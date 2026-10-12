@@ -85,6 +85,7 @@ pub struct Printer<'a, 'c, W> {
   pub(crate) css_module: Option<CssModule<'a, 'c>>,
   pub(crate) dependencies: Option<Vec<Dependency>>,
   pub(crate) remove_imports: bool,
+  pub(crate) relative_urls_in_custom_properties: bool,
   pub(crate) pseudo_classes: Option<PseudoClasses<'a>>,
   context: Option<&'a StyleContext<'a, 'c>>,
 }
@@ -118,6 +119,10 @@ impl<'a, 'c, W: std::fmt::Write + Sized> Printer<'a, 'c, W> {
         None
       },
       remove_imports: matches!(&options.analyze_dependencies, Some(d) if d.remove_imports),
+      relative_urls_in_custom_properties: matches!(
+        &options.analyze_dependencies,
+        Some(d) if d.relative_urls_in_custom_properties
+      ),
       pseudo_classes: options.pseudo_classes,
       context: None,
     }
@@ -136,33 +141,37 @@ impl<'a, 'c, W: std::fmt::Write + Sized> Printer<'a, 'c, W> {
     }
   }
 
+  /// Advances the generated source-map position over `s`. A line feed, a
+  /// CRLF pair or a lone carriage return starts a new generated line; other
+  /// characters advance the column by their UTF-16 width.
+  ///
+  /// Raw source text (whitespace and comment tokens kept in unparsed and custom
+  /// property values, or raw `@supports` declaration values) can contain line
+  /// breaks, so every write path must count them to keep later mappings valid.
+  fn advance(&mut self, s: &str) {
+    let mut rest = s;
+    while let Some(index) = rest.find(['\n', '\r']) {
+      self.line += 1;
+      self.col = 0;
+      let width = if rest[index..].starts_with("\r\n") { 2 } else { 1 };
+      rest = &rest[index + width..];
+    }
+    self.col += rest.encode_utf16().count() as u32;
+  }
+
   /// Writes a raw string to the underlying destination.
   ///
-  /// NOTE: Is is assumed that the string does not contain any newline characters.
-  /// If such a string is written, it will break source maps.
+  /// Line breaks in `s` advance the generated line, so raw source text keeps
+  /// source maps valid.
   pub fn write_str(&mut self, s: &str) -> Result<(), PrinterError> {
-    self.col += s.encode_utf16().count() as u32;
+    self.advance(s);
     self.dest.write_str(s)?;
     Ok(())
   }
 
   /// Writes a raw string which may contain newlines to the underlying destination.
   pub fn write_str_with_newlines(&mut self, s: &str) -> Result<(), PrinterError> {
-    let mut last_line_start: usize = 0;
-
-    for (idx, n) in s.char_indices() {
-      if n == '\n' {
-        self.line += 1;
-        self.col = 0;
-
-        // Keep track of where the *next* line starts
-        last_line_start = idx + 1;
-      }
-    }
-
-    self.col += s[last_line_start..].encode_utf16().count() as u32;
-    self.dest.write_str(s)?;
-    Ok(())
+    self.write_str(s)
   }
 
   /// Write a single character to the underlying destination.
@@ -414,7 +423,7 @@ impl<'a, 'c, W: std::fmt::Write + Sized> Printer<'a, 'c, W> {
 
 impl<'a, 'b, 'c, W: std::fmt::Write + Sized> std::fmt::Write for Printer<'a, 'c, W> {
   fn write_str(&mut self, s: &str) -> std::fmt::Result {
-    self.col += s.encode_utf16().count() as u32;
+    self.advance(s);
     self.dest.write_str(s)
   }
 }

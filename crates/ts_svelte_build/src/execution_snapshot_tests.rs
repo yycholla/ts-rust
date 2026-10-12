@@ -73,11 +73,8 @@ fn bootstrap_profiles_include_only_explicit_environment_and_real_modules() {
             bootstrap["environment"],
             json!(request.kit.environment.build_values)
         );
-        assert_eq!(
-            bootstrap["assets"]["asset.wasm"],
-            json!([0, 97, 115, 109, 255])
-        );
-        assert_eq!(bootstrap["assets"]["raw.js"], json!([255, 0]));
+        assert_eq!(bootstrap["assets"]["asset.wasm"], json!("AGFzbf8="));
+        assert_eq!(bootstrap["assets"]["raw.js"], json!("/wA="));
         assert_eq!(prepared.bootstrap.snapshot.modules.len(), 4);
         if version.starts_with('2') {
             assert_eq!(

@@ -100,7 +100,7 @@ impl Fixture {
             inputs: BTreeSet::new(),
             page_options_analyzed: false,
         };
-        let kit=ResolvedNativeBuildInput {inventory,server:ResolvedServerInput {kit_version:"2.69.2".into(),output:generated.clone(),app_template:"<!doctype html><html><head>%sveltekit.head%</head><body>%sveltekit.body%</body></html>".into(),error_template:"%sveltekit.status% %sveltekit.error.message%".into(),version_name:"test".into(),server_hooks:None,universal_hooks:None,runtime_directory:Some(runtime.clone()),svelte_major:5,service_worker_present:false,options:ResolvedServerOptions::default()},environment:ResolvedBuildEnvironment {kit_version:"2.69.2".into(),environment_directory:generated.join("env"),runtime_directory:runtime,version_name:"test".into(),base:String::new(),app_dir:"_app".into(),build_values:BTreeMap::new(),public_prefix:"PUBLIC_".into(),private_prefix:String::new(),explicit_environment_variables:false,definition:None},config:ResolvedBuildPlanConfig {out_dir:root.join(".kit"),routes_directory:root.join("src/routes"),lib_directory:root.join("src/lib"),assets_directory:root.join("static"),aliases:vec![],bundle_strategy:BundleStrategy::Split,mode:"production".into(),assets_url:String::new(),paths_relative:true,paths_origin:None,fork_preloads:false,tracing_server:false,link_header_preload:false,version_poll_interval:0,adapter_name:None,instrumentation:None,remote_functions_enabled:false,remote_modules:vec![],server_conditions:vec!["svelte".into(),"node".into(),"production".into()],client_conditions:vec!["svelte".into(),"browser".into(),"production".into()],server_externals:vec![]},client_analysis:None};
+        let kit=ResolvedNativeBuildInput {inventory,server:ResolvedServerInput {kit_version:"2.69.2".into(),output:generated.clone(),app_template:"<!doctype html><html><head>%sveltekit.head%</head><body>%sveltekit.body%</body></html>".into(),error_template:"%sveltekit.status% %sveltekit.error.message%".into(),version_name:"test".into(),server_hooks:None,universal_hooks:None,runtime_directory:Some(runtime.clone()),svelte_major:5,service_worker_present:false,options:ResolvedServerOptions::default()},environment:ResolvedBuildEnvironment {kit_version:"2.69.2".into(),environment_directory:generated.join("env"),runtime_directory:runtime,version_name:"test".into(),base:String::new(),app_dir:"_app".into(),build_values:BTreeMap::new(),public_prefix:"PUBLIC_".into(),private_prefix:String::new(),explicit_environment_variables:false,definition:None},config:ResolvedBuildPlanConfig {out_dir:root.join(".kit"),routes_directory:root.join("src/routes"),lib_directory:root.join("src/lib"),assets_directory:root.join("static"),aliases:vec![],bundle_strategy:BundleStrategy::Split,mode:"production".into(),assets_url:String::new(),paths_relative:true,paths_origin:None,fork_preloads:false,tracing_server:false,link_header_preload:false,version_poll_interval:0,adapter_name:None,instrumentation:None,remote_functions_enabled:false,remote_modules:vec![],server_conditions:vec!["svelte".into(),"node".into(),"production".into()],client_conditions:vec!["svelte".into(),"browser".into(),"production".into()],server_externals:vec![],vite_env:BTreeMap::new()},client_analysis:None};
         Self {
             root,
             request: BuildRequest {
@@ -114,6 +114,7 @@ impl Fixture {
                     allow_prerelease: false,
                     runes: Some(true),
                     minify: false,
+                    server_minify: false,
                     sourcemap: true,
                     options: Default::default(),
                     tsconfig: None,
@@ -134,6 +135,9 @@ impl Fixture {
                 )]),
                 sources: BTreeMap::new(),
                 define: BTreeMap::new(),
+                ssr_external: None,
+                sentry: None,
+                treeshake: None,
                 static_assets: BTreeMap::new(),
                 static_assets_complete: true,
             },

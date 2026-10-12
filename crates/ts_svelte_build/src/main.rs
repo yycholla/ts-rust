@@ -26,6 +26,9 @@ enum Request {
         /// Return the loaded request instead of building it.
         #[serde(default, rename = "requestOnly")]
         request_only: bool,
+        /// Loader requirements (`stage/code`) accepted as non-blocking.
+        #[serde(default, rename = "acceptRequirements")]
+        accept_requirements: Vec<String>,
     },
 }
 async fn dispatch(bytes: &[u8]) -> Value {
@@ -39,6 +42,7 @@ async fn dispatch(bytes: &[u8]) -> Value {
             output_directory,
             runtime_binary,
             request_only,
+            accept_requirements,
         } => {
             let loaded = match ts_svelte_build::project::load(&project) {
                 Ok(loaded) => loaded,
@@ -57,14 +61,14 @@ async fn dispatch(bytes: &[u8]) -> Value {
                 request,
                 output_directory,
                 runtime_binary,
-                loaded.requirements,
+                (loaded.requirements, accept_requirements),
             )
         }
         Request::Build {
             request,
             output_directory,
             runtime_binary,
-        } => (request, output_directory, runtime_binary, vec![]),
+        } => (request, output_directory, runtime_binary, (vec![], vec![])),
         Request::Capabilities => {
             return json!({"ok":true,"native":true,"executesApplicationCode":true,"applicationExecutionDefault":false,"runtimeSelection":"explicitRuntimeBinary","writesByDefault":false,"pipeline":["resolvedPlan","serverBundle","nativeRemoteTransforms","featureTracking","staticAnalysis","nativeRuntimeAnalysis","nativeRemoteMetadata","optimizedClientBundle","kit3ManifestFinalization","nodesAndManifest","serviceWorker","adapterNode"],"bundleStrategy":"split","kitFamilies":[2,3],"adapterNodeVersion":"5.5.4","unresolvedStages":["prerenderExecution"],"browserWasm":false});
         }
@@ -81,7 +85,7 @@ async fn dispatch(bytes: &[u8]) -> Value {
             } else {
                 ts_svelte_build::build(*request).await
             };
-            report.add_requirements(loaded);
+            report.add_loader_requirements(loaded.0, &loaded.1);
             if let Some(directory) = output_directory {
                 if report.status != "complete" {
                     return json!({"ok":false,"error":"Output materialization requires a complete build report","report":report});

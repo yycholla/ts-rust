@@ -460,3 +460,123 @@ fn linked_map_marks_replacement_generated_and_restores_following_mapping() {
         .is_none()
     );
 }
+
+/// Every generated mapping of a bundle must address a real position in its
+/// code, and the rule after the multi-line value must still map to its source.
+fn assert_maps_after_multiline_values(css: &str, minify: bool) {
+    let mut source = input(&[("/entry.css", css)], &[]);
+    source.options.minify = minify;
+    let output = bundle(&source).unwrap();
+    let linked = link(&output, &[]).unwrap_or_else(|error| panic!("{error}: {:?}", output.code));
+    let map = linked.map.as_ref().unwrap();
+    let document = ts_svelte::Document::new(ts_svelte::Snapshot {
+        uri: "out.css".into(),
+        version: 0,
+        text: linked.code.clone(),
+    });
+    for mapping in SourceMap::from_json("/", &map.to_string())
+        .unwrap()
+        .get_mappings()
+    {
+        document
+            .offset_at(ts_svelte::Position {
+                line: mapping.generated_line,
+                character: mapping.generated_column,
+            })
+            .unwrap_or_else(|error| panic!("{error} at {mapping:?}: {:?}", linked.code));
+    }
+    assert_rule_mapping(&linked.code, map, ".after", css, ".after");
+}
+
+#[test]
+fn printer_counts_line_breaks_in_raw_value_tokens() {
+    // Reduced from @event-calendar/core, layerchart TooltipHeader.svelte and
+    // svelte-sonner Toaster.svelte: values with var() stay unparsed token lists
+    // whose whitespace and comment tokens keep the source's line breaks.
+    let cases = [
+        ".a {\n  background-image:\n    linear-gradient(to top, var(--c) 1px, transparent 1px),\n    none;\n}\n.after {\n  color: red;\n}\n",
+        "@layer component {\n  :where(.a) {\n    border-bottom: 1px solid\n      color-mix(in oklab, var(--c, currentColor) 20%, transparent);\n  }\n  .after {\n    color: red;\n  }\n}\n",
+        ".a {\n\tfont-family:\n\t\tui-sans-serif,\n\t\tvar(--font);\n\t--icon:\n\t\t1px\n\t\t2px;\n}\n.after {\n\tcolor: red;\n}\n",
+        ".a {\n  --x: a /* first\n  second */ b;\n  margin: var(--x) /* c\n d */ 1px;\n}\n.after {\n  color: red;\n}\n",
+        ".a {\r\n  --x:\r\n    1px\r\n    2px;\r\n}\r\n.after {\r\n  color: red;\r\n}\r\n",
+        ".a {\r  --x:\r    1px\r    2px;\r}\r.after {\r  color: red;\r}\r",
+    ];
+    for css in cases {
+        for minify in [false, true] {
+            assert_maps_after_multiline_values(css, minify);
+        }
+    }
+}
+
+#[test]
+fn relative_custom_property_urls_link_from_the_defining_stylesheet() {
+    // Reduced from pdfjs-dist/web/pdf_viewer.css. Vite rewrites url() in a
+    // custom property relative to the stylesheet that defines it.
+    let viewer = ":root {\n  --close-icon:url(images/close.svg);\n  --external:url(https://cdn.test/a.svg);\n}\n.bar {\n  --bg: url('../shared/a.png?v=1') no-repeat;\n  mask-image: var(--close-icon);\n}\n.after {\n  color: red;\n}\n";
+    let mut source = input(
+        &[
+            (
+                "/entry.css",
+                "@import './web/viewer.css';\n.x{background-image:var(--close-icon)}",
+            ),
+            ("/web/viewer.css", viewer),
+        ],
+        &[("/entry.css", "./web/viewer.css", "/web/viewer.css")],
+    );
+    source.assets.push(AssetResolution {
+        from: "/web/viewer.css".into(),
+        url: "images/close.svg".into(),
+        path: "/web/images/close.svg".into(),
+    });
+    let output = bundle(&source).unwrap();
+    assert!(output.requires_asset_linking);
+    let by_url = |url: &str| {
+        output
+            .dependencies
+            .iter()
+            .find(|d| d["url"] == url)
+            .unwrap_or_else(|| panic!("No dependency {url}: {:?}", output.dependencies))
+    };
+    let close = by_url("images/close.svg");
+    assert_eq!(close["loc"]["filePath"], "/web/viewer.css");
+    assert_eq!(close["resolvedPath"], "/web/images/close.svg");
+    assert_eq!(close["resolutionStatus"], "resolved");
+    let shared = by_url("../shared/a.png?v=1");
+    assert_eq!(shared["loc"]["filePath"], "/web/viewer.css");
+    assert_eq!(shared["resolutionStatus"], "requiresHostResolution");
+    assert_eq!(
+        by_url("https://cdn.test/a.svg")["resolutionStatus"],
+        "external"
+    );
+    let linked = link(
+        &output,
+        &[
+            asset("/web/viewer.css", "images/close.svg", "./close.abc.svg"),
+            asset("/web/viewer.css", "../shared/a.png?v=1", "./a.def.png"),
+        ],
+    )
+    .unwrap();
+    assert!(
+        linked
+            .code
+            .contains(r#"--close-icon: url("./close.abc.svg")"#),
+        "{}",
+        linked.code
+    );
+    assert!(
+        linked
+            .code
+            .contains(r#"--bg: url("./a.def.png?v=1") no-repeat"#),
+        "{}",
+        linked.code
+    );
+    assert!(linked.code.contains("https://cdn.test/a.svg"));
+    assert_eq!(linked.replacement_count, 3);
+    assert_rule_mapping(
+        &linked.code,
+        linked.map.as_ref().unwrap(),
+        ".after",
+        viewer,
+        ".after",
+    );
+}

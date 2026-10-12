@@ -11,7 +11,7 @@ const source=spawnSync('python3',['scripts/svelte/source-identity.py'],{encoding
 async function identify(app){const files={};async function walk(dir){for(const e of (await readdir(app+'/'+dir,{withFileTypes:true})).sort((a,b)=>a.name.localeCompare(b.name))){const name=dir+'/'+e.name;if(e.isDirectory())await walk(name);else if(e.isFile())files[name]=createHash('sha256').update(await readFile(app+'/'+name)).digest('hex');else throw new Error('Unexpected build symlink '+name);}}await walk('build');for(const name of ['package-lock.json','node_modules/svelte/package.json'])files[name]=createHash('sha256').update(await readFile(app+'/'+name)).digest('hex');return files;}
 const identities={official:await identify(official),native:await identify(native)};await writeFile(out+'/artifacts.json',JSON.stringify(identities,null,2)+'\n');
 const {chromium}=await import(pathToFileURL(official+'/node_modules/playwright/index.mjs'));
-const executablePath='/nix/store/dypizpwkjf8v2vscas3ksz3945lhirkx-playwright-chromium-headless-shell/chrome-headless-shell-linux64/chrome-headless-shell';
+const executablePath=process.env.PLAYWRIGHT_CHROMIUM??'/nix/store/dypizpwkjf8v2vscas3ksz3945lhirkx-playwright-chromium-headless-shell/chrome-headless-shell-linux64/chrome-headless-shell';
 const browser=await chromium.launch({executablePath,headless:true,args:['--no-sandbox']});
 const reports=[];
 try{for(const [mode,app]of[['official',official],['native',native]]){

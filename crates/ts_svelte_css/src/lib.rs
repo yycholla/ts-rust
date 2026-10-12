@@ -433,8 +433,12 @@ pub fn bundle(input: &BundleInput) -> Result<BundleOutput, CssError> {
             source_map: map.as_mut(),
             project_root: Some(&input.options.project_root),
             targets,
+            // Vite's url rewrite resolves a relative url() in a custom
+            // property against the stylesheet that defines it, like any other
+            // declaration. Keep that behavior instead of rejecting it.
             analyze_dependencies: Some(DependencyOptions {
                 remove_imports: false,
+                relative_urls_in_custom_properties: true,
             }),
             ..Default::default()
         })

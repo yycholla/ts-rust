@@ -284,7 +284,27 @@ fn evaluate_with<'a>(
                     }
                     json!({"$call": {"module": module, "export": export, "arguments": arguments}})
                 }
-                _ => dynamic(expr),
+                // A zero-argument call of a local `const f = () => expression`
+                // records the returned expression's static shape.
+                _ => match &call.callee {
+                    Expression::Identifier(id) if call.arguments.is_empty() => {
+                        match bindings.get(id.name.as_str()) {
+                            Some(Expression::ArrowFunctionExpression(arrow))
+                                if arrow.params.items.is_empty() =>
+                            {
+                                match arrow.body.as_expression() {
+                                    Some(body) => json!({"$localCall": {
+                                        "name": id.name.as_str(),
+                                        "returns": evaluate_with(body, bindings, calls, depth + 1)?,
+                                    }}),
+                                    None => dynamic(expr),
+                                }
+                            }
+                            _ => dynamic(expr),
+                        }
+                    }
+                    _ => dynamic(expr),
+                },
             }
         }
         _ => dynamic(expr),
@@ -1086,7 +1106,8 @@ export default config;"#,
             json!({"$call": {"module": "@sveltejs/adapter-node", "export": "default", "arguments": [{"out": "dist", "precompress": false, "$keys": ["out", "precompress"]}]}})
         );
         // Calls of local bindings and spread arguments stay dynamic.
-        assert!(tree["kit"]["other"].get("$nativeDynamic").is_some());
+        assert_eq!(tree["kit"]["other"]["$localCall"]["name"], "local");
+        assert_eq!(tree["kit"]["other"]["$localCall"]["returns"], 1.0);
         assert!(tree["kit"]["spread"].get("$nativeDynamic").is_some());
         assert_eq!(
             tree["kit"]["experimental"]["instrumentation"]["server"],
