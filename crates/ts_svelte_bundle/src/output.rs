@@ -28,6 +28,19 @@ pub struct OutputOptions {
     /// module contains only literals and has no dependencies.
     #[serde(default)]
     pub fixed_chunks: BTreeMap<String, Vec<String>>,
+    /// Ordered `chunkFileNames` rules: a chunk holding any module under
+    /// `modulePrefix` uses `pattern` (adapter-node 6's `adapter-node-[name].js`).
+    #[serde(default)]
+    pub chunk_file_name_rules: Vec<ChunkFileNameRule>,
+    /// Rollup `output.paths`: exact external id -> rendered import path.
+    #[serde(default)]
+    pub paths: BTreeMap<String, String>,
+}
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase", deny_unknown_fields)]
+pub struct ChunkFileNameRule {
+    pub module_prefix: String,
+    pub pattern: String,
 }
 #[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "kebab-case")]
@@ -75,6 +88,17 @@ pub(crate) fn configure(
     {
         name(value)?;
     }
+    for rule in &policy.chunk_file_name_rules {
+        name(&rule.pattern)?;
+        if rule.module_prefix.is_empty() {
+            return Err("chunkFileNames rules need a module prefix".into());
+        }
+    }
+    if !policy.paths.is_empty() {
+        options.paths = Some(rolldown_common::PathsOutputOption::FxHashMap(
+            policy.paths.clone().into_iter().collect(),
+        ));
+    }
     if policy.hoist_transitive_imports == Some(true) {
         return Err("Native bundler does not support hoistTransitiveImports:true".into());
     }
@@ -101,6 +125,7 @@ pub(crate) fn configure(
             ..Default::default()
         });
     }
+    let mut fixed_names = BTreeMap::new();
     if !policy.fixed_chunks.is_empty() {
         // A fixed manifest's literal exports must remain in its own chunk;
         // cross-module constant folding would erase that required boundary.
@@ -143,14 +168,29 @@ pub(crate) fn configure(
             groups: Some(groups),
             ..Default::default()
         }));
+        fixed_names = names;
+    }
+    if !fixed_names.is_empty() || !policy.chunk_file_name_rules.is_empty() {
         let fallback = policy
             .chunk_file_names
             .clone()
             .unwrap_or_else(|| "chunks/[name]-[hash].js".into());
+        let rules = policy.chunk_file_name_rules.clone();
         options.chunk_filenames = Some(ChunkFilenamesOutputOption::Fn(Arc::new(move |chunk| {
-            let result = names
+            let result = fixed_names
                 .get(chunk.name.as_str())
                 .cloned()
+                .or_else(|| {
+                    rules
+                        .iter()
+                        .find(|rule| {
+                            chunk
+                                .module_ids
+                                .iter()
+                                .any(|id| id.as_str().starts_with(&rule.module_prefix))
+                        })
+                        .map(|rule| rule.pattern.clone())
+                })
                 .unwrap_or_else(|| fallback.clone());
             Box::pin(async move { Ok(result) })
         })));

@@ -260,6 +260,14 @@ fn resolve(
             None,
         ));
     }
+    if matches!(specifier, "node:module" | "module") {
+        return Ok((
+            Resolution::Builtin {
+                name: "node:module".into(),
+            },
+            None,
+        ));
+    }
     let relative = specifier.starts_with("./")
         || specifier.starts_with("../")
         || specifier.starts_with('/')
@@ -345,7 +353,14 @@ pub fn prepare(
         // Snapshot read() mirrors the server directory; it can read emitted JS
         // bytes too, but assets never implicitly become executable modules.
         assets.insert(relative.to_owned(), bytes.clone());
+        // adapter-node 6 modules join the server build but import its
+        // hand-off module, written only when packaging; Kit's analysis never
+        // imports them.
+        let adapter_owned = request.adapter_node_kit3.is_some()
+            && (relative.starts_with("adapter-")
+                || ["handler.js", "adapter-index.js", "adapter-env.js"].contains(&relative));
         if module_file(file)
+            && !adapter_owned
             && (artifact.kind == "server" || preliminary.generated_files.contains(file))
         {
             if bytes.len() > MAX_SOURCE {

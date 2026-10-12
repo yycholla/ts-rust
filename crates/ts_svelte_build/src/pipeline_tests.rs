@@ -106,6 +106,8 @@ impl Fixture {
             request: BuildRequest {
                 tailwind: None,
                 adapter_node: None,
+                adapter_node_kit3: None,
+                mime_types: BTreeMap::new(),
                 service_worker_options: Default::default(),
                 kit,
                 compiler: CompilerSettings {
@@ -113,9 +115,11 @@ impl Fixture {
                     typescript_version: None,
                     allow_prerelease: false,
                     runes: Some(true),
+                    runes_project_only: false,
                     minify: false,
                     server_minify: false,
                     sourcemap: true,
+                    server_sourcemap: None,
                     options: Default::default(),
                     tsconfig: None,
                     mdsvex: None,

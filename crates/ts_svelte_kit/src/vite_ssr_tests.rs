@@ -8,6 +8,7 @@ fn policy(external: &[&str], no_external: &[&str]) -> SsrExternalPolicy {
             .iter()
             .map(|s| NoExternal::Name((*s).into()))
             .collect(),
+        no_external_all: false,
     }
 }
 fn resolved(path: &str) -> impl FnOnce(&str) -> Probe + '_ {
@@ -188,4 +189,24 @@ fn crawl_matches_installed_vite_plugin_svelte() {
         .collect();
     assert_eq!(native, oracle_set);
     assert_eq!(oracle["external"], json!([]));
+}
+
+#[test]
+fn no_external_all_bundles_everything_but_builtins_and_listed_packages() {
+    let policy = SsrExternalPolicy {
+        external: vec!["pg".into()],
+        no_external: vec![],
+        no_external_all: true,
+    };
+    let filter = NoExternalFilter::new(&policy).unwrap();
+    let probe = || resolved("/app/node_modules/x/index.js");
+    assert!(decide(&policy, &filter, "node:fs", probe()));
+    assert!(decide(
+        &policy,
+        &filter,
+        "pg",
+        resolved("/app/node_modules/pg/index.js")
+    ));
+    assert!(!decide(&policy, &filter, "devalue", probe()));
+    assert!(!decide(&policy, &filter, "@sveltejs/kit/node", probe()));
 }

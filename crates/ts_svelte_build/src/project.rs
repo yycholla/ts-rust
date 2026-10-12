@@ -1,12 +1,13 @@
-//! Native project loader: turns an installed SvelteKit 2 project directory into
-//! a `BuildRequest` without executing `svelte.config.js` or `vite.config.*`.
-//! Both configs are read as static trees (`sync_config::static_config_tree`).
+//! Native project loader: turns an installed SvelteKit 2 or 3 project directory
+//! into a `BuildRequest` without executing `svelte.config.js` or `vite.config.*`.
+//! Configs are read as static trees (`sync_config::static_config_tree`); Kit 3's
+//! options are the argument of the `sveltekit(...)` Vite plugin call.
 //! Values that need execution come from explicit `ProjectInput` fields or are
 //! reported as requirements; nothing is guessed.
 //!
-//! Sources: pinned Kit 2.69.2 `exports/vite/index.js` (config hook, templates,
-//! env, aliases), `core/config/options.js` (defaults) and Vite 7.3.1 config
-//! resolution. Application inputs are read only; nothing is written.
+//! Sources: pinned Kit 2.69.2 and 3.0.1 `exports/vite/index.js` (config hook,
+//! templates, env, aliases), `core/config/options.js` (defaults), Vite 7.3.1
+//! config resolution and adapter-node 6.0.0's Vite plugin. Application inputs are read only; nothing is written.
 use crate::Requirement;
 use base64::Engine as _;
 use serde::Deserialize;
@@ -25,6 +26,37 @@ use ts_svelte_kit::{
 };
 
 const ADAPTER_NODE: &str = "@sveltejs/adapter-node";
+/// adapter-node 6.0.0 (Kit 3): the files its Vite plugin adds to the SSR
+/// build and its `adapt` module, whose packaging is ported natively.
+const ADAPTER_NODE_KIT3_VERSION: &str = "6.0.0";
+const ADAPTER_NODE_KIT3_FILES: [(&str, &str); 6] = [
+    (
+        "index.js",
+        "0077781f631c2714c6eacc822d4c47e7e529067f7509598f95d8f7d774e85fc9",
+    ),
+    (
+        "src/env.js",
+        "72d4998e23273730a7da7c9374e3f9a15ce6d11ecb985cc89ac91a7db67819d2",
+    ),
+    (
+        "src/handler.js",
+        "d8033fcc70fda60761e2844f2de4cdc2fa17d6704658847f7143ff7484daaa92",
+    ),
+    (
+        "src/index.js",
+        "afc3643455f0aa6f1353699ad11df2a5fae2cdb3469676020b291cf7bcfc0920",
+    ),
+    (
+        "src/static.js",
+        "40581957725dec58b26f6b53376210849bfcda87abab809885a3b9c9d9a3e4f7",
+    ),
+    (
+        "src/utils.js",
+        "3ca785e4545caab2a828b231cfa691611a7ace10b568269be8c3f5a05f67198b",
+    ),
+];
+/// Kit's MIME lookup is `mrmime`; this version's database is read as data.
+const MRMIME_VERSION: &str = "2.0.1";
 const ADAPTER_NODE_FILES: [&str; 4] = ["env.js", "handler.js", "index.js", "shims.js"];
 const MAX_STATIC_BYTES: u64 = 64 * 1024 * 1024;
 
@@ -180,9 +212,10 @@ pub fn load(input: &ProjectInput) -> Result<LoadedProject, String> {
         requirements: vec![],
     };
     let kit_version = sync_config::installed_kit_version(&root)?;
-    if !kit_version.starts_with("2.") {
+    let kit3 = kit_version.starts_with("3.");
+    if !kit3 && !kit_version.starts_with("2.") {
         return Err(format!(
-            "The native project loader currently reads Kit 2 configs; installed Kit is {kit_version}"
+            "The native project loader reads Kit 2 and Kit 3 configs; installed Kit is {kit_version}"
         ));
     }
     let svelte_version = loader.package_version("svelte")?;
@@ -192,27 +225,54 @@ pub fn load(input: &ProjectInput) -> Result<LoadedProject, String> {
         .and_then(|major| major.parse().ok())
         .ok_or("Invalid installed Svelte version")?;
 
-    // svelte.config.js: the sync subset plus the static tree for build fields.
-    let config_file = ["svelte.config.js", "svelte.config.mjs", "svelte.config.ts"]
-        .into_iter()
-        .map(|name| root.join(name))
-        .find(|path| path.is_file())
-        .ok_or("No svelte.config.js")?;
+    // Kit 2: svelte.config.js, Kit options under `kit`. Kit 3: the flat options
+    // of the `sveltekit(...)` Vite plugin (Kit 3.0.1 `split_config`), where
+    // any option Kit does not own is forwarded to vite-plugin-svelte.
     let sync: SyncConfig = sync_config::load(&root, None)?;
-    let tree = sync_config::static_config_tree(&read_text(&config_file)?)?;
+    let tree = if kit3 {
+        sync_config::kit3_plugin_options(&root)?
+    } else {
+        let config_file = ["svelte.config.js", "svelte.config.mjs", "svelte.config.ts"]
+            .into_iter()
+            .map(|name| root.join(name))
+            .find(|path| path.is_file())
+            .ok_or("No svelte.config.js")?;
+        sync_config::static_config_tree(&read_text(&config_file)?)?
+    };
     let top = object(Some(&tree), "Svelte config")?.ok_or("Svelte config")?;
-    let kit = object(top.get("kit"), "kit")?;
+    let kit = if kit3 {
+        Some(top)
+    } else {
+        object(top.get("kit"), "kit")?
+    };
     let experimental = object(
         kit.and_then(|kit| kit.get("experimental")),
         "kit.experimental",
     )?;
-    let known_top = [
-        "extensions",
-        "preprocess",
-        "compilerOptions",
-        "kit",
-        "$keys",
-    ];
+    let known_top: &[&str] = if kit3 {
+        &[
+            "extensions",
+            "preprocess",
+            "compilerOptions",
+            "adapter",
+            "alias",
+            "experimental",
+            "files",
+            "env",
+            "outDir",
+            "moduleExtensions",
+            "tracing",
+            "$keys",
+        ]
+    } else {
+        &[
+            "extensions",
+            "preprocess",
+            "compilerOptions",
+            "kit",
+            "$keys",
+        ]
+    };
     for key in top.keys().filter(|key| !known_top.contains(&key.as_str())) {
         loader.require(
             "config",
@@ -232,6 +292,7 @@ pub fn load(input: &ProjectInput) -> Result<LoadedProject, String> {
     ];
     for key in kit
         .into_iter()
+        .filter(|_| !kit3)
         .flat_map(|kit| kit.keys())
         .filter(|key| !known_kit.contains(&key.as_str()))
     {
@@ -241,12 +302,19 @@ pub fn load(input: &ProjectInput) -> Result<LoadedProject, String> {
             format!("Unsupported kit config field kit.{key}"),
         );
     }
-    let known_experimental = [
-        "tracing",
-        "instrumentation",
-        "explicitEnvironmentVariables",
-        "$keys",
-    ];
+    // Kit 3 moved tracing out of `experimental` and enables instrumentation by
+    // file presence; its remaining flags (remoteFunctions, forkPreloads) and
+    // vite-plugin-svelte's are not ported.
+    let known_experimental: &[&str] = if kit3 {
+        &["$keys"]
+    } else {
+        &[
+            "tracing",
+            "instrumentation",
+            "explicitEnvironmentVariables",
+            "$keys",
+        ]
+    };
     for key in experimental
         .into_iter()
         .flat_map(|map| map.keys())
@@ -261,9 +329,14 @@ pub fn load(input: &ProjectInput) -> Result<LoadedProject, String> {
 
     // compilerOptions: runes is a dedicated setting; the rest is unported.
     let compiler_options = object(top.get("compilerOptions"), "compilerOptions")?;
+    let mut runes_project_only = false;
     let runes = match compiler_options.and_then(|map| map.get("runes")) {
         None | Some(Value::Null) => None,
         Some(Value::Bool(value)) => Some(*value),
+        Some(value) if kit3 && runes_template_callback(&root, value)? => {
+            runes_project_only = true;
+            Some(true)
+        }
         Some(_) => return Err("compilerOptions.runes must be a static boolean".into()),
     };
     for key in compiler_options
@@ -325,17 +398,56 @@ pub fn load(input: &ProjectInput) -> Result<LoadedProject, String> {
         }
     };
 
-    // experimental instrumentation/tracing
+    // Kit 3 uses adapter-node 6, whose server entries join the Vite SSR build;
+    // that packaging is ported for 6.0.0 exactly (files verified below).
+    let adapter_node_kit3_version = if kit3 && adapter_name.is_some() {
+        Some(loader.package_version(ADAPTER_NODE)?)
+    } else {
+        None
+    };
+    if let Some(version) = &adapter_node_kit3_version
+        && version != ADAPTER_NODE_KIT3_VERSION
+    {
+        loader.require(
+            "adapter",
+            "native_adapter",
+            format!("Native Kit 3 adapter-node packaging is {ADAPTER_NODE_KIT3_VERSION}; installed {version}"),
+        );
+    }
+
+    // instrumentation/tracing: Kit 2 flags under `experimental`; Kit 3 reads
+    // `tracing.server` and uses src/instrumentation.server whenever it exists.
     let tracing = object(
-        experimental.and_then(|map| map.get("tracing")),
-        "kit.experimental.tracing",
+        if kit3 {
+            top.get("tracing")
+        } else {
+            experimental.and_then(|map| map.get("tracing"))
+        },
+        "tracing",
     )?;
     let tracing_server = bool_at(tracing, "server", false)?;
     let instrumentation = object(
         experimental.and_then(|map| map.get("instrumentation")),
         "kit.experimental.instrumentation",
     )?;
-    let instrumentation = if bool_at(instrumentation, "server", false)? {
+    let instrumentation_entry = with_extension(
+        &root.join(&sync.src).join("instrumentation.server"),
+        &sync.module_extensions,
+    );
+    if kit3 && instrumentation_entry.is_some() && adapter_name.is_some() {
+        loader.require(
+            "adapter",
+            "instrumentation",
+            "adapter-node 6 `builder.instrument` packaging is not ported",
+        );
+    }
+    let instrumentation = if kit3 && let Some(entry) = instrumentation_entry {
+        Some(ResolvedInstrumentation {
+            entry,
+            enabled: true,
+            adapter_supports: adapter_name.as_ref().map(|_| true),
+        })
+    } else if !kit3 && bool_at(instrumentation, "server", false)? {
         // Kit: path.join(config.kit.files.src, 'instrumentation.server') with a
         // module extension; adapter-node 5.5.4 supports it.
         let entry = with_extension(&root.join(&sync.src).join("instrumentation.server"), &sync.module_extensions)
@@ -418,11 +530,14 @@ pub fn load(input: &ProjectInput) -> Result<LoadedProject, String> {
         explicit_environment_variables: sync.explicit_environment_variables,
         definition: None,
     };
-    if sync.explicit_environment_variables {
+    // Kit 3 always derives env modules from src/env when it exists.
+    let kit3_env = kit3
+        && with_extension(&root.join(&sync.src).join("env"), &sync.module_extensions).is_some();
+    if sync.explicit_environment_variables || kit3_env {
         loader.require(
             "environment",
             "explicit_environment_definition",
-            "kit.experimental.explicitEnvironmentVariables needs the evaluated env definition",
+            "Explicit environment variables (src/env or kit.experimental.explicitEnvironmentVariables) need the evaluated env definition",
         );
     }
 
@@ -440,11 +555,13 @@ pub fn load(input: &ProjectInput) -> Result<LoadedProject, String> {
             });
         }
     }
-    let vite = vite_config(&mut loader, &root, input)?;
+    let vite = vite_config(&mut loader, &root, input, kit3)?;
+    // Kit 3 removed `$lib` (projects use package.json `#` imports).
     let kit_alias_names: BTreeSet<String> = aliases
         .iter()
         .map(|alias| alias.name.trim_end_matches("/*").to_owned())
-        .chain(["$lib".into(), "$app".into(), "$env".into()])
+        .chain(["$app".into(), "$env".into()])
+        .chain((!kit3).then(|| "$lib".to_owned()))
         .collect();
     for (name, path) in &vite.aliases {
         // Kit's aliases are merged ahead of the user's and win on the same name.
@@ -510,7 +627,25 @@ pub fn load(input: &ProjectInput) -> Result<LoadedProject, String> {
         server_externals: vec![],
         vite_env: vite_values,
     };
-    let ssr_external = vite_ssr::kit2_server_policy(&root, &vite.ssr_external, &[])?;
+    let package_json: Value = serde_json::from_str(&read_text(&root.join("package.json"))?)
+        .map_err(|e| format!("package.json: {e}"))?;
+    let ssr_external = if adapter_node_kit3_version.is_some() {
+        if !vite.ssr_external.is_empty() {
+            loader.require(
+                "vite",
+                "ssr_external",
+                "ssr.external with adapter-node 6 is not ported",
+            );
+        }
+        vite_ssr::kit3_adapter_node_policy(&root, &package_json)?
+    } else {
+        vite_ssr::kit2_server_policy(&root, &vite.ssr_external, &[])?
+    };
+    let mime_types = mime_table(&root, kit3)?;
+    let mime_of = |file: &str| {
+        let extension = file.rsplit('.').next().unwrap_or(file).to_lowercase();
+        mime_types.get(&format!(".{extension}")).cloned()
+    };
 
     // Module snapshots for native analysis: every universal/server node module
     // and endpoint, plus the project-local modules they import at runtime.
@@ -523,7 +658,7 @@ pub fn load(input: &ProjectInput) -> Result<LoadedProject, String> {
     for route in &inventory.routes {
         module_files.extend(route.endpoint.iter().cloned());
     }
-    let resolver = LocalResolver::new(&root, &config);
+    let resolver = LocalResolver::new(&root, &config, kit3)?;
     let modules = local_module_graph(&resolver, module_files)?;
 
     // Static assets: Kit copies kit.files.assets verbatim.
@@ -556,16 +691,17 @@ pub fn load(input: &ProjectInput) -> Result<LoadedProject, String> {
                     .to_string_lossy()
                     .replace('\\', "/");
                 let bytes = std::fs::read(&path).map_err(|e| format!("{}: {e}", path.display()))?;
+                let mime_type = mime_of(&relative);
                 static_assets.insert(
                     relative,
-                    json!({"source": base64::engine::general_purpose::STANDARD.encode(bytes), "mimeType": null}),
+                    json!({"source": base64::engine::general_purpose::STANDARD.encode(bytes), "mimeType": mime_type}),
                 );
             }
         }
     }
 
-    // adapter-node templates from the installed package.
-    let adapter_node = if adapter_name.is_some() {
+    // adapter-node templates from the installed package (5.5.4, Kit 2).
+    let adapter_node = if adapter_name.is_some() && !kit3 {
         let directory = root.join("node_modules").join(ADAPTER_NODE);
         let version = loader.package_version(ADAPTER_NODE)?;
         let mut files = BTreeMap::new();
@@ -575,20 +711,43 @@ pub fn load(input: &ProjectInput) -> Result<LoadedProject, String> {
                 read_text(&directory.join("files").join(name))?,
             );
         }
-        let package_json: Value = serde_json::from_str(&read_text(&root.join("package.json"))?)
-            .map_err(|e| format!("package.json: {e}"))?;
         Some(json!({
             "templates": {"version": version, "files": files},
-            "options": adapter_options.unwrap_or_else(|| json!({})),
+            "options": adapter_options.clone().unwrap_or_else(|| json!({})),
             "packageJson": package_json,
             "serverMapBase": root.join("dist"),
         }))
     } else {
         None
     };
+    let adapter_node_kit3 = match &adapter_node_kit3_version {
+        Some(version) if version == ADAPTER_NODE_KIT3_VERSION => {
+            let directory = root
+                .join("node_modules")
+                .join(ADAPTER_NODE)
+                .canonicalize()
+                .map_err(|e| format!("{ADAPTER_NODE}: {e}"))?;
+            for (file, expected) in ADAPTER_NODE_KIT3_FILES {
+                let bytes = std::fs::read(directory.join(file))
+                    .map_err(|e| format!("{ADAPTER_NODE}/{file}: {e}"))?;
+                if ts_svelte_compress::sha256(&bytes) != expected {
+                    return Err(format!(
+                        "{ADAPTER_NODE}@{version} {file} differs from the pinned release"
+                    ));
+                }
+            }
+            Some(json!({
+                "directory": directory,
+                "options": adapter_options.clone().unwrap_or_else(|| json!({})),
+            }))
+        }
+        _ => None,
+    };
 
     let request = json!({
         "adapterNode": adapter_node,
+        "adapterNodeKit3": adapter_node_kit3,
+        "mimeTypes": mime_types,
         "kit": {
             "inventory": inventory,
             "server": server,
@@ -600,9 +759,11 @@ pub fn load(input: &ProjectInput) -> Result<LoadedProject, String> {
             "svelteVersion": svelte_version,
             "typescriptVersion": null,
             "runes": runes,
+            "runesProjectOnly": runes_project_only,
             "minify": vite.minify,
             "serverMinify": vite.server_minify,
             "sourcemap": vite.sourcemap,
+            "serverSourcemap": vite.server_sourcemap,
             "tsconfig": null,
             "mdsvex": mdsvex,
             "typescript": {},
@@ -621,6 +782,80 @@ pub fn load(input: &ProjectInput) -> Result<LoadedProject, String> {
         request,
         requirements: loader.requirements,
     })
+}
+
+/// The `compilerOptions.runes` callback of the `sv create` templates (sv
+/// 1.1.1): runes for every file outside `node_modules`, the compiler's
+/// default inside it. Matched on its source text without whitespace.
+const RUNES_TEMPLATE_CALLBACKS: [&str; 2] = [
+    r"({filename})=>filename.split(/[/\\]/).includes('node_modules')?undefined:true",
+    r"({filename})=>filename.includes('node_modules')?undefined:true",
+];
+fn runes_template_callback(root: &Path, value: &Value) -> Result<bool, String> {
+    let Some([start, end]) = value
+        .get("$nativeDynamic")
+        .and_then(Value::as_array)
+        .map(|span| span.iter().filter_map(Value::as_u64).collect::<Vec<_>>())
+        .as_deref()
+        .and_then(|span| <[u64; 2]>::try_from(span).ok())
+    else {
+        return Ok(false);
+    };
+    let Some((file, _)) = sync_config::vite_config_tree(root)? else {
+        return Ok(false);
+    };
+    let source = read_text(&file)?;
+    let text: String = source
+        .get(start as usize..end as usize)
+        .unwrap_or_default()
+        .chars()
+        .filter(|c| !c.is_whitespace())
+        .collect();
+    Ok(RUNES_TEMPLATE_CALLBACKS.contains(&text.as_str()))
+}
+
+/// `mrmime` 2.0.1's database (`.ext` -> type) from the copy Kit resolves,
+/// read as JSON data; Kit 3 overrides `.ico` with `image/x-icon`.
+fn mime_table(root: &Path, kit3: bool) -> Result<BTreeMap<String, String>, String> {
+    // Node resolution from Kit's real directory (pnpm keeps its dependencies
+    // beside it in the store): each ancestor's node_modules, nearest first.
+    let kit = root
+        .join("node_modules/@sveltejs/kit")
+        .canonicalize()
+        .map_err(|e| format!("@sveltejs/kit: {e}"))?;
+    let directory = kit
+        .ancestors()
+        .filter(|ancestor| {
+            ancestor
+                .file_name()
+                .is_none_or(|name| name != "node_modules")
+        })
+        .map(|ancestor| ancestor.join("node_modules/mrmime"))
+        .find(|path| path.join("package.json").is_file())
+        .ok_or("Cannot find the mrmime package Kit uses")?;
+    let package: Value = serde_json::from_str(&read_text(&directory.join("package.json"))?)
+        .map_err(|e| format!("mrmime package.json: {e}"))?;
+    if package["version"] != MRMIME_VERSION {
+        return Err(format!(
+            "Native MIME lookup reads mrmime {MRMIME_VERSION}; installed {}",
+            package["version"]
+        ));
+    }
+    let source = read_text(&directory.join("index.mjs"))?;
+    let table = source
+        .strip_prefix("const mimes = ")
+        .and_then(|rest| rest.find("\n};\n").map(|end| &rest[..end + 2]))
+        .ok_or("Unexpected mrmime index.mjs layout")?;
+    let mimes: BTreeMap<String, String> =
+        serde_json::from_str(table).map_err(|e| format!("mrmime database: {e}"))?;
+    let mut lookup: BTreeMap<String, String> = mimes
+        .into_iter()
+        .map(|(extension, mime)| (format!(".{extension}"), mime))
+        .collect();
+    if kit3 {
+        lookup.insert(".ico".into(), "image/x-icon".into());
+    }
+    Ok(lookup)
 }
 
 fn adapter_options_out(options: &Option<Value>) -> String {
@@ -682,11 +917,16 @@ struct LocalResolver {
     root: PathBuf,
     aliases: Vec<(String, PathBuf, bool)>,
     names: BTreeSet<String>,
+    /// package.json `imports`: `#` key (without `/*`) -> target, wildcard.
+    imports: Vec<(String, PathBuf, bool)>,
 }
 const SCRIPT_EXTENSIONS: [&str; 7] = [".mjs", ".js", ".mts", ".ts", ".jsx", ".tsx", ".json"];
 impl LocalResolver {
-    fn new(root: &Path, config: &ResolvedBuildPlanConfig) -> Self {
-        let mut aliases = vec![("$lib".to_owned(), config.lib_directory.clone(), false)];
+    fn new(root: &Path, config: &ResolvedBuildPlanConfig, kit3: bool) -> Result<Self, String> {
+        let mut aliases = vec![];
+        if !kit3 {
+            aliases.push(("$lib".to_owned(), config.lib_directory.clone(), false));
+        }
         for alias in &config.aliases {
             match alias.name.strip_suffix("/*") {
                 Some(base) => aliases.push((base.to_owned(), alias.path.clone(), true)),
@@ -698,11 +938,23 @@ impl LocalResolver {
             .iter()
             .map(|alias| alias.name.clone())
             .collect();
-        Self {
+        Ok(Self {
             root: root.to_path_buf(),
             aliases,
             names,
-        }
+            imports: package_imports(root)?,
+        })
+    }
+    /// Node's PACKAGE_IMPORTS_RESOLVE for string (or `{default}`) targets.
+    fn import(&self, specifier: &str) -> Option<PathBuf> {
+        self.imports.iter().find_map(|(key, target, wildcard)| {
+            if *wildcard {
+                let rest = specifier.strip_prefix(key.as_str())?.strip_prefix('/')?;
+                Some(target.join(rest))
+            } else {
+                (specifier == key).then(|| target.clone())
+            }
+        })
     }
     fn alias(&self, specifier: &str) -> Option<PathBuf> {
         for (name, path, children) in &self.aliases {
@@ -723,6 +975,8 @@ impl LocalResolver {
     fn resolve(&self, specifier: &str, importer: &Path) -> Option<PathBuf> {
         let base = if specifier.starts_with("./") || specifier.starts_with("../") {
             resolve(importer.parent()?, specifier)
+        } else if specifier.starts_with('#') {
+            self.import(specifier)?
         } else {
             self.alias(specifier)?
         };
@@ -751,6 +1005,37 @@ impl LocalResolver {
             && !found.components().any(|c| c.as_os_str() == "node_modules");
         (script && local).then_some(found)
     }
+}
+
+/// The project package.json `imports` entries with a local string target
+/// (or a conditions object with a string `default`), `#x/*` -> `./dir/*`.
+fn package_imports(root: &Path) -> Result<Vec<(String, PathBuf, bool)>, String> {
+    let package: Value = serde_json::from_str(&read_text(&root.join("package.json"))?)
+        .map_err(|e| format!("package.json: {e}"))?;
+    let mut imports = vec![];
+    for (key, value) in package["imports"].as_object().into_iter().flatten() {
+        let target = match value {
+            Value::String(target) => target.as_str(),
+            Value::Object(conditions) => match conditions.get("default") {
+                Some(Value::String(target)) => target.as_str(),
+                _ => continue,
+            },
+            _ => continue,
+        };
+        if !key.starts_with('#') || !target.starts_with("./") {
+            continue;
+        }
+        match (key.strip_suffix("/*"), target.strip_suffix("/*")) {
+            (Some(key), Some(target)) if !key.contains('*') && !target.contains('*') => {
+                imports.push((key.to_owned(), resolve(root, target), true))
+            }
+            (None, _) if !key.contains('*') && !target.contains('*') => {
+                imports.push((key.clone(), resolve(root, target), false))
+            }
+            _ => {}
+        }
+    }
+    Ok(imports)
 }
 
 /// Source snapshots for the analysis roots and their transitive local imports.
@@ -997,6 +1282,8 @@ struct ViteProject {
     /// `build.minify` is merged into every environment.
     server_minify: bool,
     sourcemap: bool,
+    /// Kit 3 sets the SSR environment's sourcemap to `build.sourcemap ?? true`.
+    server_sourcemap: Option<bool>,
     treeshake: Option<Value>,
     aliases: Vec<(String, PathBuf)>,
     ssr_external: Vec<String>,
@@ -1008,6 +1295,7 @@ fn vite_config(
     loader: &mut Loader,
     root: &Path,
     input: &ProjectInput,
+    kit3: bool,
 ) -> Result<ViteProject, String> {
     let mut project = ViteProject {
         tailwind: false,
@@ -1015,24 +1303,20 @@ fn vite_config(
         minify: true,
         server_minify: false,
         sourcemap: false,
+        server_sourcemap: None,
         treeshake: None,
         aliases: vec![],
         ssr_external: vec![],
         define: input.define.clone(),
     };
-    let Some(file) = [
-        "vite.config.ts",
-        "vite.config.js",
-        "vite.config.mjs",
-        "vite.config.mts",
-    ]
-    .into_iter()
-    .map(|name| root.join(name))
-    .find(|path| path.is_file()) else {
-        return Ok(project);
-    };
-    let tree = match sync_config::static_config_tree(&read_text(&file)?) {
-        Ok(tree) => tree,
+    let tree = match sync_config::vite_config_tree(root) {
+        Ok(Some((_, tree))) => tree,
+        Ok(None) => {
+            if kit3 {
+                project.server_sourcemap = Some(true);
+            }
+            return Ok(project);
+        }
         Err(error) => {
             loader.require(
                 "vite",
@@ -1042,19 +1326,18 @@ fn vite_config(
             return Ok(project);
         }
     };
-    let config = match call(&tree) {
-        Some(("vite", "defineConfig", [config])) => config.clone(),
-        _ if tree.is_object() && !is_dynamic(&tree) => tree,
-        _ => {
-            loader.require(
-                "vite",
-                "vite_config",
-                "vite config is not a static object or defineConfig({...})",
-            );
-            return Ok(project);
-        }
+    let Some(config) = sync_config::vite_config_object(&tree) else {
+        loader.require(
+            "vite",
+            "vite_config",
+            "vite config is not a static object or defineConfig({...})",
+        );
+        return Ok(project);
     };
-    let config = object(Some(&config), "vite config")?.ok_or("vite config")?;
+    let config = object(Some(&Value::Object(config.clone())), "vite config")?
+        .ok_or("vite config")?
+        .clone();
+    let config = &config;
 
     // resolve.alias as an object of find -> path.resolve(...) or string.
     if let Some(resolve_config) = object(config.get("resolve"), "vite resolve")?
@@ -1140,6 +1423,8 @@ fn vite_config(
         for plugin in plugins {
             match call(plugin) {
                 Some(("@sveltejs/kit/vite", "sveltekit", [])) => {}
+                // Kit 3 options are read by the loader (`kit3_plugin_options`).
+                Some(("@sveltejs/kit/vite", "sveltekit", [_])) if kit3 => {}
                 Some(("@tailwindcss/vite", "default", [])) => project.tailwind = true,
                 Some(("@sentry/sveltekit", "sentrySvelteKit", arguments))
                     if arguments.len() <= 1 =>
@@ -1175,6 +1460,18 @@ fn vite_config(
     }
     if let Some(build) = object(config.get("build"), "vite build")? {
         vite_build(loader, &mut project, build)?;
+    }
+    if kit3 {
+        let explicit = object(config.get("build"), "vite build")?
+            .is_some_and(|build| build.contains_key("sourcemap"));
+        project.server_sourcemap = Some(if explicit { project.sourcemap } else { true });
+        if config.contains_key("environments") {
+            loader.require(
+                "vite",
+                "environments",
+                "Vite `environments` options are not ported",
+            );
+        }
     }
     if let Some(esbuild) = object(config.get("esbuild"), "vite esbuild")? {
         for key in ordered_keys(esbuild) {

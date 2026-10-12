@@ -381,6 +381,7 @@ impl PrerenderSession {
             HostCapability::RequestResponse,
             HostCapability::Crypto,
             HostCapability::NodeAsyncHooks,
+            HostCapability::NodeModule,
         ]);
         let mut runtime = Runtime::with_host_options(
             input.bootstrap.snapshot,

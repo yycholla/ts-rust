@@ -1599,7 +1599,7 @@
       "tool": "scripts/svelte/native-public.py, scripts/svelte/compare-browser.mjs",
       "evidence": "target/svelte-native-public/<name>/evidence",
       "loaderInventory": {
-        "sv-demo (sv@1.1.1 create --template demo)": "Kit 3.0.1: loader reads Kit 2 configs only",
+        "sv-demo (sv@1.1.1 create --template demo)": "Kit 3.0.1 config read from the sveltekit() Vite plugin; remaining: adapter-auto, @sveltejs/enhanced-img (sharp image processing, not ported)",
         "svelte-dev 73e32225d": "Kit 3.0.0-next.31: loader reads Kit 2 configs only (also prerenders)",
         "realworld df7967080": "adapter-vercel unsupported (upstream pnpm-lock.yaml has a duplicated key; installed without it)",
         "bits-ui-docs fd10616a8": "kit.typescript.config callback (also mdsx, velite)",
@@ -1623,7 +1623,44 @@
           "native": 0.61,
           "note": "host load 17-20 from other work during runs; rough"
         }
+      },
+      "kit3": {
+        "date": "2026-10-12",
+        "loader": "Kit 3 options read statically from the one sveltekit(options) call in vite.config (svelte.config.* rejected like Kit 3.0.1); flat Kit option set, tracing.server, instrumentation by file presence, src/env -> explicit env requirement, $lib removed, package.json # imports followed for analysis, sv template runes callback (runes outside node_modules), SSR sourcemap default true",
+        "adapterNode6": "adapter-node 6.0.0 ported natively (6 files sha256-pinned): adapter-index/adapter-env/handler entries in the server graph, #@sveltejs/adapter-node external rendered ../adapter-node.js, adapter-node-[name].js chunk rule, ssr.noExternal true with production dependencies external, writeClient, Kit 3 builder.compress (gzip 9, brotli 11 generic), asset tables (sha256 base64url etag, gz/br sizes, html aliases), mime_types, generateServerInstance, hand-off module. Not ported: builder.instrument (requirement), paths.base, prerendered output",
+        "otherFixes": [
+          "JavaScript-imported assets below assetsInlineLimit inlined as data URLs (Vite shouldInline)",
+          "mrmime 2.0.1 table read as data (Node resolution from Kit's real path) for manifest mime_types and static asset types; Kit 3 .ico override",
+          "Kit 3 font preload filenames passed to node generation; asset source identities observed",
+          "node:module builtin in the native JS runtime (createRequire returns a require that throws) for Rolldown's CJS interop import",
+          "adapter-owned chunks excluded from the analysis execution snapshot"
+        ],
+        "sv-minimal-node": {
+          "variant": "sv@1.1.1 create --template minimal, adapter-auto replaced by adapter-node 6.0.0 on both sides",
+          "loader": "no requirements",
+          "native": "all phases complete",
+          "browser": "1/1 page matches; static file headers match (content-type, br encoding, immutable cache-control, vary)",
+          "outputBytes": {
+            "official": 1445895,
+            "native": 1481757,
+            "clientShippedGzip": {
+              "official": 33017,
+              "native": 34550
+            }
+          },
+          "differences": "native client has 4 chunks vs 5; server has chunks/rolldown-runtime.js and package.json, lacks manifest-full.js and .vite/manifest.json (not used at runtime)"
+        },
+        "sv-demo-node": {
+          "variant": "demo template, adapter-node 6.0.0, <enhanced:img> replaced by a plain imported <img> (recorded edits)",
+          "loader": "no requirements",
+          "native": "server, runtime analysis (needs runtimeBinary for `export const csr = dev`), client, nodes and manifests complete; blocked by prerendering of /, /about, /sverdle/how-to-play (native prerender driver not integrated)"
+        },
+        "regressions": {
+          "realworld-node (Kit 2)": "25/25 pages match after these changes",
+          "MoncuraHR (Kit 2, target/svelte-native-project-2)": "native build complete in 20.7 s; browser parity 4/4 routes; output sizes unchanged"
+        }
       }
     }
-  }
+  },
+  "next": []
 }

@@ -162,7 +162,7 @@ fn graph_request(
         aliases
             .push(json!({"find":alias.name,"replacement":replacement,"matching":alias.matching}));
     }
-    let entries = graph
+    let mut entries = graph
         .entries
         .iter()
         .map(|(name, id)| {
@@ -188,6 +188,23 @@ fn graph_request(
             ));
         }
     }
+    // adapter-node 6's post plugin adds its server modules to the SSR build,
+    // with the hand-off module external and its own chunk names.
+    let mut external = graph.external.clone();
+    let adapter_graph = match (&request.adapter_node_kit3, client || worker) {
+        (Some(adapter), false) => Some(crate::adapter_kit3::server_graph(adapter)?),
+        _ => None,
+    };
+    if let Some(adapter) = &adapter_graph {
+        for (name, file) in &adapter.entries {
+            if entries.insert(name.clone(), file.clone()).is_some() {
+                return Err(format!(
+                    "Adapter entry {name} collides with a Kit server entry"
+                ));
+            }
+        }
+        external.push(crate::adapter_kit3::HANDOFF.into());
+    }
     // Vite merges plugin config over the user's: Kit's own defines win.
     let mut defines = request.define.clone();
     defines.extend(graph.defines.iter().map(|(k, v)| (k.clone(), v.clone())));
@@ -195,9 +212,9 @@ fn graph_request(
         "root":request.kit.inventory.project_root,"entries":entries,"target":if client {"client"} else {"server"},
         "strictExecutionOrder":if worker {Some(true)} else {None},
         "compatibility":{"svelteVersion":request.compiler.svelte_version,"kitVersion":request.kit.inventory.kit_version,"typescriptVersion":request.compiler.typescript_version,"allowPrerelease":request.compiler.allow_prerelease},
-        "runes":request.compiler.runes,"minify":if client || worker {request.compiler.minify} else {request.compiler.server_minify},
-        "treeshake":if worker {None} else {request.treeshake.clone()},"sourcemap":request.compiler.sourcemap,
-        "aliases":aliases,"external":graph.external,"conditions":graph.conditions,"define":defines,
+        "runes":request.compiler.runes,"runesProjectOnly":request.compiler.runes_project_only,"minify":if client || worker {request.compiler.minify} else {request.compiler.server_minify},
+        "treeshake":if worker {None} else {request.treeshake.clone()},"sourcemap":if client || worker {request.compiler.sourcemap} else {request.compiler.server_sourcemap.unwrap_or(request.compiler.sourcemap)},
+        "aliases":aliases,"external":external,"conditions":graph.conditions,"define":defines,
         "ssrExternal":if client || worker {None} else {request.ssr_external.clone()},
         "sentry":if worker {None} else {request.sentry.as_ref().map(|s| s.bundle_options(!client))},
         "tsconfig":request.compiler.tsconfig,"virtualModules":sources,"compilerOptions":request.compiler.options,
@@ -237,6 +254,16 @@ fn graph_request(
             .push(path(&resolved)?);
     }
     prepared.output.fixed_chunks = fixed_chunks;
+    if let Some(adapter) = adapter_graph {
+        prepared
+            .output
+            .chunk_file_name_rules
+            .push(ts_svelte_bundle::output::ChunkFileNameRule {
+                module_prefix: adapter.module_prefix,
+                pattern: "adapter-node-[name].js".into(),
+            });
+        prepared.output.paths = adapter.paths;
+    }
     if !graph.entry_preludes.is_empty() {
         // An ESM facade keeps bootstrap evaluation before the worker dependency
         // subtree without shifting the original worker's source/map coordinates.
@@ -323,6 +350,23 @@ pub(crate) fn dependencies(
             }
         }
     }
+    // Kit 3 font preloads name an installed font by its `node_modules/...`
+    // spelling only when both spellings are observed to be the same file.
+    for record in graph.records.values() {
+        // Virtual module ids (`\0...`) have no filesystem identity.
+        let Some(source) = record
+            .source
+            .as_deref()
+            .filter(|s| !s.is_empty() && !s.contains('\0'))
+        else {
+            continue;
+        };
+        files.insert(lexical(&inventory.project_root.join(source)));
+        if let Some(index) = source.rfind("/node_modules/") {
+            let local = format!("node_modules/{}", &source[index + "/node_modules/".len()..]);
+            files.insert(lexical(&inventory.project_root.join(local)));
+        }
+    }
     for file in files {
         if request.sources.contains_key(&file) || request.modules.contains_key(&path(&file)?) {
             continue;
@@ -340,6 +384,20 @@ pub(crate) fn dependencies(
         graph.real_paths.insert(file, canonical);
     }
     Ok(graph)
+}
+/// `path.resolve` without touching the filesystem.
+fn lexical(path: &Path) -> PathBuf {
+    let mut out = PathBuf::new();
+    for component in path.components() {
+        match component {
+            std::path::Component::ParentDir => {
+                out.pop();
+            }
+            std::path::Component::CurDir => {}
+            other => out.push(other),
+        }
+    }
+    out
 }
 fn dependency_records(
     bundle: &BundleResult,

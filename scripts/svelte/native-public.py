@@ -22,11 +22,27 @@ REPO = Path(__file__).resolve().parents[2]
 BASE = REPO / "target/svelte-native-public"
 TIME = "/run/current-system/sw/bin/time"
 NATIVE = REPO / "target/release/svelte-build"
+SV_DEMO = ["npx", "--yes", "sv@1.1.1", "create", "repo", "--template", "demo",
+           "--types", "ts", "--no-add-ons", "--install", "npm"]
 # app: SvelteKit app directory inside the checkout; prepare: commands run in
 # the checkout root after install (workspace packages the app imports).
 PROJECTS = {
-    "sv-demo": {"generate": ["npx", "--yes", "sv@1.1.1", "create", "repo", "--template", "demo",
-                             "--types", "ts", "--no-add-ons", "--install", "npm"], "app": "."},
+    "sv-demo": {"generate": SV_DEMO, "app": "."},
+    # Kit 3 template variants the native build can package: adapter-node 6.0.0
+    # (the Kit 3 major) on both sides, and for the demo `<enhanced:img>`
+    # (sharp image processing, not ported) replaced by a plain image import.
+    "sv-demo-node": {"generate": SV_DEMO, "app": ".", "adapterNode": "6.0.0", "edits": [
+        ["vite.config.ts", "import { enhancedImages } from '@sveltejs/enhanced-img';\n", ""],
+        ["vite.config.ts", "\t\tenhancedImages(),\n", ""],
+        ["src/routes/+page.svelte", "\timport Counter from './Counter.svelte';\n",
+         "\timport Counter from './Counter.svelte';\n\timport welcome from '#lib/images/svelte-welcome.png';\n"],
+        ["src/routes/+page.svelte",
+         '<enhanced:img class="welcome-image" src="#lib/images/svelte-welcome.png" alt="Welcome" />',
+         '<img class="welcome-image" src={welcome} alt="Welcome" />'],
+    ]},
+    "sv-minimal-node": {"generate": ["npx", "--yes", "sv@1.1.1", "create", "repo", "--template", "minimal",
+                                     "--types", "ts", "--no-add-ons", "--install", "npm"],
+                        "app": ".", "adapterNode": "6.0.0"},
     # The committed pnpm-lock.yaml has a duplicated key (upstream), so pnpm
     # cannot read it: install without it and record what resolved.
     "realworld": {"git": "https://github.com/sveltejs/realworld.git", "app": ".", "dropLockfile": True},
@@ -128,15 +144,27 @@ def install(name, spec):
         status, _ = run(evidence, f"adapter-node-{index}", app, tool + ["add", "-D", f"@sveltejs/adapter-node@{version}"])
         if status:
             return status
-        config = app / "svelte.config.js"
+        # Kit 2 configures the adapter in svelte.config.js, Kit 3 in vite.config.
+        config = next(path for path in (app / "svelte.config.js", app / "vite.config.ts", app / "vite.config.js")
+                      if path.exists())
         text = config.read_text()
         lines = [line for line in text.splitlines() if line.startswith("import adapter from '@sveltejs/adapter-")]
         if len(lines) != 1:
             raise RuntimeError("Expected one `import adapter from '@sveltejs/adapter-*'` line")
         config.write_text(text.replace(lines[0], "import adapter from '@sveltejs/adapter-node';"))
         record["variant"] = f"adapter replaced by @sveltejs/adapter-node@{version}: {lines[0]}"
+    # Recorded source edits for a variant: (app-relative file, old, new), each
+    # old text present exactly once.
+    for file, old, new in spec.get("edits", []):
+        path = app / file
+        text = path.read_text()
+        if text.count(old) != 1:
+            raise RuntimeError(f"Edit target not found exactly once in {file}: {old!r}")
+        path.write_text(text.replace(old, new))
+    if spec.get("edits"):
+        record["edits"] = spec["edits"]
     record["versions"] = {}
-    for package in ("svelte", "@sveltejs/kit", "vite", "@sveltejs/vite-plugin-svelte"):
+    for package in ("svelte", "@sveltejs/kit", "vite", "@sveltejs/vite-plugin-svelte", "@sveltejs/adapter-node"):
         manifest = app / "node_modules" / package / "package.json"
         if manifest.exists():
             record["versions"][package] = json.loads(manifest.read_text())["version"]

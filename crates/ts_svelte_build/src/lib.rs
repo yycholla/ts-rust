@@ -3,6 +3,7 @@
 //! Application metadata execution requires an explicit runtime evaluator. `build` returns artifacts, metadata and unresolved stages;
 //! `write_new` is a separate explicit operation that refuses existing outputs.
 pub mod adapter;
+pub mod adapter_kit3;
 mod analysis;
 mod artifacts;
 #[cfg(test)]
@@ -63,6 +64,12 @@ pub struct BuildRequest {
     pub tailwind: Option<ts_svelte_bundle::css::TailwindOptions>,
     #[serde(default)]
     pub adapter_node: Option<adapter::AdapterRequest>,
+    /// adapter-node 6.0.0 for Kit 3 (server entries join the server graph).
+    #[serde(default)]
+    pub adapter_node_kit3: Option<adapter_kit3::AdapterRequest>,
+    /// Kit's MIME lookup (`mrmime`): `.ext` -> type.
+    #[serde(default)]
+    pub mime_types: BTreeMap<String, String>,
     #[serde(default)]
     pub service_worker_options: service_worker::ServiceWorkerOptions,
     pub kit: ResolvedNativeBuildInput,
@@ -142,6 +149,9 @@ pub struct CompilerSettings {
     pub allow_prerelease: bool,
     #[serde(default)]
     pub runes: Option<bool>,
+    /// `runes` applies only outside `node_modules` (see the bundle request).
+    #[serde(default)]
+    pub runes_project_only: bool,
     /// Client (and service worker) JavaScript and CSS minification.
     #[serde(default)]
     pub minify: bool,
@@ -150,6 +160,10 @@ pub struct CompilerSettings {
     pub server_minify: bool,
     #[serde(default = "enabled")]
     pub sourcemap: bool,
+    /// Server graph sourcemaps; `sourcemap` when absent. Kit 3 defaults the
+    /// SSR environment to maps.
+    #[serde(default)]
+    pub server_sourcemap: Option<bool>,
     #[serde(default)]
     pub options: CompilerOptions,
     pub tsconfig: Option<PathBuf>,
@@ -1004,14 +1018,16 @@ async fn build_inner(
         }
     };
     if let Some(adapter) = &request.kit.config.adapter_name {
-        if adapter != "@sveltejs/adapter-node" || request.adapter_node.is_none() {
+        if adapter != "@sveltejs/adapter-node"
+            || (request.adapter_node.is_none() && request.adapter_node_kit3.is_none())
+        {
             report.requirement(
                 "adapter",
                 "native_adapter",
                 format!("Selected adapter {adapter:?} requires its native implementation"),
             );
         }
-    } else if request.adapter_node.is_some() {
+    } else if request.adapter_node.is_some() || request.adapter_node_kit3.is_some() {
         report.fail(
             "adapter",
             "adapterNode supplied without selecting @sveltejs/adapter-node",
@@ -1104,6 +1120,30 @@ async fn build_inner(
         }
     }
     if report.status != "failed" && report.requirements.is_empty() {
+        if let Some(adapter_request) = &request.adapter_node_kit3 {
+            match adapter_kit3::package(&request, adapter_request, &report.artifacts) {
+                Ok(output) => {
+                    let count = output.len();
+                    let mut merged = report.artifacts.clone();
+                    let result = output.iter().try_for_each(|(file, artifact)| {
+                        artifacts::insert(
+                            &mut merged,
+                            file.clone(),
+                            &artifacts::bytes(artifact)?,
+                            &artifact.kind,
+                        )
+                    });
+                    match result {
+                        Ok(()) => {
+                            report.artifacts = merged;
+                            report.phase("adapter", "complete", count);
+                        }
+                        Err(error) => report.fail("adapter artifacts", error),
+                    }
+                }
+                Err(error) => report.fail("adapter", error),
+            }
+        }
         if let Some(adapter_request) = &request.adapter_node {
             match adapter::package(
                 &request,
@@ -1154,7 +1194,7 @@ async fn build_inner(
     if report.status != "failed" && report.requirements.is_empty() {
         report.status = "complete".into();
         report.phase("prerender", "skippedExplicitFalse", 0);
-        if request.adapter_node.is_none() {
+        if request.adapter_node.is_none() && request.adapter_node_kit3.is_none() {
             report.phase("adapter", "notSelected", 0);
         }
     }

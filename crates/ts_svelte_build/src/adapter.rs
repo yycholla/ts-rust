@@ -66,7 +66,7 @@ fn normalized(path: &Path) -> Result<PathBuf, String> {
     Ok(output)
 }
 
-fn absolute_sources(map: &mut Value, original_map: &Path) -> Result<(), String> {
+pub(crate) fn absolute_sources(map: &mut Value, original_map: &Path) -> Result<(), String> {
     let object = map.as_object_mut().ok_or("Expected a sourcemap object")?;
     if object.get("version") != Some(&json!(3))
         || object.contains_key("sections")
@@ -534,7 +534,7 @@ pub async fn package(
 
 /// Rollup writes `sources` relative to the emitted map. The rebundle composes
 /// maps against absolute identities; the deployed map gets relative ones.
-fn relative_sources(map: &mut Value, deployed_map: &Path) -> Result<bool, String> {
+pub(crate) fn relative_sources(map: &mut Value, deployed_map: &Path) -> Result<bool, String> {
     let directory = deployed_map.parent().ok_or("Map has no parent directory")?;
     let Some(sources) = map.get_mut("sources").and_then(Value::as_array_mut) else {
         return Ok(false);

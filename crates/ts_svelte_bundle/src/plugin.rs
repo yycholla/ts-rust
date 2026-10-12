@@ -421,7 +421,14 @@ impl Plugin for SveltePlugin {
             "document":{"uri":args.id,"version":0,"text":source}, "target":self.request.target,
             "dev":self.request.dev,"compatibility":self.request.compatibility,"options":options});
         if is_component {
-            request["runes"] = json!(self.request.runes);
+            let dependency = Path::new(args.id)
+                .components()
+                .any(|part| part.as_os_str() == "node_modules");
+            request["runes"] = if self.request.runes_project_only && dependency {
+                Value::Null
+            } else {
+                json!(self.request.runes)
+            };
         }
         let mut response = ts_svelte_compiler::dispatch(&serde_json::to_vec(&request)?);
         let diagnostics_path = if response["ok"] == true {

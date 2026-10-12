@@ -83,7 +83,7 @@ async fn dispatch(bytes: &[u8]) -> Value {
             true,
         ),
         Request::Capabilities => {
-            return json!({"ok":true,"native":true,"executesApplicationCode":true,"applicationExecutionDefault":false,"runtimeSelection":"explicitRuntimeBinary","writesByDefault":false,"pipeline":["resolvedPlan","serverBundle","nativeRemoteTransforms","featureTracking","staticAnalysis","nativeRuntimeAnalysis","nativeRemoteMetadata","optimizedClientBundle","kit3ManifestFinalization","nodesAndManifest","serviceWorker","adapterNode"],"bundleStrategy":"split","kitFamilies":[2,3],"adapterNodeVersion":"5.5.4","unresolvedStages":["prerenderExecution"],"browserWasm":false});
+            return json!({"ok":true,"native":true,"executesApplicationCode":true,"applicationExecutionDefault":false,"runtimeSelection":"explicitRuntimeBinary","writesByDefault":false,"pipeline":["resolvedPlan","serverBundle","nativeRemoteTransforms","featureTracking","staticAnalysis","nativeRuntimeAnalysis","nativeRemoteMetadata","optimizedClientBundle","kit3ManifestFinalization","nodesAndManifest","serviceWorker","adapterNode"],"bundleStrategy":"split","kitFamilies":[2,3],"adapterNodeVersion":"5.5.4","adapterNodeKit3Version":"6.0.0","unresolvedStages":["prerenderExecution"],"browserWasm":false});
         }
     };
     let load_ms = started.elapsed().as_millis() as u64;

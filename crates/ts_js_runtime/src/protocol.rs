@@ -142,7 +142,7 @@ impl Service {
     pub fn dispatch(&mut self, request: Request) -> Result<Value, RuntimeError> {
         match request {
             Request::Capabilities => Ok(
-                json!({"engine":"boa","version":"0.22.0","esm":true,"persistent":true,"hostCapabilities":["url","text","headers","blob","formData","abort","streams","requestResponse","nodeAsyncHooks","crypto"],"networkTransport":false,"defaultHostCapabilities":[],"capabilityDependencies":{"formData":["blob"],"blob":["streams"],"streams":["abort","text"],"abort":["text"],"crypto":["text"],"requestResponse":["url","text","headers","formData","abort"]},"maxSessions":MAX_SESSIONS}),
+                json!({"engine":"boa","version":"0.22.0","esm":true,"persistent":true,"hostCapabilities":["url","text","headers","blob","formData","abort","streams","requestResponse","nodeAsyncHooks","nodeModule","crypto"],"networkTransport":false,"defaultHostCapabilities":[],"capabilityDependencies":{"formData":["blob"],"blob":["streams"],"streams":["abort","text"],"abort":["text"],"crypto":["text"],"requestResponse":["url","text","headers","formData","abort"]},"maxSessions":MAX_SESSIONS}),
             ),
             Request::Create {
                 snapshot,

@@ -150,6 +150,7 @@ impl ServerRuntime {
             HostCapability::RequestResponse,
             HostCapability::Crypto,
             HostCapability::NodeAsyncHooks,
+            HostCapability::NodeModule,
         ]);
         let mut runtime =
             Runtime::with_host_options(request.snapshot, request.limits, &capabilities, options)?;

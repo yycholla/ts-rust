@@ -6,6 +6,7 @@ mod export_eof_tests;
 mod json_intrinsic_tests;
 pub mod native_session;
 pub mod node_async_hooks;
+pub mod node_module;
 pub mod protocol;
 pub mod web_abort;
 pub mod web_blob;
@@ -80,6 +81,8 @@ pub enum HostCapability {
     Streams,
     RequestResponse,
     NodeAsyncHooks,
+    /// `node:module` with a `createRequire` whose `require` always throws.
+    NodeModule,
     Crypto,
 }
 /// Native-only environment providers. No entropy is invented by the runtime.
@@ -456,8 +459,15 @@ impl Runtime {
                     ));
                 }
                 if let Resolution::Builtin { name } = target
-                    && (!matches!(name.as_str(), "node:async_hooks" | "async_hooks")
-                        || !capabilities.contains(&HostCapability::NodeAsyncHooks))
+                    && !match name.as_str() {
+                        "node:async_hooks" | "async_hooks" => {
+                            capabilities.contains(&HostCapability::NodeAsyncHooks)
+                        }
+                        "node:module" | "module" => {
+                            capabilities.contains(&HostCapability::NodeModule)
+                        }
+                        _ => false,
+                    }
                 {
                     return Err(error(
                         "invalid_snapshot",
@@ -545,6 +555,12 @@ impl Runtime {
                     let mut builtins = loader.builtins.borrow_mut();
                     builtins.insert("node:async_hooks".into(), module.clone());
                     builtins.insert("async_hooks".into(), module);
+                }
+                HostCapability::NodeModule => {
+                    let module = node_module::register(&mut context).map_err(engine)?;
+                    let mut builtins = loader.builtins.borrow_mut();
+                    builtins.insert("node:module".into(), module.clone());
+                    builtins.insert("module".into(), module);
                 }
                 HostCapability::Crypto => web_crypto::register(
                     &mut context,

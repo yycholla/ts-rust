@@ -168,6 +168,7 @@ fn generate_into(
     let mut nodes = vec![];
     let mut manifest_nodes = vec![];
     let mut client_files = vec![];
+    let mut client_font_sources = BTreeMap::new();
     let mut client_css = vec![];
     for (index, node) in inventory.nodes.iter().enumerate() {
         let client_entry =
@@ -206,6 +207,19 @@ fn generate_into(
                 })
             })
             .transpose()?;
+        // Kit 3 font preloads carry the font's original filename, resolved by
+        // the client dependency analysis from observed filesystem identities.
+        for font in dependency
+            .client
+            .iter()
+            .filter_map(|entry| entry.dependencies.as_ref())
+            .flat_map(|dependencies| &dependencies.fonts)
+        {
+            if let ts_svelte_kit::build_dependencies::DependencyFont::Kit3 { file, filename } = font
+            {
+                client_font_sources.insert(file.clone(), filename.clone());
+            }
+        }
         client_files.push(dependency.client.as_ref().map(|entry| entry.file.clone()));
         client_css.push(
             dependency
@@ -264,7 +278,7 @@ fn generate_into(
         bundle_strategy: BundleStrategy::Split,
         nodes,
         client_manifest_present: client.is_some(),
-        client_font_sources: BTreeMap::new(),
+        client_font_sources,
         inline_style_threshold: 0,
         rewrite_inline_css_urls: false,
         css_assets: vec![],
@@ -438,7 +452,7 @@ fn generate_into(
         params_module_present: inventory.params_module.is_some(),
         server_assets: catalog,
         hook_assets: dependencies_for(&server_graph, hooks.into_iter())?,
-        mime_lookup: BTreeMap::new(),
+        mime_lookup: request.mime_types.clone(),
     })?;
     artifacts::insert(
         &mut pending,

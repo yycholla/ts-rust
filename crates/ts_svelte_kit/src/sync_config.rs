@@ -91,10 +91,21 @@ pub fn load(root: &Path, resolved: Option<&Path>) -> Result<SyncConfig, String> 
     } else {
         let files = ["svelte.config.js", "svelte.config.ts", "svelte.config.mjs"];
         let file = files.iter().map(|p| root.join(p)).find(|p| p.is_file());
-        if let Some(file) = file {
+        let kit3 = installed_kit_version(root)?.starts_with("3.");
+        if kit3 {
+            // Kit 3.0.1 rejects svelte.config files (`config_file_unsupported`)
+            // and reads its options from the `sveltekit(options)` Vite plugin.
+            if let Some(file) = file {
+                return Err(format!(
+                    "Kit 3 does not support {}; its options belong in the sveltekit() Vite plugin",
+                    file.display()
+                ));
+            }
+            from_tree(&kit3_plugin_options(root)?, true)?
+        } else if let Some(file) = file {
             from_source_for_version(
                 &std::fs::read_to_string(file).map_err(|e| e.to_string())?,
-                installed_kit_version(root)?.starts_with("3."),
+                false,
             )?
         } else {
             SyncConfig::default()
@@ -438,6 +449,14 @@ pub fn from_source_for_version(source: &str, kit3: bool) -> Result<SyncConfig, S
         &bindings,
         0,
     )?;
+    from_tree(&value, kit3)
+}
+
+/// The sync subset of a statically evaluated config: Kit 2's whole
+/// svelte.config, or Kit 3's flat `sveltekit(options)` object. Tree-mode
+/// `$keys` are ignored; dynamic values in read fields are errors.
+pub fn from_tree(value: &Value, kit3: bool) -> Result<SyncConfig, String> {
+    let value = without_keys(value);
     let top = value
         .as_object()
         .filter(|v| !v.contains_key("$nativeDynamic"))
@@ -510,6 +529,104 @@ pub fn from_source_for_version(source: &str, kit3: bool) -> Result<SyncConfig, S
     validate(&result)?;
     Ok(result)
 }
+/// A tree value without the `$keys` property-order records.
+fn without_keys(value: &Value) -> Value {
+    match value {
+        Value::Object(map) => Value::Object(
+            map.iter()
+                .filter(|(key, _)| key.as_str() != "$keys")
+                .map(|(key, value)| (key.clone(), without_keys(value)))
+                .collect(),
+        ),
+        Value::Array(items) => Value::Array(items.iter().map(without_keys).collect()),
+        other => other.clone(),
+    }
+}
+
+/// Vite 8's `DEFAULT_CONFIG_FILES` lookup order.
+pub const VITE_CONFIG_FILES: [&str; 6] = [
+    "vite.config.js",
+    "vite.config.mjs",
+    "vite.config.ts",
+    "vite.config.cjs",
+    "vite.config.mts",
+    "vite.config.cts",
+];
+
+/// The static tree (`static_config_tree`) of the Vite config at `root`, if any.
+pub fn vite_config_tree(root: &Path) -> Result<Option<(PathBuf, Value)>, String> {
+    let Some(file) = VITE_CONFIG_FILES
+        .iter()
+        .map(|name| root.join(name))
+        .find(|path| path.is_file())
+    else {
+        return Ok(None);
+    };
+    let source = std::fs::read_to_string(&file).map_err(|e| format!("{}: {e}", file.display()))?;
+    let tree = static_config_tree(&source).map_err(|e| format!("{}: {e}", file.display()))?;
+    Ok(Some((file, tree)))
+}
+
+/// The config object of `defineConfig({...})` or a plain exported object.
+pub fn vite_config_object(tree: &Value) -> Option<&Map<String, Value>> {
+    let call = tree.get("$call");
+    let config = match call {
+        Some(call)
+            if call["module"] == "vite"
+                && call["export"] == "defineConfig"
+                && call["arguments"].as_array().is_some_and(|a| a.len() == 1) =>
+        {
+            &call["arguments"][0]
+        }
+        Some(_) => return None,
+        None => tree,
+    };
+    config
+        .as_object()
+        .filter(|map| !map.contains_key("$nativeDynamic"))
+}
+
+/// Kit 3's options: the argument of the one `sveltekit(...)` call from
+/// `@sveltejs/kit/vite` in the Vite config's static `plugins` array (`{}` when
+/// called without one). Nothing is executed.
+pub fn kit3_plugin_options(root: &Path) -> Result<Value, String> {
+    let (file, tree) =
+        vite_config_tree(root)?.ok_or("Kit 3 needs a vite.config with the sveltekit() plugin")?;
+    let config = vite_config_object(&tree).ok_or_else(|| {
+        format!(
+            "{}: the Vite config is not a static object or defineConfig({{...}})",
+            file.display()
+        )
+    })?;
+    let plugins = config
+        .get("plugins")
+        .and_then(Value::as_array)
+        .ok_or_else(|| format!("{}: plugins must be a static array", file.display()))?;
+    let mut found = plugins.iter().filter_map(|plugin| {
+        let call = plugin.get("$call")?;
+        (call["module"] == "@sveltejs/kit/vite" && call["export"] == "sveltekit").then_some(call)
+    });
+    let call = found
+        .next()
+        .ok_or_else(|| format!("{}: no sveltekit() plugin call", file.display()))?;
+    if found.next().is_some() {
+        return Err(format!(
+            "{}: more than one sveltekit() plugin call",
+            file.display()
+        ));
+    }
+    match call["arguments"].as_array().map(Vec::as_slice) {
+        Some([]) => Ok(json!({"$keys": []})),
+        Some([options]) if options.is_object() && options.get("$nativeDynamic").is_none() => {
+            Ok(options.clone())
+        }
+        _ => Err(format!(
+            "{}: sveltekit() options must be a static object",
+            file.display()
+        )),
+    }
+}
+
 fn read_string(map: &Map<String, Value>, key: &str, target: &mut String) -> Result<(), String> {
     if let Some(value) = map.get(key) {
         *target = value

@@ -20,6 +20,9 @@ pub struct SsrExternalPolicy {
     pub external: Vec<String>,
     /// Merged `ssr.noExternal` package-name filters.
     pub no_external: Vec<NoExternal>,
+    /// `ssr.noExternal: true`: only builtins and `external` stay external.
+    #[serde(default)]
+    pub no_external_all: bool,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -240,6 +243,31 @@ pub fn kit2_server_policy(
     Ok(SsrExternalPolicy {
         external: user_external.to_vec(),
         no_external,
+        no_external_all: false,
+    })
+}
+
+/// The server policy of a Kit 3 build with adapter-node 6.0.0: its post
+/// plugin sets `ssr.noExternal: true` and externalizes the package's
+/// production `dependencies` except those already in `ssr.noExternal` (Kit's
+/// and vite-plugin-svelte's entries, matched by name or pattern).
+pub fn kit3_adapter_node_policy(
+    root: &Path,
+    package_json: &serde_json::Value,
+) -> Result<SsrExternalPolicy, String> {
+    let base = kit2_server_policy(root, &[], &[])?;
+    let filter = NoExternalFilter::new(&base)?;
+    let external = package_json["dependencies"]
+        .as_object()
+        .into_iter()
+        .flatten()
+        .map(|(name, _)| name.clone())
+        .filter(|name| !filter.excludes(name))
+        .collect();
+    Ok(SsrExternalPolicy {
+        external,
+        no_external: vec![],
+        no_external_all: true,
     })
 }
 
@@ -410,7 +438,7 @@ pub fn decide(
     if policy.external.iter().any(|item| *item == package) {
         return externalizable(true, probe(id));
     }
-    if filter.excludes(&package) {
+    if policy.no_external_all || filter.excludes(&package) {
         return false;
     }
     externalizable(false, probe(id))

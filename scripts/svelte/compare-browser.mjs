@@ -9,14 +9,18 @@
  * text, page errors, failed same-origin requests (cancelled ones excepted) and
  * a screenshot. One link is
  * followed per page to check that navigation is client-side (a hydrated app).
+ * Static files are compared over HTTP (Accept-Encoding: br, gzip): files at
+ * the same build/client path by status and headers, and hashed
+ * `_app/immutable` files summarized per extension (content type, encoding,
+ * cache control), since their names differ between builds.
  * Browser requests to other origins are blocked unless --allow names them;
  * server-side requests are not controlled. Env: PLAYWRIGHT_PACKAGE (directory
  * of the playwright package), PLAYWRIGHT_CHROMIUM (browser executable).
  */
 import { spawn } from 'node:child_process';
 import { createWriteStream } from 'node:fs';
-import { mkdir, writeFile } from 'node:fs/promises';
-import { resolve } from 'node:path';
+import { mkdir, readdir, writeFile } from 'node:fs/promises';
+import { extname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 const args = process.argv.slice(2);
@@ -119,7 +123,40 @@ async function visit(context, origin, mode, path) {
 	return record;
 }
 
+/** Relative file paths under DIR, without precompressed variants. */
+async function clientFiles(dir) {
+	const files = [];
+	async function walk(relative) {
+		for (const entry of await readdir(resolve(dir, relative), { withFileTypes: true }).catch(() => [])) {
+			const name = relative ? `${relative}/${entry.name}` : entry.name;
+			if (entry.isDirectory()) await walk(name);
+			else if (!/\.(br|gz)$/.test(name)) files.push(name);
+		}
+	}
+	await walk('');
+	return files.sort();
+}
+
+const HEADERS = ['content-type', 'content-encoding', 'cache-control', 'vary'];
+async function staticHeaders(origin, app) {
+	const files = await clientFiles(resolve(app, 'build/client'));
+	const plain = {}, immutable = {};
+	for (const file of files) {
+		const response = await fetch(`${origin}/${file}`, { headers: { 'accept-encoding': 'br, gzip' } });
+		await response.arrayBuffer();
+		const headers = Object.fromEntries(HEADERS.map((name) => [name, response.headers.get(name)]));
+		const record = { status: response.status, ...headers };
+		if (file.startsWith('_app/immutable/')) {
+			const key = extname(file);
+			const summary = JSON.stringify(record);
+			(immutable[key] ??= new Set()).add(summary);
+		} else plain[file] = record;
+	}
+	return { plain, immutable: Object.fromEntries(Object.entries(immutable).map(([k, v]) => [k, [...v].sort()])) };
+}
+
 const reports = {};
+const headers = {};
 try {
 	// Discover pages on the official server.
 	const officialServer = await startServer('official', official, 49181);
@@ -134,6 +171,7 @@ try {
 		}
 		await context.close();
 		reports.official = records;
+		headers.official = await staticHeaders(officialServer.origin, official);
 		pages = records.map((r) => r.path);
 	} finally {
 		await stopServer(officialServer);
@@ -144,6 +182,7 @@ try {
 		reports.native = [];
 		for (const path of pages) reports.native.push(await visit(context, nativeServer.origin, 'native', path));
 		await context.close();
+		headers.native = await staticHeaders(nativeServer.origin, native);
 	} finally {
 		await stopServer(nativeServer);
 	}
@@ -166,7 +205,19 @@ const comparisons = reports.official.map((a, i) => {
 		clientSide: { official: a.clientNavigation?.clientSide ?? null, native: b.clientNavigation?.clientSide ?? null }
 	};
 });
-const result = { pages: comparisons.length, matched: comparisons.filter((c) => c.matched).length, comparisons, reports };
+// Static files: same-path files must agree; immutable summaries per extension.
+const staticDifferences = [];
+for (const [file, record] of Object.entries(headers.official.plain)) {
+	const other = headers.native.plain[file];
+	if (JSON.stringify(record) !== JSON.stringify(other)) staticDifferences.push({ file, official: record, native: other ?? null });
+}
+for (const file of Object.keys(headers.native.plain))
+	if (!(file in headers.official.plain)) staticDifferences.push({ file, official: null, native: headers.native.plain[file] });
+for (const key of new Set([...Object.keys(headers.official.immutable), ...Object.keys(headers.native.immutable)])) {
+	const a = headers.official.immutable[key], b = headers.native.immutable[key];
+	if (JSON.stringify(a) !== JSON.stringify(b)) staticDifferences.push({ immutableExtension: key, official: a ?? null, native: b ?? null });
+}
+const result = { pages: comparisons.length, matched: comparisons.filter((c) => c.matched).length, staticMatched: staticDifferences.length === 0, staticDifferences, comparisons, reports, headers };
 await writeFile(`${out}/report.json`, JSON.stringify(result, null, 2) + '\n');
-console.log(JSON.stringify({ pages: result.pages, matched: result.matched, comparisons: comparisons.map(({ path, matched, differences, officialStatus, nativeStatus, clientSide }) => ({ path, matched, differences, officialStatus, nativeStatus, clientSide })) }, null, 1));
-process.exitCode = result.matched === result.pages ? 0 : 1;
+console.log(JSON.stringify({ pages: result.pages, matched: result.matched, staticMatched: result.staticMatched, staticDifferences, comparisons: comparisons.map(({ path, matched, differences, officialStatus, nativeStatus, clientSide }) => ({ path, matched, differences, officialStatus, nativeStatus, clientSide })) }, null, 1));
+process.exitCode = result.matched === result.pages && result.staticMatched ? 0 : 1;

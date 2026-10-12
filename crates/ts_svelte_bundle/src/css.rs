@@ -832,6 +832,30 @@ impl Plugin for CssPlugin {
                 args.id
             );
         }
+        // Vite's asset plugin inlines a small JavaScript-imported asset as a
+        // data URL (`fileToBuiltUrl` with `shouldInline`); larger ones stay
+        // Rolldown assets.
+        let clean = &args.id[..args.id.find(['?', '#']).unwrap_or(args.id.len())];
+        let extension = Path::new(clean)
+            .extension()
+            .and_then(|s| s.to_str())
+            .unwrap_or("");
+        if crate::ASSET_EXTENSIONS.contains(&extension) && Path::new(clean).is_absolute() {
+            let bytes = read_bounded(Path::new(clean), MAX_ASSET)?;
+            if self.should_inline(clean, args.id, &bytes) {
+                ctx.add_watch_file(clean);
+                return Ok(Some(HookLoadOutput {
+                    code: format!(
+                        "export default {}",
+                        serde_json::to_string(&asset_data_url(clean, &bytes))?
+                    )
+                    .into(),
+                    module_type: Some(ModuleType::Js),
+                    side_effects: Some(HookSideEffects::False),
+                    ..Default::default()
+                }));
+            }
+        }
         Ok(None)
     }
     async fn generate_bundle(

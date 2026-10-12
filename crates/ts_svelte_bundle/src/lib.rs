@@ -22,6 +22,12 @@ mod ssr_external;
 mod vite_features;
 mod worker_assets;
 
+/// File extensions bundled as assets when imported from JavaScript.
+pub(crate) const ASSET_EXTENSIONS: [&str; 18] = [
+    "png", "jpg", "jpeg", "gif", "svg", "webp", "avif", "ico", "woff", "woff2", "ttf", "otf",
+    "mp4", "webm", "mp3", "wav", "pdf", "wasm",
+];
+
 use base64::Engine as _;
 use rolldown::plugin::Plugin;
 use rolldown::{
@@ -66,6 +72,10 @@ pub struct BundleRequest {
     pub dev: bool,
     #[serde(default)]
     pub runes: Option<bool>,
+    /// `runes` applies only to components outside `node_modules` (the `sv
+    /// create` callback); others use the compiler's default.
+    #[serde(default)]
+    pub runes_project_only: bool,
     #[serde(default)]
     pub minify: bool,
     #[serde(default = "enabled")]
@@ -493,13 +503,10 @@ pub async fn generate_with_plugins(
             defines.entry(key.into()).or_insert_with(|| "{}".into());
         }
     }
-    let mut module_types = [
-        "png", "jpg", "jpeg", "gif", "svg", "webp", "avif", "ico", "woff", "woff2", "ttf", "otf",
-        "mp4", "webm", "mp3", "wav", "pdf", "wasm",
-    ]
-    .into_iter()
-    .map(|ext| (format!(".{ext}"), ModuleType::Asset))
-    .collect::<BTreeMap<_, _>>();
+    let mut module_types = ASSET_EXTENSIONS
+        .into_iter()
+        .map(|ext| (format!(".{ext}"), ModuleType::Asset))
+        .collect::<BTreeMap<_, _>>();
     module_types.insert(".svelte".into(), ModuleType::Js);
     let mut resolve_extensions = [
         ".mjs", ".js", ".mts", ".ts", ".jsx", ".tsx", ".json", ".svelte",
