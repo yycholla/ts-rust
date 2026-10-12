@@ -789,14 +789,32 @@ async fn full_resolved_kit2_instrumentation_build_packages_ordered_adapter_entry
         &artifacts::bytes(&report.artifacts[&format!("build/server/{map_name}")]).unwrap(),
     )
     .unwrap();
-    assert_eq!(rebundled.map.as_ref(), Some(&map));
+    // The deployed map keeps the rebundle's content with relative sources.
+    let mut expected = rebundled.map.clone().unwrap();
+    expected["sources"] = map["sources"].clone();
+    assert_eq!(expected, map);
     assert_eq!(map["version"], 3);
+    let map_directory = fixture
+        .root
+        .join("build/server")
+        .join(map_name)
+        .parent()
+        .unwrap()
+        .to_path_buf();
     assert!(
-        map["sources"]
-            .as_array()
-            .unwrap()
-            .iter()
-            .any(|source| source.as_str() == instrument.to_str()),
+        map["sources"].as_array().unwrap().iter().any(|source| {
+            source.as_str().is_some_and(|source| {
+                let mut resolved = map_directory.clone();
+                for part in source.split('/') {
+                    if part == ".." {
+                        resolved.pop();
+                    } else {
+                        resolved.push(part);
+                    }
+                }
+                !std::path::Path::new(source).is_absolute() && resolved == instrument
+            })
+        }),
         "Rebundled map must retain original instrumentation source identity: {}",
         map["sources"]
     );

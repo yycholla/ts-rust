@@ -25,7 +25,7 @@ impl Fixture {
         std::fs::write(path, text).unwrap();
     }
     fn request(&self) -> BundleRequest {
-        serde_json::from_value(json!({"root":self.0,"entries":{"entry":"entry.js"},"target":"client","compatibility":{},"sourcemap":true,"css":{"tailwind":{"entries":["styles/app.css"]}}})).unwrap()
+        serde_json::from_value(json!({"root":self.0,"entries":{"entry":"entry.js"},"target":"client","compatibility":{},"sourcemap":true,"css":{"assetsInlineLimit":0,"tailwind":{"entries":["styles/app.css"]}}})).unwrap()
     }
     fn entry(&self) {
         self.write(

@@ -207,6 +207,7 @@ fn request_for_plan(
     plan: &PackagingPlan,
     staging_directory: &str,
     map_base: &Path,
+    minified: bool,
 ) -> Result<BundleRequest, String> {
     if plan.bundle.format != "esm"
         || !plan.bundle.sourcemap
@@ -243,7 +244,8 @@ fn request_for_plan(
     serde_json::from_value(json!({
         "root":root,"entries":plan.bundle.entries.iter().map(|(name,file)|(name,root.join(file))).collect::<BTreeMap<_,_>>(),
         "target":"server","compatibility":compatibility,"nodeRebundle":true,
-        "sourcemap":true,"minify":false,"externalPackages":plan.bundle.production_dependencies.keys().collect::<Vec<_>>(),
+        // Rollup leaves its input text as is: minified server code stays minified.
+        "sourcemap":true,"minify":minified,"externalPackages":plan.bundle.production_dependencies.keys().collect::<Vec<_>>(),
         "conditions":plan.bundle.export_conditions,"virtualModules":modules,"virtualModuleMaps":maps,
         "output":{"entryFileNames":"[name].js","chunkFileNames":plan.bundle.chunk_file_names,"preserveEntrySignatures":"strict","hoistTransitiveImports":false}
     })).map_err(|error|format!("Native adapter rebundle contract: {error}"))
@@ -335,8 +337,16 @@ async fn complete_plan(
     plan: PackagingPlan,
     staging_directory: &str,
     map_base: &Path,
+    minified: bool,
 ) -> Result<AdapterOutput, String> {
-    let request = request_for_plan(root, compatibility, &plan, staging_directory, map_base)?;
+    let request = request_for_plan(
+        root,
+        compatibility,
+        &plan,
+        staging_directory,
+        map_base,
+        minified,
+    )?;
     let mut bundle = ts_svelte_bundle::generate(request)
         .await
         .map_err(|error| format!("Adapter rebundle failed: {}", error.message))?;
@@ -459,7 +469,7 @@ pub async fn package(
         .remove(&format!("{staging}/manifest.js.map"));
     let mut output=complete_plan(root,json!({"svelteVersion":build.compiler.svelte_version,"kitVersion":build.kit.inventory.kit_version,
         "typescriptVersion":build.compiler.typescript_version,"allowPrerelease":build.compiler.allow_prerelease}),
-        plan,&staging,&request.server_map_base).await?;
+        plan,&staging,&request.server_map_base,build.compiler.server_minify).await?;
     if let Some(receipt) = instrumentation {
         let wrapped = crate::instrumentation::finalize_adapter_node(
             &build.kit.inventory.kit_version,
@@ -479,12 +489,67 @@ pub async fn package(
             map_copy: wrapped.map_copy,
         });
     }
+    let server = format!("{}/server/", request.options.out.trim_end_matches('/'));
+    for (file, artifact) in &mut output.artifacts {
+        if !(file.starts_with(&server) && file.ends_with(".map")) {
+            continue;
+        }
+        let bytes = crate::artifacts::bytes(artifact)?;
+        let mut map: Value = serde_json::from_slice(&bytes).map_err(|e| e.to_string())?;
+        if relative_sources(&mut map, &root.join(file))? {
+            artifact.source = base64::engine::general_purpose::STANDARD
+                .encode(serde_json::to_vec(&map).map_err(|e| e.to_string())?);
+        }
+    }
     Ok(output)
+}
+
+/// Rollup writes `sources` relative to the emitted map. The rebundle composes
+/// maps against absolute identities; the deployed map gets relative ones.
+fn relative_sources(map: &mut Value, deployed_map: &Path) -> Result<bool, String> {
+    let directory = deployed_map.parent().ok_or("Map has no parent directory")?;
+    let Some(sources) = map.get_mut("sources").and_then(Value::as_array_mut) else {
+        return Ok(false);
+    };
+    let mut changed = false;
+    for source in sources {
+        let Some(name) = source.as_str() else {
+            continue;
+        };
+        let path = Path::new(name);
+        if !path.is_absolute() {
+            continue;
+        }
+        let from: Vec<_> = directory.components().collect();
+        let to: Vec<_> = path.components().collect();
+        let common = from.iter().zip(&to).take_while(|(a, b)| a == b).count();
+        let mut parts: Vec<String> = vec!["..".into(); from.len() - common];
+        parts.extend(
+            to[common..]
+                .iter()
+                .map(|part| part.as_os_str().to_string_lossy().into_owned()),
+        );
+        *source = Value::String(parts.join("/"));
+        changed = true;
+    }
+    Ok(changed)
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn deployed_maps_use_relative_sources() {
+        let mut map = json!({"version":3,"sources":["/app/src/a.ts","../x.js","/app/build/server/chunks/b.js","node:fs"],"names":[],"mappings":""});
+        assert!(
+            relative_sources(&mut map, Path::new("/app/build/server/chunks/a.js.map")).unwrap()
+        );
+        assert_eq!(
+            map["sources"],
+            json!(["../../../src/a.ts", "../x.js", "b.js", "node:fs"])
+        );
+    }
     use ts_svelte_kit::adapter_node::{Compression, CompressionJob, RebundlePlan};
 
     fn plan() -> PackagingPlan {
@@ -572,6 +637,7 @@ mod tests {
             &plan,
             ".stage",
             &root.join("dist"),
+            false,
         )
         .unwrap();
         assert_eq!(request.external_packages, ["@scope/production"]);
@@ -581,9 +647,16 @@ mod tests {
                 .is_production_external("@scope/production-extra")
         );
         assert!(plan.bundle.is_production_external("@scope/production/deep"));
-        let output = complete_plan(&root, compatibility, plan, ".stage", &root.join("dist"))
-            .await
-            .unwrap();
+        let output = complete_plan(
+            &root,
+            compatibility,
+            plan,
+            ".stage",
+            &root.join("dist"),
+            false,
+        )
+        .await
+        .unwrap();
         for file in [
             "build/server/index.js",
             "build/server/index.js.map",

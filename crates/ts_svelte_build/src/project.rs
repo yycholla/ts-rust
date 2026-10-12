@@ -127,7 +127,7 @@ fn ordered_keys(map: &Map<String, Value>) -> Vec<String> {
 fn is_dynamic(value: &Value) -> bool {
     value.get("$nativeDynamic").is_some()
 }
-fn call<'a>(value: &'a Value) -> Option<(&'a str, &'a str, &'a [Value])> {
+fn call(value: &Value) -> Option<(&str, &str, &[Value])> {
     let call = value.get("$call")?;
     Some((
         call["module"].as_str()?,
@@ -287,8 +287,7 @@ pub fn load(input: &ProjectInput) -> Result<LoadedProject, String> {
     };
     for preprocessor in &preprocessors {
         match call(preprocessor) {
-            Some(("@sveltejs/vite-plugin-svelte", "vitePreprocess", arguments))
-                if arguments.is_empty() => {}
+            Some(("@sveltejs/vite-plugin-svelte", "vitePreprocess", [])) => {}
             Some(("mdsvex", "mdsvex", arguments)) if arguments.len() <= 1 => {
                 let options = arguments.first().map(plain).unwrap_or_else(|| json!({}));
                 if options.to_string().contains("$nativeDynamic") {
@@ -602,7 +601,7 @@ pub fn load(input: &ProjectInput) -> Result<LoadedProject, String> {
             "typescriptVersion": null,
             "runes": runes,
             "minify": vite.minify,
-            "serverMinify": false,
+            "serverMinify": vite.server_minify,
             "sourcemap": vite.sourcemap,
             "tsconfig": null,
             "mdsvex": mdsvex,
@@ -713,10 +712,10 @@ impl LocalResolver {
                 }
             } else if specifier == name {
                 return Some(path.clone());
-            } else if !self.names.contains(&format!("{name}/*")) {
-                if let Some(rest) = specifier.strip_prefix(&format!("{name}/")) {
-                    return Some(path.join(rest));
-                }
+            } else if !self.names.contains(&format!("{name}/*"))
+                && let Some(rest) = specifier.strip_prefix(&format!("{name}/"))
+            {
+                return Some(path.join(rest));
             }
         }
         None
@@ -807,9 +806,9 @@ fn dev_server_only(plugin: &Value) -> bool {
         })
 }
 
-/// Vite `build` options for the Kit client/server builds. Kit passes `minify`
-/// and `sourcemap` to its client build; the official server output stays
-/// unminified. Logging-only options are accepted without effect.
+/// Vite `build` options for the Kit client/server builds. Vite merges user
+/// `build` options into both environments, so an explicit `minify` also
+/// minifies the server output. Logging-only options are accepted without effect.
 fn vite_build(
     loader: &mut Loader,
     project: &mut ViteProject,
@@ -831,7 +830,8 @@ fn vite_build(
                         );
                         true
                     }
-                }
+                };
+                project.server_minify = project.minify;
             }
             "sourcemap" => match value {
                 Value::Bool(enabled) => project.sourcemap = *enabled,
@@ -952,10 +952,10 @@ fn tailwind_options(loader: &mut Loader, root: &Path, src: &Path) -> Result<Valu
                 if let Some(rest) = line.trim_start().strip_prefix("@plugin") {
                     let rest = rest.trim_start();
                     let quote = rest.chars().next().filter(|c| *c == '\'' || *c == '"');
-                    if let Some(quote) = quote {
-                        if let Some(name) = rest[1..].split(quote).next() {
-                            plugins.insert(name.to_owned());
-                        }
+                    if let Some(quote) = quote
+                        && let Some(name) = rest[1..].split(quote).next()
+                    {
+                        plugins.insert(name.to_owned());
                     }
                 }
             }
@@ -993,6 +993,9 @@ struct ViteProject {
     sentry: Option<Value>,
     /// Client minification: Vite's client default is esbuild minification.
     minify: bool,
+    /// Server minification: Vite's server default is off, but an explicit
+    /// `build.minify` is merged into every environment.
+    server_minify: bool,
     sourcemap: bool,
     treeshake: Option<Value>,
     aliases: Vec<(String, PathBuf)>,
@@ -1010,6 +1013,7 @@ fn vite_config(
         tailwind: false,
         sentry: None,
         minify: true,
+        server_minify: false,
         sourcemap: false,
         treeshake: None,
         aliases: vec![],
@@ -1053,34 +1057,34 @@ fn vite_config(
     let config = object(Some(&config), "vite config")?.ok_or("vite config")?;
 
     // resolve.alias as an object of find -> path.resolve(...) or string.
-    if let Some(resolve_config) = object(config.get("resolve"), "vite resolve")? {
-        if let Some(alias) = resolve_config.get("alias") {
-            let alias = object(Some(alias), "vite resolve.alias")?.ok_or("vite resolve.alias")?;
-            for key in ordered_keys(alias) {
-                let value = &alias[&key];
-                let path = match (value.as_str(), call(value)) {
-                    (Some(text), _) => Some(PathBuf::from(text)),
-                    (None, Some(("path", "resolve", arguments))) => {
-                        let mut path = root.to_path_buf();
-                        let mut ok = true;
-                        for argument in arguments {
-                            match argument.as_str() {
-                                Some(part) => path = resolve(&path, part),
-                                None => ok = false,
-                            }
+    if let Some(resolve_config) = object(config.get("resolve"), "vite resolve")?
+        && let Some(alias) = resolve_config.get("alias")
+    {
+        let alias = object(Some(alias), "vite resolve.alias")?.ok_or("vite resolve.alias")?;
+        for key in ordered_keys(alias) {
+            let value = &alias[&key];
+            let path = match (value.as_str(), call(value)) {
+                (Some(text), _) => Some(PathBuf::from(text)),
+                (None, Some(("path", "resolve", arguments))) => {
+                    let mut path = root.to_path_buf();
+                    let mut ok = true;
+                    for argument in arguments {
+                        match argument.as_str() {
+                            Some(part) => path = resolve(&path, part),
+                            None => ok = false,
                         }
-                        ok.then_some(path)
                     }
-                    _ => None,
-                };
-                match path {
-                    Some(path) => project.aliases.push((key, path)),
-                    None => loader.require(
-                        "vite",
-                        "resolve_alias",
-                        format!("Dynamic resolve.alias entry {key}"),
-                    ),
+                    ok.then_some(path)
                 }
+                _ => None,
+            };
+            match path {
+                Some(path) => project.aliases.push((key, path)),
+                None => loader.require(
+                    "vite",
+                    "resolve_alias",
+                    format!("Dynamic resolve.alias entry {key}"),
+                ),
             }
         }
     }
@@ -1104,14 +1108,14 @@ fn vite_config(
                 _ => loader.require("vite", "ssr_external", "Dynamic ssr.external"),
             }
         }
-        if let Some(Value::Array(items)) = ssr.get("noExternal") {
-            if !items.is_empty() {
-                loader.require(
-                    "vite",
-                    "ssr_no_external",
-                    "ssr.noExternal entries are not ported",
-                );
-            }
+        if let Some(Value::Array(items)) = ssr.get("noExternal")
+            && !items.is_empty()
+        {
+            loader.require(
+                "vite",
+                "ssr_no_external",
+                "ssr.noExternal entries are not ported",
+            );
         }
     }
     // define: static string values are JS expression sources; others must be explicit.

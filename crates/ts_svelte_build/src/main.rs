@@ -29,6 +29,10 @@ enum Request {
         /// Loader requirements (`stage/code`) accepted as non-blocking.
         #[serde(default, rename = "acceptRequirements")]
         accept_requirements: Vec<String>,
+        /// Return the whole report, including intermediate bundles, even
+        /// when the output is written to disk.
+        #[serde(default, rename = "fullReport")]
+        full_report: bool,
     },
 }
 async fn dispatch(bytes: &[u8]) -> Value {
@@ -36,13 +40,14 @@ async fn dispatch(bytes: &[u8]) -> Value {
         Ok(input) => input,
         Err(error) => return json!({"ok":false,"error":error.to_string()}),
     };
-    let (request, output_directory, runtime_binary, loaded) = match input {
+    let (request, output_directory, runtime_binary, loaded, full_report) = match input {
         Request::Project {
             project,
             output_directory,
             runtime_binary,
             request_only,
             accept_requirements,
+            full_report,
         } => {
             let loaded = match ts_svelte_build::project::load(&project) {
                 Ok(loaded) => loaded,
@@ -62,13 +67,20 @@ async fn dispatch(bytes: &[u8]) -> Value {
                 output_directory,
                 runtime_binary,
                 (loaded.requirements, accept_requirements),
+                full_report,
             )
         }
         Request::Build {
             request,
             output_directory,
             runtime_binary,
-        } => (request, output_directory, runtime_binary, (vec![], vec![])),
+        } => (
+            request,
+            output_directory,
+            runtime_binary,
+            (vec![], vec![]),
+            true,
+        ),
         Request::Capabilities => {
             return json!({"ok":true,"native":true,"executesApplicationCode":true,"applicationExecutionDefault":false,"runtimeSelection":"explicitRuntimeBinary","writesByDefault":false,"pipeline":["resolvedPlan","serverBundle","nativeRemoteTransforms","featureTracking","staticAnalysis","nativeRuntimeAnalysis","nativeRemoteMetadata","optimizedClientBundle","kit3ManifestFinalization","nodesAndManifest","serviceWorker","adapterNode"],"bundleStrategy":"split","kitFamilies":[2,3],"adapterNodeVersion":"5.5.4","unresolvedStages":["prerenderExecution"],"browserWasm":false});
         }
@@ -93,7 +105,21 @@ async fn dispatch(bytes: &[u8]) -> Value {
                 if let Err(error) = ts_svelte_build::write_new(&directory, &report.artifacts) {
                     return json!({"ok":false,"error":error,"report":report});
                 }
-                json!({"ok":true,"outputDirectory":directory,"report":report})
+                // The files are on disk; the response lists them without content.
+                let written = std::mem::take(&mut report.artifacts)
+                    .into_iter()
+                    .map(|(path, artifact)| (path, artifact.kind))
+                    .collect::<std::collections::BTreeMap<_, _>>();
+                if full_report {
+                    json!({"ok":true,"outputDirectory":directory,"written":written,"report":report})
+                } else {
+                    json!({"ok":true,"outputDirectory":directory,"written":written,"report":{
+                        "status":report.status,"phases":report.phases,
+                        "requirements":report.requirements,
+                        "acceptedRequirements":report.accepted_requirements,
+                        "diagnostics":report.diagnostics,"serverBuildId":report.server_build_id,
+                    }})
+                }
             } else {
                 json!({"ok":report.status=="complete","report":report})
             }
@@ -105,7 +131,7 @@ async fn main() {
     let args = std::env::args().skip(1).collect::<Vec<_>>();
     if args.iter().any(|arg| arg == "--help" || arg == "help") {
         println!(
-            "svelte-build [--serve]\nRead one JSON request from stdin, or newline-delimited requests with --serve.\nOperations: capabilities; build {{request: resolvedBuildRequest, outputDirectory?: newAbsolutePath, runtimeBinary?: absoluteNativeRuntimePath}}; project {{project: {{root, environment, mode?, versionName?, define?}}, requestOnly?, outputDirectory?, runtimeBinary?}}.\nNo output files are written unless outputDirectory is explicitly provided."
+            "svelte-build [--serve]\nRead one JSON request from stdin, or newline-delimited requests with --serve.\nOperations: capabilities; build {{request: resolvedBuildRequest, outputDirectory?: newAbsolutePath, runtimeBinary?: absoluteNativeRuntimePath}}; project {{project: {{root, environment, mode?, versionName?, define?}}, requestOnly?, outputDirectory?, runtimeBinary?, acceptRequirements?, fullReport?}}.\nNo output files are written unless outputDirectory is explicitly provided; written artifacts are listed without content."
         );
         return;
     }

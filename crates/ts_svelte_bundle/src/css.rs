@@ -39,10 +39,17 @@ const RUNTIME_ID: &str = "\0ts-svelte-css:runtime";
 const MAX_CSS: usize = 4 * 1024 * 1024;
 const MAX_ASSET: usize = 64 * 1024 * 1024;
 const MAX_ASSETS: usize = 256 * 1024 * 1024;
+const DEFAULT_ASSETS_INLINE_LIMIT: u64 = 4096;
+const GIT_LFS_PREFIX: &[u8] = b"version https://git-lfs.github.com";
+pub(crate) const DEFAULT_ASSET_FILE_NAMES: &str = "assets/[name]-[hash][extname]";
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
 pub struct CssOptions {
+    /// Vite `build.assetsInlineLimit`: assets smaller than this many bytes
+    /// are inlined as data URLs. Absent uses Vite's default of 4096.
+    #[serde(default)]
+    pub assets_inline_limit: Option<u64>,
     /// Optional origin/root URL prefix for emitted CSS; absent uses Rolldown's
     /// file URL relative to the importing JS chunk (including dynamic chunks).
     pub public_base: Option<String>,
@@ -192,6 +199,61 @@ pub struct CssPlugin {
     state: CssState,
 }
 impl CssPlugin {
+    /// Vite 7.3.1 `shouldInline` for a CSS `url()` in an application build.
+    fn should_inline(&self, file: &str, url: &str, bytes: &[u8]) -> bool {
+        let query = url
+            .split_once('?')
+            .map_or("", |(_, query)| query.split('#').next().unwrap_or(""));
+        let flag = |name: &str| {
+            query
+                .split('&')
+                .any(|part| part == name || part.starts_with(&format!("{name}=")))
+        };
+        if flag("no-inline") {
+            return false;
+        }
+        if flag("inline") {
+            return true;
+        }
+        if file.ends_with(".html") || (file.ends_with(".svg") && url.contains('#')) {
+            return false;
+        }
+        let limit = self
+            .options
+            .assets_inline_limit
+            .unwrap_or(DEFAULT_ASSETS_INLINE_LIMIT);
+        (bytes.len() as u64) < limit && !bytes.starts_with(GIT_LFS_PREFIX)
+    }
+    /// `output.assetFileNames` with its `[name]`, `[hash]`, `[ext]` and
+    /// `[extname]` placeholders. CSS links its assets as `./file`, so the
+    /// directory part of the pattern must be fixed.
+    fn asset_file_name(&self, name: &str, extension: &str, bytes: &[u8]) -> anyhow::Result<String> {
+        let pattern = self
+            .request
+            .output
+            .asset_file_names
+            .as_deref()
+            .unwrap_or(DEFAULT_ASSET_FILE_NAMES);
+        let (directory, file) = pattern.rsplit_once('/').unwrap_or(("", pattern));
+        ensure!(
+            !directory.contains('['),
+            "assetFileNames with placeholders in directories is not supported: {pattern}"
+        );
+        let file = file
+            .replace("[name]", &sanitize_name(name))
+            .replace("[hash]", &short_hash(bytes))
+            .replace("[extname]", &format!(".{extension}"))
+            .replace("[ext]", extension);
+        ensure!(
+            !file.contains('['),
+            "Unsupported assetFileNames placeholder: {pattern}"
+        );
+        Ok(if directory.is_empty() {
+            file
+        } else {
+            format!("{directory}/{file}")
+        })
+    }
     pub fn new(
         request: Arc<BundleRequest>,
         mut options: CssOptions,
@@ -610,12 +672,25 @@ impl CssPlugin {
                 "Asset extension needs an explicit output policy: {}",
                 asset.display()
             );
-            let name = format!("assets/{}.{}", hash(&bytes), extension.to_ascii_lowercase());
+            let file = path_string(&asset)?;
+            if self.should_inline(&file, url, &bytes) {
+                links.push(AssetLink {
+                    from: from.into(),
+                    url: url.into(),
+                    emitted_url: asset_data_url(&file, &bytes),
+                });
+                continue;
+            }
+            let stem = asset
+                .file_stem()
+                .and_then(|s| s.to_str())
+                .unwrap_or("asset");
+            let name = self.asset_file_name(stem, &extension.to_ascii_lowercase(), &bytes)?;
             self.emit(ctx, &name, bytes, &path_string(&asset)?)?;
             links.push(AssetLink {
                 from: from.into(),
                 url: url.into(),
-                emitted_url: format!("./{}", name.strip_prefix("assets/").unwrap()),
+                emitted_url: format!("./{}", file_base(&name)),
             });
             assets.insert(name);
         }
@@ -661,14 +736,17 @@ impl CssPlugin {
         if let Some(map) = &map_bytes {
             identity.extend_from_slice(map);
         }
-        let file_name = format!("assets/{}.css", hash(&identity));
+        let stem = Path::new(origin.split(['?', '#']).next().unwrap_or(&origin))
+            .file_stem()
+            .and_then(|s| s.to_str())
+            .unwrap_or("style");
+        let file_name = self.asset_file_name(stem, "css", &identity)?;
         let map_file_name = if let Some(map) = map_bytes {
             let name = format!("{file_name}.map");
             self.emit(ctx, &name, map, &origin)?;
-            linked.code.push_str(&format!(
-                "\n/*# sourceMappingURL={} */\n",
-                name.strip_prefix("assets/").unwrap()
-            ));
+            linked
+                .code
+                .push_str(&format!("\n/*# sourceMappingURL={} */\n", file_base(&name)));
             Some(name)
         } else {
             None
@@ -1059,6 +1137,100 @@ fn path_string(path: &Path) -> anyhow::Result<String> {
 fn hash(bytes: &[u8]) -> String {
     format!("{:x}", Sha256::digest(bytes))
 }
+/// Vite `assetToDataURL`: SVG as URL-encoded text unless it holds text,
+/// foreign objects or nested quotes, other files as base64 with their MIME type.
+fn asset_data_url(file: &str, bytes: &[u8]) -> String {
+    use base64::Engine as _;
+    let base64 = base64::engine::general_purpose::STANDARD.encode(bytes);
+    if file.ends_with(".svg") {
+        let text = String::from_utf8_lossy(bytes);
+        let nested_quotes = NESTED_QUOTES.with(|re| re.find(&text).is_some());
+        if text.contains("<text") || text.contains("<foreignObject") || nested_quotes {
+            return format!("data:image/svg+xml;base64,{base64}");
+        }
+        // `String.prototype.trim` also removes U+FEFF.
+        let trimmed = text.trim_matches(|c: char| c.is_whitespace() || c == '\u{feff}');
+        let tags = BETWEEN_TAGS.with(|re| replace_all(re, trimmed, "><"));
+        let encoded = tags
+            .replace('"', "'")
+            .replace('%', "%25")
+            .replace('#', "%23")
+            .replace('<', "%3c")
+            .replace('>', "%3e");
+        let encoded = WHITESPACE.with(|re| replace_all(re, &encoded, "%20"));
+        return format!("data:image/svg+xml,{encoded}");
+    }
+    let extension = Path::new(file)
+        .extension()
+        .and_then(|e| e.to_str())
+        .map(str::to_ascii_lowercase);
+    let mime = match extension.as_deref() {
+        Some("apng") => "image/apng",
+        Some("avif") => "image/avif",
+        Some("bmp") => "image/bmp",
+        Some("gif") => "image/gif",
+        Some("ico") => "image/x-icon",
+        Some("jpg" | "jpeg" | "jfif" | "pjpeg" | "pjp") => "image/jpeg",
+        Some("png") => "image/png",
+        Some("webp") => "image/webp",
+        Some("otf") => "font/otf",
+        Some("ttf") => "font/ttf",
+        Some("woff") => "font/woff",
+        Some("woff2") => "font/woff2",
+        Some("eot") => "application/vnd.ms-fontobject",
+        Some("mp4") => "video/mp4",
+        Some("webm") => "video/webm",
+        Some("mp3") => "audio/mpeg",
+        Some("wav") => "audio/wav",
+        Some("ogg") => "audio/ogg",
+        _ => "application/octet-stream",
+    };
+    format!("data:{mime};base64,{base64}")
+}
+thread_local! {
+    static NESTED_QUOTES: regress::Regex =
+        regress::Regex::new(r#""[^"']*'[^"]*"|'[^'"]*"[^']*'"#).unwrap();
+    static BETWEEN_TAGS: regress::Regex = regress::Regex::new(r">\s+<").unwrap();
+    static WHITESPACE: regress::Regex = regress::Regex::new(r"\s+").unwrap();
+}
+/// `String.prototype.replaceAll` with a global regular expression.
+fn replace_all(re: &regress::Regex, text: &str, with: &str) -> String {
+    let mut result = String::with_capacity(text.len());
+    let mut last = 0;
+    for found in re.find_iter(text) {
+        result.push_str(&text[last..found.start()]);
+        result.push_str(with);
+        last = found.end();
+    }
+    result.push_str(&text[last..]);
+    result
+}
+fn file_base(name: &str) -> &str {
+    name.rsplit_once('/').map_or(name, |(_, base)| base)
+}
+/// Rollup's `sanitizeFileName` for a `[name]` placeholder.
+fn sanitize_name(name: &str) -> String {
+    name.chars()
+        .map(|c| {
+            if c == '\0' || c == '?' || c == '*' || c == '/' || c == '\\' || c.is_control() {
+                '_'
+            } else {
+                c
+            }
+        })
+        .collect()
+}
+/// An 8-character content hash in Rollup's base64url alphabet.
+fn short_hash(bytes: &[u8]) -> String {
+    const ALPHABET: &[u8; 64] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+    let digest = Sha256::digest(bytes);
+    let bits = digest[..6]
+        .iter()
+        .fold(0u64, |bits, byte| (bits << 8) | u64::from(*byte));
+    (0..8)
+        .map(|i| ALPHABET[((bits >> (42 - 6 * i)) & 63) as usize] as char)
+        .collect()
+}
 fn class_exports(exports: &Value, references: &Value) -> anyhow::Result<BTreeMap<String, String>> {
     ensure!(
         references.is_null() || references.as_object().is_some_and(|refs| refs.is_empty()),
@@ -1309,6 +1481,43 @@ mod tailwind_tests;
 
 #[cfg(test)]
 mod tests {
+    #[test]
+    fn small_assets_inline_like_vite() {
+        let request: BundleRequest = serde_json::from_value(json!({"root":"/app","entries":{"entry":"entry.js"},"target":"client","compatibility":{},"output":{"assetFileNames":"_app/immutable/assets/[name].[hash][extname]"}})).unwrap();
+        let plugin = CssPlugin::new(
+            Arc::new(request),
+            CssOptions::default(),
+            CssState::default(),
+        )
+        .unwrap();
+        let svg = b"<svg xmlns='http://www.w3.org/2000/svg'>\n  <path d=\"M0 0\" fill=\"#000\"/>\n</svg>\n";
+        assert!(plugin.should_inline("/app/x.svg", "x.svg", svg));
+        assert!(!plugin.should_inline("/app/x.svg", "x.svg#icon", svg));
+        assert!(!plugin.should_inline("/app/x.svg", "x.svg?no-inline", svg));
+        assert!(plugin.should_inline("/app/x.png", "x.png?inline", &[0; 5000]));
+        assert!(!plugin.should_inline("/app/x.png", "x.png", &[0; 4096]));
+        assert!(plugin.should_inline("/app/x.png", "x.png", &[0; 4095]));
+        assert_eq!(
+            asset_data_url("/app/x.svg", svg),
+            "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M0%200'%20fill='%23000'/%3e%3c/svg%3e"
+        );
+        assert!(
+            asset_data_url("/app/t.svg", b"<svg><text>a</text></svg>")
+                .starts_with("data:image/svg+xml;base64,")
+        );
+        assert_eq!(
+            asset_data_url("/app/x.gif", b"GIF"),
+            "data:image/gif;base64,R0lG"
+        );
+        let name = plugin
+            .asset_file_name("Button.svelte", "css", b"a")
+            .unwrap();
+        assert!(
+            name.starts_with("_app/immutable/assets/Button.svelte.") && name.ends_with(".css"),
+            "{name}"
+        );
+        assert_eq!(file_base(&name).len(), "Button.svelte.".len() + 8 + 4);
+    }
     use super::*;
     #[test]
     fn discovers_imports_and_modules_with_the_css_parser() {
@@ -1549,7 +1758,10 @@ mod tests {
         let request: BundleRequest = serde_json::from_value(json!({"root":root,"entries":{"entry":"entry.js"},"target":"client","compatibility":{},"sourcemap":true})).unwrap();
         let plugin = CssPlugin::new(
             Arc::new(request),
-            CssOptions::default(),
+            CssOptions {
+                assets_inline_limit: Some(0),
+                ..CssOptions::default()
+            },
             CssState::default(),
         )
         .unwrap();

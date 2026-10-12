@@ -26,7 +26,7 @@ use base64::Engine as _;
 use rolldown::plugin::Plugin;
 use rolldown::{
     Bundler, BundlerOptions, InputItem, IsExternal, ModuleType, OutputFormat, Platform,
-    RawMinifyOptions, ResolveOptions, SourceMapType, TsConfig,
+    RawMinifyOptions, RawMinifyOptionsDetailed, ResolveOptions, SourceMapType, TsConfig,
 };
 use rolldown_common::Output;
 use rolldown_error::{BatchedBuildDiagnostic, BuildDiagnostic};
@@ -550,7 +550,19 @@ pub async fn generate_with_plugins(
             ..Default::default()
         }),
         sourcemap: request.sourcemap.then_some(SourceMapType::File),
-        minify: Some(RawMinifyOptions::Bool(request.minify)),
+        // A Node rebundle of minified code removes whitespace only, the
+        // nearest equivalent of Rollup keeping its already minified input.
+        minify: Some(if request.node_rebundle && request.minify {
+            RawMinifyOptions::Object(RawMinifyOptionsDetailed {
+                mangle: None,
+                mangle_properties: None,
+                compress: None,
+                remove_whitespace: true,
+                ascii_only: false,
+            })
+        } else {
+            RawMinifyOptions::Bool(request.minify)
+        }),
         treeshake: match &request.treeshake {
             Some(settings) => {
                 use rolldown_common::{
@@ -578,7 +590,7 @@ pub async fn generate_with_plugins(
         module_types: Some(module_types.into_iter().collect()),
         entry_filenames: Some("[name].js".to_owned().into()),
         chunk_filenames: Some("chunks/[name]-[hash].js".to_owned().into()),
-        asset_filenames: Some("assets/[name]-[hash][extname]".to_owned().into()),
+        asset_filenames: Some(css::DEFAULT_ASSET_FILE_NAMES.to_owned().into()),
         ..Default::default()
     };
     output::configure(&mut options, &request.output).map_err(BundleError::invalid)?;
