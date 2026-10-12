@@ -162,9 +162,19 @@ fn dynamic(expr: &Expression<'_>) -> Value {
     let s = expr.span();
     json!({"$nativeDynamic": [s.start, s.end]})
 }
+/// Local import binding -> (module specifier, imported name or "default").
+type ImportBindings = BTreeMap<String, (String, String)>;
 fn evaluate<'a>(
     expr: &'a Expression<'a>,
     bindings: &BTreeMap<String, &'a Expression<'a>>,
+    depth: usize,
+) -> Result<Value, String> {
+    evaluate_with(expr, bindings, None, depth)
+}
+fn evaluate_with<'a>(
+    expr: &'a Expression<'a>,
+    bindings: &BTreeMap<String, &'a Expression<'a>>,
+    calls: Option<&ImportBindings>,
     depth: usize,
 ) -> Result<Value, String> {
     if depth > 64 {
@@ -176,14 +186,27 @@ fn evaluate<'a>(
         Expression::NumericLiteral(n) => json!(n.value),
         Expression::NullLiteral(_) => Value::Null,
         Expression::Identifier(id) => match bindings.get(id.name.as_str()) {
-            Some(v) => evaluate(v, bindings, depth + 1)?,
+            Some(v) => evaluate_with(v, bindings, calls, depth + 1)?,
             None => dynamic(expr),
         },
-        Expression::ParenthesizedExpression(e) => evaluate(&e.expression, bindings, depth + 1)?,
-        Expression::TSAsExpression(e) => evaluate(&e.expression, bindings, depth + 1)?,
-        Expression::TSSatisfiesExpression(e) => evaluate(&e.expression, bindings, depth + 1)?,
+        Expression::ParenthesizedExpression(e) => {
+            evaluate_with(&e.expression, bindings, calls, depth + 1)?
+        }
+        Expression::TSAsExpression(e) => evaluate_with(&e.expression, bindings, calls, depth + 1)?,
+        Expression::TSSatisfiesExpression(e) => {
+            evaluate_with(&e.expression, bindings, calls, depth + 1)?
+        }
         Expression::ObjectExpression(obj) => {
             let mut out = Map::new();
+            // Tree mode records JS property order, which serde_json's sorted
+            // Map loses. Array-index keys are not reordered: config keys here
+            // are names, never indices.
+            let mut keys: Vec<String> = Vec::new();
+            let record = |keys: &mut Vec<String>, key: &str| {
+                if !keys.iter().any(|k| k == key) {
+                    keys.push(key.into());
+                }
+            };
             for prop in &obj.properties {
                 match prop {
                     ObjectPropertyKind::ObjectProperty(p) => {
@@ -194,19 +217,44 @@ fn evaluate<'a>(
                         let value = if p.method || p.kind != PropertyKind::Init {
                             dynamic(&p.value)
                         } else {
-                            evaluate(&p.value, bindings, depth + 1)?
+                            evaluate_with(&p.value, bindings, calls, depth + 1)?
                         };
+                        record(&mut keys, &key);
                         out.insert(key.into_owned(), value);
                     }
                     ObjectPropertyKind::SpreadProperty(p) => {
-                        let v = evaluate(&p.argument, bindings, depth + 1)?;
-                        let map = v
-                            .as_object()
-                            .filter(|m| !m.contains_key("$nativeDynamic"))
-                            .ok_or("Dynamic configuration spread; use a resolved config")?;
-                        out.extend(map.clone());
+                        let v = evaluate_with(&p.argument, bindings, calls, depth + 1)?;
+                        let map = match v.as_object().filter(|m| !m.contains_key("$nativeDynamic"))
+                        {
+                            Some(map) => map,
+                            // Tree mode: the object's other properties stay
+                            // readable; consumers see that keys may be missing.
+                            None if calls.is_some() => {
+                                out.insert("$nativeDynamicSpread".into(), json!(true));
+                                continue;
+                            }
+                            None => {
+                                return Err(
+                                    "Dynamic configuration spread; use a resolved config".into()
+                                );
+                            }
+                        };
+                        let spread_keys: Vec<String> = match map.get("$keys") {
+                            Some(Value::Array(order)) => order
+                                .iter()
+                                .filter_map(|k| k.as_str().map(str::to_owned))
+                                .collect(),
+                            _ => map.keys().cloned().collect(),
+                        };
+                        for key in spread_keys {
+                            record(&mut keys, &key);
+                        }
+                        out.extend(map.clone().into_iter().filter(|(k, _)| k != "$keys"));
                     }
                 }
+            }
+            if calls.is_some() {
+                out.insert("$keys".into(), json!(keys));
             }
             Value::Object(out)
         }
@@ -216,12 +264,99 @@ fn evaluate<'a>(
                 let expr = entry
                     .as_expression()
                     .ok_or("Configuration array spreads/holes require a resolved config")?;
-                out.push(evaluate(expr, bindings, depth + 1)?);
+                out.push(evaluate_with(expr, bindings, calls, depth + 1)?);
             }
             Value::Array(out)
         }
+        Expression::CallExpression(call) if calls.is_some() => {
+            let imported = match &call.callee {
+                Expression::Identifier(id) if !bindings.contains_key(id.name.as_str()) => {
+                    calls.and_then(|calls| calls.get(id.name.as_str()))
+                }
+                _ => None,
+            };
+            match imported {
+                Some((module, export)) if call.arguments.iter().all(|a| !a.is_spread()) => {
+                    let mut arguments = Vec::new();
+                    for argument in &call.arguments {
+                        let argument = argument.as_expression().expect("non-spread argument");
+                        arguments.push(evaluate_with(argument, bindings, calls, depth + 1)?);
+                    }
+                    json!({"$call": {"module": module, "export": export, "arguments": arguments}})
+                }
+                _ => dynamic(expr),
+            }
+        }
         _ => dynamic(expr),
     })
+}
+
+/// The default-exported Svelte config as a static JSON tree for build planning.
+/// Calls of imported functions (`adapter()`, `mdsvex({...})`) become
+/// `{"$call": {"module", "export", "arguments"}}` with statically evaluated
+/// arguments; every other non-literal stays `{"$nativeDynamic": [start, end]}`.
+/// Every object carries `"$keys"`: its property names in source order.
+/// Nothing is executed and no imported module is read.
+pub fn static_config_tree(source: &str) -> Result<Value, String> {
+    let allocator = Allocator::default();
+    let parsed = Parser::new(&allocator, source, SourceType::ts()).parse();
+    if !parsed.diagnostics.is_empty() {
+        return Err(format!(
+            "Cannot parse Svelte config: {:?}",
+            parsed.diagnostics[0]
+        ));
+    }
+    let mut bindings = BTreeMap::new();
+    let mut imports = ImportBindings::new();
+    let mut exported = None;
+    for statement in &parsed.program.body {
+        match statement {
+            Statement::VariableDeclaration(d) if d.kind == VariableDeclarationKind::Const => {
+                for decl in &d.declarations {
+                    if let (BindingPattern::BindingIdentifier(id), Some(value)) =
+                        (&decl.id, &decl.init)
+                    {
+                        bindings.insert(id.name.to_string(), value);
+                    } else {
+                        return Err(
+                            "Destructured/uninitialized config binding requires a resolved config"
+                                .into(),
+                        );
+                    }
+                }
+            }
+            Statement::ExportDefaultDeclaration(d) => {
+                exported = d.declaration.as_expression();
+            }
+            Statement::ImportDeclaration(d) => {
+                for specifier in d.specifiers.iter().flatten() {
+                    let (local, export) = match specifier {
+                        ImportDeclarationSpecifier::ImportDefaultSpecifier(s) => {
+                            (s.local.name.as_str(), "default".to_owned())
+                        }
+                        ImportDeclarationSpecifier::ImportSpecifier(s) => {
+                            (s.local.name.as_str(), s.imported.name().to_string())
+                        }
+                        ImportDeclarationSpecifier::ImportNamespaceSpecifier(_) => continue,
+                    };
+                    imports.insert(local.into(), (d.source.value.to_string(), export));
+                }
+            }
+            Statement::EmptyStatement(_) => {}
+            _ => {
+                return Err(
+                    "Executable configuration statements require an explicit resolved config"
+                        .into(),
+                );
+            }
+        }
+    }
+    evaluate_with(
+        exported.ok_or("Expected default-exported config object")?,
+        &bindings,
+        Some(&imports),
+        0,
+    )
 }
 
 pub fn from_source(source: &str) -> Result<SyncConfig, String> {
@@ -916,5 +1051,51 @@ mod tests {
         .unwrap();
         assert!(!variable[0].has_schema);
         assert!(!variable[0].public);
+    }
+
+    #[test]
+    fn static_config_tree_keeps_imported_calls_with_static_arguments() {
+        let tree = static_config_tree(
+            r#"import adapter from '@sveltejs/adapter-node';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import { mdsvex as md } from 'mdsvex';
+const local = () => 1;
+const config = {
+    extensions: ['.svelte', '.md'],
+    preprocess: [vitePreprocess(), md({ extensions: ['.md'] })],
+    compilerOptions: { runes: true },
+    kit: {
+        adapter: adapter({ out: 'dist', precompress: false }),
+        other: local(),
+        spread: adapter(...[]),
+        experimental: { instrumentation: { server: true } }
+    }
+};
+export default config;"#,
+        )
+        .unwrap();
+        assert_eq!(
+            tree["preprocess"],
+            json!([
+                {"$call": {"module": "@sveltejs/vite-plugin-svelte", "export": "vitePreprocess", "arguments": []}},
+                {"$call": {"module": "mdsvex", "export": "mdsvex", "arguments": [{"extensions": [".md"], "$keys": ["extensions"]}]}}
+            ])
+        );
+        assert_eq!(
+            tree["kit"]["adapter"],
+            json!({"$call": {"module": "@sveltejs/adapter-node", "export": "default", "arguments": [{"out": "dist", "precompress": false, "$keys": ["out", "precompress"]}]}})
+        );
+        // Calls of local bindings and spread arguments stay dynamic.
+        assert!(tree["kit"]["other"].get("$nativeDynamic").is_some());
+        assert!(tree["kit"]["spread"].get("$nativeDynamic").is_some());
+        assert_eq!(
+            tree["kit"]["experimental"]["instrumentation"]["server"],
+            true
+        );
+        assert_eq!(tree["compilerOptions"]["runes"], true);
+        assert_eq!(
+            tree["kit"]["$keys"],
+            json!(["adapter", "other", "spread", "experimental"])
+        );
     }
 }

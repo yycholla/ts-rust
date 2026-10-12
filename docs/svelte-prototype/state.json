@@ -589,6 +589,7 @@
     "authorization": "User requests full parity without milestone check-ins, benchmarks, trials or independent audits until parity is achieved; prototype judgement delegated to root.",
     "scope": "Native Svelte/Kit compiler, checker, lint and editor/build functionality; JS/WASM interfaces; registered version window",
     "next": [
+      "Native MoncuraHR build: Tailwind entries, CSS sourcemap/url fixes, Vite SSR externalization, Sentry plugin behaviors, import.meta.glob and ?raw, then compare with official build",
       "Connect native bundler, Markdown preprocessing and Kit build generators",
       "Finish lint fixes, native formatting and project reload in persistent editor",
       "Native CSS/assets/Tailwind and remaining Kit runtime build stages",
@@ -602,7 +603,7 @@
       "native_ambient": "native Fetch Body helper layer",
       "native_route_types": "Tailwind bundler integration",
       "incremental_design": "native ReadableStream byte/BYOB implementation",
-      "prerenderPolicy": "root after deferredcompletion handoff:20policy tests now, root registration/runtime queued",
+      "prerenderPolicy": "root: deferred completion passing; failure path documented as deliberate first-error termination",
       "nativeVisitor": "root after native_ambient handoff: registered new visitor+5tests, compile pending producer handoff",
       "remotePrerenderEntry": "root after handoff: registered helper entry+7tests, server graph integration unrun",
       "nativeCallbackChannel": "root: runtime host_channel and build native_runtime callback framing",
@@ -1441,6 +1442,26 @@
       {
         "path": "target/clippy-final-ts_svelte_runtime.log",
         "result": "PASS -D warnings --all-targets --no-deps (first run). clippy --fix plus doc-list break, Paths type alias, and too_many_arguments allow on Kit-mirroring request()."
+      },
+      {
+        "path": "target/svelte-kit-vite-env-tests-3.log",
+        "result": "235passed: new ts_svelte_kit vite_env (Vite 7.3.1 loadEnv: dotenv16 parse + patched dotenv-expand 12.0.3 via regress ECMAScript regexes, GetSubstitution, JS key order, process-env mutations). Node oracle against installed vite 7.3.1 matches all 5 regular cases; the $&-reinsertion case fails on both sides (V8 RangeError/OOM vs bounded native error)."
+      },
+      {
+        "path": "target/svelte-kit-config-tree-tests-3.log",
+        "result": "235passed+oracle: sync_config::static_config_tree keeps imported calls ($call with static arguments), $keys source order, $nativeDynamicSpread for dynamic spreads; existing sync evaluation unchanged."
+      },
+      {
+        "path": "target/svelte-native-project-1/request.json",
+        "result": "Native project loader (ts_svelte_build::project, CLI op project) on isolated MoncuraHR copy: 217 nodes, 372 routes, 228 module snapshots, 7 static assets, Kit+Vite aliases in order ($services Vite alias correctly shadowed), instrumentation+tracing, mdsvex options, runes, static vite.config read. Requirements: define.__APP_VERSION__ (explicit), Sentry plugin, build/esbuild options."
+      },
+      {
+        "path": "target/svelte-native-project-1/build-1.json",
+        "result": "First fully native MoncuraHR build: planning complete (223 outputs), server bundle fails in 1.5s with 14 diagnostics: Tailwind entries unconfigured (app.css), native CSS UTF-16 sourcemap error on 4 stylesheets, lightningcss rejects url() in custom property (pdfjs pdf_viewer.css), canvas native addon bundled because Vite SSR externalization is not ported."
+      },
+      {
+        "path": "target/svelte-native-build-tests-28.log",
+        "result": "124passed incl. 8 fixture-gated after BuildRequest.define (user Vite define, Kit defines win) and project loader."
       }
     ],
     "integrationWork": [
@@ -1507,9 +1528,10 @@
       "prerenderScheduler": "Pinned queue.add invokes task immediately when slots free; encodeURI at task start; configured seeds then route entries then Kit2 awaited get_hooks/transport or Kit3 remote inputs. Each visit awaits respond -> mismatch policy -> main body -> save/publish -> each dependency header bookkeeping/body/save -> crawl. Queue completion releases slot in second promise reaction, Kit3 async task adoption differs Kit2 Promise.resolve. Queue may close while producer awaits inputs; no producer latch. Current staged process/JSON API preserves per-visit policy/body boundaries but native_operation drains jobs, so does not provide whole-run producer/visitor await interleaving or concurrent visits. Full parity next needs native promise-graph scheduler with non-settling Renderer.dispatch_pending and synchronous policy callbacks executed inside continuations; external process/WASM callback transport must pause before later jobs run. into_requests enumeration alone is insufficient.",
       "prerenderDriverIntegration": "After visitor/producer compile: consume a fresh PrerenderSession for one whole run, retaining configured manifest and pristine visit/remote intrinsics. Context-owned driver rooted state; synchronous host callbacks return ordered startVisit/publish/manifest/alias actions and policyfinish results. Start configured seeds immediately, launch native remote producer in same promise graph, complete each visit only in queue second reaction (Kit3 extra async adoption). Apply dependency headers/body callbacks; crawl callback uses fresh mainhead. No producer latch that reopens closed purequeue; producercomplete waits actual active promises then finish coverage. HostChannel JSON callbacks pause child within continuation. Generic wasm export should provide equivalent synchronous host callback with no Promise acceptance. Staged facade remains convenience, never proof of wholequeue parity. Missing saved alias must shadow static/server reads with failure; publication alone insufficient.",
       "nativePrerenderPrimitiveStatus": "Runtime14 73passed (visitor, producer, getter, missingSavedAlias, hostchannel, arrayBuffer await correction). Build27 123passed incl. fixture-gated. js-runtime/svelte-runtime clippy and fmt PASS. Next: failure-path queue correction (outsideBaseQueueCorrection), then prerenderDriverIntegration.",
-      "outsideBaseQueueCorrection": "Implemented deferred successful outside completion (OutsideBaseReturned +complete_outside_visit), pending20policy tests. Remaining failure-path gap: pure SaveState permanently poisons after HTTP fail/customthrow and QueueState treatsfailureterminal, whereas pinned asyncvisit rejects in first reaction and still releases/dequeues in second. Address separately with explicit visit rejection versus protocol failure after current corrections pass.",
+      "outsideBaseQueueCorrection": "Deferred completion implemented and passing (composition-2: 20 policy tests). Failure path decided 2026-10-12 (root): not modeled. Pinned queue.js rejects done() once with the first rejection; Kit2's unhandled add() promise kills the prerender worker, Kit3 (add().catch) rethrows from `await q.done()`. Both fail the build with the first visit error, which the policy already reports. Upstream's continued dispatch after a failure (Kit3 until done() is awaited) only affects partial output, logs and handler calls of an already-failed build. Documented in prerender_policy.rs header.",
       "visitorAwaitCorrection": "Implemented and measured: runtime12/14 pass with captured native Response.prototype.arrayBuffer and interleaving regression case."
     },
-    "toolchain": "Nix cargo/rustc/rustfmt/clippy 1.98.1 + gcc-wrapper15.3.0 + lld21.1.8 on PATH; rustup stable proxy is not executable on this NixOS host. wasm-bindgen 0.2.129 at target/tools/wasm-bindgen-0.2.129-x86_64-unknown-linux-musl."
+    "toolchain": "Nix cargo/rustc/rustfmt/clippy 1.98.1 + gcc-wrapper15.3.0 + lld21.1.8 on PATH; rustup stable proxy is not executable on this NixOS host. wasm-bindgen 0.2.129 at target/tools/wasm-bindgen-0.2.129-x86_64-unknown-linux-musl.",
+    "nativeProjectBuild": "Prerender driver deprioritized 2026-10-12: MoncuraHR prerenders nothing and has no remote functions (Kit returns before Server init). Critical path is the native project build of the isolated copy target/svelte-project-app-2/app."
   }
 }

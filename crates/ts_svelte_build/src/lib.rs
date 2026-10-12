@@ -22,12 +22,13 @@ pub mod runtime_remotes;
 pub use manifest::PreliminaryManifest;
 #[cfg(test)]
 mod pipeline_tests;
-pub mod prerender_policy;
 pub mod prerender_output;
+pub mod prerender_policy;
 pub mod prerender_remote_entry;
 #[cfg(test)]
 mod prerender_runtime_tests;
 pub mod prerender_transport;
+pub mod project;
 pub mod service_worker;
 mod tracking;
 pub mod worker_manifest;
@@ -88,6 +89,10 @@ pub struct BuildRequest {
     /// not be supplied here or allowed to replace planner-owned modules.
     #[serde(default)]
     pub sources: BTreeMap<PathBuf, String>,
+    /// User Vite `define` entries (identifier -> JavaScript expression source).
+    /// Kit's own defines take precedence on the same key, as in Vite's merge.
+    #[serde(default)]
+    pub define: BTreeMap<String, String>,
     /// Explicit static asset bytes and MIME metadata; no directory scan occurs.
     #[serde(default)]
     pub static_assets: BTreeMap<String, StaticAsset>,
@@ -176,6 +181,13 @@ pub struct BuildReport {
     pub generated_sources: BTreeMap<PathBuf, String>,
 }
 impl BuildReport {
+    /// Loader requirements block completion like the build's own.
+    pub fn add_requirements(&mut self, requirements: Vec<Requirement>) {
+        if !requirements.is_empty() && self.status == "complete" {
+            self.status = "incomplete".into();
+        }
+        self.requirements.splice(0..0, requirements);
+    }
     fn new() -> Self {
         Self {
             status: "incomplete".into(),

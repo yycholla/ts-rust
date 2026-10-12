@@ -16,22 +16,62 @@ enum Request {
         #[serde(rename = "runtimeBinary")]
         runtime_binary: Option<PathBuf>,
     },
+    /// Load an installed project natively, then build it like `build`.
+    Project {
+        project: ts_svelte_build::project::ProjectInput,
+        #[serde(rename = "outputDirectory")]
+        output_directory: Option<PathBuf>,
+        #[serde(rename = "runtimeBinary")]
+        runtime_binary: Option<PathBuf>,
+        /// Return the loaded request instead of building it.
+        #[serde(default, rename = "requestOnly")]
+        request_only: bool,
+    },
 }
 async fn dispatch(bytes: &[u8]) -> Value {
     let input = match serde_json::from_slice::<Request>(bytes) {
         Ok(input) => input,
         Err(error) => return json!({"ok":false,"error":error.to_string()}),
     };
-    match input {
-        Request::Capabilities => {
-            json!({"ok":true,"native":true,"executesApplicationCode":true,"applicationExecutionDefault":false,"runtimeSelection":"explicitRuntimeBinary","writesByDefault":false,"pipeline":["resolvedPlan","serverBundle","nativeRemoteTransforms","featureTracking","staticAnalysis","nativeRuntimeAnalysis","nativeRemoteMetadata","optimizedClientBundle","kit3ManifestFinalization","nodesAndManifest","serviceWorker","adapterNode"],"bundleStrategy":"split","kitFamilies":[2,3],"adapterNodeVersion":"5.5.4","unresolvedStages":["prerenderExecution"],"browserWasm":false})
+    let (request, output_directory, runtime_binary, loaded) = match input {
+        Request::Project {
+            project,
+            output_directory,
+            runtime_binary,
+            request_only,
+        } => {
+            let loaded = match ts_svelte_build::project::load(&project) {
+                Ok(loaded) => loaded,
+                Err(error) => return json!({"ok":false,"error":error}),
+            };
+            if request_only {
+                return json!({"ok":true,"request":loaded.request,"requirements":loaded.requirements});
+            }
+            let request = match serde_json::from_value::<BuildRequest>(loaded.request) {
+                Ok(request) => Box::new(request),
+                Err(error) => {
+                    return json!({"ok":false,"error":format!("Loaded request contract: {error}")});
+                }
+            };
+            (
+                request,
+                output_directory,
+                runtime_binary,
+                loaded.requirements,
+            )
         }
         Request::Build {
             request,
             output_directory,
             runtime_binary,
-        } => {
-            let report = if let Some(binary) = runtime_binary {
+        } => (request, output_directory, runtime_binary, vec![]),
+        Request::Capabilities => {
+            return json!({"ok":true,"native":true,"executesApplicationCode":true,"applicationExecutionDefault":false,"runtimeSelection":"explicitRuntimeBinary","writesByDefault":false,"pipeline":["resolvedPlan","serverBundle","nativeRemoteTransforms","featureTracking","staticAnalysis","nativeRuntimeAnalysis","nativeRemoteMetadata","optimizedClientBundle","kit3ManifestFinalization","nodesAndManifest","serviceWorker","adapterNode"],"bundleStrategy":"split","kitFamilies":[2,3],"adapterNodeVersion":"5.5.4","unresolvedStages":["prerenderExecution"],"browserWasm":false});
+        }
+    };
+    {
+        {
+            let mut report = if let Some(binary) = runtime_binary {
                 let mut runtime = match ts_svelte_build::native_runtime::NativeRuntime::new(binary)
                 {
                     Ok(runtime) => runtime,
@@ -41,6 +81,7 @@ async fn dispatch(bytes: &[u8]) -> Value {
             } else {
                 ts_svelte_build::build(*request).await
             };
+            report.add_requirements(loaded);
             if let Some(directory) = output_directory {
                 if report.status != "complete" {
                     return json!({"ok":false,"error":"Output materialization requires a complete build report","report":report});
@@ -60,7 +101,7 @@ async fn main() {
     let args = std::env::args().skip(1).collect::<Vec<_>>();
     if args.iter().any(|arg| arg == "--help" || arg == "help") {
         println!(
-            "svelte-build [--serve]\nRead one JSON request from stdin, or newline-delimited requests with --serve.\nOperations: capabilities; build {{request: resolvedBuildRequest, outputDirectory?: newAbsolutePath, runtimeBinary?: absoluteNativeRuntimePath}}.\nNo output files are written unless outputDirectory is explicitly provided."
+            "svelte-build [--serve]\nRead one JSON request from stdin, or newline-delimited requests with --serve.\nOperations: capabilities; build {{request: resolvedBuildRequest, outputDirectory?: newAbsolutePath, runtimeBinary?: absoluteNativeRuntimePath}}; project {{project: {{root, environment, mode?, versionName?, define?}}, requestOnly?, outputDirectory?, runtimeBinary?}}.\nNo output files are written unless outputDirectory is explicitly provided."
         );
         return;
     }

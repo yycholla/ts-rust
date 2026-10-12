@@ -3914,6 +3914,7 @@ dependencies = [
  "oxc_parser 0.149.0",
  "oxc_span 0.149.0",
  "oxc_syntax 0.149.0",
+ "regress",
  "serde",
  "serde_json",
  "sha2",

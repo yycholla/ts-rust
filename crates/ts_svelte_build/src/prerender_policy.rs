@@ -27,10 +27,14 @@
 //! Kit2 wraps the visit with Promise.resolve; Kit3 uses async-return adoption.
 //! Preserve those real promise chains rather than guessing microtask counts.
 //!
-//! LIMITATION: SaveState permanently fails on HTTP policy rejection. Until that
-//! primitive supports per-visit failures, outside-base Fail/default/throw still
-//! terminates this composition. It cannot yet model upstream's rejected visit
-//! promise, subsequent queue release, and continued unrelated task dispatch.
+//! A visit failure (HTTP policy Fail/default/custom throw, save conflicts) ends
+//! this composition with that first error. Upstream also ends the build with the
+//! first rejection: queue.js rejects done() once, Kit2's unhandled add() promise
+//! kills the prerender worker, and Kit3 rethrows from `await q.done()`. Before
+//! that, upstream still releases the failed slot and keeps dispatching unrelated
+//! visits (Kit3 until done() is awaited, possibly across I/O). Those visits can
+//! only write partial output, log or call handlers for a build that has already
+//! failed. They are deliberately not modeled.
 use crate::prerender_transport::{Dependency, DependencyHead, Response, ResponseHead};
 use serde::{Deserialize, Serialize};
 use std::collections::{BTreeMap, BTreeSet, VecDeque};

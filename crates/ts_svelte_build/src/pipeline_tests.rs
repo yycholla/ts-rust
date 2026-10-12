@@ -133,6 +133,7 @@ impl Fixture {
                     },
                 )]),
                 sources: BTreeMap::new(),
+                define: BTreeMap::new(),
                 static_assets: BTreeMap::new(),
                 static_assets_complete: true,
             },

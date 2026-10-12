@@ -188,12 +188,15 @@ fn graph_request(
             ));
         }
     }
+    // Vite merges plugin config over the user's: Kit's own defines win.
+    let mut defines = request.define.clone();
+    defines.extend(graph.defines.iter().map(|(k, v)| (k.clone(), v.clone())));
     let mut prepared: BundleRequest = serde_json::from_value(json!({
         "root":request.kit.inventory.project_root,"entries":entries,"target":if client {"client"} else {"server"},
         "strictExecutionOrder":if worker {Some(true)} else {None},
         "compatibility":{"svelteVersion":request.compiler.svelte_version,"kitVersion":request.kit.inventory.kit_version,"typescriptVersion":request.compiler.typescript_version,"allowPrerelease":request.compiler.allow_prerelease},
         "runes":request.compiler.runes,"minify":request.compiler.minify,"sourcemap":request.compiler.sourcemap,
-        "aliases":aliases,"external":graph.external,"conditions":graph.conditions,"define":graph.defines,
+        "aliases":aliases,"external":graph.external,"conditions":graph.conditions,"define":defines,
         "tsconfig":request.compiler.tsconfig,"virtualModules":sources,"compilerOptions":request.compiler.options,
         "mdsvex":request.compiler.mdsvex,"typescript":request.compiler.typescript,
         "css":if worker {Value::Null} else {json!({"publicBase":if plan.relative_asset_urls {None} else {Some(plan.asset_url_base.clone())},"nonce":null,"tailwind":request.tailwind})},
