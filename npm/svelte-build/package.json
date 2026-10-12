@@ -1,0 +1,13 @@
+{
+  "name": "@ts-rust/svelte-build",
+  "version": "0.0.0",
+  "description": "Native (Rust) SvelteKit production build with adapter-node: a prototype of the ts-rust fork",
+  "license": "MIT AND Apache-2.0",
+  "repository": { "type": "git", "url": "git+https://github.com/yycholla/ts-rust.git", "directory": "crates/ts_svelte_build" },
+  "bin": { "svelte-build": "bin/svelte-build" },
+  "files": ["bin/svelte-build", "BUILD.txt", "README.md", "LICENSE", "NOTICE.md"],
+  "os": ["linux"],
+  "cpu": ["x64"],
+  "libc": ["glibc"],
+  "engines": { "node": ">=18" }
+}

@@ -1660,6 +1660,13 @@
           "MoncuraHR (Kit 2, target/svelte-native-project-2)": "native build complete in 20.7 s; browser parity 4/4 routes; output sizes unchanged"
         }
       }
+    },
+    "releaseAndCi": {
+      "date": "2026-10-12",
+      "release": "svelte-build ships as an npm package for linux-x64 (glibc 2.28+): .github/workflows/svelte-build-release.yml builds scripts/svelte/release-build.sh in the manylinux_2_28 container (glibc build, not static musl: the system allocator stays glibc malloc so timings measure the build), packs npm/svelte-build with scripts/svelte/npm-pack.sh, smoke-tests it with scripts/svelte/release-smoke.sh (fresh sv create minimal + adapter-node 6.0.0, native build, server serves /), and on a svelte-build-v<semver> tag publishes with npm trusted publishing (npm/svelte-build/trust-setup.sh, run once) and creates a GitHub release",
+      "localReproduction": "scripts/svelte/release-build-docker.sh target/svelte-release-repro: binary needs GLIBC_2.28, sha256 476a9243… at a8d77daea; npm tarball 19.5 MB; release-smoke.sh passed (Kit 3.0.1, Vite 8.3.4, Svelte 5.57.2)",
+      "pluginModules": "ProjectInput.pluginModules: the caller supplies the modules of a Vite plugin the native build does not run (id -> file, an exact alias); the plugin's requirement is replaced. MoncuraHR main (209eda098) added announcementPlaygroundLibrary (a nested Vite library build behind virtual:announcement-playground-library); the CI bench generates it in Node with the plugin's own code and counts that time on the native side",
+      "moncuraCi": "MoncuraHR branch ci/svelte-native-build-bench: .gitlab/ci/svelte-native.yml job frontend:native-build-bench (allow_failure; essential lane on frontend changes, full/nightly, manual on maintenance) runs scripts/ci/svelte-native-bench.py: alternating official/native builds on the same runner, wall/CPU/peak RSS, build/ size by area, route statuses of both servers, summary.md and a GitLab metrics report. Local functional run on 209eda098: both builds succeed, routes /health /login /oauth/login /docs match (200/200/400/200); local timings were taken at load 12-23 and are not a measurement"
     }
   },
   "next": []

@@ -1,0 +1,167 @@
+# Builds, packs and smoke-tests the native SvelteKit build (`svelte-build`, crates/ts_svelte_build)
+# as an npm package for linux-x64, and publishes it on a tag.
+#
+# - build: scripts/svelte/release-build.sh in the manylinux_2_28 container (glibc 2.28), so the
+#   binary starts on any x86-64 Linux with glibc 2.28 or later. Not static musl: see the header of
+#   release-build.sh.
+# - package: scripts/svelte/npm-pack.sh, then scripts/svelte/release-smoke.sh installs the tarball
+#   into a fresh `sv create` minimal app (Kit 3, adapter-node 6.0.0), builds it natively, starts the
+#   server and checks that / serves the app.
+# - publish (tag svelte-build-v<semver> only): `npm publish` with npm trusted publishing (OIDC),
+#   so there is no npm token or secret, and npm adds provenance. The package trusts this workflow
+#   file in the environment `npm` (npm/svelte-build/trust-setup.sh, run once by hand). Then a
+#   GitHub release with the tarball and the binary. A prerelease version goes to the npm dist-tag
+#   `next` and a GitHub prerelease, a stable one to `latest`.
+#
+# The npm package name is the repository variable SVELTE_BUILD_NPM_NAME (for example
+# @<npm user>/svelte-build). Pull requests that change the build, and a manual run, do everything
+# but the publish.
+name: svelte-build release
+
+on:
+  push:
+    tags: ["svelte-build-v*"]
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/svelte-build-release.yml"
+      - "npm/svelte-build/**"
+      - "scripts/svelte/release-*.sh"
+      - "scripts/svelte/npm-pack.sh"
+      - "crates/ts_svelte*/**"
+      - "crates/ts_js_runtime/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: svelte-build-release-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: 0
+  RUST_VERSION: 1.98.1
+  NPM_NAME: ${{ vars.SVELTE_BUILD_NPM_NAME || '@ts-rust/svelte-build' }}
+
+jobs:
+  version:
+    runs-on: ubuntu-24.04
+    outputs:
+      version: ${{ steps.v.outputs.version }}
+      release: ${{ steps.v.outputs.release }}
+      prerelease: ${{ steps.v.outputs.prerelease }}
+    steps:
+      - id: v
+        run: |
+          if [[ $GITHUB_REF_TYPE == tag ]]; then
+            v=${GITHUB_REF_NAME#svelte-build-v}
+            [[ $v =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?$ ]] || { echo "::error::tag $GITHUB_REF_NAME is not svelte-build-v<semver>"; exit 1; }
+            echo "release=true" >> "$GITHUB_OUTPUT"
+          else
+            v=0.0.0-ci.$GITHUB_RUN_NUMBER
+            echo "release=false" >> "$GITHUB_OUTPUT"
+          fi
+          [[ $v == *-* ]] && echo "prerelease=true" >> "$GITHUB_OUTPUT" || echo "prerelease=false" >> "$GITHUB_OUTPUT"
+          echo "version=$v" >> "$GITHUB_OUTPUT"
+          echo "version $v"
+
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    container: quay.io/pypa/manylinux_2_28_x86_64@sha256:4131ddd7acb9c6c966af02fe7e71edc51e078c2d41f475966697676430bfa2ae
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - name: Rust
+        run: |
+          curl -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal --default-toolchain "$RUST_VERSION" --no-modify-path
+          echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: crates/ts_svelte_build -> target
+          key: svelte-build-manylinux_2_28
+          save-if: ${{ github.event_name != 'pull_request' }}
+      - run: scripts/svelte/release-build.sh dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: svelte-build-linux-x64
+          path: dist/
+          if-no-files-found: error
+
+  package:
+    needs: [version, build]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - uses: actions/download-artifact@v5
+        with:
+          name: svelte-build-linux-x64
+          path: dist
+      - run: chmod +x dist/svelte-build && cat dist/BUILD.txt
+      - id: pack
+        run: echo "tarball=$(scripts/svelte/npm-pack.sh dist "$NPM_NAME" "${{ needs.version.outputs.version }}" pack)" >> "$GITHUB_OUTPUT"
+      - run: scripts/svelte/release-smoke.sh "${{ steps.pack.outputs.tarball }}" "$RUNNER_TEMP/smoke"
+      - name: Release files
+        run: |
+          mkdir release
+          cp "${{ steps.pack.outputs.tarball }}" release/
+          tar -C dist -czf "release/svelte-build-${{ needs.version.outputs.version }}-linux-x64.tar.gz" svelte-build BUILD.txt
+          (cd release && sha256sum * > SHA256SUMS)
+          cat release/SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: svelte-build-release
+          path: release/
+          if-no-files-found: error
+
+  publish:
+    if: needs.version.outputs.release == 'true'
+    needs: [version, package]
+    runs-on: ubuntu-24.04
+    environment: npm
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - uses: actions/download-artifact@v5
+        with:
+          name: svelte-build-release
+          path: release
+      # Trusted publishing needs npm 11.5.1 or later.
+      - run: npm install -g npm@11 && npm --version
+      - name: npm publish
+        run: |
+          [[ -n "${{ vars.SVELTE_BUILD_NPM_NAME }}" ]] || { echo "::error::set the repository variable SVELTE_BUILD_NPM_NAME"; exit 1; }
+          tag=latest
+          [[ ${{ needs.version.outputs.prerelease }} == true ]] && tag=next
+          version=${{ needs.version.outputs.version }}
+          # A rerun of a tag skips a version that is already on npm.
+          if npm view "$NPM_NAME@$version" version > /dev/null 2>&1; then
+            echo "$NPM_NAME@$version is already published"
+          else
+            npm publish release/*.tgz --access public --tag "$tag"
+          fi
+      - name: GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          flags=()
+          [[ ${{ needs.version.outputs.prerelease }} == true ]] && flags+=(--prerelease)
+          if gh release view "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
+            echo "release $GITHUB_REF_NAME exists"; exit 0
+          fi
+          gh release create "$GITHUB_REF_NAME" release/* --repo "$GITHUB_REPOSITORY" \
+            --title "svelte-build ${{ needs.version.outputs.version }}" \
+            --notes "Native SvelteKit build (linux-x64, glibc 2.28+). npm: \`$NPM_NAME@${{ needs.version.outputs.version }}\`" "${flags[@]}"
