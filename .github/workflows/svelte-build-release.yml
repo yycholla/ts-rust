@@ -151,7 +151,8 @@ jobs:
           if npm view "$NPM_NAME@$version" version > /dev/null 2>&1; then
             echo "$NPM_NAME@$version is already published"
           else
-            npm publish release/*.tgz --access public --tag "$tag"
+            # ./ keeps npm from reading release/<file> as GitHub shorthand (user/repo).
+            npm publish ./release/*.tgz --access public --tag "$tag"
           fi
       - name: GitHub release
         env:
